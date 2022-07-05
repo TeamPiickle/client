@@ -27,11 +27,11 @@ const fontSpacing = {
 
 function FONT({ weight, size, height, spacing }: Font | TempFont) {
   return css`
-    font-family: Pretendard;
-    font-weight: ${weight};
-    font-size: ${size}rem;
     line-height: ${typeof height === "number" ? height : fontHeight[height]};
     letter-spacing: ${fontSpacing[spacing]}rem;
+    font-family: Pretendard;
+    font-size: ${size}rem;
+    font-weight: ${weight};
   `;
 }
 
