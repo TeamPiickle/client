@@ -1,0 +1,63 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended", // 추가
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended", // 추가
+    "plugin:prettier/recommended", // 추가
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "plugin:jsx-a11y/recommended" // 추가
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+        "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint/eslint-plugin",
+    "simple-import-sort",
+    "react",
+    "react-hooks",
+    "prettier",
+    "jsx-a11y",
+    "import"
+  ],
+  "rules": {                                          // 0: off 1: warn 2: error 로 표기 가능
+    "indent": ["error", 2, { "SwitchCase": 1 }],    // 들여쓰기 몇 칸? 기본 2칸으로 하되, switch문에서는 1칸으로 지정
+    "quotes": ["error", "double"],                  // 쌍따옴표가 아닌 홑따옴표를 사용
+    "semi": ["error", "always"],                    // semi colon을 강제함
+    "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }],
+    "comma-dangle": ["error", "always-multiline"],  // 두 줄 이상의 경우에는 후행 쉼표를 항상 사용, 한 개 일 때는 사용하지 않음
+    "object-curly-spacing": ["error", "always"],    // 객체 괄호 앞 뒤 공백 추가
+    "space-in-parens": ["error", "never"],          // 일반 괄호 앞 뒤 공백 추가
+    "computed-property-spacing": ["error", "never"],    // 대괄호 앞 뒤 공백 추가하지 않음
+    "comma-spacing": ["error", { "before": false, "after": true }], // 반점 앞 뒤 공백: 앞에는 없고, 뒤에는 있게
+    "eol-last": ["error", "always"],                // line의 가장 마지막 줄에는 개행 넣기
+    "no-tabs": ["error", { "allowIndentationTabs": true }], // \t의 사용을 금지하고 tab키의 사용은 허용
+    "react-hooks/rules-of-hooks": "error",          // Checks rules of Hooks
+    "react/react-in-jsx-scope": "off",              // import React from "react"가 필수였던 시기에 필요한 규칙
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": ["node_modules", "src/"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    },
+    "react": {
+        "version": "detect"
+    }
+  }
+}
