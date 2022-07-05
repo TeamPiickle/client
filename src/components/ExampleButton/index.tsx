@@ -7,7 +7,7 @@ export interface ExampleButtonProps {
 }
 
 export default function ExampleButton(props: ExampleButtonProps) {
-  const { size, ...buttonProps } = props;
+  const { ...buttonProps } = props;
 
   return <St.Button {...buttonProps}>ExampleButton</St.Button>;
 }
