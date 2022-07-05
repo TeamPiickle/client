@@ -12,13 +12,10 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   } 
   html {
+    letter-spacing: -0.03rem;
     font-family: sans-serif;
     font-size: 62.5%;
-    letter-spacing: -0.03rem;
     user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
   }
   a {
     text-decoration: none;
@@ -30,12 +27,10 @@ export const GlobalStyle = createGlobalStyle`
     background-color: transparent;
   }
   button {
-    padding: 0;
     cursor: pointer;
+    padding: 0;
   }
   input {
-    -webkit-appearance: none; /* Safari and Chrome */
-    -moz-appearance: none; /* Firefox */
     appearance: none;
     
     &:focus {
