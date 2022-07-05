@@ -14,6 +14,6 @@ ISSUE 종류를 선택하세요 (`[ ]` 안에 `x` 표시, `[x]`)
 ## 체크리스트
 
 - [ ] 칸반보드에 있는 에픽 번호를 이슈 이름에 명시
-  - EX `[E#00] 테스트 이슈`
-- [ ] Assignees / Labels / Projects 선택
-- [ ] ...
+  - EX `[ {페이지명} - {세부명} ] 테스트 이슈명`
+- [ ] Assignees / Labels / Milestone 선택
+- [ ] ...todos, ...alert
