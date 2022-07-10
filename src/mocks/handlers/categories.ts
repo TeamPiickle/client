@@ -32,7 +32,7 @@ export const categoriesHandler = [
   }),
 
   rest.get(`${process.env.REACT_APP_BASE_URL}/categories/:categoryId`, (req, res, ctx) => {
-    const { id } = req.params;
+    // const { id } = req.params;
 
     return res(
       ctx.status(200),
