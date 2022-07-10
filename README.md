@@ -1,4 +1,4 @@
-## 🥒 Piicke
+## 🥒 Piickle
 ### 지금 내게 필요한 대화주제 추천 서비스, 피클!
 
 
@@ -23,12 +23,12 @@
 
 </aside>
 
-## 👥 Team Pickle 피클의 웹딱지들을 소개합니다:)
+## 👥 Team Piickle 피클의 웹딱지들을 소개합니다:)
 |[이주함](https://github.com/joohaem)|[서혜은](https://github.com/henization)|[고나연](https://github.com/NYeonK?tab=overview&from=2022-07-01&to=2022-07-10)|[윤지영](https://github.com/NaveOWO)|
 |------|------|------|------|
 |![image](https://user-images.githubusercontent.com/87578512/178135117-a1c2c380-a63c-4435-990b-0fcb501820ba.png)|![image](https://user-images.githubusercontent.com/87578512/178135086-954a203e-ba6c-4c04-b7d1-7a02c13b1d09.png)|<img width="529" alt="스크린샷 2022-07-10 오후 4 20 16" src="https://user-images.githubusercontent.com/87578512/178135232-7d1b4068-d94f-49e2-8ac0-4c8ea8f9d266.png">|![image](https://user-images.githubusercontent.com/87578512/178135034-01f22b87-1f35-4a19-8359-b63874055e31.png)|
 
-##⚙️ Stack
+## ⚙️ Stack
 
 <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white"> <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=CSS3&logoColor=white"> <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white"> <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"> <img src="https://img.shields.io/badge/StoryBook-FF4785?style=for-the-badge&logo=StoryBook&logoColor=white"> <img src="https://img.shields.io/badge/StyledComponents-DB7093?style=for-the-badge&logo=StyledComponents&logoColor=white">
 ```javascript
