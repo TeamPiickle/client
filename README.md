@@ -50,17 +50,18 @@
 │   └── image
 |   └── asset.d.ts
 ├── 📂 components
-│   ├── ExampleButton
-|   └── ExampleInput
+│   ├── Main
+│   ├── Category
+│   ├── CardCollection
+│   ├── Vote
+│   ├── MyPage
+│   ├── Bookmark
+|   └── Error404
 ├── 📁 core
 |   └── temp.ts
 ├── 📂 mocks
 │   ├── browser.ts
 │   └── handler.ts
-├── 📂 pages
-│   └── Error404.tsx
-|   └── index.ts
-|   └── Main.tsx
 ├── 📂 style
 │   └── globalStyle.ts
 |   └── styled.d.ts
