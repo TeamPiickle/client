@@ -20,14 +20,14 @@ const colors = {
   sub4: "#F2EFCE",
   sub5: "#1B3303",
   a: "radial-gradient(50% 50% at 50% 50%, #F2F25A 0%, rgba(25, 190, 126, 0.51) 100%)",
-};
+} as const;
 
 interface Font {
   weight: 400 | 500 | 600 | 700;
   size: number;
 }
 
-function FONT({ weight, size }: Font) {
+function FONT({ weight, size }: Font): unknown {
   return css`
     font-family: "Pretendard";
     font-weight: ${weight};
@@ -48,11 +48,11 @@ const fonts = {
   btn1: FONT({ weight: 500, size: 1.6 }),
   btn2: FONT({ weight: 400, size: 1.4 }),
   btn3: FONT({ weight: 400, size: 1.2 }),
-};
+} as const;
 
-const theme: DefaultTheme = {
+const theme = {
   colors,
   fonts,
-};
+} as const;
 
 export default theme;
