@@ -1,3 +1,9 @@
+import Banner from "./Banner";
+
 export default function Main() {
-  return <main>mm</main>;
+  return (
+    <main>
+      <Banner />
+    </main>
+  );
 }
