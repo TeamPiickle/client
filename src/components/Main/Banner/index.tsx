@@ -11,33 +11,47 @@ export default function Banner() {
     arrows: false,
     dots: false,
     infinite: false,
-    slidesToShow: 1.5,
+    slidesToShow: 1,
     slidesToScroll: 1,
   };
 
   return (
-    <div>
-      <h2> Single Item</h2>
+    <St.BannerSlider>
       <Slider {...settings}>
-        <div>
-          <h3>1</h3>
-        </div>
-        <div>
-          <h3>2</h3>
-        </div>
-        <div>
-          <h3>3</h3>
-        </div>
-        <div>
-          <h3>4</h3>
-        </div>
-        <div>
-          <h3>5</h3>
-        </div>
-        <div>
-          <h3>6</h3>
-        </div>
+        <St.ContentsWrapper>
+          <St.Contents>
+            브랜딩이든 설명이든<br></br>뭔가 대화 주제 추천 서비스다!<br></br>
+            피클 - 대화주제 추천 서비스입니다.
+          </St.Contents>
+        </St.ContentsWrapper>
+        <St.ContentsWrapper>
+          <St.Contents>
+            브랜딩이든 설명이든<br></br>뭔가 대화 주제 추천 서비스다!<br></br>
+            피클 - 대화주제 추천 서비스입니다.
+          </St.Contents>
+        </St.ContentsWrapper>
+        <St.ContentsWrapper>
+          <St.Contents>
+            브랜딩이든 설명이든<br></br>뭔가 대화 주제 추천 서비스다!<br></br>
+            피클 - 대화주제 추천 서비스입니다.
+          </St.Contents>
+        </St.ContentsWrapper>
+        <St.ContentsWrapper>
+          <St.Contents>
+            브랜딩이든 설명이든<br></br>뭔가 대화 주제 추천 서비스다!<br></br>
+            피클 - 대화주제 추천 서비스입니다.
+          </St.Contents>
+        </St.ContentsWrapper>
+        <St.ContentsWrapper>
+          <St.Contents>
+            브랜딩이든 설명이든<br></br>뭔가 대화 주제 추천 서비스다!<br></br>
+            피클 - 대화주제 추천 서비스입니다.
+          </St.Contents>
+        </St.ContentsWrapper>
       </Slider>
-    </div>
+      <St.ContentsPages>
+        <St.PagesNumber>2/5</St.PagesNumber>
+      </St.ContentsPages>
+    </St.BannerSlider>
   );
 }
