@@ -1,4 +1,5 @@
 import { HeadingTitle } from "../../../../core/main/headingTitles";
+import { St } from "./style";
 
 export interface HeadingTitleContainerProps {
   headingTitles: HeadingTitle;
@@ -7,5 +8,10 @@ export interface HeadingTitleContainerProps {
 export default function HeadingTitleContainer(props: HeadingTitleContainerProps) {
   const { headingTitles } = props;
 
-  return <div>index</div>;
+  return (
+    <St.Wrapper>
+      <St.Title>{headingTitles.title}</St.Title>
+      <St.Content>{headingTitles.content}</St.Content>
+    </St.Wrapper>
+  );
 }

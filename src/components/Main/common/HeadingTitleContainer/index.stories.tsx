@@ -1,5 +1,6 @@
 import { Meta, Story } from "@storybook/react";
 
+import { headingTitles } from "../../../../core/main/headingTitles";
 import HeadingTitleContainer, { HeadingTitleContainerProps } from ".";
 
 // 스토리북의 폴더
@@ -17,13 +18,19 @@ const Template: Story<HeadingTitleContainerProps> = (args) => {
 };
 
 // Story1 정의
-export const HeadingTitleContainerStory = Template.bind({});
-HeadingTitleContainerStory.args = {
-  headingTitles: {
-    title: "이번 달 Best Piickle",
-    content: "한 달 동안 가장 많은 마이피클을 달성한 주제들이에요",
-    isMoreBtn: false,
-  },
+export const HeadingTitleContainerStory0 = Template.bind({});
+HeadingTitleContainerStory0.args = {
+  headingTitles: headingTitles[0],
+};
+
+export const HeadingTitleContainerStory1 = Template.bind({});
+HeadingTitleContainerStory1.args = {
+  headingTitles: headingTitles[1],
+};
+
+export const HeadingTitleContainerStory2 = Template.bind({});
+HeadingTitleContainerStory2.args = {
+  headingTitles: headingTitles[2],
 };
 
 // HeadingTitleContainerStory.decorators = [(Story) => <div style={{ margin: '3em' }}><Story/></div>];
