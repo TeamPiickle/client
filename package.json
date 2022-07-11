@@ -15,11 +15,14 @@
     "build-storybook": "build-storybook -s public"
   },
   "dependencies": {
+    "@types/react-slick": "^0.23.10",
     "axios": "^0.26.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.1",
+    "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.5",
     "styled-reset": "^4.4.1"
   },
