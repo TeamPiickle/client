@@ -7,9 +7,9 @@ export default function Header() {
   return (
     <St.HeaderWrapper>
       <Link to="/">
-        <IcLogo />
+        <IcLogo aria-label="피클" />
       </Link>
-      <IcHamburger />
+      <IcHamburger aria-label="메뉴" />
     </St.HeaderWrapper>
   );
 }

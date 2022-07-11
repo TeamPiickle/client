@@ -13,4 +13,7 @@ export const St = {
 
     padding: 0 1.6rem;
   `,
+  LogoTitle: styled.h1`
+    ${({ theme }) => theme.visually_hidden};
+  `,
 };
