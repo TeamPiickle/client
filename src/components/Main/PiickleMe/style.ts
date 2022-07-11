@@ -1,62 +1,66 @@
 import styled from "styled-components";
+
 export const St = {
-  Container: styled.section``,
+  Container: styled.section`
+    height: 100vh;
+  `,
 
   RepresentVoteContentConTainer: styled.section`
     width: 100%;
     height: 15.2rem;
-    background-color: #c9f2de;
-    padding-top: 2.8rem;
-    padding-left: 2.4rem;
-    padding-right: 2.4rem;
-    padding-bottom: 2rem;
-  `,
 
-  VoteContentContainer: styled.section`
-    width: 100%;
-    height: 27rem;
-    background-color: black;
+    padding: 2.8rem 2.4rem 2rem;
+
+    background-color: #c9f2de; //확정 아니어서 일단 노가다로 박음
   `,
 
   VoteContent: styled.article`
     height: 8.9rem;
-    background-color: white;
+
     display: flex;
     justify-content: space-around;
     align-items: center;
   `,
 
-  VoteProfileImage: styled.img``,
-
   VoteTextContainer: styled.div`
+    margin-left: -1.8rem;
+
     display: flex;
     flex-direction: column;
-    margin-top: 2.4rem;
   `,
 
   VoteContentText: styled.p<{ isFirst: boolean }>`
-    font-weight: 600;
-    font-size: ${({ isFirst }) => (isFirst ? "16px" : "12px")};
-    line-height: 1.5;
+    line-height: 1.4;
+
     margin-bottom: 0.4rem;
+
+    font: ${({ isFirst }) => (isFirst ? ({ theme }) => theme.fonts.caption1 : ({ theme }) => theme.fonts.body2)};
   `,
 
   VoteContentSubText: styled.p<{ isFirst: boolean }>`
-    font-size: 12px;
-    color: #606060;
+    ${({ theme }) => theme.fonts.body2}
+
+    color: ${({ theme }) => theme.colors.gray600};
   `,
 
-  FirstGoVoteBtn: styled.button`
-    background-color: #19be7e;
-    color: white;
+  RepresentGoVoteBtn: styled.button`
+    width: 7.6rem;
+    height: 2.8rem;
+
+    background-color: ${({ theme }) => theme.colors.green};
+    color: ${({ theme }) => theme.colors.white};
+
     margin-top: 2rem;
     margin-left: 25rem;
+    margin-bottom: 2rem;
     padding: 0.4rem 1.4rem;
+
     border-radius: 42px;
+
+    ${({ theme }) => theme.fonts.h2}
   `,
 
   GoVoteBtn: styled.button`
-    color: black;
-    margin-right: 1.6rem;
+    margin-right: -1rem;
   `,
 };
