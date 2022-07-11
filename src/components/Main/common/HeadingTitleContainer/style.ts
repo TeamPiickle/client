@@ -1,16 +1,35 @@
-import styled from "styled-components";
+import { Link } from "react-router-dom";
+import styled, { css } from "styled-components";
 
 export const St = {
-  Wrapper: styled.div`
-    padding: 2.4rem 1.6rem;
+  Container: styled.header`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 2.4rem 0;
   `,
+
+  Wrapper: styled.div<{ ismore: boolean }>`
+    width: ${({ ismore }) => (ismore ? "23.8rem" : "100%")};
+
+    margin-left: 1.6rem;
+  `,
+
   Title: styled.h2`
     ${({ theme }) => theme.fonts.h1};
   `,
+
   Content: styled.p`
     margin-top: 0.4rem;
 
     color: ${({ theme }) => theme.colors.gray600};
     ${({ theme }) => theme.fonts.h2};
+  `,
+
+  Link: styled(Link)`
+    margin-right: 1.6rem;
+
+    ${({ theme }) => theme.fonts.btn1};
   `,
 };
