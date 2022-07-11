@@ -1,2 +1,2 @@
-export { default as IcHamburger } from "./hamburger.svg";
-export { default as IcLogo } from "./logo.svg";
+export { ReactComponent as IcHamburger } from "./hamburger.svg";
+export { ReactComponent as IcLogo } from "./logo.svg";
