@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
+import Header from "./components/common/Header";
 import Router from "./Router";
 
 export default function App() {
   return (
     <St.MobileContainer>
+      <Header />
       <Router />
     </St.MobileContainer>
   );
