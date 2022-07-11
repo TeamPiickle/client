@@ -1,10 +1,10 @@
 import { HeadingTitle } from "../../../../core/main/headingTitles";
 
-export interface HeadingTitleProps {
+export interface HeadingTitleContainerProps {
   headingTitles: HeadingTitle;
 }
 
-export default function HeadingTitle(props: HeadingTitleProps) {
+export default function HeadingTitleContainer(props: HeadingTitleContainerProps) {
   const { headingTitles } = props;
 
   return <div>index</div>;
