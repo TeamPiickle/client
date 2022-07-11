@@ -4,7 +4,7 @@ import ExampleButton from ".";
 
 // 스토리북의 폴더
 export default {
-  title: "Example/button",
+  title: "Example/Button/Main",
   component: ExampleButton,
   decorators: [(Story: () => JSX.Element) => <Story />],
   argTypes: {

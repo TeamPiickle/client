@@ -4,27 +4,31 @@ import HeadingTitle, { HeadingTitleProps } from ".";
 
 // 스토리북의 폴더
 export default {
-  title: "Main/common/HeadingTitle",
+  title: "Example/Main/HeadingTitle",
   component: HeadingTitle,
-  decorators: [(Story: () => JSX.Element) => <Story />],
+  // decorators: [(Story: () => JSX.Element) => <Story />],
 } as Meta;
 
 //-----------------------
 
 // Story Template 정의
-// const Template: Story<HeadingTitleProps> = (args) => {
-//   return <HeadingTitle {...args} />;
-// };
+const Template: Story<HeadingTitleProps> = (args) => {
+  return <HeadingTitle {...args} />;
+};
 
 // Story1 정의
-// export const MyComponentStory2 = Template.bind({});
-// MyComponentStory2.args = {
-//   name: "",
-// };
+export const HeadingTitleStory = Template.bind({});
+HeadingTitleStory.args = {
+  headingTitles: {
+    title: "이번 달 Best Piickle",
+    content: "한 달 동안 가장 많은 마이피클을 달성한 주제들이에요",
+    isMoreBtn: false,
+  },
+};
 
-// MyComponentStory2.decorators = [(Story) => <div style={{ margin: '3em' }}><Story/></div>];
+// HeadingTitleStory.decorators = [(Story) => <div style={{ margin: '3em' }}><Story/></div>];
 
-// MyComponentStory2.parameters = {
+// HeadingTitleStory.parameters = {
 //   backgrounds: {
 //     values: [
 //       { name: "lightBlue", value: "lightBlue" },
