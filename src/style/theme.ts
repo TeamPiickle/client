@@ -27,8 +27,8 @@ interface Font {
   size: number;
 }
 
-function FONT({ weight, size }: Font): unknown {
-  return css`
+function FONT({ weight, size }: Font): string {
+  return `
     font-family: "Pretendard";
     font-weight: ${weight};
     font-size: ${size}rem;
