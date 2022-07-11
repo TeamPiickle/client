@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import reset from "styled-reset";
+import { reset } from "styled-reset";
 
 export const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -12,6 +12,10 @@ export const GlobalStyle = createGlobalStyle`
     font-family: sans-serif;
     font-size: 62.5%;
     user-select: none;
+  }
+  ul, li {
+    list-style: none;
+    padding-left:0px;
   }
   a {
     text-decoration: none;
