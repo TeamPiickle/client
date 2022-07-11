@@ -1,10 +1,10 @@
-type HeadingTitle = {
+export type HeadingTitle = {
   title: string;
   content: string;
   isMoreBtn: boolean;
 };
 
-const headingTitles: HeadingTitle[] = [
+export const headingTitles: HeadingTitle[] = [
   {
     title: "이번 달 Best Piickle",
     content: "한 달 동안 가장 많은 마이피클을 달성한 주제들이에요",
@@ -21,5 +21,3 @@ const headingTitles: HeadingTitle[] = [
     isMoreBtn: false,
   },
 ];
-
-export default headingTitles;
