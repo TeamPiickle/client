@@ -11,8 +11,9 @@ export const St = {
     padding: 0 1.6rem;
 
     height: 5.2rem;
-  `,
-  LogoTitle: styled.h1`
-    ${({ theme }) => theme.visually_hidden};
+
+    background-color: ${({ theme }) => theme.colors.white};
+
+    z-index: 10;
   `,
 };
