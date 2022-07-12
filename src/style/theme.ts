@@ -5,6 +5,7 @@ const colors = {
   sub_green: "#DBFFF1",
   sub_green1: "#B5F2DB",
   sub_green2: "#7DE0B9",
+  black: "#000000",
   white: "#FFFFFF",
   gray100: "#F1F1F1",
   gray200: "#E0E0E0",
@@ -50,9 +51,19 @@ const fonts = {
   btn3: FONT({ weight: 400, size: 1.2 }),
 } as const;
 
+const visually_hidden = `
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+`;
+
 const theme = {
   colors,
   fonts,
+  visually_hidden,
 } as const;
 
 export default theme;

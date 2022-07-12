@@ -1,4 +1,7 @@
+import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "../src/style/globalStyle";
+
+import theme from "../src/style/theme";
 
 export const parameters = {
   // Action 탭에서 이벤트가 발생하는 것을 감지
@@ -16,9 +19,9 @@ export const parameters = {
 // 추가::styled-components의 ThemeProvider 통해
 export const decorators = [
   (Story, context) => (
-    <>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Story {...context} />
-    </>
+    </ThemeProvider>
   ),
 ];
