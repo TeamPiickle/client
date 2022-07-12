@@ -18,12 +18,20 @@ export const St = {
     height: 8.9rem;
 
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
   `,
 
+  VoteImgTextWrapper: styled.div`
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    margin-left: 1.6rem;
+  `,
+
   VoteTextContainer: styled.div`
-    margin-left: -1.8rem;
+    margin-left: 1.8rem;
 
     display: flex;
     flex-direction: column;
@@ -50,9 +58,8 @@ export const St = {
     background-color: ${({ theme }) => theme.colors.green};
     color: ${({ theme }) => theme.colors.white};
 
-    margin-top: 2rem;
-    margin-left: 25rem;
-    margin-bottom: 2rem;
+    float: right;
+
     padding: 0.4rem 1.4rem;
 
     border-radius: 42px;
@@ -61,6 +68,6 @@ export const St = {
   `,
 
   GoVoteBtn: styled.button`
-    margin-right: -1rem;
+    margin-right: 1.6rem;
   `,
 };
