@@ -1,5 +1,5 @@
-import Banner from "./Banner";
 import { headingTitles } from "../../core/main/headingTitles";
+import Banner from "./Banner";
 import BestPiickle from "./BestPiickle";
 import HeadingTitleContainer from "./common/HeadingTitleContainer";
 import CTABtn from "./CTABtn";
