@@ -15,13 +15,15 @@
     "build-storybook": "build-storybook -s public"
   },
   "dependencies": {
+    "@types/react-slick": "^0.23.10",
     "axios": "^0.26.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.1",
+    "react-slick": "^0.29.0",
     "styled-components": "^5.3.5",
-    "styled-reset": "^4.4.1"
+    "styled-reset": "^4.4.2"
   },
   "eslintConfig": {
     "extends": [
@@ -86,6 +88,7 @@
     "postcss-syntax": "^0.36.2",
     "prettier": "^2.6.0",
     "prop-types": "^15.8.1",
+    "slick-carousel": "^1.8.1",
     "stylelint": "^14.9.1",
     "stylelint-config-concentric-order": "^5.0.0",
     "stylelint-config-prettier": "^9.0.3",

@@ -7,6 +7,7 @@ declare module "styled-components" {
       sub_green: string;
       sub_green1: string;
       sub_green2: string;
+      black: string;
       white: string;
       gray100: string;
       gray200: string;

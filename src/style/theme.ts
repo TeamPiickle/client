@@ -5,6 +5,7 @@ const colors = {
   sub_green: "#DBFFF1",
   sub_green1: "#B5F2DB",
   sub_green2: "#7DE0B9",
+  black: "#000000",
   white: "#FFFFFF",
   gray100: "#F1F1F1",
   gray200: "#E0E0E0",

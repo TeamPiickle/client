@@ -1,3 +1,9 @@
+import BestPiickle from "./BestPiickle";
+
 export default function Main() {
-  return <main>mm</main>;
+  return (
+    <main>
+      <BestPiickle />
+    </main>
+  );
 }
