@@ -11,17 +11,21 @@ const real = axios.create({
 });
 
 export const realReq = {
-  async GET(path) {
+  async GET(path: string) {
     const { data } = await real(path);
     return data;
   },
 
-  async POST(path, body) {
-    const { data } = await real.post(`/${path}`);
+  async POST(path: string, body) {
+    const { data } = await real.post(`/${path}`, body);
     return data;
   },
 
-  async PATCH(path, body) {
+  async PATCH(path: string, body) {
     await real.patch(path, body);
+  },
+
+  async DELETE(path: string, body) {
+    await real.delete(path, body);
   },
 };
