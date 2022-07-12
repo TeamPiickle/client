@@ -3,6 +3,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 import Slider from "react-slick";
 
+import HeadingTitleContainer from "../common/HeadingTitleContainer";
 import BestPiickleCard from "./BestPiickleCard";
 import { St } from "./style";
 
@@ -45,6 +46,13 @@ export default function BestPiickle() {
 
   return (
     <St.Root>
+      <HeadingTitleContainer
+        headingTitles={{
+          title: "이번 달 Best Piickle",
+          content: "마이피클을 가장 많이 달성한 핫한 대화 주제들을 확인해보세요",
+          isMoreBtn: false,
+        }}
+      />
       <St.SliderWrapper>
         <Slider {...settings}>
           {bestPiickles.map((bestPiickle) => {
