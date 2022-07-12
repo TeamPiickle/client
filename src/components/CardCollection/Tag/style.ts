@@ -1,0 +1,16 @@
+import styled from "styled-components";
+
+export const St = {
+  Tag: styled.li`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 4.8rem;
+    height: 2.3rem;
+
+    background-color: ${({ theme }) => theme.colors.sub_green1};
+    backdrop-filter: blur(1.2rem);
+    border-radius: 1.5rem;
+  `,
+};
