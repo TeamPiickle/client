@@ -19,11 +19,9 @@ export default function TagsSlider(props: TagsSliderProps) {
 
   return (
     <St.SliderWrapper>
-      <Slider {...sliderSettings}>
-        {tags.map((tag) => (
-          <Tag key={tag}>{tag}</Tag>
-        ))}
-      </Slider>
+      {tags.map((tag) => (
+        <Tag key={tag}>{tag}</Tag>
+      ))}
     </St.SliderWrapper>
   );
 }

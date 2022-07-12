@@ -23,7 +23,7 @@ export const St = {
     border-radius: 1.5rem;
   `,
 
-  TagsWrapper: styled.ul`
+  TagsWrapper: styled.div`
     margin: 1.6rem 0 0 1.4rem;
   `,
 
