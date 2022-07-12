@@ -1,3 +1,5 @@
+export { ReactComponent as IcEmptyHeart } from "./emptyHeart.svg";
+export { ReactComponent as IcFullHeart } from "./fullHeart.svg";
 export { ReactComponent as IcHamburger } from "./hamburger.svg";
 export { ReactComponent as IcLogo } from "./logo.svg";
 export { ReactComponent as IcVoteImg1 } from "./voteImg1.svg";
