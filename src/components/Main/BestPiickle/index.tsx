@@ -41,7 +41,7 @@ export default function BestPiickle() {
     arrows: false,
     dots: false,
     infinite: false,
-    slidesToShow: 1.5,
+    variableWidth: true,
     slidesToScroll: 1,
   };
 
