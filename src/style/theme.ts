@@ -19,6 +19,7 @@ const colors = {
   sub4: "#F2EFCE",
   sub5: "#1B3303",
   a: "radial-gradient(50% 50% at 50% 50%, #F2F25A 0%, rgba(25, 190, 126, 0.51) 100%)",
+  card: "linear-gradient(180deg, #DBFFF1 0%, #FFFFEB 100%);",
 } as const;
 
 interface Font {
