@@ -27,12 +27,12 @@ export const St = {
     color: ${theme.colors.white};
   `,
 
-  ContentsPages: styled.div`
+  ContentsPages: styled.span`
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     padding: 4px 8px 5px;
-    gap: 8px;
+    gap: 3px;
 
     width: 35px;
     height: 17px;
@@ -41,12 +41,19 @@ export const St = {
 
     background: rgba(0, 0, 0, 0.5);
   `,
-
-  PagesNumber: styled.p`
-    width: 19px;
-    height: 8px;
-    text-align: center;
-
+  CurrentPage: styled.span`
+    line-height: 81.34%;
+    font-weight: 400;
+    font-size: 1rem;
+    color: ${theme.colors.white};
+  `,
+  Seperator: styled.span`
+    line-height: 81.34%;
+    font-weight: 400;
+    font-size: 1rem;
+    color: ${theme.colors.white};
+  `,
+  TotalPages: styled.span`
     line-height: 81.34%;
     font-weight: 400;
     font-size: 1rem;
