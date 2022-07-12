@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 import BestPiickle from "./BestPiickle";
 import HeadingTitleContainer from "./common/HeadingTitleContainer";
 import CTABtn from "./CTABtn";
