@@ -1,5 +1,3 @@
-import { css, DefaultTheme } from "styled-components";
-
 const colors = {
   green: "#19BE7E",
   sub_green: "#DBFFF1",
