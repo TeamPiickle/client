@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { IcEmptyHeart, IcFullHeart } from "../../asset/icon";
+import { IcEmptyHeart } from "../../asset/icon";
 
 export const St = {
   MainPage: styled.main`
@@ -43,17 +43,7 @@ export const St = {
     height: 3.2rem;
   `,
 
-  // HeartWrapper: styled.div`
-  //   position: relative;
-  // `,
-
   IcEmptyHeart: styled(IcEmptyHeart)`
     position: absolute;
-  `,
-
-  IcFullHeart: styled(IcFullHeart)`
-    position: absolute;
-    top: 0;
-    left: 0;
   `,
 };
