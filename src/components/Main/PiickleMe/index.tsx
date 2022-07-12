@@ -1,4 +1,5 @@
 import { IcVoteImg1, IcVoteImg2 } from "../../../asset/icon";
+import HeadingTitleContainer from "../common/HeadingTitleContainer";
 import { St } from "./style";
 
 const voteData = [
@@ -32,6 +33,13 @@ const representVoteData = {
 export default function PiickleMe() {
   return (
     <St.Container>
+      <HeadingTitleContainer
+        headingTitles={{
+          title: "Piickle Me!",
+          content: "당신의 피클에게 투표하세요",
+          isMoreBtn: false,
+        }}
+      />
       <St.RepresentVoteContentConTainer>
         <St.VoteContentText isFirst={true}>{representVoteData.contentText}</St.VoteContentText>
         <St.VoteContentSubText isFirst={true}>{representVoteData.discription}</St.VoteContentSubText>
