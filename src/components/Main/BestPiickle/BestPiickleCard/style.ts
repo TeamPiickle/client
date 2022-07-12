@@ -8,10 +8,11 @@ export const St = {
     width: 20.2rem;
     height: 14.5rem;
 
+    margin-right: 0.8rem;
     padding: 2rem 1.6rem 1.4rem;
 
+    box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25), 0rem 0rem 0.2rem rgba(0, 0, 0, 0.25);
     border-radius: 1.6rem;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     color: ${theme.colors.white};
   `,
 

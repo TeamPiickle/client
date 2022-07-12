@@ -1,8 +1,9 @@
-import Slider from "react-slick";
 import styled from "styled-components";
 
 export const St = {
-  Root: styled.section``,
+  Root: styled.section`
+    margin-top: 1.2rem;
+  `,
 
   HeaderWrapper: styled.header``,
 
@@ -11,16 +12,12 @@ export const St = {
   Desc: styled.p``,
 
   SliderWrapper: styled.div`
-    padding-left: 1.6rem;
-    width: 36rem;
+    width: 100%;
 
     .slick-list {
       height: 15.3rem;
-    }
-  `,
 
-  Slider: styled(Slider)`
-    display: flex;
-    gap: 0.8rem;
+      padding: 0.4rem 1.6rem;
+    }
   `,
 };

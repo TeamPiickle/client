@@ -3,6 +3,8 @@ import "slick-carousel/slick/slick-theme.css";
 
 import Slider from "react-slick";
 
+import { headingTitles } from "../../../core/main/headingTitles";
+import HeadingTitleContainer from "../common/HeadingTitleContainer";
 import BestPiickleCard from "./BestPiickleCard";
 import { St } from "./style";
 
@@ -39,12 +41,13 @@ export default function BestPiickle() {
     arrows: false,
     dots: false,
     infinite: false,
-    slidesToShow: 1.5,
+    variableWidth: true,
     slidesToScroll: 1,
   };
 
   return (
     <St.Root>
+      <HeadingTitleContainer headingTitles={headingTitles[0]} />
       <St.SliderWrapper>
         <Slider {...settings}>
           {bestPiickles.map((bestPiickle) => {

@@ -1,4 +1,6 @@
 import { IcVoteImg1, IcVoteImg2 } from "../../../asset/icon";
+import { headingTitles } from "../../../core/main/headingTitles";
+import HeadingTitleContainer from "../common/HeadingTitleContainer";
 import { St } from "./style";
 
 const voteData = [
@@ -29,9 +31,11 @@ const representVoteData = {
   contentText: "남사친에게 깻잎을 떼주냐 안떼주냐 남사친에게 깻잎을 떼주냐 안떼주냐 ",
   discription: "현재 가장 참여수가 많은 투표",
 };
+
 export default function PiickleMe() {
   return (
     <St.Container>
+      <HeadingTitleContainer headingTitles={headingTitles[2]} />
       <St.RepresentVoteContentConTainer>
         <St.VoteContentText isFirst={true}>{representVoteData.contentText}</St.VoteContentText>
         <St.VoteContentSubText isFirst={true}>{representVoteData.discription}</St.VoteContentSubText>
