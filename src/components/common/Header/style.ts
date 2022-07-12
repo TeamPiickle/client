@@ -13,7 +13,7 @@ export const St = {
     width: 100%;
     height: 5.2rem;
 
-    background-color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme, iscardview }) => (iscardview ? "transparent" : theme.colors.white)};
 
     z-index: 10;
   `,
