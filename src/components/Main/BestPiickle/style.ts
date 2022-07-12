@@ -2,7 +2,9 @@ import Slider from "react-slick";
 import styled from "styled-components";
 
 export const St = {
-  Root: styled.section``,
+  Root: styled.section`
+    margin-top: 1.2rem;
+  `,
 
   HeaderWrapper: styled.header``,
 
