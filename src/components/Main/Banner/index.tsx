@@ -21,7 +21,7 @@ export default function Banner() {
   };
 
   return (
-    <St.BannerSlider className="slider">
+    <St.BannerSlider>
       <Slider {...settings}>
         <St.ContentsWrapper>
           <St.Contents>
@@ -71,9 +71,7 @@ export default function Banner() {
       </Slider>
 
       <St.ContentsPages>
-        <St.CurrentPage>{currentSlide + 1}</St.CurrentPage>
-        <St.Seperator>/</St.Seperator>
-        <St.TotalPages>5</St.TotalPages>
+        <St.CurrentPage>{currentSlide + 1} / 5</St.CurrentPage>
       </St.ContentsPages>
     </St.BannerSlider>
   );

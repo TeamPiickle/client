@@ -31,7 +31,7 @@ export const St = {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    padding: 4px 8px 5px;
+    padding: 4px 7px 5px;
     gap: 3px;
 
     width: 35px;
@@ -41,19 +41,8 @@ export const St = {
 
     background: rgba(0, 0, 0, 0.5);
   `,
+
   CurrentPage: styled.span`
-    line-height: 81.34%;
-    font-weight: 400;
-    font-size: 1rem;
-    color: ${theme.colors.white};
-  `,
-  Seperator: styled.span`
-    line-height: 81.34%;
-    font-weight: 400;
-    font-size: 1rem;
-    color: ${theme.colors.white};
-  `,
-  TotalPages: styled.span`
     line-height: 81.34%;
     font-weight: 400;
     font-size: 1rem;
