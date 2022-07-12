@@ -40,11 +40,13 @@ export default function PiickleMe() {
       {voteData.map((element) => {
         return (
           <St.VoteContent key={element.id}>
-            {element.profileImg}
-            <St.VoteTextContainer>
-              <St.VoteContentText isFirst={false}>{element.contentText.slice(0, 18)}...</St.VoteContentText>
-              <St.VoteContentSubText isFirst={false}>{element.subText}</St.VoteContentSubText>
-            </St.VoteTextContainer>
+            <St.VoteImgTextWrapper>
+              {element.profileImg}
+              <St.VoteTextContainer>
+                <St.VoteContentText isFirst={false}>{element.contentText.slice(0, 18)}...</St.VoteContentText>
+                <St.VoteContentSubText isFirst={false}>{element.subText}</St.VoteContentSubText>
+              </St.VoteTextContainer>
+            </St.VoteImgTextWrapper>
             <St.GoVoteBtn>{element.voteBtn}</St.GoVoteBtn>
           </St.VoteContent>
         );
