@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { IcEmptyHeart } from "../../asset/icon";
+import { IcEmptyHeart, IcFilterBtn } from "../../asset/icon";
 
 export const St = {
   MainPage: styled.main`
@@ -45,5 +45,11 @@ export const St = {
 
   IcEmptyHeart: styled(IcEmptyHeart)`
     position: absolute;
+  `,
+
+  IcFilterBtn: styled(IcFilterBtn)`
+    position: absolute;
+    right: 2.3rem;
+    bottom: 3.4rem;
   `,
 };

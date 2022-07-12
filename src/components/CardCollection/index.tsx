@@ -16,6 +16,7 @@ export default function CardCollection() {
           {isBookmarked && <CustomFullHeart />}
         </St.HeartWrapper>
       </St.Card>
+      <St.IcFilterBtn />
     </St.MainPage>
   );
 }
