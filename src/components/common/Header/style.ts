@@ -2,16 +2,15 @@ import styled from "styled-components";
 
 export const St = {
   HeaderWrapper: styled.header`
+    display: flex;
     position: sticky;
     top: 0;
-
-    height: 5.2rem;
-
-    display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 
     padding: 0 1.6rem;
+
+    height: 5.2rem;
   `,
   LogoTitle: styled.h1`
     ${({ theme }) => theme.visually_hidden};

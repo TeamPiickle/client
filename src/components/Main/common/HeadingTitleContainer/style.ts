@@ -4,16 +4,15 @@ import styled from "styled-components";
 export const St = {
   Container: styled.header`
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 
     padding: 2.4rem 0;
   `,
 
   Wrapper: styled.div<{ ismore: boolean }>`
-    width: ${({ ismore }) => (ismore ? "23.8rem" : "100%")};
-
     margin-left: 1.6rem;
+    width: ${({ ismore }) => (ismore ? "23.8rem" : "100%")};
   `,
 
   Title: styled.h2`

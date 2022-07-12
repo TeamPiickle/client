@@ -15,11 +15,11 @@ export const GlobalStyle = createGlobalStyle`
   main, menu, nav, output, ruby, section, summary,
   time, mark, audio, video {
     margin: 0;
-    padding: 0;
     border: 0;
-    font-size: 100%;
-    font: inherit;
+    padding: 0;
     vertical-align: baseline;
+    font: inherit;
+    font-size: 100%;
   }
   /* HTML5 display-role reset for older browsers */
   article, aside, details, figcaption, figure,
@@ -61,8 +61,8 @@ export const GlobalStyle = createGlobalStyle`
     user-select: none;
   }
   ul, li {
-    list-style: none;
     padding-left:0px;
+    list-style: none;
   }
   a {
     text-decoration: none;

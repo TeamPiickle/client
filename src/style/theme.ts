@@ -49,19 +49,9 @@ const fonts = {
   btn3: FONT({ weight: 400, size: 1.2 }),
 } as const;
 
-const visually_hidden = `
-  position: absolute;
-  clip: rect(0 0 0 0);
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-`;
-
 const theme = {
   colors,
   fonts,
-  visually_hidden,
 } as const;
 
 export default theme;
