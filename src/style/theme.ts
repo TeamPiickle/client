@@ -42,6 +42,7 @@ const fonts = {
   h2: FONT({ weight: 400, size: 1.4 }),
   body1: FONT({ weight: 600, size: 2 }),
   body2: FONT({ weight: 400, size: 1.2 }),
+  body3: FONT({ weight: 700, size: 2.4 }),
   caption1: FONT({ weight: 600, size: 1.6 }),
   caption2: FONT({ weight: 500, size: 1.6 }),
   caption3: FONT({ weight: 500, size: 1 }),
