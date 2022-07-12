@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import CustomFullHeart from "./CustomFullHeart";
 import { St } from "./style";
-import Tag from "./Tag";
+import TagsSlider from "./TagsSlider";
 
 export default function CardCollection() {
   const [isBookmarked, setIsBookmarked] = useState(false);
@@ -11,7 +11,7 @@ export default function CardCollection() {
     <St.MainPage>
       <St.Card>
         <St.TagsWrapper>
-          <Tag>sdfasf</Tag>
+          <TagsSlider tags={["재미", "if충", "if충", "if충", "if충"]} />
         </St.TagsWrapper>
         <St.ContentWrapper>우리집공양추르하ㅐ</St.ContentWrapper>
         <St.HeartWrapper onClick={() => setIsBookmarked((prev) => !prev)}>

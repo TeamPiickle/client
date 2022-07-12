@@ -6,7 +6,9 @@ export const St = {
     justify-content: center;
     align-items: center;
 
-    width: 4.8rem;
+    margin-right: 0.9rem;
+
+    /* width: 4.8rem; */
     height: 2.3rem;
 
     background-color: ${({ theme }) => theme.colors.sub_green1};
