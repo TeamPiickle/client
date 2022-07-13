@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
 import Card from "../Card";
+import LastCard from "../Card/LastCard";
 import { St } from "./style";
 
 const sliderSettings = {
@@ -20,12 +21,13 @@ export default function CardSlider() {
   return (
     <St.Wrapper>
       <Slider {...sliderSettings}>
+        {/* <Card />
         <Card />
         <Card />
         <Card />
         <Card />
-        <Card />
-        <Card />
+        <Card /> */}
+        <LastCard />
       </Slider>
     </St.Wrapper>
   );
