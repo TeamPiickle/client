@@ -6,9 +6,6 @@ export const St = {
   Card: styled.article`
     position: relative;
 
-    width: 100%;
-    height: 100%;
-
     background: rgba(255, 255, 255, 0.5);
     border: 1px solid ${({ theme }) => theme.colors.gray200};
     backdrop-filter: blur(1.2rem);
@@ -19,7 +16,7 @@ export const St = {
     margin: 1.6rem 0 0 1.4rem;
   `,
 
-  ContentWrapper: styled.article`
+  ContentWrapper: styled.p`
     margin: 4.7rem 0 0 2.4rem;
 
     ${({ theme }) => theme.fonts.body3};
