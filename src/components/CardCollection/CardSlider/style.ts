@@ -14,6 +14,8 @@ import { IcFilterBtn } from "../../../asset/icon";
 
 export const St = {
   Wrapper: styled.section`
+    position: relative;
+
     & .slick-slide {
       width: 30.5rem;
       height: calc(100vh - 14.8rem);
