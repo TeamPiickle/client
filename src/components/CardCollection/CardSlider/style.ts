@@ -10,6 +10,8 @@
 
 import styled from "styled-components";
 
+import { IcFilterBtn } from "../../../asset/icon";
+
 export const St = {
   Wrapper: styled.section`
     & .slick-slide {
@@ -46,5 +48,11 @@ export const St = {
       display: flex;
       align-items: center;
     }
+  `,
+
+  IcFilterBtn: styled(IcFilterBtn)`
+    position: absolute;
+    right: 2.3rem;
+    bottom: 3.4rem;
   `,
 };

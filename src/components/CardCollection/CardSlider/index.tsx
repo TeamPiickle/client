@@ -21,14 +21,16 @@ export default function CardSlider() {
   return (
     <St.Wrapper>
       <Slider {...sliderSettings}>
-        {/* <Card />
         <Card />
         <Card />
         <Card />
         <Card />
-        <Card /> */}
+        <Card />
+        <Card />
         <LastCard />
       </Slider>
+      {/* 마지막 index에서는 필터버튼 없애주기 */}
+      <St.IcFilterBtn />
     </St.Wrapper>
   );
 }
