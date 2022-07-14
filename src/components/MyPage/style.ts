@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const St = {
-  MyPage: styled.main`
+  MyPage: styled.section`
     position: relative;
   `,
 };
