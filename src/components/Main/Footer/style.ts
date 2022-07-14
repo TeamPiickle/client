@@ -4,7 +4,6 @@ export const St = {
   Footer: styled.section`
     display: flex;
     position: relative;
-    margin-top: 12rem;
     padding-bottom: 30rem;
     height: 22rem;
 
@@ -43,7 +42,7 @@ export const St = {
 
     width: 9.8rem;
     height: 14.8rem;
-    left: 18.4rem;
+    right: 7.7rem;
     top: 3.2rem;
   `,
 
