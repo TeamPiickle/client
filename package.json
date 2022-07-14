@@ -17,8 +17,10 @@
   "dependencies": {
     "@types/react-slick": "^0.23.10",
     "axios": "^0.26.0",
+    "framework7-react": "^7.0.6",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-range": "^1.8.13",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.1",
     "react-slick": "^0.29.0",

@@ -48,11 +48,22 @@ export const St = {
     line-height: 140%;
   `,
 
-  FilterIntimacyWrapper: styled.div``,
+  FilterIntimacyWrapper: styled.div`
+    display: flex;
+    flex-direction: column;
 
-  FilterIntimacyRange: styled.input``,
+    margin-bottom: 4rem;
+  `,
 
-  FilterIntimacyTag: styled.span``,
+  FilterIntimacyRange: styled.input`
+    margin: 1.2rem 0 0.2rem;
+  `,
+
+  FilterIntimacyTagsWrapper: styled.ul`
+    display: flex;
+  `,
+
+  FilterIntimacyTag: styled.li``,
 
   SubmitBtnWrapper: styled.div`
     display: flex;
