@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const St = {
-  Container: styled.article`
+  MyInfoContainer: styled.section`
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -20,7 +20,7 @@ export const St = {
     background-color: ${({ theme }) => theme.colors.black};
   `,
 
-  Profile: styled.div`
+  Profile: styled.article`
     align-items: center;
     width: auto;
     height: 4.7rem;
@@ -39,7 +39,7 @@ export const St = {
     opacity: 0.8;
   `,
 
-  ProfileMyNickname: styled.p`
+  ProfileMyNickname: styled.strong`
     width: auto;
     height: 2.6rem;
 
@@ -64,7 +64,7 @@ export const St = {
     border-radius: 0.7rem;
   `,
 
-  ProfileEmail: styled.div`
+  ProfileEmail: styled.p`
     letter-spacing: -0.03rem;
     ${({ theme }) => theme.fonts.body2};
     color: ${({ theme }) => theme.colors.gray600};
