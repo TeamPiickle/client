@@ -2,7 +2,10 @@ import styled from "styled-components";
 
 export const St = {
   Root: styled.section`
-    width: 36rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
     height: 100vh;
 
     background-color: ${({ theme }) => theme.colors.gray600};
