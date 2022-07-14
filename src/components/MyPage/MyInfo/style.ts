@@ -8,7 +8,7 @@ export const St = {
     padding: 2.4rem 0 3.6rem 1.6rem;
     gap: 2.4rem;
 
-    width: 36rem;
+    //width: 36rem;
     height: 11.8rem;
   `,
 

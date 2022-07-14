@@ -9,7 +9,7 @@ export const St = {
     padding: 2rem 1.6rem;
     gap: 10rem;
 
-    width: 36rem;
+    //width: 36rem;
     height: 8.1rem;
 
     background-color: ${({ theme }) => theme.colors.sub_green2};
