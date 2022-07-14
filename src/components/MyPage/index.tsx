@@ -1,3 +1,10 @@
+import MyInfo from "./MyInfo";
+import { St } from "./style";
+
 export default function MyPage() {
-  return <main>mp</main>;
+  return (
+    <St.MyPage>
+      <MyInfo />
+    </St.MyPage>
+  );
 }
