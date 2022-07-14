@@ -1,3 +1,9 @@
+import Header from "../common/Header";
+
 export default function Category() {
-  return <main>ct</main>;
+  return (
+    <main>
+      <Header />
+    </main>
+  );
 }
