@@ -42,7 +42,7 @@ export const St = {
 
     margin-bottom: 0.4rem;
 
-    ${({ isFirst }) => (isFirst ? ({ theme }) => theme.fonts.caption1 : ({ theme }) => theme.fonts.body2)};
+    ${({ isFirst, theme }) => (isFirst ? theme.fonts.caption1 : theme.fonts.body2)};
   `,
 
   VoteContentSubText: styled.p<{ isFirst: boolean }>`
