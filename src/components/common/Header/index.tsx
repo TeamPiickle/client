@@ -11,18 +11,18 @@ export default function Header() {
   const [isActive, setIsActive] = useRecoilState(activeState);
 
   const handleModal = () => {
-    setIsOpened(!isOpened);
+    setIsActive(!isActive);
   };
 
-  if (isOpened) {
-    return <MenuBar handleModal={handleModal} />;
+  if (isActive) {
+    return <MenuBar />;
   } else {
     return (
       <St.HeaderWrapper iscardview={pathname === "/card-collection"}>
         <Link to="/">
           <IcLogo aria-label="피클" />
         </Link>
-        <St.HamburgerContainer isClicked={isOpened}>
+        <St.HamburgerContainer isClicked={isActive}>
           <IcHamburger aria-label="메뉴" onClick={handleModal} />
         </St.HamburgerContainer>
       </St.HeaderWrapper>
