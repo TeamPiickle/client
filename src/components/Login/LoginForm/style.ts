@@ -23,6 +23,20 @@ export const St = {
     color: ${({ theme }) => theme.colors.gray600};
   `,
 
+  ErrorMessage: styled.strong`
+    margin-left: 1.5rem;
+
+    font-family: "Pretendard";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 140%;
+
+    /* piickle_red */
+
+    color: ${({ theme }) => theme.colors.red}; ;
+  `,
+
   Input: styled.input`
     width: 100%;
     height: 4.4rem;
