@@ -15,7 +15,7 @@ export const St = {
   `,
 
   Label: styled.label`
-    display: inline-block;
+    display: block;
 
     margin: 1.6rem 0 1.2rem;
 
@@ -24,16 +24,11 @@ export const St = {
   `,
 
   ErrorMessage: styled.strong`
-    margin-left: 1.5rem;
+    display: block;
 
-    font-family: "Pretendard";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 11px;
-    line-height: 140%;
+    margin: 0.8rem 0 0 2rem;
 
-    /* piickle_red */
-
+    ${({ theme }) => theme.fonts.caption5};
     color: ${({ theme }) => theme.colors.red}; ;
   `,
 

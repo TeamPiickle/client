@@ -22,14 +22,12 @@ export default function LoginForm() {
     <St.Section onSubmit={submitLoginForm}>
       <St.Title>로그인</St.Title>
       <St.Form>
-        <St.Label htmlFor="email">
-          이메일{errorMessage.emailError && <St.ErrorMessage>{errorMessage.emailError}</St.ErrorMessage>}
-        </St.Label>
+        <St.Label htmlFor="email">이메일</St.Label>
         <St.Input id="email" type="text" />
-        <St.Label htmlFor="password">
-          비밀번호{errorMessage.passwordError && <St.ErrorMessage>{errorMessage.passwordError}</St.ErrorMessage>}
-        </St.Label>
+        {errorMessage.emailError && <St.ErrorMessage>{errorMessage.emailError}</St.ErrorMessage>}
+        <St.Label htmlFor="password">비밀번호</St.Label>
         <St.Input id="password" type="password" />
+        {errorMessage.passwordError && <St.ErrorMessage>{errorMessage.passwordError}</St.ErrorMessage>}
         <St.LoginBtn type="submit">로그인하기</St.LoginBtn>
       </St.Form>
       <St.LinkWrapper>
