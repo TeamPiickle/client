@@ -8,87 +8,39 @@ interface FilterModalProps {
   closeHandler: () => void;
 }
 
-type FilterTag = {
-  id: string;
-  name: string;
-};
-
 type FilterTags = {
   type: string;
-  tags: FilterTag[];
+  tags: string[];
 };
 
 const filterTags: FilterTags[] = [
   {
     type: "성별",
-    tags: [
-      {
-        id: "1",
-        name: "남",
-      },
-      {
-        id: "2",
-        name: "여",
-      },
-    ],
+    tags: ["남", "여"],
   },
   {
     type: "연령대",
-    tags: [
-      {
-        id: "3",
-        name: "10대",
-      },
-      {
-        id: "4",
-        name: "20대",
-      },
-      {
-        id: "5",
-        name: "30대",
-      },
-    ],
+    tags: ["10대", "20대", "30대"],
   },
   {
     type: "술자리 유형",
-    tags: [
-      {
-        id: "6",
-        name: "개인",
-      },
-      {
-        id: "7",
-        name: "커플",
-      },
-      {
-        id: "8",
-        name: "친구",
-      },
-      {
-        id: "9",
-        name: "단체",
-      },
-    ],
+    tags: ["개인", "커플", "친구", "단체"],
   },
 ];
 
-const intimacyTags: FilterTag[] = [
-  { id: "1", name: "상관없음" },
-  { id: "2", name: "새로워요" },
-  { id: "3", name: "친근해요" },
-  { id: "4", name: "절친해요" },
-];
+const intimacyTags: string[] = ["상관없음", "새로워요", "친근해요", "절친해요"];
 
 export default function FilterModal(props: FilterModalProps) {
   const { closeHandler } = props;
   const [checkedTags, setCheckedTags] = useState<Set<string>>(new Set()); // 체크한 태그들을 저장할 state
   const [intimacyValues, setIntimacyValues] = useState<number[]>([0]); // 친밀도 value
   // 태그를 눌렀을 때 함수
-  const toggleTagButton = (_id: string) => {
+  const toggleTag = (_tag: string) => {
     const tempCheckedTags = new Set([...checkedTags]);
-    tempCheckedTags.has(_id) ? tempCheckedTags.delete(_id) : tempCheckedTags.add(_id);
+    tempCheckedTags.has(_tag) ? tempCheckedTags.delete(_tag) : tempCheckedTags.add(_tag);
     setCheckedTags(tempCheckedTags);
   };
+  // 추천 시작하기를 눌렀을 때, 태그 정보들과 친밀도 정보를 보내주고 창닫기
 
   return (
     <Modal closeHandler={closeHandler}>
@@ -97,9 +49,9 @@ export default function FilterModal(props: FilterModalProps) {
           <React.Fragment key={`filter-${idx}`}>
             <St.FilterTitle>{filterTag.type}</St.FilterTitle>
             <St.FilterTagsWrapper>
-              {filterTag.tags.map((tag) => (
-                <St.FilterTag key={tag.id} isactive={checkedTags.has(tag.id)} onClick={() => toggleTagButton(tag.id)}>
-                  {tag.name}
+              {filterTag.tags.map((tag, index) => (
+                <St.FilterTag key={index} isactive={checkedTags.has(tag)} onClick={() => toggleTag(tag)}>
+                  {tag}
                 </St.FilterTag>
               ))}
             </St.FilterTagsWrapper>
@@ -119,8 +71,8 @@ export default function FilterModal(props: FilterModalProps) {
           />
           <St.FilterIntimacyTagsWrapper>
             {intimacyTags.map((tag, index) => (
-              <St.FilterIntimacyTag isactive={index === intimacyValues[0]} key={tag.id}>
-                {tag.name}
+              <St.FilterIntimacyTag isactive={index === intimacyValues[0]} onChange={() => toggleTag(tag)} key={index}>
+                {tag}
               </St.FilterIntimacyTag>
             ))}
           </St.FilterIntimacyTagsWrapper>

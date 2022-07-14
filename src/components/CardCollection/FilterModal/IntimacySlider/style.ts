@@ -18,6 +18,7 @@ export const St = {
     height: 2.2rem;
 
     margin: 1.2rem 0 0.2rem;
+    padding: 0 1.5rem;
   `,
 
   RangeThumb: styled.div`
