@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import { IcHamburger, IcLogo } from "../../../asset/icon";
 import MenuBar from "../../Main/MenuBar";
 import { St } from "./style";
 
 export default function Header() {
+  const { pathname } = useLocation();
   const [isOpened, setIsOpened] = useState(false);
 
   const handleModal = () => {
@@ -30,7 +31,7 @@ export default function Header() {
     return <MenuBar handleModal={handleModal} />;
   } else {
     return (
-      <St.HeaderWrapper>
+      <St.HeaderWrapper iscardview={pathname === "/card-collection"}>
         <Link to="/">
           <IcLogo aria-label="피클" />
         </Link>

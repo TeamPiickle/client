@@ -42,7 +42,7 @@ export const St = {
 
     margin-bottom: 0.4rem;
 
-    font: ${({ isFirst }) => (isFirst ? ({ theme }) => theme.fonts.caption1 : ({ theme }) => theme.fonts.body2)};
+    ${({ isFirst, theme }) => (isFirst ? theme.fonts.caption1 : theme.fonts.body2)};
   `,
 
   VoteContentSubText: styled.p<{ isFirst: boolean }>`
@@ -62,7 +62,7 @@ export const St = {
 
     padding: 0.4rem 1.4rem;
 
-    border-radius: 42px;
+    border-radius: 4.2rem;
 
     ${({ theme }) => theme.fonts.h2}
   `,
