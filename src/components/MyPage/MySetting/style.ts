@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const St = {
-  MySettingContainer: styled.ul`
+  MySettingContainer: styled.section`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -10,12 +10,14 @@ export const St = {
     gap: 2.4rem;
 
     //width: 36rem;
-    height: 19.6rem;
+    height: 19.5rem;
   `,
 
-  MySettingList: styled.li`
+  MySettingList: styled.div`
     letter-spacing: -0.03rem;
     ${({ theme }) => theme.fonts.body6};
     color: ${({ theme }) => theme.colors.bg};
+    width: 36rem;
+    height: 3.9rem;
   `,
 };
