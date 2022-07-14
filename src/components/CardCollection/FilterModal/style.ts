@@ -17,8 +17,6 @@ export const St = {
     line-height: 140%;
 
     color: ${({ theme }) => theme.colors.black};
-
-    margin-bottom: 0.8rem;
   `,
 
   FilterTagsWrapper: styled.ul`
@@ -26,7 +24,7 @@ export const St = {
     align-items: center;
     gap: 1rem;
 
-    margin-bottom: 2.2rem;
+    margin: 0.8rem 0 2.2rem;
   `,
 
   FilterTag: styled.li<{ isactive: boolean }>`
@@ -49,9 +47,30 @@ export const St = {
     font-size: 16px;
     line-height: 140%;
   `,
+
   FilterIntimacyWrapper: styled.div``,
 
   FilterIntimacyRange: styled.input``,
+
   FilterIntimacyTag: styled.span``,
-  SubmitBtn: styled.button``,
+
+  SubmitBtnWrapper: styled.div`
+    display: flex;
+    justify-content: center;
+  `,
+
+  SubmitBtn: styled.button`
+    ${({ theme }) => theme.fonts.btn2};
+    background-color: ${({ theme }) => theme.colors.black};
+    color: ${({ theme }) => theme.colors.white};
+
+    width: 17.1rem;
+    height: 3.3rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 6.6rem;
+  `,
 };

@@ -92,28 +92,33 @@ export default function FilterModal(props: FilterModalProps) {
 
   return (
     <Modal closeHandler={closeHandler}>
-      {filterTags.map((filterTag, idx) => (
-        <React.Fragment key={`filter-${idx}`}>
-          <St.FilterTitle>{filterTag.type}</St.FilterTitle>
-          <St.FilterTagsWrapper>
-            {filterTag.tags.map((tag) => (
-              <St.FilterTag key={tag.id} isactive={checkedTags.has(tag.id)} onClick={() => toggleTagButton(tag.id)}>
-                {tag.name}
-              </St.FilterTag>
-            ))}
-          </St.FilterTagsWrapper>
-        </React.Fragment>
-      ))}
+      <St.ModalContentsWrapper>
+        {filterTags.map((filterTag, idx) => (
+          <React.Fragment key={`filter-${idx}`}>
+            <St.FilterTitle>{filterTag.type}</St.FilterTitle>
+            <St.FilterTagsWrapper>
+              {filterTag.tags.map((tag) => (
+                <St.FilterTag key={tag.id} isactive={checkedTags.has(tag.id)} onClick={() => toggleTagButton(tag.id)}>
+                  {tag.name}
+                </St.FilterTag>
+              ))}
+            </St.FilterTagsWrapper>
+          </React.Fragment>
+        ))}
+        <St.FilterIntimacyWrapper>
+          <St.FilterTitle>친밀도</St.FilterTitle>
+          <St.FilterIntimacyRange type="range" min="30" max="120" value="40" />
+          {intimacyTags.map((tag) => (
+            <St.FilterIntimacyTag key={tag.id}>{tag.name}</St.FilterIntimacyTag>
+          ))}
+        </St.FilterIntimacyWrapper>
+      </St.ModalContentsWrapper>
 
-      <St.FilterTitle>친밀도</St.FilterTitle>
-      <St.FilterIntimacyRange type="range" min="0" max="120" value="40" />
-      {intimacyTags.map((tag) => (
-        <St.FilterIntimacyTag key={tag.id}>{tag.name}</St.FilterIntimacyTag>
-      ))}
-
-      <St.SubmitBtn onClick={() => window.alert([...checkedTags])} type="submit">
-        추천 시작하기
-      </St.SubmitBtn>
+      <St.SubmitBtnWrapper>
+        <St.SubmitBtn onClick={() => window.alert([...checkedTags])} type="submit">
+          추천 시작하기
+        </St.SubmitBtn>
+      </St.SubmitBtnWrapper>
     </Modal>
   );
 }

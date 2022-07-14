@@ -14,10 +14,9 @@ export const St = {
   `,
 
   Modal: styled.section`
-    width: 32.8rem;
-
     position: absolute;
     left: 1.6rem;
+    right: 1.6rem;
     top: 9rem;
 
     background-color: ${({ theme }) => theme.colors.sub_green5};
@@ -32,5 +31,7 @@ export const St = {
     top: 2rem;
   `,
 
-  ModalContents: styled.article``,
+  ModalContents: styled.article`
+    position: relative;
+  `,
 };
