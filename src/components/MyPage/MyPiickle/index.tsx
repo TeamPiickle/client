@@ -1,10 +1,11 @@
+import { IcFullHeart } from "../../../asset/icon/index";
 import { St } from "./style";
 
 export default function MyPiickle() {
   return (
     <St.MyPiickleContainer>
       <St.MyPiickleWrapper>
-        <St.Image>img</St.Image>
+        <IcFullHeart />
         <St.TitleWrapper>
           <St.Title>My Piickle</St.Title>
           <St.SubTitle>내가 저장한 피클들</St.SubTitle>
