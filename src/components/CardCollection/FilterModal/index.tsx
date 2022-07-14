@@ -3,6 +3,10 @@ import React, { useState } from "react";
 import Modal from "../../common/Modal";
 import { St } from "./style";
 
+interface FilterModalProps {
+  closeHandler: () => void;
+}
+
 type FilterTag = {
   id: string;
   name: string;
@@ -74,7 +78,9 @@ const intimacyTags: FilterTag[] = [
   { id: "4", name: "절친해요" },
 ];
 
-export default function FilterModal() {
+export default function FilterModal(props: FilterModalProps) {
+  const { closeHandler } = props;
+
   // 체크한 태그들을 저장할 state
   const [checkedTags, setCheckedTags] = useState<Set<string>>(new Set());
   // 태그를 눌렀을 때 함수
@@ -85,7 +91,7 @@ export default function FilterModal() {
   };
 
   return (
-    <Modal>
+    <Modal closeHandler={closeHandler}>
       {filterTags.map((filterTag, idx) => (
         <React.Fragment key={`filter-${idx}`}>
           <St.FilterTitle>{filterTag.type}</St.FilterTitle>

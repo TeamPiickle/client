@@ -8,8 +8,9 @@ export const St = {
     position: absolute;
     left: 0;
     top: 0;
+    z-index: 10;
 
-    background-color: (0, 0, 0, 0.5);
+    background-color: rgb(0, 0, 0, 0.5);
   `,
 
   Modal: styled.section`
@@ -19,7 +20,7 @@ export const St = {
     left: 1.6rem;
     top: 9rem;
 
-    background-color: #eef5f3;
+    background-color: ${({ theme }) => theme.colors.sub_green5};
     border-radius: 2rem;
 
     padding: 2rem 1.6rem;
