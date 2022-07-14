@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { IcCloseBtn } from "../../../asset/icon";
+import Modal from "../../common/Modal";
 import { St } from "./style";
 
 type FilterTag = {
@@ -67,6 +67,13 @@ const filterTags: FilterTags[] = [
   },
 ];
 
+const intimacyTags: FilterTag[] = [
+  { id: "1", name: "상관없음" },
+  { id: "2", name: "새로워요" },
+  { id: "3", name: "친근해요" },
+  { id: "4", name: "절친해요" },
+];
+
 export default function FilterModal() {
   // 체크한 태그들을 저장할 state
   const [checkedTags, setCheckedTags] = useState<Set<string>>(new Set());
@@ -78,10 +85,7 @@ export default function FilterModal() {
   };
 
   return (
-    <St.Root>
-      <St.CloseBtn type="button">
-        <IcCloseBtn aria-label="필터 모달 닫기" />
-      </St.CloseBtn>
+    <Modal>
       {filterTags.map((filterTag, idx) => (
         <React.Fragment key={`filter-${idx}`}>
           <St.FilterTitle>{filterTag.type}</St.FilterTitle>
@@ -97,13 +101,13 @@ export default function FilterModal() {
 
       <St.FilterTitle>친밀도</St.FilterTitle>
       <St.FilterIntimacyRange type="range" min="0" max="120" value="40" />
-      {["상관없음", "새로워요", "친근해요", "절친해요"].map((el, i) => (
-        <St.FilterIntimacyTag key={i}>{el}</St.FilterIntimacyTag>
+      {intimacyTags.map((tag) => (
+        <St.FilterIntimacyTag key={tag.id}>{tag.name}</St.FilterIntimacyTag>
       ))}
 
       <St.SubmitBtn onClick={() => window.alert([...checkedTags])} type="submit">
-        제출하기
+        추천 시작하기
       </St.SubmitBtn>
-    </St.Root>
+    </Modal>
   );
 }
