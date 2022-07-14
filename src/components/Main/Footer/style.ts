@@ -5,6 +5,7 @@ export const St = {
     display: flex;
     position: relative;
     margin-top: 12rem;
+    padding-bottom: 30rem;
     height: 22rem;
 
     background-color: ${({ theme }) => theme.colors.gray100};

@@ -13,8 +13,8 @@ export default function Main() {
       <BestPiickle />
       <MoodPiickle />
       <PiickleMe />
-      <CTABtn />
       <Footer />
+      <CTABtn />
     </St.MainPage>
   );
 }
