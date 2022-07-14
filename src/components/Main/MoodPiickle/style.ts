@@ -2,17 +2,24 @@ import styled from "styled-components";
 
 export const St = {
   Container: styled.section`
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-items: center;
+    margin-top: 4.8rem;
+  `,
 
+  CategoryWrapper: styled.div`
     padding: 0rem 1.6rem 4.8rem;
+  `,
+
+  CategoryOneLine: styled.div`
+    display: flex;
     gap: 0.8rem;
-    height: 37.6rem;
+
+    margin-bottom: 0.8rem;
   `,
 
   Category: styled.article`
+    flex: 1;
+    aspect-ratio: 1 / 1;
+
     box-sizing: border-box;
     display: flex;
 
