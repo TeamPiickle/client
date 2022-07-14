@@ -1,0 +1,36 @@
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+import Slider from "react-slick";
+
+import Card from "../Card";
+import LastCard from "../Card/LastCard";
+import { St } from "./style";
+
+const sliderSettings = {
+  className: "center",
+  centerMode: true,
+  arrows: false,
+  dots: false,
+  infinite: false,
+  variableWidth: true,
+  slidesToScroll: 1,
+};
+
+export default function CardSlider() {
+  return (
+    <St.Wrapper>
+      <Slider {...sliderSettings}>
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <LastCard />
+      </Slider>
+      {/* 마지막 index에서는 필터버튼 없애주기 */}
+      <St.IcFilterBtn />
+    </St.Wrapper>
+  );
+}
