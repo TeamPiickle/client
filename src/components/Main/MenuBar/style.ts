@@ -4,9 +4,6 @@ import { IcCloseBtn } from "../../../asset/icon";
 
 export const St = {
   Root: styled.section`
-    /* width: 36rem;
-    height: 100vh; */
-
     background-color: ${({ theme }) => theme.colors.gray600};
 
     position: absolute;

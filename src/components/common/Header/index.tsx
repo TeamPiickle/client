@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import { IcHamburger, IcLogo } from "../../../asset/icon";
@@ -12,20 +12,6 @@ export default function Header() {
   const handleModal = () => {
     setIsOpened(!isOpened);
   };
-  // return (
-  //   <St.HeaderWrapper>
-  //     <Link to="/">
-  //       <IcLogo aria-label="피클" />
-  //     </Link>
-  //     <St.HamburgerContainer isClicked={isOpened}>
-  //       <IcHamburger aria-label="메뉴" onClick={handleModal} />
-  //     </St.HamburgerContainer>
-  //   </St.HeaderWrapper>
-  // );
-
-  useEffect(() => {
-    console.log(isOpened);
-  }, [isOpened]);
 
   if (isOpened) {
     return <MenuBar handleModal={handleModal} />;
