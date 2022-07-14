@@ -1,30 +1,24 @@
 import styled from "styled-components";
 
 export const St = {
-  MyInfoContainer: styled.section`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 2.4rem 0 3.6rem 1.6rem;
-    gap: 2.4rem;
-
-    //width: 36rem;
-    height: 11.8rem;
-  `,
-
-  ProfileImage: styled.div`
-    width: 5.8rem;
-    height: 5.8rem;
-    border-radius: 50%;
-
-    background-color: ${({ theme }) => theme.colors.black};
-  `,
+  MyInfoContainer: styled.section``,
 
   Profile: styled.article`
     align-items: center;
     width: auto;
-    height: 4.7rem;
+    display: flex;
+    padding: 2.4rem 0 3.6rem 1.6rem;
+    gap: 2.4rem;
+    height: 11.8rem;
   `,
+
+  ProfileImage: styled.img`
+    width: 5.8rem;
+    height: 5.8rem;
+    border-radius: 50%;
+  `,
+
+  ProfileDetail: styled.div``,
 
   ProfileNickname: styled.div`
     display: flex;
