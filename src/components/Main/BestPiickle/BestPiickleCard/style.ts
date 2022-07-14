@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import theme from "../../../../style/theme";
-
 export const St = {
   BestPiickleCard: styled.article`
     width: 20.2rem;
