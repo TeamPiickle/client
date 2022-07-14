@@ -2,7 +2,7 @@ import { useSetRecoilState } from "recoil";
 
 import { IcCloseBtn, IcMenuBarImg } from "../../../asset/icon";
 import { activeState } from "../../../core/atom/menuBar";
-import { St } from "./style";
+import { St, StContentsContainer } from "./style";
 
 const MenuBarDummy = {
   profileImg: <IcMenuBarImg />,
@@ -14,7 +14,7 @@ export default function MenuBar() {
 
   return (
     <St.Root>
-      <St.ContentsContainer>
+      <StContentsContainer>
         <St.CloseBtnContainer onClick={() => setIsActive((prevState) => !prevState)}>
           <IcCloseBtn />
         </St.CloseBtnContainer>
@@ -43,7 +43,7 @@ export default function MenuBar() {
             </St.PiickleMeContainer>
           </St.RecomendContainer>
         </St.Contents>
-      </St.ContentsContainer>
+      </StContentsContainer>
     </St.Root>
   );
 }

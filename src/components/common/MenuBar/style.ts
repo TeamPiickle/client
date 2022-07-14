@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const St = {
   Root: styled.section`
@@ -11,23 +11,6 @@ export const St = {
     background-color: ${({ theme }) => theme.colors.gray600};
 
     z-index: 10;
-  `,
-
-  ContentsContainer: styled.section`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    position: relative;
-
-    width: 28.8rem;
-    height: 100vh;
-    float: right;
-
-    background-color: ${({ theme }) => theme.colors.white};
-
-    padding-top: 1.9em;
-    padding-left: 1.8rem;
   `,
 
   Contents: styled.div``,
@@ -139,3 +122,34 @@ export const St = {
     color: ${({ theme }) => theme.colors.gray600};
   `,
 };
+
+const ani = keyframes`
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  50% {
+    width: 28.8rem;
+  }
+  100% {
+    opacity: 1;
+  }
+  `;
+
+export const StContentsContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  position: relative;
+
+  width: 28.8rem;
+  height: 100vh;
+  float: right;
+
+  background-color: ${({ theme }) => theme.colors.white};
+
+  padding-left: 1.8rem;
+
+  animation: ${ani} 0.8s ease-in-out;
+`;
