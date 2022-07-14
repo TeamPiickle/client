@@ -16,16 +16,16 @@ export const realReq = {
     return data;
   },
 
-  async POST(path: string, body) {
+  async POST(path: string, body: any) {
     const { data } = await real.post(`/${path}`, body);
     return data;
   },
 
-  async PATCH(path: string, body) {
+  async PATCH(path: string, body: any) {
     await real.patch(path, body);
   },
 
-  async DELETE(path: string, body) {
+  async DELETE(path: string, body: any) {
     await real.delete(path, body);
   },
 };
