@@ -1,16 +1,21 @@
-import { headingTitles } from "../../core/main/headingTitles";
+import Banner from "./Banner";
 import BestPiickle from "./BestPiickle";
-import HeadingTitleContainer from "./common/HeadingTitleContainer";
 import CTABtn from "./CTABtn";
+import Footer from "./Footer";
+import MoodPiickle from "./MoodPiickle";
 import PiickleMe from "./PiickleMe";
+import { St } from "./style";
 
 export default function Main() {
   return (
-    <main>
+    <St.MainPage>
+      <Banner />
       <BestPiickle />
-      <HeadingTitleContainer headingTitles={headingTitles[1]} />
+      <MoodPiickle />
+      {/* PiickleMe 폰트 수정해야 함 <-- 프로토타이핑 디자인 요청 */}
       <PiickleMe />
+      <Footer />
       <CTABtn />
-    </main>
+    </St.MainPage>
   );
 }

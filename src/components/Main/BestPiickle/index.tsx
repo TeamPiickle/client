@@ -36,20 +36,20 @@ const bestPiickles = [
   },
 ];
 
-export default function BestPiickle() {
-  const settings = {
-    arrows: false,
-    dots: false,
-    infinite: false,
-    variableWidth: true,
-    slidesToScroll: 1,
-  };
+const sliderSettings = {
+  arrows: false,
+  dots: false,
+  infinite: false,
+  variableWidth: true,
+  slidesToScroll: 1,
+};
 
+export default function BestPiickle() {
   return (
     <St.Root>
       <HeadingTitleContainer headingTitles={headingTitles[0]} />
       <St.SliderWrapper>
-        <Slider {...settings}>
+        <Slider {...sliderSettings}>
           {bestPiickles.map((bestPiickle) => {
             return <BestPiickleCard key={bestPiickle.cardId} bestPiickle={bestPiickle} />;
           })}

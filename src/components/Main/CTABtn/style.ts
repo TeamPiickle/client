@@ -5,7 +5,7 @@ export const St = {
   Button: styled(Link)`
     display: flex;
 
-    position: absolute;
+    position: fixed;
     right: 1.6rem;
     bottom: 4.8rem;
     left: 1.6rem;

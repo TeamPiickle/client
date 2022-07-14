@@ -1,3 +1,10 @@
+import CardSlider from "./CardSlider";
+import { St } from "./style";
+
 export default function CardCollection() {
-  return <main>c</main>;
+  return (
+    <St.MainPage>
+      <CardSlider />
+    </St.MainPage>
+  );
 }

@@ -13,40 +13,43 @@ const colors = {
   gray600: "#606060",
   gray700: "#404040",
   gray800: "#202020",
+  caption2_color: "#575757",
   bg: "#2A2A2A",
   sub1: "#F2F25A",
   sub3: "#706E2B",
   sub4: "#F2EFCE",
   sub5: "#1B3303",
   a: "radial-gradient(50% 50% at 50% 50%, #F2F25A 0%, rgba(25, 190, 126, 0.51) 100%)",
+  card: "linear-gradient(180deg, #DBFFF1 0%, #FFFFEB 100%);",
 } as const;
 
 interface Font {
   weight: 400 | 500 | 600 | 700;
   size: number;
+  lineHeight: number;
 }
 
-function FONT({ weight, size }: Font): string {
+function FONT({ weight, size, lineHeight }: Font): string {
   return `
     font-family: "Pretendard";
     font-weight: ${weight};
     font-size: ${size}rem;
-    line-height: 140%;
+    line-height: ${lineHeight}%;
     letter-spacing: -0.04rem;
   `;
 }
 
 const fonts = {
-  h1: FONT({ weight: 700, size: 2.5 }),
-  h2: FONT({ weight: 400, size: 1.4 }),
-  body1: FONT({ weight: 600, size: 2 }),
-  body2: FONT({ weight: 400, size: 1.2 }),
-  caption1: FONT({ weight: 600, size: 1.6 }),
-  caption2: FONT({ weight: 500, size: 1.6 }),
-  caption3: FONT({ weight: 500, size: 1 }),
-  btn1: FONT({ weight: 500, size: 1.6 }),
-  btn2: FONT({ weight: 400, size: 1.4 }),
-  btn3: FONT({ weight: 400, size: 1.2 }),
+  h1: FONT({ weight: 600, size: 2, lineHeight: 130 }),
+  h2: FONT({ weight: 400, size: 1.4, lineHeight: 130 }),
+  body1: FONT({ weight: 600, size: 1.6, lineHeight: 140 }),
+  body2: FONT({ weight: 400, size: 1.2, lineHeight: 140 }),
+  body3: FONT({ weight: 700, size: 2.4, lineHeight: 140 }),
+  body4: FONT({ weight: 400, size: 1.4, lineHeight: 140 }),
+  caption1: FONT({ weight: 400, size: 1, lineHeight: 130 }),
+  caption2: FONT({ weight: 500, size: 1.2, lineHeight: 126 }),
+  btn1: FONT({ weight: 400, size: 1.4, lineHeight: 140 }),
+  btn2: FONT({ weight: 400, size: 1.2, lineHeight: 150 }),
 } as const;
 
 const theme = {

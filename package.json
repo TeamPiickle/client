@@ -22,6 +22,7 @@
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.1",
     "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.5"
   },
   "eslintConfig": {
