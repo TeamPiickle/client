@@ -1,3 +1,4 @@
+import Footer from "../Main/Footer";
 import MyInfo from "./MyInfo";
 import MyPiickle from "./MyPiickle";
 import MySetting from "./MySetting";
@@ -9,6 +10,7 @@ export default function MyPage() {
       <MyInfo />
       <MyPiickle />
       <MySetting />
+      <Footer />
     </St.MyPage>
   );
 }
