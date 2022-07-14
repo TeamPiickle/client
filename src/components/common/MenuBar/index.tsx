@@ -1,22 +1,21 @@
-import { IcCloseBtn, IcMenuBarImg } from "../../../asset/icon";
-import { St } from "./style";
+import { useSetRecoilState } from "recoil";
 
-interface MenuBarProps {
-  handleModal: () => void;
-}
+import { IcCloseBtn, IcMenuBarImg } from "../../../asset/icon";
+import { activeState } from "../../../core/atom/menuBar";
+import { St } from "./style";
 
 const MenuBarDummy = {
   profileImg: <IcMenuBarImg />,
   name: "윤지영",
 };
 
-export default function MenuBar(props: MenuBarProps) {
-  const { handleModal } = props;
+export default function MenuBar() {
+  const setIsActive = useSetRecoilState(activeState);
 
   return (
     <St.Root>
       <St.ContentsContainer>
-        <St.CloseBtnContainer onClick={handleModal}>
+        <St.CloseBtnContainer onClick={() => setIsActive((prevState) => !prevState)}>
           <IcCloseBtn />
         </St.CloseBtnContainer>
         <St.ProfileContainer>
