@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Modal from "../../common/Modal";
 import IntimacySlider from "./IntimacySlider";
@@ -40,7 +40,22 @@ export default function FilterModal(props: FilterModalProps) {
     tempCheckedTags.has(_tag) ? tempCheckedTags.delete(_tag) : tempCheckedTags.add(_tag);
     setCheckedTags(tempCheckedTags);
   };
-  // 추천 시작하기를 눌렀을 때, 태그 정보들과 친밀도 정보를 보내주고 창닫기
+  // 추천 시작하기를 눌렀을 때, 태그 정보들과 친밀도 정보를 담아주고 창닫기
+  const submitFilter = () => {
+    const tempCheckedTags = new Set(checkedTags);
+    tempCheckedTags.add(intimacyTags[intimacyValues[0]]);
+    console.log("tempCheckedTags: ", tempCheckedTags);
+    setCheckedTags(tempCheckedTags);
+    alert([...checkedTags]);
+
+    setTimeout(function () {
+      closeHandler();
+    }, 500);
+  };
+
+  useEffect(() => {
+    console.log(checkedTags);
+  }, [checkedTags]);
 
   return (
     <Modal closeHandler={closeHandler}>
@@ -71,7 +86,7 @@ export default function FilterModal(props: FilterModalProps) {
           />
           <St.FilterIntimacyTagsWrapper>
             {intimacyTags.map((tag, index) => (
-              <St.FilterIntimacyTag isactive={index === intimacyValues[0]} onChange={() => toggleTag(tag)} key={index}>
+              <St.FilterIntimacyTag isactive={index === intimacyValues[0]} key={index}>
                 {tag}
               </St.FilterIntimacyTag>
             ))}
@@ -80,7 +95,7 @@ export default function FilterModal(props: FilterModalProps) {
       </St.ModalContentsWrapper>
 
       <St.SubmitBtnWrapper>
-        <St.SubmitBtn onClick={() => window.alert([...checkedTags])} type="submit">
+        <St.SubmitBtn onClick={submitFilter} type="submit">
           추천 시작하기
         </St.SubmitBtn>
       </St.SubmitBtnWrapper>

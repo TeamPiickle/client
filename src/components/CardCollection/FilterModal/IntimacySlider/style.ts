@@ -7,12 +7,6 @@ interface RangeTrackProps {
   price: number[];
 }
 
-interface RenderMarkProps {
-  index: number;
-  step: number;
-  price: number[];
-}
-
 export const St = {
   IntimacySlider: styled.div`
     height: 2.2rem;
