@@ -61,7 +61,7 @@ export const GlobalStyle = createGlobalStyle`
     user-select: none;
   }
   ul, li {
-    padding-left:0px;
+    padding-left: 0rem;
     list-style: none;
   }
   a {

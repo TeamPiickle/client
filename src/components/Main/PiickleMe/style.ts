@@ -62,7 +62,7 @@ export const St = {
 
     padding: 0.4rem 1.4rem;
 
-    border-radius: 42px;
+    border-radius: 4.2rem;
 
     ${({ theme }) => theme.fonts.h2}
   `,

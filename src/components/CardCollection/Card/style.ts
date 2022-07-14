@@ -6,7 +6,7 @@ export const St = {
   Card: styled.article`
     position: relative;
 
-    border: 1px solid ${({ theme }) => theme.colors.gray200};
+    border: 0.1rem solid ${({ theme }) => theme.colors.gray200};
     backdrop-filter: blur(1.2rem);
     border-radius: 1.5rem;
   `,
