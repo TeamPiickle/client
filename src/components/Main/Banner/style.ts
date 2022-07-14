@@ -4,10 +4,10 @@ import theme from "../../../style/theme";
 
 export const St = {
   BannerSlider: styled.section`
-    width: 36rem;
+    width: 100%;
     height: 21.7rem;
 
-    background: ${theme.colors.green};
+    background: ${({ theme }) => theme.colors.green};
   `,
 
   ContentsWrapper: styled.article`
@@ -23,8 +23,8 @@ export const St = {
     left: 1.6rem;
     top: 3.2rem;
 
-    font: ${theme.fonts.body2};
-    color: ${theme.colors.white};
+    ${({ theme }) => theme.fonts.body2};
+    color: ${({ theme }) => theme.colors.white};
   `,
 
   ContentsPages: styled.span`
@@ -46,6 +46,6 @@ export const St = {
     line-height: 81.34%;
     font-weight: 400;
     font-size: 1rem;
-    color: ${theme.colors.white};
+    color: ${({ theme }) => theme.colors.white};
   `,
 };

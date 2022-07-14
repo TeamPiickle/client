@@ -13,7 +13,7 @@ export const St = {
 
     box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25), 0rem 0rem 0.2rem rgba(0, 0, 0, 0.25);
     border-radius: 1.6rem;
-    color: ${theme.colors.white};
+    color: ${({ theme }) => theme.colors.white};
   `,
 
   TagsWrapper: styled.ul`
@@ -22,13 +22,13 @@ export const St = {
   `,
 
   Tag: styled.li`
-    ${theme.fonts.caption1};
-    color: ${theme.colors.gray600};
+    ${({ theme }) => theme.fonts.caption1};
+    color: ${({ theme }) => theme.colors.gray600};
   `,
 
   Content: styled.p`
-    ${theme.fonts.caption1};
-    color: ${theme.colors.black};
+    ${({ theme }) => theme.fonts.caption1};
+    color: ${({ theme }) => theme.colors.black};
 
     width: 17rem;
     height: 4.4rem;
@@ -45,15 +45,15 @@ export const St = {
     width: 8.1rem;
     height: 2.5rem;
 
-    background-color: ${theme.colors.green};
+    background-color: ${({ theme }) => theme.colors.green};
     border-radius: 4.2rem;
 
     float: right;
   `,
 
   PickButton: styled(Link)`
-    ${theme.fonts.btn2}
-    color: ${theme.colors.white};
+    ${({ theme }) => theme.fonts.btn2}
+    color: ${({ theme }) => theme.colors.white};
 
     width: 8.1rem;
     height: 2.5rem;
