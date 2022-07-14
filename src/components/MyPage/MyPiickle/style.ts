@@ -57,6 +57,8 @@ export const St = {
   `,
 
   MoveButton: styled(Link)`
+    position: absolute;
+    right: 1.6rem;
     display: flex;
     flex-direction: row;
     align-items: center;
