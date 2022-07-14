@@ -26,12 +26,9 @@ export const St = {
   BasicInfoTitle: styled.li`
     height: 1.7rem;
 
+    ${({ theme }) => theme.fonts.footer1};
+
     font-family: "Pretendard";
-    font-style: normal;
-    font-weight: 600;
-    font-size: 1.2rem;
-    line-height: 140%;
-    letter-spacing: -0.04rem;
 
     color: ${({ theme }) => theme.colors.bg};
   `,
@@ -51,12 +48,7 @@ export const St = {
     height: 1.7rem;
     margin-bottom: 0.3rem;
 
-    font-family: "Pretendard";
-    font-style: normal;
-    font-weight: 600;
-    font-size: 1.2rem;
-    line-height: 140%;
-    letter-spacing: -0.04rem;
+    ${({ theme }) => theme.fonts.footer1};
 
     color: ${({ theme }) => theme.colors.bg};
   `,
@@ -65,7 +57,7 @@ export const St = {
     height: 1.7rem;
     margin-bottom: 2rem;
 
-    ${({ theme }) => theme.fonts.btn3};
+    ${({ theme }) => theme.fonts.footer2};
     color: ${({ theme }) => theme.colors.gray600};
   `,
 };
