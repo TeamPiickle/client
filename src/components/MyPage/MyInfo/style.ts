@@ -17,7 +17,7 @@ export const St = {
     height: 5.8rem;
     border-radius: 50%;
 
-    background-color: black;
+    background-color: ${({ theme }) => theme.colors.black};
   `,
 
   Profile: styled.div`
@@ -43,9 +43,9 @@ export const St = {
     width: auto;
     height: 2.6rem;
 
+    letter-spacing: -0.03em;
     ${({ theme }) => theme.fonts.h1};
     color: ${({ theme }) => theme.colors.bg};
-    letter-spacing: -0.03em;
   `,
 
   ProfileNicknameEdit: styled.button`
@@ -60,16 +60,8 @@ export const St = {
 
     background-color: ${({ theme }) => theme.colors.gray300};
     color: ${({ theme }) => theme.colors.black};
-
+    ${({ theme }) => theme.fonts.btn4};
     border-radius: 0.7rem;
-
-    font-family: "Pretendard";
-    font-style: normal;
-    font-weight: 300;
-    font-size: 1rem;
-    line-height: 140%;
-
-    letter-spacing: -0.04rem;
   `,
 
   ProfileEmail: styled.div`
