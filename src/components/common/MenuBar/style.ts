@@ -60,13 +60,13 @@ export const St = {
 
     color: ${({ theme }) => theme.colors.gray600};
 
-    border-right: solid 0.15rem #606060;
+    border-right: solid 0.15rem ${({ theme }) => theme.colors.gray600};
 
     padding-right: 1rem;
   `,
 
   LogoutBtn: styled.button`
-    ${({ theme }) => theme.fonts.body12};
+    ${({ theme }) => theme.fonts.btn2};
     color: ${({ theme }) => theme.colors.gray600};
 
     padding-left: 1rem;
@@ -77,7 +77,7 @@ export const St = {
   `,
 
   TitleText: styled.h1`
-    ${({ theme }) => theme.fonts.caption1};
+    ${({ theme }) => theme.fonts.body1};
 
     color: ${({ theme }) => theme.colors.bg};
   `,
@@ -89,7 +89,7 @@ export const St = {
   `,
 
   MoodPiickleText: styled.h2`
-    ${({ theme }) => theme.fonts.caption1};
+    ${({ theme }) => theme.fonts.body1};
 
     color: ${({ theme }) => theme.colors.bg};
 
@@ -97,7 +97,7 @@ export const St = {
   `,
 
   GoMoodPiickleBtn: styled.button`
-    ${({ theme }) => theme.fonts.body12};
+    ${({ theme }) => theme.fonts.body4};
 
     color: ${({ theme }) => theme.colors.gray600};
   `,
@@ -109,7 +109,7 @@ export const St = {
   `,
 
   PiickleMeText: styled.h2`
-    ${({ theme }) => theme.fonts.caption1};
+    ${({ theme }) => theme.fonts.body1};
 
     color: ${({ theme }) => theme.colors.bg};
 
@@ -117,7 +117,7 @@ export const St = {
   `,
 
   GoPiickleMeBtn: styled.button`
-    ${({ theme }) => theme.fonts.body12};
+    ${({ theme }) => theme.fonts.body4};
 
     color: ${({ theme }) => theme.colors.gray600};
   `,
