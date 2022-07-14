@@ -61,9 +61,13 @@ export const St = {
 
   FilterIntimacyTagsWrapper: styled.ul`
     display: flex;
+    justify-content: space-between;
   `,
 
-  FilterIntimacyTag: styled.li``,
+  FilterIntimacyTag: styled.li<{ isactive: boolean }>`
+    ${({ theme }) => theme.fonts.caption4}
+    color: ${({ isactive, theme }) => (isactive ? theme.colors.green : theme.colors.gray600)};
+  `,
 
   SubmitBtnWrapper: styled.div`
     display: flex;

@@ -49,6 +49,7 @@ const fonts = {
   body4: FONT({ weight: 400, size: 1.4, lineHeight: 140 }),
   caption1: FONT({ weight: 400, size: 1, lineHeight: 130 }),
   caption2: FONT({ weight: 500, size: 1.2, lineHeight: 126 }),
+  caption4: FONT({ weight: 400, size: 1.2, lineHeight: 168 }),
   btn1: FONT({ weight: 400, size: 1.4, lineHeight: 140 }),
   btn2: FONT({ weight: 400, size: 1.2, lineHeight: 150 }),
 } as const;

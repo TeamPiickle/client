@@ -81,10 +81,8 @@ const intimacyTags: FilterTag[] = [
 
 export default function FilterModal(props: FilterModalProps) {
   const { closeHandler } = props;
-
-  // 체크한 태그들을 저장할 state
-  const [checkedTags, setCheckedTags] = useState<Set<string>>(new Set());
-  const [intimacyValues, setIntimacyValues] = useState<number[]>([0]);
+  const [checkedTags, setCheckedTags] = useState<Set<string>>(new Set()); // 체크한 태그들을 저장할 state
+  const [intimacyValues, setIntimacyValues] = useState<number[]>([0]); // 친밀도 value
   // 태그를 눌렀을 때 함수
   const toggleTagButton = (_id: string) => {
     const tempCheckedTags = new Set([...checkedTags]);
@@ -112,16 +110,20 @@ export default function FilterModal(props: FilterModalProps) {
           <St.FilterTitle>친밀도</St.FilterTitle>
           <IntimacySlider
             min={0}
-            max={120}
-            step={40}
+            max={3}
+            step={1}
             price={intimacyValues}
             onChange={(values: number[]) => {
               setIntimacyValues(values);
             }}
           />
-          {intimacyTags.map((tag) => (
-            <St.FilterIntimacyTag key={tag.id}>{tag.name}</St.FilterIntimacyTag>
-          ))}
+          <St.FilterIntimacyTagsWrapper>
+            {intimacyTags.map((tag, index) => (
+              <St.FilterIntimacyTag isactive={index === intimacyValues[0]} key={tag.id}>
+                {tag.name}
+              </St.FilterIntimacyTag>
+            ))}
+          </St.FilterIntimacyTagsWrapper>
         </St.FilterIntimacyWrapper>
       </St.ModalContentsWrapper>
 

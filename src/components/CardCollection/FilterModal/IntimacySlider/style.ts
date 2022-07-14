@@ -1,9 +1,15 @@
 import { getTrackBackground } from "react-range";
 import styled from "styled-components";
 
-interface Props {
+interface RangeTrackProps {
   min: number;
   max: number;
+  price: number[];
+}
+
+interface RenderMarkProps {
+  index: number;
+  step: number;
   price: number[];
 }
 
@@ -24,6 +30,12 @@ export const St = {
     background-color: ${({ theme }) => theme.colors.white};
     box-shadow: 0 0.1rem 0.4rem 0.1rem rgba(0, 0, 0, 0.25);
   `,
+
+  RenderMark: styled.div<{ indexx: number; step: number; price: number[] }>`
+    height: 1rem;
+    width: 0.5rem;
+    background: ${({ indexx, step, price }) => (indexx * step < price[0] ? "blue" : "red")};
+  `,
 };
 
 export const RangeTrack = styled.div`
@@ -31,7 +43,7 @@ export const RangeTrack = styled.div`
   height: 0.8rem;
   width: 100%;
   border-radius: 0.4rem;
-  background: ${(props: Props) =>
+  background: ${(props: RangeTrackProps) =>
     getTrackBackground({
       values: props.price,
       colors: ["#19BE7E", "#ffffff"],

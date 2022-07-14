@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Range } from "react-range";
 
 import { RangeTrack, St } from "./style";
@@ -13,7 +14,6 @@ interface IntimacySliderProps {
 
 export default function IntimacySlider(props: IntimacySliderProps) {
   const { min, max, step, price, onChange } = props;
-
   return (
     <St.IntimacySlider>
       <Range
