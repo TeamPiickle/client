@@ -1,3 +1,9 @@
+import Header from "../common/Header";
+
 export default function Login() {
-  return <main>l</main>;
+  return (
+    <main>
+      <Header />
+    </main>
+  );
 }

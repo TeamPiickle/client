@@ -1,3 +1,9 @@
+import Header from "../common/Header";
+
 export default function MyPage() {
-  return <main>mp</main>;
+  return (
+    <main>
+      <Header />
+    </main>
+  );
 }

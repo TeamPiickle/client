@@ -1,3 +1,9 @@
+import Header from "../common/Header";
+
 export default function Bookmark() {
-  return <main>b</main>;
+  return (
+    <main>
+      <Header />
+    </main>
+  );
 }

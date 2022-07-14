@@ -1,3 +1,9 @@
+import Header from "../common/Header";
+
 export default function Error404() {
-  return <main>err</main>;
+  return (
+    <main>
+      <Header />
+    </main>
+  );
 }
