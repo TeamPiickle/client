@@ -22,7 +22,7 @@ export const St = {
   `,
 
   Tag: styled.li`
-    ${theme.fonts.caption3};
+    ${theme.fonts.caption1};
     color: ${theme.colors.gray600};
   `,
 
@@ -52,7 +52,7 @@ export const St = {
   `,
 
   PickButton: styled(Link)`
-    ${theme.fonts.btn3}
+    ${theme.fonts.btn2}
     color: ${theme.colors.white};
 
     width: 8.1rem;
