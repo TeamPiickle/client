@@ -11,6 +11,12 @@ export const St = {
   `,
 
   ContentsContainer: styled.section`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    position: relative;
+
     width: 28.8rem;
     height: 100vh;
     float: right;
@@ -21,9 +27,12 @@ export const St = {
     padding-left: 1.8rem;
   `,
 
+  Contents: styled.div``,
+
   CloseBtnContainer: styled.div`
-    float: right;
-    margin-right: 1.6rem;
+    position: absolute;
+    top: 1.9rem;
+    right: 1.6rem;
   `,
 
   ProfileContainer: styled.article`
