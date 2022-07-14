@@ -23,9 +23,6 @@ export const St = {
     box-sizing: border-box;
     display: flex;
 
-    width: 16rem;
-    height: 16rem;
-
     background: #dbfff1;
 
     border: 0.1rem solid #e0e0e0;
