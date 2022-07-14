@@ -12,7 +12,7 @@ export default function MyPiickle() {
         </St.TitleWrapper>
       </St.MyPiickleWrapper>
       <St.MoveButton to="/category">
-        <St.MoveButtonTitle>카드모아보기</St.MoveButtonTitle>
+        <St.MoveButtonTitle>카드 모아보기</St.MoveButtonTitle>
         <IcRightArrow />
       </St.MoveButton>
     </St.MyPiickleContainer>
