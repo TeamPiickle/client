@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
-import theme from "../../../style/theme";
-
 export const St = {
   BannerSlider: styled.section`
-    width: 100%;
+    position: relative;
+
     height: 21.7rem;
 
     background: ${({ theme }) => theme.colors.green};
@@ -28,6 +27,10 @@ export const St = {
   `,
 
   ContentsPages: styled.span`
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -36,8 +39,6 @@ export const St = {
 
     width: 3.5rem;
     height: 1.7rem;
-    margin-left: 32.5rem;
-    margin-top: -1.7rem;
 
     background: rgba(0, 0, 0, 0.5);
   `,
