@@ -1,13 +1,14 @@
-import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useRecoilState } from "recoil";
 
 import { IcHamburger, IcLogo } from "../../../asset/icon";
-import MenuBar from "../../Main/MenuBar";
+import { activeState } from "../../../core/atom/menuBar";
+import MenuBar from "../MenuBar";
 import { St } from "./style";
 
 export default function Header() {
   const { pathname } = useLocation();
-  const [isOpened, setIsOpened] = useState(false);
+  const [isActive, setIsActive] = useRecoilState(activeState);
 
   const handleModal = () => {
     setIsOpened(!isOpened);

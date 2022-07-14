@@ -1,10 +1,16 @@
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 
+import { activeState } from "./core/atom/menuBar";
 import Router from "./Router";
+import { ModalStyle } from "./style/modalStyle";
 
 export default function App() {
+  const isActive = useRecoilValue(activeState);
+
   return (
     <St.MobileContainer>
+      {isActive && <ModalStyle />}
       <Router />
     </St.MobileContainer>
   );
