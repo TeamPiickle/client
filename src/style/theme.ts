@@ -25,7 +25,7 @@ const colors = {
 } as const;
 
 interface Font {
-  weight: 400 | 500 | 600 | 700;
+  weight: 300 | 400 | 500 | 600 | 700;
   size: number;
   lineHeight: number;
 }
@@ -47,11 +47,13 @@ const fonts = {
   body2: FONT({ weight: 400, size: 1.2, lineHeight: 140 }),
   body3: FONT({ weight: 700, size: 2.4, lineHeight: 140 }),
   body4: FONT({ weight: 400, size: 1.4, lineHeight: 140 }),
+  body7: FONT({ weight: 500, size: 1.6, lineHeight: 224 }),
   caption1: FONT({ weight: 400, size: 1, lineHeight: 130 }),
   caption2: FONT({ weight: 500, size: 1.2, lineHeight: 126 }),
   caption4: FONT({ weight: 400, size: 1.2, lineHeight: 168 }),
   btn1: FONT({ weight: 400, size: 1.4, lineHeight: 140 }),
   btn2: FONT({ weight: 400, size: 1.2, lineHeight: 150 }),
+  btn3: FONT({ weight: 300, size: 1.6, lineHeight: 224 }),
 } as const;
 
 const theme = {

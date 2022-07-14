@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Range } from "react-range";
 
 import { RangeTrack, St } from "./style";

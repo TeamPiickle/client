@@ -10,12 +10,7 @@ export const St = {
   `,
 
   FilterTitle: styled.strong`
-    /* 폰트사이즈 수정 */
-    font-family: "Pretendard";
-    font-weight: 500;
-    font-size: 1.6rem;
-    line-height: 140%;
-
+    ${({ theme }) => theme.fonts.body7}
     color: ${({ theme }) => theme.colors.black};
   `,
 
@@ -36,16 +31,11 @@ export const St = {
     width: 6.2rem;
     height: 2.6rem;
 
+    ${({ theme }) => theme.fonts.btn3}
     background-color: ${({ isactive, theme }) => (isactive ? theme.colors.green : theme.colors.white)};
     color: ${({ isactive, theme }) => (isactive ? theme.colors.white : theme.colors.black)};
 
     border-radius: 6.3rem;
-
-    font-family: "Pretendard";
-    font-style: normal;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 140%;
   `,
 
   FilterIntimacyWrapper: styled.div`
