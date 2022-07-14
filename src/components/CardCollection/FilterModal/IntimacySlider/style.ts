@@ -31,13 +31,13 @@ export const RangeTrack = styled.div`
   height: 0.8rem;
   width: 100%;
   border-radius: 0.4rem;
-  background-color: ${(props: Props) =>
+  background: ${(props: Props) =>
     getTrackBackground({
       values: props.price,
-      colors: ["#ccc", "#19BE7E", "#ccc"],
+      colors: ["#19BE7E", "#ffffff"],
       min: props.min,
       max: props.max,
     })};
 
-  /* background-color: ${({ theme }) => theme.colors.white}; */
+  box-shadow: inset 0 0.1rem 0.1rem rgba(0, 0, 0, 0.25);
 `;
