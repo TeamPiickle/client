@@ -16,4 +16,6 @@ export const St = {
 
     z-index: 10;
   `,
+
+  HamburgerContainer: styled.div<{ isClicked: boolean }>``,
 };
