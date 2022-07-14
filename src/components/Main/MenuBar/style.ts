@@ -1,19 +1,11 @@
 import styled from "styled-components";
 
-import { IcCloseBtn } from "../../../asset/icon";
-
 export const St = {
   Root: styled.section`
-    /* width: 36rem;
-    height: 100vh; */
+    width: 36rem;
+    height: 100vh;
 
     background-color: ${({ theme }) => theme.colors.gray600};
-
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
 
     z-index: 10;
   `,
@@ -25,7 +17,7 @@ export const St = {
 
     background-color: ${({ theme }) => theme.colors.white};
 
-    padding-top: 10.1rem;
+    padding-top: 1.9em;
     padding-left: 1.8rem;
   `,
 
@@ -39,6 +31,7 @@ export const St = {
 
     padding-bottom: 3.6rem;
   `,
+
   WelcomeText: styled.h1`
     ${({ theme }) => theme.fonts.body1};
     font-size: 24px;

@@ -9,6 +9,7 @@ const MenuBarDummy = {
   profileImg: <IcMenuBarImg />,
   name: "윤지영",
 };
+
 export default function MenuBar(props: MenuBarProps) {
   const { handleModal } = props;
 
