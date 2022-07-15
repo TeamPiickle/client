@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-import { IcCloseBtn } from "../../../asset/icon";
-
 export const St = {
   Root: styled.section`
     background-color: ${({ theme }) => theme.colors.gray600};
