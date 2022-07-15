@@ -1,8 +1,8 @@
+import Footer from "../common/Footer";
 import Header from "../common/Header";
 import Banner from "./Banner";
 import BestPiickle from "./BestPiickle";
 import CTABtn from "./CTABtn";
-import Footer from "./Footer";
 import MoodPiickle from "./MoodPiickle";
 import PiickleMe from "./PiickleMe";
 import { St } from "./style";
