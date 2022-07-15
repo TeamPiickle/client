@@ -1,22 +1,18 @@
 import { realReq } from "./common/axios";
 import { PATH } from "./common/constants";
 
-async function fetchballotLists() {
-  const data = await realReq.GET(`${PATH.BALLOTS}`);
-
-  return data.data;
+function fetchballotLists() {
+  return realReq.GET(`${PATH.BALLOTS}`);
 }
 
 // 투표 현황 조회
-async function fetchVoteStatus(ballotId: string) {
-  const data = await realReq.GET(`${PATH.USERS}/ballots/${ballotId}`);
-
-  return data.data;
+function fetchVoteStatus(ballotId: string) {
+  return realReq.GET(`${PATH.USERS}/ballots/${ballotId}`);
 }
 
 // 투표하기
-async function postVote(ballotTopicId: string, ballotItemId: string) {
-  return await realReq.POST(PATH.BALLOTS, {
+function postVote(ballotTopicId: string, ballotItemId: string) {
+  return realReq.POST(PATH.BALLOTS, {
     ballotTopicId,
     ballotItemId,
   });

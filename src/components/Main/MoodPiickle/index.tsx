@@ -11,7 +11,7 @@ export default function MoodPiickle() {
 
   useEffect(() => {
     (async () => {
-      const data = await real.fetchCategoryLists();
+      const { data } = await real.fetchCategoryLists();
       setCategoryLists(data);
     })();
   }, []);

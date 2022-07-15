@@ -48,10 +48,6 @@ export default function FilterModal(props: FilterModalProps) {
     closeHandler();
   };
 
-  useEffect(() => {
-    console.log(checkedTags);
-  }, [checkedTags]);
-
   return (
     <Modal closeHandler={closeHandler}>
       <St.ModalContentsWrapper>

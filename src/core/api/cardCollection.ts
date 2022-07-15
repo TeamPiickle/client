@@ -2,32 +2,28 @@ import { realReq } from "./common/axios";
 import { PATH } from "./common/constants";
 
 // 카테고리에 있는 카드 리스트 조회
-async function fetchCardsWithCategory(categoryId: string) {
-  const data = await realReq.GET(`${PATH.CATEGORIES}/${categoryId}`);
-
-  return data.data;
+function fetchCardsWithCategory(categoryId: string) {
+  return realReq.GET(`${PATH.CATEGORIES}/${categoryId}`);
 }
 
 // 필터로 카드 리스트 조회
-async function fetchCardsWithFilter(types: string[]) {
+function fetchCardsWithFilter(types: string[]) {
   let params = "";
   types.forEach((type) => {
     params += `?search=${type}`;
   });
 
-  const data = await realReq.GET(`${PATH.CATEGORIES}/cards${params}`);
-
-  return data.data;
+  return realReq.GET(`${PATH.CATEGORIES}/cards${params}`);
 }
 
 // 북마크 생성
-async function postBookmark(cardId: string) {
-  return await realReq.POST(`${PATH.USERS}/bookmarks`, cardId);
+function postBookmark(cardId: string) {
+  return realReq.POST(`${PATH.USERS}/bookmarks`, cardId);
 }
 
 // 북마크 삭제
-async function deleteBookmark(cardId: string) {
-  return await realReq.DELETE(`${PATH.USERS}/bookmarks`, cardId);
+function deleteBookmark(cardId: string) {
+  return realReq.DELETE(`${PATH.USERS}/bookmarks`, cardId);
 }
 
 export const real = {

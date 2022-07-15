@@ -12,7 +12,7 @@ export default function PiickleMe() {
 
   useEffect(() => {
     (async () => {
-      const data = await real.fetchballotLists();
+      const { data } = await real.fetchballotLists();
       setBallotLists(data);
     })();
   }, []);

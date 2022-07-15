@@ -30,7 +30,7 @@ export default function CardSlider(props: CardSliderProps) {
 
   useEffect(() => {
     (async () => {
-      const data = await real.fetchCardsWithCategory("카테고리id");
+      const { data } = await real.fetchCardsWithCategory("카테고리id");
       setCardLists(data.cardIdList);
     })();
   }, []);
