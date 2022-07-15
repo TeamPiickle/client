@@ -10,7 +10,7 @@ async function fetchCategoryLists() {
 
 // 베스트 5 피클 조회
 async function fetchBestPiickle() {
-  const data = await realReq.GET(PATH.BEST_5);
+  const data = await realReq.GET(`${PATH.CARDS}/best-5`);
 
   return data.data;
 }
