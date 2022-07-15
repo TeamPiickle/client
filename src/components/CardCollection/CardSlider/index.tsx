@@ -1,8 +1,11 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import { useEffect, useState } from "react";
 import Slider from "react-slick";
 
+import { real } from "../../../core/api/cardCollection";
+import { CardIdList } from "../../../types/cardCollection";
 import Card from "../Card";
 import LastCard from "../Card/LastCard";
 import { St } from "./style";
@@ -23,6 +26,14 @@ const sliderSettings = {
 
 export default function CardSlider(props: CardSliderProps) {
   const { openHandler } = props;
+  const [cardLists, setCardLists] = useState<CardIdList[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      const data = await real.fetchCardsWithCategory("카테고리id");
+      setCardLists(data.cardIdList);
+    })();
+  }, []);
 
   return (
     <St.Wrapper>

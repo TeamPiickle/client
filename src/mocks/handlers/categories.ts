@@ -53,56 +53,45 @@ export const categoriesHandler = [
     );
   }),
 
-  rest.get(`${process.env.REACT_APP_BASE_URL}/categories/:categoryId`, (req, res, ctx) => {
-    // const { id } = req.params;
+  rest.get(`${process.env.REACT_APP_BASE_URL}${PATH.CATEGORIES}/:categoryId`, (req, res, ctx) => {
+    const { categoryId } = req.params;
 
     return res(
       ctx.status(200),
       ctx.json({
         data: {
-          categoryId: "6290145b6af16276098d04d9",
-          cardList: [
+          _id: "62cbb7d8a8c54f168a6ddfe1",
+          title: "커플",
+          cardIdList: [
             {
-              cardId: "6290145b6af16276098d04d9",
-              content: "민초는 맛있다",
-              gender: [1, 2],
-              ageGroup: [2, 3, 4],
-              category: [2],
-              intimacy: 1,
-              bookmarkId: "6290145b6af16276098d04d9",
-              isbookmark: true,
+              _id: "62cc0103a8c54f168a6de00a",
+              content: "상대방에게 반한 포인트는 무엇인가요?",
+              tags: ["#연애", "#연애초", "#설렘"],
+              category: ["62cbb7d8a8c54f168a6ddfe1"],
+              filter: ["남자", "여자", "10대", "20대", "30대", "커플", "상관없음", "친근해요"],
             },
             {
-              cardId: "6290145b6af16276098d04d9",
-              content: "민초는 맛있다",
-              gender: [1, 2],
-              ageGroup: [2, 3, 4],
-              category: [2],
-              intimacy: 1,
-              bookmarkId: "6290145b6af16276098d04d9",
-              isbookmark: true,
-            },
-            {
-              cardId: "6290145b6af16276098d04d9",
-              content: "민초는 맛있다",
-              gender: [1, 2],
-              ageGroup: [2, 3, 4],
-              category: [2],
-              intimacy: 1,
-              bookmarkId: "6290145b6af16276098d04d9",
-              isbookmark: true,
-            },
-            {
-              cardId: "6290145b6af16276098d04d9",
-              content: "민초는 맛있다",
-              gender: [1, 2],
-              ageGroup: [2, 3, 4],
-              category: [2],
-              intimacy: 1,
-              bookmarkId: "6290145b6af16276098d04d9",
-              isbookmark: true,
+              _id: "62cc010aa8c54f168a6de00b",
+              content: "상대방의 첫인상이 어떘는지 기억나시나요?",
+              tags: ["#연애", "#첫만남", "#첫인상"],
+              category: ["62cbb7d8a8c54f168a6ddfe1"],
+              filter: [
+                "남자",
+                "여자",
+                "10대",
+                "20대",
+                "30대",
+                "커플",
+                "친구",
+                "단체",
+                "상관없음",
+                "새로워요",
+                "친근해요",
+                "깊어요",
+              ],
             },
           ],
+          content: "커플과의 추억을 공유하세요",
         },
       }),
     );
