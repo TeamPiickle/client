@@ -20,11 +20,11 @@ export default function Bookmark() {
   const myPiickleLists: myPiickle[] = [
     {
       cardId: "6290145b6af16276098d04d9",
-      content: "안녕하세요 적당히 바람이 시원한 어쩌구 저쩌구~",
+      content: "안녕하세요 적당히 바람이 시원한 어쩌구 저쩌구~ adfa fasdfasdfasdvfwere",
     },
     {
       cardId: "6290145b6af16276098d04d8",
-      content: "서헤은 기여벙",
+      content: "인간관계에서 가장 중요하게 생각합니다 안녕하세요",
     },
     {
       cardId: "6290145b6af16276098d04d7",
