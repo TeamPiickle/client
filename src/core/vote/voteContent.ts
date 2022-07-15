@@ -1,9 +1,9 @@
-export type VoteTitle = {
+type VoteTitleProps = {
   id: number;
   title: string;
 };
 
-export const voteTitle: VoteTitle[] = [
+export const voteTitle: VoteTitleProps[] = [
   {
     id: 0,
     title: "인간관계에서 가장 중요하게 생각하는 것은?",
@@ -22,12 +22,12 @@ export const voteTitle: VoteTitle[] = [
   },
 ];
 
-export type VoteContent = {
+type VoteContentProps = {
   id: number;
   name: string;
 };
 
-export const voteContent: VoteContent[] = [
+export const voteContent: VoteContentProps[] = [
   {
     id: 0,
     name: "민초",
