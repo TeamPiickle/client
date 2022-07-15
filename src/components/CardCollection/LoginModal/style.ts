@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const St = {
@@ -37,7 +38,7 @@ export const St = {
     height: 3.6rem;
   `,
 
-  LoginButton: styled.button`
+  LoginButton: styled(Link)`
     display: flex;
     flex-direction: row;
     justify-content: center;
