@@ -29,6 +29,13 @@ export const St = {
     position: absolute;
     right: 1.6rem;
     top: 2rem;
+
+    cursor: pointer;
+
+    width: 2.2rem;
+    height: 2.2rem;
+
+    z-index: 10;
   `,
 
   ModalContents: styled.article`
