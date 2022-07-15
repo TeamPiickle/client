@@ -1,6 +1,6 @@
 import { Meta, Story } from "@storybook/react";
 
-import { headingTitles } from "../../../../core/main/headingTitles";
+import { headingTitles } from "../../../core/main/headingTitles";
 import HeadingTitleContainer, { HeadingTitleContainerProps } from ".";
 
 // 스토리북의 폴더

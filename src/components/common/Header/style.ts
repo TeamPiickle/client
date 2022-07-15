@@ -18,6 +18,8 @@ export const St = {
     z-index: 10;
   `,
 
+  HamburgerContainer: styled.div<{ isClicked: boolean }>``,
+
   LogoTitle: styled.h1`
     ${({ theme }) => theme.visually_hidden};
   `,

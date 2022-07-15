@@ -1,3 +1,4 @@
+import Header from "../common/Header";
 import Banner from "./Banner";
 import BestPiickle from "./BestPiickle";
 import CTABtn from "./CTABtn";
@@ -9,6 +10,7 @@ import { St } from "./style";
 export default function Main() {
   return (
     <St.MainPage>
+      <Header />
       <Banner />
       <BestPiickle />
       <MoodPiickle />

@@ -1,4 +1,4 @@
-import { HeadingTitle } from "../../../../core/main/headingTitles";
+import { HeadingTitle } from "../../../core/main/headingTitles";
 import { St } from "./style";
 
 export interface HeadingTitleContainerProps {
