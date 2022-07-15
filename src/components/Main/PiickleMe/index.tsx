@@ -1,6 +1,6 @@
 import { IcVoteImg1, IcVoteImg2 } from "../../../asset/icon";
 import { headingTitles } from "../../../core/main/headingTitles";
-import HeadingTitleContainer from "../common/HeadingTitleContainer";
+import HeadingTitleContainer from "../../common/HeadingTitleContainer";
 import { St } from "./style";
 
 const voteData = [

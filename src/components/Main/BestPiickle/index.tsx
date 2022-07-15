@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
 import { headingTitles } from "../../../core/main/headingTitles";
-import HeadingTitleContainer from "../common/HeadingTitleContainer";
+import HeadingTitleContainer from "../../common/HeadingTitleContainer";
 import BestPiickleCard from "./BestPiickleCard";
 import { St } from "./style";
 
