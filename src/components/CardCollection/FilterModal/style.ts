@@ -36,6 +36,7 @@ export const St = {
     color: ${({ isactive, theme }) => (isactive ? theme.colors.white : theme.colors.black)};
 
     border-radius: 6.3rem;
+    cursor: pointer;
   `,
 
   FilterIntimacyWrapper: styled.div`
