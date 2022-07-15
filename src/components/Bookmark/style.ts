@@ -7,5 +7,6 @@ export const St = {
     gap: 0.8rem;
 
     padding: 0 1.6rem;
+    margin-bottom: 3.6rem;
   `,
 };

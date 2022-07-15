@@ -1,4 +1,5 @@
 import { HeadingTitle } from "../../core/main/headingTitles";
+import Footer from "../common/Footer";
 import Header from "../common/Header";
 import HeadingTitleContainer from "../common/HeadingTitleContainer";
 import MyPiickleItem from "./MyPiickleItem";
@@ -60,6 +61,7 @@ export default function Bookmark() {
           <MyPiickleItem key={myPiickle.cardId} myPiickle={myPiickle} />
         ))}
       </St.List>
+      <Footer />
     </main>
   );
 }
