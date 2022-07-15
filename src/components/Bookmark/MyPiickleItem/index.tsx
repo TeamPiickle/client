@@ -1,16 +1,24 @@
-import { St } from "../style";
+import { useState } from "react";
+
+import { IcSmallEmptyHeart, IcSmallFullHeart } from "../../../asset/icon";
+import { myPiickle } from "..";
+import { St } from "./style";
 
 interface MyPiickleItemProps {
-  cardId: string;
-  content: string;
+  myPiickle: myPiickle;
 }
 
 export default function MyPiickleItem(props: MyPiickleItemProps) {
-  const { cardId, content } = props;
+  const { myPiickle } = props;
+  const [isBookmarked, setIsBookmarked] = useState<boolean>(false);
 
   return (
     <St.MyPiickle>
-      <St.MyPiickleContent>{content}</St.MyPiickleContent>
+      <St.MyPiickleContent>{myPiickle.content}</St.MyPiickleContent>
+      <St.HeartWrapper onClick={() => setIsBookmarked((prev) => !prev)}>
+        <IcSmallEmptyHeart />
+        {isBookmarked && <IcSmallFullHeart />}
+      </St.HeartWrapper>
     </St.MyPiickle>
   );
 }
