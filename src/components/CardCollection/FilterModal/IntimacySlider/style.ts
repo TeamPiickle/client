@@ -25,12 +25,6 @@ export const St = {
     background-color: ${({ theme }) => theme.colors.white};
     box-shadow: 0 0.1rem 0.4rem 0.1rem rgba(0, 0, 0, 0.25);
   `,
-
-  RenderMark: styled.div<{ indexx: number; step: number; price: number[] }>`
-    height: 1rem;
-    width: 0.5rem;
-    background: ${({ indexx, step, price }) => (indexx * step < price[0] ? "blue" : "red")};
-  `,
 };
 
 export const RangeTrack = styled.div`
