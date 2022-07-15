@@ -22,12 +22,12 @@ async function fetchUserBookmarks() {
 
 // 유저 닉네임 수정
 async function patchUserNickName(nickname: string) {
-  return realReq.PATCH(`${PATH.USERS}/nickname`, nickname);
+  return await realReq.PATCH(`${PATH.USERS}/nickname`, nickname);
 }
 
 // 유저 비밀번호 재설정
 async function patchUserPassword(email: string, newPassword: string) {
-  return realReq.PATCH(`${PATH.USERS}/me/password`, {
+  return await realReq.PATCH(`${PATH.USERS}/me/password`, {
     email,
     newPassword,
   });

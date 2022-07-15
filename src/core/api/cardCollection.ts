@@ -21,13 +21,13 @@ async function fetchCardsWithFilter(types: string[]) {
 }
 
 // 북마크 생성
-function postBookmark(cardId: string) {
-  return realReq.POST(`${PATH.USERS}/bookmarks`, cardId);
+async function postBookmark(cardId: string) {
+  return await realReq.POST(`${PATH.USERS}/bookmarks`, cardId);
 }
 
 // 북마크 삭제
-function deleteBookmark(cardId: string) {
-  return realReq.DELETE(`${PATH.USERS}/bookmarks`, cardId);
+async function deleteBookmark(cardId: string) {
+  return await realReq.DELETE(`${PATH.USERS}/bookmarks`, cardId);
 }
 
 export const real = {

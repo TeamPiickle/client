@@ -8,13 +8,15 @@ async function fetchballotLists() {
 }
 
 // 투표 현황 조회
-function fetchVoteStatus(ballotId: string) {
-  return realReq.GET(`${PATH.USERS}/ballots/${ballotId}`);
+async function fetchVoteStatus(ballotId: string) {
+  const data = await realReq.GET(`${PATH.USERS}/ballots/${ballotId}`);
+
+  return data.data;
 }
 
 // 투표하기
-function postVote(ballotTopicId: string, ballotItemId: string) {
-  return realReq.POST(PATH.BALLOTS, {
+async function postVote(ballotTopicId: string, ballotItemId: string) {
+  return await realReq.POST(PATH.BALLOTS, {
     ballotTopicId,
     ballotItemId,
   });
