@@ -35,18 +35,27 @@ export const St = {
     flex-direction: column;
   `,
 
-  VoteContentText: styled.p<{ isFirst: boolean }>`
+  RepresentVoteContentText: styled.p`
     line-height: 1.4;
 
     margin-bottom: 0.4rem;
 
-    ${({ isFirst, theme }) => (isFirst ? theme.fonts.caption1 : theme.fonts.body2)};
+    ${({ theme }) => theme.fonts.body3};
+    color: ${({ theme }) => theme.colors.gray800};
   `,
 
-  VoteContentSubText: styled.p<{ isFirst: boolean }>`
-    ${({ theme }) => theme.fonts.body2}
+  RepresentVoteContentSubText: styled.p`
+    ${({ theme }) => theme.fonts.caption3}
 
     color: ${({ theme }) => theme.colors.gray600};
+  `,
+
+  VoteContentText: styled.p`
+    line-height: 1.4;
+
+    margin-bottom: 0.4rem;
+
+    ${({ theme }) => theme.fonts.body4};
   `,
 
   RepresentGoVoteBtn: styled.button`

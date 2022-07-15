@@ -7,6 +7,10 @@ import Card from "../Card";
 import LastCard from "../Card/LastCard";
 import { St } from "./style";
 
+interface CardSliderProps {
+  openHandler: () => void;
+}
+
 const sliderSettings = {
   className: "center",
   centerMode: true,
@@ -17,7 +21,9 @@ const sliderSettings = {
   slidesToScroll: 1,
 };
 
-export default function CardSlider() {
+export default function CardSlider(props: CardSliderProps) {
+  const { openHandler } = props;
+
   return (
     <St.Wrapper>
       <Slider {...sliderSettings}>
@@ -30,7 +36,7 @@ export default function CardSlider() {
         <LastCard />
       </Slider>
       {/* 마지막 index에서는 필터버튼 없애주기 */}
-      <St.IcFilterBtn />
+      <St.IcFilterBtn onClick={openHandler} />
     </St.Wrapper>
   );
 }

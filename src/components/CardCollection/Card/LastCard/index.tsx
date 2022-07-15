@@ -1,4 +1,4 @@
-import { IcNextCardBtmn } from "../../../../asset/icon";
+import { IcNextCardBtn } from "../../../../asset/icon";
 import { St } from "./style";
 
 export default function LastCard() {
@@ -16,7 +16,7 @@ export default function LastCard() {
       </St.Content>
 
       <St.CategoryLink to="/category">
-        <IcNextCardBtmn />
+        <IcNextCardBtn />
       </St.CategoryLink>
 
       <St.HomeLink to="/">홈으로 돌아가기</St.HomeLink>
