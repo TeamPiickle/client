@@ -92,4 +92,53 @@ export const cardsHandler = [
       }),
     );
   }),
+
+  rest.get(`${process.env.REACT_APP_BASE_URL}/cards*`, (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        data: [
+          {
+            _id: "62cc010aa8c54f168a6de00b",
+            content: "상대방의 첫인상이 어떘는지 기억나시나요?",
+            tags: ["#연애", "#첫만남", "#첫인상"],
+            category: ["62cbb7d8a8c54f168a6ddfe1"],
+            filter: [
+              "남자",
+              "여자",
+              "10대",
+              "20대",
+              "30대",
+              "커플",
+              "친구",
+              "단체",
+              "상관없음",
+              "새로워요",
+              "친근해요",
+              "깊어요",
+            ],
+          },
+          {
+            _id: "62ce6aeba89cb162e6c24d1e",
+            content: "상대방의 첫인상이 어떘는지 기억나시나요?",
+            tags: ["#연애", "#첫만남", "#첫인상"],
+            category: ["62cbb7d8a8c54f168a6ddfe1"],
+            filter: [
+              "남자",
+              "여자",
+              "10대",
+              "20대",
+              "30대",
+              "커플",
+              "단체",
+              "상관없음",
+              "새로워요",
+              "친근해요",
+              "깊어요",
+            ],
+          },
+        ],
+      }),
+    );
+  }),
 ];

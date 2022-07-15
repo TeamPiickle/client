@@ -7,10 +7,24 @@ async function fetchCardsWithCategory(categoryId: string) {
 
   return data.data;
 }
+
+// 필터로 카드 리스트 조회
+async function fetchCardsWithFilter(types: string[]) {
+  let params = "";
+  types.forEach((type) => {
+    params += `?search=${type}`;
+  });
+
+  const data = await realReq.GET(`${PATH.CATEGORIES}/cards${params}`);
+
+  return data.data;
+}
+
 // 북마크 생성
 function postBookmark(cardId: string) {
   return realReq.POST(`${PATH.USERS}/bookmarks`, cardId);
 }
+
 // 북마크 삭제
 function deleteBookmark(cardId: string) {
   return realReq.DELETE(`${PATH.USERS}/bookmarks`, cardId);
@@ -18,6 +32,7 @@ function deleteBookmark(cardId: string) {
 
 export const real = {
   fetchCardsWithCategory,
+  fetchCardsWithFilter,
   postBookmark,
   deleteBookmark,
 };
