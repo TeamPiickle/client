@@ -1,9 +1,7 @@
 import styled from "styled-components";
 
 export const St = {
-  Container: styled.section`
-    height: 41.1rem;
-  `,
+  Container: styled.section``,
 
   RepresentVoteContentConTainer: styled.section`
     width: 100%;
