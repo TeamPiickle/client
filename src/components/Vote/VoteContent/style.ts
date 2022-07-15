@@ -5,7 +5,7 @@ export const St = {
     height: 44.2rem;
     width: 30.4rem;
 
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 0px 2px rgba(0, 0, 0, 0.25);
+    box-shadow: 0rem 0.4rem 0.4rem rgba(0, 0, 0, 0.25), 0rem 0rem 0.2rem rgba(0, 0, 0, 0.25);
 
     border-radius: 1.5rem;
 
@@ -49,9 +49,7 @@ export const St = {
   VoteOptionText: styled.strong`
     color: ${({ theme }) => theme.colors.gray600};
 
-    font-family: "Pretendard";
-    font-weight: 400;
-    font-size: 1.5rem;
+    ${({ theme }) => theme.fonts.body11}
   `,
 
   VoteOptionCheck: styled.div`

@@ -31,9 +31,7 @@ export const St = {
   `,
 
   VoteOptionText: styled.strong`
-    font-family: "Pretendard";
-    font-weight: 400;
-    font-size: 1.5rem;
+    ${({ theme }) => theme.fonts.body11}
   `,
 
   VoteOptionCheck: styled.div`
