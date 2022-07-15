@@ -25,6 +25,30 @@ export default function Bookmark() {
       cardId: "6290145b6af16276098d04d8",
       content: "서헤은 기여벙",
     },
+    {
+      cardId: "6290145b6af16276098d04d7",
+      content: "안녕하세요 적당히 바람이 시원한 어쩌구 저쩌구~",
+    },
+    {
+      cardId: "6290145b6af16276098d04d6",
+      content: "서헤은 기여벙",
+    },
+    {
+      cardId: "6290145b6af16276098d04d5",
+      content: "안녕하세요 적당히 바람이 시원한 어쩌구 저쩌구~",
+    },
+    {
+      cardId: "6290145b6af16276098d04d4",
+      content: "서헤은 기여벙",
+    },
+    {
+      cardId: "6290145b6af16276098d04d3",
+      content: "안녕하세요 적당히 바람이 시원한 어쩌구 저쩌구~",
+    },
+    {
+      cardId: "6290145b6af16276098d04d2",
+      content: "서헤은 기여벙",
+    },
   ];
 
   return (

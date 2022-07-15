@@ -10,14 +10,13 @@ interface MyPiickleItemProps {
 
 export default function MyPiickleItem(props: MyPiickleItemProps) {
   const { myPiickle } = props;
-  const [isBookmarked, setIsBookmarked] = useState<boolean>(false);
+  const [isBookmarked, setIsBookmarked] = useState<boolean>(true);
 
   return (
     <St.MyPiickle>
       <St.MyPiickleContent>{myPiickle.content}</St.MyPiickleContent>
       <St.HeartWrapper onClick={() => setIsBookmarked((prev) => !prev)}>
-        <IcSmallEmptyHeart />
-        {isBookmarked && <IcSmallFullHeart />}
+        {isBookmarked ? <IcSmallFullHeart /> : <IcSmallEmptyHeart />}
       </St.HeartWrapper>
     </St.MyPiickle>
   );
