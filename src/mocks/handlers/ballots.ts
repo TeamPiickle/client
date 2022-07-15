@@ -28,4 +28,60 @@ export const ballotsHandler = [
       }),
     );
   }),
+
+  rest.get(`${process.env.REACT_APP_BASE_URL}${PATH.BALLOTS}/:ballotTopicId`, (req, res, ctx) => {
+    const { ballotTopicId } = req.params;
+    const isLogin = false;
+
+    let data = {};
+    if (isLogin) {
+      data = {
+        ballotItems: [
+          {
+            _id: "어쩌구저ㄱ쩌구",
+            status: 50,
+            name: "호",
+          },
+          {
+            _id: "ㅁㄴㅇㅁㄴㅇ",
+            status: 30,
+            content: "불",
+          },
+          {
+            _id: "ㅁㄴㅇㅁㄴㅇ1",
+            status: 20,
+            content: "중",
+          },
+        ],
+        userSelect: {
+          _id: "62cff7e35b1e11673a0a8787",
+          ballotItemId: "62cff6585b1e11673a0a8776",
+        },
+      };
+    } else {
+      data = {
+        ballotItems: [
+          {
+            _id: "어쩌구저ㄱ쩌구",
+            name: "호",
+          },
+          {
+            _id: "ㅁㄴㅇㅁㄴㅇ",
+            content: "불",
+          },
+          {
+            _id: "ㅁㄴㅇㅁㄴㅇ1",
+            content: "중",
+          },
+        ],
+      };
+    }
+
+    return res(
+      ctx.status(200),
+      ctx.json({
+        data,
+      }),
+    );
+  }),
 ];
