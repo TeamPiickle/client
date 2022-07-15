@@ -44,13 +44,8 @@ export default function FilterModal(props: FilterModalProps) {
   const submitFilter = () => {
     const tempCheckedTags = new Set(checkedTags);
     tempCheckedTags.add(intimacyTags[intimacyValues[0]]);
-    console.log("tempCheckedTags: ", tempCheckedTags);
     setCheckedTags(tempCheckedTags);
-    alert([...checkedTags]);
-
-    setTimeout(function () {
-      closeHandler();
-    }, 500);
+    closeHandler();
   };
 
   useEffect(() => {
