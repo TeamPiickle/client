@@ -6,7 +6,7 @@ export const St = {
   `,
 
   CloseBtn: styled.button`
-    background-image: IcCloseBtn;
+    background-image: IcModalCloseBtn;
   `,
 
   FilterTitle: styled.strong`

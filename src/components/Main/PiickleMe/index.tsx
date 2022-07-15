@@ -37,8 +37,8 @@ export default function PiickleMe() {
     <St.Container>
       <HeadingTitleContainer headingTitles={headingTitles[2]} />
       <St.RepresentVoteContentConTainer>
-        <St.VoteContentText isFirst={true}>{representVoteData.contentText}</St.VoteContentText>
-        <St.VoteContentSubText isFirst={true}>{representVoteData.discription}</St.VoteContentSubText>
+        <St.RepresentVoteContentText>{representVoteData.contentText}</St.RepresentVoteContentText>
+        <St.RepresentVoteContentSubText>{representVoteData.discription}</St.RepresentVoteContentSubText>
         <St.RepresentGoVoteBtn>투표하기</St.RepresentGoVoteBtn>
       </St.RepresentVoteContentConTainer>
       {voteData.map((element) => {
@@ -47,8 +47,7 @@ export default function PiickleMe() {
             <St.VoteImgTextWrapper>
               {element.profileImg}
               <St.VoteTextContainer>
-                <St.VoteContentText isFirst={false}>{element.contentText.slice(0, 18)}...</St.VoteContentText>
-                <St.VoteContentSubText isFirst={false}>{element.subText}</St.VoteContentSubText>
+                <St.VoteContentText>{element.contentText.slice(0, 18)}...</St.VoteContentText>
               </St.VoteTextContainer>
             </St.VoteImgTextWrapper>
             <St.GoVoteBtn>{element.voteBtn}</St.GoVoteBtn>

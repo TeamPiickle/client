@@ -25,7 +25,7 @@ export const St = {
   `,
 
   Content: styled.p`
-    ${({ theme }) => theme.fonts.caption1};
+    ${({ theme }) => theme.fonts.body1};
     color: ${({ theme }) => theme.colors.black};
 
     width: 17rem;
