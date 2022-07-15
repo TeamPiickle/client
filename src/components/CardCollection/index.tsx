@@ -3,6 +3,7 @@ import { useState } from "react";
 import Header from "../common/Header";
 import CardSlider from "./CardSlider";
 import FilterModal from "./FilterModal";
+import LoginModal from "./LoginModal";
 import { St } from "./style";
 
 export default function CardCollection() {
@@ -20,6 +21,7 @@ export default function CardCollection() {
       <Header />
       <CardSlider openHandler={openModal} />
       {isOpened && <FilterModal closeHandler={closeModal} />}
+      <LoginModal />
     </St.MainPage>
   );
 }
