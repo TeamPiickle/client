@@ -13,6 +13,7 @@ interface IntimacySliderProps {
 
 export default function IntimacySlider(props: IntimacySliderProps) {
   const { min, max, step, price, onChange } = props;
+
   return (
     <St.IntimacySlider>
       <Range
