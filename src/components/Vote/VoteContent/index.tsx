@@ -5,9 +5,12 @@ import BeforeVoteList from "../BeforeVoteList";
 import { St } from "./style";
 
 export default function VoteContent() {
+  interface IseledtedOptions {
+    selectedOption: number;
+  }
   const [isVoted, setIsVoted] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState<IseledtedOptions | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   return (
     <St.VoteContentContainer>
