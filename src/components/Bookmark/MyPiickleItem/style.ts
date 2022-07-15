@@ -21,7 +21,7 @@ export const St = {
     white-space: nowrap;
     text-overflow: ellipsis;
 
-    width: 20.7rem;
+    width: 21rem;
   `,
 
   HeartWrapper: styled.div`
