@@ -27,12 +27,12 @@ export default function CardSlider(props: CardSliderProps) {
   return (
     <St.Wrapper>
       <Slider {...sliderSettings}>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        <Card openHandler={openHandler} />
+        <Card openHandler={openHandler} />
+        <Card openHandler={openHandler} />
+        <Card openHandler={openHandler} />
+        <Card openHandler={openHandler} />
+        <Card openHandler={openHandler} />
         <LastCard />
       </Slider>
       {/* 마지막 index에서는 필터버튼 없애주기 */}
