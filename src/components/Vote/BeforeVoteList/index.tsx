@@ -34,7 +34,7 @@ export default function BeforeVoteList(props: any) {
             <St.VoteOptionList
               key={element.id}
               onClick={() => clickHandle(element.id)}
-              isClicked={isVoted && i == currentIndex}>
+              isClicked={isVoted && i === currentIndex}>
               <St.VoteOptionText>{element.name}</St.VoteOptionText>
               <IcCheck2 />
             </St.VoteOptionList>
