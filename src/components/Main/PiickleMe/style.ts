@@ -53,11 +53,17 @@ export const St = {
   `,
 
   VoteContentText: styled.p`
+    width: 17rem;
+
     line-height: 1.4;
 
     margin-bottom: 0.4rem;
 
     ${({ theme }) => theme.fonts.body4};
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   `,
 
   RepresentGoVoteBtn: styled.button`

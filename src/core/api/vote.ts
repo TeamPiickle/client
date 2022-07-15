@@ -1,6 +1,12 @@
 import { realReq } from "./common/axios";
 import { PATH } from "./common/constants";
 
+async function fetchballotLists() {
+  const data = await realReq.GET(`${PATH.BALLOTS}`);
+
+  return data.data;
+}
+
 // 투표 현황 조회
 function fetchVoteStatus(ballotId: string) {
   return realReq.GET(`${PATH.USERS}/ballots/${ballotId}`);
@@ -15,6 +21,7 @@ function postVote(ballotTopicId: string, ballotItemId: string) {
 }
 
 export const real = {
+  fetchballotLists,
   fetchVoteStatus,
   postVote,
 };

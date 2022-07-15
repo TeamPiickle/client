@@ -9,3 +9,8 @@ export interface Card {
   category: string;
   content: string;
 }
+
+export interface BallotList {
+  _id: string;
+  title: string;
+}
