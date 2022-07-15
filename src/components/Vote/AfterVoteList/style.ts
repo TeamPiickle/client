@@ -14,6 +14,7 @@ export const St = {
     flex-direction: column;
     justify-content: space-between;
   `,
+
   VoteOptionList: styled.li`
     width: 27.2rem;
     height: 3.7rem;
@@ -23,6 +24,7 @@ export const St = {
     display: flex;
     flex-direction: column;
   `,
+
   VotedDescription: styled.div`
     display: flex;
     justify-content: space-between;
@@ -72,6 +74,7 @@ export const St = {
     display: flex;
     justify-content: center;
   `,
+
   VoteBtn: styled.button`
     width: 15.6rem;
     height: 3.4rem;
