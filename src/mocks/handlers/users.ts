@@ -16,4 +16,22 @@ export const usersHandler = [
       }),
     );
   }),
+
+  rest.get(`${process.env.REACT_APP_BASE_URL}${PATH.USERS}/bookmarks`, (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        data: [
+          {
+            cardId: "6290145b6af16276098d04d9",
+            content: "민초는 맛있다",
+          },
+          {
+            cardId: "6290145b6af16276098d04d9",
+            content: "민초는 맛있다",
+          },
+        ],
+      }),
+    );
+  }),
 ];

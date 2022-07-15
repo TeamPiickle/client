@@ -15,7 +15,9 @@ async function fetchUserProfile() {
 
 // 유저의 북마크 리스트 조회
 async function fetchUserBookmarks() {
-  return realReq.GET(`${PATH.USERS}/bookmarks`);
+  const data = await realReq.GET(`${PATH.USERS}/bookmarks`);
+
+  return data.data;
 }
 
 // 유저 닉네임 수정
