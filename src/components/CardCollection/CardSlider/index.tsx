@@ -8,9 +8,9 @@ import LastCard from "../Card/LastCard";
 import { St } from "./style";
 
 interface CardSliderProps {
-  openHandler: () => void;
+  openFilterModalHandler: () => void;
+  openLoginModalHandler: () => void;
 }
-
 const sliderSettings = {
   className: "center",
   centerMode: true,
@@ -22,21 +22,21 @@ const sliderSettings = {
 };
 
 export default function CardSlider(props: CardSliderProps) {
-  const { openHandler } = props;
+  const { openFilterModalHandler, openLoginModalHandler } = props;
 
   return (
     <St.Wrapper>
       <Slider {...sliderSettings}>
-        <Card openHandler={openHandler} />
-        <Card openHandler={openHandler} />
-        <Card openHandler={openHandler} />
-        <Card openHandler={openHandler} />
-        <Card openHandler={openHandler} />
-        <Card openHandler={openHandler} />
+        <Card LoginopenHandler={openLoginModalHandler} />
+        <Card LoginopenHandler={openLoginModalHandler} />
+        <Card LoginopenHandler={openLoginModalHandler} />
+        <Card LoginopenHandler={openLoginModalHandler} />
+        <Card LoginopenHandler={openLoginModalHandler} />
+        <Card LoginopenHandler={openLoginModalHandler} />
         <LastCard />
       </Slider>
       {/* 마지막 index에서는 필터버튼 없애주기 */}
-      <St.IcFilterBtn onClick={openHandler} />
+      <St.IcFilterBtn onClick={openFilterModalHandler} />
     </St.Wrapper>
   );
 }

@@ -8,6 +8,7 @@ import { St } from "./style";
 
 export default function CardCollection() {
   const [isOpened, setIsOpened] = useState<boolean>(false);
+  const [isLoginOpened, setLoginOpened] = useState<boolean>(false);
 
   const openModal = () => {
     setIsOpened(true);
@@ -16,12 +17,27 @@ export default function CardCollection() {
     setIsOpened(false);
   };
 
+  const openLoginModal = () => {
+    setLoginOpened(true);
+  };
+  const closeLoginModal = () => {
+    setLoginOpened(false);
+  };
+
+  const clickHandleFilterModal = () => {
+    openModal();
+  };
+
+  const clickHandleLoginModal = () => {
+    openLoginModal();
+  };
+
   return (
     <St.MainPage>
       <Header />
-      <CardSlider openHandler={openModal} />
+      <CardSlider openFilterModalHandler={clickHandleFilterModal} openLoginModalHandler={clickHandleLoginModal} />
+      {isLoginOpened && <LoginModal closeHandler={closeLoginModal} />}
       {isOpened && <FilterModal closeHandler={closeModal} />}
-      <LoginModal />
     </St.MainPage>
   );
 }

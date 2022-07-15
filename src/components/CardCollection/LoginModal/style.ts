@@ -7,11 +7,9 @@ export const St = {
     justify-content: center;
     align-items: center;
     gap: 6rem;
-    //position: absolute;
-    //width: 296px;
-    //height: 136px;
-    //left: 16px;
-    //top: 93px;
+
+    margin-top: 5rem;
+    height: 13.6rem;
     background: #eef5f3;
   `,
 
@@ -22,7 +20,6 @@ export const St = {
 
   ModalContents: styled.p`
     width: 16.5rem;
-    //height: 40px;
 
     letter-spacing: -0.03rem;
     ${({ theme }) => theme.fonts.body4};
