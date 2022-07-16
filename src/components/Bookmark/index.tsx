@@ -1,3 +1,4 @@
+import useUserBookmarks from "../../core/api/bookmark";
 import { HeadingTitle } from "../../core/main/headingTitles";
 import Footer from "../common/Footer";
 import Header from "../common/Header";
@@ -17,6 +18,8 @@ export type myPiickle = {
 };
 
 export default function Bookmark() {
+  const { userBookmarks, isLoading, isError } = useUserBookmarks();
+
   const myPiickleLists: myPiickle[] = [
     {
       cardId: "6290145b6af16276098d04d9",
