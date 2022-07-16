@@ -3,6 +3,10 @@ import { rest } from "msw";
 import { PATH } from "../../core/api/common/constants";
 
 export const ballotsHandler = [
+  rest.post(`${process.env.REACT_APP_BASE_URL}${PATH.BALLOTS}`, (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json({ message: "투표 성공" }));
+  }),
+
   rest.get(`${process.env.REACT_APP_BASE_URL}${PATH.BALLOTS}`, (req, res, ctx) => {
     return res(
       ctx.status(200),
