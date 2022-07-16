@@ -7,7 +7,7 @@ function fetchUserProfile() {
 }
 
 // 프로필사진 수정
-// function patchProfileImg() {
+//  function patchProfileImg() {
 //   return realReq.PATCH(PATH.USERS);
 // }
 

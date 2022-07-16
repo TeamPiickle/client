@@ -1,10 +1,7 @@
 import axios from "axios";
 
-// REAL_BASE_URL 수정해줘야 합니다
-const REAL_BASE_URL = "http://13.125.254.72:8000";
-
 const real = axios.create({
-  baseURL: REAL_BASE_URL,
+  baseURL: process.env.REACT_APP_BASE_URL,
   headers: {
     "Content-Type": "application/json",
   },
@@ -12,20 +9,20 @@ const real = axios.create({
 
 export const realReq = {
   async GET(path: string) {
-    const { data } = await real(path);
-    return data;
+    const data = await real(path);
+    return data.data;
   },
 
-  async POST(path: string, body: any) {
-    const { data } = await real.post(`/${path}`, body);
-    return data;
+  async POST<T>(path: string, body: T) {
+    const data = await real.post(`/${path}`, body);
+    return data.data;
   },
 
-  async PATCH(path: string, body: any) {
+  async PATCH<T>(path: string, body: T) {
     await real.patch(path, body);
   },
 
-  async DELETE(path: string, body: any) {
+  async DELETE<T>(path: string, body: T) {
     await real.delete(path, body);
   },
 };
