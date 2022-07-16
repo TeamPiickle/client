@@ -35,8 +35,4 @@ export const realReq = {
   async PATCH<T>(path: string, body: T) {
     await real.patch(path, body);
   },
-
-  async DELETE<T>(path: string, body: T) {
-    await real.delete(path, body);
-  },
 };
