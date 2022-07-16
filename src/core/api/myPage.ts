@@ -1,20 +1,22 @@
+import useSWR from "swr";
+
 import { realReq } from "./common/axios";
 import { PATH } from "./common/constants";
 
-// 유저 프로필 조회
-function fetchUserProfile() {
-  return realReq.GET(PATH.USERS);
+export default function useUserProfile() {
+  const { data, error } = useSWR(PATH.USERS, realReq.GET_SWR);
+
+  return {
+    userProfile: data?.data,
+    isLoading: !error && !data,
+    isError: error,
+  };
 }
 
 // 프로필사진 수정
 //  function patchProfileImg() {
 //   return realReq.PATCH(PATH.USERS);
 // }
-
-// 유저의 북마크 리스트 조회
-function fetchUserBookmarks() {
-  return realReq.GET(`${PATH.USERS}/bookmarks`);
-}
 
 // 유저 닉네임 수정
 function patchUserNickName(nickname: string) {
@@ -30,8 +32,6 @@ function patchUserPassword(email: string, newPassword: string) {
 }
 
 export const real = {
-  fetchUserProfile,
-  fetchUserBookmarks,
   patchUserNickName,
   patchUserPassword,
 };

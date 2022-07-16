@@ -17,6 +17,20 @@ export const usersHandler = [
     );
   }),
 
+  rest.post(`${process.env.REACT_APP_BASE_URL}${PATH.USERS}/bookmarks`, (req, res, ctx) => {
+    const requestBody = req.bodyUsed;
+
+    return res(
+      ctx.status(200),
+      ctx.json({
+        message: "북마크 생성 성공",
+        data: {
+          _id: `${requestBody}`,
+        },
+      }),
+    );
+  }),
+
   rest.get(`${process.env.REACT_APP_BASE_URL}${PATH.USERS}/bookmarks`, (req, res, ctx) => {
     return res(
       ctx.status(200),
