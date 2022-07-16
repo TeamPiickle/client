@@ -1,14 +1,17 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+import useUserProfile from "../../../core/api/myPage";
 import { St } from "./style";
 
 export default function MyInfo() {
+  const { userProfile, isLoading, isError } = useUserProfile();
+  // 아래 state 삭제하고, 위에 프로필 데이터로 진행해주면 돼 !
   const [profile, setProfile] = useState([]);
 
   async function getDataList() {
-    const result = await axios.get(`${process.env.REACT_APP_BASE_URL}/users`);
-    setProfile(result.data.data);
+    // const result = await axios.get(`${process.env.REACT_APP_BASE_URL}/users`);
+    // setProfile(result.data.data);
   }
 
   useEffect(() => {

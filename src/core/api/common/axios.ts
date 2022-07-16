@@ -8,6 +8,11 @@ const real = axios.create({
 });
 
 export const realReq = {
+  // GET은 swr 라이브러리로 대체합니다
+  GET_SWR(path: string) {
+    return real.get(path);
+  },
+
   async GET(path: string) {
     const data = await real(path);
     return data.data;

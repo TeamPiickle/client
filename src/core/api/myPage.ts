@@ -1,9 +1,21 @@
+import useSWR from "swr";
+
 import { realReq } from "./common/axios";
 import { PATH } from "./common/constants";
 
 // 유저 프로필 조회
 function fetchUserProfile() {
   return realReq.GET(PATH.USERS);
+}
+
+export default function useUserProfile() {
+  const { data, error } = useSWR(PATH.USERS, realReq.GET_SWR);
+
+  return {
+    userProfile: data?.data,
+    isLoading: !error && !data,
+    isError: error,
+  };
 }
 
 // 프로필사진 수정
