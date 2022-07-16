@@ -1,5 +1,5 @@
+import Footer from "../common/Footer";
 import Header from "../common/Header";
-import Footer from "../Main/Footer";
 import MyInfo from "./MyInfo";
 import MyPiickle from "./MyPiickle";
 import MySetting from "./MySetting";
