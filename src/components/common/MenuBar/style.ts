@@ -2,7 +2,7 @@ import styled, { keyframes } from "styled-components";
 
 export const St = {
   Root: styled.section`
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     left: 0;

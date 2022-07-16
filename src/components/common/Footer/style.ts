@@ -27,8 +27,6 @@ export const St = {
 
     ${({ theme }) => theme.fonts.footer1};
 
-    font-family: "Pretendard";
-
     color: ${({ theme }) => theme.colors.bg};
   `,
 
