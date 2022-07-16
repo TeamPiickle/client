@@ -7,8 +7,9 @@ export const St = {
     position: relative;
 
     & .slick-slide {
-      width: 30.5rem;
+      width: 30rem;
       height: calc(100vh - 14.8rem);
+      max-height: 52.3rem;
     }
 
     & .slick-slide > div {
@@ -18,21 +19,18 @@ export const St = {
 
     & .slick-slide article {
       height: 100%;
-      /* width: calc(100vw - 5.6rem); */
-      /* height: calc(100vh - 10.5rem); */
     }
 
     & .slick-slide.slick-active article {
       background: rgba(255, 255, 255, 0.5);
       backdrop-filter: blur(1.2rem);
-      /* height: calc(100vh - 10.5rem); */
+
       transform: scale(1.05);
       transition: all 0.5s;
     }
 
     & .slick-track {
       height: calc(100vh - 10.5rem);
-      /* height: calc(100vh - 14.8rem); */
 
       display: flex;
       align-items: center;

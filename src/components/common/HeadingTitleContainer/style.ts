@@ -22,6 +22,8 @@ export const St = {
   Content: styled.p`
     margin-top: 0.4rem;
 
+    white-space: pre-wrap;
+
     color: ${({ theme }) => theme.colors.gray600};
     ${({ theme }) => theme.fonts.h2};
   `,

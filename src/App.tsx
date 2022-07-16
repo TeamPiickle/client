@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 
@@ -7,6 +8,15 @@ import { ModalStyle } from "./style/modalStyle";
 
 export default function App() {
   const isActive = useRecoilValue(activeState);
+
+  function setScreenSize() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+  }
+
+  useEffect(() => {
+    setScreenSize();
+  });
 
   return (
     <St.MobileContainer>
