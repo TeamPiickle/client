@@ -11,7 +11,12 @@ function fetchBestPiickle() {
   return realReq.GET(`${PATH.CARDS}/best-5`);
 }
 
+function fetchballotLists() {
+  return realReq.GET(`${PATH.BALLOTS}`);
+}
+
 export const real = {
   fetchCategoryLists,
   fetchBestPiickle,
+  fetchballotLists,
 };

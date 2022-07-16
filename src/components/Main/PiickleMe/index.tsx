@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { IcVoteImg1, IcVoteImg2 } from "../../../asset/icon";
-import { real } from "../../../core/api/vote";
+import { real } from "../../../core/api/main";
 import { headingTitles } from "../../../core/main/headingTitles";
 import { BallotList } from "../../../types/main";
 import HeadingTitleContainer from "../../common/HeadingTitleContainer";
