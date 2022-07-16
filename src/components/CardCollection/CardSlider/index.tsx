@@ -27,12 +27,12 @@ export default function CardSlider(props: CardSliderProps) {
   return (
     <St.Wrapper>
       <Slider {...sliderSettings}>
-        <Card LoginopenHandler={openLoginModalHandler} />
-        <Card LoginopenHandler={openLoginModalHandler} />
-        <Card LoginopenHandler={openLoginModalHandler} />
-        <Card LoginopenHandler={openLoginModalHandler} />
-        <Card LoginopenHandler={openLoginModalHandler} />
-        <Card LoginopenHandler={openLoginModalHandler} />
+        <Card openLoginModalHandler={openLoginModalHandler} />
+        <Card openLoginModalHandler={openLoginModalHandler} />
+        <Card openLoginModalHandler={openLoginModalHandler} />
+        <Card openLoginModalHandler={openLoginModalHandler} />
+        <Card openLoginModalHandler={openLoginModalHandler} />
+        <Card openLoginModalHandler={openLoginModalHandler} />
         <LastCard />
       </Slider>
       {/* 마지막 index에서는 필터버튼 없애주기 */}

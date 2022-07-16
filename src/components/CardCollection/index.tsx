@@ -13,6 +13,7 @@ export default function CardCollection() {
   const openModal = () => {
     setIsOpened(true);
   };
+
   const closeModal = () => {
     setIsOpened(false);
   };
@@ -20,6 +21,7 @@ export default function CardCollection() {
   const openLoginModal = () => {
     setLoginOpened(true);
   };
+
   const closeLoginModal = () => {
     setLoginOpened(false);
   };
