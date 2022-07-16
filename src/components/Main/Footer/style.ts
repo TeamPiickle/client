@@ -6,7 +6,6 @@ export const St = {
     position: relative;
     padding-bottom: 30rem;
     height: 22rem;
-
     background-color: ${({ theme }) => theme.colors.gray100};
   `,
 
@@ -24,11 +23,7 @@ export const St = {
 
   BasicInfoTitle: styled.li`
     height: 1.7rem;
-
     ${({ theme }) => theme.fonts.footer1};
-
-    font-family: "Pretendard";
-
     color: ${({ theme }) => theme.colors.bg};
   `,
 
@@ -46,9 +41,7 @@ export const St = {
   ServiceInfoTitle: styled.li`
     height: 1.7rem;
     margin-bottom: 0.3rem;
-
     ${({ theme }) => theme.fonts.footer1};
-
     color: ${({ theme }) => theme.colors.bg};
   `,
 
