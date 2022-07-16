@@ -11,18 +11,21 @@ export const St = {
     z-index: 10;
 
     background-color: rgb(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
   `,
 
   Modal: styled.section`
     position: absolute;
-    left: 1.6rem;
-    right: 1.6rem;
-    top: 9rem;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 
     background-color: ${({ theme }) => theme.colors.sub_green5};
     border-radius: 2rem;
 
     padding: 2rem 1.6rem;
+    width: 32.8rem;
   `,
 
   CloseBtn: styled.button`

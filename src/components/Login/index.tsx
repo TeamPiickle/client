@@ -1,5 +1,5 @@
+import Footer from "../common/Footer";
 import Header from "../common/Header";
-import Footer from "../Main/Footer";
 import LoginForm from "./LoginForm";
 
 export default function Login() {
