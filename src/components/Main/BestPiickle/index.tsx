@@ -4,7 +4,6 @@ import "slick-carousel/slick/slick-theme.css";
 import { useEffect, useState } from "react";
 import Slider from "react-slick";
 
-import { real } from "../../../core/api/main";
 import { headingTitles } from "../../../core/main/headingTitles";
 import { Card } from "../../../types/main";
 import HeadingTitleContainer from "../../common/HeadingTitleContainer";
@@ -48,15 +47,6 @@ const sliderSettings = {
 };
 
 export default function BestPiickle() {
-  const [bestCards5, setBestCards5] = useState<Card[]>([]);
-
-  useEffect(() => {
-    (async () => {
-      const data = await real.fetchBestPiickle();
-      setBestCards5(data);
-    })();
-  }, []);
-
   return (
     <St.Root>
       <HeadingTitleContainer headingTitles={headingTitles[0]} />

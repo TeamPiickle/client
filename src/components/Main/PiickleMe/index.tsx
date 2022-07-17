@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 import { IcVoteImg1, IcVoteImg2 } from "../../../asset/icon";
-import { real } from "../../../core/api/main";
 import { headingTitles } from "../../../core/main/headingTitles";
 import { BallotList } from "../../../types/main";
 import HeadingTitleContainer from "../../common/HeadingTitleContainer";
@@ -9,13 +8,6 @@ import { St } from "./style";
 
 export default function PiickleMe() {
   const [ballotLists, setBallotLists] = useState<BallotList[]>([]);
-
-  useEffect(() => {
-    (async () => {
-      const { data } = await real.fetchballotLists();
-      setBallotLists(data);
-    })();
-  }, []);
 
   return (
     <St.Container>
