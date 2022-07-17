@@ -14,6 +14,7 @@ interface CardSliderProps {
   openFilterModalHandler: () => void;
   openLoginModalHandler: () => void;
 }
+
 const sliderSettings = {
   className: "center",
   centerMode: true,
