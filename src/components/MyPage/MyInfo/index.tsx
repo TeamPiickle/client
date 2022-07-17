@@ -1,27 +1,13 @@
-import { useEffect, useState } from "react";
-
-import { real } from "../../../core/api/login";
 import useUserProfile from "../../../core/api/myPage";
 import { St } from "./style";
-
-type profileType = {
-  name: string;
-  nickname: string;
-  email: string;
-  profile_image_url: string;
-};
-
 export default function MyInfo() {
   const { userProfile, isLoading, isError } = useUserProfile();
 
-  useEffect(() => {
-    console.log(userProfile);
-  }, [userProfile]);
   return (
     <St.MyInfoContainer>
       {userProfile && (
         <St.Profile>
-          <St.ProfileImage src={userProfile.data.profile_image_url} alt={userProfile.data.profile_image_url} />
+          <St.ProfileImage src={userProfile.data.profile_image_url} alt="프로필이미지" />
           <St.ProfileDetail>
             <St.ProfileNickname>
               <St.ProfileMyNickname>{userProfile.data.nickname}</St.ProfileMyNickname>
