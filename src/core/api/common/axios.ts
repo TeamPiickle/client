@@ -28,7 +28,7 @@ export const realReq = {
   },
 
   async POST<T>(path: string, body: T) {
-    const data = await real.post(`/${path}`, body);
+    const data = await real.post(path, body);
     return data.data;
   },
 

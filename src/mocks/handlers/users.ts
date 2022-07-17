@@ -3,6 +3,16 @@ import { rest } from "msw";
 import { PATH } from "../../core/api/common/constants";
 
 export const usersHandler = [
+  rest.post(`${process.env.REACT_APP_BASE_URL}${PATH.USERS}/login`, (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        _id: "example id",
+        accessToken: "example token",
+      }),
+    );
+  }),
+
   rest.get(`${process.env.REACT_APP_BASE_URL}${PATH.USERS}`, (req, res, ctx) => {
     return res(
       ctx.status(200),

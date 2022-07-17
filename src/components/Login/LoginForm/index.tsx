@@ -7,15 +7,21 @@
   - 
 */
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 
+import { real } from "../../../core/api/login";
 import { St } from "./style";
 
 export default function LoginForm() {
+  const inputRefs = useRef<HTMLInputElement[]>([]);
   const [errorMessage, setErrorMessage] = useState({ emailError: "", passwordError: "" });
 
-  const submitLoginForm = (e: React.FormEvent<HTMLElement>) => {
+  const submitLoginForm = async (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
+
+    const res = await real.postLogin(inputRefs.current[0].value, inputRefs.current[1].value);
+
+    console.log(res);
   };
 
   return (
@@ -23,10 +29,22 @@ export default function LoginForm() {
       <St.Title>로그인</St.Title>
       <St.Form>
         <St.Label htmlFor="email">이메일</St.Label>
-        <St.Input id="email" type="text" />
+        <St.Input
+          id="email"
+          type="text"
+          ref={(el) => {
+            if (el !== null) inputRefs.current[0] = el;
+          }}
+        />
         {errorMessage.emailError && <St.ErrorMessage>{errorMessage.emailError}</St.ErrorMessage>}
         <St.Label htmlFor="password">비밀번호</St.Label>
-        <St.Input id="password" type="password" />
+        <St.Input
+          id="password"
+          type="password"
+          ref={(el) => {
+            if (el !== null) inputRefs.current[1] = el;
+          }}
+        />
         {errorMessage.passwordError && <St.ErrorMessage>{errorMessage.passwordError}</St.ErrorMessage>}
         <St.LoginBtn type="submit">로그인하기</St.LoginBtn>
       </St.Form>
