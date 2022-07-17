@@ -21,24 +21,16 @@ export type myPiickle = {
 
 export default function Bookmark() {
   const { userBookmarks, isLoading, isError } = useUserBookmarks();
-  const [myPiickleLists, setMyPiickleLists] = useState<myPiickle[]>([]);
-
-  useEffect(() => {
-    (async () => {
-      const data = userBookmarks.data;
-      setMyPiickleLists(data);
-      console.log(data);
-    })();
-  }, [userBookmarks]);
 
   return (
     <main>
       <Header />
       <HeadingTitleContainer headingTitles={bookmarkHeadingTitles} />
       <St.List>
-        {myPiickleLists.map((myPiickle: myPiickle, idx: number) => (
-          <MyPiickleItem key={idx} myPiickle={myPiickle} />
-        ))}
+        {userBookmarks &&
+          userBookmarks.data.map((myPiickle: myPiickle, idx: number) => (
+            <MyPiickleItem key={idx} myPiickle={myPiickle} />
+          ))}
       </St.List>
       <Footer />
     </main>
