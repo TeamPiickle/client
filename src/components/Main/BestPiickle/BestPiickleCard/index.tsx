@@ -21,7 +21,7 @@ export default function BestPiickleCard(props: BestPiickleCardProps) {
       </St.TagsWrapper>
       <St.Content>{content}</St.Content>
       <St.PickButtonWrapper type="button">
-        <St.PickButton to={`/categories/${_id}`}>주제 픽하기</St.PickButton>
+        <St.PickButton to={`/categories/${_id}`}>카드 보기</St.PickButton>
       </St.PickButtonWrapper>
     </St.BestPiickleCard>
   );
