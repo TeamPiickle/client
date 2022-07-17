@@ -1,7 +1,12 @@
+import { useCategoryLists } from "../../../core/api/main";
 import { categoryList } from "../../../core/category/categoryList";
 import { St } from "./style";
 
 export default function CategoryContents() {
+  const { categoryLists, isLoading, isError } = useCategoryLists();
+  // 이걸로 하면돼!!!!! import 받아온 거 파일 없애주고,
+
+  // 아래 gridValue는 core 폴더에 넣어주면 좋을 것 같아요!~
   type gridValueProps = {
     id: number;
     columnStart: number;

@@ -17,15 +17,15 @@ export const ballotsHandler = [
             title: "인간관계에서 가장 중요하게 생각하는 것은?",
           },
           {
-            _id: "62cc022f2e3dd7425047e381",
+            _id: "62cc022f2e3dd7425047e382",
             title: "투표 주제 제목",
           },
           {
-            _id: "62cc022f2e3dd7425047e381",
+            _id: "62cc022f2e3dd7425047e383",
             title: "투표 주제 제목",
           },
           {
-            _id: "62cc022f2e3dd7425047e381",
+            _id: "62cc022f2e3dd7425047e384",
             title: "투표 주제 제목",
           },
         ],

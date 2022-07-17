@@ -1,22 +1,36 @@
+import useSWR from "swr";
+
 import { realReq } from "./common/axios";
 import { PATH } from "./common/constants";
 
 // 전체 카테고리 조화
-function fetchCategoryLists() {
-  return realReq.GET(PATH.CATEGORIES);
+export function useCategoryLists() {
+  const { data, error } = useSWR(PATH.CATEGORIES, realReq.GET_SWR);
+
+  return {
+    categoryLists: data?.data,
+    isLoading: !error && !data,
+    isError: error,
+  };
 }
 
 // 베스트 5 피클 조회
-function fetchBestPiickle() {
-  return realReq.GET(`${PATH.CARDS}/best-5`);
+export function useBestPiickle() {
+  const { data, error } = useSWR(`${PATH.CARDS}/best-5`, realReq.GET_SWR);
+
+  return {
+    bestPiickle: data?.data,
+    isLoading: !error && !data,
+    isError: error,
+  };
 }
 
-function fetchballotLists() {
-  return realReq.GET(`${PATH.BALLOTS}`);
-}
+export function useBallotLists() {
+  const { data, error } = useSWR(`${PATH.BALLOTS}`, realReq.GET_SWR);
 
-export const real = {
-  fetchCategoryLists,
-  fetchBestPiickle,
-  fetchballotLists,
-};
+  return {
+    ballotLists: data?.data,
+    isLoading: !error && !data,
+    isError: error,
+  };
+}
