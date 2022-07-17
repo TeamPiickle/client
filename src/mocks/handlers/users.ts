@@ -7,8 +7,13 @@ export const usersHandler = [
     return res(
       ctx.status(200),
       ctx.json({
-        _id: "example id",
-        accessToken: "example token",
+        status: 200,
+        success: true,
+        message: "로그인 성공",
+        data: {
+          _id: "example id",
+          accessToken: "example token",
+        },
       }),
     );
   }),
