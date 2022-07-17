@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 import { useCategoryLists } from "../../../core/api/main";
 import { categoryList, gridValue } from "../../../core/category/categoryList";
 import { St } from "./style";
@@ -17,7 +15,7 @@ export default function CategoryContents() {
     <St.FlexContainer>
       <St.CategoryItemContainer>
         {categoryLists &&
-          categoryLists.data.map((item: any, index: any) => {
+          categoryLists.data.map((item: categoryType, index: number) => {
             return (
               <St.CategoryItem
                 key={index}
