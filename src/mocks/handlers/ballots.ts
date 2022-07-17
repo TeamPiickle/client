@@ -35,10 +35,10 @@ export const ballotsHandler = [
 
   rest.get(`${process.env.REACT_APP_BASE_URL}${PATH.BALLOTS}/:ballotTopicId`, (req, res, ctx) => {
     const { ballotTopicId } = req.params;
-    const isLogin = false;
+    const isLoginNVoted = false;
 
     let data = {};
-    if (isLogin) {
+    if (isLoginNVoted) {
       data = {
         ballotItems: [
           {
