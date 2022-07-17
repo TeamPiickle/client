@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 import useUserBookmarks from "../../core/api/bookmark";
 import { HeadingTitle } from "../../core/main/headingTitles";
 import Footer from "../common/Footer";
