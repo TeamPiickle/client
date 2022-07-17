@@ -2,26 +2,26 @@ import { St } from "./style";
 
 interface BestPiickleCardProps {
   bestPiickle: {
-    cardId: string;
+    _id: string;
+    category: string[];
     content: string;
-    tags: string[];
   };
 }
 
 export default function BestPiickleCard(props: BestPiickleCardProps) {
   const { bestPiickle } = props;
-  const { cardId, content, tags } = bestPiickle;
+  const { _id, content, category } = bestPiickle;
 
   return (
     <St.BestPiickleCard>
       <St.TagsWrapper>
-        {tags.map((tag, i) => {
+        {category.map((tag, i) => {
           return <St.Tag key={i}># {tag}</St.Tag>;
         })}
       </St.TagsWrapper>
       <St.Content>{content}</St.Content>
       <St.PickButtonWrapper type="button">
-        <St.PickButton to={`/categories/${cardId}`}>주제 픽하기</St.PickButton>
+        <St.PickButton to={`/categories/${_id}`}>카드 보기</St.PickButton>
       </St.PickButtonWrapper>
     </St.BestPiickleCard>
   );
