@@ -32,7 +32,6 @@ export default function FilterModal(props: FilterModalProps) {
   const submitFilter = () => {
     const _checkedTagsArr = [...checkedTags];
     _checkedTagsArr.push(intimacyTags[intimacyValues[0]]);
-    console.log(_checkedTagsArr);
 
     real.fetchCardsWithFilter(_checkedTagsArr);
     navigation("/card-collection", { state: { type: "filter", filters: ["남자", "상관없음"] } });
