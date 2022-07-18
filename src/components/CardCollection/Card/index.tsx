@@ -20,11 +20,11 @@ export default function Card(props: LoginCheckProps) {
   const handleClickHeart = (_id: string) => {
     switch (LOGIN_STATE) {
       case true:
-        openLoginModalHandler();
-        break;
-      case false:
         setIsBookmarked((prev) => !prev);
         real.addNDeleteBookmark(_id);
+        break;
+      case false:
+        openLoginModalHandler();
         break;
     }
   };
