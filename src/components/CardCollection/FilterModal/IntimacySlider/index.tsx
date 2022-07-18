@@ -1,4 +1,4 @@
-// import { Range } from "react-range";
+import { Range } from "react-range";
 
 import { RangeTrack, St } from "./style";
 
@@ -16,7 +16,7 @@ export default function IntimacySlider(props: IntimacySliderProps) {
 
   return (
     <St.IntimacySlider>
-      {/* <Range
+      <Range
         step={step}
         min={min}
         max={max}
@@ -28,7 +28,7 @@ export default function IntimacySlider(props: IntimacySliderProps) {
           </RangeTrack>
         )}
         renderThumb={({ props }) => <St.RangeThumb {...props} />}
-      /> */}
+      />
     </St.IntimacySlider>
   );
 }
