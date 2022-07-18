@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 import Slider from "react-slick";
 
 import { real } from "../../../core/api/cardCollection";
+import { sliderSettings } from "../../../core/cardCollection/slider";
 import { CardIdList, CardsTypeLocation } from "../../../types/cardCollection";
 import Card from "../Card";
 import LastCard from "../Card/LastCard";
@@ -15,16 +16,6 @@ interface CardSliderProps {
   openFilterModalHandler: () => void;
   openLoginModalHandler: () => void;
 }
-
-const sliderSettings = {
-  className: "center",
-  centerMode: true,
-  arrows: false,
-  dots: false,
-  infinite: false,
-  variableWidth: true,
-  slidesToScroll: 1,
-};
 
 // 1. 카테고리 :: /categories/:categoryId :: { type: "category", categoryId: "62cbb7d8a8c54f168a6ddfe1"}
 // 2. 베스트 카드 :: /cards/best :: { type: "best" }
@@ -74,15 +65,16 @@ export default function CardSlider(props: CardSliderProps) {
     }
   }, []);
 
+  useEffect(() => {
+    console.log(cardLists);
+  }, [cardLists]);
+
   return (
     <St.Wrapper>
       <Slider {...sliderSettings}>
-        <Card openLoginModalHandler={openLoginModalHandler} />
-        <Card openLoginModalHandler={openLoginModalHandler} />
-        <Card openLoginModalHandler={openLoginModalHandler} />
-        <Card openLoginModalHandler={openLoginModalHandler} />
-        <Card openLoginModalHandler={openLoginModalHandler} />
-        <Card openLoginModalHandler={openLoginModalHandler} />
+        {cardLists.map((cardList) => (
+          <Card key={cardList._id} openLoginModalHandler={openLoginModalHandler} />
+        ))}
         <LastCard />
       </Slider>
       {/* 마지막 index에서는 필터버튼 없애주기 */}
