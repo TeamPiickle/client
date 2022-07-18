@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 
 export const St = {
-  Root: styled.section`
+  Root: styled.main`
     position: fixed;
     top: 0;
     right: 0;
@@ -14,7 +14,7 @@ export const St = {
     z-index: 10;
   `,
 
-  Contents: styled.div``,
+  Contents: styled.section``,
 
   CloseBtnContainer: styled.div`
     position: absolute;
@@ -87,11 +87,11 @@ export const St = {
 
   RecomendWrapper: styled(Link)`
     display: flex;
-
+    align-items: center;
     margin-top: 2.4rem;
   `,
 
-  MoveBtn: styled.div`
+  SubTitle: styled.div`
     ${({ theme }) => theme.fonts.body4};
     color: ${({ theme }) => theme.colors.gray600};
   `,

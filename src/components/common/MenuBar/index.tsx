@@ -16,6 +16,10 @@ export default function MenuBar() {
   const navigate = useNavigate();
   const moveCardCollection = () => {
     navigate("/card-collection", { state: { type: "all" } });
+    closeMenuBar();
+  };
+
+  const closeMenuBar = () => {
     setIsActive(false);
   };
 
@@ -42,13 +46,13 @@ export default function MenuBar() {
             <St.CardRecomendWrapper onClick={moveCardCollection}>
               <St.Title>대화 주제 추천 카드</St.Title>
             </St.CardRecomendWrapper>
-            <St.RecomendWrapper to="/category">
+            <St.RecomendWrapper to="/category" onClick={closeMenuBar}>
               <St.Title>Mood Piickles</St.Title>
-              <St.MoveBtn>카테고리별 대화주제 추천</St.MoveBtn>
+              <St.SubTitle>카테고리별 대화주제 추천</St.SubTitle>
             </St.RecomendWrapper>
-            <St.RecomendWrapper to="/vote">
+            <St.RecomendWrapper to="/vote" onClick={closeMenuBar}>
               <St.Title>Piickle Me</St.Title>
-              <St.MoveBtn>진행중인 투표</St.MoveBtn>
+              <St.SubTitle>진행중인 투표</St.SubTitle>
             </St.RecomendWrapper>
           </St.RecomendContainer>
         </St.Contents>
