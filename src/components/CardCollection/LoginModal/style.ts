@@ -38,7 +38,7 @@ export const St = {
     height: 3.6rem;
   `,
 
-  LoginButton: styled(Link)`
+  LoginButton: styled.button`
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -57,6 +57,8 @@ export const St = {
     ${({ theme }) => theme.fonts.btn1};
     color: ${({ theme }) => theme.colors.bg};
   `,
+
+  LoginLink: styled(Link)``,
 
   SignUpButton: styled.button`
     display: flex;
