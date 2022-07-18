@@ -7,5 +7,5 @@ interface TagProps {
 }
 
 export default function Tag({ children }: TagProps) {
-  return <St.Tag>#{children}</St.Tag>;
+  return <St.Tag>{children}</St.Tag>;
 }

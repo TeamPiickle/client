@@ -38,6 +38,7 @@ export default function CardCollection() {
     <St.MainPage>
       <Header />
       <CardSlider openFilterModalHandler={clickHandleFilterModal} openLoginModalHandler={clickHandleLoginModal} />
+
       {isLoginOpened && <LoginModal closeHandler={closeLoginModal} />}
       {isOpened && <FilterModal closeHandler={closeModal} />}
     </St.MainPage>
