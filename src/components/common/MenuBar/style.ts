@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 
 export const St = {
@@ -76,49 +77,22 @@ export const St = {
     padding-top: 3.6rem;
   `,
 
-  TitleText: styled.h1`
+  Title: styled.h1`
     ${({ theme }) => theme.fonts.body1};
-
     color: ${({ theme }) => theme.colors.bg};
+    margin-right: 1.2rem;
   `,
 
-  MoodPiickleContainer: styled.div`
+  CardRecomendWrapper: styled.div``,
+
+  RecomendWrapper: styled(Link)`
     display: flex;
 
     margin-top: 2.4rem;
   `,
 
-  MoodPiickleText: styled.h2`
-    ${({ theme }) => theme.fonts.body1};
-
-    color: ${({ theme }) => theme.colors.bg};
-
-    margin-right: 1.2rem;
-  `,
-
-  GoMoodPiickleBtn: styled.button`
+  MoveBtn: styled.div`
     ${({ theme }) => theme.fonts.body4};
-
-    color: ${({ theme }) => theme.colors.gray600};
-  `,
-
-  PiickleMeContainer: styled.div`
-    display: flex;
-
-    margin-top: 2.4rem;
-  `,
-
-  PiickleMeText: styled.h2`
-    ${({ theme }) => theme.fonts.body1};
-
-    color: ${({ theme }) => theme.colors.bg};
-
-    margin-right: 1.2rem;
-  `,
-
-  GoPiickleMeBtn: styled.button`
-    ${({ theme }) => theme.fonts.body4};
-
     color: ${({ theme }) => theme.colors.gray600};
   `,
 };

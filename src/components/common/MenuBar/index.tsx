@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
 import { IcCloseBtn, IcMenuBarImg } from "../../../asset/icon";
@@ -11,6 +12,12 @@ const MenuBarDummy = {
 
 export default function MenuBar() {
   const setIsActive = useSetRecoilState(activeState);
+
+  const navigate = useNavigate();
+  const moveCardCollection = () => {
+    navigate("/card-collection", { state: { type: "all" } });
+    setIsActive(false);
+  };
 
   return (
     <St.Root>
@@ -32,15 +39,17 @@ export default function MenuBar() {
             </St.BtnContainer>
           </St.ProfileContainer>
           <St.RecomendContainer>
-            <St.TitleText>대화 주제 추천 카드</St.TitleText>
-            <St.MoodPiickleContainer>
-              <St.MoodPiickleText>Mood Piickles</St.MoodPiickleText>
-              <St.GoMoodPiickleBtn>카테고리별 대화주제 추천</St.GoMoodPiickleBtn>
-            </St.MoodPiickleContainer>
-            <St.PiickleMeContainer>
-              <St.PiickleMeText>Piickle Me</St.PiickleMeText>
-              <St.GoPiickleMeBtn>진행중인 투표</St.GoPiickleMeBtn>
-            </St.PiickleMeContainer>
+            <St.CardRecomendWrapper onClick={moveCardCollection}>
+              <St.Title>대화 주제 추천 카드</St.Title>
+            </St.CardRecomendWrapper>
+            <St.RecomendWrapper to="/category">
+              <St.Title>Mood Piickles</St.Title>
+              <St.MoveBtn>카테고리별 대화주제 추천</St.MoveBtn>
+            </St.RecomendWrapper>
+            <St.RecomendWrapper to="/vote">
+              <St.Title>Piickle Me</St.Title>
+              <St.MoveBtn>진행중인 투표</St.MoveBtn>
+            </St.RecomendWrapper>
           </St.RecomendContainer>
         </St.Contents>
       </StContentsContainer>

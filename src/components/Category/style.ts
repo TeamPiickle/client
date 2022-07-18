@@ -6,6 +6,7 @@ export const St = {
   Root: styled.main`
     display: flex;
     flex-direction: column;
+    margin-bottom: 4rem;
   `,
 
   CategoryBanner: styled.section`
