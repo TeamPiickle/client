@@ -14,14 +14,14 @@ export const St = {
   `,
 
   CategoryOneLine: styled.div`
-    display: flex;
+    //display: flex;
     height: 16rem;
-    margin-bottom: 0.8rem;
   `,
 
   Category: styled.article`
     position: relative;
     flex: 1;
+    flex-direction: column;
     aspect-ratio: 1 / 1;
     width: 16rem;
 
@@ -30,9 +30,17 @@ export const St = {
 
     border: 0.1rem solid #e0e0e0;
     border-radius: 1.6rem;
-    ${({ theme }) => theme.fonts.body1};
-    color: ${({ theme }) => theme.colors.bg};
     align-items: center;
     justify-content: center;
+  `,
+
+  CategoryTitle: styled.strong`
+    ${({ theme }) => theme.fonts.body1};
+    color: ${({ theme }) => theme.colors.bg};
+  `,
+
+  CategoryContent: styled.p`
+    ${({ theme }) => theme.fonts.caption2};
+    color: ${({ theme }) => theme.colors.gray600};
   `,
 };
