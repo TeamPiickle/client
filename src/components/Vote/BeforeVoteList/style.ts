@@ -48,7 +48,7 @@ export const St = {
   `,
 
   VoteBtn: styled.button`
-    width: 15.6rem;
+    width: 22.6rem;
     height: 3.4rem;
 
     border-radius: 6.6rem;
