@@ -24,6 +24,11 @@ export default function MenuBar() {
     setIsActive(false);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("piickle-token");
+    navigate("/main");
+  };
+
   return (
     <St.Root>
       <StContentsContainer>
@@ -42,7 +47,7 @@ export default function MenuBar() {
               <St.MyProfileBtn to="/my-page" onClick={closeMenuBar}>
                 My 프로필
               </St.MyProfileBtn>
-              <St.LogoutBtn>로그아웃</St.LogoutBtn>
+              <St.LogoutBtn onClick={handleLogout}>로그아웃</St.LogoutBtn>
             </St.BtnContainer>
           </St.ProfileContainer>
           <St.RecomendContainer>
