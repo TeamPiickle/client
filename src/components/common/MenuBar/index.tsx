@@ -17,7 +17,7 @@ export default function MenuBar() {
   const moveCardCollection = () => {
     navigate("/card-collection", { state: { type: "all" } });
     closeMenuBar();
-    location.reload();
+    // location.reload();
   };
 
   const closeMenuBar = () => {
