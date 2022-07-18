@@ -19,8 +19,4 @@ export const St = {
   `,
 
   HamburgerContainer: styled.div<{ isClicked: boolean }>``,
-
-  LogoTitle: styled.h1`
-    ${({ theme }) => theme.visually_hidden};
-  `,
 };

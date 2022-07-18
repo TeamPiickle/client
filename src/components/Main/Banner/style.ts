@@ -6,26 +6,13 @@ export const St = {
 
     height: 21.7rem;
 
-    background: ${({ theme }) => theme.colors.green};
+    //background: ${({ theme }) => theme.colors.green};
   `,
 
-  ContentsWrapper: styled.article`
+  ImageWrapper: styled.img`
     width: 36rem;
     height: 21.7rem;
   `,
-
-  Contents: styled.p`
-    position: relative;
-
-    width: 21.1rem;
-    height: 8.2rem;
-    left: 1.6rem;
-    top: 3.2rem;
-
-    ${({ theme }) => theme.fonts.body2};
-    color: ${({ theme }) => theme.colors.white};
-  `,
-
   ContentsPages: styled.span`
     position: absolute;
     right: 0;
