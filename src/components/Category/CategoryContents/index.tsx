@@ -1,15 +1,23 @@
+import { useNavigate } from "react-router-dom";
+
 import { useCategoryLists } from "../../../core/api/main";
-import { categoryList, gridValue } from "../../../core/category/categoryList";
+import { gridValue } from "../../../core/category/categoryList";
 import { St } from "./style";
 
+type categoryType = {
+  id: string;
+  title: string;
+  content: string;
+};
+
 export default function CategoryContents() {
-  type categoryType = {
-    id: string;
-    title: string;
-    content: string;
-  };
   const { categoryLists, isLoading, isError } = useCategoryLists();
-  // 이걸로 하면돼!!!!! import 받아온 거 파일 없애주고,
+
+  const navigate = useNavigate();
+
+  const moveCategory = (id: number) => {
+    navigate("/card-collection", { state: { type: "category", categoryId: id } });
+  };
 
   return (
     <St.FlexContainer>
@@ -22,7 +30,8 @@ export default function CategoryContents() {
                 columnStart={gridValue[index].columnStart}
                 columnEnd={gridValue[index].columnEnd}
                 rowStart={gridValue[index].rowStart}
-                rowEnd={gridValue[index].rowEnd}>
+                rowEnd={gridValue[index].rowEnd}
+                onClick={() => moveCategory(gridValue[index].id)}>
                 <St.CategoryTitle>{item.title}</St.CategoryTitle>
                 <St.CategoryDescription>{item.content}</St.CategoryDescription>
               </St.CategoryItem>
