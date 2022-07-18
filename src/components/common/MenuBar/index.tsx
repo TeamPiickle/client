@@ -39,7 +39,9 @@ export default function MenuBar() {
             </St.WelcomeText>
             <St.DescriptText>오늘도 피클과 함께 대화 나눠요</St.DescriptText>
             <St.BtnContainer>
-              <St.MyProfileBtn>My 프로필</St.MyProfileBtn>
+              <St.MyProfileBtn to="/my-page" onClick={closeMenuBar}>
+                My 프로필
+              </St.MyProfileBtn>
               <St.LogoutBtn>로그아웃</St.LogoutBtn>
             </St.BtnContainer>
           </St.ProfileContainer>

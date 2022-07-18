@@ -56,9 +56,8 @@ export const St = {
     margin-top: 3.6rem;
   `,
 
-  MyProfileBtn: styled.button`
+  MyProfileBtn: styled(Link)`
     ${({ theme }) => theme.fonts.btn2};
-
     color: ${({ theme }) => theme.colors.gray600};
 
     border-right: solid 0.15rem ${({ theme }) => theme.colors.gray600};
