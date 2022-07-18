@@ -5,7 +5,6 @@ export type CardsTypeLocation =
     }
   | {
       type: "best";
-      index: number;
     }
   | {
       type: "all";

@@ -12,7 +12,7 @@ interface BestPiickleCardProps {
 
 export default function BestPiickleCard(props: BestPiickleCardProps) {
   const { bestPiickle } = props;
-  const { _id, content, category } = bestPiickle;
+  const { content, category } = bestPiickle;
 
   const navigation = useNavigate();
 
@@ -28,7 +28,7 @@ export default function BestPiickleCard(props: BestPiickleCardProps) {
         <St.PickButton
           type="button"
           onClick={() => {
-            navigation("/card-collection", { state: { type: "category", categoryId: _id } });
+            navigation("/card-collection", { state: { type: "best" } });
           }}>
           카드 보기
         </St.PickButton>

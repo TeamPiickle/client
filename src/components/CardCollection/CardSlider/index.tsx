@@ -1,7 +1,7 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Slider from "react-slick";
 
@@ -27,6 +27,7 @@ export default function CardSlider(props: CardSliderProps) {
   const location = useLocation();
   const CARD_TYPE_LOCATION = location.state as CardsTypeLocation;
 
+  const sliderRef = useRef<Slider | null>(null);
   const [cardLists, setCardLists] = useState<CardIdList[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -35,42 +36,42 @@ export default function CardSlider(props: CardSliderProps) {
       case "category":
         (async () => {
           const { data } = await real.fetchCardsWithCategory(CARD_TYPE_LOCATION.categoryId);
-          setCardLists(data.cardIdList);
+          setCardLists(data.cardList);
         })();
         break;
 
       case "best":
         (async () => {
           const { data } = await real.fetchCardsWithBest();
-          setCardLists(data.cardIdList);
+          setCardLists(data.cardList);
         })();
         break;
 
       case "all":
         (async () => {
           const { data } = await real.fetchCardsWithFilter([]);
-          setCardLists(data.cardIdList);
+          setCardLists(data.cardList);
         })();
         break;
 
       case "filter":
         (async () => {
           const { data } = await real.fetchCardsWithFilter(CARD_TYPE_LOCATION.filters);
-          setCardLists(data.cardIdList);
+          setCardLists(data.cardList);
         })();
         break;
       default:
         throw new Error("잘못된 접근입니다.");
     }
     setIsLoading(false);
-  }, []);
+  }, [CARD_TYPE_LOCATION]);
 
   return (
     <St.Wrapper>
       {isLoading ? (
         <article>Loading...</article>
       ) : (
-        <Slider {...sliderSettings}>
+        <Slider {...sliderSettings} ref={sliderRef}>
           {cardLists.map((cardList) => (
             <Card key={cardList._id} openLoginModalHandler={openLoginModalHandler} cardIdList={cardList} />
           ))}
