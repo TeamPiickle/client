@@ -18,33 +18,32 @@ export default function VoteContent() {
 
   const [isVoted, setIsVoted] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<IseledtedOptions | null>(null);
+  const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPosted, setIsPosted] = useState(true);
+  const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
 
   return (
     <St.VoteContentContainer>
-      <St.VoteContentTitle>
-        민초 vs 반민초 <br />
-        여러분의 의견은?
-      </St.VoteContentTitle>
-      {isSuccess ? (
+      <St.VoteContentTitle>{ballotTopic && ballotTopic.data.ballotTopic.ballotTopicContent}</St.VoteContentTitle>
+      {ballotTopic && isSuccess ? (
         <AfterVoteList
           setIsVoted={setIsVoted}
           setIsSuccess={setIsSuccess}
-          selectedOption={selectedOption}
-          setSelectedOption={setSelectedOption}
           currentIndex={currentIndex}
-          setCurrentIndex={setCurrentIndex}
+          ballotTopic={ballotTopic}
+          setIsPosted={setIsPosted}
         />
       ) : (
         <BeforeVoteList
           isVoted={isVoted}
           setIsVoted={setIsVoted}
           setIsSuccess={setIsSuccess}
-          selectedOption={selectedOption}
           setSelectedOption={setSelectedOption}
           currentIndex={currentIndex}
           setCurrentIndex={setCurrentIndex}
+          isPosted={isPosted}
+          LOGIN_STATE={LOGIN_STATE}
         />
       )}
     </St.VoteContentContainer>

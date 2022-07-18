@@ -1,24 +1,33 @@
 import { useEffect, useState } from "react";
 
 import { IcCheck2 } from "../../../asset/icon";
-import useBallotTopic from "../../../core/api/vote";
-import { voteContent } from "../../../core/vote/voteContent";
+import useBallotTopic, { real } from "../../../core/api/vote";
+import LoginModal from "../../CardCollection/LoginModal";
 import { St } from "./style";
+interface BeforeVoteListProps {
+  isVoted: boolean;
+  setIsVoted: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsSuccess: React.Dispatch<React.SetStateAction<boolean>>;
+  setSelectedOption: React.Dispatch<React.SetStateAction<number | null>>;
+  setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
+  currentIndex: number;
+  isPosted: boolean;
+  LOGIN_STATE: boolean;
+}
 
-export default function BeforeVoteList(props: any) {
-  const { isVoted, setIsVoted, setIsSuccess, setSelectedOption, currentIndex, setCurrentIndex } = props;
-  // const { ballotTopic, isLoading, isError } = useBallotTopic("투표id");
-  const successVote = () => {
-    if (isVoted === true) {
+export default function BeforeVoteList(props: BeforeVoteListProps) {
+  const { isVoted, setIsVoted, setIsSuccess, setSelectedOption, currentIndex, setCurrentIndex, isPosted, LOGIN_STATE } =
+    props;
+  const { ballotTopic, isLoading, isError } = useBallotTopic("투표id");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (ballotTopic?.data.userSelect.ballotItemId !== "" && isPosted === false) {
       setIsSuccess(true);
-      setSelectedOption(currentIndex);
+      setCurrentIndex(ballotTopic?.data.userSelect.ballotItemId);
     }
-  };
-  // useEffect(() => {
-  //   console.log(ballotTopic);
-  // }, [ballotTopic]);
+  }, []);
 
-  //함수단위 쪼개기
   const clickHandle = (key: number) => {
     if (isVoted === true) {
       if (currentIndex === key) {
@@ -30,14 +39,39 @@ export default function BeforeVoteList(props: any) {
       setCurrentIndex(key);
     }
   };
+
+  const successVote = () => {
+    if (LOGIN_STATE === false) {
+      setIsModalOpen(true);
+    } else {
+      if (isVoted === true) {
+        setIsSuccess(true);
+        setSelectedOption(currentIndex);
+        handlePost();
+      }
+    }
+  };
+
+  const handlePost = () => {
+    real.postVote(ballotTopic?.data.ballotTopic._id, ballotTopic?.data.userSelect.ballotItemId);
+  };
+
+  const closeLoginModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
       <St.VoteOptionContainer>
-        {voteContent &&
-          voteContent.map((element: any, i: number) => {
+        {ballotTopic &&
+          ballotTopic.data.ballotItems.map((element: any) => {
+            // 이부분에 element 타입을 어떻게 지정해줘야할지 몰라서 피알 올리고 고민해볼께요!
             return (
-              <St.VoteOptionList key={i} onClick={() => clickHandle(i)} isClicked={isVoted && i === currentIndex}>
-                <St.VoteOptionText>{element.name}</St.VoteOptionText>
+              <St.VoteOptionList
+                key={element._id}
+                onClick={() => clickHandle(element._id)}
+                isClicked={isVoted && element._id === currentIndex}>
+                <St.VoteOptionText>{element.content}</St.VoteOptionText>
                 <IcCheck2 />
               </St.VoteOptionList>
             );
@@ -46,6 +80,7 @@ export default function BeforeVoteList(props: any) {
       <St.VoteBtnContainer>
         <St.VoteBtn onClick={successVote}>투표하기</St.VoteBtn>
       </St.VoteBtnContainer>
+      {isModalOpen && <LoginModal closeHandler={closeLoginModal} contents={"투표기능인 피클미를"} />}
     </>
   );
 }
