@@ -6,6 +6,33 @@ import Slider from "react-slick";
 
 import { St } from "./style";
 
+type BannerImage = {
+  src: string;
+  alt: string;
+};
+const BannerImage: BannerImage[] = [
+  {
+    src: "Contact",
+    alt: "Contact1",
+  },
+  {
+    src: "Contact",
+    alt: "Contact2",
+  },
+  {
+    src: "Contact",
+    alt: "Contact3",
+  },
+  {
+    src: "Contact",
+    alt: "Contact4",
+  },
+  {
+    src: "Contact",
+    alt: "Contact5",
+  },
+];
+
 export default function Banner() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -23,51 +50,9 @@ export default function Banner() {
   return (
     <St.BannerSlider>
       <Slider {...settings}>
-        <St.ContentsWrapper>
-          <St.Contents>
-            브랜딩이든 설명이든
-            <br />
-            뭔가 대화 주제 추천 서비스다!
-            <br />
-            피클 - 대화주제 추천 서비스입니다.
-          </St.Contents>
-        </St.ContentsWrapper>
-        <St.ContentsWrapper>
-          <St.Contents>
-            브랜딩이든 설명이든
-            <br />
-            뭔가 대화 주제 추천 서비스다!
-            <br />
-            피클 - 대화주제 추천 서비스입니다.
-          </St.Contents>
-        </St.ContentsWrapper>
-        <St.ContentsWrapper>
-          <St.Contents>
-            브랜딩이든 설명이든
-            <br />
-            뭔가 대화 주제 추천 서비스다!
-            <br />
-            피클 - 대화주제 추천 서비스입니다.
-          </St.Contents>
-        </St.ContentsWrapper>
-        <St.ContentsWrapper>
-          <St.Contents>
-            브랜딩이든 설명이든
-            <br />
-            뭔가 대화 주제 추천 서비스다!
-            <br />
-            피클 - 대화주제 추천 서비스입니다.
-          </St.Contents>
-        </St.ContentsWrapper>
-        <St.ContentsWrapper>
-          <St.Contents>
-            브랜딩이든 설명이든
-            <br />
-            뭔가 대화 주제 추천 서비스다!
-            <br />
-            피클 - 대화주제 추천 서비스입니다.
-          </St.Contents>
-        </St.ContentsWrapper>
+        {BannerImage.map((img, index) => (
+          <St.ImageWrapper key={index} src={img.src} alt={img.alt} />
+        ))}
       </Slider>
 
       <St.ContentsPages>
