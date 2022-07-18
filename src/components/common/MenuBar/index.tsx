@@ -26,7 +26,8 @@ export default function MenuBar() {
 
   const handleLogout = () => {
     localStorage.removeItem("piickle-token");
-    navigate("/main");
+    navigate("/");
+    closeMenuBar();
   };
 
   return (
