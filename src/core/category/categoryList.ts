@@ -1,3 +1,5 @@
+import { HeadingTitle } from "../main/headingTitles";
+
 type categoryListProps = {
   id: number;
   title: string;
@@ -46,6 +48,12 @@ export const categoryList: categoryListProps[] = [
     content: "커플과의 추억을 공유하세요",
   },
 ];
+
+export const categoryTitles: HeadingTitle = {
+  title: "Mood Piickle",
+  content: "더욱 쉽게 피클을 즐길 수 있는 방법!\n지금 나의 무드에 맞는 카테고리를 골라보세요",
+  isMoreBtn: false,
+};
 
 type gridValueProps = {
   id: number;
