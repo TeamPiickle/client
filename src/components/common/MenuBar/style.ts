@@ -9,7 +9,7 @@ export const St = {
     left: 0;
     height: 100vh;
 
-    background-color: ${({ theme }) => theme.colors.gray600};
+    background-color: rgba(0, 0, 0, 0.5);
 
     z-index: 10;
   `,
