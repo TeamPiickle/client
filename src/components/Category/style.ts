@@ -10,7 +10,6 @@ export const St = {
   `,
 
   CategoryBanner: styled.section`
-    width: 100%;
     height: 13.6rem;
     padding: 2rem 0 0 1.6rem;
 

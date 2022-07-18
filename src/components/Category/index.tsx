@@ -1,6 +1,6 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { ImgCategoryBanner } from "../../asset/image";
 import { HeadingTitle } from "../../core/main/headingTitles";
 import Header from "../common/Header";
 import HeadingTitleContainer from "../common/HeadingTitleContainer";
@@ -19,6 +19,10 @@ export default function Category() {
   const moveBestPiickle = () => {
     navigate("/card-collection", { state: { type: "best", idx: 0 } });
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   return (
     <St.Root>
