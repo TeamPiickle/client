@@ -2,7 +2,7 @@ import styled from "styled-components";
 export const St = {
   VoteTitleContainer: styled.article`
     height: 7.4rem;
-    width: 36rem;
+    width: 100%;
 
     padding: 0.2rem 1.6rem 4.6rem;
   `,

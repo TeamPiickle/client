@@ -22,31 +22,33 @@ export default function VoteContent() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   return (
-    <St.VoteContentContainer>
-      <St.VoteContentTitle>
-        민초 vs 반민초 <br />
-        여러분의 의견은?
-      </St.VoteContentTitle>
-      {isSuccess ? (
-        <AfterVoteList
-          setIsVoted={setIsVoted}
-          setIsSuccess={setIsSuccess}
-          selectedOption={selectedOption}
-          setSelectedOption={setSelectedOption}
-          currentIndex={currentIndex}
-          setCurrentIndex={setCurrentIndex}
-        />
-      ) : (
-        <BeforeVoteList
-          isVoted={isVoted}
-          setIsVoted={setIsVoted}
-          setIsSuccess={setIsSuccess}
-          selectedOption={selectedOption}
-          setSelectedOption={setSelectedOption}
-          currentIndex={currentIndex}
-          setCurrentIndex={setCurrentIndex}
-        />
-      )}
-    </St.VoteContentContainer>
+    <St.ContainerWrapper>
+      <St.VoteContentContainer>
+        <St.VoteContentTitle>
+          민초 vs 반민초 <br />
+          여러분의 의견은?
+        </St.VoteContentTitle>
+        {isSuccess ? (
+          <AfterVoteList
+            setIsVoted={setIsVoted}
+            setIsSuccess={setIsSuccess}
+            selectedOption={selectedOption}
+            setSelectedOption={setSelectedOption}
+            currentIndex={currentIndex}
+            setCurrentIndex={setCurrentIndex}
+          />
+        ) : (
+          <BeforeVoteList
+            isVoted={isVoted}
+            setIsVoted={setIsVoted}
+            setIsSuccess={setIsSuccess}
+            selectedOption={selectedOption}
+            setSelectedOption={setSelectedOption}
+            currentIndex={currentIndex}
+            setCurrentIndex={setCurrentIndex}
+          />
+        )}
+      </St.VoteContentContainer>
+    </St.ContainerWrapper>
   );
 }
