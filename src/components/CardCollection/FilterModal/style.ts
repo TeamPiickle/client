@@ -17,7 +17,7 @@ export const St = {
 
   FilterTagsWrapper: styled.ul`
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     gap: 1rem;
 
     margin: 0.8rem 0 2.2rem;
@@ -29,8 +29,8 @@ export const St = {
     justify-content: center;
     align-items: center;
 
-    width: 6.2rem;
     height: 2.6rem;
+    padding: 0.2rem 2.4rem;
 
     ${({ theme }) => theme.fonts.btn3}
     background-color: ${({ isactive, theme }) => (isactive ? theme.colors.green : theme.colors.white)};
