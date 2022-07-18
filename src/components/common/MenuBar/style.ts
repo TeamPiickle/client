@@ -32,7 +32,7 @@ export const St = {
   `,
 
   WelcomeText: styled.h1`
-    ${({ theme }) => theme.fonts.body1};
+    ${({ theme }) => theme.fonts.body10};
     font-size: 24px;
     line-height: 3.36rem;
 

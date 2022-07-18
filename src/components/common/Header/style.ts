@@ -20,7 +20,7 @@ export const St = {
   `,
 
   Link: styled(Link)`
-    padding-top: 0.1rem;
+    padding-top: 0.2rem;
   `,
 
   HamburgerContainer: styled.div<{ isClicked: boolean }>``,
