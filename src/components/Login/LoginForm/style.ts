@@ -8,7 +8,8 @@ export const St = {
   Form: styled.form``,
 
   Title: styled.h2`
-    margin-bottom: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 2.2rem;
 
     ${({ theme }) => theme.fonts.h1};
     color: ${({ theme }) => theme.colors.bg};
