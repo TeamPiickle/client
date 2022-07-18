@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 
 import { real } from "../../../core/api/cardCollection";
-import { sliderIdxState } from "../../../core/atom/slider";
-import { filterTags, intimacyTags } from "../../../core/cardCollection/filter";
+import { filterTagsState, sliderIdxState } from "../../../core/atom/slider";
+import { filterTagsInfo, intimacyTags } from "../../../core/cardCollection/filter";
 import Modal from "../../common/Modal";
 import IntimacySlider from "./IntimacySlider";
 import { St } from "./style";
@@ -16,10 +16,11 @@ interface FilterModalProps {
 export default function FilterModal(props: FilterModalProps) {
   const { closeHandler } = props;
 
+  const [filterTags, setFilterTags] = useRecoilState(filterTagsState);
   const setSliderIdx = useSetRecoilState(sliderIdxState);
   const navigation = useNavigate();
-  const [checkedTags, setCheckedTags] = useState<Set<string>>(new Set()); // 체크한 태그들을 저장할 state
-  const [intimacyValues, setIntimacyValues] = useState<number[]>([0]); // 친밀도 value
+  const [checkedTags, setCheckedTags] = useState<Set<string>>(new Set(filterTags.tags)); // 체크한 태그들을 저장할 state
+  const [intimacyValues, setIntimacyValues] = useState<number[]>(filterTags.intimacy); // 친밀도 value
 
   // 태그를 눌렀을 때 함수
   const toggleTag = (_tag: string) => {
@@ -32,6 +33,7 @@ export default function FilterModal(props: FilterModalProps) {
   const submitFilter = () => {
     const _checkedTagsArr = [...checkedTags];
     _checkedTagsArr.push(intimacyTags[intimacyValues[0]]);
+    setFilterTags({ tags: _checkedTagsArr, intimacy: [intimacyValues[0]] });
 
     real.fetchCardsWithFilter(_checkedTagsArr);
     navigation("/card-collection", { state: { type: "filter", filters: ["남자", "상관없음"] } });
@@ -43,11 +45,11 @@ export default function FilterModal(props: FilterModalProps) {
   return (
     <Modal closeHandler={closeHandler}>
       <St.ModalContentsWrapper>
-        {filterTags.map((filterTag, idx) => (
+        {filterTagsInfo.map((filterTagInfo, idx) => (
           <React.Fragment key={`filter-${idx}`}>
-            <St.FilterTitle>{filterTag.type}</St.FilterTitle>
+            <St.FilterTitle>{filterTagInfo.type}</St.FilterTitle>
             <St.FilterTagsWrapper>
-              {filterTag.tags.map((tag, index) => (
+              {filterTagInfo.tags.map((tag, index) => (
                 <St.FilterTag key={index} isactive={checkedTags.has(tag)} onClick={() => toggleTag(tag)}>
                   {tag}
                 </St.FilterTag>

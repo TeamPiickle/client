@@ -3,7 +3,7 @@ type FilterTags = {
   tags: string[];
 };
 
-export const filterTags: FilterTags[] = [
+export const filterTagsInfo: FilterTags[] = [
   {
     type: "성별",
     tags: ["남", "여"],
