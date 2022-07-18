@@ -14,12 +14,15 @@ export const St = {
     z-index: 10;
   `,
 
-  Contents: styled.section``,
-
   CloseBtnContainer: styled.div`
     position: absolute;
     top: 1.9rem;
     right: 1.6rem;
+  `,
+
+  Contents: styled.section`
+    position: absolute;
+    top: 10rem;
   `,
 
   ProfileContainer: styled.article`
