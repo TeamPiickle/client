@@ -38,7 +38,7 @@ export default function CardCollection() {
     <St.MainPage>
       <Header />
       <CardSlider openFilterModalHandler={clickHandleFilterModal} openLoginModalHandler={clickHandleLoginModal} />
-      {isLoginOpened && <LoginModal closeHandler={closeLoginModal} />}
+      {isLoginOpened && <LoginModal closeHandler={closeLoginModal} contents={"북마크기능인 마이피클을"} />}
       {isOpened && <FilterModal closeHandler={closeModal} />}
     </St.MainPage>
   );
