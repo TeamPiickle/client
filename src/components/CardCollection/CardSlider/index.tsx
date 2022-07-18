@@ -30,6 +30,7 @@ export default function CardSlider(props: CardSliderProps) {
   let CARD_TYPE_LOCATION: CardsTypeLocation = { type: "category", categoryId: "62cbb7d8a8c54f168a6ddfe1" };
 
   const [cardLists, setCardLists] = useState<CardIdList[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     switch (CARD_TYPE_LOCATION.type) {
@@ -63,20 +64,21 @@ export default function CardSlider(props: CardSliderProps) {
       default:
         throw new Error("잘못된 접근입니다");
     }
+    setIsLoading(false);
   }, []);
-
-  useEffect(() => {
-    console.log(cardLists);
-  }, [cardLists]);
 
   return (
     <St.Wrapper>
-      <Slider {...sliderSettings}>
-        {cardLists.map((cardList) => (
-          <Card key={cardList._id} openLoginModalHandler={openLoginModalHandler} />
-        ))}
-        <LastCard />
-      </Slider>
+      {isLoading ? (
+        <article>Loading...</article>
+      ) : (
+        <Slider {...sliderSettings}>
+          {cardLists.map((cardList) => (
+            <Card key={cardList._id} openLoginModalHandler={openLoginModalHandler} />
+          ))}
+          <LastCard />
+        </Slider>
+      )}
       {/* 마지막 index에서는 필터버튼 없애주기 */}
       <St.IcFilterBtn onClick={openFilterModalHandler} />
     </St.Wrapper>
