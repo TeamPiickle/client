@@ -6,6 +6,11 @@ function fetchCardsWithCategory(categoryId: string) {
   return realReq.GET(`${PATH.CATEGORIES}/${categoryId}`);
 }
 
+// 카테고리에 있는 카드 리스트 조회
+function fetchCardsWithBest() {
+  return realReq.GET(`${PATH.CARDS}/best`);
+}
+
 // 필터로 카드 리스트 조회
 function fetchCardsWithFilter(types: string[]) {
   let params = "";
@@ -23,6 +28,7 @@ function addNDeleteBookmark(cardId: string) {
 
 export const real = {
   fetchCardsWithCategory,
+  fetchCardsWithBest,
   fetchCardsWithFilter,
   addNDeleteBookmark,
 };
