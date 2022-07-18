@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
+import { real } from "../../../core/api/cardCollection";
 import { filterTags, intimacyTags } from "../../../core/cardCollection/filter";
 import Modal from "../../common/Modal";
 import IntimacySlider from "./IntimacySlider";
@@ -11,6 +13,8 @@ interface FilterModalProps {
 
 export default function FilterModal(props: FilterModalProps) {
   const { closeHandler } = props;
+
+  const navigation = useNavigate();
   const [checkedTags, setCheckedTags] = useState<Set<string>>(new Set()); // 체크한 태그들을 저장할 state
   const [intimacyValues, setIntimacyValues] = useState<number[]>([0]); // 친밀도 value
 
@@ -23,9 +27,13 @@ export default function FilterModal(props: FilterModalProps) {
 
   // 추천 시작하기를 눌렀을 때, 태그 정보들과 친밀도 정보를 담아주고 창닫기
   const submitFilter = () => {
-    const tempCheckedTags = new Set(checkedTags);
-    tempCheckedTags.add(intimacyTags[intimacyValues[0]]);
-    setCheckedTags(tempCheckedTags);
+    const _checkedTagsArr = [...checkedTags];
+    _checkedTagsArr.push(intimacyTags[intimacyValues[0]]);
+    console.log(_checkedTagsArr);
+
+    real.fetchCardsWithFilter(_checkedTagsArr);
+    navigation("/card-collection", { state: { type: "filter", filters: ["남자", "상관없음"] } });
+
     closeHandler();
   };
 
