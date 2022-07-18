@@ -16,6 +16,7 @@ import { St } from "./style";
 interface CardSliderProps {
   openFilterModalHandler: () => void;
   openLoginModalHandler: () => void;
+  cardsTypeLoaction: CardsTypeLocation;
 }
 
 // 1. 카테고리 :: /categories/:categoryId :: { type: "category", categoryId: "62cbb7d8a8c54f168a6ddfe1"}
@@ -23,22 +24,19 @@ interface CardSliderProps {
 // 3. all 전체 카드 :: /categories/cards :: { type: "all" }
 // 4. 필터 :: /categories/cards?search={type} :: { type: "filter", filters: ["남자", "상관없음"] }
 export default function CardSlider(props: CardSliderProps) {
-  const { openFilterModalHandler, openLoginModalHandler } = props;
+  const { openFilterModalHandler, openLoginModalHandler, cardsTypeLoaction } = props;
 
   const [sliderIdx, setSliderIdx] = useRecoilState(sliderIdxState);
-  const location = useLocation();
-  const CARD_TYPE_LOCATION = location.state as CardsTypeLocation;
-
   const sliderRef = useRef<Slider | null>(null);
   const [cardLists, setCardLists] = useState<CardList[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetchCardCollection(CARD_TYPE_LOCATION, (data: { cardList: CardList[] }) => {
+    fetchCardCollection(cardsTypeLoaction, (data: { cardList: CardList[] }) => {
       setCardLists(data.cardList);
     });
     setIsLoading(false);
-  }, [CARD_TYPE_LOCATION]);
+  }, [cardsTypeLoaction]);
 
   const sliderSettings = {
     className: "center",

@@ -11,16 +11,19 @@ import { St } from "./style";
 
 interface FilterModalProps {
   closeHandler: () => void;
+  typeLocation: "filter" | string;
 }
 
 export default function FilterModal(props: FilterModalProps) {
-  const { closeHandler } = props;
+  const { closeHandler, typeLocation } = props;
 
   const [filterTags, setFilterTags] = useRecoilState(filterTagsState);
   const setSliderIdx = useSetRecoilState(sliderIdxState);
   const navigation = useNavigate();
-  const [checkedTags, setCheckedTags] = useState<Set<string>>(new Set(filterTags.tags)); // 체크한 태그들을 저장할 state
-  const [intimacyValues, setIntimacyValues] = useState<number[]>(filterTags.intimacy); // 친밀도 value
+  const [checkedTags, setCheckedTags] = useState<Set<string>>(
+    typeLocation === "filter" ? new Set(filterTags.tags) : new Set(),
+  ); // 체크한 태그들을 저장할 state
+  const [intimacyValues, setIntimacyValues] = useState<number[]>(typeLocation === "filter" ? filterTags.intimacy : [0]); // 친밀도 value
 
   // 태그를 눌렀을 때 함수
   const toggleTag = (_tag: string) => {
