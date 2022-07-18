@@ -14,7 +14,6 @@ export function useCategoryLists() {
   };
 }
 
-// 베스트 5 피클 조회
 export function useBestPiickle() {
   const { data, error } = useSWR(`${PATH.CARDS}/best`, realReq.GET_SWR);
 
