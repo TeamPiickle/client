@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import styled from "styled-components";
 
 export const St = {
@@ -34,6 +35,8 @@ export const St = {
     ${({ theme }) => theme.fonts.btn3}
     background-color: ${({ isactive, theme }) => (isactive ? theme.colors.green : theme.colors.white)};
     color: ${({ isactive, theme }) => (isactive ? theme.colors.white : theme.colors.black)};
+    box-shadow: ${({ isactive }) =>
+      isactive ? "0px 1px 1px rgba(0, 0, 0, 0.25)" : "inset 0px 1px 1px rgba(0, 0, 0, 0.25)"};
 
     border-radius: 6.3rem;
     cursor: pointer;
