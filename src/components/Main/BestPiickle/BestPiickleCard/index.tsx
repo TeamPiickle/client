@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import { St } from "./style";
 
 interface BestPiickleCardProps {
@@ -12,6 +14,8 @@ export default function BestPiickleCard(props: BestPiickleCardProps) {
   const { bestPiickle } = props;
   const { _id, content, category } = bestPiickle;
 
+  const navigation = useNavigate();
+
   return (
     <St.BestPiickleCard>
       <St.TagsWrapper>
@@ -20,8 +24,14 @@ export default function BestPiickleCard(props: BestPiickleCardProps) {
         })}
       </St.TagsWrapper>
       <St.Content>{content}</St.Content>
-      <St.PickButtonWrapper type="button">
-        <St.PickButton to={`/categories/${_id}`}>카드 보기</St.PickButton>
+      <St.PickButtonWrapper>
+        <St.PickButton
+          type="button"
+          onClick={() => {
+            navigation("/card-collection", { state: { type: "category", categoryId: _id } });
+          }}>
+          카드 보기
+        </St.PickButton>
       </St.PickButtonWrapper>
     </St.BestPiickleCard>
   );
