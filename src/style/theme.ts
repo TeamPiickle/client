@@ -46,7 +46,7 @@ function FONT({ weight, size, lineHeight, notoSans }: Font): string {
 
 const fonts = {
   h1: FONT({ weight: 600, size: 2, lineHeight: 130 }),
-  h2: FONT({ weight: 400, size: 1.2, lineHeight: 140 }),
+  h2: FONT({ weight: 400, size: 1.4, lineHeight: 140 }),
   body1: FONT({ weight: 600, size: 1.6, lineHeight: 140 }),
   body2: FONT({ weight: 400, size: 2.4, lineHeight: 140 }),
   body3: FONT({ weight: 700, size: 1.5, lineHeight: 140 }),
