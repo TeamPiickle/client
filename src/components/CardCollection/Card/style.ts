@@ -16,7 +16,7 @@ export const St = {
   `,
 
   ContentWrapper: styled.p`
-    margin: 4.7rem 0 0 2.4rem;
+    margin: 4.7rem 2.4rem 0;
 
     ${({ theme }) => theme.fonts.body3};
     color: ${({ theme }) => theme.colors.bg};

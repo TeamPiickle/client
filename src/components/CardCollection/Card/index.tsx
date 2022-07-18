@@ -1,16 +1,20 @@
 import { useState } from "react";
 
+import { CardIdList } from "../../../types/cardCollection";
 import CustomFullHeart from "../CustomFullHeart";
 import TagsSlider from "../TagsSlider";
 import { St } from "./style";
 
 interface LoginCheckProps {
+  cardIdList: CardIdList;
   openLoginModalHandler: () => void;
 }
 
 export default function Card(props: LoginCheckProps) {
+  const { cardIdList, openLoginModalHandler } = props;
+
   const [isBookmarked, setIsBookmarked] = useState(false);
-  const { openLoginModalHandler } = props;
+
   const handleClickHeart = () => {
     setIsBookmarked((prev) => !prev);
     openLoginModalHandler();
@@ -19,9 +23,9 @@ export default function Card(props: LoginCheckProps) {
   return (
     <St.Card>
       <St.TagsWrapper>
-        <TagsSlider tags={["#재미", "#if충1", "#if충2", "#if충3", "#if충4"]} />
+        <TagsSlider tags={cardIdList.tags} />
       </St.TagsWrapper>
-      <St.ContentWrapper>우리집공양추르하ㅐ</St.ContentWrapper>
+      <St.ContentWrapper>{cardIdList.content}</St.ContentWrapper>
       <St.HeartWrapper onClick={handleClickHeart}>
         <St.IcEmptyHeart />
         {isBookmarked && <CustomFullHeart />}
