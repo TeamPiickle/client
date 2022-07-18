@@ -4,7 +4,7 @@ enum StateType {
   SLIDER_IDX = "slideridx",
 }
 
-export const activeState = atom({
+export const sliderIdxState = atom({
   key: StateType.SLIDER_IDX,
   default: 0,
 });

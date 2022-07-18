@@ -3,6 +3,7 @@ import { useSetRecoilState } from "recoil";
 
 import { IcCloseBtn, IcMenuBarImg } from "../../../asset/icon";
 import { activeState } from "../../../core/atom/menuBar";
+import { sliderIdxState } from "../../../core/atom/sliderIdx";
 import { St, StContentsContainer } from "./style";
 
 const MenuBarDummy = {
@@ -12,12 +13,14 @@ const MenuBarDummy = {
 
 export default function MenuBar() {
   const setIsActive = useSetRecoilState(activeState);
+  const setSliderIdx = useSetRecoilState(sliderIdxState);
 
   const navigate = useNavigate();
   const moveCardCollection = () => {
     navigate("/card-collection", { state: { type: "all" } });
+    setSliderIdx(0);
+
     closeMenuBar();
-    // location.reload();
   };
 
   const closeMenuBar = () => {

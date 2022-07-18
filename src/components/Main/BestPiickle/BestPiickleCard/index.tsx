@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
 
+import { sliderIdxState } from "../../../../core/atom/sliderIdx";
 import { St } from "./style";
 
 interface BestPiickleCardProps {
@@ -14,6 +16,7 @@ export default function BestPiickleCard(props: BestPiickleCardProps) {
   const { bestPiickle } = props;
   const { content, category } = bestPiickle;
 
+  const setSliderIdx = useSetRecoilState(sliderIdxState);
   const navigation = useNavigate();
 
   return (
@@ -29,6 +32,7 @@ export default function BestPiickleCard(props: BestPiickleCardProps) {
           type="button"
           onClick={() => {
             navigation("/card-collection", { state: { type: "best" } });
+            setSliderIdx(0);
           }}>
           카드 보기
         </St.PickButton>
