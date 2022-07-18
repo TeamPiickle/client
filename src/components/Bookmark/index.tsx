@@ -20,49 +20,15 @@ export type myPiickle = {
 export default function Bookmark() {
   const { userBookmarks, isLoading, isError } = useUserBookmarks();
 
-  const myPiickleLists: myPiickle[] = [
-    {
-      cardId: "6290145b6af16276098d04d9",
-      content: "안녕하세요 적당히 바람이 시원한 어쩌구 저쩌구~ adfa fasdfasdfasdvfwere",
-    },
-    {
-      cardId: "6290145b6af16276098d04d8",
-      content: "인간관계에서 가장 중요하게 생각합니다 안녕하세요",
-    },
-    {
-      cardId: "6290145b6af16276098d04d7",
-      content: "안녕하세요 적당히 바람이 시원한 어쩌구 저쩌구~",
-    },
-    {
-      cardId: "6290145b6af16276098d04d6",
-      content: "서헤은 기여벙",
-    },
-    {
-      cardId: "6290145b6af16276098d04d5",
-      content: "안녕하세요 적당히 바람이 시원한 어쩌구 저쩌구~",
-    },
-    {
-      cardId: "6290145b6af16276098d04d4",
-      content: "서헤은 기여벙",
-    },
-    {
-      cardId: "6290145b6af16276098d04d3",
-      content: "안녕하세요 적당히 바람이 시원한 어쩌구 저쩌구~",
-    },
-    {
-      cardId: "6290145b6af16276098d04d2",
-      content: "서헤은 기여벙",
-    },
-  ];
-
   return (
     <main>
       <Header />
       <HeadingTitleContainer headingTitles={bookmarkHeadingTitles} />
       <St.List>
-        {myPiickleLists.map((myPiickle) => (
-          <MyPiickleItem key={myPiickle.cardId} myPiickle={myPiickle} />
-        ))}
+        {userBookmarks &&
+          userBookmarks.data.map((myPiickle: myPiickle, idx: number) => (
+            <MyPiickleItem key={idx} myPiickle={myPiickle} />
+          ))}
       </St.List>
       <Footer />
     </main>
