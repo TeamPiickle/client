@@ -14,10 +14,10 @@ export type CardsTypeLocation =
       filters: string[];
     };
 
-export interface CardIdList {
+export interface CardList {
   _id: string;
   content: string;
   tags: string[];
-  category: string[];
+  isBookmark: boolean;
   filter: string[];
 }

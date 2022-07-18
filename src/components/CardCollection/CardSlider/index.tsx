@@ -6,9 +6,9 @@ import { useLocation } from "react-router-dom";
 import Slider from "react-slick";
 import { useRecoilState } from "recoil";
 
-import { real } from "../../../core/api/cardCollection";
 import { sliderIdxState } from "../../../core/atom/sliderIdx";
-import { CardIdList, CardsTypeLocation } from "../../../types/cardCollection";
+import { CardList, CardsTypeLocation } from "../../../types/cardCollection";
+import fetchCardCollection from "../../../util/fetchCardCollection";
 import Card from "../Card";
 import LastCard from "../Card/LastCard";
 import { St } from "./style";
@@ -30,8 +30,15 @@ export default function CardSlider(props: CardSliderProps) {
   const CARD_TYPE_LOCATION = location.state as CardsTypeLocation;
 
   const sliderRef = useRef<Slider | null>(null);
-  const [cardLists, setCardLists] = useState<CardIdList[]>([]);
+  const [cardLists, setCardLists] = useState<CardList[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    fetchCardCollection(CARD_TYPE_LOCATION, (data: { cardList: CardList[] }) => {
+      setCardLists(data.cardList);
+    });
+    setIsLoading(false);
+  }, [CARD_TYPE_LOCATION]);
 
   const sliderSettings = {
     className: "center",
@@ -45,41 +52,6 @@ export default function CardSlider(props: CardSliderProps) {
     afterChange: (idx: number) => setSliderIdx(idx),
   };
 
-  useEffect(() => {
-    switch (CARD_TYPE_LOCATION.type) {
-      case "category":
-        (async () => {
-          const { data } = await real.fetchCardsWithCategory(CARD_TYPE_LOCATION.categoryId);
-          setCardLists(data.cardList);
-        })();
-        break;
-
-      case "best":
-        (async () => {
-          const { data } = await real.fetchCardsWithBest();
-          setCardLists(data.cardList);
-        })();
-        break;
-
-      case "all":
-        (async () => {
-          const { data } = await real.fetchCardsWithFilter([]);
-          setCardLists(data.cardList);
-        })();
-        break;
-
-      case "filter":
-        (async () => {
-          const { data } = await real.fetchCardsWithFilter(CARD_TYPE_LOCATION.filters);
-          setCardLists(data.cardList);
-        })();
-        break;
-      default:
-        throw new Error("잘못된 접근입니다.");
-    }
-    setIsLoading(false);
-  }, [CARD_TYPE_LOCATION]);
-
   return (
     <St.Wrapper>
       {isLoading ? (
@@ -87,7 +59,7 @@ export default function CardSlider(props: CardSliderProps) {
       ) : (
         <Slider {...sliderSettings} ref={sliderRef}>
           {cardLists.map((cardList) => (
-            <Card key={cardList._id} openLoginModalHandler={openLoginModalHandler} cardIdList={cardList} />
+            <Card key={cardList._id} openLoginModalHandler={openLoginModalHandler} cardList={cardList} />
           ))}
           <LastCard />
         </Slider>
