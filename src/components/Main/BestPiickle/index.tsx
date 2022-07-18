@@ -1,21 +1,13 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import { useEffect, useState } from "react";
 import Slider from "react-slick";
 
 import { useBestPiickle } from "../../../core/api/main";
 import { headingTitles } from "../../../core/main/headingTitles";
-import { Card } from "../../../types/main";
 import HeadingTitleContainer from "../../common/HeadingTitleContainer";
 import BestPiickleCard from "./BestPiickleCard";
 import { St } from "./style";
-
-type bestPiickleType = {
-  _id: string;
-  category: string[];
-  content: string;
-};
 
 const sliderSettings = {
   arrows: false,
@@ -28,14 +20,16 @@ const sliderSettings = {
 export default function BestPiickle() {
   const { bestPiickle, isLoading, isError } = useBestPiickle();
 
+  console.log(bestPiickle?.data.cardList);
+
   return (
     <St.Root>
       <HeadingTitleContainer headingTitles={headingTitles[0]} />
       <St.SliderWrapper>
         <Slider {...sliderSettings}>
           {bestPiickle &&
-            bestPiickle.data.cardList.map((bestPiickle: bestPiickleType, idx: number) => {
-              return <BestPiickleCard key={idx} bestPiickle={bestPiickle} />;
+            bestPiickle.data.cardList.map((bestPiickle) => {
+              return <BestPiickleCard key={bestPiickle._id} bestPiickle={bestPiickle} />;
             })}
         </Slider>
       </St.SliderWrapper>
