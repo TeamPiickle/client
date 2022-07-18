@@ -42,7 +42,7 @@ export const St = {
   `,
 
   PickButtonWrapper: styled.button`
-    width: 8.1rem;
+    width: 7.1rem;
     height: 2.5rem;
 
     background-color: ${({ theme }) => theme.colors.green};
@@ -54,7 +54,7 @@ export const St = {
   `,
 
   PickButton: styled(Link)`
-    ${({ theme }) => theme.fonts.btn2}
+    ${({ theme }) => theme.fonts.btn1}
     color: ${({ theme }) => theme.colors.white};
 
     width: 8.1rem;
