@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const St = {
@@ -16,6 +17,10 @@ export const St = {
     background-color: ${({ theme, iscardview }) => (iscardview ? "transparent" : theme.colors.white)};
 
     z-index: 10;
+  `,
+
+  Link: styled(Link)`
+    padding-top: 0.1rem;
   `,
 
   HamburgerContainer: styled.div<{ isClicked: boolean }>``,

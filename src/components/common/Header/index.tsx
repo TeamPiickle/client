@@ -19,9 +19,9 @@ export default function Header() {
   } else {
     return (
       <St.HeaderWrapper iscardview={pathname === "/card-collection"}>
-        <Link to="/">
+        <St.Link to="/">
           <IcLogo aria-label="피클" />
-        </Link>
+        </St.Link>
         <St.HamburgerContainer isClicked={isActive}>
           <IcHamburger aria-label="메뉴" onClick={handleModal} />
         </St.HamburgerContainer>

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const St = {
   Section: styled.section`
-    padding: 0 1.2rem;
+    padding: 0 1.6rem;
   `,
 
   Form: styled.form``,
