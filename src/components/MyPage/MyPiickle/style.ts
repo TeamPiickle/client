@@ -50,7 +50,7 @@ export const St = {
     height: 1.7rem;
 
     letter-spacing: -0.03rem;
-    ${({ theme }) => theme.fonts.body4};
+    ${({ theme }) => theme.fonts.body6};
     color: ${({ theme }) => theme.colors.gray600};
   `,
 
@@ -69,10 +69,10 @@ export const St = {
 
   MoveButtonTitle: styled.p`
     width: auto;
-    height: 1.7rem;
+    height: 2rem;
 
     letter-spacing: -0.03rem;
-    ${({ theme }) => theme.fonts.body4};
+    ${({ theme }) => theme.fonts.body6};
     color: ${({ theme }) => theme.colors.bg};
   `,
 };
