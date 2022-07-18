@@ -12,6 +12,8 @@ export const St = {
   ContentsWrapper: styled.article`
     width: 36rem;
     height: 21.7rem;
+
+    margin-top: -2.4rem;
   `,
 
   Contents: styled.p`

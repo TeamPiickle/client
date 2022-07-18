@@ -4,7 +4,7 @@ export const St = {
     height: 7.4rem;
     width: 100%;
 
-    padding: 0.2rem 1.6rem 4.6rem;
+    padding: 0 1.6rem 4.6rem;
   `,
 
   VoteTitleText: styled.h1`

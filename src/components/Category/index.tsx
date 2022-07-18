@@ -23,7 +23,7 @@ export default function Category() {
 
 const St = {
   CategoryBanner: styled.img`
-    width: 36rem;
+    width: 100%;
     height: 13.6rem;
   `,
 };
