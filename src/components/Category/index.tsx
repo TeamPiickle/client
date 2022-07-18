@@ -21,7 +21,7 @@ export default function Category() {
   };
 
   return (
-    <main>
+    <St.Root>
       <Header />
       <St.CategoryBanner>
         <St.BannerTitle>Best Piickle 들만 모아서 보기</St.BannerTitle>
@@ -32,6 +32,6 @@ export default function Category() {
       </St.CategoryBanner>
       <HeadingTitleContainer headingTitles={categoryTitles} />
       <CategoryContents />
-    </main>
+    </St.Root>
   );
 }
