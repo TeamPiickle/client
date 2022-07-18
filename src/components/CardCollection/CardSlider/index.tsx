@@ -18,7 +18,7 @@ interface CardSliderProps {
 }
 
 // 1. 카테고리 :: /categories/:categoryId :: { type: "category", categoryId: "62cbb7d8a8c54f168a6ddfe1"}
-// 2. 베스트 카드 :: /cards/best :: { type: "best" }
+// 2. 베스트 카드 :: /cards/best :: { type: "best", index: 1 }
 // 3. all 전체 카드 :: /categories/cards :: { type: "all" }
 // 4. 필터 :: /categories/cards?search={type} :: { type: "filter", filters: ["남자", "상관없음"] }
 export default function CardSlider(props: CardSliderProps) {
