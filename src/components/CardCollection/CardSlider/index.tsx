@@ -24,10 +24,8 @@ interface CardSliderProps {
 export default function CardSlider(props: CardSliderProps) {
   const { openFilterModalHandler, openLoginModalHandler } = props;
 
-  // const location = useLocation();
-  // const CARD_TYPE = location.state as number...?;
-  // eslint-disable-next-line prefer-const
-  let CARD_TYPE_LOCATION: CardsTypeLocation = { type: "category", categoryId: "62cbb7d8a8c54f168a6ddfe1" };
+  const location = useLocation();
+  const CARD_TYPE_LOCATION = location.state as CardsTypeLocation;
 
   const [cardLists, setCardLists] = useState<CardIdList[]>([]);
   const [isLoading, setIsLoading] = useState(true);
