@@ -1,4 +1,5 @@
 import { IcCheck1 } from "../../../asset/icon";
+import { real } from "../../../core/api/vote";
 import { St } from "./style";
 
 type propsType = {
@@ -14,6 +15,12 @@ export default function AfterVoteList(props: propsType) {
     setIsSuccess(false);
     setIsVoted(false);
     setIsPosted(true);
+    handlePost();
+  };
+
+  const handlePost = () => {
+    real.postVote(ballotTopic?.data.ballotTopic._id, ballotTopic?.data.userSelect.ballotItemId);
+    console.log(ballotTopic?.data.ballotTopic._id, ballotTopic?.data.userSelect.ballotItemId);
   };
 
   console.log(ballotTopic.data.ballotItems);

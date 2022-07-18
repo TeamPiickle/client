@@ -24,9 +24,7 @@ export const St = {
 
   BasicInfoTitle: styled.li`
     height: 1.7rem;
-
     ${({ theme }) => theme.fonts.footer1};
-
     color: ${({ theme }) => theme.colors.bg};
   `,
 
@@ -46,7 +44,6 @@ export const St = {
     margin-bottom: 0.3rem;
 
     ${({ theme }) => theme.fonts.footer1};
-
     color: ${({ theme }) => theme.colors.bg};
   `,
 

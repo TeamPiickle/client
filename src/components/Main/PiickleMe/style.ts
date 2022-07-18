@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const St = {
@@ -64,7 +65,7 @@ export const St = {
     white-space: nowrap;
   `,
 
-  RepresentGoVoteBtn: styled.button`
+  RepresentGoVoteBtnWrapper: styled.button`
     width: 7.6rem;
     height: 2.8rem;
 
@@ -80,7 +81,11 @@ export const St = {
     ${({ theme }) => theme.fonts.h2}
   `,
 
-  GoVoteBtn: styled.button`
+  RepresentGoVoteBtn: styled(Link)``,
+
+  GoVoteBtnWrapper: styled.button`
     margin-right: 1.6rem;
   `,
+
+  GoVoteBtn: styled(Link)``,
 };
