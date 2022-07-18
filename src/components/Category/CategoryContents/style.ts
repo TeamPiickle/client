@@ -4,10 +4,12 @@ export const St = {
   FlexContainer: styled.div`
     display: flex;
     justify-content: center;
+    width: 100%;
+    padding: 0 1.6rem;
   `,
 
   CategoryItemContainer: styled.section`
-    width: 32.8rem;
+    width: 100%;
     height: 57.8rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
