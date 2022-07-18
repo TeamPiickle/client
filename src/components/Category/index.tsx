@@ -1,29 +1,35 @@
-import styled from "styled-components";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-import { CategoryBanner } from "../../asset/image";
-import { HeadingTitle } from "../../core/main/headingTitles";
+import { categoryTitles } from "../../core/category/categoryList";
 import Header from "../common/Header";
 import HeadingTitleContainer from "../common/HeadingTitleContainer";
 import CategoryContents from "./CategoryContents";
+import { St } from "./style";
+
 export default function Category() {
-  const categoryTitles: HeadingTitle = {
-    title: "Mood Piickle",
-    content: "더욱 쉽게 피클을 즐길 수 있는 방법!\n지금 나의 무드에 맞는 카테고리를 골라보세요",
-    isMoreBtn: false,
+  const navigate = useNavigate();
+
+  const moveBestPiickle = () => {
+    navigate("/card-collection", { state: { type: "best", idx: 0 } });
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   return (
-    <main>
+    <St.Root>
       <Header />
-      <St.CategoryBanner src={CategoryBanner} />
+      <St.CategoryBanner>
+        <St.BannerTitle>Best Piickle 들만 모아서 보기</St.BannerTitle>
+        <St.BannerSubTitle>마이피클을 가장 많이 달성한 핫한 대화 주제 30선</St.BannerSubTitle>
+        <St.GoBestPiickleBtn type="button" onClick={moveBestPiickle}>
+          카드 보기
+        </St.GoBestPiickleBtn>
+      </St.CategoryBanner>
       <HeadingTitleContainer headingTitles={categoryTitles} />
       <CategoryContents />
-    </main>
+    </St.Root>
   );
 }
-
-const St = {
-  CategoryBanner: styled.img`
-    width: 36rem;
-    height: 13.6rem;
-  `,
-};

@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 
 export const St = {
-  Root: styled.section`
+  Root: styled.main`
     position: fixed;
     top: 0;
     right: 0;
@@ -13,7 +14,7 @@ export const St = {
     z-index: 10;
   `,
 
-  Contents: styled.div``,
+  Contents: styled.section``,
 
   CloseBtnContainer: styled.div`
     position: absolute;
@@ -55,9 +56,8 @@ export const St = {
     margin-top: 3.6rem;
   `,
 
-  MyProfileBtn: styled.button`
+  MyProfileBtn: styled(Link)`
     ${({ theme }) => theme.fonts.btn2};
-
     color: ${({ theme }) => theme.colors.gray600};
 
     border-right: solid 0.15rem ${({ theme }) => theme.colors.gray600};
@@ -76,49 +76,22 @@ export const St = {
     padding-top: 3.6rem;
   `,
 
-  TitleText: styled.h1`
+  Title: styled.h1`
     ${({ theme }) => theme.fonts.body1};
-
     color: ${({ theme }) => theme.colors.bg};
-  `,
-
-  MoodPiickleContainer: styled.div`
-    display: flex;
-
-    margin-top: 2.4rem;
-  `,
-
-  MoodPiickleText: styled.h2`
-    ${({ theme }) => theme.fonts.body1};
-
-    color: ${({ theme }) => theme.colors.bg};
-
     margin-right: 1.2rem;
   `,
 
-  GoMoodPiickleBtn: styled.button`
-    ${({ theme }) => theme.fonts.body4};
+  CardRecomendWrapper: styled.div``,
 
-    color: ${({ theme }) => theme.colors.gray600};
-  `,
-
-  PiickleMeContainer: styled.div`
+  RecomendWrapper: styled(Link)`
     display: flex;
-
+    align-items: center;
     margin-top: 2.4rem;
   `,
 
-  PiickleMeText: styled.h2`
-    ${({ theme }) => theme.fonts.body1};
-
-    color: ${({ theme }) => theme.colors.bg};
-
-    margin-right: 1.2rem;
-  `,
-
-  GoPiickleMeBtn: styled.button`
+  SubTitle: styled.div`
     ${({ theme }) => theme.fonts.body4};
-
     color: ${({ theme }) => theme.colors.gray600};
   `,
 };

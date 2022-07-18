@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
 import { IcCloseBtn, IcMenuBarImg } from "../../../asset/icon";
@@ -11,6 +12,23 @@ const MenuBarDummy = {
 
 export default function MenuBar() {
   const setIsActive = useSetRecoilState(activeState);
+
+  const navigate = useNavigate();
+  const moveCardCollection = () => {
+    navigate("/card-collection", { state: { type: "all" } });
+    closeMenuBar();
+    // location.reload();
+  };
+
+  const closeMenuBar = () => {
+    setIsActive(false);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("piickle-token");
+    navigate("/");
+    closeMenuBar();
+  };
 
   return (
     <St.Root>
@@ -27,20 +45,24 @@ export default function MenuBar() {
             </St.WelcomeText>
             <St.DescriptText>오늘도 피클과 함께 대화 나눠요</St.DescriptText>
             <St.BtnContainer>
-              <St.MyProfileBtn>My 프로필</St.MyProfileBtn>
-              <St.LogoutBtn>로그아웃</St.LogoutBtn>
+              <St.MyProfileBtn to="/my-page" onClick={closeMenuBar}>
+                My 프로필
+              </St.MyProfileBtn>
+              <St.LogoutBtn onClick={handleLogout}>로그아웃</St.LogoutBtn>
             </St.BtnContainer>
           </St.ProfileContainer>
           <St.RecomendContainer>
-            <St.TitleText>대화 주제 추천 카드</St.TitleText>
-            <St.MoodPiickleContainer>
-              <St.MoodPiickleText>Mood Piickles</St.MoodPiickleText>
-              <St.GoMoodPiickleBtn>카테고리별 대화주제 추천</St.GoMoodPiickleBtn>
-            </St.MoodPiickleContainer>
-            <St.PiickleMeContainer>
-              <St.PiickleMeText>Piickle Me</St.PiickleMeText>
-              <St.GoPiickleMeBtn>진행중인 투표</St.GoPiickleMeBtn>
-            </St.PiickleMeContainer>
+            <St.CardRecomendWrapper onClick={moveCardCollection}>
+              <St.Title>대화 주제 추천 카드</St.Title>
+            </St.CardRecomendWrapper>
+            <St.RecomendWrapper to="/category" onClick={closeMenuBar}>
+              <St.Title>Mood Piickles</St.Title>
+              <St.SubTitle>카테고리별 대화주제 추천</St.SubTitle>
+            </St.RecomendWrapper>
+            <St.RecomendWrapper to="/vote" onClick={closeMenuBar}>
+              <St.Title>Piickle Me</St.Title>
+              <St.SubTitle>진행중인 투표</St.SubTitle>
+            </St.RecomendWrapper>
           </St.RecomendContainer>
         </St.Contents>
       </StContentsContainer>
