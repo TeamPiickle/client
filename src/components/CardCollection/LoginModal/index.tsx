@@ -16,10 +16,10 @@ export default function LoginModal(props: LoginCheckProps) {
           <St.ModalContents>로그인을 하시면 북마크 기능인 마이피클을 이용할 수 있어요!</St.ModalContents>
         </St.Wrapper>
         <St.Buttons>
-          <St.LoginButton type="button">
+          <St.Button type="button">
             <St.LoginLink to="/login">로그인</St.LoginLink>
-          </St.LoginButton>
-          <St.SignUpButton type="button">회원가입</St.SignUpButton>
+          </St.Button>
+          <St.Button type="button">회원가입</St.Button>
         </St.Buttons>
       </St.Container>
     </Modal>

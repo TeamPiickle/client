@@ -13,7 +13,7 @@ export const St = {
   `,
 
   MyPiickleContent: styled.strong`
-    ${({ theme }) => theme.fonts.body4};
+    ${({ theme }) => theme.fonts.body6};
     letter-spacing: -0.03em;
     color: ${({ theme }) => theme.colors.bg};
 
@@ -21,7 +21,7 @@ export const St = {
     white-space: nowrap;
     text-overflow: ellipsis;
 
-    width: 21rem;
+    width: 24.2rem;
   `,
 
   HeartWrapper: styled.div`
