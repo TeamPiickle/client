@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 import Slider from "react-slick";
 import { useRecoilState } from "recoil";
 
-import { sliderIdxState } from "../../../core/atom/sliderIdx";
+import { sliderIdxState } from "../../../core/atom/slider";
 import { CardList, CardsTypeLocation } from "../../../types/cardCollection";
 import fetchCardCollection from "../../../util/fetchCardCollection";
 import Card from "../Card";

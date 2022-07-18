@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
 import { real } from "../../../core/api/cardCollection";
-import { sliderIdxState } from "../../../core/atom/sliderIdx";
+import { sliderIdxState } from "../../../core/atom/slider";
 import { filterTags, intimacyTags } from "../../../core/cardCollection/filter";
 import Modal from "../../common/Modal";
 import IntimacySlider from "./IntimacySlider";

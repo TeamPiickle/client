@@ -3,7 +3,7 @@ import { useSetRecoilState } from "recoil";
 
 import { IcCloseBtn, IcMenuBarImg } from "../../../asset/icon";
 import { activeState } from "../../../core/atom/menuBar";
-import { sliderIdxState } from "../../../core/atom/sliderIdx";
+import { sliderIdxState } from "../../../core/atom/slider";
 import { St, StContentsContainer } from "./style";
 
 const MenuBarDummy = {
