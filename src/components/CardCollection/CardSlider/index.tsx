@@ -62,7 +62,7 @@ export default function CardSlider(props: CardSliderProps) {
         })();
         break;
       default:
-        throw new Error("잘못된 접근입니다");
+        throw new Error("잘못된 접근입니다.");
     }
     setIsLoading(false);
   }, []);
