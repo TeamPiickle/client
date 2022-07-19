@@ -13,7 +13,7 @@ export default function CategoryContents() {
 
   const navigate = useNavigate();
 
-  const moveCategory = (id: number) => {
+  const moveCategory = (id: string) => {
     navigate("/card-collection", { state: { type: "category", categoryId: id } });
     setSliderIdx(0);
   };
@@ -31,7 +31,7 @@ export default function CategoryContents() {
                 columnEnd={gridValue[index].columnEnd}
                 rowStart={gridValue[index].rowStart}
                 rowEnd={gridValue[index].rowEnd}
-                onClick={() => moveCategory(gridValue[index].id)}>
+                onClick={() => moveCategory(item._id)}>
                 <St.CategoryTitle>{item.title}</St.CategoryTitle>
                 <St.CategoryDescription>{item.content}</St.CategoryDescription>
               </St.CategoryItem>
