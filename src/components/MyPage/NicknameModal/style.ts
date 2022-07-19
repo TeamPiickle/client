@@ -43,6 +43,13 @@ export const St = {
     ${({ theme }) => theme.fonts.body6};
     color: ${({ theme }) => theme.colors.bg};
   `,
+  ErrorMessage: styled.div`
+    ${({ theme }) => theme.fonts.caption5};
+    color: ${({ theme }) => theme.colors.red};
+
+    margin-left: 2.3rem;
+    margin-top: 0.6rem;
+  `,
   ButtonWrapper: styled.div`
     display: flex;
     justify-content: center;

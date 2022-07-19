@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 
 import { real } from "../../../core/api/myPage";
@@ -12,14 +13,22 @@ interface ModifyNicknameProps {
 export default function NicknameModal(props: ModifyNicknameProps) {
   const { closeHandler, nickname } = props;
   const [newNickname, setNewNickname] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const onChangeNickname = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewNickname(e.target.value);
   };
 
-  const saveNewNickname = () => {
-    real.patchUserNickName(newNickname);
-    closeHandler();
+  const saveNewNickname = async () => {
+    try {
+      await real.patchUserNickName(newNickname);
+      closeHandler();
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        const errorData = error.response?.data;
+        if (errorData.status === 400) setErrorMessage("이미 존재하는 닉네임입니다");
+      }
+    }
   };
 
   return (
@@ -36,9 +45,10 @@ export default function NicknameModal(props: ModifyNicknameProps) {
           <St.NewNicknameWrapper>
             <St.NewNickname type="text" id="newNickname" onChange={onChangeNickname} />
           </St.NewNicknameWrapper>
+          {errorMessage !== "" && <St.ErrorMessage>{errorMessage}</St.ErrorMessage>}
         </St.Wrapper>
         <St.ButtonWrapper>
-          <St.SaveButton type="submit" onClick={saveNewNickname}>
+          <St.SaveButton type="button" onClick={saveNewNickname}>
             변경사항 저장
           </St.SaveButton>
         </St.ButtonWrapper>
