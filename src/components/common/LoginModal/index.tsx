@@ -1,4 +1,4 @@
-import CustomFullHeart from "../CustomFullHeart";
+import CustomFullHeart from "../../CardCollection/CustomFullHeart";
 import Modal from "../Modal";
 import { St } from "./style";
 

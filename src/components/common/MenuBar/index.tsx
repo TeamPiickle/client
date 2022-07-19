@@ -64,7 +64,7 @@ export default function MenuBar() {
               <St.Title>Mood Piickles</St.Title>
               <St.SubTitle>카테고리별 대화주제 추천</St.SubTitle>
             </St.RecomendWrapper>
-            <St.RecomendWrapper to={ballotLists && `/vote/${ballotLists.data[0]._id}`} onClick={closeMenuBar}>
+            <St.RecomendWrapper to={`/vote/${ballotLists?.data[0]._id}`} onClick={closeMenuBar}>
               <St.Title>Piickle Me</St.Title>
               <St.SubTitle>진행중인 투표</St.SubTitle>
             </St.RecomendWrapper>

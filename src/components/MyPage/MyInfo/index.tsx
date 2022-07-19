@@ -52,7 +52,9 @@ export default function MyInfo() {
         </St.ProfileDetail>
       </St.Profile>
 
-      {isOpened && <NicknameModal closeHandler={closeModal} nickname={userProfile.data.nickname} />}
+      {isOpened && (
+        <NicknameModal closeHandler={closeModal} nickname={userProfile ? userProfile.data.nickname : "○○○"} />
+      )}
     </St.MyInfoContainer>
   );
 }
