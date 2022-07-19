@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const St = {
@@ -39,7 +38,7 @@ export const St = {
     overflow: hidden;
   `,
 
-  PickButtonWrapper: styled.button`
+  PickButtonWrapper: styled.div`
     width: 8.1rem;
     height: 2.5rem;
 
@@ -49,7 +48,7 @@ export const St = {
     float: right;
   `,
 
-  PickButton: styled(Link)`
+  PickButton: styled.button`
     ${({ theme }) => theme.fonts.btn2}
     color: ${({ theme }) => theme.colors.white};
 

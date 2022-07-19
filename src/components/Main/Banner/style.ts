@@ -3,10 +3,7 @@ import styled from "styled-components";
 export const St = {
   BannerSlider: styled.section`
     position: relative;
-
     height: 21.7rem;
-
-    //background: ${({ theme }) => theme.colors.green};
   `,
 
   ImageWrapper: styled.img`

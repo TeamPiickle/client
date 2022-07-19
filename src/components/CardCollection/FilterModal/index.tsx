@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
 
 import { real } from "../../../core/api/cardCollection";
+import { sliderIdxState } from "../../../core/atom/sliderIdx";
 import { filterTags, intimacyTags } from "../../../core/cardCollection/filter";
 import Modal from "../../common/Modal";
 import IntimacySlider from "./IntimacySlider";
@@ -14,6 +16,7 @@ interface FilterModalProps {
 export default function FilterModal(props: FilterModalProps) {
   const { closeHandler } = props;
 
+  const setSliderIdx = useSetRecoilState(sliderIdxState);
   const navigation = useNavigate();
   const [checkedTags, setCheckedTags] = useState<Set<string>>(new Set()); // 체크한 태그들을 저장할 state
   const [intimacyValues, setIntimacyValues] = useState<number[]>([0]); // 친밀도 value
@@ -33,6 +36,7 @@ export default function FilterModal(props: FilterModalProps) {
 
     real.fetchCardsWithFilter(_checkedTagsArr);
     navigation("/card-collection", { state: { type: "filter", filters: ["남자", "상관없음"] } });
+    setSliderIdx(0);
 
     closeHandler();
   };
