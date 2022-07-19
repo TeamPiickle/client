@@ -39,10 +39,15 @@ export const St = {
     display: flex;
     align-items: center;
   `,
-  NewNickname: styled.input``,
+  NewNickname: styled.input`
+    ${({ theme }) => theme.fonts.body6};
+    color: ${({ theme }) => theme.colors.bg};
+  `,
   ButtonWrapper: styled.div`
     display: flex;
     justify-content: center;
+
+    margin-top: 1.3rem;
   `,
   SaveButton: styled.button`
     width: 14.4rem;
