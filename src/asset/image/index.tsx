@@ -1,1 +1,1 @@
-export { default as CategoryBanner } from "./categoryBanner.png";
+export { default as ImgCategoryBanner } from "./categoryBanner.png";

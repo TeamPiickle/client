@@ -14,14 +14,13 @@ export const St = {
 
   MyPiickleContent: styled.strong`
     ${({ theme }) => theme.fonts.body4};
-    letter-spacing: -0.03em;
     color: ${({ theme }) => theme.colors.bg};
 
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 
-    width: 21rem;
+    width: 24.2rem;
   `,
 
   HeartWrapper: styled.div`

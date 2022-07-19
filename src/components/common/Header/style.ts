@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const St = {
@@ -20,9 +21,9 @@ export const St = {
     z-index: 10;
   `,
 
-  HamburgerContainer: styled.div<{ isClicked: boolean }>``,
-
-  LogoTitle: styled.h1`
-    ${({ theme }) => theme.visually_hidden};
+  Link: styled(Link)`
+    padding-top: 0.2rem;
   `,
+
+  HamburgerContainer: styled.div<{ isClicked: boolean }>``,
 };

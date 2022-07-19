@@ -1,11 +1,34 @@
 import useSWR from "swr";
 
+import { PiickleSWRResponse } from "../../types/swr";
 import { realReq } from "./common/axios";
 import { PATH } from "./common/constants";
 
+type BallotTopic = {
+  _id: string;
+  ballotTopicContent: string;
+};
+
+type BallotItems = {
+  _id: string;
+  status: number;
+  content: string;
+};
+
+type UserSelect = {
+  _id: string;
+  ballotItemId: string;
+};
+
+export interface BallotTopicData {
+  ballotTopic: BallotTopic;
+  ballotItems: BallotItems[];
+  userSelect: UserSelect;
+}
+
 // 투표 현황 조회
 export default function useBallotTopic(ballotId: string) {
-  const { data, error } = useSWR(`${PATH.BALLOTS}/${ballotId}`, realReq.GET_SWR);
+  const { data, error } = useSWR<PiickleSWRResponse<BallotTopicData>>(`${PATH.BALLOTS}/${ballotId}`, realReq.GET_SWR);
 
   return {
     ballotTopic: data?.data,

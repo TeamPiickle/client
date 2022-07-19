@@ -18,7 +18,7 @@ export const ballotsHandler = [
           },
           {
             _id: "62cc022f2e3dd7425047e382",
-            title: "투표 주제 제목",
+            title: "일이삼 사오륙 칠팔구 랄랄라 랄랄라 랄랄라라 사친깻 잎을떼 주냐남 사친깻 잎을",
           },
           {
             _id: "62cc022f2e3dd7425047e383",
@@ -35,24 +35,28 @@ export const ballotsHandler = [
 
   rest.get(`${process.env.REACT_APP_BASE_URL}${PATH.BALLOTS}/:ballotTopicId`, (req, res, ctx) => {
     const { ballotTopicId } = req.params;
-    const isLoginNVoted = false;
+    const isLoginNVoted = true;
 
     let data = {};
     if (isLoginNVoted) {
       data = {
+        ballotTopic: {
+          _id: "62cff6135b1e11673a0a876f",
+          ballotTopicContent: "민초는 맛있나!",
+        },
         ballotItems: [
           {
-            _id: "어쩌구저ㄱ쩌구",
+            _id: "62cff6585b1e11673a0a8776",
             status: 50,
-            name: "호",
+            content: "호",
           },
           {
-            _id: "ㅁㄴㅇㅁㄴㅇ",
+            _id: "62cff6585b1e11673a0a8777",
             status: 30,
             content: "불",
           },
           {
-            _id: "ㅁㄴㅇㅁㄴㅇ1",
+            _id: "62cff6585b1e11673a0a8778",
             status: 20,
             content: "중",
           },

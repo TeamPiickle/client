@@ -7,7 +7,7 @@ export type HeadingTitle = {
 export const headingTitles: HeadingTitle[] = [
   {
     title: "이번 달 Best Piickle",
-    content: "마이피클을 가장 많이 달성한 핫한 대화 주제들을 확인해보세요",
+    content: "마이피클을 가장 많이 달성한 대화 주제들을 확인해보세요",
     isMoreBtn: false,
   },
   {

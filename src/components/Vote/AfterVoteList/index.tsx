@@ -1,34 +1,47 @@
-import { useEffect, useState } from "react";
-
 import { IcCheck1 } from "../../../asset/icon";
-import { voteContent, voteTitle } from "../../../core/vote/voteContent";
+import { BallotTopicData, real } from "../../../core/api/vote";
 import { St } from "./style";
 
-export default function AfterVoteList(props: any) {
-  const { setIsVoted, setIsSuccess, currentIndex } = props;
+interface AfterVoteListProps {
+  ballotTopic: { data: BallotTopicData };
+  currentIndex: string;
+  setIsVoted: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsSuccess: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsPosted: React.Dispatch<React.SetStateAction<boolean>>;
+}
+export default function AfterVoteList(props: AfterVoteListProps) {
+  const { ballotTopic, currentIndex, setIsVoted, setIsSuccess, setIsPosted } = props;
   const cancelVote = () => {
     setIsSuccess(false);
     setIsVoted(false);
+    setIsPosted(true);
+    handlePost();
   };
+
+  const handlePost = () => {
+    real.postVote(ballotTopic?.data.ballotTopic._id, ballotTopic?.data.userSelect.ballotItemId);
+  };
+
   return (
     <>
       <St.VoteOptionContainer>
-        {voteContent.map((element) => {
-          return (
-            <St.VoteOptionList key={element.id}>
-              <St.VotedDescription>
-                <St.IconTextContainer>
-                  {currentIndex === element.id && <IcCheck1 />}
-                  <St.VoteOptionText isSelected={element.id === currentIndex}>{element.name}</St.VoteOptionText>
-                </St.IconTextContainer>
-                <St.VotedPercent>65.6%</St.VotedPercent>
-              </St.VotedDescription>
-              <St.VotedProgressBarContainer isSelected={element.id === currentIndex}>
-                <St.VotedProgressBar isSelected={element.id === currentIndex} />
-              </St.VotedProgressBarContainer>
-            </St.VoteOptionList>
-          );
-        })}
+        {ballotTopic &&
+          ballotTopic.data.ballotItems.map((element) => {
+            return (
+              <St.VoteOptionList key={element._id}>
+                <St.VotedDescription>
+                  <St.IconTextContainer>
+                    {currentIndex === element._id && <IcCheck1 />}
+                    <St.VoteOptionText isSelected={element._id === currentIndex}>{element.content}</St.VoteOptionText>
+                  </St.IconTextContainer>
+                  <St.VotedPercent>{element.status}%</St.VotedPercent>
+                </St.VotedDescription>
+                <St.VotedProgressBarContainer isSelected={element._id === currentIndex}>
+                  <St.VotedProgressBar width={element.status} isSelected={element._id === currentIndex} />
+                </St.VotedProgressBarContainer>
+              </St.VoteOptionList>
+            );
+          })}
       </St.VoteOptionContainer>
       <St.VoteBtnContainer>
         <St.VoteBtn onClick={cancelVote}>다시 투표하기</St.VoteBtn>

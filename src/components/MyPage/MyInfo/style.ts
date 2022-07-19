@@ -12,10 +12,23 @@ export const St = {
     height: 11.8rem;
   `,
 
+  Images: styled.div`
+    width: 58px;
+    height: 58px;
+    position: relative;
+  `,
+
   ProfileImage: styled.img`
     width: 5.8rem;
     height: 5.8rem;
     border-radius: 50%;
+    background-color: pink;
+  `,
+
+  ChangeButton: styled.button`
+    position: absolute;
+    bottom: -0.3rem;
+    right: -0.3rem;
   `,
 
   ProfileDetail: styled.div``,
@@ -37,8 +50,7 @@ export const St = {
     width: auto;
     height: 2.6rem;
 
-    letter-spacing: -0.03em;
-    ${({ theme }) => theme.fonts.h1};
+    ${({ theme }) => theme.fonts.body9};
     color: ${({ theme }) => theme.colors.bg};
   `,
 
@@ -59,8 +71,7 @@ export const St = {
   `,
 
   ProfileEmail: styled.p`
-    letter-spacing: -0.03rem;
-    ${({ theme }) => theme.fonts.body2};
+    ${({ theme }) => theme.fonts.body4};
     color: ${({ theme }) => theme.colors.gray600};
   `,
 };

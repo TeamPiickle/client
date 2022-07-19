@@ -7,9 +7,8 @@ export const St = {
     position: relative;
 
     & .slick-slide {
-      width: 30rem;
       height: calc(100vh - 14.8rem);
-      max-height: 52.3rem;
+      max-height: 49.5em;
     }
 
     & .slick-slide > div {
@@ -30,7 +29,8 @@ export const St = {
     }
 
     & .slick-track {
-      height: calc(100vh - 10.5rem);
+      /* height: calc(100vh - 10.5rem); */
+      height: 52rem;
 
       display: flex;
       align-items: center;

@@ -64,9 +64,9 @@ export const St = {
     overflow: hidden;
   `,
 
-  VotedProgressBar: styled.div<{ isSelected: boolean }>`
+  VotedProgressBar: styled.div<{ isSelected: boolean; width: number }>`
     height: 1rem;
-    width: 65%;
+    width: ${({ width }) => (width ? `${width}%` : 0)};
 
     background-color: ${({ theme, isSelected }) => (isSelected ? theme.colors.green : theme.colors.sub_green1)};
     opacity: 1;

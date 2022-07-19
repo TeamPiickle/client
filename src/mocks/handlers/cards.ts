@@ -3,141 +3,71 @@ import { rest } from "msw";
 import { PATH } from "../../core/api/common/constants";
 
 export const cardsHandler = [
-  rest.get(`${process.env.REACT_APP_BASE_URL}${PATH.CARDS}/best-5`, (req, res, ctx) => {
-    return res(
-      ctx.status(200),
-      ctx.json({
-        data: [
-          {
-            _id: "6290145b6af16276098d04d9",
-            category: ["재미", "IF 밸런스게임"],
-            content: "서해은은 귀여울 뿐만 아니라 사랑스럽다",
-          },
-          {
-            _id: "6290145b6af16276098d04d8",
-            category: ["재미", "IF 밸런스게임"],
-            content: "이주함은 킹왕짱짱짱 머시써 라고할뻔~ 는구라",
-          },
-          {
-            _id: "6290145b6af16276098d04d7",
-            category: ["재미", "IF 밸런스게임"],
-            content: "앙큼지영은 진오씨와 912일 ~ 혜은이랑은 이제 10일이지롱 부럽지 ㅋㅋ ",
-          },
-          {
-            _id: "6290145b6af16276098d04d6",
-            category: ["재미", "IF 밸런스게임"],
-            content: "고나연 1349일 동안 너무 고마워",
-          },
-          {
-            _id: "6290145b6af16276098d04d5",
-            category: ["재미", "IF 밸런스게임"],
-            content: "상대방의 첫인상을 말해주세요",
-          },
-        ],
-      }),
-    );
-  }),
-
-  rest.get(`${process.env.REACT_APP_BASE_URL}/categories/:categoryId`, (req, res, ctx) => {
-    // const { id } = req.params;
-
+  rest.get(`${process.env.REACT_APP_BASE_URL}${PATH.CARDS}/best`, (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
         data: {
-          categoryId: "6290145b6af16276098d04d9",
+          _id: "62d55d73eda8dbf570cbda81",
+          title: "더미",
           cardList: [
             {
-              cardId: "6290145b6af16276098d04d9",
-              content: "민초는 맛있다",
-              gender: [1, 2],
-              ageGroup: [2, 3, 4],
-              category: [2],
-              intimacy: 1,
-              bookmarkId: "6290145b6af16276098d04d9",
-              isbookmark: true,
+              _id: "62d55098df6e93500ec2b17d",
+              content: "만약, 나를 제외한\n모든 사람들이\n거짓말을 할 수 없게 된다면?",
+              tags: ["#연애", "#연애초", "#설렘"],
+              filter: ["남자", "여자", "10대", "20대", "30대", "커플", "상관없음", "친근해요"],
+              isBookmark: true,
             },
             {
-              cardId: "6290145b6af16276098d04d9",
-              content: "민초는 맛있다",
-              gender: [1, 2],
-              ageGroup: [2, 3, 4],
-              category: [2],
-              intimacy: 1,
-              bookmarkId: "6290145b6af16276098d04d9",
-              isbookmark: true,
+              _id: "62d55098df6e93500ec2b17f",
+              content: "만약, 여행에 갔는데\n날씨 때문에\n모든 계획이 틀어진다면?",
+              tags: ["#연애", "#연애초", "#설렘"],
+              filter: ["남자", "여자", "10대", "20대", "30대", "커플", "상관없음", "친근해요"],
+              isBookmark: true,
             },
             {
-              cardId: "6290145b6af16276098d04d9",
-              content: "민초는 맛있다",
-              gender: [1, 2],
-              ageGroup: [2, 3, 4],
-              category: [2],
-              intimacy: 1,
-              bookmarkId: "6290145b6af16276098d04d9",
-              isbookmark: true,
-            },
-            {
-              cardId: "6290145b6af16276098d04d9",
-              content: "민초는 맛있다",
-              gender: [1, 2],
-              ageGroup: [2, 3, 4],
-              category: [2],
-              intimacy: 1,
-              bookmarkId: "6290145b6af16276098d04d9",
-              isbookmark: true,
+              _id: "62d55098df6e93500ec2b17g",
+              content: "만약, 똑같은 영화를\n10번 봐야 한다면\n어떤 영화를 보고 싶은가요?",
+              tags: ["#연애", "#연애초", "#설렘"],
+              filter: ["남자", "여자", "10대", "20대", "30대", "커플", "상관없음", "친근해요"],
+              isBookmark: true,
             },
           ],
         },
       }),
     );
   }),
-
-  rest.get(`${process.env.REACT_APP_BASE_URL}/cards*`, (req, res, ctx) => {
+  rest.get(`${process.env.REACT_APP_BASE_URL}/cards?*`, (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
-        data: [
-          {
-            _id: "62cc010aa8c54f168a6de00b",
-            content: "상대방의 첫인상이 어떘는지 기억나시나요?",
-            tags: ["#연애", "#첫만남", "#첫인상"],
-            category: ["62cbb7d8a8c54f168a6ddfe1"],
-            filter: [
-              "남자",
-              "여자",
-              "10대",
-              "20대",
-              "30대",
-              "커플",
-              "친구",
-              "단체",
-              "상관없음",
-              "새로워요",
-              "친근해요",
-              "깊어요",
-            ],
-          },
-          {
-            _id: "62ce6aeba89cb162e6c24d1e",
-            content: "상대방의 첫인상이 어떘는지 기억나시나요?",
-            tags: ["#연애", "#첫만남", "#첫인상"],
-            category: ["62cbb7d8a8c54f168a6ddfe1"],
-            filter: [
-              "남자",
-              "여자",
-              "10대",
-              "20대",
-              "30대",
-              "커플",
-              "단체",
-              "상관없음",
-              "새로워요",
-              "친근해요",
-              "깊어요",
-            ],
-          },
-        ],
+        data: {
+          _id: "62d55d73eda8dbf570cbda81",
+          title: "더미",
+          cardList: [
+            {
+              _id: "62d55098df6e93500ec2b17d",
+              content: "필터or전부 지리ㅣ릴리안림나림ㄴ아링나링나리",
+              tags: ["#연애", "#연애초", "#설렘"],
+              filter: ["남자", "여자", "10대", "20대", "30대", "커플", "상관없음", "친근해요"],
+              isBookmark: true,
+            },
+            {
+              _id: "62d55098df6e93500ec2b17f",
+              content: "담배피는 사람 싫어요",
+              tags: ["#연애", "#연애초", "#설렘"],
+              filter: ["남자", "여자", "10대", "20대", "30대", "커플", "상관없음", "친근해요"],
+              isBookmark: true,
+            },
+            {
+              _id: "62d55098df6e93500ec2b17g",
+              content: "담배피는 사람 싫어요",
+              tags: ["#연애", "#연애초", "#설렘"],
+              filter: ["남자", "여자", "10대", "20대", "30대", "커플", "상관없음", "친근해요"],
+              isBookmark: true,
+            },
+          ],
+        },
       }),
     );
   }),

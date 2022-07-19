@@ -1,27 +1,41 @@
+import { useNavigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
+
+import { sliderIdxState } from "../../../../core/atom/slider";
 import { St } from "./style";
 
 interface BestPiickleCardProps {
   bestPiickle: {
-    cardId: string;
-    content: string;
+    _id: string;
     tags: string[];
+    content: string;
   };
 }
 
 export default function BestPiickleCard(props: BestPiickleCardProps) {
   const { bestPiickle } = props;
-  const { cardId, content, tags } = bestPiickle;
+  const { content, tags } = bestPiickle;
+
+  const setSliderIdx = useSetRecoilState(sliderIdxState);
+  const navigation = useNavigate();
 
   return (
     <St.BestPiickleCard>
       <St.TagsWrapper>
-        {tags.map((tag, i) => {
+        {tags.map((tag: string, i: number) => {
           return <St.Tag key={i}># {tag}</St.Tag>;
         })}
       </St.TagsWrapper>
       <St.Content>{content}</St.Content>
-      <St.PickButtonWrapper type="button">
-        <St.PickButton to={`/categories/${cardId}`}>주제 픽하기</St.PickButton>
+      <St.PickButtonWrapper>
+        <St.PickButton
+          type="button"
+          onClick={() => {
+            navigation("/card-collection", { state: { type: "best" } });
+            setSliderIdx(0);
+          }}>
+          카드 보기
+        </St.PickButton>
       </St.PickButtonWrapper>
     </St.BestPiickleCard>
   );

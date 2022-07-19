@@ -6,20 +6,24 @@ export const St = {
   Card: styled.article`
     position: relative;
 
+    width: 30rem;
+
     border: 0.1rem solid ${({ theme }) => theme.colors.gray200};
     backdrop-filter: blur(1.2rem);
     border-radius: 1.5rem;
   `,
 
   TagsWrapper: styled.div`
-    margin: 1.6rem 0 0 1.4rem;
+    margin: 1.6rem 2.4rem 0;
   `,
 
   ContentWrapper: styled.p`
-    margin: 4.7rem 0 0 2.4rem;
+    margin: 4.7rem 2.4rem 0;
 
-    ${({ theme }) => theme.fonts.body3};
+    ${({ theme }) => theme.fonts.cardBody5};
     color: ${({ theme }) => theme.colors.bg};
+
+    white-space: pre-wrap;
   `,
 
   HeartWrapper: styled.div`

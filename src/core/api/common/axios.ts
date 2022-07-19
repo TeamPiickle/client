@@ -10,7 +10,7 @@ const real = axios.create({
 real.interceptors.request.use((config) => {
   const headers = {
     ...config.headers,
-    Authorization: localStorage.getItem("piickle-token"),
+    "x-auth-token": localStorage.getItem("piickle-token"),
   };
 
   return { ...config, headers };
@@ -28,7 +28,7 @@ export const realReq = {
   },
 
   async POST<T>(path: string, body: T) {
-    const data = await real.post(`/${path}`, body);
+    const data = await real.post(path, body);
     return data.data;
   },
 

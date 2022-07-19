@@ -4,20 +4,22 @@ import { St } from "./style";
 
 interface LoginCheckProps {
   closeHandler: () => void;
+  contents: string;
 }
-
 export default function LoginModal(props: LoginCheckProps) {
-  const { closeHandler } = props;
+  const { closeHandler, contents } = props;
   return (
     <Modal closeHandler={closeHandler}>
       <St.Container>
         <St.Wrapper>
           <IcGrayHeart />
-          <St.ModalContents>로그인을 하시면 북마크 기능인 마이피클을 이용할 수 있어요!</St.ModalContents>
+          <St.ModalContents>로그인을 하시면 {contents} 이용할 수 있어요!</St.ModalContents>
         </St.Wrapper>
         <St.Buttons>
-          <St.LoginButton to="/login">로그인</St.LoginButton>
-          <St.SignUpButton>회원가입</St.SignUpButton>
+          <St.Button type="button">
+            <St.LoginLink to="/login">로그인</St.LoginLink>
+          </St.Button>
+          <St.Button type="button">회원가입</St.Button>
         </St.Buttons>
       </St.Container>
     </Modal>
