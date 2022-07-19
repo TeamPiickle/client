@@ -36,7 +36,7 @@ export const St = {
     background-color: ${({ isactive, theme }) => (isactive ? theme.colors.green : theme.colors.white)};
     color: ${({ isactive, theme }) => (isactive ? theme.colors.white : theme.colors.black)};
     box-shadow: ${({ isactive }) =>
-      isactive ? "0px 1px 1px rgba(0, 0, 0, 0.25)" : "inset 0px 1px 1px rgba(0, 0, 0, 0.25)"};
+      isactive ? "0 0.1rem 0.1rem rgba(0, 0, 0, 0.25)" : "inset 0 0.1rem 0.1rem rgba(0, 0, 0, 0.25)"};
 
     border-radius: 6.3rem;
     cursor: pointer;
