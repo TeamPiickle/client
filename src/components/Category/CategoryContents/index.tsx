@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
 import { useCategoryLists } from "../../../core/api/main";
-import { sliderIdxState } from "../../../core/atom/sliderIdx";
+import { sliderIdxState } from "../../../core/atom/slider";
 import { gridValue } from "../../../core/category/categoryList";
 import { St } from "./style";
 

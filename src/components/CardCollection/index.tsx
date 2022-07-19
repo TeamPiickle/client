@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
+import { CardsTypeLocation } from "../../types/cardCollection";
 import Header from "../common/Header";
 import CardSlider from "./CardSlider";
 import FilterModal from "./FilterModal";
@@ -7,6 +9,9 @@ import LoginModal from "./LoginModal";
 import { St } from "./style";
 
 export default function CardCollection() {
+  const location = useLocation();
+  const cardsTypeLoaction = location.state as CardsTypeLocation;
+
   const [isOpened, setIsOpened] = useState<boolean>(false);
   const [isLoginOpened, setLoginOpened] = useState<boolean>(false);
 
@@ -37,10 +42,14 @@ export default function CardCollection() {
   return (
     <St.MainPage>
       <Header />
-      <CardSlider openFilterModalHandler={clickHandleFilterModal} openLoginModalHandler={clickHandleLoginModal} />
+      <CardSlider
+        openFilterModalHandler={clickHandleFilterModal}
+        openLoginModalHandler={clickHandleLoginModal}
+        cardsTypeLoaction={cardsTypeLoaction}
+      />
 
       {isLoginOpened && <LoginModal closeHandler={closeLoginModal} />}
-      {isOpened && <FilterModal closeHandler={closeModal} />}
+      {isOpened && <FilterModal typeLocation={cardsTypeLoaction.type} closeHandler={closeModal} />}
     </St.MainPage>
   );
 }
