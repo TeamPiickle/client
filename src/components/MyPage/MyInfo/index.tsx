@@ -10,8 +10,9 @@ export default function MyInfo() {
       {userProfile && (
         <St.Profile>
           <St.Images>
-            <St.ProfileImage src={userProfile.data.profile_image_url} alt="프로필이미지" />
+            <St.ProfileImage src={userProfile.data.profile_image_url} alt="프로필" />
             <St.ChangeButton>
+
               <IcChangeProfileBtn />
             </St.ChangeButton>
           </St.Images>
