@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+import { IcEmptyHeart } from "../../../asset/icon";
+
 export const St = {
   Container: styled.section`
     display: flex;
@@ -56,5 +58,16 @@ export const St = {
       color: ${({ theme }) => theme.colors.white};
       background: ${({ theme }) => theme.colors.green};
     }
+  `,
+
+  HeartWrapper: styled.div`
+    position: relative;
+
+    width: 3.8rem;
+    height: 3.2rem;
+  `,
+
+  IcEmptyHeart: styled(IcEmptyHeart)`
+    position: absolute;
   `,
 };

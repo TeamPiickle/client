@@ -4,7 +4,7 @@ import { RecoilRoot } from "recoil";
 import { ThemeProvider } from "styled-components";
 
 import App from "./App";
-// import { worker } from "./mocks/browser";
+import { worker } from "./mocks/browser";
 import { GlobalStyle } from "./style/globalStyle";
 import theme from "./style/theme";
 
