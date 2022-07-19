@@ -13,35 +13,35 @@ export const St = {
 
     margin-bottom: 0.9rem;
   `,
-  CurrentNicknameWrapper: styled.div`
+  CurrentNickname: styled.input`
+    width: 100%;
     height: 4.4rem;
 
-    border: 0.1rem solid ${({ theme }) => theme.colors.gray300};
     border-radius: 4.9rem;
 
     padding: 1.2rem 2.4rem;
 
     display: flex;
     align-items: center;
-  `,
-  CurrentNickname: styled.input`
+
     ${({ theme }) => theme.fonts.body6};
     color: ${({ theme }) => theme.colors.gray400};
+    background-color: ${({ theme }) => theme.colors.white};
   `,
-  NewNicknameWrapper: styled.div`
+  NewNickname: styled.input`
+    width: 100%;
     height: 4.4rem;
 
-    border: 0.1rem solid ${({ theme }) => theme.colors.bg};
     border-radius: 4.9rem;
 
     padding: 1.2rem 2.4rem;
 
     display: flex;
     align-items: center;
-  `,
-  NewNickname: styled.input`
+
     ${({ theme }) => theme.fonts.body6};
     color: ${({ theme }) => theme.colors.bg};
+    background-color: ${({ theme }) => theme.colors.white};
   `,
   ErrorMessage: styled.div`
     ${({ theme }) => theme.fonts.caption5};
@@ -61,9 +61,10 @@ export const St = {
     height: 3.6rem;
 
     ${({ theme }) => theme.fonts.btn5};
-    color: ${({ theme }) => theme.colors.white};
-    background-color: ${({ theme }) => theme.colors.bg};
+    color: ${({ theme }) => theme.colors.bg};
+    background-color: ${({ theme }) => theme.colors.white};
 
     border-radius: 4.7rem;
+    box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.25);
   `,
 };

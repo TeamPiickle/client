@@ -36,15 +36,11 @@ export default function NicknameModal(props: ModifyNicknameProps) {
       <St.Container>
         <St.Wrapper>
           <St.Label>현재 닉네임</St.Label>
-          <St.CurrentNicknameWrapper>
-            <St.CurrentNickname type="text" placeholder={nickname} disabled />
-          </St.CurrentNicknameWrapper>
+          <St.CurrentNickname type="text" placeholder={nickname} disabled />
         </St.Wrapper>
         <St.Wrapper>
           <St.Label>새로운 닉네임</St.Label>
-          <St.NewNicknameWrapper>
-            <St.NewNickname type="text" id="newNickname" onChange={onChangeNickname} />
-          </St.NewNicknameWrapper>
+          <St.NewNickname type="text" id="newNickname" onChange={onChangeNickname} />
           {errorMessage !== "" && <St.ErrorMessage>{errorMessage}</St.ErrorMessage>}
         </St.Wrapper>
         <St.ButtonWrapper>
