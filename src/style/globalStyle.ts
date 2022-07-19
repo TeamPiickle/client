@@ -59,7 +59,6 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   } 
   html {
-    letter-spacing: -0.03rem;
     font-family: sans-serif;
     font-size: 62.5%;
     user-select: none;

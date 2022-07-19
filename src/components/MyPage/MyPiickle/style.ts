@@ -40,7 +40,6 @@ export const St = {
     width: 7.5rem;
     height: 2.2rem;
 
-    letter-spacing: -0.03rem;
     ${({ theme }) => theme.fonts.body1};
     color: ${({ theme }) => theme.colors.gray800};
   `,
@@ -49,7 +48,6 @@ export const St = {
     width: auto;
     height: 1.7rem;
 
-    letter-spacing: -0.03rem;
     ${({ theme }) => theme.fonts.body6};
     color: ${({ theme }) => theme.colors.gray600};
   `,
@@ -71,7 +69,6 @@ export const St = {
     width: auto;
     height: 2rem;
 
-    letter-spacing: -0.03rem;
     ${({ theme }) => theme.fonts.body6};
     color: ${({ theme }) => theme.colors.bg};
   `,

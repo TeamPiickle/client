@@ -27,9 +27,8 @@ export const St = {
   `,
 
   CurrentPage: styled.span`
-    line-height: 1.8rem;
-    letter-spacing: -0.03em;
     ${({ theme }) => theme.fonts.caption4};
+    line-height: 1.8rem;
     color: ${({ theme }) => theme.colors.white};
   `,
 };

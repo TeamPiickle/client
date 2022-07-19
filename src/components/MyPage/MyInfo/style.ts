@@ -50,7 +50,6 @@ export const St = {
     width: auto;
     height: 2.6rem;
 
-    letter-spacing: -0.03em;
     ${({ theme }) => theme.fonts.body9};
     color: ${({ theme }) => theme.colors.bg};
   `,
@@ -72,7 +71,6 @@ export const St = {
   `,
 
   ProfileEmail: styled.p`
-    letter-spacing: -0.03rem;
     ${({ theme }) => theme.fonts.body4};
     color: ${({ theme }) => theme.colors.gray600};
   `,

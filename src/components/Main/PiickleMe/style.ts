@@ -43,7 +43,6 @@ export const St = {
     margin-bottom: 0.4rem;
     padding-right: 5.8rem;
 
-    letter-spacing: -0.03em;
     ${({ theme }) => theme.fonts.body3};
     color: ${({ theme }) => theme.colors.gray800};
   `,

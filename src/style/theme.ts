@@ -1,3 +1,5 @@
+import { number } from "prop-types";
+
 const colors = {
   red: "#FF0000",
   green: "#19BE7E",
@@ -31,45 +33,46 @@ interface Font {
   weight: 300 | 400 | 500 | 600 | 700;
   size: number;
   lineHeight: number;
+  letterSpacing: number;
   notoSans?: boolean;
 }
 
-function FONT({ weight, size, lineHeight, notoSans }: Font): string {
+function FONT({ weight, size, lineHeight, letterSpacing, notoSans }: Font): string {
   return `
     font-family: ${notoSans ? "Noto Sans" : "Pretendard"};
     font-weight: ${weight};
     font-size: ${size}rem;
     line-height: ${lineHeight}%;
-    letter-spacing: -0.04rem;
+    letter-spacing: -0.0${letterSpacing}rem;
   `;
 }
 
 const fonts = {
-  h1: FONT({ weight: 600, size: 2, lineHeight: 130 }),
-  h2: FONT({ weight: 400, size: 1.2, lineHeight: 140 }),
-  body1: FONT({ weight: 600, size: 1.6, lineHeight: 140 }),
-  body2: FONT({ weight: 400, size: 2.4, lineHeight: 140 }),
-  body3: FONT({ weight: 700, size: 1.5, lineHeight: 140 }),
-  body4: FONT({ weight: 400, size: 1.2, lineHeight: 140 }),
-  body5: FONT({ weight: 700, size: 2.4, lineHeight: 140 }),
-  body6: FONT({ weight: 400, size: 1.4, lineHeight: 140 }),
-  body7: FONT({ weight: 500, size: 1.6, lineHeight: 140 }),
-  body8: FONT({ weight: 400, size: 2, lineHeight: 140, notoSans: true }),
-  body9: FONT({ weight: 600, size: 2, lineHeight: 130 }),
-  body10: FONT({ weight: 600, size: 2.4, lineHeight: 130 }),
-  body11: FONT({ weight: 400, size: 1.5, lineHeight: 140 }),
-  body12: FONT({ weight: 400, size: 1.6, lineHeight: 140 }),
-  caption1: FONT({ weight: 400, size: 1, lineHeight: 80 }),
-  caption2: FONT({ weight: 500, size: 1, lineHeight: 130 }),
-  caption3: FONT({ weight: 400, size: 1.2, lineHeight: 140 }),
-  caption4: FONT({ weight: 400, size: 1.2, lineHeight: 140 }),
-  caption5: FONT({ weight: 400, size: 1.1, lineHeight: 140 }),
-  btn1: FONT({ weight: 400, size: 1.2, lineHeight: 140 }),
-  btn2: FONT({ weight: 400, size: 1.4, lineHeight: 130 }),
-  btn3: FONT({ weight: 300, size: 1.6, lineHeight: 140 }),
-  btn4: FONT({ weight: 300, size: 1, lineHeight: 140 }),
-  footer1: FONT({ weight: 600, size: 1.2, lineHeight: 140 }),
-  footer2: FONT({ weight: 400, size: 1.2, lineHeight: 140 }),
+  h1: FONT({ weight: 600, size: 2, lineHeight: 130, letterSpacing: 4 }),
+  h2: FONT({ weight: 400, size: 1.2, lineHeight: 140, letterSpacing: 4 }),
+  body1: FONT({ weight: 600, size: 1.6, lineHeight: 140, letterSpacing: 3 }),
+  body2: FONT({ weight: 400, size: 2.4, lineHeight: 140, letterSpacing: 4 }),
+  body3: FONT({ weight: 700, size: 1.5, lineHeight: 140, letterSpacing: 3 }),
+  body4: FONT({ weight: 400, size: 1.2, lineHeight: 140, letterSpacing: 3 }),
+  body5: FONT({ weight: 700, size: 2.4, lineHeight: 140, letterSpacing: 4 }),
+  body6: FONT({ weight: 400, size: 1.4, lineHeight: 140, letterSpacing: 3 }),
+  body7: FONT({ weight: 500, size: 1.6, lineHeight: 140, letterSpacing: 4 }),
+  body8: FONT({ weight: 400, size: 2, lineHeight: 140, letterSpacing: 4, notoSans: true }),
+  body9: FONT({ weight: 600, size: 2, lineHeight: 130, letterSpacing: 3 }),
+  body10: FONT({ weight: 600, size: 2.4, lineHeight: 130, letterSpacing: 4 }),
+  body11: FONT({ weight: 400, size: 1.5, lineHeight: 140, letterSpacing: 4 }),
+  body12: FONT({ weight: 400, size: 1.6, lineHeight: 140, letterSpacing: 4 }),
+  caption1: FONT({ weight: 400, size: 1, lineHeight: 80, letterSpacing: 4 }),
+  caption2: FONT({ weight: 500, size: 1, lineHeight: 130, letterSpacing: 4 }),
+  caption3: FONT({ weight: 400, size: 1.2, lineHeight: 140, letterSpacing: 4 }),
+  caption4: FONT({ weight: 400, size: 1.2, lineHeight: 140, letterSpacing: 3 }),
+  caption5: FONT({ weight: 400, size: 1.1, lineHeight: 140, letterSpacing: 4 }),
+  btn1: FONT({ weight: 400, size: 1.2, lineHeight: 140, letterSpacing: 3 }),
+  btn2: FONT({ weight: 400, size: 1.4, lineHeight: 130, letterSpacing: 4 }),
+  btn3: FONT({ weight: 300, size: 1.6, lineHeight: 140, letterSpacing: 4 }),
+  btn4: FONT({ weight: 300, size: 1, lineHeight: 140, letterSpacing: 4 }),
+  footer1: FONT({ weight: 600, size: 1.2, lineHeight: 140, letterSpacing: 4 }),
+  footer2: FONT({ weight: 400, size: 1.2, lineHeight: 140, letterSpacing: 4 }),
 } as const;
 
 const theme = {
