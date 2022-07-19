@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 import useBallotTopic from "../../../core/api/vote";
@@ -17,29 +17,31 @@ export default function VoteContent() {
   const [isPosted, setIsPosted] = useState(true);
   const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
 
-  return (
-    <St.VoteContentContainer>
-      <St.VoteContentTitle>{ballotTopic && ballotTopic.data.ballotTopic.ballotTopicContent}</St.VoteContentTitle>
-      {ballotTopic && isSuccess ? (
-        <AfterVoteList
-          ballotTopic={ballotTopic}
-          setIsVoted={setIsVoted}
-          setIsSuccess={setIsSuccess}
-          currentIndex={currentIndex}
-          setIsPosted={setIsPosted}
-        />
-      ) : (
-        <BeforeVoteList
-          ballotTopic={ballotTopic}
-          isVoted={isVoted}
-          setIsVoted={setIsVoted}
-          setIsSuccess={setIsSuccess}
-          currentIndex={currentIndex}
-          setCurrentIndex={setCurrentIndex}
-          isPosted={isPosted}
-          LOGIN_STATE={LOGIN_STATE}
-        />
-      )}
-    </St.VoteContentContainer>
-  );
+  if (!ballotTopic) return <div>loading...</div>;
+  else
+    return (
+      <St.VoteContentContainer>
+        <St.VoteContentTitle>{ballotTopic.data.ballotTopic.ballotTopicContent}</St.VoteContentTitle>
+        {isSuccess ? (
+          <AfterVoteList
+            ballotTopic={ballotTopic}
+            setIsVoted={setIsVoted}
+            setIsSuccess={setIsSuccess}
+            currentIndex={currentIndex}
+            setIsPosted={setIsPosted}
+          />
+        ) : (
+          <BeforeVoteList
+            ballotTopic={ballotTopic}
+            isVoted={isVoted}
+            setIsVoted={setIsVoted}
+            setIsSuccess={setIsSuccess}
+            currentIndex={currentIndex}
+            setCurrentIndex={setCurrentIndex}
+            isPosted={isPosted}
+            LOGIN_STATE={LOGIN_STATE}
+          />
+        )}
+      </St.VoteContentContainer>
+    );
 }

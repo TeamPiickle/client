@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
 import { IcCheck2 } from "../../../asset/icon";
-import { real } from "../../../core/api/vote";
+import { BallotTopicData, real } from "../../../core/api/vote";
 import LoginModal from "../../CardCollection/LoginModal";
 import { St } from "./style";
 
 interface BeforeVoteListProps {
-  ballotTopic: any;
+  ballotTopic: { data: BallotTopicData };
   isVoted: boolean;
   setIsVoted: React.Dispatch<React.SetStateAction<boolean>>;
   setIsSuccess: React.Dispatch<React.SetStateAction<boolean>>;
@@ -64,8 +64,7 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
     <>
       <St.VoteOptionContainer>
         {ballotTopic &&
-          ballotTopic.data.ballotItems.map((element: any) => {
-            // 이부분에 element 타입을 어떻게 지정해줘야할지 몰라서 피알 올리고 고민해볼께요!
+          ballotTopic.data.ballotItems.map((element) => {
             return (
               <St.VoteOptionList
                 key={element._id}

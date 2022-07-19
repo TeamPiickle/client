@@ -20,7 +20,7 @@ type UserSelect = {
   ballotItemId: string;
 };
 
-interface BallotTopicData {
+export interface BallotTopicData {
   ballotTopic: BallotTopic;
   ballotItems: BallotItems[];
   userSelect: UserSelect;

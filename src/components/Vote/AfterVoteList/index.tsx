@@ -1,10 +1,9 @@
 import { IcCheck1 } from "../../../asset/icon";
-import { real } from "../../../core/api/vote";
-import { voteContent } from "../../../core/vote/voteContent";
+import { BallotTopicData, real } from "../../../core/api/vote";
 import { St } from "./style";
 
 interface AfterVoteListProps {
-  ballotTopic: any;
+  ballotTopic: { data: BallotTopicData };
   currentIndex: string;
   setIsVoted: React.Dispatch<React.SetStateAction<boolean>>;
   setIsSuccess: React.Dispatch<React.SetStateAction<boolean>>;
@@ -27,7 +26,7 @@ export default function AfterVoteList(props: AfterVoteListProps) {
     <>
       <St.VoteOptionContainer>
         {ballotTopic &&
-          ballotTopic.data.ballotItems.map((element: any) => {
+          ballotTopic.data.ballotItems.map((element) => {
             return (
               <St.VoteOptionList key={element._id}>
                 <St.VotedDescription>
