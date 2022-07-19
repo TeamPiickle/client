@@ -10,7 +10,7 @@ export default function Router() {
         <Route path="/login" element={<Login />} />
         <Route path="/category" element={<Category />} />
         <Route path="/card-collection" element={<CardCollection />} />
-        <Route path="/vote" element={<Vote />} />
+        <Route path="/vote/:voteId" element={<Vote />} />
         <Route path="/my-page" element={<MyPage />} />
         <Route path="/bookmark" element={<Bookmark />} />
         <Route path="*" element={<Error404 />} />

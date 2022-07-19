@@ -6,7 +6,7 @@ import { St } from "./style";
 interface AfterVoteListProps {
   setIsVoted: React.Dispatch<React.SetStateAction<boolean>>;
   setIsSuccess: React.Dispatch<React.SetStateAction<boolean>>;
-  currentIndex: number;
+  currentIndex: string;
   ballotTopic: any;
   setIsPosted: React.Dispatch<React.SetStateAction<boolean>>;
 }

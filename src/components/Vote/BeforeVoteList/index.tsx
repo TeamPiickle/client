@@ -8,27 +8,25 @@ interface BeforeVoteListProps {
   isVoted: boolean;
   setIsVoted: React.Dispatch<React.SetStateAction<boolean>>;
   setIsSuccess: React.Dispatch<React.SetStateAction<boolean>>;
-  setSelectedOption: React.Dispatch<React.SetStateAction<number | null>>;
-  setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
-  currentIndex: number;
+  setCurrentIndex: React.Dispatch<React.SetStateAction<string>>;
+  currentIndex: string;
   isPosted: boolean;
   LOGIN_STATE: boolean;
 }
 
 export default function BeforeVoteList(props: BeforeVoteListProps) {
-  const { isVoted, setIsVoted, setIsSuccess, setSelectedOption, currentIndex, setCurrentIndex, isPosted, LOGIN_STATE } =
-    props;
+  const { isVoted, setIsVoted, setIsSuccess, currentIndex, setCurrentIndex, isPosted, LOGIN_STATE } = props;
   const { ballotTopic, isLoading, isError } = useBallotTopic("투표id");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     if (ballotTopic?.data.userSelect.ballotItemId !== "" && isPosted === false) {
       setIsSuccess(true);
-      setCurrentIndex(ballotTopic?.data.userSelect.ballotItemId);
+      if (ballotTopic?.data.userSelect) setCurrentIndex(ballotTopic.data.userSelect.ballotItemId);
     }
   }, []);
 
-  const clickHandle = (key: number) => {
+  const clickHandle = (key: string) => {
     if (isVoted === true) {
       if (currentIndex === key) {
         setIsVoted(false);
@@ -46,14 +44,14 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
     } else {
       if (isVoted === true) {
         setIsSuccess(true);
-        setSelectedOption(currentIndex);
         handlePost();
       }
     }
   };
 
   const handlePost = () => {
-    real.postVote(ballotTopic?.data.ballotTopic._id, ballotTopic?.data.userSelect.ballotItemId);
+    if (ballotTopic?.data.ballotTopic && ballotTopic.data.userSelect)
+      real.postVote(ballotTopic.data.ballotTopic._id, ballotTopic.data.userSelect.ballotItemId);
   };
 
   const closeLoginModal = () => {
