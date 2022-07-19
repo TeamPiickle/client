@@ -6,15 +6,16 @@ export const St = {
   `,
 
   CategoryWrapper: styled.div`
-    padding: 0rem 1.6rem 4.8rem;
     display: flex;
     flex-wrap: wrap;
     gap: 0.8rem;
     justify-content: center;
+
+    width: 36rem;
+    margin: 0 auto;
   `,
 
   CategoryOneLine: styled.div`
-    //display: flex;
     height: 16rem;
   `,
 
