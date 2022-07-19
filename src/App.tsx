@@ -2,12 +2,13 @@ import { useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 
-import { activeState } from "./core/atom/menuBar";
+import { activeState, activeStateModal } from "./core/atom/menuBar";
 import Router from "./Router";
 import { ModalStyle } from "./style/modalStyle";
 
 export default function App() {
   const isActive = useRecoilValue(activeState);
+  const isActiveModal = useRecoilValue(activeStateModal);
 
   function setScreenSize() {
     const vh = window.innerHeight * 0.01;
@@ -20,7 +21,7 @@ export default function App() {
 
   return (
     <St.MobileContainer>
-      {isActive && <ModalStyle />}
+      {(isActive || isActiveModal) && <ModalStyle />}
       <Router />
     </St.MobileContainer>
   );

@@ -1,21 +1,26 @@
 import { useState } from "react";
+import { useSetRecoilState } from "recoil";
 
 import { IcChangeProfileBtn } from "../../../asset/icon/index";
 import useUserProfile from "../../../core/api/myPage";
+import { activeStateModal } from "../../../core/atom/menuBar";
 import NicknameModal from "../NicknameModal";
 import { St } from "./style";
 
 export default function MyInfo() {
   const { userProfile, isLoading, isError } = useUserProfile();
+  const setIsActiveModal = useSetRecoilState(activeStateModal);
 
   const [isOpened, setIsOpened] = useState<boolean>(false);
 
   const openModal = () => {
     setIsOpened(true);
+    setIsActiveModal(true);
   };
 
   const closeModal = () => {
     setIsOpened(false);
+    setIsActiveModal(false);
   };
 
   return (
