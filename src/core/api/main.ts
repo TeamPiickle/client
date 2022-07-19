@@ -1,5 +1,6 @@
 import useSWR from "swr";
 
+import { CardList } from "../../types/cardCollection";
 import { PiickleSWRResponse } from "../../types/swr";
 import { realReq } from "./common/axios";
 import { PATH } from "./common/constants";
@@ -15,16 +16,8 @@ export function useCategoryLists() {
   };
 }
 
-type BestPiickleCard = {
-  _id: string;
-  filter: string[];
-  isBookmark: boolean;
-  tags: string[];
-  content: string;
-};
-
 export function useBestPiickle() {
-  const { data, error } = useSWR<PiickleSWRResponse<BestPiickleCard[]>>(`${PATH.CARDS}/best`, realReq.GET_SWR);
+  const { data, error } = useSWR<PiickleSWRResponse<CardList[]>>(`${PATH.CARDS}/best`, realReq.GET_SWR);
 
   return {
     bestPiickle: data?.data,

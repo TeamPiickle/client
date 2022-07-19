@@ -32,8 +32,8 @@ export default function CardSlider(props: CardSliderProps) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetchCardCollection(cardsTypeLoaction, (data: { cardList: CardList[] }) => {
-      setCardLists(data.cardList);
+    fetchCardCollection(cardsTypeLoaction, (data: CardList[]) => {
+      setCardLists(data);
     });
     setIsLoading(false);
   }, [cardsTypeLoaction]);
