@@ -1,6 +1,7 @@
 import useSWR from "swr";
 
 import { CardList } from "../../types/cardCollection";
+import { BallotList } from "../../types/main";
 import { PiickleSWRResponse } from "../../types/swr";
 import { realReq } from "./common/axios";
 import { PATH } from "./common/constants";
@@ -25,9 +26,8 @@ export function useBestPiickle() {
     isError: error,
   };
 }
-
 export function useBallotLists() {
-  const { data, error } = useSWR(`${PATH.BALLOTS}`, realReq.GET_SWR);
+  const { data, error } = useSWR<PiickleSWRResponse<BallotList[]>>(`${PATH.BALLOTS}`, realReq.GET_SWR);
 
   return {
     ballotLists: data?.data,

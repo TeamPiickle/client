@@ -4,13 +4,8 @@ export interface CategoryList {
   content: string;
 }
 
-export interface Card {
-  _id: string;
-  category: string;
-  content: string;
-}
-
 export interface BallotList {
   _id: string;
-  title: string;
+  topic: string;
+  __v: number;
 }
