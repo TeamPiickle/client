@@ -1,5 +1,5 @@
-import { IcGrayHeart } from "../../../asset/icon/index";
 import Modal from "../../common/Modal";
+import CustomFullHeart from "../CustomFullHeart";
 import { St } from "./style";
 
 interface LoginCheckProps {
@@ -12,7 +12,10 @@ export default function LoginModal(props: LoginCheckProps) {
     <Modal closeHandler={closeHandler}>
       <St.Container>
         <St.Wrapper>
-          <IcGrayHeart />
+          <St.HeartWrapper>
+            <St.IcEmptyHeart />
+            <CustomFullHeart />
+          </St.HeartWrapper>
           <St.ModalContents>로그인을 하시면 {contents} 이용할 수 있어요!</St.ModalContents>
         </St.Wrapper>
         <St.Buttons>
