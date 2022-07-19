@@ -13,21 +13,19 @@ type ballot = {
 export default function PiickleMe() {
   const { ballotLists, isLoading, isError } = useBallotLists();
 
-  if (!ballotLists) <Loading />;
-  else
-    return (
-      <St.Container>
-        <HeadingTitleContainer headingTitles={headingTitles[2]} />
+  return (
+    <St.Container>
+      <HeadingTitleContainer headingTitles={headingTitles[2]} />
+      <St.RepresentVoteContentConTainer>
+        <St.RepresentVoteContentText>{ballotLists && ballotLists.data[0].topic}</St.RepresentVoteContentText>
+        <St.RepresentVoteContentSubText>현재 가장 참여수가 많은 투표</St.RepresentVoteContentSubText>
+        <St.RepresentGoVoteBtnWrapper type="button">
+          <St.RepresentGoVoteBtn to={`/vote/${ballotLists && ballotLists.data[0]._id}`}>투표하기</St.RepresentGoVoteBtn>
+        </St.RepresentGoVoteBtnWrapper>
+      </St.RepresentVoteContentConTainer>
 
-        <St.RepresentVoteContentConTainer>
-          <St.RepresentVoteContentText>{ballotLists.data[0].topic}</St.RepresentVoteContentText>
-          <St.RepresentVoteContentSubText>현재 가장 참여수가 많은 투표</St.RepresentVoteContentSubText>
-          <St.RepresentGoVoteBtnWrapper type="button">
-            <St.RepresentGoVoteBtn to={`/vote/${ballotLists.data[0]._id}`}>투표하기</St.RepresentGoVoteBtn>
-          </St.RepresentGoVoteBtnWrapper>
-        </St.RepresentVoteContentConTainer>
-
-        {ballotLists.data.slice(1).map((ballot, idx: number) => (
+      {ballotLists &&
+        ballotLists.data.slice(1).map((ballot, idx: number) => (
           <St.VoteContent key={`${ballot._id}-${idx}`}>
             <St.VoteImgTextWrapper>
               <IcVoteImg2 aria-label="사용자 프로필 사진" />
@@ -36,10 +34,10 @@ export default function PiickleMe() {
               </St.VoteTextContainer>
             </St.VoteImgTextWrapper>
             <St.GoVoteBtnWrapper type="button">
-              <St.GoVoteBtn to={ballotLists && `/vote/${ballot._id}`}>투표하기</St.GoVoteBtn>
+              <St.GoVoteBtn to={`/vote/${ballot._id}`}>투표하기</St.GoVoteBtn>
             </St.GoVoteBtnWrapper>
           </St.VoteContent>
         ))}
-      </St.Container>
-    );
+    </St.Container>
+  );
 }
