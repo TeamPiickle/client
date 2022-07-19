@@ -12,10 +12,23 @@ export const St = {
     height: 11.8rem;
   `,
 
+  Images: styled.div`
+    width: 58px;
+    height: 58px;
+    position: relative;
+  `,
+
   ProfileImage: styled.img`
     width: 5.8rem;
     height: 5.8rem;
     border-radius: 50%;
+    background-color: pink;
+  `,
+
+  ChangeButton: styled.button`
+    position: absolute;
+    bottom: -0.3rem;
+    right: -0.3rem;
   `,
 
   ProfileDetail: styled.div``,

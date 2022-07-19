@@ -5,10 +5,11 @@ export const St = {
   Container: styled.section``,
 
   RepresentVoteContentConTainer: styled.section`
+    position: relative;
     width: 100%;
     height: 15.2rem;
 
-    padding: 2.8rem 2.4rem 2rem;
+    padding: 2.6rem 2.4rem 2rem;
 
     background-color: #c9f2de; //확정 아니어서 일단 노가다로 박음
   `,
@@ -40,7 +41,9 @@ export const St = {
     line-height: 1.4;
 
     margin-bottom: 0.4rem;
+    padding-right: 5.8rem;
 
+    letter-spacing: -0.03em;
     ${({ theme }) => theme.fonts.body3};
     color: ${({ theme }) => theme.colors.gray800};
   `,
@@ -79,6 +82,10 @@ export const St = {
     border-radius: 4.2rem;
 
     ${({ theme }) => theme.fonts.h2}
+
+    position: absolute;
+    bottom: 1.8rem;
+    right: 1.6rem;
   `,
 
   RepresentGoVoteBtn: styled(Link)``,
