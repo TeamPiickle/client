@@ -13,7 +13,7 @@ export const filterTagsInfo: FilterTags[] = [
     tags: ["10대", "20대", "30대"],
   },
   {
-    type: "술자리 유형",
+    type: "대화 유형",
     tags: ["개인", "커플", "친구", "단체", "19금"],
   },
 ];
