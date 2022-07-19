@@ -18,7 +18,7 @@ export const ballotsHandler = [
           },
           {
             _id: "62cc022f2e3dd7425047e382",
-            title: "투표 주제 제목",
+            title: "일이삼 사오륙 칠팔구 랄랄라 랄랄라 랄랄라라 사친깻 잎을떼 주냐남 사친깻 잎을",
           },
           {
             _id: "62cc022f2e3dd7425047e383",

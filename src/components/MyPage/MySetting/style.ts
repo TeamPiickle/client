@@ -15,8 +15,7 @@ export const St = {
     width: 36rem;
     height: 3.9rem;
 
-    letter-spacing: -0.03rem;
-    ${({ theme }) => theme.fonts.body6};
+    ${({ theme }) => theme.fonts.body12};
     color: ${({ theme }) => theme.colors.bg};
   `,
 
