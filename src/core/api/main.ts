@@ -17,16 +17,14 @@ export function useCategoryLists() {
 
 type BestPiickleCard = {
   _id: string;
+  filter: string[];
+  isBookmark: boolean;
   tags: string[];
   content: string;
 };
 
-type BestPiickle = {
-  cardList: BestPiickleCard[];
-};
-
 export function useBestPiickle() {
-  const { data, error } = useSWR<PiickleSWRResponse<BestPiickle>>(`${PATH.CARDS}/best`, realReq.GET_SWR);
+  const { data, error } = useSWR<PiickleSWRResponse<BestPiickleCard[]>>(`${PATH.CARDS}/best`, realReq.GET_SWR);
 
   return {
     bestPiickle: data?.data,

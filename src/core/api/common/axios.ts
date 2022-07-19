@@ -22,8 +22,8 @@ export const realReq = {
     return real.get(path);
   },
 
-  async GET(path: string) {
-    const data = await real(path);
+  async GET<T>(path: string) {
+    const data = await real.get<T>(path);
     return data.data;
   },
 

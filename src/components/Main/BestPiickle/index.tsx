@@ -20,13 +20,15 @@ const sliderSettings = {
 export default function BestPiickle() {
   const { bestPiickle, isLoading, isError } = useBestPiickle();
 
+  console.log(bestPiickle);
+
   return (
     <St.Root>
       <HeadingTitleContainer headingTitles={headingTitles[0]} />
       <St.SliderWrapper>
         <Slider {...sliderSettings}>
           {bestPiickle &&
-            bestPiickle.data.cardList.map((bestPiickle) => {
+            bestPiickle.data.map((bestPiickle) => {
               return <BestPiickleCard key={bestPiickle._id} bestPiickle={bestPiickle} />;
             })}
         </Slider>

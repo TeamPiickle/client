@@ -5,21 +5,21 @@ export default function fetchCardCollection<T>(CARD_TYPE_LOCATION: CardsTypeLoca
   switch (CARD_TYPE_LOCATION.type) {
     case "category":
       (async () => {
-        const { data } = await real.fetchCardsWithCategory(CARD_TYPE_LOCATION.categoryId);
+        const { data } = await real.fetchCardsWithCategory<{ data: T }>(CARD_TYPE_LOCATION.categoryId);
         handler(data);
       })();
       break;
 
     case "best":
       (async () => {
-        const { data } = await real.fetchCardsWithBest();
+        const { data } = await real.fetchCardsWithBest<{ data: T }>();
         handler(data);
       })();
       break;
 
     case "all":
       (async () => {
-        const { data } = await real.fetchCardsWithFilter([]);
+        const { data } = await real.fetchCardsWithFilter<{ data: T }>([]);
         handler(data);
       })();
       break;
