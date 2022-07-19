@@ -2,7 +2,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import { useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
 import Slider from "react-slick";
 import { useRecoilState } from "recoil";
 
