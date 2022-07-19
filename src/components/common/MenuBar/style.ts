@@ -33,9 +33,6 @@ export const St = {
 
   WelcomeText: styled.h1`
     ${({ theme }) => theme.fonts.body10};
-    font-size: 24px;
-    line-height: 3.36rem;
-
     color: ${({ theme }) => theme.colors.bg};
 
     margin-top: 1.6rem;
@@ -43,8 +40,6 @@ export const St = {
 
   DescriptText: styled.h2`
     ${({ theme }) => theme.fonts.body12};
-    font-size: 16px;
-
     color: ${({ theme }) => theme.colors.gray600};
 
     margin-top: 0.4rem;

@@ -20,8 +20,6 @@ const sliderSettings = {
 export default function BestPiickle() {
   const { bestPiickle, isLoading, isError } = useBestPiickle();
 
-  console.log(bestPiickle?.data.cardList);
-
   return (
     <St.Root>
       <HeadingTitleContainer headingTitles={headingTitles[0]} />
