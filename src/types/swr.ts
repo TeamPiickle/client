@@ -1,7 +1,7 @@
 interface Response<T> {
-  data: { cardList: T };
+  data: T;
 }
 
-export interface SWRResponse<T> {
+export interface PiickleSWRResponse<T> {
   data: Response<T>;
 }
