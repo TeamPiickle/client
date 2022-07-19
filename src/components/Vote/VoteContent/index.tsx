@@ -8,11 +8,8 @@ import { St } from "./style";
 
 export default function VoteContent() {
   const params = useParams();
-  console.log("before");
+
   const { ballotTopic, isLoading, isError } = useBallotTopic(`${params.voteId}`);
-  useEffect(() => {
-    console.log(ballotTopic);
-  }, [ballotTopic]);
 
   const [isVoted, setIsVoted] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -23,16 +20,17 @@ export default function VoteContent() {
   return (
     <St.VoteContentContainer>
       <St.VoteContentTitle>{ballotTopic && ballotTopic.data.ballotTopic.ballotTopicContent}</St.VoteContentTitle>
-      {/* {ballotTopic && isSuccess ? ( */}
-      <AfterVoteList
-        setIsVoted={setIsVoted}
-        setIsSuccess={setIsSuccess}
-        currentIndex={currentIndex}
-        ballotTopic={ballotTopic}
-        setIsPosted={setIsPosted}
-      />
-      {/* ) : (
+      {ballotTopic && isSuccess ? (
+        <AfterVoteList
+          ballotTopic={ballotTopic}
+          setIsVoted={setIsVoted}
+          setIsSuccess={setIsSuccess}
+          currentIndex={currentIndex}
+          setIsPosted={setIsPosted}
+        />
+      ) : (
         <BeforeVoteList
+          ballotTopic={ballotTopic}
           isVoted={isVoted}
           setIsVoted={setIsVoted}
           setIsSuccess={setIsSuccess}
@@ -41,7 +39,7 @@ export default function VoteContent() {
           isPosted={isPosted}
           LOGIN_STATE={LOGIN_STATE}
         />
-      )} */}
+      )}
     </St.VoteContentContainer>
   );
 }

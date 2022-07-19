@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 
 import { IcCheck2 } from "../../../asset/icon";
-import useBallotTopic, { real } from "../../../core/api/vote";
+import { real } from "../../../core/api/vote";
 import LoginModal from "../../CardCollection/LoginModal";
 import { St } from "./style";
+
 interface BeforeVoteListProps {
+  ballotTopic: any;
   isVoted: boolean;
   setIsVoted: React.Dispatch<React.SetStateAction<boolean>>;
   setIsSuccess: React.Dispatch<React.SetStateAction<boolean>>;
@@ -15,8 +17,8 @@ interface BeforeVoteListProps {
 }
 
 export default function BeforeVoteList(props: BeforeVoteListProps) {
-  const { isVoted, setIsVoted, setIsSuccess, currentIndex, setCurrentIndex, isPosted, LOGIN_STATE } = props;
-  const { ballotTopic, isLoading, isError } = useBallotTopic("투표id");
+  const { ballotTopic, isVoted, setIsVoted, setIsSuccess, currentIndex, setCurrentIndex, isPosted, LOGIN_STATE } =
+    props;
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {

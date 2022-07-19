@@ -4,14 +4,14 @@ import { voteContent } from "../../../core/vote/voteContent";
 import { St } from "./style";
 
 interface AfterVoteListProps {
+  ballotTopic: any;
+  currentIndex: string;
   setIsVoted: React.Dispatch<React.SetStateAction<boolean>>;
   setIsSuccess: React.Dispatch<React.SetStateAction<boolean>>;
-  currentIndex: string;
-  ballotTopic: any;
   setIsPosted: React.Dispatch<React.SetStateAction<boolean>>;
 }
 export default function AfterVoteList(props: AfterVoteListProps) {
-  const { setIsVoted, setIsSuccess, currentIndex, ballotTopic, setIsPosted } = props;
+  const { ballotTopic, currentIndex, setIsVoted, setIsSuccess, setIsPosted } = props;
   const cancelVote = () => {
     setIsSuccess(false);
     setIsVoted(false);

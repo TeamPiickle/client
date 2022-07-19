@@ -28,9 +28,8 @@ interface BallotTopicData {
 
 // 투표 현황 조회
 export default function useBallotTopic(ballotId: string) {
-  console.log("hello");
   const { data, error } = useSWR<PiickleSWRResponse<BallotTopicData>>(`${PATH.BALLOTS}/${ballotId}`, realReq.GET_SWR);
-  console.log(data);
+
   return {
     ballotTopic: data?.data,
     isLoading: !error && !data,
