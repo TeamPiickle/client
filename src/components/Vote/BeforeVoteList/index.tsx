@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import { IcCheck2 } from "../../../asset/icon";
 import { voteContent } from "../../../core/vote/voteContent";
 import { St } from "./style";
