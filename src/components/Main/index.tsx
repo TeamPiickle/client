@@ -14,7 +14,6 @@ export default function Main() {
       <Banner />
       <BestPiickle />
       <MoodPiickle />
-      {/* PiickleMe 폰트 수정해야 함 <-- 프로토타이핑 디자인 요청 */}
       <PiickleMe />
       <Footer />
       <CTABtn />
