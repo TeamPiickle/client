@@ -48,7 +48,7 @@ export default function CardCollection() {
         cardsTypeLoaction={cardsTypeLoaction}
       />
 
-      {isLoginOpened && <LoginModal closeHandler={closeLoginModal} />}
+      {isLoginOpened && <LoginModal closeHandler={closeLoginModal} contents={"북마크기능인 마이피클을"} />}
       {isOpened && <FilterModal typeLocation={cardsTypeLoaction.type} closeHandler={closeModal} />}
     </St.MainPage>
   );
