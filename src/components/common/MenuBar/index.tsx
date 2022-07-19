@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
 import { IcCloseBtn, IcMenuBarImg } from "../../../asset/icon";
+import { useBallotLists } from "../../../core/api/main";
 import { activeState } from "../../../core/atom/menuBar";
 import { sliderIdxState } from "../../../core/atom/slider";
 import { St, StContentsContainer } from "./style";
@@ -15,11 +16,12 @@ export default function MenuBar() {
   const setIsActive = useSetRecoilState(activeState);
   const setSliderIdx = useSetRecoilState(sliderIdxState);
 
+  const { ballotLists, isLoading, isError } = useBallotLists();
+
   const navigate = useNavigate();
   const moveCardCollection = () => {
     navigate("/card-collection", { state: { type: "all" } });
     setSliderIdx(0);
-
     closeMenuBar();
   };
 
@@ -62,7 +64,7 @@ export default function MenuBar() {
               <St.Title>Mood Piickles</St.Title>
               <St.SubTitle>카테고리별 대화주제 추천</St.SubTitle>
             </St.RecomendWrapper>
-            <St.RecomendWrapper to="/vote" onClick={closeMenuBar}>
+            <St.RecomendWrapper to={ballotLists && `/vote/${ballotLists.data[0]._id}`} onClick={closeMenuBar}>
               <St.Title>Piickle Me</St.Title>
               <St.SubTitle>진행중인 투표</St.SubTitle>
             </St.RecomendWrapper>
