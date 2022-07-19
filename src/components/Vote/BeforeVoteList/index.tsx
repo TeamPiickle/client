@@ -22,9 +22,9 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    if (ballotTopic?.data.userSelect.ballotItemId !== "" && isPosted === false) {
+    if (!ballotTopic.data.userSelect.ballotItemId && isPosted === false) {
       setIsSuccess(true);
-      if (ballotTopic?.data.userSelect) setCurrentIndex(ballotTopic.data.userSelect.ballotItemId);
+      if (ballotTopic.data.userSelect) setCurrentIndex(ballotTopic.data.userSelect.ballotItemId);
     }
   }, []);
 

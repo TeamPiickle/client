@@ -7,7 +7,6 @@ export const St = {
     position: relative;
 
     & .slick-slide {
-      width: 30rem;
       height: calc(100vh - 14.8rem);
       max-height: 49.5em;
     }

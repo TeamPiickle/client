@@ -6,6 +6,8 @@ export const St = {
   Card: styled.article`
     position: relative;
 
+    width: 30rem;
+
     border: 0.1rem solid ${({ theme }) => theme.colors.gray200};
     backdrop-filter: blur(1.2rem);
     border-radius: 1.5rem;
@@ -20,6 +22,8 @@ export const St = {
 
     ${({ theme }) => theme.fonts.body5};
     color: ${({ theme }) => theme.colors.bg};
+
+    white-space: pre-wrap;
   `,
 
   HeartWrapper: styled.div`
