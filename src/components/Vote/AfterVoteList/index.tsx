@@ -20,10 +20,7 @@ export default function AfterVoteList(props: AfterVoteListProps) {
 
   const handlePost = () => {
     real.postVote(ballotTopic?.data.ballotTopic._id, ballotTopic?.data.userSelect.ballotItemId);
-    console.log(ballotTopic?.data.ballotTopic._id, ballotTopic?.data.userSelect.ballotItemId);
   };
-
-  console.log(ballotTopic.data.ballotItems);
 
   return (
     <>
