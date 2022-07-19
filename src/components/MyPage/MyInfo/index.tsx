@@ -29,14 +29,14 @@ export default function MyInfo() {
         <St.Profile>
           <St.Images>
             <St.ProfileImage src={userProfile.data.profile_image_url} alt="프로필" />
+            <St.ButtonIcContainer>
+              <IcChangeProfileBtn />
+            </St.ButtonIcContainer>
             <St.ChangeButton
               type="file"
               onChange={handleImageChange}
               accept="image/jpg, image/png, image/jpeg"
               ref={profileImg}></St.ChangeButton>
-            <St.ButtonIcContainer>
-              <IcChangeProfileBtn />
-            </St.ButtonIcContainer>
           </St.Images>
           <St.ProfileDetail>
             <St.ProfileNickname>

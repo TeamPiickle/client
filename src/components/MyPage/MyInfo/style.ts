@@ -23,16 +23,18 @@ export const St = {
     height: 5.8rem;
     border-radius: 50%;
     background-color: pink;
+    z-index: 10;
   `,
 
   ChangeButton: styled.input`
-    display: none;
+    /* display: none; */
     /* bottom: -0.3rem;
     right: -19.3rem; */
     width: 2.1rem;
     position: absolute;
     margin-left: -0.2rem;
     top: 1.5rem;
+    opacity: 0;
   `,
 
   ButtonIcContainer: styled.div`
