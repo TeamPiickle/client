@@ -1,8 +1,7 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import { useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect, useRef } from "react";
 import Slider from "react-slick";
 import { useRecoilState } from "recoil";
 
@@ -17,6 +16,8 @@ interface CardSliderProps {
   openFilterModalHandler: () => void;
   openLoginModalHandler: () => void;
   cardsTypeLoaction: CardsTypeLocation;
+  cardLists: CardList[];
+  setCardLists: React.Dispatch<React.SetStateAction<CardList[]>>;
 }
 
 // 1. 카테고리 :: /categories/:categoryId :: { type: "category", categoryId: "62cbb7d8a8c54f168a6ddfe1"}
@@ -24,17 +25,16 @@ interface CardSliderProps {
 // 3. all 전체 카드 :: /categories/cards :: { type: "all" }
 // 4. 필터 :: /categories/cards?search={type} :: { type: "filter", filters: ["남자", "상관없음"] }
 export default function CardSlider(props: CardSliderProps) {
-  const { openFilterModalHandler, openLoginModalHandler, cardsTypeLoaction } = props;
+  const { openFilterModalHandler, openLoginModalHandler, cardsTypeLoaction, cardLists, setCardLists } = props;
 
   const [sliderIdx, setSliderIdx] = useRecoilState(sliderIdxState);
   const sliderRef = useRef<Slider | null>(null);
-  const [cardLists, setCardLists] = useState<CardList[]>([]);
 
   useEffect(() => {
     fetchCardCollection(cardsTypeLoaction, (data: CardList[]) => {
       setCardLists(data);
     });
-  }, [cardsTypeLoaction]);
+  }, [cardsTypeLoaction, setCardLists]);
 
   const sliderSettings = {
     className: "center",
@@ -50,11 +50,12 @@ export default function CardSlider(props: CardSliderProps) {
 
   return (
     <St.Wrapper>
-      {!cardLists ? (
+      {/* 이거 왜 로딩뷰 안나오냐 */}
+      {cardLists === [] ? (
         <article>Loading...</article>
       ) : (
         <Slider {...sliderSettings} ref={sliderRef}>
-          {cardLists.map((cardList) => (
+          {cardLists?.map((cardList) => (
             <Card key={cardList._id} openLoginModalHandler={openLoginModalHandler} cardList={cardList} />
           ))}
           <LastCard />

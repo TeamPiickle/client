@@ -5,6 +5,7 @@ import { useRecoilState, useSetRecoilState } from "recoil";
 import { real } from "../../../core/api/cardCollection";
 import { filterTagsState, sliderIdxState } from "../../../core/atom/slider";
 import { filterTagsInfo, intimacyTags } from "../../../core/cardCollection/filter";
+import { CardList } from "../../../types/cardCollection";
 import Modal from "../../common/Modal";
 import IntimacySlider from "./IntimacySlider";
 import { St } from "./style";
@@ -12,14 +13,16 @@ import { St } from "./style";
 interface FilterModalProps {
   closeHandler: () => void;
   typeLocation: "filter" | string;
+  setCardLists: React.Dispatch<React.SetStateAction<CardList[]>>;
 }
 
 export default function FilterModal(props: FilterModalProps) {
-  const { closeHandler, typeLocation } = props;
+  const { closeHandler, typeLocation, setCardLists } = props;
 
   const [filterTags, setFilterTags] = useRecoilState(filterTagsState);
+
   const setSliderIdx = useSetRecoilState(sliderIdxState);
-  const navigation = useNavigate();
+
   const [checkedTags, setCheckedTags] = useState<Set<string>>(
     typeLocation === "filter" ? new Set(filterTags.tags) : new Set(),
   ); // 체크한 태그들을 저장할 state
@@ -33,13 +36,15 @@ export default function FilterModal(props: FilterModalProps) {
   };
 
   // 추천 시작하기를 눌렀을 때, 태그 정보들과 친밀도 정보를 담아주고 창닫기
-  const submitFilter = () => {
+  const submitFilter = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+
     const _checkedTagsArr = [...checkedTags];
     _checkedTagsArr.push(intimacyTags[intimacyValues[0]]);
     setFilterTags({ tags: _checkedTagsArr, intimacy: [intimacyValues[0]] });
 
-    real.fetchCardsWithFilter(_checkedTagsArr);
-    navigation("/card-collection", { state: { type: "filter", filters: ["남자", "상관없음"] } });
+    const { data } = await real.fetchCardsWithFilter<{ data: CardList[] }>(_checkedTagsArr);
+    setCardLists(data);
     setSliderIdx(0);
 
     closeHandler();

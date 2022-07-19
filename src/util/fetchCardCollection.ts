@@ -5,8 +5,8 @@ export default function fetchCardCollection<T>(CARD_TYPE_LOCATION: CardsTypeLoca
   switch (CARD_TYPE_LOCATION.type) {
     case "category":
       (async () => {
-        const { data } = await real.fetchCardsWithCategory<{ data: T }>(CARD_TYPE_LOCATION.categoryId);
-        handler(data);
+        const { data } = await real.fetchCardsWithCategory<{ data: { cardList: T } }>(CARD_TYPE_LOCATION.categoryId);
+        handler(data.cardList);
       })();
       break;
 
@@ -23,14 +23,5 @@ export default function fetchCardCollection<T>(CARD_TYPE_LOCATION: CardsTypeLoca
         handler(data);
       })();
       break;
-
-    case "filter":
-      (async () => {
-        const { data } = await real.fetchCardsWithFilter(CARD_TYPE_LOCATION.filters);
-        handler(data);
-      })();
-      break;
-    default:
-      throw new Error("잘못된 접근입니다.");
   }
 }
