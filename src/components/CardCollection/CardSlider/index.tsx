@@ -29,13 +29,11 @@ export default function CardSlider(props: CardSliderProps) {
   const [sliderIdx, setSliderIdx] = useRecoilState(sliderIdxState);
   const sliderRef = useRef<Slider | null>(null);
   const [cardLists, setCardLists] = useState<CardList[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetchCardCollection(cardsTypeLoaction, (data: CardList[]) => {
       setCardLists(data);
     });
-    setIsLoading(false);
   }, [cardsTypeLoaction]);
 
   const sliderSettings = {
@@ -52,7 +50,7 @@ export default function CardSlider(props: CardSliderProps) {
 
   return (
     <St.Wrapper>
-      {isLoading ? (
+      {!cardLists ? (
         <article>Loading...</article>
       ) : (
         <Slider {...sliderSettings} ref={sliderRef}>
