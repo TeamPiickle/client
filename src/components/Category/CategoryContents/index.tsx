@@ -17,7 +17,6 @@ export default function CategoryContents() {
   const { categoryLists, isLoading, isError } = useCategoryLists();
 
   const navigate = useNavigate();
-
   const moveCategory = (id: number) => {
     navigate("/card-collection", { state: { type: "category", categoryId: id } });
     setSliderIdx(0);
