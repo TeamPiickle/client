@@ -2,14 +2,14 @@ import { IcCheck1 } from "../../../asset/icon";
 import { real } from "../../../core/api/vote";
 import { St } from "./style";
 
-type propsType = {
+interface AfterVoteListProps = {
   setIsVoted: React.Dispatch<React.SetStateAction<boolean>>;
   setIsSuccess: React.Dispatch<React.SetStateAction<boolean>>;
   currentIndex: number;
   ballotTopic: any;
   setIsPosted: React.Dispatch<React.SetStateAction<boolean>>;
 };
-export default function AfterVoteList(props: propsType) {
+export default function AfterVoteList(props: AfterVoteListProps) {
   const { setIsVoted, setIsSuccess, currentIndex, ballotTopic, setIsPosted } = props;
   const cancelVote = () => {
     setIsSuccess(false);
