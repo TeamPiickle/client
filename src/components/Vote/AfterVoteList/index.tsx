@@ -44,7 +44,7 @@ export default function AfterVoteList(props: AfterVoteListProps) {
           })}
       </St.VoteOptionContainer>
       <St.VoteBtnContainer>
-        <St.VoteBtn onClick={cancelVote}>재투표하기</St.VoteBtn>
+        <St.VoteBtn onClick={cancelVote}>다시 투표하기</St.VoteBtn>
       </St.VoteBtnContainer>
     </>
   );

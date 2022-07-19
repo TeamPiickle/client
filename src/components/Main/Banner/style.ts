@@ -9,6 +9,8 @@ export const St = {
   ImageWrapper: styled.img`
     width: 36rem;
     height: 21.7rem;
+
+    margin-top: -2.4rem;
   `,
 
   ContentsPages: styled.div`

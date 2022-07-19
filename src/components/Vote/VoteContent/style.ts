@@ -1,15 +1,23 @@
 import styled from "styled-components";
 
 export const St = {
+  ContainerWrapper: styled.section`
+    width: 100%;
+
+    padding: 0 2.4rem;
+  `,
+
   VoteContentContainer: styled.article`
     height: 44.2rem;
-    width: 30.4rem;
 
     box-shadow: 0rem 0.4rem 0.4rem rgba(0, 0, 0, 0.25), 0rem 0rem 0.2rem rgba(0, 0, 0, 0.25);
 
     border-radius: 1.5rem;
 
     padding-top: 5.3rem;
+
+    display: flex;
+    flex-direction: column;
   `,
 
   VoteContentTitle: styled.h2`
@@ -21,18 +29,18 @@ export const St = {
   `,
 
   VoteOptionContainer: styled.ul`
-    width: 27.2rem;
+    width: 100%;
     height: 14.3rem;
 
     margin-top: 2.6rem;
-    margin-left: 1.6rem;
 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   `,
+
   VoteOptionList: styled.li`
-    width: 27.2rem;
+    width: 100%;
     height: 3.7rem;
 
     border: solid 0.1rem #e0e0e0;
