@@ -3,9 +3,9 @@ import { useLocation } from "react-router-dom";
 
 import { CardList, CardsTypeLocation } from "../../types/cardCollection";
 import Header from "../common/Header";
+import LoginModal from "../common/LoginModal";
 import CardSlider from "./CardSlider";
 import FilterModal from "./FilterModal";
-import LoginModal from "./LoginModal";
 import { St } from "./style";
 
 export default function CardCollection() {
@@ -17,8 +17,8 @@ export default function CardCollection() {
   const [isLoginOpened, setLoginOpened] = useState<boolean>(false);
 
   useEffect(() => {
-    console.log(cardLists);
-  }, [cardLists]);
+    window.scrollTo(0, 0);
+  });
 
   const openModal = () => {
     setIsOpened(true);

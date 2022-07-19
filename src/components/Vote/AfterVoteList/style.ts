@@ -6,7 +6,7 @@ export const St = {
   VoteOptionContainer: styled.ul`
     height: 14.3rem;
 
-    margin: 2.6rem 1.6rem 0;
+    margin-top: 2.6rem;
 
     display: flex;
     flex-direction: column;
@@ -83,12 +83,12 @@ export const St = {
   `,
 
   VoteBtn: styled.button`
-    width: 22.6rem;
+    width: 15.6rem;
     height: 3.4rem;
 
     border-radius: 6.6rem;
 
-    ${({ theme }) => theme.fonts.body6}
+    ${({ theme }) => theme.fonts.btn2}
 
     background-color: ${({ theme }) => theme.colors.gray800};
     color: ${({ theme }) => theme.colors.white};

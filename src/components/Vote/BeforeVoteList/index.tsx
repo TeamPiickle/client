@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { IcCheck2 } from "../../../asset/icon";
 import { BallotTopicData, real } from "../../../core/api/vote";
-import LoginModal from "../../CardCollection/LoginModal";
+import LoginModal from "../../common/LoginModal";
 import { St } from "./style";
 
 interface BeforeVoteListProps {
@@ -61,7 +61,7 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
   };
 
   return (
-    <>
+    <St.Root>
       <St.VoteOptionContainer>
         {ballotTopic &&
           ballotTopic.data.ballotItems.map((element) => {
@@ -80,6 +80,6 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
         <St.VoteBtn onClick={successVote}>투표하기</St.VoteBtn>
       </St.VoteBtnContainer>
       {isModalOpen && <LoginModal closeHandler={closeLoginModal} contents={"투표기능인 피클미를"} />}
-    </>
+    </St.Root>
   );
 }

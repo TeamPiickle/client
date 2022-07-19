@@ -1,4 +1,4 @@
-import { IcVoteImg1, IcVoteImg2 } from "../../../asset/icon";
+import { IcVoteImg } from "../../../asset/icon";
 import { useBallotLists } from "../../../core/api/main";
 import { headingTitles } from "../../../core/main/headingTitles";
 import HeadingTitleContainer from "../../common/HeadingTitleContainer";
@@ -23,7 +23,7 @@ export default function PiickleMe() {
         ballotLists.data.slice(1).map((ballot, idx: number) => (
           <St.VoteContent key={`${ballot._id}-${idx}`}>
             <St.VoteImgTextWrapper>
-              <IcVoteImg2 aria-label="사용자 프로필 사진" />
+              <IcVoteImg aria-label="사용자 프로필 사진" />
               <St.VoteTextContainer>
                 <St.VoteContentText>{ballot && ballot.topic}</St.VoteContentText>
               </St.VoteTextContainer>

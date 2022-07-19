@@ -21,7 +21,9 @@ export default function useUserProfile() {
 
 // 유저 닉네임 수정
 function patchUserNickName(nickname: string) {
-  return realReq.PATCH(`${PATH.USERS}/nickname`, nickname);
+  return realReq.PATCH(`${PATH.USERS}/nickname`, {
+    nickname: nickname,
+  });
 }
 
 // 유저 비밀번호 재설정

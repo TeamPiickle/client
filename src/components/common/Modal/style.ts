@@ -40,7 +40,7 @@ export const St = {
     z-index: 10;
   `,
 
-  ModalContents: styled.article`
+  ModalContents: styled.main`
     position: relative;
   `,
 };

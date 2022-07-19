@@ -13,6 +13,7 @@ export default function Header() {
   const handleModal = () => {
     setIsActive(!isActive);
   };
+
   return (
     <St.HeaderWrapper iscardview={pathname === "/card-collection"}>
       <St.Link to="/">
