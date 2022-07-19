@@ -40,7 +40,6 @@ export const St = {
   `,
 
   VoteOptionList: styled.li`
-    /* width: 27.2rem; */
     width: 100%;
     height: 3.7rem;
 
