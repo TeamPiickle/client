@@ -29,7 +29,6 @@ export const St = {
   `,
 
   VoteOptionContainer: styled.ul`
-    /* width: 27.2rem; */
     width: 100%;
     height: 14.3rem;
 
