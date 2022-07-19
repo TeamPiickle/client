@@ -14,9 +14,9 @@ export default function useUserProfile() {
 }
 
 // 프로필사진 수정
-//  function patchProfileImg() {
-//   return realReq.PATCH(PATH.USERS);
-// }
+function patchProfileImg(file: FormData) {
+  return realReq.PATCH(`${PATH.USERS}/profile-image`, file);
+}
 
 // 유저 닉네임 수정
 function patchUserNickName(nickname: string) {
@@ -32,6 +32,7 @@ function patchUserPassword(email: string, newPassword: string) {
 }
 
 export const real = {
+  patchProfileImg,
   patchUserNickName,
   patchUserPassword,
 };
