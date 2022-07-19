@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { IcCheck2 } from "../../../asset/icon";
 import { BallotTopicData, real } from "../../../core/api/vote";
-import LoginModal from "../../CardCollection/LoginModal";
+import LoginModal from "../../common/LoginModal";
 import { St } from "./style";
 
 interface BeforeVoteListProps {
