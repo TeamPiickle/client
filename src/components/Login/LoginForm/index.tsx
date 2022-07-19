@@ -9,14 +9,11 @@
 
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
 
 import { real } from "../../../core/api/login";
-import { loginState } from "../../../core/atom/login";
 import { St } from "./style";
 
 export default function LoginForm() {
-  const setIsLogin = useSetRecoilState(loginState);
   const navigate = useNavigate();
   const inputRefs = useRef<HTMLInputElement[]>([]);
   const [errorMessage, setErrorMessage] = useState({ emailError: "", passwordError: "" });
@@ -46,7 +43,6 @@ export default function LoginForm() {
 
   const LoginNGoMain = (data: { accessToken: string }) => {
     localStorage.setItem("piickle-token", data.accessToken);
-    setIsLogin(true);
     navigate("/");
   };
 

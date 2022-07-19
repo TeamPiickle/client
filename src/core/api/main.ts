@@ -1,5 +1,6 @@
 import useSWR from "swr";
 
+import { PiickleSWRResponse } from "../../types/swr";
 import { realReq } from "./common/axios";
 import { PATH } from "./common/constants";
 
@@ -14,9 +15,18 @@ export function useCategoryLists() {
   };
 }
 
-// 베스트 5 피클 조회
+type BestPiickleCard = {
+  _id: string;
+  tags: string[];
+  content: string;
+};
+
+type BestPiickle = {
+  cardList: BestPiickleCard[];
+};
+
 export function useBestPiickle() {
-  const { data, error } = useSWR(`${PATH.CARDS}/best-5`, realReq.GET_SWR);
+  const { data, error } = useSWR<PiickleSWRResponse<BestPiickle>>(`${PATH.CARDS}/best`, realReq.GET_SWR);
 
   return {
     bestPiickle: data?.data,

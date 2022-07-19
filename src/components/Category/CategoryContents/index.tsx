@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
 
 import { useCategoryLists } from "../../../core/api/main";
+import { sliderIdxState } from "../../../core/atom/slider";
 import { gridValue } from "../../../core/category/categoryList";
 import { St } from "./style";
 
@@ -11,12 +13,14 @@ type categoryType = {
 };
 
 export default function CategoryContents() {
+  const setSliderIdx = useSetRecoilState(sliderIdxState);
   const { categoryLists, isLoading, isError } = useCategoryLists();
 
   const navigate = useNavigate();
 
   const moveCategory = (id: number) => {
     navigate("/card-collection", { state: { type: "category", categoryId: id } });
+    setSliderIdx(0);
   };
 
   return (

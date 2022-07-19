@@ -13,23 +13,23 @@ type BannerImage = {
 const BannerImage: BannerImage[] = [
   {
     src: "banner1",
-    alt: "banner1",
+    alt: "배너1",
   },
   {
     src: "banner2",
-    alt: "banner2",
+    alt: "배너2",
   },
   {
     src: "banner3",
-    alt: "banner3",
+    alt: "배너3",
   },
   {
     src: "banner4",
-    alt: "banner4",
+    alt: "배너4",
   },
   {
     src: "banner5",
-    alt: "banner5",
+    alt: "배너5",
   },
 ];
 

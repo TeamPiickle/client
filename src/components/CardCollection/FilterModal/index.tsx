@@ -1,22 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState, useSetRecoilState } from "recoil";
 
 import { real } from "../../../core/api/cardCollection";
-import { filterTags, intimacyTags } from "../../../core/cardCollection/filter";
+import { filterTagsState, sliderIdxState } from "../../../core/atom/slider";
+import { filterTagsInfo, intimacyTags } from "../../../core/cardCollection/filter";
 import Modal from "../../common/Modal";
 import IntimacySlider from "./IntimacySlider";
 import { St } from "./style";
 
 interface FilterModalProps {
   closeHandler: () => void;
+  typeLocation: "filter" | string;
 }
 
 export default function FilterModal(props: FilterModalProps) {
-  const { closeHandler } = props;
+  const { closeHandler, typeLocation } = props;
 
+  const [filterTags, setFilterTags] = useRecoilState(filterTagsState);
+  const setSliderIdx = useSetRecoilState(sliderIdxState);
   const navigation = useNavigate();
-  const [checkedTags, setCheckedTags] = useState<Set<string>>(new Set()); // 체크한 태그들을 저장할 state
-  const [intimacyValues, setIntimacyValues] = useState<number[]>([0]); // 친밀도 value
+  const [checkedTags, setCheckedTags] = useState<Set<string>>(
+    typeLocation === "filter" ? new Set(filterTags.tags) : new Set(),
+  ); // 체크한 태그들을 저장할 state
+  const [intimacyValues, setIntimacyValues] = useState<number[]>(typeLocation === "filter" ? filterTags.intimacy : [0]); // 친밀도 value
 
   // 태그를 눌렀을 때 함수
   const toggleTag = (_tag: string) => {
@@ -29,10 +36,11 @@ export default function FilterModal(props: FilterModalProps) {
   const submitFilter = () => {
     const _checkedTagsArr = [...checkedTags];
     _checkedTagsArr.push(intimacyTags[intimacyValues[0]]);
-    console.log(_checkedTagsArr);
+    setFilterTags({ tags: _checkedTagsArr, intimacy: [intimacyValues[0]] });
 
     real.fetchCardsWithFilter(_checkedTagsArr);
     navigation("/card-collection", { state: { type: "filter", filters: ["남자", "상관없음"] } });
+    setSliderIdx(0);
 
     closeHandler();
   };
@@ -40,11 +48,11 @@ export default function FilterModal(props: FilterModalProps) {
   return (
     <Modal closeHandler={closeHandler}>
       <St.ModalContentsWrapper>
-        {filterTags.map((filterTag, idx) => (
+        {filterTagsInfo.map((filterTagInfo, idx) => (
           <React.Fragment key={`filter-${idx}`}>
-            <St.FilterTitle>{filterTag.type}</St.FilterTitle>
+            <St.FilterTitle>{filterTagInfo.type}</St.FilterTitle>
             <St.FilterTagsWrapper>
-              {filterTag.tags.map((tag, index) => (
+              {filterTagInfo.tags.map((tag, index) => (
                 <St.FilterTag key={index} isactive={checkedTags.has(tag)} onClick={() => toggleTag(tag)}>
                   {tag}
                 </St.FilterTag>

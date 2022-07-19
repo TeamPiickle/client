@@ -7,7 +7,7 @@ export const St = {
     min-height: -webkit-fill-available;
     min-height: fill-available;
 
-    padding: 6.4rem 0 5.1rem;
+    padding: 8rem 0 5.1rem;
 
     background: ${({ theme }) => theme.colors.card};
   `,

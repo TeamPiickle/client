@@ -1,5 +1,5 @@
 import { IcCheck1 } from "../../../asset/icon";
-import { real } from "../../../core/api/vote";
+import { voteContent } from "../../../core/vote/voteContent";
 import { St } from "./style";
 
 interface AfterVoteListProps = {

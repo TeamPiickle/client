@@ -3,7 +3,7 @@ type FilterTags = {
   tags: string[];
 };
 
-export const filterTags: FilterTags[] = [
+export const filterTagsInfo: FilterTags[] = [
   {
     type: "성별",
     tags: ["남", "여"],
@@ -14,7 +14,7 @@ export const filterTags: FilterTags[] = [
   },
   {
     type: "술자리 유형",
-    tags: ["개인", "커플", "친구", "단체"],
+    tags: ["개인", "커플", "친구", "단체", "19금"],
   },
 ];
 

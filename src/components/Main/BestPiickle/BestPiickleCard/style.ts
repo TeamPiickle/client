@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const St = {
@@ -12,6 +11,8 @@ export const St = {
     box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25), 0rem 0rem 0.2rem rgba(0, 0, 0, 0.25);
     border-radius: 1.6rem;
     color: ${({ theme }) => theme.colors.white};
+
+    position: relative;
   `,
 
   TagsWrapper: styled.ul`
@@ -30,7 +31,7 @@ export const St = {
 
     width: 17rem;
     height: 4.4rem;
-    margin: 0.6rem 0 2.3rem;
+    margin-top: 0.6rem;
     // 말줄임표 설정
     white-space: normal;
     display: -webkit-box;
@@ -39,17 +40,19 @@ export const St = {
     overflow: hidden;
   `,
 
-  PickButtonWrapper: styled.button`
+  PickButtonWrapper: styled.div`
     width: 8.1rem;
     height: 2.5rem;
 
     background-color: ${({ theme }) => theme.colors.green};
     border-radius: 4.2rem;
 
-    float: right;
+    position: absolute;
+    right: 1.6rem;
+    bottom: 1.4rem;
   `,
 
-  PickButton: styled(Link)`
+  PickButton: styled.button`
     ${({ theme }) => theme.fonts.btn2}
     color: ${({ theme }) => theme.colors.white};
 

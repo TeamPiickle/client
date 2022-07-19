@@ -16,8 +16,10 @@ export default function LoginModal(props: LoginCheckProps) {
           <St.ModalContents>로그인을 하시면 {contents} 이용할 수 있어요!</St.ModalContents>
         </St.Wrapper>
         <St.Buttons>
-          <St.LoginButton to="/login">로그인</St.LoginButton>
-          <St.SignUpButton>회원가입</St.SignUpButton>
+          <St.Button type="button">
+            <St.LoginLink to="/login">로그인</St.LoginLink>
+          </St.Button>
+          <St.Button type="button">회원가입</St.Button>
         </St.Buttons>
       </St.Container>
     </Modal>

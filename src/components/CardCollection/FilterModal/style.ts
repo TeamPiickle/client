@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import styled from "styled-components";
 
 export const St = {
@@ -16,7 +17,7 @@ export const St = {
 
   FilterTagsWrapper: styled.ul`
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     gap: 1rem;
 
     margin: 0.8rem 0 2.2rem;
@@ -28,12 +29,14 @@ export const St = {
     justify-content: center;
     align-items: center;
 
-    width: 6.2rem;
     height: 2.6rem;
+    padding: 0.2rem 2.4rem;
 
     ${({ theme }) => theme.fonts.btn3}
     background-color: ${({ isactive, theme }) => (isactive ? theme.colors.green : theme.colors.white)};
     color: ${({ isactive, theme }) => (isactive ? theme.colors.white : theme.colors.black)};
+    box-shadow: ${({ isactive }) =>
+      isactive ? "0 0.1rem 0.1rem rgba(0, 0, 0, 0.25)" : "inset 0 0.1rem 0.1rem rgba(0, 0, 0, 0.25)"};
 
     border-radius: 6.3rem;
     cursor: pointer;

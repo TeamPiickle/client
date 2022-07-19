@@ -1,18 +1,18 @@
 import { useState } from "react";
 
 import { real } from "../../../core/api/cardCollection";
-import { CardIdList } from "../../../types/cardCollection";
+import { CardList } from "../../../types/cardCollection";
 import CustomFullHeart from "../CustomFullHeart";
 import TagsSlider from "../TagsSlider";
 import { St } from "./style";
 
 interface LoginCheckProps {
-  cardIdList: CardIdList;
+  cardList: CardList;
   openLoginModalHandler: () => void;
 }
 
 export default function Card(props: LoginCheckProps) {
-  const { cardIdList, openLoginModalHandler } = props;
+  const { cardList, openLoginModalHandler } = props;
   const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
 
   const [isBookmarked, setIsBookmarked] = useState(false);
@@ -20,11 +20,11 @@ export default function Card(props: LoginCheckProps) {
   const handleClickHeart = (_id: string) => {
     switch (LOGIN_STATE) {
       case true:
-        openLoginModalHandler();
-        break;
-      case false:
         setIsBookmarked((prev) => !prev);
         real.addNDeleteBookmark(_id);
+        break;
+      case false:
+        openLoginModalHandler();
         break;
     }
   };
@@ -32,10 +32,10 @@ export default function Card(props: LoginCheckProps) {
   return (
     <St.Card>
       <St.TagsWrapper>
-        <TagsSlider tags={cardIdList.tags} />
+        <TagsSlider tags={cardList.tags} />
       </St.TagsWrapper>
-      <St.ContentWrapper>{cardIdList.content}</St.ContentWrapper>
-      <St.HeartWrapper onClick={() => handleClickHeart(cardIdList._id)}>
+      <St.ContentWrapper>{cardList.content}</St.ContentWrapper>
+      <St.HeartWrapper onClick={() => handleClickHeart(cardList._id)}>
         <St.IcEmptyHeart />
         {isBookmarked && <CustomFullHeart />}
       </St.HeartWrapper>

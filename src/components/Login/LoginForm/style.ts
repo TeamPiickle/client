@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 export const St = {
   Section: styled.section`
-    padding: 0 1.2rem;
+    padding: 0 1.6rem;
   `,
 
   Form: styled.form``,
 
   Title: styled.h2`
-    margin-bottom: 2rem;
+    padding: 2.4rem 0;
 
     ${({ theme }) => theme.fonts.h1};
     color: ${({ theme }) => theme.colors.bg};

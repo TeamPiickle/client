@@ -13,19 +13,18 @@ export const St = {
     background-color: rgb(0, 0, 0, 0.5);
     display: flex;
     align-items: center;
+
+    padding: 1.6rem;
   `,
 
   Modal: styled.section`
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
 
     background-color: ${({ theme }) => theme.colors.sub_green5};
     border-radius: 2rem;
 
     padding: 2rem 1.6rem;
-    width: 32.8rem;
+    width: 100%;
   `,
 
   CloseBtn: styled.button`
