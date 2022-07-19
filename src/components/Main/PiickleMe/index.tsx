@@ -5,11 +5,6 @@ import HeadingTitleContainer from "../../common/HeadingTitleContainer";
 import Loading from "../../common/Loading";
 import { St } from "./style";
 
-type ballot = {
-  _id: string;
-  title: string;
-};
-
 export default function PiickleMe() {
   const { ballotLists, isLoading, isError } = useBallotLists();
 
