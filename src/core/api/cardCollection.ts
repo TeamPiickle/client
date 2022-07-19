@@ -14,9 +14,14 @@ function fetchCardsWithBest<T>() {
 // 필터로 카드 리스트 조회
 function fetchCardsWithFilter<T>(types: string[]) {
   let params = "";
-  types.forEach((type) => {
-    params += `?search=${type}`;
-  });
+
+  if (types.length === 0) {
+    params = "?serach=타입";
+  } else {
+    types.forEach((type) => {
+      params += `?search=${type}`;
+    });
+  }
 
   return realReq.GET<T>(`${PATH.CATEGORIES}/cards${params}`);
 }
