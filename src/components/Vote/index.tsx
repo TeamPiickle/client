@@ -6,16 +6,18 @@ import VoteTitle from "./VoteTitle";
 
 export default function Vote() {
   return (
-    <St.Root>
+    <main>
       <Header />
       <VoteTitle />
-      <VoteContent />
-    </St.Root>
+      <St.ContentWrapper>
+        <VoteContent />
+      </St.ContentWrapper>
+    </main>
   );
 }
 
 const St = {
-  Root: styled.section`
+  ContentWrapper: styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
