@@ -8,12 +8,14 @@ export const St = {
 
   ContentTitle: styled(StCard.ContentWrapper)`
     margin-top: 8.6rem;
+
+    ${({ theme }) => theme.fonts.body5};
   `,
 
   Content: styled.p`
     margin: 1.2rem 0 0 2.4rem;
 
-    ${({ theme }) => theme.fonts.h2};
+    ${({ theme }) => theme.fonts.body6};
     color: ${({ theme }) => theme.colors.bg};
   `,
 
@@ -37,7 +39,7 @@ export const St = {
     justify-content: center;
     align-items: center;
 
-    ${({ theme }) => theme.fonts.caption2};
+    ${({ theme }) => theme.fonts.btn1};
     color: ${({ theme }) => theme.colors.gray600};
 
     border-bottom: 0.08rem solid ${({ theme }) => theme.colors.gray600};

@@ -13,8 +13,7 @@ export const St = {
   `,
 
   MyPiickleContent: styled.strong`
-    ${({ theme }) => theme.fonts.body6};
-    letter-spacing: -0.03em;
+    ${({ theme }) => theme.fonts.body4};
     color: ${({ theme }) => theme.colors.bg};
 
     overflow: hidden;

@@ -22,7 +22,6 @@ export const St = {
   ModalContents: styled.p`
     width: 16.5rem;
 
-    letter-spacing: -0.03rem;
     ${({ theme }) => theme.fonts.body4};
     color: ${({ theme }) => theme.colors.bg};
   `,
@@ -49,7 +48,6 @@ export const St = {
     box-shadow: 0rem 0.1rem 0.1rem rgba(0, 0, 0, 0.25);
     border-radius: 4.7rem;
 
-    letter-spacing: -0.03rem;
     ${({ theme }) => theme.fonts.btn1};
     color: ${({ theme }) => theme.colors.bg};
     background: ${({ theme }) => theme.colors.white};

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
-import { sliderIdxState } from "../../../../core/atom/sliderIdx";
+import { sliderIdxState } from "../../../../core/atom/slider";
 import { St } from "./style";
 
 interface BestPiickleCardProps {

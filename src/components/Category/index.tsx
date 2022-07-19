@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
-import { sliderIdxState } from "../../core/atom/sliderIdx";
+import { sliderIdxState } from "../../core/atom/slider";
 import { categoryTitles } from "../../core/category/categoryList";
 import Header from "../common/Header";
 import HeadingTitleContainer from "../common/HeadingTitleContainer";
