@@ -2,30 +2,28 @@ import styled from "styled-components";
 
 export const St = {
   ContainerWrapper: styled.section`
-    width: 100%;
-
     padding: 0 2.4rem;
   `,
 
   VoteContentContainer: styled.article`
+    width: 30.4rem;
     height: 44.2rem;
 
     box-shadow: 0rem 0.4rem 0.4rem rgba(0, 0, 0, 0.25), 0rem 0rem 0.2rem rgba(0, 0, 0, 0.25);
-
     border-radius: 1.5rem;
 
-    padding-top: 5.3rem;
+    padding: 5.3rem 1.6rem 3.4rem;
 
     display: flex;
     flex-direction: column;
   `,
 
   VoteContentTitle: styled.h2`
-    ${({ theme }) => theme.fonts.body3}
-
+    ${({ theme }) => theme.fonts.body5}
     color: ${({ theme }) => theme.colors.bg};
 
-    margin-left: 1.6rem;
+    width: 27.2rem;
+    height: 10.2rem;
   `,
 
   VoteOptionContainer: styled.ul`
@@ -74,7 +72,7 @@ export const St = {
 
     border-radius: 6.6rem;
 
-    ${({ theme }) => theme.fonts.h2}
+    ${({ theme }) => theme.fonts.btn2}
 
     background-color: ${({ theme }) => theme.colors.gray800};
     color: ${({ theme }) => theme.colors.white};

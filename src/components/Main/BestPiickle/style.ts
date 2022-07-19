@@ -1,3 +1,4 @@
+import Slider from "react-slick";
 import styled from "styled-components";
 
 export const St = {
@@ -11,7 +12,7 @@ export const St = {
 
   Desc: styled.p``,
 
-  SliderWrapper: styled.div`
+  SliderWrapper: styled.article`
     width: 100%;
 
     .slick-list {
@@ -20,4 +21,5 @@ export const St = {
       padding: 0.4rem 1.6rem;
     }
   `,
+  Slider: styled(Slider)``,
 };
