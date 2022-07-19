@@ -9,7 +9,7 @@ export default function useUserProfile() {
   return {
     userProfile: data?.data,
     isLoading: !error && !data,
-    isError: error,
+    isLogin: data?.status === 200 ? true : false,
   };
 }
 

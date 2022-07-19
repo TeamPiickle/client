@@ -1,9 +1,19 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { IcChangeProfileBtn } from "../../../asset/icon/index";
 import useUserProfile from "../../../core/api/myPage";
 import { St } from "./style";
 
 export default function MyInfo() {
-  const { userProfile, isLoading, isError } = useUserProfile();
+  const { userProfile, isLoading, isLogin } = useUserProfile();
+  const navigation = useNavigate();
+
+  useEffect(() => {
+    if (!isLoading) {
+      if (isLogin) navigation("/login");
+    }
+  }, [isLoading, isLogin, navigation]);
 
   return (
     <St.MyInfoContainer>
@@ -12,7 +22,6 @@ export default function MyInfo() {
           <St.Images>
             <St.ProfileImage src={userProfile.data.profile_image_url} alt="프로필" />
             <St.ChangeButton>
-
               <IcChangeProfileBtn />
             </St.ChangeButton>
           </St.Images>
