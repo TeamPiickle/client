@@ -1,15 +1,16 @@
 import useSWR from "swr";
 
+import { PiickleSWRResponse } from "../../types/swr";
+import { UserProfile } from "../../types/users";
 import { realReq } from "./common/axios";
 import { PATH } from "./common/constants";
 
 export default function useUserProfile() {
-  const { data, error } = useSWR(PATH.USERS, realReq.GET_SWR);
+  const { data, error } = useSWR<PiickleSWRResponse<UserProfile>>(PATH.USERS, realReq.GET_SWR);
 
   return {
     userProfile: data?.data,
     isLoading: !error && !data,
-    isLogin: data?.status === 200 ? true : false,
   };
 }
 
