@@ -20,7 +20,7 @@ export const St = {
   ContentWrapper: styled.p`
     margin: 4.7rem 2.4rem 0;
 
-    ${({ theme }) => theme.fonts.body5};
+    ${({ theme }) => theme.fonts.cardBody5};
     color: ${({ theme }) => theme.colors.bg};
 
     white-space: pre-wrap;
