@@ -73,6 +73,7 @@ const fonts = {
   btn4: FONT({ weight: 300, size: 1, lineHeight: 140, letterSpacing: 4 }),
   footer1: FONT({ weight: 600, size: 1.2, lineHeight: 140, letterSpacing: 4 }),
   footer2: FONT({ weight: 400, size: 1.2, lineHeight: 140, letterSpacing: 4 }),
+  cardBody5: FONT({ weight: 700, size: 2.3, lineHeight: 140, letterSpacing: 4 }),
 } as const;
 
 const theme = {

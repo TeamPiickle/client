@@ -2,18 +2,17 @@ import styled from "styled-components";
 
 export const St = {
   VoteOptionContainer: styled.ul`
-    width: 27.2rem;
     height: 14.3rem;
 
-    margin-top: 2.6rem;
-    margin-left: 1.6rem;
+    margin: 2.6rem 1.6rem 0;
 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    position: relative;
   `,
   VoteOptionList: styled.li<{ isClicked: boolean }>`
-    width: 27.2rem;
     height: 3.7rem;
 
     border: solid 0.1rem #e0e0e0;
@@ -41,18 +40,22 @@ export const St = {
   VoteBtnContainer: styled.div`
     display: flex;
     justify-content: center;
+
+    bottom: 3.2rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   `,
+
   VoteBtn: styled.button`
-    width: 15.6rem;
+    width: 22.6rem;
     height: 3.4rem;
 
     border-radius: 6.6rem;
 
-    ${({ theme }) => theme.fonts.h2}
+    ${({ theme }) => theme.fonts.body6}
 
     background-color: ${({ theme }) => theme.colors.gray800};
     color: ${({ theme }) => theme.colors.white};
-
-    margin-top: 8.4rem;
   `,
 };

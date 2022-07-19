@@ -4,19 +4,18 @@ import { IcCheck1 } from "../../../asset/icon";
 
 export const St = {
   VoteOptionContainer: styled.ul`
-    width: 27.2rem;
     height: 14.3rem;
 
-    margin-top: 2.6rem;
-    margin-left: 1.6rem;
+    margin: 2.6rem 1.6rem 0;
 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    position: relative;
   `,
 
   VoteOptionList: styled.li`
-    width: 27.2rem;
     height: 3.7rem;
 
     border-radius: 0.5rem;
@@ -28,6 +27,7 @@ export const St = {
   VotedDescription: styled.div`
     display: flex;
     justify-content: space-between;
+    align-items: center;
   `,
 
   IconTextContainer: styled.div`
@@ -45,10 +45,12 @@ export const St = {
     margin-left: 0.4rem;
   `,
 
-  VotedPercent: styled.strong``,
+  VotedPercent: styled.strong`
+    ${({ theme }) => theme.fonts.h2};
+  `,
 
   VotedProgressBarContainer: styled.div<{ isSelected: boolean }>`
-    width: 27.2rem;
+    width: 100%;
     height: 1rem;
 
     border-radius: 4rem;
@@ -73,19 +75,22 @@ export const St = {
   VoteBtnContainer: styled.div`
     display: flex;
     justify-content: center;
+
+    bottom: 3.2rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   `,
 
   VoteBtn: styled.button`
-    width: 15.6rem;
+    width: 22.6rem;
     height: 3.4rem;
 
     border-radius: 6.6rem;
 
-    ${({ theme }) => theme.fonts.h2}
+    ${({ theme }) => theme.fonts.body6}
 
     background-color: ${({ theme }) => theme.colors.gray800};
     color: ${({ theme }) => theme.colors.white};
-
-    margin-top: 8.4rem;
   `,
 };
