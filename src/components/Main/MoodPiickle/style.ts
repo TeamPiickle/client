@@ -10,6 +10,7 @@ export const St = {
     flex-wrap: wrap;
     gap: 0.8rem;
     justify-content: center;
+    padding: 0 1.6rem;
 
     width: 36rem;
     margin: 0 auto;
