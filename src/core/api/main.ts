@@ -17,7 +17,7 @@ export function useCategoryLists() {
 
 type BestPiickleCard = {
   _id: string;
-  category: string[];
+  tags: string[];
   content: string;
 };
 

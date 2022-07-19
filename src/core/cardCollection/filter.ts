@@ -14,7 +14,7 @@ export const filterTagsInfo: FilterTags[] = [
   },
   {
     type: "술자리 유형",
-    tags: ["개인", "커플", "친구", "단체"],
+    tags: ["개인", "커플", "친구", "단체", "19금"],
   },
 ];
 

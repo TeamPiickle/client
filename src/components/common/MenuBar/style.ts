@@ -9,17 +9,20 @@ export const St = {
     left: 0;
     height: 100vh;
 
-    background-color: ${({ theme }) => theme.colors.gray600};
+    background-color: rgba(0, 0, 0, 0.5);
 
     z-index: 10;
   `,
-
-  Contents: styled.section``,
 
   CloseBtnContainer: styled.div`
     position: absolute;
     top: 1.9rem;
     right: 1.6rem;
+  `,
+
+  Contents: styled.section`
+    position: absolute;
+    top: 10rem;
   `,
 
   ProfileContainer: styled.article`
@@ -29,10 +32,7 @@ export const St = {
   `,
 
   WelcomeText: styled.h1`
-    ${({ theme }) => theme.fonts.body1};
-    font-size: 24px;
-    line-height: 3.36rem;
-
+    ${({ theme }) => theme.fonts.body10};
     color: ${({ theme }) => theme.colors.bg};
 
     margin-top: 1.6rem;
@@ -40,8 +40,6 @@ export const St = {
 
   DescriptText: styled.h2`
     ${({ theme }) => theme.fonts.body12};
-    font-size: 16px;
-
     color: ${({ theme }) => theme.colors.gray600};
 
     margin-top: 0.4rem;

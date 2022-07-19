@@ -7,7 +7,7 @@ export const St = {
 
     position: fixed;
     right: 1.6rem;
-    bottom: 4.8rem;
+    bottom: 2.4rem;
     left: 1.6rem;
 
     align-items: center;
@@ -20,6 +20,6 @@ export const St = {
 
     backdrop-filter: blur(1.2rem);
     color: ${({ theme }) => theme.colors.white};
-    ${({ theme }) => theme.fonts.btn1};
+    ${({ theme }) => theme.fonts.btn2};
   `,
 };

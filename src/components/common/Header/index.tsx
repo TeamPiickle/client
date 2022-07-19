@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useRecoilState } from "recoil";
 
 import { IcHamburger, IcLogo } from "../../../asset/icon";
@@ -13,19 +13,15 @@ export default function Header() {
   const handleModal = () => {
     setIsActive(!isActive);
   };
-
-  if (isActive) {
-    return <MenuBar />;
-  } else {
-    return (
-      <St.HeaderWrapper iscardview={pathname === "/card-collection"}>
-        <Link to="/">
-          <IcLogo aria-label="피클" />
-        </Link>
-        <St.HamburgerContainer isClicked={isActive}>
-          <IcHamburger aria-label="메뉴" onClick={handleModal} />
-        </St.HamburgerContainer>
-      </St.HeaderWrapper>
-    );
-  }
+  return (
+    <St.HeaderWrapper iscardview={pathname === "/card-collection"}>
+      <St.Link to="/">
+        <IcLogo aria-label="피클" />
+      </St.Link>
+      <St.HamburgerContainer isClicked={isActive}>
+        <IcHamburger aria-label="메뉴" onClick={handleModal} />
+      </St.HamburgerContainer>
+      {isActive && <MenuBar />}
+    </St.HeaderWrapper>
+  );
 }

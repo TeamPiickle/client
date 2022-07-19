@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
-
 import { IcCheck1 } from "../../../asset/icon";
-import { voteContent, voteTitle } from "../../../core/vote/voteContent";
+import { voteContent } from "../../../core/vote/voteContent";
 import { St } from "./style";
 
 export default function AfterVoteList(props: any) {

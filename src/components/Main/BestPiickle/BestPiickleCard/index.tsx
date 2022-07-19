@@ -7,14 +7,14 @@ import { St } from "./style";
 interface BestPiickleCardProps {
   bestPiickle: {
     _id: string;
-    category: string[];
+    tags: string[];
     content: string;
   };
 }
 
 export default function BestPiickleCard(props: BestPiickleCardProps) {
   const { bestPiickle } = props;
-  const { content, category } = bestPiickle;
+  const { content, tags } = bestPiickle;
 
   const setSliderIdx = useSetRecoilState(sliderIdxState);
   const navigation = useNavigate();
@@ -22,7 +22,7 @@ export default function BestPiickleCard(props: BestPiickleCardProps) {
   return (
     <St.BestPiickleCard>
       <St.TagsWrapper>
-        {category.map((tag, i) => {
+        {tags.map((tag: string, i: number) => {
           return <St.Tag key={i}># {tag}</St.Tag>;
         })}
       </St.TagsWrapper>
