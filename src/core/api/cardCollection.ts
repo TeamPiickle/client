@@ -16,7 +16,7 @@ function fetchCardsWithFilter<T>(types: string[]) {
   let params = "";
 
   if (types.length === 0) {
-    params = "?serach=타입";
+    params = "?search=태그";
   } else {
     types.forEach((type) => {
       params += `?search=${type}`;
