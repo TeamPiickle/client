@@ -25,7 +25,8 @@ export const St = {
       backdrop-filter: blur(1.2rem);
 
       transform: scale(1.05);
-      transition: all 0.5s;
+      transition: scale 0.5s;
+      -webkit-transform: translate3d(0, 0, 0);
     }
 
     & .slick-track {
