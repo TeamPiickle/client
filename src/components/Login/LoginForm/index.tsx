@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { real } from "../../../core/api/login";
+import { loginApi } from "../../../core/api/login";
 import { St } from "./style";
 
 export default function LoginForm() {
@@ -12,7 +12,7 @@ export default function LoginForm() {
   const submitLoginForm = async (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
 
-    const { status, message, data } = await real.postLogin(inputRefs.current[0].value, inputRefs.current[1].value);
+    const { status, message, data } = await loginApi.postLogin(inputRefs.current[0].value, inputRefs.current[1].value);
 
     switch (status) {
       case 200:
