@@ -35,7 +35,7 @@ export default function Card(props: LoginCheckProps) {
         <TagsSlider tags={cardList.tags} />
       </St.TagsWrapper>
       <St.ContentWrapper>{cardList.content}</St.ContentWrapper>
-      <St.HeartWrapper onClick={() => handleClickHeart(cardList._id)} role="dialog">
+      <St.HeartWrapper onClick={() => handleClickHeart(cardList._id)} aria-label="북마크" role="dialog">
         <St.IcEmptyHeart />
         {isBookmarked && <CustomFullHeart />}
       </St.HeartWrapper>
