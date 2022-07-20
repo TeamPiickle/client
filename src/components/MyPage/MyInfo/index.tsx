@@ -12,7 +12,7 @@ import { St } from "./style";
 export default function MyInfo() {
   const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
   const setIsActiveModal = useSetRecoilState(activeStateModal);
-  const { userProfile, isLoading } = useUserProfile();
+  const { userProfile, isLoading, handleNewProfile } = useUserProfile();
   const navigation = useNavigate();
   const profileImg = useRef(null);
   const [isOpened, setIsOpened] = useState<boolean>(false);
@@ -31,6 +31,8 @@ export default function MyInfo() {
   const closeModal = () => {
     setIsOpened(false);
     setIsActiveModal(false);
+
+    handleNewProfile();
   };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,8 +46,9 @@ export default function MyInfo() {
     handlePatch(formData);
   };
 
-  const handlePatch = (formData: FormData) => {
-    real.patchProfileImg(formData);
+  const handlePatch = async (formData: FormData) => {
+    await real.patchProfileImg(formData);
+    handleNewProfile();
   };
 
   return (
@@ -65,7 +68,7 @@ export default function MyInfo() {
         <St.ProfileDetail>
           <St.ProfileNickname>
             <St.ProfileMyNickname>{userProfile ? userProfile.data.nickname : "○○○"}</St.ProfileMyNickname>
-            <St.ProfileNicknameEdit onClick={() => openModal()}>닉네임 수정</St.ProfileNicknameEdit>
+            <St.ProfileNicknameEdit onClick={openModal}>닉네임 수정</St.ProfileNicknameEdit>
           </St.ProfileNickname>
           <St.ProfileEmail>{userProfile ? userProfile.data.email : "-"}</St.ProfileEmail>
         </St.ProfileDetail>
