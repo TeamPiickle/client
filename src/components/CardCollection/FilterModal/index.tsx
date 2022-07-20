@@ -52,7 +52,7 @@ export default function FilterModal(props: FilterModalProps) {
 
   return (
     <Modal closeHandler={closeHandler}>
-      <St.ModalContentsWrapper>
+      <St.ModalContentsWrapper role="dialog">
         {filterTagsInfo.map((filterTagInfo, idx) => (
           <React.Fragment key={`filter-${idx}`}>
             <St.FilterTitle>{filterTagInfo.type}</St.FilterTitle>
