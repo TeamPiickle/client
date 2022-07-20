@@ -31,10 +31,10 @@ export const St = {
     height: 14.3rem;
 
     margin-top: 2.6rem;
+    gap: 1.6rem;
 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
   `,
 
   VoteOptionList: styled.li`
