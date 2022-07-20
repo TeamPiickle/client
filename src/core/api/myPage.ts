@@ -1,15 +1,16 @@
 import useSWR from "swr";
 
+import { PiickleSWRResponse } from "../../types/swr";
+import { UserProfile } from "../../types/users";
 import { realReq } from "./common/axios";
 import { PATH } from "./common/constants";
 
 export default function useUserProfile() {
-  const { data, error } = useSWR(PATH.USERS, realReq.GET_SWR);
+  const { data, error } = useSWR<PiickleSWRResponse<UserProfile>>(PATH.USERS, realReq.GET_SWR);
 
   return {
     userProfile: data?.data,
     isLoading: !error && !data,
-    isError: error,
   };
 }
 
@@ -20,7 +21,9 @@ function patchProfileImg(file: FormData) {
 
 // 유저 닉네임 수정
 function patchUserNickName(nickname: string) {
-  return realReq.PATCH(`${PATH.USERS}/nickname`, nickname);
+  return realReq.PATCH(`${PATH.USERS}/nickname`, {
+    nickname: nickname,
+  });
 }
 
 // 유저 비밀번호 재설정

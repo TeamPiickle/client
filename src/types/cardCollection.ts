@@ -8,10 +8,6 @@ export type CardsTypeLocation =
     }
   | {
       type: "all";
-    }
-  | {
-      type: "filter";
-      filters: string[];
     };
 
 export interface CardList {

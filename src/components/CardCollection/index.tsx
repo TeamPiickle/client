@@ -1,19 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import { CardsTypeLocation } from "../../types/cardCollection";
+import { CardList, CardsTypeLocation } from "../../types/cardCollection";
 import Header from "../common/Header";
+import LoginModal from "../common/LoginModal";
 import CardSlider from "./CardSlider";
 import FilterModal from "./FilterModal";
-import LoginModal from "./LoginModal";
 import { St } from "./style";
 
 export default function CardCollection() {
   const location = useLocation();
   const cardsTypeLoaction = location.state as CardsTypeLocation;
 
+  const [cardLists, setCardLists] = useState<CardList[]>([]);
   const [isOpened, setIsOpened] = useState<boolean>(false);
   const [isLoginOpened, setLoginOpened] = useState<boolean>(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   const openModal = () => {
     setIsOpened(true);
@@ -46,10 +51,14 @@ export default function CardCollection() {
         openFilterModalHandler={clickHandleFilterModal}
         openLoginModalHandler={clickHandleLoginModal}
         cardsTypeLoaction={cardsTypeLoaction}
+        cardLists={cardLists}
+        setCardLists={setCardLists}
       />
 
       {isLoginOpened && <LoginModal closeHandler={closeLoginModal} contents={"북마크기능인 마이피클을"} />}
-      {isOpened && <FilterModal typeLocation={cardsTypeLoaction.type} closeHandler={closeModal} />}
+      {isOpened && (
+        <FilterModal typeLocation={cardsTypeLoaction.type} closeHandler={closeModal} setCardLists={setCardLists} />
+      )}
     </St.MainPage>
   );
 }

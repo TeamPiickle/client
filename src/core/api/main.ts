@@ -1,12 +1,14 @@
 import useSWR from "swr";
 
+import { CardList } from "../../types/cardCollection";
+import { BallotList, CategoryList } from "../../types/main";
 import { PiickleSWRResponse } from "../../types/swr";
 import { realReq } from "./common/axios";
 import { PATH } from "./common/constants";
 
 // 전체 카테고리 조화
 export function useCategoryLists() {
-  const { data, error } = useSWR(PATH.CATEGORIES, realReq.GET_SWR);
+  const { data, error } = useSWR<PiickleSWRResponse<CategoryList[]>>(PATH.CATEGORIES, realReq.GET_SWR);
 
   return {
     categoryLists: data?.data,
@@ -15,18 +17,8 @@ export function useCategoryLists() {
   };
 }
 
-type BestPiickleCard = {
-  _id: string;
-  tags: string[];
-  content: string;
-};
-
-type BestPiickle = {
-  cardList: BestPiickleCard[];
-};
-
 export function useBestPiickle() {
-  const { data, error } = useSWR<PiickleSWRResponse<BestPiickle>>(`${PATH.CARDS}/best`, realReq.GET_SWR);
+  const { data, error } = useSWR<PiickleSWRResponse<CardList[]>>(`${PATH.CARDS}/best`, realReq.GET_SWR);
 
   return {
     bestPiickle: data?.data,
@@ -34,9 +26,8 @@ export function useBestPiickle() {
     isError: error,
   };
 }
-
 export function useBallotLists() {
-  const { data, error } = useSWR(`${PATH.BALLOTS}`, realReq.GET_SWR);
+  const { data, error } = useSWR<PiickleSWRResponse<BallotList[]>>(`${PATH.BALLOTS}`, realReq.GET_SWR);
 
   return {
     ballotLists: data?.data,

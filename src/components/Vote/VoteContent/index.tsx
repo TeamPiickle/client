@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import useBallotTopic from "../../../core/api/vote";
@@ -16,6 +16,11 @@ export default function VoteContent() {
   const [currentIndex, setCurrentIndex] = useState("");
   const [isPosted, setIsPosted] = useState(true);
   const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
+
+  useEffect(() => {
+    if (ballotTopic && !ballotTopic.data.userSelect._id) return;
+    setIsSuccess(true);
+  }, [ballotTopic]);
 
   if (!ballotTopic) return <div>loading...</div>;
   else
