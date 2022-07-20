@@ -13,22 +13,18 @@ function fetchCardsWithBest<T>() {
 
 // 필터로 카드 리스트 조회
 function fetchCardsWithFilter<T>(types: string[]) {
-  let params = "";
+  let params = "?search=태그";
 
-  if (types.length === 0) {
-    params = "?search=태그";
-  } else {
-    types.forEach((type) => {
-      params += `?search=${type}`;
-    });
-  }
+  types.forEach((type) => {
+    params += `&search=${type}`;
+  });
 
   return realReq.GET<T>(`${PATH.CATEGORIES}/cards${params}`);
 }
 
 // 북마크 생성
 function addNDeleteBookmark(cardId: string) {
-  return realReq.POST(`${PATH.USERS}/bookmarks`, { cardId });
+  return realReq.PUT(`${PATH.USERS}/bookmarks`, { cardId });
 }
 
 export const real = {

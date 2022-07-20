@@ -10,10 +10,11 @@ interface BestPiickleCardProps {
     tags: string[];
     content: string;
   };
+  idx: number;
 }
 
 export default function BestPiickleCard(props: BestPiickleCardProps) {
-  const { bestPiickle } = props;
+  const { bestPiickle, idx } = props;
   const { content, tags } = bestPiickle;
 
   const setSliderIdx = useSetRecoilState(sliderIdxState);
@@ -32,7 +33,7 @@ export default function BestPiickleCard(props: BestPiickleCardProps) {
           type="button"
           onClick={() => {
             navigation("/card-collection", { state: { type: "best" } });
-            setSliderIdx(0);
+            setSliderIdx(idx);
           }}>
           카드 보기
         </St.PickButton>

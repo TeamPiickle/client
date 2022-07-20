@@ -23,12 +23,24 @@ export const St = {
     height: 5.8rem;
     border-radius: 50%;
     background-color: pink;
+    z-index: 10;
   `,
 
-  ChangeButton: styled.button`
+  ChangeButton: styled.input`
+    /* display: none; */
+    /* bottom: -0.3rem;
+    right: -19.3rem; */
+    width: 2.1rem;
     position: absolute;
-    bottom: -0.3rem;
-    right: -0.3rem;
+    margin-left: -0.2rem;
+    top: 1.5rem;
+    opacity: 0;
+  `,
+
+  ButtonIcContainer: styled.div`
+    position: absolute;
+    margin-left: 4.1rem;
+    margin-bottom: -4.8rem;
   `,
 
   ProfileDetail: styled.div``,

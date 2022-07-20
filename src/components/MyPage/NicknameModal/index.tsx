@@ -26,6 +26,7 @@ export default function NicknameModal(props: ModifyNicknameProps) {
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const errorData = error.response?.data;
+
         if (errorData.status === 400) setErrorMessage("이미 존재하는 닉네임입니다");
       }
     }
