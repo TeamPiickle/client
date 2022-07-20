@@ -3,6 +3,7 @@ import { useSetRecoilState } from "recoil";
 
 import { IcCloseBtn, IcMenuBarImg } from "../../../asset/icon";
 import { useBallotLists } from "../../../core/api/main";
+import useUserProfile from "../../../core/api/myPage";
 import { activeState } from "../../../core/atom/menuBar";
 import { sliderIdxState } from "../../../core/atom/slider";
 import { St, StContentsContainer } from "./style";
@@ -16,6 +17,7 @@ export default function MenuBar() {
   const setIsActive = useSetRecoilState(activeState);
   const setSliderIdx = useSetRecoilState(sliderIdxState);
   const navigate = useNavigate();
+  const { userProfile } = useUserProfile();
 
   const { ballotLists, isLoading, isError } = useBallotLists();
 
@@ -45,7 +47,7 @@ export default function MenuBar() {
           <St.ProfileContainer>
             {MenuBarDummy.profileImg}
             <St.WelcomeText>
-              {MenuBarDummy.name}님, <br />
+              {userProfile ? userProfile.data.nickname : "○○○"}님, <br />
               안녕하세요
             </St.WelcomeText>
             <St.DescriptText>오늘도 피클과 함께 대화 나눠요</St.DescriptText>
