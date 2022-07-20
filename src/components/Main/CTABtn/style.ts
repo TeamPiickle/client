@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const St = {
-  Button: styled(Link)`
+  Button: styled.button`
     display: flex;
 
     position: fixed;
