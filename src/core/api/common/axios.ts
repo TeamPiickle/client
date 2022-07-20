@@ -32,6 +32,11 @@ export const realReq = {
     return data.data;
   },
 
+  async PUT<T>(path: string, body: T) {
+    const data = await real.put(path, body);
+    return data.data;
+  },
+
   async PATCH<T>(path: string, body: T) {
     await real.patch(path, body);
   },
