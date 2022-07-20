@@ -26,9 +26,10 @@ export default function BestPiickle() {
       {bestPiickle ? (
         <St.SliderWrapper>
           <St.Slider {...sliderSettings}>
-            {bestPiickle.data.map((bestPiickle) => {
-              return <BestPiickleCard key={bestPiickle._id} bestPiickle={bestPiickle} />;
-            })}
+            {bestPiickle &&
+              bestPiickle.data.map((bestPiickle, idx) => {
+                return <BestPiickleCard key={bestPiickle._id} bestPiickle={bestPiickle} idx={idx} />;
+              })}
           </St.Slider>
         </St.SliderWrapper>
       ) : (
