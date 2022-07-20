@@ -17,7 +17,7 @@ const sliderSettings = {
 };
 
 export default function BestPiickle() {
-  const { bestPiickle, isLoading, isError } = useBestPiickle();
+  const { bestPiickle } = useBestPiickle();
 
   return (
     <St.Root>

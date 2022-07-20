@@ -9,7 +9,7 @@ import { St } from "./style";
 
 export default function CategoryContents() {
   const setSliderIdx = useSetRecoilState(sliderIdxState);
-  const { categoryLists, isLoading, isError } = useCategoryLists();
+  const { categoryLists } = useCategoryLists();
 
   const navigate = useNavigate();
 

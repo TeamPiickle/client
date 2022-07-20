@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
-import { IcCloseBtn, IcMenuBarImg } from "../../../asset/icon";
+import { IcCloseBtn } from "../../../asset/icon";
 import { ImgDefaultProfile } from "../../../asset/image";
 import { useBallotLists } from "../../../core/api/main";
 import useUserProfile from "../../../core/api/myPage";
@@ -17,7 +17,7 @@ export default function MenuBar() {
   const { userProfile } = useUserProfile();
   const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
 
-  const { ballotLists, isLoading, isError } = useBallotLists();
+  const { ballotLists } = useBallotLists();
 
   const moveCardCollection = () => {
     navigate("/card-collection", { state: { type: "all" } });

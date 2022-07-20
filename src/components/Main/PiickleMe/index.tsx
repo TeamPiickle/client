@@ -2,11 +2,10 @@ import { IcVoteImg } from "../../../asset/icon";
 import { useBallotLists } from "../../../core/api/main";
 import { headingTitles } from "../../../core/main/headingTitles";
 import HeadingTitleContainer from "../../common/HeadingTitleContainer";
-import Loading from "../../common/Loading";
 import { St } from "./style";
 
 export default function PiickleMe() {
-  const { ballotLists, isLoading, isError } = useBallotLists();
+  const { ballotLists } = useBallotLists();
 
   return (
     <St.Container>
