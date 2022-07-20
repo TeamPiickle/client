@@ -1,12 +1,3 @@
-/*
-마지막 편집자: 22-07-14 joohaem
-변경사항 및 참고:
-  - "react-hook-form" 도입 고려해도 좋을 것 같습니다
-    
-고민점:
-  - 
-*/
-
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -35,6 +26,10 @@ export default function LoginForm() {
           setErrorMessage((prev) => ({ ...prev, emailError: "존재하지 않는 email 입니다." }));
         else if (message === "비밀번호가 일치하지 않습니다.")
           setErrorMessage((prev) => ({ ...prev, passwordError: "비밀번호가 일치하지 않습니다." }));
+        break;
+      case 500:
+        // 서버 내부 오류
+        navigate("/login");
         break;
       default:
         throw new Error("로그인 에러");
