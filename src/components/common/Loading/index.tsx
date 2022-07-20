@@ -1,10 +1,18 @@
 import { ImgPiickleLoading } from "../../../asset/image";
 import { St } from "./style";
 
-export default function Loading() {
+interface LoadingProps {
+  backgroundColor: string;
+}
+
+export default function Loading(props: LoadingProps) {
+  const { backgroundColor } = props;
+
   return (
-    <St.Root>
-      <img src={ImgPiickleLoading} alt="피클 로딩"></img>
+    <St.Root backgroundcolor={backgroundColor}>
+      <St.ImageWrapper>
+        <img src={ImgPiickleLoading} alt="피클 로딩" />
+      </St.ImageWrapper>
     </St.Root>
   );
 }

@@ -18,7 +18,7 @@ export default function CategoryContents() {
     setSliderIdx(0);
   };
 
-  if (!categoryLists) return <Loading />;
+  if (categoryLists?.data === undefined) return <Loading backgroundColor="transparent" />;
   else
     return (
       <St.FlexContainer>
