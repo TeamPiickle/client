@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 
-import { real } from "../../../core/api/myPage";
+import { myPageApi } from "../../../core/api/myPage";
 import Modal from "../../common/Modal";
 import { St } from "./style";
 
@@ -21,7 +21,7 @@ export default function NicknameModal(props: ModifyNicknameProps) {
 
   const saveNewNickname = async () => {
     try {
-      await real.patchUserNickName(newNickname);
+      await myPageApi.patchUserNickName(newNickname);
       closeHandler();
     } catch (error) {
       if (axios.isAxiosError(error)) {

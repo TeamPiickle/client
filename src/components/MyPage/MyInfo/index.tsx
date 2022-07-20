@@ -4,7 +4,7 @@ import { useSetRecoilState } from "recoil";
 
 import { IcChangeProfileBtn } from "../../../asset/icon/index";
 import { ImgDefaultProfile } from "../../../asset/image";
-import useUserProfile, { real } from "../../../core/api/myPage";
+import useUserProfile, { myPageApi } from "../../../core/api/myPage";
 import { activeStateModal } from "../../../core/atom/menuBar";
 import NicknameModal from "../NicknameModal";
 import { St } from "./style";
@@ -46,7 +46,7 @@ export default function MyInfo() {
   };
 
   const handlePatch = async (formData: FormData) => {
-    await real.patchProfileImg(formData);
+    await myPageApi.patchProfileImg(formData);
     handleNewProfile();
   };
 

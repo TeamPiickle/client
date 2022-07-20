@@ -40,7 +40,7 @@ function patchUserPassword(email: string, newPassword: string) {
   });
 }
 
-export const real = {
+export const myPageApi = {
   patchProfileImg,
   patchUserNickName,
   patchUserPassword,
