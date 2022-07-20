@@ -27,7 +27,7 @@ export default function Bookmark() {
       <St.List>
         {userBookmarks &&
           userBookmarks.data.map((myPiickle: myPiickle, idx: number) => (
-            <MyPiickleItem key={idx} myPiickle={myPiickle} />
+            <MyPiickleItem key={myPiickle.cardId} myPiickle={myPiickle} idx={idx} />
           ))}
       </St.List>
       <Footer />
