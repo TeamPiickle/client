@@ -10,21 +10,19 @@ interface AfterVoteListProps {
   setCurrentIndex: React.Dispatch<React.SetStateAction<string>>;
   setIsVoted: React.Dispatch<React.SetStateAction<boolean>>;
   setIsSuccess: React.Dispatch<React.SetStateAction<boolean>>;
-  setIsPosted: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
 export default function AfterVoteList(props: AfterVoteListProps) {
-  const { ballotTopic, currentIndex, setCurrentIndex, setIsVoted, setIsSuccess, setIsPosted } = props;
+  const { ballotTopic, currentIndex, setCurrentIndex, setIsVoted, setIsSuccess } = props;
 
   const cancelVote = () => {
     setIsSuccess(false);
     setIsVoted(false);
-    setIsPosted(true);
     handlePost();
   };
 
   const handlePost = () => {
-    if (ballotTopic.userSelect === null) return;
-    voteApi.postVote(ballotTopic?.ballotTopic._id, ballotTopic.userSelect.ballotItemId);
+    voteApi.postVote(ballotTopic?.ballotTopic._id, currentIndex);
   };
 
   useEffect(() => {

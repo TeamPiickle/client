@@ -11,12 +11,11 @@ export default function VoteContent() {
   const params = useParams();
 
   const { ballotTopic, isLoading, isError } = useBallotTopic(`${params.voteId}`);
-  console.log(ballotTopic);
 
   const [isVoted, setIsVoted] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [currentIndex, setCurrentIndex] = useState("");
-  const [isPosted, setIsPosted] = useState(true);
+
   const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
 
   useEffect(() => {
@@ -35,7 +34,6 @@ export default function VoteContent() {
             setIsSuccess={setIsSuccess}
             currentIndex={currentIndex}
             setCurrentIndex={setCurrentIndex}
-            setIsPosted={setIsPosted}
           />
         ) : (
           <BeforeVoteList
@@ -45,7 +43,6 @@ export default function VoteContent() {
             setIsSuccess={setIsSuccess}
             currentIndex={currentIndex}
             setCurrentIndex={setCurrentIndex}
-            isPosted={isPosted}
             LOGIN_STATE={LOGIN_STATE}
           />
         )}
