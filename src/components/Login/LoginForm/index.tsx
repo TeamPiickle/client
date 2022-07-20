@@ -1,12 +1,3 @@
-/*
-마지막 편집자: 22-07-14 joohaem
-변경사항 및 참고:
-  - "react-hook-form" 도입 고려해도 좋을 것 같습니다
-    
-고민점:
-  - 
-*/
-
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
