@@ -51,9 +51,8 @@ export default function CardSlider(props: CardSliderProps) {
 
   return (
     <St.Wrapper>
-      {/* 이거 왜 로딩뷰 안나오냐 */}
       {!cardLists || cardLists.length === 0 ? (
-        <Loading />
+        <Loading backgroundColor="transparent" />
       ) : (
         <Slider {...sliderSettings} ref={sliderRef}>
           {cardLists?.map((cardList) => (
