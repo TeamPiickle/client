@@ -1,3 +1,4 @@
+import { bookmarkApi } from "../core/api/bookmark";
 import { real } from "../core/api/cardCollection";
 import { CardsTypeLocation } from "../types/cardCollection";
 
@@ -20,6 +21,13 @@ export default function fetchCardCollection<T>(CARD_TYPE_LOCATION: CardsTypeLoca
     case "all":
       (async () => {
         const { data } = await real.fetchCardsWithFilter<{ data: T }>([]);
+        handler(data);
+      })();
+      break;
+
+    case "bookmark":
+      (async () => {
+        const { data } = await bookmarkApi.fetchCardsWithBookmarks<{ data: T }>();
         handler(data);
       })();
       break;

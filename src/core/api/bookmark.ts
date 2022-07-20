@@ -12,3 +12,12 @@ export default function useUserBookmarks() {
     isError: error,
   };
 }
+
+// 필터로 카드 리스트 조회
+function fetchCardsWithBookmarks<T>() {
+  return realReq.GET<T>(`${PATH.CATEGORIES}/bookmarks`);
+}
+
+export const bookmarkApi = {
+  fetchCardsWithBookmarks,
+};
