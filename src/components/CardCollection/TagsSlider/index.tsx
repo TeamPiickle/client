@@ -21,8 +21,8 @@ export default function TagsSlider(props: TagsSliderProps) {
 
   return (
     <St.SliderWrapper>
-      {tags.slice(0, setTagsNumber()).map((tag) => (
-        <Tag key={tag}>{tag}</Tag>
+      {tags.slice(0, setTagsNumber()).map((tag, i) => (
+        <Tag key={`${tag}-${i}`}>{tag}</Tag>
       ))}
     </St.SliderWrapper>
   );

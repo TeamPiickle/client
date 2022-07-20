@@ -23,7 +23,7 @@ export default function BestPiickleCard(props: BestPiickleCardProps) {
     <St.BestPiickleCard>
       <St.TagsWrapper>
         {tags.map((tag: string, i: number) => {
-          return <St.Tag key={i}># {tag}</St.Tag>;
+          return <St.Tag key={i}>{tag}</St.Tag>;
         })}
       </St.TagsWrapper>
       <St.Content>{content}</St.Content>
