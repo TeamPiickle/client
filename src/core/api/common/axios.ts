@@ -10,7 +10,7 @@ const real = axios.create({
 real.interceptors.request.use((config) => {
   const headers = {
     ...config.headers,
-    "x-auth-token": localStorage.getItem("piickle-token"),
+    "x-auth-token": `Bearer ${localStorage.getItem("piickle-token")}`,
   };
 
   return { ...config, headers };
