@@ -7,7 +7,6 @@ interface LoadingProps {
 
 export default function Loading(props: LoadingProps) {
   const { backgroundColor } = props;
-  console.log(backgroundColor);
 
   return (
     <St.Root backgroundcolor={backgroundColor}>
