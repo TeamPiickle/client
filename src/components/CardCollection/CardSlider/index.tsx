@@ -8,6 +8,7 @@ import { useRecoilState } from "recoil";
 import { sliderIdxState } from "../../../core/atom/slider";
 import { CardList, CardsTypeLocation } from "../../../types/cardCollection";
 import fetchCardCollection from "../../../util/fetchCardCollection";
+import Loading from "../../common/Loading";
 import Card from "../Card";
 import LastCard from "../Card/LastCard";
 import { St } from "./style";
@@ -47,12 +48,12 @@ export default function CardSlider(props: CardSliderProps) {
     initialSlide: sliderIdx,
     afterChange: (idx: number) => setSliderIdx(idx),
   };
-
+  console.log(cardLists);
   return (
     <St.Wrapper>
       {/* 이거 왜 로딩뷰 안나오냐 */}
-      {cardLists === [] ? (
-        <article>Loading...</article>
+      <Loading />
+      {/* {cardLists === [] ? (
       ) : (
         <Slider {...sliderSettings} ref={sliderRef}>
           {cardLists?.map((cardList) => (
@@ -60,7 +61,7 @@ export default function CardSlider(props: CardSliderProps) {
           ))}
           <LastCard />
         </Slider>
-      )}
+      )} */}
       <St.IcFilterBtn onClick={openFilterModalHandler} />
     </St.Wrapper>
   );

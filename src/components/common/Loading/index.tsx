@@ -4,7 +4,9 @@ import { St } from "./style";
 export default function Loading() {
   return (
     <St.Root>
-      <img src={ImgPiickleLoading} alt="피클 로딩"></img>
+      <St.ImageWrapper>
+        <img src={ImgPiickleLoading} alt="피클 로딩" />
+      </St.ImageWrapper>
     </St.Root>
   );
 }
