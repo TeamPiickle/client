@@ -9,6 +9,6 @@ function postLogin(email: string, password: string) {
   });
 }
 
-export const real = {
+export const loginApi = {
   postLogin,
 };

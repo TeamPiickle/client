@@ -1,32 +1,39 @@
+import { useEffect } from "react";
+
 import { IcCheck1 } from "../../../asset/icon";
-import { BallotTopicData, real } from "../../../core/api/vote";
+import { BallotTopicData, voteApi } from "../../../core/api/vote";
 import { St } from "./style";
 
 interface AfterVoteListProps {
-  ballotTopic: { data: BallotTopicData };
+  ballotTopic: BallotTopicData;
   currentIndex: string;
+  setCurrentIndex: React.Dispatch<React.SetStateAction<string>>;
   setIsVoted: React.Dispatch<React.SetStateAction<boolean>>;
   setIsSuccess: React.Dispatch<React.SetStateAction<boolean>>;
-  setIsPosted: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
 export default function AfterVoteList(props: AfterVoteListProps) {
-  const { ballotTopic, currentIndex, setIsVoted, setIsSuccess, setIsPosted } = props;
+  const { ballotTopic, currentIndex, setCurrentIndex, setIsVoted, setIsSuccess } = props;
+
   const cancelVote = () => {
     setIsSuccess(false);
     setIsVoted(false);
-    setIsPosted(true);
     handlePost();
   };
 
   const handlePost = () => {
-    real.postVote(ballotTopic?.data.ballotTopic._id, ballotTopic?.data.userSelect.ballotItemId);
+    voteApi.postVote(ballotTopic?.ballotTopic._id, currentIndex);
   };
+
+  useEffect(() => {
+    if (ballotTopic.userSelect) setCurrentIndex(ballotTopic.userSelect.ballotItemId);
+  }, [ballotTopic.userSelect, setCurrentIndex]);
 
   return (
     <>
       <St.VoteOptionContainer>
         {ballotTopic &&
-          ballotTopic.data.ballotItems.map((element) => {
+          ballotTopic.ballotItems.map((element) => {
             return (
               <St.VoteOptionList key={element._id}>
                 <St.VotedDescription>

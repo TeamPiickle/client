@@ -1,43 +1,33 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { IcCheck2 } from "../../../asset/icon";
-import { BallotTopicData, real } from "../../../core/api/vote";
+import { BallotTopicData, voteApi } from "../../../core/api/vote";
 import LoginModal from "../../common/LoginModal";
 import { St } from "./style";
 
 interface BeforeVoteListProps {
-  ballotTopic: { data: BallotTopicData };
+  ballotTopic: BallotTopicData;
   isVoted: boolean;
   setIsVoted: React.Dispatch<React.SetStateAction<boolean>>;
   setIsSuccess: React.Dispatch<React.SetStateAction<boolean>>;
   setCurrentIndex: React.Dispatch<React.SetStateAction<string>>;
   currentIndex: string;
-  isPosted: boolean;
   LOGIN_STATE: boolean;
 }
 
 export default function BeforeVoteList(props: BeforeVoteListProps) {
-  const { ballotTopic, isVoted, setIsVoted, setIsSuccess, currentIndex, setCurrentIndex, isPosted, LOGIN_STATE } =
-    props;
+  const { ballotTopic, isVoted, setIsVoted, setIsSuccess, currentIndex, setCurrentIndex, LOGIN_STATE } = props;
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  useEffect(() => {
-    if (!ballotTopic.data.userSelect.ballotItemId && isPosted === false) {
-      setIsSuccess(true);
-      if (ballotTopic.data.userSelect) setCurrentIndex(ballotTopic.data.userSelect.ballotItemId);
-    }
-  }, []);
 
   const clickHandle = (key: string) => {
     if (isVoted === true) {
       if (currentIndex === key) {
         setIsVoted(false);
       }
-      setCurrentIndex(key);
     } else {
-      setIsVoted(!isVoted);
-      setCurrentIndex(key);
+      setIsVoted(true);
     }
+    setCurrentIndex(key);
   };
 
   const successVote = () => {
@@ -52,8 +42,7 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
   };
 
   const handlePost = () => {
-    if (ballotTopic?.data.ballotTopic && ballotTopic.data.userSelect)
-      real.postVote(ballotTopic.data.ballotTopic._id, ballotTopic.data.userSelect.ballotItemId);
+    voteApi.postVote(ballotTopic.ballotTopic._id, currentIndex);
   };
 
   const closeLoginModal = () => {
@@ -63,18 +52,17 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
   return (
     <St.Root>
       <St.VoteOptionContainer>
-        {ballotTopic &&
-          ballotTopic.data.ballotItems.map((element) => {
-            return (
-              <St.VoteOptionList
-                key={element._id}
-                onClick={() => clickHandle(element._id)}
-                isClicked={isVoted && element._id === currentIndex}>
-                <St.VoteOptionText>{element.content}</St.VoteOptionText>
-                <IcCheck2 />
-              </St.VoteOptionList>
-            );
-          })}
+        {ballotTopic.ballotItems.map((element) => {
+          return (
+            <St.VoteOptionList
+              key={element._id}
+              onClick={() => clickHandle(element._id)}
+              isClicked={isVoted && element._id === currentIndex}>
+              <St.VoteOptionText>{element.content}</St.VoteOptionText>
+              <IcCheck2 />
+            </St.VoteOptionList>
+          );
+        })}
       </St.VoteOptionContainer>
       <St.VoteBtnContainer>
         <St.VoteBtn onClick={successVote}>투표하기</St.VoteBtn>

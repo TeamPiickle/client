@@ -27,7 +27,7 @@ function addNDeleteBookmark(cardId: string) {
   return realReq.PUT(`${PATH.USERS}/bookmarks`, { cardId });
 }
 
-export const real = {
+export const cardCollectionApi = {
   fetchCardsWithCategory,
   fetchCardsWithBest,
   fetchCardsWithFilter,

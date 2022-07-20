@@ -8,6 +8,9 @@ export type CardsTypeLocation =
     }
   | {
       type: "all";
+    }
+  | {
+      type: "bookmark";
     };
 
 export interface CardList {
