@@ -34,7 +34,7 @@ export default function NicknameModal(props: ModifyNicknameProps) {
 
   return (
     <Modal closeHandler={closeHandler}>
-      <St.Container role="dialog">
+      <St.Container>
         <St.Wrapper>
           <St.Label>현재 닉네임</St.Label>
           <St.CurrentNickname aria-label={nickname} type="text" placeholder={nickname} disabled />
