@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useBestPiickle } from "../../../core/api/main";
 import { headingTitles } from "../../../core/main/headingTitles";
 import HeadingTitleContainer from "../../common/HeadingTitleContainer";
+import Loading from "../../common/Loading";
 import BestPiickleCard from "./BestPiickleCard";
 import { St } from "./style";
 
@@ -21,14 +22,19 @@ export default function BestPiickle() {
   return (
     <St.Root>
       <HeadingTitleContainer headingTitles={headingTitles[0]} />
-      <St.SliderWrapper>
-        <St.Slider {...sliderSettings}>
-          {bestPiickle &&
-            bestPiickle.data.map((bestPiickle) => {
-              return <BestPiickleCard key={bestPiickle._id} bestPiickle={bestPiickle} />;
-            })}
-        </St.Slider>
-      </St.SliderWrapper>
+
+      {bestPiickle ? (
+        <St.SliderWrapper>
+          <St.Slider {...sliderSettings}>
+            {bestPiickle &&
+              bestPiickle.data.map((bestPiickle, idx) => {
+                return <BestPiickleCard key={bestPiickle._id} bestPiickle={bestPiickle} idx={idx} />;
+              })}
+          </St.Slider>
+        </St.SliderWrapper>
+      ) : (
+        <Loading backgroundColor="white" />
+      )}
     </St.Root>
   );
 }

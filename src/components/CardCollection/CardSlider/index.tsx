@@ -8,6 +8,7 @@ import { useRecoilState } from "recoil";
 import { sliderIdxState } from "../../../core/atom/slider";
 import { CardList, CardsTypeLocation } from "../../../types/cardCollection";
 import fetchCardCollection from "../../../util/fetchCardCollection";
+import Loading from "../../common/Loading";
 import Card from "../Card";
 import LastCard from "../Card/LastCard";
 import { St } from "./style";
@@ -50,9 +51,8 @@ export default function CardSlider(props: CardSliderProps) {
 
   return (
     <St.Wrapper>
-      {/* 이거 왜 로딩뷰 안나오냐 */}
-      {cardLists === [] ? (
-        <article>Loading...</article>
+      {!cardLists || cardLists.length === 0 ? (
+        <Loading backgroundColor="transparent" />
       ) : (
         <Slider {...sliderSettings} ref={sliderRef}>
           {cardLists?.map((cardList) => (

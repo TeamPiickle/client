@@ -15,10 +15,10 @@ const MenuBarDummy = {
 export default function MenuBar() {
   const setIsActive = useSetRecoilState(activeState);
   const setSliderIdx = useSetRecoilState(sliderIdxState);
+  const navigate = useNavigate();
 
   const { ballotLists, isLoading, isError } = useBallotLists();
 
-  const navigate = useNavigate();
   const moveCardCollection = () => {
     navigate("/card-collection", { state: { type: "all" } });
     setSliderIdx(0);
