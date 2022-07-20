@@ -6,7 +6,7 @@ import LoginModal from "../../common/LoginModal";
 import { St } from "./style";
 
 interface BeforeVoteListProps {
-  ballotTopic: { data: BallotTopicData };
+  ballotTopic: BallotTopicData;
   isVoted: boolean;
   setIsVoted: React.Dispatch<React.SetStateAction<boolean>>;
   setIsSuccess: React.Dispatch<React.SetStateAction<boolean>>;
@@ -22,9 +22,9 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    if (!ballotTopic.data.userSelect.ballotItemId && isPosted === false) {
+    if (!ballotTopic.userSelect && isPosted === false) {
       setIsSuccess(true);
-      if (ballotTopic.data.userSelect) setCurrentIndex(ballotTopic.data.userSelect.ballotItemId);
+      // if (ballotTopic.userSelect) setCurrentIndex(ballotTopic.userSelect.ballotItemId);
     }
   }, []);
 
@@ -52,8 +52,8 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
   };
 
   const handlePost = () => {
-    if (ballotTopic?.data.ballotTopic && ballotTopic.data.userSelect)
-      voteApi.postVote(ballotTopic.data.ballotTopic._id, ballotTopic.data.userSelect.ballotItemId);
+    if (ballotTopic?.ballotTopic && ballotTopic.userSelect)
+      voteApi.postVote(ballotTopic.ballotTopic._id, ballotTopic.userSelect.ballotItemId);
   };
 
   const closeLoginModal = () => {
@@ -64,7 +64,7 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
     <St.Root>
       <St.VoteOptionContainer>
         {ballotTopic &&
-          ballotTopic.data.ballotItems.map((element) => {
+          ballotTopic.ballotItems.map((element) => {
             return (
               <St.VoteOptionList
                 key={element._id}

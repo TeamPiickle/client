@@ -41,12 +41,15 @@ export default function MyInfo() {
     const selectedImg = e.target.files[0];
     const formData = new FormData();
     formData.append("img", selectedImg);
+    console.log(formData);
 
     handlePatch(formData);
   };
 
   const handlePatch = async (formData: FormData) => {
-    await myPageApi.patchProfileImg(formData);
+    console.log("patch");
+    const res = await myPageApi.patchProfileImg(formData);
+    console.log(res);
     handleNewProfile();
   };
 

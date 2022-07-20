@@ -23,7 +23,7 @@ type UserSelect = {
 export interface BallotTopicData {
   ballotTopic: BallotTopic;
   ballotItems: BallotItems[];
-  userSelect: UserSelect;
+  userSelect: UserSelect | null;
 }
 
 // 투표 현황 조회
