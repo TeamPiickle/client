@@ -14,7 +14,6 @@ export default function MyInfo() {
   const setIsActiveModal = useSetRecoilState(activeStateModal);
   const { userProfile, isLoading, handleNewProfile } = useUserProfile();
   const navigation = useNavigate();
-  const profileImg = useRef(null);
   const [isOpened, setIsOpened] = useState<boolean>(false);
 
   useEffect(() => {
@@ -62,8 +61,7 @@ export default function MyInfo() {
           <St.ChangeButton
             type="file"
             onChange={handleImageChange}
-            accept="image/jpg, image/png, image/jpeg"
-            ref={profileImg}></St.ChangeButton>
+            accept="image/jpg, image/png, image/jpeg"></St.ChangeButton>
         </St.Images>
         <St.ProfileDetail>
           <St.ProfileNickname>
