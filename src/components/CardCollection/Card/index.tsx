@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { real } from "../../../core/api/cardCollection";
+import { cardCollectionApi } from "../../../core/api/cardCollection";
 import { CardList } from "../../../types/cardCollection";
 import CustomFullHeart from "../CustomFullHeart";
 import TagsSlider from "../TagsSlider";
@@ -21,7 +21,7 @@ export default function Card(props: LoginCheckProps) {
     switch (LOGIN_STATE) {
       case true:
         setIsBookmarked((prev) => !prev);
-        real.addNDeleteBookmark(_id);
+        cardCollectionApi.addNDeleteBookmark(_id);
         break;
       case false:
         openLoginModalHandler();

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { IcSmallEmptyHeart, IcSmallFullHeart } from "../../../asset/icon";
-import { real } from "../../../core/api/cardCollection";
+import { cardCollectionApi } from "../../../core/api/cardCollection";
 import { myPiickle } from "..";
 import { St } from "./style";
 
@@ -16,7 +16,7 @@ export default function MyPiickleItem(props: MyPiickleItemProps) {
 
   const toggleBookmark = () => {
     setIsBookmarked((prev) => !prev);
-    real.addNDeleteBookmark(cardId);
+    cardCollectionApi.addNDeleteBookmark(cardId);
   };
 
   return (

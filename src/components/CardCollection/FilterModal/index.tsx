@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useRecoilState, useSetRecoilState } from "recoil";
 
-import { real } from "../../../core/api/cardCollection";
+import { cardCollectionApi } from "../../../core/api/cardCollection";
 import { filterTagsState, sliderIdxState } from "../../../core/atom/slider";
 import { filterTagsInfo, intimacyTags } from "../../../core/cardCollection/filter";
 import { CardList } from "../../../types/cardCollection";
@@ -43,7 +42,7 @@ export default function FilterModal(props: FilterModalProps) {
     _checkedTagsArr.push(intimacyTags[intimacyValues[0]]);
     setFilterTags({ tags: _checkedTagsArr, intimacy: [intimacyValues[0]] });
 
-    const { data } = await real.fetchCardsWithFilter<{ data: CardList[] }>(_checkedTagsArr);
+    const { data } = await cardCollectionApi.fetchCardsWithFilter<{ data: CardList[] }>(_checkedTagsArr);
     setCardLists(data);
     setSliderIdx(0);
 
