@@ -9,11 +9,6 @@ import { activeState } from "../../../core/atom/menuBar";
 import { sliderIdxState } from "../../../core/atom/slider";
 import { St, StContentsContainer } from "./style";
 
-const MenuBarDummy = {
-  profileImg: <IcMenuBarImg />,
-  name: "윤지영",
-};
-
 export default function MenuBar() {
   const setIsActive = useSetRecoilState(activeState);
   const setSliderIdx = useSetRecoilState(sliderIdxState);
