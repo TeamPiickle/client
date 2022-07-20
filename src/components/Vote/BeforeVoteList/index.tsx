@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { IcCheck2 } from "../../../asset/icon";
-import { BallotTopicData, real } from "../../../core/api/vote";
+import { BallotTopicData, voteApi } from "../../../core/api/vote";
 import LoginModal from "../../common/LoginModal";
 import { St } from "./style";
 
@@ -53,7 +53,7 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
 
   const handlePost = () => {
     if (ballotTopic?.data.ballotTopic && ballotTopic.data.userSelect)
-      real.postVote(ballotTopic.data.ballotTopic._id, ballotTopic.data.userSelect.ballotItemId);
+      voteApi.postVote(ballotTopic.data.ballotTopic._id, ballotTopic.data.userSelect.ballotItemId);
   };
 
   const closeLoginModal = () => {

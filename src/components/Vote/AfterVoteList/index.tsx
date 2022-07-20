@@ -1,5 +1,5 @@
 import { IcCheck1 } from "../../../asset/icon";
-import { BallotTopicData, real } from "../../../core/api/vote";
+import { BallotTopicData, voteApi } from "../../../core/api/vote";
 import { St } from "./style";
 
 interface AfterVoteListProps {
@@ -19,7 +19,7 @@ export default function AfterVoteList(props: AfterVoteListProps) {
   };
 
   const handlePost = () => {
-    real.postVote(ballotTopic?.data.ballotTopic._id, ballotTopic?.data.userSelect.ballotItemId);
+    voteApi.postVote(ballotTopic?.data.ballotTopic._id, ballotTopic?.data.userSelect.ballotItemId);
   };
 
   return (

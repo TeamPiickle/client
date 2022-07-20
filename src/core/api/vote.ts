@@ -45,6 +45,6 @@ function postVote(ballotTopicId: string, ballotItemId: string) {
   });
 }
 
-export const real = {
+export const voteApi = {
   postVote,
 };
