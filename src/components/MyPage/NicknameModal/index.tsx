@@ -34,14 +34,14 @@ export default function NicknameModal(props: ModifyNicknameProps) {
 
   return (
     <Modal closeHandler={closeHandler}>
-      <St.Container>
+      <St.Container role="dialog">
         <St.Wrapper>
           <St.Label>현재 닉네임</St.Label>
-          <St.CurrentNickname type="text" placeholder={nickname} disabled />
+          <St.CurrentNickname aria-label={nickname} type="text" placeholder={nickname} disabled />
         </St.Wrapper>
         <St.Wrapper>
           <St.Label>새로운 닉네임</St.Label>
-          <St.NewNickname type="text" id="newNickname" onChange={onChangeNickname} />
+          <St.NewNickname aria-label="새로운 닉네임 입력칸" type="text" id="newNickname" onChange={onChangeNickname} />
           {errorMessage !== "" && <St.ErrorMessage>{errorMessage}</St.ErrorMessage>}
         </St.Wrapper>
         <St.ButtonWrapper>
