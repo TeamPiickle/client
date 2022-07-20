@@ -77,7 +77,9 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
           })}
       </St.VoteOptionContainer>
       <St.VoteBtnContainer>
-        <St.VoteBtn onClick={successVote}>투표하기</St.VoteBtn>
+        <St.VoteBtn onClick={successVote} role="dialog">
+          투표하기
+        </St.VoteBtn>
       </St.VoteBtnContainer>
       {isModalOpen && <LoginModal closeHandler={closeLoginModal} contents={"투표기능인 피클미를"} />}
     </St.Root>

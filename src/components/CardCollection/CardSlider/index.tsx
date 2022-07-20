@@ -61,7 +61,7 @@ export default function CardSlider(props: CardSliderProps) {
           <LastCard />
         </Slider>
       )}
-      <St.IcFilterBtn onClick={openFilterModalHandler} aria-label="카드 추천 필터" />
+      <St.IcFilterBtn onClick={openFilterModalHandler} aria-label="카드 추천 필터" role="dialog" />
     </St.Wrapper>
   );
 }
