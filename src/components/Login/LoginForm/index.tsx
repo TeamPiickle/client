@@ -36,6 +36,10 @@ export default function LoginForm() {
         else if (message === "비밀번호가 일치하지 않습니다.")
           setErrorMessage((prev) => ({ ...prev, passwordError: "비밀번호가 일치하지 않습니다." }));
         break;
+      case 500:
+        // 서버 내부 오류
+        navigate("/login");
+        break;
       default:
         throw new Error("로그인 에러");
     }
