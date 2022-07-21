@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useState } from "react";
 import Slider from "react-slick";
 
-import { ImgBanner1, ImgBanner2 } from "../../../asset/image";
+import { ImgBanner1, ImgBanner2, ImgBanner4 } from "../../../asset/image";
 import { St } from "./style";
 
 type BannerImage = {
@@ -13,11 +13,19 @@ type BannerImage = {
 };
 const BannerImage: BannerImage[] = [
   {
+    src: ImgBanner1,
+    alt: "피클 소개 이미지",
+  },
+  {
     src: ImgBanner2,
     alt: "피클 소개 이미지",
   },
   {
-    src: ImgBanner1,
+    src: "ImgBanner3",
+    alt: "피클 소개 이미지",
+  },
+  {
+    src: ImgBanner4,
     alt: "피클 소개 이미지",
   },
 ];
@@ -45,7 +53,7 @@ export default function Banner() {
       </Slider>
 
       <St.ContentsPages>
-        <St.CurrentPage>{currentSlide + 1} / 2</St.CurrentPage>
+        <St.CurrentPage>{currentSlide + 1} / 4</St.CurrentPage>
       </St.ContentsPages>
     </St.BannerSlider>
   );
