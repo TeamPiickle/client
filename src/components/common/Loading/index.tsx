@@ -1,4 +1,5 @@
 import { ImgPiickleLoading } from "../../../asset/image";
+import Header from "../Header";
 import { St } from "./style";
 
 interface LoadingProps {
@@ -10,6 +11,7 @@ export default function Loading(props: LoadingProps) {
 
   return (
     <St.Root backgroundcolor={backgroundColor}>
+      <Header />
       <St.ImageWrapper>
         <img src={ImgPiickleLoading} alt="피클 로딩" />
       </St.ImageWrapper>
