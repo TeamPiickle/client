@@ -13,11 +13,11 @@ type BannerImage = {
 };
 const BannerImage: BannerImage[] = [
   {
-    src: ImgBanner1,
+    src: ImgBanner2,
     alt: "피클 소개 이미지",
   },
   {
-    src: ImgBanner2,
+    src: ImgBanner1,
     alt: "피클 소개 이미지",
   },
 ];
