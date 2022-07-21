@@ -31,6 +31,7 @@ export const St = {
     grid-row-end: ${({ rowEnd }) => rowEnd};
 
     background: url(${({ imgUrl }) => imgUrl});
+    background-size: cover;
 
     border-radius: 1.6rem;
     border: 0.1rem solid #e0e0e0;
