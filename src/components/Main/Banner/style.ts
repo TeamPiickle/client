@@ -4,13 +4,12 @@ export const St = {
   BannerSlider: styled.section`
     position: relative;
     height: 21.7rem;
+    margin-top: -2.4rem;
   `,
 
   ImageWrapper: styled.img`
     width: 36rem;
     height: 21.7rem;
-
-    margin-top: -2.4rem;
   `,
 
   ContentsPages: styled.div`

@@ -17,7 +17,7 @@ export const headingTitles: HeadingTitle[] = [
   },
   {
     title: "Piickle Me!",
-    content: "당신의 피클에게 투표하세요",
+    content: "함께 피클을 만들어가는 방법!\n투표로 여러분의 생각을 들려주세요",
     isMoreBtn: false,
   },
 ];
