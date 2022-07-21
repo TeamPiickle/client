@@ -17,7 +17,6 @@ export default function CategoryContents() {
     navigate("/card-collection", { state: { type: "category", categoryId: id } });
     setSliderIdx(0);
   };
-  console.log(categoryLists);
 
   if (categoryLists?.data === undefined) return <Loading backgroundColor="transparent" />;
   else
