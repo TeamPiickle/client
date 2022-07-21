@@ -10,7 +10,7 @@ export const sliderIdxState = atom({
   default: 0,
 });
 
-export const filterTagsState = atom<{ tags: string[]; intimacy: number[] }>({
+export const filterTagsState = atom<{ tags: string[]; intimacy: number[]; isActive: boolean }>({
   key: StateType.FILTER_TAGS,
-  default: { tags: [], intimacy: [0] },
+  default: { tags: [], intimacy: [0], isActive: false },
 });

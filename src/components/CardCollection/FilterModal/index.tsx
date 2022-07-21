@@ -24,9 +24,9 @@ export default function FilterModal(props: FilterModalProps) {
   const setSliderIdx = useSetRecoilState(sliderIdxState);
 
   const [checkedTags, setCheckedTags] = useState<Set<string>>(
-    typeLocation === "filter" ? new Set(filterTags.tags) : new Set(),
+    filterTags.isActive ? new Set(filterTags.tags) : new Set(),
   ); // 체크한 태그들을 저장할 state
-  const [intimacyValues, setIntimacyValues] = useState<number[]>(typeLocation === "filter" ? filterTags.intimacy : [0]); // 친밀도 value
+  const [intimacyValues, setIntimacyValues] = useState<number[]>(filterTags.isActive ? filterTags.intimacy : [0]); // 친밀도 value
 
   // 태그를 눌렀을 때 함수
   const toggleTag = (_tag: string) => {
@@ -48,7 +48,7 @@ export default function FilterModal(props: FilterModalProps) {
     // 태그 정보 저장
     const _checkedTagsArr = [...checkedTags];
     _checkedTagsArr.push(intimacyTags[intimacyValues[0]]);
-    setFilterTags({ tags: _checkedTagsArr, intimacy: [intimacyValues[0]] });
+    setFilterTags({ tags: _checkedTagsArr, intimacy: [intimacyValues[0]], isActive: true });
 
     // 데이터 패칭
     const { data } = await cardCollectionApi.fetchCardsWithFilter<{ data: CardList[] }>(_checkedTagsArr);
