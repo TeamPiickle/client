@@ -28,6 +28,7 @@ export const St = {
     width: 16rem;
 
     box-sizing: border-box;
+
     display: flex;
 
     border: 0.1rem solid #e0e0e0;
