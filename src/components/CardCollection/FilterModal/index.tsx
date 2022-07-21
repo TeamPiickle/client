@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { flushSync } from "react-dom";
 import { useRecoilState, useSetRecoilState } from "recoil";
 
 import { cardCollectionApi } from "../../../core/api/cardCollection";
@@ -38,15 +39,21 @@ export default function FilterModal(props: FilterModalProps) {
   const submitFilter = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
 
+    // 로딩 중 표시
+    flushSync(() => {
+      setCardLists(null);
+    });
+    closeHandler();
+
+    // 태그 정보 저장
     const _checkedTagsArr = [...checkedTags];
     _checkedTagsArr.push(intimacyTags[intimacyValues[0]]);
     setFilterTags({ tags: _checkedTagsArr, intimacy: [intimacyValues[0]] });
 
+    // 데이터 패칭
     const { data } = await cardCollectionApi.fetchCardsWithFilter<{ data: CardList[] }>(_checkedTagsArr);
     setCardLists(data);
     setSliderIdx(0);
-
-    closeHandler();
   };
 
   return (
