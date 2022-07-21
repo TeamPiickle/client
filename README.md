@@ -1,7 +1,6 @@
 ## 🥒 Piickle
 ### 지금 내게 필요한 대화주제 추천 서비스, 피클!
 
-
 <aside>
 📍 1. 어색한 분위기 또는 침묵의 발생
 
@@ -22,25 +21,34 @@
 **>> 마음에 드는 주제를 북마크하고 모아서 볼 수 있도록 하는 아카이빙 기능**
 
 </aside>
+<br /><br/>
 
 ## 👥 Team Piickle 피클의 웹딱지들을 소개합니다:)
 |[이주함](https://github.com/joohaem)|[서혜은](https://github.com/henization)|[고나연](https://github.com/NYeonK?tab=overview&from=2022-07-01&to=2022-07-10)|[윤지영](https://github.com/NaveOWO)|
 |------|------|------|------|
 |![image](https://user-images.githubusercontent.com/87578512/178135117-a1c2c380-a63c-4435-990b-0fcb501820ba.png)|![image](https://user-images.githubusercontent.com/87578512/178135086-954a203e-ba6c-4c04-b7d1-7a02c13b1d09.png)|<img width="529" alt="스크린샷 2022-07-10 오후 4 20 16" src="https://user-images.githubusercontent.com/87578512/178135232-7d1b4068-d94f-49e2-8ac0-4c8ea8f9d266.png">|![image](https://user-images.githubusercontent.com/87578512/178135034-01f22b87-1f35-4a19-8359-b63874055e31.png)|
 
+<br /><br/>
+
 ## ⚙️ Stack
 
-<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white"> <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=CSS3&logoColor=white"> <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white"> <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"> <img src="https://img.shields.io/badge/StoryBook-FF4785?style=for-the-badge&logo=StoryBook&logoColor=white"> <img src="https://img.shields.io/badge/StyledComponents-DB7093?style=for-the-badge&logo=StyledComponents&logoColor=white">
+<img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white"> <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"> <img src="https://img.shields.io/badge/StoryBook-FF4785?style=for-the-badge&logo=StoryBook&logoColor=white"> <img src="https://img.shields.io/badge/StyledComponents-DB7093?style=for-the-badge&logo=StyledComponents&logoColor=white">
 ```javascript
-    "axios": "^0.26.0",
+     "axios": "^0.26.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-range": "^1.8.13",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.1",
+    "react-slick": "^0.29.0",
+    "recoil": "^0.7.4",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.5",
-    "styled-reset": "^4.4.1"
-   
+    "swr": "^1.3.0"
+    "msw": "^0.42.1",
 ```
+
+<br /><br/>
 
 ## 📂 파일구조
 ```
@@ -55,26 +63,58 @@
 │   ├── CardCollection
 │   ├── Vote
 │   ├── MyPage
-│   ├── Bookmark
+│   ├── BookMark
+|   ├── Common
 |   └── Error404
 ├── 📁 core
-|   └── temp.ts
+|   ├── api
+|   |    ├── common
+|   |    |     ├── axios.ts
+|   |    |     └── constants.ts
+|   |    ├── bookmark.ts
+|   |    ├── cardCollections.ts
+|   |    ├── login.ts
+|   |    ├── main.ts
+|   |    ├── myPage.ts
+|   |    └── vote.ts
+|   ├── atom
+|   |    ├── menuBar.ts
+|   |    └── slider.ts
+|   ├── cardCollection
+|   |    └── filter.ts
+|   ├── category
+|   |    └── categoryList.ts
+|   ├── main
+|   |    └── headingTitles.ts
+|   └── vote
+|   |    └── voteContent.ts
 ├── 📂 mocks
-│   ├── browser.ts
-│   └── handler.ts
+│   ├── handlers
+|   |    ├── ballots.ts
+|   |    ├── cards.ts
+|   |    ├── categories.ts
+|   |    ├── index.ts
+|   |    ├── notice.ts
+|   |    └── user.ts
+│   └── browser.ts
 ├── 📂 style
 │   └── globalStyle.ts
+|   └── ModalStyle.ts
 |   └── styled.d.ts
 |   └── theme.ts
 ├── 📂 types
+|   └── cardCollection.ts
+|   └── main.ts
+|   └── swr.ts
+|   └── user.ts
 ├── 📂 util
-│   └── temp.ts
+│   └── fetchCardCollection.ts
 ├── App.tsx
 ├── index.tsx
 └── Router.tsx
 
 ```
-
+<br /><br/>
 ## 🖥 뷰 소개
 ### 1. 메인 페이지
 유저가 가장 처음 보는 피클 서비스의 페이지 입니다.  
@@ -82,85 +122,75 @@
 📍 Mood Piickle : 클릭시 해당 카테고리로 지정된 대화주제 카드로 이동합니다. 더보기를 클릭했을 때에는 카테고리 페이지로 이동합니다.  
 📍 Piickle Me : 유저들이 해당 주제에 대해 투표를 하고 결과를 볼 수 있습니다. 투표하기를 클릭했을 때 투표 페이지로 이동합니다.
 
-<div>
+ <img src="https://user-images.githubusercontent.com/87578512/179968567-e5288e4a-718d-463d-a99d-ea939b2942b2.png" width="30%" />
 
-![Android Small - 205](https://user-images.githubusercontent.com/87578512/179968567-e5288e4a-718d-463d-a99d-ea939b2942b2.png)
+<br /><br/>
+### 2. 카드 슬라이더  
+사용자에게 여러가지 대화주제를 추천해주는 페이지입니다.  
+왼쪽 하단의 하트 버튼을 클릭하면 북마크가 되고, 오른쪽 하단의 <추천필터> 버튼을 클릭하면 사용자가 대화주제를 필터링할 수 있습니다.
+
+ <div>
+ <img src="https://user-images.githubusercontent.com/87578512/179973151-ad9b1617-c045-470f-8213-ecef66562ea8.png" width="45%" />  
+ <img src="https://user-images.githubusercontent.com/87578512/180001955-3dfe66aa-d8d5-4a47-9f19-6b139afb7b20.png" width="25%" />  
+ <img src="https://user-images.githubusercontent.com/87578512/179982012-d5e25761-47f3-4d0c-a3f7-689bf12cc3b0.png" width="25%" />
 </div>
 
-### 2. 카드 슬라이더  
-사용자에게 여러가지 대화주제를 추천해주는 페이지입니다. 왼쪽 하단의 하트 버튼을 클릭하면 북마크가 되고, 오른쪽 하단의 <추천필터> 버튼을 클릭하면 사용자가 대화주제를 필터링할 수 있습니다.
-
-<div> 
- 
-![piickle_card1](https://user-images.githubusercontent.com/87578512/179973151-ad9b1617-c045-470f-8213-ecef66562ea8.png). 
-![piickle_card1 (3)](https://user-images.githubusercontent.com/87578512/180001955-3dfe66aa-d8d5-4a47-9f19-6b139afb7b20.png)
-![piickle_card1 (1)](https://user-images.githubusercontent.com/87578512/179982012-d5e25761-47f3-4d0c-a3f7-689bf12cc3b0.png)
-</div> 
-
+<br /><br/>
 ### 3. 투표 페이지  
-사용자들이 여러가지 대화주제애 대해서 의견을 공유할 수 있는 기능입니다. 투표페이지로 이동했을 때, 로그인이 되어있지 않은 사용자는 투표하기 버튼을 통해 로그인 유도Modal을 띄워주고,  
+사용자들이 여러가지 대화주제애 대해서 의견을 공유할 수 있는 기능입니다.  
+투표페이지로 이동했을 때, 로그인이 되어있지 않은 사용자는 투표하기 버튼을 통해 로그인 유도Modal을 띄워주고,  
 로그인이 되어있는 사용자에게는 투표를 하고 결과페이지를 볼 수 있게 합니다.
 
 <div>
- 
-![card_empty](https://user-images.githubusercontent.com/87578512/179976921-1fb9ef6d-5895-4938-9f9a-3207e8e3b2d9.png)
-![vote_view3](https://user-images.githubusercontent.com/87578512/179974135-d71cb0a3-10cb-4d77-ade5-94bca026f755.png)
+ <img src="https://user-images.githubusercontent.com/87578512/179976921-1fb9ef6d-5895-4938-9f9a-3207e8e3b2d9.png" width="30%" />    
+ <img src="https://user-images.githubusercontent.com/87578512/179974135-d71cb0a3-10cb-4d77-ade5-94bca026f755.png" width="30%" />  
 </div>
 
+<br /><br/>
 ### 4. Menu Bar  
-메인페이지에서 오른쪽 상단 버튼을 클릭하면 나타나는 Bar입니다. 마이페이지 / 로그인페이지 / 대화주제 추천카드 / 카테고리 페이지 / 투표 페이지로 이동할 수 있습니다.
+메인페이지에서 오른쪽 상단 버튼을 클릭하면 나타나는 Bar입니다.  
+마이페이지 / 로그인페이지 / 대화주제 추천카드 / 카테고리 페이지 / 투표 페이지로 이동할 수 있습니다.
 
-<div>
- 
-![menu bar](https://user-images.githubusercontent.com/87578512/179977148-50a4a2fc-e5d3-4e09-8564-d045ea913454.png)
-</div>
+ <img src="https://user-images.githubusercontent.com/87578512/179977148-50a4a2fc-e5d3-4e09-8564-d045ea913454.png" width="30%" /> 
 
+<br /><br/>
 ### 5. 카테고리 페이지  
 같은 카테고리의 대화주제를 카드로 묶어서 사용자에게 보여주는 페이지 입니다.
 
-<div>
+ <img src="https://user-images.githubusercontent.com/87578512/179981944-b3c1b59d-a37c-49dd-89c8-86f514f6c13e.png" width="30%" /> 
 
-![Frame 384](https://user-images.githubusercontent.com/87578512/179981944-b3c1b59d-a37c-49dd-89c8-86f514f6c13e.png)
-
+<br /><br/>
 ### 6. 마이 페이지
  마이페이지에서는 프로필 수정과, 내가 북마크한 대화주제들을 볼 수 있습니다.  
 
-<div>
- 
-![My page](https://user-images.githubusercontent.com/87578512/179983101-4656c414-504f-4971-b44b-c59c80dcf6dd.png)
-</div>
+ <img src="https://user-images.githubusercontent.com/87578512/179983101-4656c414-504f-4971-b44b-c59c80dcf6dd.png" width="30%" /> 
 
+<br /><br/>
 ### 7. 북마크 리스트  
  마이페이지에서 <카드 모아보기> 버튼을 클릭했을 때 이동할 수 있는 페이지입니다. 내가 북마크한 대화주제들이 리스트형식으로 보여집니다.
 
-<div>
- 
-![piicklelist](https://user-images.githubusercontent.com/87578512/179982571-679e22ef-8ab7-40f8-934b-db9c67c3efde.png)
-</div>
+ <img src="https://user-images.githubusercontent.com/87578512/179982571-679e22ef-8ab7-40f8-934b-db9c67c3efde.png" width="30%" /> 
 
+<br /><br/>
 ### 8. 닉네임 수정 페이지
  닉네임 모달창을 통해 닉네임을 수정할 수 있습니다.
 
 <div>
-
-![My page (1)](https://user-images.githubusercontent.com/87578512/179985636-4c9442ff-2b18-45fc-ac4a-7a19c90fd1f1.png)
-![My page (2)](https://user-images.githubusercontent.com/87578512/179985661-367bd54f-119f-46a0-91c0-917c3d13510c.png)
+ <img src="https://user-images.githubusercontent.com/87578512/179985636-4c9442ff-2b18-45fc-ac4a-7a19c90fd1f1.png" width="30%" />   
+ <img src="https://user-images.githubusercontent.com/87578512/179985661-367bd54f-119f-46a0-91c0-917c3d13510c.png" width="30%" /> 
 </div>
 
+<br /><br/>
 ### 9. 로그인 유도 Modal
  로그인을 하지 않을 사용자가 로그인이 필요한 기능을 선택했을 때 로그인 모달창을 띄웁니다.
 
-<div>
- 
-![piickle_card1 (2)](https://user-images.githubusercontent.com/87578512/179991396-1a5baa7c-d1dc-4de9-8295-6f6c64d40745.png)
-</div>
+ <img src="https://user-images.githubusercontent.com/87578512/179991396-1a5baa7c-d1dc-4de9-8295-6f6c64d40745.png" width="30%" /> 
 
+<br /><br/>
 ### 9. 로그인 페이지
  로그인을 할 수 있는 페이지 입니다.
 
 <div>
- 
-![로그인 스케치](https://user-images.githubusercontent.com/87578512/179992075-63fe8aed-145c-4752-af6d-35ad76d0414b.png)
-![로그인 스케치 (1)](https://user-images.githubusercontent.com/87578512/179992083-abc9d940-b75d-4698-a9c3-240713afdfe0.png)
-</div> 
-
+ <img src="https://user-images.githubusercontent.com/87578512/179992075-63fe8aed-145c-4752-af6d-35ad76d0414b.png" width="30%" />   
+ <img src="https://user-images.githubusercontent.com/87578512/179992083-abc9d940-b75d-4698-a9c3-240713afdfe0.png" width="30%" /> 
+</div>
