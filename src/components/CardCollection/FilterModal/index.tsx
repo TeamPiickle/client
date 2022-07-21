@@ -41,12 +41,10 @@ export default function FilterModal(props: FilterModalProps) {
     const _checkedTagsArr = [...checkedTags];
     _checkedTagsArr.push(intimacyTags[intimacyValues[0]]);
     setFilterTags({ tags: _checkedTagsArr, intimacy: [intimacyValues[0]] });
-
+    closeHandler();
     const { data } = await cardCollectionApi.fetchCardsWithFilter<{ data: CardList[] }>(_checkedTagsArr);
     setCardLists(data);
     setSliderIdx(0);
-
-    closeHandler();
   };
 
   return (
