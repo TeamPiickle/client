@@ -16,11 +16,11 @@ export default function MyInfo() {
   const navigation = useNavigate();
   const [isOpened, setIsOpened] = useState<boolean>(false);
 
-  // useEffect(() => {
-  //   if (!isLoading) {
-  //     if (!LOGIN_STATE) navigation("/login");
-  //   }
-  // }, [isLoading, LOGIN_STATE, navigation]);
+  useEffect(() => {
+    if (!isLoading) {
+      if (!LOGIN_STATE) navigation("/login");
+    }
+  }, [isLoading, LOGIN_STATE, navigation]);
 
   const openModal = () => {
     setIsOpened(true);
