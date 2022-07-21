@@ -31,11 +31,12 @@ export default function MyPiickleItem(props: MyPiickleItemProps) {
   };
 
   return (
-    <St.MyPiickle onClick={goCardView}>
+    <St.MyPiickle>
       <St.MyPiickleContent>{content}</St.MyPiickleContent>
       <St.HeartWrapper onClick={toggleBookmark}>
         {isBookmarked ? <IcSmallFullHeart /> : <IcSmallEmptyHeart />}
       </St.HeartWrapper>
+      <St.MyPiickleLink type="button" onClick={goCardView} />
     </St.MyPiickle>
   );
 }
