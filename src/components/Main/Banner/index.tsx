@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useState } from "react";
 import Slider from "react-slick";
 
+import { ImgBanner1, ImgBanner2 } from "../../../asset/image";
 import { St } from "./style";
 
 type BannerImage = {
@@ -12,24 +13,12 @@ type BannerImage = {
 };
 const BannerImage: BannerImage[] = [
   {
-    src: "banner1",
+    src: ImgBanner1,
     alt: "배너1",
   },
   {
-    src: "banner2",
+    src: ImgBanner2,
     alt: "배너2",
-  },
-  {
-    src: "banner3",
-    alt: "배너3",
-  },
-  {
-    src: "banner4",
-    alt: "배너4",
-  },
-  {
-    src: "banner5",
-    alt: "배너5",
   },
 ];
 
