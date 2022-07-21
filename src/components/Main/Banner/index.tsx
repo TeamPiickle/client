@@ -13,11 +13,11 @@ type BannerImage = {
 };
 const BannerImage: BannerImage[] = [
   {
-    src: ImgBanner2,
+    src: "https://piiklebucket11.s3.ap-northeast-2.amazonaws.com/mainbanner01.jpg",
     alt: "피클 소개 이미지",
   },
   {
-    src: ImgBanner1,
+    src: "https://piiklebucket11.s3.ap-northeast-2.amazonaws.com/mainbanner02.jpg",
     alt: "피클 소개 이미지",
   },
 ];
