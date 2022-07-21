@@ -26,7 +26,7 @@ export const usersHandler = [
           name: "example name",
           nickname: "example nickname",
           email: "example email",
-          profile_image_url: "example profile_image",
+          profileImageUrl: "example profile_image",
         },
       }),
     );

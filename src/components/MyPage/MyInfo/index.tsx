@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
@@ -15,6 +15,7 @@ export default function MyInfo() {
   const { userProfile, isLoading, handleNewProfile } = useUserProfile();
   const navigation = useNavigate();
   const [isOpened, setIsOpened] = useState<boolean>(false);
+  const [profileImage, setProfileImage] = useState(ImgDefaultProfile);
 
   useEffect(() => {
     if (!isLoading) {
@@ -34,8 +35,7 @@ export default function MyInfo() {
     handleNewProfile();
   };
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (LOGIN_STATE === false) return;
+  const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files === null) return;
 
     const selectedImg = e.target.files[0];
@@ -44,27 +44,36 @@ export default function MyInfo() {
     console.log(formData);
 
     handlePatch(formData);
+    handleNewProfile();
   };
 
   const handlePatch = async (formData: FormData) => {
-    console.log("patch");
-    const res = await myPageApi.patchProfileImg(formData);
-    console.log(res);
-    handleNewProfile();
+    await myPageApi.patchProfileImg(formData);
   };
+
+  // const saveNewProfile = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   if (e.target.files === null) return;
+  //   setProfileImage(URL.createObjectURL(e.target.files[0]));
+  //   console.log("profileImage: ", profileImage);
+  //   console.log("e.target.files[0]: ", e.target.files[0]);
+  //   await myPageApi.patchProfileImg(profileImage);
+  // };
+
+  useEffect(() => {
+    console.log(userProfile && userProfile.data.profileImageUrl);
+  }, [userProfile]);
 
   return (
     <St.MyInfoContainer>
       <St.Profile>
         <St.Images>
-          <St.ProfileImage src={userProfile ? userProfile.data.profile_image_url : ImgDefaultProfile} alt="프로필" />
-          <St.ButtonIcContainer>
-            <IcChangeProfileBtn />
-          </St.ButtonIcContainer>
-          <St.ChangeButton
-            type="file"
-            onChange={handleImageChange}
-            accept="image/jpg, image/png, image/jpeg"></St.ChangeButton>
+          <St.ProfileImage src={userProfile ? userProfile.data.profileImageUrl : ImgDefaultProfile} alt="프로필" />
+          <St.ProfileChangeBtnLabel aria-label="프로필 이미지 수정">
+            <St.ChangeBtnWrapper>
+              <IcChangeProfileBtn />
+            </St.ChangeBtnWrapper>
+            <St.ChangeButton type="file" onChange={handleImageChange} accept="image/*" />
+          </St.ProfileChangeBtnLabel>
         </St.Images>
         <St.ProfileDetail>
           <St.ProfileNickname>
