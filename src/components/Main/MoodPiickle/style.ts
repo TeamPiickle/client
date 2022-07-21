@@ -35,7 +35,9 @@ export const St = {
     border-radius: 1.6rem;
     align-items: center;
     justify-content: center;
+
     background: url(${({ imgUrl }) => imgUrl});
+    background-size: cover;
   `,
 
   CategoryTitle: styled.strong`
