@@ -7,6 +7,7 @@ export const St = {
     display: flex;
     flex-direction: column;
     margin-bottom: 4rem;
+    margin-top: -2.4rem;
   `,
 
   CategoryBanner: styled.section`

@@ -3,9 +3,9 @@ import "slick-carousel/slick/slick-theme.css";
 
 import { useEffect, useRef } from "react";
 import Slider from "react-slick";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 
-import { sliderIdxState } from "../../../core/atom/slider";
+import { filterTagsState, sliderIdxState } from "../../../core/atom/slider";
 import { CardList, CardsTypeLocation } from "../../../types/cardCollection";
 import fetchCardCollection from "../../../util/fetchCardCollection";
 import Loading from "../../common/Loading";
@@ -17,8 +17,8 @@ interface CardSliderProps {
   openFilterModalHandler: () => void;
   openLoginModalHandler: () => void;
   cardsTypeLoaction: CardsTypeLocation;
-  cardLists: CardList[];
-  setCardLists: React.Dispatch<React.SetStateAction<CardList[]>>;
+  cardLists: CardList[] | null;
+  setCardLists: React.Dispatch<React.SetStateAction<CardList[] | null>>;
 }
 
 // 1. 카테고리 :: /categories/:categoryId :: { type: "category", categoryId: "62cbb7d8a8c54f168a6ddfe1"}
@@ -28,6 +28,7 @@ interface CardSliderProps {
 export default function CardSlider(props: CardSliderProps) {
   const { openFilterModalHandler, openLoginModalHandler, cardsTypeLoaction, cardLists, setCardLists } = props;
 
+  const setFilterTags = useSetRecoilState(filterTagsState);
   const [sliderIdx, setSliderIdx] = useRecoilState(sliderIdxState);
   const sliderRef = useRef<Slider | null>(null);
 
@@ -35,7 +36,9 @@ export default function CardSlider(props: CardSliderProps) {
     fetchCardCollection(cardsTypeLoaction, (data: CardList[]) => {
       setCardLists(data);
     });
-  }, [cardsTypeLoaction, setCardLists]);
+    // 필터 정보 초기화
+    setFilterTags((prev) => ({ ...prev, isActive: false }));
+  }, [cardsTypeLoaction, setCardLists, setFilterTags]);
 
   const sliderSettings = {
     className: "center",
@@ -51,7 +54,7 @@ export default function CardSlider(props: CardSliderProps) {
 
   return (
     <St.Wrapper>
-      {!cardLists || cardLists.length === 0 ? (
+      {!cardLists ? (
         <Loading backgroundColor="transparent" />
       ) : (
         <Slider {...sliderSettings} ref={sliderRef}>
