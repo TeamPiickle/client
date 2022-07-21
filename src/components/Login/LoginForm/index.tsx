@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -12,32 +13,39 @@ export default function LoginForm() {
   const submitLoginForm = async (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
 
-    const { status, message, data } = await loginApi.postLogin(inputRefs.current[0].value, inputRefs.current[1].value);
+    try {
+      const { data } = await loginApi.postLogin(inputRefs.current[0].value, inputRefs.current[1].value);
+      LoginNGoMain(data.accessToken);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        const errorData = error.response?.data;
+        const errorStatus = errorData.status;
 
-    switch (status) {
-      case 200:
-        LoginNGoMain(data);
-        break;
-      case 400:
-        setErrorMessage((prev) => ({ ...prev, passwordError: "필요한 값이 없습니다." }));
-        break;
-      case 401:
-        if (message === "존재하지 않는 email 입니다.")
-          setErrorMessage((prev) => ({ ...prev, emailError: "존재하지 않는 email 입니다." }));
-        else if (message === "비밀번호가 일치하지 않습니다.")
-          setErrorMessage((prev) => ({ ...prev, passwordError: "비밀번호가 일치하지 않습니다." }));
-        break;
-      case 500:
-        // 서버 내부 오류
-        navigate("/login");
-        break;
-      default:
-        throw new Error("로그인 에러");
+        switch (errorStatus) {
+          case 200:
+            break;
+          case 400:
+            setErrorMessage({ emailError: "", passwordError: "필요한 값이 없습니다." });
+            break;
+          case 401:
+            if (errorData.message === "존재하지 않는 email 입니다.")
+              setErrorMessage({ passwordError: "", emailError: "존재하지 않는 email 입니다." });
+            else if (errorData.message === "비밀번호가 일치하지 않습니다.")
+              setErrorMessage({ emailError: "", passwordError: "비밀번호가 일치하지 않습니다." });
+            break;
+          case 500:
+            // 서버 내부 오류
+            navigate("/login");
+            break;
+          default:
+            throw new Error("로그인 에러");
+        }
+      }
     }
   };
 
-  const LoginNGoMain = (data: { accessToken: string }) => {
-    localStorage.setItem("piickle-token", data.accessToken);
+  const LoginNGoMain = (accessToken: string) => {
+    localStorage.setItem("piickle-token", accessToken);
     navigate("/");
   };
 

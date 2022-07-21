@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const St = {
   MyPiickle: styled.article`
+    position: relative;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -10,6 +12,15 @@ export const St = {
 
     border: 0.1rem solid ${({ theme }) => theme.colors.gray300};
     border-radius: 1rem;
+  `,
+
+  MyPiickleLink: styled.button`
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 80%;
   `,
 
   MyPiickleContent: styled.strong`
