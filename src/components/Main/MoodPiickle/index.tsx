@@ -34,7 +34,7 @@ export default function MoodPiickle() {
         {randomCategory &&
           randomCategory.slice(0, 4).map((moodPiickle) => (
             <St.CategoryOneLine key={moodPiickle._id}>
-              <St.Category onClick={() => moveCategory(moodPiickle._id)}>
+              <St.Category onClick={() => moveCategory(moodPiickle._id)} imgUrl={moodPiickle.imgurl}>
                 <St.CategoryTitle>{moodPiickle.title}</St.CategoryTitle>
                 <St.CategoryContent>{moodPiickle.content}</St.CategoryContent>
               </St.Category>
