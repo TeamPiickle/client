@@ -12,12 +12,11 @@ import { St } from "./style";
 
 interface FilterModalProps {
   closeHandler: () => void;
-  typeLocation: "filter" | string;
   setCardLists: React.Dispatch<React.SetStateAction<CardList[] | null>>;
 }
 
 export default function FilterModal(props: FilterModalProps) {
-  const { closeHandler, typeLocation, setCardLists } = props;
+  const { closeHandler, setCardLists } = props;
 
   const [filterTags, setFilterTags] = useRecoilState(filterTagsState);
 

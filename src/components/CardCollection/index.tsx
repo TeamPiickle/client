@@ -56,9 +56,7 @@ export default function CardCollection() {
       />
 
       {isLoginOpened && <LoginModal closeHandler={closeLoginModal} contents={"북마크기능인 마이피클을"} />}
-      {isOpened && (
-        <FilterModal typeLocation={cardsTypeLoaction.type} closeHandler={closeModal} setCardLists={setCardLists} />
-      )}
+      {isOpened && <FilterModal closeHandler={closeModal} setCardLists={setCardLists} />}
     </St.MainPage>
   );
 }
