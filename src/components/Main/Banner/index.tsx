@@ -14,11 +14,11 @@ type BannerImage = {
 const BannerImage: BannerImage[] = [
   {
     src: ImgBanner1,
-    alt: "배너1",
+    alt: "피클 소개 이미지",
   },
   {
     src: ImgBanner2,
-    alt: "배너2",
+    alt: "피클 소개 이미지",
   },
 ];
 
@@ -45,7 +45,7 @@ export default function Banner() {
       </Slider>
 
       <St.ContentsPages>
-        <St.CurrentPage>{currentSlide + 1} / 5</St.CurrentPage>
+        <St.CurrentPage>{currentSlide + 1} / 2</St.CurrentPage>
       </St.ContentsPages>
     </St.BannerSlider>
   );
