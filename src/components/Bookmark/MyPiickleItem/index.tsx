@@ -26,7 +26,7 @@ export default function MyPiickleItem(props: MyPiickleItemProps) {
   };
 
   const goCardView = () => {
-    navigate("/card-collection", { state: { type: "best" } });
+    navigate("/card-collection", { state: { type: "bookmark" } });
     setSliderIdx(idx);
   };
 

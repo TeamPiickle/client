@@ -13,9 +13,9 @@ export default function useUserBookmarks() {
   };
 }
 
-// 필터로 카드 리스트 조회
+// 마이피클 카드 리스트 조회
 function fetchCardsWithBookmarks<T>() {
-  return realReq.GET<T>(`${PATH.CATEGORIES}/bookmarks`);
+  return realReq.GET<T>(`${PATH.USERS}/bookmarks`);
 }
 
 export const bookmarkApi = {
