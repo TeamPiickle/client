@@ -18,7 +18,7 @@ export type myPiickle = {
 };
 
 export default function Bookmark() {
-  const { userBookmarks, isLoading, isError } = useUserBookmarks();
+  const { userBookmarks } = useUserBookmarks();
 
   return (
     <main>

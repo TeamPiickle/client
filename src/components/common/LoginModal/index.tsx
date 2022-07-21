@@ -11,7 +11,7 @@ export default function LoginModal(props: LoginCheckProps) {
 
   return (
     <Modal closeHandler={closeHandler}>
-      <St.Container>
+      <St.Container role="dialog">
         <St.Wrapper>
           <St.HeartWrapper>
             <St.IcEmptyHeart />

@@ -7,8 +7,7 @@ export const St = {
     align-items: center;
 
     margin-right: 0.9rem;
-
-    width: 4.8rem;
+    padding: 0.4rem 1rem;
     height: 2.3rem;
 
     background-color: ${({ theme }) => theme.colors.sub_green1};

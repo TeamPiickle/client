@@ -1,5 +1,3 @@
-import { number } from "prop-types";
-
 const colors = {
   red: "#FF0000",
   green: "#19BE7E",

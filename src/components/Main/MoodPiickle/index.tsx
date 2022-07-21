@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
@@ -17,7 +16,7 @@ export type moodPiickle = {
 
 export default function MoodPiickle() {
   const setSliderIdx = useSetRecoilState(sliderIdxState);
-  const { categoryLists, isLoading, isError } = useCategoryLists();
+  const { categoryLists } = useCategoryLists();
 
   const navigate = useNavigate();
   const moveCategory = (id: string) => {
@@ -35,7 +34,7 @@ export default function MoodPiickle() {
         {randomCategory &&
           randomCategory.slice(0, 4).map((moodPiickle) => (
             <St.CategoryOneLine key={moodPiickle._id}>
-              <St.Category onClick={() => moveCategory(moodPiickle._id)}>
+              <St.Category onClick={() => moveCategory(moodPiickle._id)} imgUrl={moodPiickle.imgurl}>
                 <St.CategoryTitle>{moodPiickle.title}</St.CategoryTitle>
                 <St.CategoryContent>{moodPiickle.content}</St.CategoryContent>
               </St.Category>
