@@ -16,7 +16,7 @@ export const St = {
   ContentsPages: styled.div`
     position: absolute;
     right: 0;
-    bottom: 0;
+    bottom: 2.4rem;
 
     display: flex;
     justify-content: center;
