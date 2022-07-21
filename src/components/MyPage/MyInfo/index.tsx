@@ -16,11 +16,11 @@ export default function MyInfo() {
   const navigation = useNavigate();
   const [isOpened, setIsOpened] = useState<boolean>(false);
 
-  useEffect(() => {
-    if (!isLoading) {
-      if (!LOGIN_STATE) navigation("/login");
-    }
-  }, [isLoading, LOGIN_STATE, navigation]);
+  // useEffect(() => {
+  //   if (!isLoading) {
+  //     if (!LOGIN_STATE) navigation("/login");
+  //   }
+  // }, [isLoading, LOGIN_STATE, navigation]);
 
   const openModal = () => {
     setIsOpened(true);
@@ -69,7 +69,9 @@ export default function MyInfo() {
         <St.ProfileDetail>
           <St.ProfileNickname>
             <St.ProfileMyNickname>{userProfile ? userProfile.data.nickname : "○○○"}</St.ProfileMyNickname>
-            <St.ProfileNicknameEdit onClick={openModal}>닉네임 수정</St.ProfileNicknameEdit>
+            <St.ProfileNicknameEdit onClick={openModal} role="dialog">
+              닉네임 수정
+            </St.ProfileNicknameEdit>
           </St.ProfileNickname>
           <St.ProfileEmail>{userProfile ? userProfile.data.email : "-"}</St.ProfileEmail>
         </St.ProfileDetail>
