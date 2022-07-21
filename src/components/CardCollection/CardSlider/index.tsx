@@ -17,8 +17,8 @@ interface CardSliderProps {
   openFilterModalHandler: () => void;
   openLoginModalHandler: () => void;
   cardsTypeLoaction: CardsTypeLocation;
-  cardLists: CardList[];
-  setCardLists: React.Dispatch<React.SetStateAction<CardList[]>>;
+  cardLists: CardList[] | null;
+  setCardLists: React.Dispatch<React.SetStateAction<CardList[] | null>>;
 }
 
 // 1. 카테고리 :: /categories/:categoryId :: { type: "category", categoryId: "62cbb7d8a8c54f168a6ddfe1"}
@@ -51,7 +51,7 @@ export default function CardSlider(props: CardSliderProps) {
 
   return (
     <St.Wrapper>
-      {!cardLists || cardLists.length === 0 ? (
+      {!cardLists ? (
         <Loading backgroundColor="transparent" />
       ) : (
         <Slider {...sliderSettings} ref={sliderRef}>

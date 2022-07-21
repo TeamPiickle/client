@@ -12,7 +12,7 @@ export default function CardCollection() {
   const location = useLocation();
   const cardsTypeLoaction = location.state as CardsTypeLocation;
 
-  const [cardLists, setCardLists] = useState<CardList[]>([]);
+  const [cardLists, setCardLists] = useState<CardList[] | null>(null);
   const [isOpened, setIsOpened] = useState<boolean>(false);
   const [isLoginOpened, setLoginOpened] = useState<boolean>(false);
 

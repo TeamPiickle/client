@@ -12,7 +12,7 @@ import { St } from "./style";
 interface FilterModalProps {
   closeHandler: () => void;
   typeLocation: "filter" | string;
-  setCardLists: React.Dispatch<React.SetStateAction<CardList[]>>;
+  setCardLists: React.Dispatch<React.SetStateAction<CardList[] | null>>;
 }
 
 export default function FilterModal(props: FilterModalProps) {
