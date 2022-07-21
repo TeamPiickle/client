@@ -14,7 +14,7 @@ export default function Footer() {
   const ServiceInfo: serviceInfo[] = [
     {
       title: "Contact",
-      detail: "vvayun@naver.com",
+      detail: "leesh98@hanyang.ac.kr",
     },
     {
       title: "Info",
@@ -22,7 +22,7 @@ export default function Footer() {
     },
     {
       title: "Instagram",
-      detail: "official_sodam",
+      detail: "piickle_official",
     },
   ];
 
