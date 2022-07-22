@@ -7,12 +7,13 @@ export const St = {
 
   CategoryWrapper: styled.div`
     height: 37.6rem;
-    width: 36rem;
 
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     grid-gap: 0.8rem;
+
+    margin: 0 1.6rem;
   `,
 
   CategoryOneLine: styled.div`

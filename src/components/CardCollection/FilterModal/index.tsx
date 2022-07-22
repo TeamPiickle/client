@@ -68,8 +68,10 @@ export default function FilterModal(props: FilterModalProps) {
 
     // 데이터 패칭
     const { data } = await cardCollectionApi.fetchCardsWithFilter<{ data: CardList[] }>([..._fetchingCheckedTags]);
-    setCardLists(data);
-    setSliderIdx(0);
+    flushSync(() => {
+      setCardLists(data);
+      setSliderIdx(0);
+    });
   };
 
   return (
