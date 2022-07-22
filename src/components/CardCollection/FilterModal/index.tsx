@@ -44,8 +44,19 @@ export default function FilterModal(props: FilterModalProps) {
     });
     closeHandler();
 
+    // 남 -> 남자, 여 -> 여자
+    const tempCheckedTags = new Set([...checkedTags]);
+    if (tempCheckedTags.has("남")) {
+      tempCheckedTags.delete("남");
+      tempCheckedTags.add("남자");
+    }
+    if (tempCheckedTags.has("여")) {
+      tempCheckedTags.delete("여");
+      tempCheckedTags.add("여자");
+    }
+
     // 태그 정보 저장
-    const _checkedTagsArr = [...checkedTags];
+    const _checkedTagsArr = [...tempCheckedTags];
     _checkedTagsArr.push(intimacyTags[intimacyValues[0]]);
     setFilterTags({ tags: _checkedTagsArr, intimacy: [intimacyValues[0]], isActive: true });
 

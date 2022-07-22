@@ -40,7 +40,7 @@ export default function MyInfo() {
 
     const selectedImg = e.target.files[0];
     const formData = new FormData();
-    formData.append("img", selectedImg);
+    formData.append("file", selectedImg);
     console.log(formData);
 
     handlePatch(formData);

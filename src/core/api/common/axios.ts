@@ -21,8 +21,8 @@ export const realReq = {
     return real.get(path);
   },
 
-  async GET<T>(path: string) {
-    const data = await real.get<T>(path);
+  async GET<T>(path: string, option?: { params: string }) {
+    const data = await real.get<T>(path, option);
     return data.data;
   },
 
