@@ -12,7 +12,7 @@ export default function CardCollection() {
   const location = useLocation();
   const cardsTypeLoaction = location.state as CardsTypeLocation;
 
-  const [cardLists, setCardLists] = useState<CardList[]>([]);
+  const [cardLists, setCardLists] = useState<CardList[] | null>(null);
   const [isOpened, setIsOpened] = useState<boolean>(false);
   const [isLoginOpened, setLoginOpened] = useState<boolean>(false);
 
@@ -56,9 +56,7 @@ export default function CardCollection() {
       />
 
       {isLoginOpened && <LoginModal closeHandler={closeLoginModal} contents={"북마크기능인 마이피클을"} />}
-      {isOpened && (
-        <FilterModal typeLocation={cardsTypeLoaction.type} closeHandler={closeModal} setCardLists={setCardLists} />
-      )}
+      {isOpened && <FilterModal closeHandler={closeModal} setCardLists={setCardLists} />}
     </St.MainPage>
   );
 }

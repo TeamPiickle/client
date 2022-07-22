@@ -58,5 +58,4 @@ const StSvg = styled.svg`
   z-index: 10;
 
   animation: ${startHeart} 0.4s ease-in-out;
-  -webkit-transform: translate3d(0, 0, 0);
 `;

@@ -26,7 +26,6 @@ export const St = {
 
       transform: scale(1.05);
       transition: scale 0.5s;
-      -webkit-transform: translate3d(0, 0, 0);
     }
 
     & .slick-track {

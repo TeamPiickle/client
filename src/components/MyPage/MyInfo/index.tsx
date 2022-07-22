@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
@@ -6,14 +6,17 @@ import { IcChangeProfileBtn } from "../../../asset/icon/index";
 import { ImgDefaultProfile } from "../../../asset/image";
 import useUserProfile, { myPageApi } from "../../../core/api/myPage";
 import { activeStateModal } from "../../../core/atom/menuBar";
+import Loading from "../../common/Loading";
 import NicknameModal from "../NicknameModal";
 import { St } from "./style";
 
 export default function MyInfo() {
-  const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
-  const setIsActiveModal = useSetRecoilState(activeStateModal);
   const { userProfile, isLoading, handleNewProfile } = useUserProfile();
+  const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
+
+  const setIsActiveModal = useSetRecoilState(activeStateModal);
   const navigation = useNavigate();
+
   const [isOpened, setIsOpened] = useState<boolean>(false);
 
   useEffect(() => {
@@ -22,54 +25,51 @@ export default function MyInfo() {
     }
   }, [isLoading, LOGIN_STATE, navigation]);
 
-  const openModal = () => {
+  const openNicknameModal = () => {
     setIsOpened(true);
     setIsActiveModal(true);
   };
 
-  const closeModal = () => {
+  const closeNicknameModal = () => {
     setIsOpened(false);
     setIsActiveModal(false);
 
     handleNewProfile();
   };
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (LOGIN_STATE === false) return;
+  const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files === null) return;
 
     const selectedImg = e.target.files[0];
     const formData = new FormData();
-    formData.append("img", selectedImg);
-    console.log(formData);
+    formData.append("file", selectedImg);
 
     handlePatch(formData);
   };
 
   const handlePatch = async (formData: FormData) => {
-    console.log("patch");
-    const res = await myPageApi.patchProfileImg(formData);
-    console.log(res);
+    await myPageApi.patchProfileImg(formData);
+
     handleNewProfile();
   };
 
+  if (!userProfile) return <Loading backgroundColor="white" />;
   return (
     <St.MyInfoContainer>
       <St.Profile>
         <St.Images>
-          <St.ProfileImage src={userProfile ? userProfile.data.profile_image_url : ImgDefaultProfile} alt="프로필" />
-          <St.ButtonIcContainer>
-            <IcChangeProfileBtn />
-          </St.ButtonIcContainer>
-          <St.ChangeButton
-            type="file"
-            onChange={handleImageChange}
-            accept="image/jpg, image/png, image/jpeg"></St.ChangeButton>
+          <St.ProfileImage src={userProfile ? userProfile.data.profileImageUrl : ImgDefaultProfile} alt="프로필" />
+          <St.ProfileChangeBtnLabel aria-label="프로필 이미지 수정">
+            <St.ChangeBtnWrapper>
+              <IcChangeProfileBtn />
+            </St.ChangeBtnWrapper>
+            <St.ChangeButton type="file" onChange={handleImageChange} accept="image/*" />
+          </St.ProfileChangeBtnLabel>
         </St.Images>
         <St.ProfileDetail>
           <St.ProfileNickname>
             <St.ProfileMyNickname>{userProfile ? userProfile.data.nickname : "○○○"}</St.ProfileMyNickname>
-            <St.ProfileNicknameEdit onClick={openModal} role="dialog">
+            <St.ProfileNicknameEdit onClick={openNicknameModal} role="dialog">
               닉네임 수정
             </St.ProfileNicknameEdit>
           </St.ProfileNickname>
@@ -78,7 +78,7 @@ export default function MyInfo() {
       </St.Profile>
 
       {isOpened && (
-        <NicknameModal closeHandler={closeModal} nickname={userProfile ? userProfile.data.nickname : "○○○"} />
+        <NicknameModal closeHandler={closeNicknameModal} nickname={userProfile ? userProfile.data.nickname : "○○○"} />
       )}
     </St.MyInfoContainer>
   );

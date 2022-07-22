@@ -1,3 +1,5 @@
+import qs from "qs";
+
 import { realReq } from "./common/axios";
 import { PATH } from "./common/constants";
 
@@ -13,13 +15,14 @@ function fetchCardsWithBest<T>() {
 
 // 필터로 카드 리스트 조회
 function fetchCardsWithFilter<T>(types: string[]) {
-  let params = "?search=태그";
+  const searchParams = qs.stringify(
+    {
+      search: types.length === 0 ? ["태그"] : types,
+    },
+    { arrayFormat: "repeat" },
+  );
 
-  types.forEach((type) => {
-    params += `&search=${type}`;
-  });
-
-  return realReq.GET<T>(`${PATH.CATEGORIES}/cards${params}`);
+  return realReq.GET<T>(`${PATH.CATEGORIES}/cards?${searchParams}`);
 }
 
 // 북마크 생성

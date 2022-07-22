@@ -10,7 +10,7 @@ export const St = {
 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 1.6rem;
 
     position: relative;
   `,

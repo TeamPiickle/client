@@ -59,6 +59,8 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   } 
   html {
+    scroll-behavior: smooth;
+
     font-family: sans-serif;
     font-size: 62.5%;
     user-select: none;

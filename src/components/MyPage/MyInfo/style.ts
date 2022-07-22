@@ -19,29 +19,24 @@ export const St = {
   `,
 
   ProfileImage: styled.img`
-    width: 5.8rem;
-    height: 5.8rem;
+    width: 6rem;
+    height: 6rem;
     border-radius: 50%;
     background-color: pink;
     z-index: 10;
   `,
 
   ChangeButton: styled.input`
-    /* display: none; */
-    /* bottom: -0.3rem;
-    right: -19.3rem; */
-    width: 2.1rem;
-    position: absolute;
-    margin-left: -0.2rem;
-    top: 1.5rem;
-    opacity: 0;
+    display: none;
   `,
 
-  ButtonIcContainer: styled.div`
+  ProfileChangeBtnLabel: styled.label`
     position: absolute;
-    margin-left: 4.1rem;
-    margin-bottom: -4.8rem;
+    top: 4rem;
+    left: 4.1rem;
   `,
+
+  ChangeBtnWrapper: styled.div``,
 
   ProfileDetail: styled.div``,
 
