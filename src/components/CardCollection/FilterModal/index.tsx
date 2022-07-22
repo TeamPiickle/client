@@ -19,12 +19,12 @@ export default function FilterModal(props: FilterModalProps) {
   const { closeHandler, setCardLists } = props;
 
   const [filterTags, setFilterTags] = useRecoilState(filterTagsState);
-
   const setSliderIdx = useSetRecoilState(sliderIdxState);
 
+  // 체크한 태그들을 저장할 state
   const [checkedTags, setCheckedTags] = useState<Set<string>>(
     filterTags.isActive ? new Set(filterTags.tags) : new Set(),
-  ); // 체크한 태그들을 저장할 state
+  );
   const [intimacyValues, setIntimacyValues] = useState<number[]>(filterTags.isActive ? filterTags.intimacy : [0]); // 친밀도 value
 
   // 태그를 눌렀을 때 함수
@@ -44,24 +44,24 @@ export default function FilterModal(props: FilterModalProps) {
     });
     closeHandler();
 
-    // 남 -> 남자, 여 -> 여자
-    const tempCheckedTags = new Set([...checkedTags]);
-    if (tempCheckedTags.has("남")) {
-      tempCheckedTags.delete("남");
-      tempCheckedTags.add("남자");
-    }
-    if (tempCheckedTags.has("여")) {
-      tempCheckedTags.delete("여");
-      tempCheckedTags.add("여자");
-    }
-
     // 태그 정보 저장
-    const _checkedTagsArr = [...tempCheckedTags];
+    const _checkedTagsArr = [...checkedTags];
     _checkedTagsArr.push(intimacyTags[intimacyValues[0]]);
     setFilterTags({ tags: _checkedTagsArr, intimacy: [intimacyValues[0]], isActive: true });
 
+    // 남 -> 남자, 여 -> 여자
+    const _fetchingCheckedTags = new Set([..._checkedTagsArr]);
+    if (_fetchingCheckedTags.has("남")) {
+      _fetchingCheckedTags.delete("남");
+      _fetchingCheckedTags.add("남자");
+    }
+    if (_fetchingCheckedTags.has("여")) {
+      _fetchingCheckedTags.delete("여");
+      _fetchingCheckedTags.add("여자");
+    }
+
     // 데이터 패칭
-    const { data } = await cardCollectionApi.fetchCardsWithFilter<{ data: CardList[] }>(_checkedTagsArr);
+    const { data } = await cardCollectionApi.fetchCardsWithFilter<{ data: CardList[] }>([..._fetchingCheckedTags]);
     setCardLists(data);
     setSliderIdx(0);
   };

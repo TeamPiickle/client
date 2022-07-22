@@ -15,12 +15,16 @@ function fetchCardsWithBest<T>() {
 
 // 필터로 카드 리스트 조회
 function fetchCardsWithFilter<T>(types: string[]) {
+  console.log(types);
+
   const searchParams = qs.stringify(
     {
       search: types.length === 0 ? ["태그"] : types,
     },
     { arrayFormat: "repeat" },
   );
+
+  console.log(searchParams);
 
   return realReq.GET<T>(`${PATH.CATEGORIES}/cards?${searchParams}`);
 }
