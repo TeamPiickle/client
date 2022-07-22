@@ -6,38 +6,41 @@ export const St = {
   `,
 
   CategoryWrapper: styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-    justify-content: center;
-    padding: 0 1.6rem;
-
+    height: 37.6rem;
     width: 36rem;
-    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 0.8rem;
   `,
 
   CategoryOneLine: styled.div`
     height: 16rem;
   `,
 
-  Category: styled.article<{ imgUrl: string }>`
-    position: relative;
-    flex: 1;
-    flex-direction: column;
-    aspect-ratio: 1 / 1;
-    width: 16rem;
-
-    box-sizing: border-box;
-
+  Category: styled.article<{
+    columnStart: number;
+    columnEnd: number;
+    rowStart: number;
+    rowEnd: number;
+    imgUrl: string;
+  }>`
     display: flex;
-
-    border: 0.1rem solid #e0e0e0;
-    border-radius: 1.6rem;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 
+    border: 0.1rem solid #e0e0e0;
+    border-radius: 1.6rem;
+
     background: url(${({ imgUrl }) => imgUrl});
     background-size: cover;
+
+    grid-column-start: ${({ columnStart }) => columnStart};
+    grid-column-end: ${({ columnEnd }) => columnEnd};
+    grid-row-start: ${({ rowStart }) => rowStart};
+    grid-row-end: ${({ rowEnd }) => rowEnd};
   `,
 
   CategoryTitle: styled.strong`
