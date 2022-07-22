@@ -10,7 +10,7 @@ export default function LastCard() {
         나누셨나요?
       </St.ContentTitle>
       <St.Content>
-        오른쪽에서 왼쪽으로 스와이핑 해서
+        화살표를 터치해서
         <br />
         새로운 대화 주제를 둘러보세요
       </St.Content>
