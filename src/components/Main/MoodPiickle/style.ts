@@ -20,7 +20,7 @@ export const St = {
     height: 16rem;
   `,
 
-  Category: styled.article`
+  Category: styled.article<{ imgUrl: string }>`
     position: relative;
     flex: 1;
     flex-direction: column;
@@ -28,12 +28,16 @@ export const St = {
     width: 16rem;
 
     box-sizing: border-box;
+
     display: flex;
 
     border: 0.1rem solid #e0e0e0;
     border-radius: 1.6rem;
     align-items: center;
     justify-content: center;
+
+    background: url(${({ imgUrl }) => imgUrl});
+    background-size: cover;
   `,
 
   CategoryTitle: styled.strong`

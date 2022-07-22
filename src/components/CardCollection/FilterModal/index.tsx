@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { flushSync } from "react-dom";
 import { useRecoilState, useSetRecoilState } from "recoil";
 
 import { cardCollectionApi } from "../../../core/api/cardCollection";
@@ -11,21 +12,20 @@ import { St } from "./style";
 
 interface FilterModalProps {
   closeHandler: () => void;
-  typeLocation: "filter" | string;
-  setCardLists: React.Dispatch<React.SetStateAction<CardList[]>>;
+  setCardLists: React.Dispatch<React.SetStateAction<CardList[] | null>>;
 }
 
 export default function FilterModal(props: FilterModalProps) {
-  const { closeHandler, typeLocation, setCardLists } = props;
+  const { closeHandler, setCardLists } = props;
 
   const [filterTags, setFilterTags] = useRecoilState(filterTagsState);
 
   const setSliderIdx = useSetRecoilState(sliderIdxState);
 
   const [checkedTags, setCheckedTags] = useState<Set<string>>(
-    typeLocation === "filter" ? new Set(filterTags.tags) : new Set(),
+    filterTags.isActive ? new Set(filterTags.tags) : new Set(),
   ); // 체크한 태그들을 저장할 state
-  const [intimacyValues, setIntimacyValues] = useState<number[]>(typeLocation === "filter" ? filterTags.intimacy : [0]); // 친밀도 value
+  const [intimacyValues, setIntimacyValues] = useState<number[]>(filterTags.isActive ? filterTags.intimacy : [0]); // 친밀도 value
 
   // 태그를 눌렀을 때 함수
   const toggleTag = (_tag: string) => {
@@ -38,15 +38,21 @@ export default function FilterModal(props: FilterModalProps) {
   const submitFilter = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
 
+    // 로딩 중 표시
+    flushSync(() => {
+      setCardLists(null);
+    });
+    closeHandler();
+
+    // 태그 정보 저장
     const _checkedTagsArr = [...checkedTags];
     _checkedTagsArr.push(intimacyTags[intimacyValues[0]]);
-    setFilterTags({ tags: _checkedTagsArr, intimacy: [intimacyValues[0]] });
+    setFilterTags({ tags: _checkedTagsArr, intimacy: [intimacyValues[0]], isActive: true });
 
+    // 데이터 패칭
     const { data } = await cardCollectionApi.fetchCardsWithFilter<{ data: CardList[] }>(_checkedTagsArr);
     setCardLists(data);
     setSliderIdx(0);
-
-    closeHandler();
   };
 
   return (

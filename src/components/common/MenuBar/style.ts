@@ -31,7 +31,11 @@ export const St = {
     padding-bottom: 3.6rem;
   `,
 
-  ProfileImage: styled.img``,
+  ProfileImage: styled.img`
+    width: 5.8rem;
+    height: 5.8rem;
+    border-radius: 50%;
+  `,
 
   WelcomeText: styled.h1`
     ${({ theme }) => theme.fonts.body10};

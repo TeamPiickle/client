@@ -31,7 +31,8 @@ export default function CategoryContents() {
                 columnEnd={gridValue[index].columnEnd}
                 rowStart={gridValue[index].rowStart}
                 rowEnd={gridValue[index].rowEnd}
-                onClick={() => moveCategory(item._id)}>
+                onClick={() => moveCategory(item._id)}
+                imgUrl={item.imgurl}>
                 <St.CategoryTitle>{item.title}</St.CategoryTitle>
                 <St.CategoryDescription>{item.content}</St.CategoryDescription>
               </St.CategoryItem>
