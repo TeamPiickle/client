@@ -22,9 +22,7 @@ export default function useUserProfile() {
 
 // 프로필사진 수정
 function patchProfileImg(file: FormData) {
-  return realReq.PATCH(`${PATH.USERS}/profile-image`, {
-    profileImageUrl: file,
-  });
+  return realReq.PATCH(`${PATH.USERS}/profile-image`, file);
 }
 
 // 유저 닉네임 수정

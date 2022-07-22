@@ -6,16 +6,18 @@ import { IcChangeProfileBtn } from "../../../asset/icon/index";
 import { ImgDefaultProfile } from "../../../asset/image";
 import useUserProfile, { myPageApi } from "../../../core/api/myPage";
 import { activeStateModal } from "../../../core/atom/menuBar";
+import Loading from "../../common/Loading";
 import NicknameModal from "../NicknameModal";
 import { St } from "./style";
 
 export default function MyInfo() {
-  const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
-  const setIsActiveModal = useSetRecoilState(activeStateModal);
   const { userProfile, isLoading, handleNewProfile } = useUserProfile();
+  const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
+
+  const setIsActiveModal = useSetRecoilState(activeStateModal);
   const navigation = useNavigate();
+
   const [isOpened, setIsOpened] = useState<boolean>(false);
-  const [profileImage, setProfileImage] = useState(ImgDefaultProfile);
 
   useEffect(() => {
     if (!isLoading) {
@@ -23,12 +25,12 @@ export default function MyInfo() {
     }
   }, [isLoading, LOGIN_STATE, navigation]);
 
-  const openModal = () => {
+  const openNicknameModal = () => {
     setIsOpened(true);
     setIsActiveModal(true);
   };
 
-  const closeModal = () => {
+  const closeNicknameModal = () => {
     setIsOpened(false);
     setIsActiveModal(false);
 
@@ -41,28 +43,17 @@ export default function MyInfo() {
     const selectedImg = e.target.files[0];
     const formData = new FormData();
     formData.append("file", selectedImg);
-    console.log(formData);
 
     handlePatch(formData);
-    handleNewProfile();
   };
 
   const handlePatch = async (formData: FormData) => {
     await myPageApi.patchProfileImg(formData);
+
+    handleNewProfile();
   };
 
-  // const saveNewProfile = async (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   if (e.target.files === null) return;
-  //   setProfileImage(URL.createObjectURL(e.target.files[0]));
-  //   console.log("profileImage: ", profileImage);
-  //   console.log("e.target.files[0]: ", e.target.files[0]);
-  //   await myPageApi.patchProfileImg(profileImage);
-  // };
-
-  useEffect(() => {
-    console.log(userProfile && userProfile.data.profileImageUrl);
-  }, [userProfile]);
-
+  if (!userProfile) return <Loading backgroundColor="white" />;
   return (
     <St.MyInfoContainer>
       <St.Profile>
@@ -78,7 +69,7 @@ export default function MyInfo() {
         <St.ProfileDetail>
           <St.ProfileNickname>
             <St.ProfileMyNickname>{userProfile ? userProfile.data.nickname : "○○○"}</St.ProfileMyNickname>
-            <St.ProfileNicknameEdit onClick={openModal} role="dialog">
+            <St.ProfileNicknameEdit onClick={openNicknameModal} role="dialog">
               닉네임 수정
             </St.ProfileNicknameEdit>
           </St.ProfileNickname>
@@ -87,7 +78,7 @@ export default function MyInfo() {
       </St.Profile>
 
       {isOpened && (
-        <NicknameModal closeHandler={closeModal} nickname={userProfile ? userProfile.data.nickname : "○○○"} />
+        <NicknameModal closeHandler={closeNicknameModal} nickname={userProfile ? userProfile.data.nickname : "○○○"} />
       )}
     </St.MyInfoContainer>
   );
