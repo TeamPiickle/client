@@ -6,6 +6,7 @@ import { IcChangeProfileBtn } from "../../../asset/icon/index";
 import { ImgDefaultProfile } from "../../../asset/image";
 import useUserProfile, { myPageApi } from "../../../core/api/myPage";
 import { activeStateModal } from "../../../core/atom/menuBar";
+import Loading from "../../common/Loading";
 import NicknameModal from "../NicknameModal";
 import { St } from "./style";
 
@@ -44,13 +45,15 @@ export default function MyInfo() {
     formData.append("file", selectedImg);
 
     handlePatch(formData);
-    handleNewProfile();
   };
 
   const handlePatch = async (formData: FormData) => {
     await myPageApi.patchProfileImg(formData);
+
+    handleNewProfile();
   };
 
+  if (!userProfile) return <Loading backgroundColor="white" />;
   return (
     <St.MyInfoContainer>
       <St.Profile>
