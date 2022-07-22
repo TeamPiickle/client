@@ -10,12 +10,13 @@ import NicknameModal from "../NicknameModal";
 import { St } from "./style";
 
 export default function MyInfo() {
-  const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
-  const setIsActiveModal = useSetRecoilState(activeStateModal);
   const { userProfile, isLoading, handleNewProfile } = useUserProfile();
+  const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
+
+  const setIsActiveModal = useSetRecoilState(activeStateModal);
   const navigation = useNavigate();
+
   const [isOpened, setIsOpened] = useState<boolean>(false);
-  const [profileImage, setProfileImage] = useState(ImgDefaultProfile);
 
   useEffect(() => {
     if (!isLoading) {
@@ -41,7 +42,6 @@ export default function MyInfo() {
     const selectedImg = e.target.files[0];
     const formData = new FormData();
     formData.append("file", selectedImg);
-    console.log(formData);
 
     handlePatch(formData);
     handleNewProfile();
@@ -50,18 +50,6 @@ export default function MyInfo() {
   const handlePatch = async (formData: FormData) => {
     await myPageApi.patchProfileImg(formData);
   };
-
-  // const saveNewProfile = async (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   if (e.target.files === null) return;
-  //   setProfileImage(URL.createObjectURL(e.target.files[0]));
-  //   console.log("profileImage: ", profileImage);
-  //   console.log("e.target.files[0]: ", e.target.files[0]);
-  //   await myPageApi.patchProfileImg(profileImage);
-  // };
-
-  useEffect(() => {
-    console.log(userProfile && userProfile.data.profileImageUrl);
-  }, [userProfile]);
 
   return (
     <St.MyInfoContainer>
