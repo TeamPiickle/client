@@ -24,12 +24,12 @@ export default function MyInfo() {
     }
   }, [isLoading, LOGIN_STATE, navigation]);
 
-  const openModal = () => {
+  const openNicknameModal = () => {
     setIsOpened(true);
     setIsActiveModal(true);
   };
 
-  const closeModal = () => {
+  const closeNicknameModal = () => {
     setIsOpened(false);
     setIsActiveModal(false);
 
@@ -66,7 +66,7 @@ export default function MyInfo() {
         <St.ProfileDetail>
           <St.ProfileNickname>
             <St.ProfileMyNickname>{userProfile ? userProfile.data.nickname : "○○○"}</St.ProfileMyNickname>
-            <St.ProfileNicknameEdit onClick={openModal} role="dialog">
+            <St.ProfileNicknameEdit onClick={openNicknameModal} role="dialog">
               닉네임 수정
             </St.ProfileNicknameEdit>
           </St.ProfileNickname>
@@ -75,7 +75,7 @@ export default function MyInfo() {
       </St.Profile>
 
       {isOpened && (
-        <NicknameModal closeHandler={closeModal} nickname={userProfile ? userProfile.data.nickname : "○○○"} />
+        <NicknameModal closeHandler={closeNicknameModal} nickname={userProfile ? userProfile.data.nickname : "○○○"} />
       )}
     </St.MyInfoContainer>
   );
