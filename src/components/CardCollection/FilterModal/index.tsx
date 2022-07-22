@@ -51,7 +51,6 @@ export default function FilterModal(props: FilterModalProps) {
 
     // 데이터 패칭
     const { data } = await cardCollectionApi.fetchCardsWithFilter<{ data: CardList[] }>(_checkedTagsArr);
-    console.log("data", data);
     setCardLists(data);
     setSliderIdx(0);
   };
