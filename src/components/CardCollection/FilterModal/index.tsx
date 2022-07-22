@@ -29,6 +29,8 @@ export default function FilterModal(props: FilterModalProps) {
 
   // 태그를 눌렀을 때 함수
   const toggleTag = (_tag: string) => {
+    if (_tag === "19금") return;
+
     const tempCheckedTags = new Set([...checkedTags]);
     tempCheckedTags.has(_tag) ? tempCheckedTags.delete(_tag) : tempCheckedTags.add(_tag);
     setCheckedTags(tempCheckedTags);
@@ -58,6 +60,10 @@ export default function FilterModal(props: FilterModalProps) {
     if (_fetchingCheckedTags.has("여")) {
       _fetchingCheckedTags.delete("여");
       _fetchingCheckedTags.add("여자");
+    }
+    if (_fetchingCheckedTags.has("절친해요")) {
+      _fetchingCheckedTags.delete("절친해요");
+      _fetchingCheckedTags.add("깊어요");
     }
 
     // 데이터 패칭

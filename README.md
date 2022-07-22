@@ -33,8 +33,8 @@
 ## ⚙️ Stack
 
 <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white"> <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"> <img src="https://img.shields.io/badge/StoryBook-FF4785?style=for-the-badge&logo=StoryBook&logoColor=white"> <img src="https://img.shields.io/badge/StyledComponents-DB7093?style=for-the-badge&logo=StyledComponents&logoColor=white">
-```javascript
-     "axios": "^0.26.0",
+```json
+    "axios": "^0.26.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-range": "^1.8.13",
