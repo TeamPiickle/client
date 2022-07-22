@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 
 import { St } from "./style";
 
@@ -8,7 +8,7 @@ export default function Footer() {
 
   type serviceInfo = {
     title: string;
-    detail: string;
+    detail: string | ReactElement;
   };
 
   const ServiceInfo: serviceInfo[] = [
@@ -18,11 +18,11 @@ export default function Footer() {
     },
     {
       title: "Info",
-      detail: "공식 노션 바로가기",
+      detail: <a href="https://www.notion.so/piickle-a44992440f3b4e808a175f7fc1a4fe25">공식 노션 바로가기</a>,
     },
     {
       title: "Instagram",
-      detail: "piickle_official",
+      detail: <a href="https://www.instagram.com/piickle_official/">@piickle_official</a>,
     },
   ];
 
