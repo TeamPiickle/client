@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useState } from "react";
 import Slider from "react-slick";
 
-import { ImgBanner1, ImgBanner2, ImgBanner4 } from "../../../asset/image";
+import { ImgBanner1, ImgBanner2, ImgBanner3, ImgBanner4 } from "../../../asset/image";
 import { St } from "./style";
 
 type BannerImage = {
@@ -21,7 +21,7 @@ const BannerImage: BannerImage[] = [
     alt: "피클 소개 이미지",
   },
   {
-    src: "ImgBanner3",
+    src: ImgBanner3,
     alt: "피클 소개 이미지",
   },
   {
