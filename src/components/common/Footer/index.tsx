@@ -1,5 +1,4 @@
-import { element, string } from "prop-types";
-import React from "react";
+import React, { ReactElement } from "react";
 
 import { St } from "./style";
 
@@ -9,7 +8,7 @@ export default function Footer() {
 
   type serviceInfo = {
     title: string;
-    detail: any;
+    detail: string | ReactElement;
   };
 
   const ServiceInfo: serviceInfo[] = [
@@ -23,7 +22,7 @@ export default function Footer() {
     },
     {
       title: "Instagram",
-      detail: "piickle_official",
+      detail: <a href="https://www.instagram.com/piickle_official/">@piickle_official</a>,
     },
   ];
 
