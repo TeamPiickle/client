@@ -14,7 +14,7 @@ export const St = {
   `,
 
   VoteSubTitleText: styled.h2`
-    ${({ theme }) => theme.fonts.body}
+    ${({ theme }) => theme.fonts.h2}
 
     color: ${({ theme }) => theme.colors.gray600};
   `,
