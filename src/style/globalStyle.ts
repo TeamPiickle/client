@@ -35,6 +35,7 @@ export const GlobalStyle = createGlobalStyle`
       display: none;
   }
   body {
+    touch-action: manipulation;
     line-height: 1;
   }
   menu, ol, ul {
