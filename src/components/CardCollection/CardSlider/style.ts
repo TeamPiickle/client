@@ -36,6 +36,8 @@ export const St = {
 
       display: flex;
       align-items: center;
+
+      scroll-snap-type: x mandatory;
     }
   `,
 

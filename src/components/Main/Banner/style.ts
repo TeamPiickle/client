@@ -7,6 +7,10 @@ export const St = {
     position: relative;
     height: 21.7rem;
     margin-top: -2.4rem;
+
+    & .slick-track {
+      scroll-snap-type: x mandatory;
+    }
   `,
 
   ImageWrapper: styled.img`

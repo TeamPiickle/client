@@ -17,10 +17,14 @@ export const St = {
 
     width: 100%;
 
-    .slick-list {
+    & .slick-list {
       height: 15.3rem;
 
       padding: 0.4rem 1.6rem;
+    }
+
+    & .slick-track {
+      scroll-snap-type: x mandatory;
     }
   `,
   Slider: styled(Slider)``,
