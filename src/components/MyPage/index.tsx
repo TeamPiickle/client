@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-
+import useScroll from "../../util/hooks/useScroll";
 import Footer from "../common/Footer";
 import Header from "../common/Header";
 import MyInfo from "./MyInfo";
@@ -8,9 +7,7 @@ import MySetting from "./MySetting";
 import { St } from "./style";
 
 export default function MyPage() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  });
+  useScroll();
 
   return (
     <St.MyPage>
