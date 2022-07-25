@@ -13,6 +13,8 @@ export const St = {
   Desc: styled.p``,
 
   SliderWrapper: styled.article`
+    touch-action: pan-x;
+
     width: 100%;
 
     .slick-list {
