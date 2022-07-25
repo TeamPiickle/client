@@ -7,7 +7,6 @@ export const St = {
     position: relative;
 
     width: 30rem;
-    height: 52.5rem;
 
     border: 0.1rem solid ${({ theme }) => theme.colors.gray200};
     backdrop-filter: blur(1.2rem);
