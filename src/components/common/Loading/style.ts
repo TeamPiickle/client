@@ -17,6 +17,8 @@ export const St = {
     background-color: ${({ backgroundcolor }) => backgroundcolor};
 
     z-index: 10;
+
+    overflow: hidden;
   `,
 
   ImageWrapper: styled.div``,
