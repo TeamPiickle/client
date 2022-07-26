@@ -2,9 +2,15 @@ import styled from "styled-components";
 
 export const St = {
   BannerSlider: styled.section`
+    touch-action: pan-x;
+
     position: relative;
     height: 21.7rem;
     margin-top: -2.4rem;
+
+    & .slick-track {
+      scroll-snap-type: x mandatory;
+    }
   `,
 
   ImageWrapper: styled.img`

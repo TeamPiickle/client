@@ -35,6 +35,7 @@ export const GlobalStyle = createGlobalStyle`
       display: none;
   }
   body {
+    touch-action: manipulation;
     line-height: 1;
   }
   menu, ol, ul {
@@ -59,6 +60,10 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   } 
   html {
+    -webkit-touch-callout: none;
+    /* -webkit-user-select:none; */
+    -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+    
     scroll-behavior: smooth;
 
     font-family: sans-serif;

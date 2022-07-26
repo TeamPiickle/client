@@ -4,6 +4,8 @@ import { IcFilterBtn } from "../../../asset/icon";
 
 export const St = {
   Wrapper: styled.section`
+    touch-action: pan-x;
+
     position: relative;
 
     & .slick-slide {
@@ -34,6 +36,8 @@ export const St = {
 
       display: flex;
       align-items: center;
+
+      scroll-snap-type: x mandatory;
     }
   `,
 

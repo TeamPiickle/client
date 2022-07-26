@@ -1,15 +1,17 @@
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
 import { sliderIdxState } from "../../core/atom/slider";
 import { categoryTitles } from "../../core/category/categoryList";
+import useScroll from "../../util/hooks/useScroll";
 import Header from "../common/Header";
 import HeadingTitleContainer from "../common/HeadingTitleContainer";
 import CategoryContents from "./CategoryContents";
 import { St } from "./style";
 
 export default function Category() {
+  useScroll();
+
   const setSliderIdx = useSetRecoilState(sliderIdxState);
   const navigate = useNavigate();
 
@@ -17,10 +19,6 @@ export default function Category() {
     navigate("/card-collection", { state: { type: "best" } });
     setSliderIdx(0);
   };
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  });
 
   return (
     <St.Root>
