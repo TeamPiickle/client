@@ -45,5 +45,10 @@ export const St = {
     position: fixed;
     right: 2.3rem;
     bottom: 3.4rem;
+
+    ${({ theme }) => theme.media.desktop`
+      right: 50%;
+      transform: translate(15.7rem, 0);
+    `};
   `,
 };
