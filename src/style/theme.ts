@@ -1,3 +1,5 @@
+import { css, CSSProp } from "styled-components";
+
 const colors = {
   red: "#FF0000",
   green: "#19BE7E",
@@ -74,9 +76,25 @@ const fonts = {
   cardBody5: FONT({ weight: 700, size: 2.3, lineHeight: 140, letterSpacing: 4 }),
 } as const;
 
+type BackQuoteArgs = string[];
+
+interface Media {
+  desktop: (...args: BackQuoteArgs) => CSSProp | undefined;
+}
+
+const media: Media = {
+  desktop: (...args: BackQuoteArgs) =>
+    css`
+      @media screen and (min-width: 48rem), screen and (min-height: 48rem) and (orientation: landscape) {
+        ${args}
+      }
+    `,
+};
+
 const theme = {
   colors,
   fonts,
+  media,
 } as const;
 
 export default theme;
