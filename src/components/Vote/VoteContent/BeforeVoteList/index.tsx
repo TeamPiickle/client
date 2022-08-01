@@ -8,14 +8,13 @@ import { St } from "./style";
 interface BeforeVoteListProps {
   ballotTopic: BallotTopicData;
   mutateBallotState: () => void;
-  setIsSuccess: React.Dispatch<React.SetStateAction<boolean>>;
   setCurrentIndex: React.Dispatch<React.SetStateAction<string>>;
   currentIndex: string;
   LOGIN_STATE: boolean;
 }
 
 export default function BeforeVoteList(props: BeforeVoteListProps) {
-  const { ballotTopic, mutateBallotState, setIsSuccess, currentIndex, setCurrentIndex, LOGIN_STATE } = props;
+  const { ballotTopic, mutateBallotState, currentIndex, setCurrentIndex, LOGIN_STATE } = props;
 
   const [isVoted, setIsVoted] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -37,13 +36,13 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
     } else {
       if (isVoted === true) {
         handlePost();
-        mutateBallotState();
-        setTimeout(() => setIsSuccess(true), 200);
+        setTimeout(() => mutateBallotState(), 200);
       }
     }
   };
 
   const handlePost = () => {
+    console.log(ballotTopic.ballotTopic._id, currentIndex);
     voteApi.postVote(ballotTopic.ballotTopic._id, currentIndex);
   };
 

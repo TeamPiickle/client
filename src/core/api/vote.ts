@@ -1,3 +1,4 @@
+import { useCallback, useEffect, useState } from "react";
 import useSWR, { useSWRConfig } from "swr";
 
 import { PiickleSWRResponse } from "../../types/swr";
@@ -31,12 +32,26 @@ export default function useBallotTopic(ballotId: string) {
   const { data, error } = useSWR<PiickleSWRResponse<BallotTopicData>>(`${PATH.BALLOTS}/${ballotId}`, realReq.GET_SWR);
   const { mutate } = useSWRConfig();
 
+  const [isBeforeVotingState, setIsBeforeVotingState] = useState(true);
+
+  const handlingVotingState = useCallback(() => {
+    if (data?.data.data.userSelect) setIsBeforeVotingState(false);
+    else setIsBeforeVotingState(true);
+  }, [data]);
+
+  useEffect(() => {
+    handlingVotingState();
+  }, [handlingVotingState]);
+
   return {
     ballotTopic: data?.data,
     isLoading: !error && !data,
     isError: error,
+    isBeforeVotingState,
+    // TODO :: 이름바꾸기
     mutateBallotState: () => {
-      mutate(`${PATH.BALLOTS}/${ballotId}`);
+      setTimeout(() => mutate(`${PATH.BALLOTS}/${ballotId}`), 200);
+      handlingVotingState();
     },
   };
 }
