@@ -48,7 +48,6 @@ export default function useBallotTopic(ballotId: string) {
     isLoading: !error && !data,
     isError: error,
     isBeforeVotingState,
-    // TODO :: 이름바꾸기
     mutateBallotState: () => {
       setTimeout(() => mutate(`${PATH.BALLOTS}/${ballotId}`), 200);
       handlingVotingState();

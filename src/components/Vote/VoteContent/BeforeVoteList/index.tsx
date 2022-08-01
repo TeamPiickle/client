@@ -10,11 +10,11 @@ interface BeforeVoteListProps {
   mutateBallotState: () => void;
   setCurrentIndex: React.Dispatch<React.SetStateAction<string>>;
   currentIndex: string;
-  LOGIN_STATE: boolean;
 }
 
 export default function BeforeVoteList(props: BeforeVoteListProps) {
-  const { ballotTopic, mutateBallotState, currentIndex, setCurrentIndex, LOGIN_STATE } = props;
+  const { ballotTopic, mutateBallotState, currentIndex, setCurrentIndex } = props;
+  const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
 
   const [isVoted, setIsVoted] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -36,7 +36,7 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
     } else {
       if (isVoted === true) {
         handlePost();
-        setTimeout(() => mutateBallotState(), 200);
+        mutateBallotState();
       }
     }
   };

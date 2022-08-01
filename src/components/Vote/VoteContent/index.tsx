@@ -8,8 +8,6 @@ import BeforeVoteList from "./BeforeVoteList";
 import { St } from "./style";
 
 export default function VoteContent() {
-  const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
-
   const params = useParams();
   const { ballotTopic, isBeforeVotingState, mutateBallotState } = useBallotTopic(`${params.voteId}`);
 
@@ -26,7 +24,6 @@ export default function VoteContent() {
             mutateBallotState={mutateBallotState}
             currentIndex={currentIndex}
             setCurrentIndex={setCurrentIndex}
-            LOGIN_STATE={LOGIN_STATE}
           />
         ) : (
           <AfterVoteList
