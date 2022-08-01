@@ -13,6 +13,8 @@ export default function VoteContent() {
   const params = useParams();
   const { ballotTopic, mutateBallotState } = useBallotTopic(`${params.voteId}`);
 
+  console.log(ballotTopic);
+
   const [isVoted, setIsVoted] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [currentIndex, setCurrentIndex] = useState("");

@@ -18,16 +18,18 @@ export default function AfterVoteList(props: AfterVoteListProps) {
   const cancelVote = () => {
     setIsSuccess(false);
     setIsVoted(false);
-    handlePost();
+    postCancelVote();
   };
 
-  const handlePost = () => {
-    voteApi.postVote(ballotTopic?.ballotTopic._id, currentIndex);
+  const postCancelVote = () => {
+    if (!ballotTopic.userSelect) throw new Error("투표 데이터 에러");
+
+    voteApi.postVote(ballotTopic.ballotTopic._id, ballotTopic.userSelect.ballotItemId);
   };
 
   useEffect(() => {
     if (ballotTopic.userSelect) setCurrentIndex(ballotTopic.userSelect.ballotItemId);
-  }, [ballotTopic.userSelect, setCurrentIndex]);
+  }, [ballotTopic, setCurrentIndex]);
 
   return (
     <>
