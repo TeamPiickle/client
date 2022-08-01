@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { IcEmptyHeart } from "../../../asset/icon";
@@ -19,10 +18,6 @@ export const St = {
   Wrapper: styled.div`
     display: flex;
     gap: 2rem;
-    /* gap: 0.8rem;
-    
-    width: 29.6rem;
-    height: 3.6rem; */
   `,
 
   ModalContents: styled.p`
