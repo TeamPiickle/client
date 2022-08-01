@@ -40,8 +40,6 @@ export const St = {
     height: 3.6rem;
   `,
 
-  LoginLink: styled(Link)``,
-
   Button: styled.button`
     display: flex;
     justify-content: center;
