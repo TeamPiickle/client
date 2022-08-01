@@ -52,17 +52,15 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
   return (
     <St.Root>
       <St.VoteOptionContainer>
-        {ballotTopic.ballotItems.map((element) => {
-          return (
-            <St.VoteOptionList
-              key={element._id}
-              onClick={() => clickHandle(element._id)}
-              isClicked={isVoted && element._id === currentIndex}>
-              <St.VoteOptionText>{element.content}</St.VoteOptionText>
-              <IcCheck2 />
-            </St.VoteOptionList>
-          );
-        })}
+        {ballotTopic.ballotItems.map((element) => (
+          <St.VoteOptionList
+            key={element._id}
+            onClick={() => clickHandle(element._id)}
+            isClicked={isVoted && element._id === currentIndex}>
+            <St.VoteOptionText>{element.content}</St.VoteOptionText>
+            <IcCheck2 />
+          </St.VoteOptionList>
+        ))}
       </St.VoteOptionContainer>
       <St.VoteBtnContainer>
         <St.VoteBtn onClick={successVote} role="dialog">

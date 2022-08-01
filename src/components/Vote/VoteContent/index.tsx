@@ -9,7 +9,6 @@ import { St } from "./style";
 
 export default function VoteContent() {
   const params = useParams();
-
   const { ballotTopic } = useBallotTopic(`${params.voteId}`);
 
   const [isVoted, setIsVoted] = useState(false);
