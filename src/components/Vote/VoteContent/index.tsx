@@ -11,27 +11,15 @@ export default function VoteContent() {
   const params = useParams();
   const { ballotTopic, isBeforeVotingState, mutateBallotState } = useBallotTopic(`${params.voteId}`);
 
-  const [currentIndex, setCurrentIndex] = useState("");
-
   if (!ballotTopic) return <Loading backgroundColor="white" />;
   else
     return (
       <St.VoteContentContainer>
         <St.VoteContentTitle>{ballotTopic.data.ballotTopic.ballotTopicContent}</St.VoteContentTitle>
         {isBeforeVotingState ? (
-          <BeforeVoteList
-            ballotTopic={ballotTopic.data}
-            mutateBallotState={mutateBallotState}
-            currentIndex={currentIndex}
-            setCurrentIndex={setCurrentIndex}
-          />
+          <BeforeVoteList ballotTopic={ballotTopic.data} mutateBallotState={mutateBallotState} />
         ) : (
-          <AfterVoteList
-            ballotTopic={ballotTopic.data}
-            mutateBallotState={mutateBallotState}
-            currentIndex={currentIndex}
-            setCurrentIndex={setCurrentIndex}
-          />
+          <AfterVoteList ballotTopic={ballotTopic.data} mutateBallotState={mutateBallotState} />
         )}
       </St.VoteContentContainer>
     );

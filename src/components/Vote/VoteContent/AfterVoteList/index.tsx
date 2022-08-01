@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 import { IcCheck1 } from "../../../../asset/icon";
 import { BallotTopicData, voteApi } from "../../../../core/api/vote";
 import { St } from "./style";
@@ -7,12 +5,10 @@ import { St } from "./style";
 interface AfterVoteListProps {
   ballotTopic: BallotTopicData;
   mutateBallotState: () => void;
-  currentIndex: string;
-  setCurrentIndex: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export default function AfterVoteList(props: AfterVoteListProps) {
-  const { ballotTopic, mutateBallotState, currentIndex, setCurrentIndex } = props;
+  const { ballotTopic, mutateBallotState } = props;
 
   const cancelVote = () => {
     postCancelVote();

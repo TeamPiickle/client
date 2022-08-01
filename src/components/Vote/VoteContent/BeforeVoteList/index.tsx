@@ -8,15 +8,15 @@ import { St } from "./style";
 interface BeforeVoteListProps {
   ballotTopic: BallotTopicData;
   mutateBallotState: () => void;
-  setCurrentIndex: React.Dispatch<React.SetStateAction<string>>;
-  currentIndex: string;
 }
 
 export default function BeforeVoteList(props: BeforeVoteListProps) {
-  const { ballotTopic, mutateBallotState, currentIndex, setCurrentIndex } = props;
+  const { ballotTopic, mutateBallotState } = props;
   const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
 
   const [isVoted, setIsVoted] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState("");
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const clickHandle = (key: string) => {
