@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { IcCheck2 } from "../../../../asset/icon";
 import { BallotTopicData, voteApi } from "../../../../core/api/vote";
+import useModal from "../../../../util/hooks/useModal";
 import LoginModal from "../../../common/LoginModal";
 import { St } from "./style";
 
@@ -11,14 +12,10 @@ interface BeforeVoteListProps {
 }
 
 export default function BeforeVoteList(props: BeforeVoteListProps) {
-  const { ballotTopic, mutateBallotState } = props;
   const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
+  const { ballotTopic, mutateBallotState } = props;
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const toggleLoginModal = () => {
-    setIsModalOpen((prevLoginModalState) => !prevLoginModalState);
-  };
+  const { isModalOpen, toggleModal } = useModal();
 
   const [currentIdx, setCurrentIdx] = useState<string>("");
 
@@ -38,7 +35,7 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
         }
         break;
       case false:
-        toggleLoginModal();
+        toggleModal();
         break;
     }
   };
@@ -67,7 +64,7 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
         </St.VoteBtn>
       </St.VoteBtnContainer>
 
-      {isModalOpen && <LoginModal closeHandler={toggleLoginModal} contents={"투표기능인 피클미를"} />}
+      {isModalOpen && <LoginModal closeHandler={toggleModal} contents={"투표기능인 피클미를"} />}
     </St.Root>
   );
 }
