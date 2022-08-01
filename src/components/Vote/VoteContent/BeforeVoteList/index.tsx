@@ -14,11 +14,15 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
   const { ballotTopic, mutateBallotState } = props;
   const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
 
-  const [currentIdx, setCurrentIdx] = useState<string>("");
-
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const clickHandle = (key: string) => {
+  const toggleLoginModal = () => {
+    setIsModalOpen((prevLoginModalState) => !prevLoginModalState);
+  };
+
+  const [currentIdx, setCurrentIdx] = useState<string>("");
+
+  const handleClickItem = (key: string) => {
     setCurrentIdx((prevIdx) => {
       if (prevIdx === key) return "";
       else return key;
@@ -34,7 +38,7 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
         }
         break;
       case false:
-        setIsModalOpen(true);
+        toggleLoginModal();
         break;
     }
   };
@@ -43,17 +47,13 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
     voteApi.postVote(ballotTopic.ballotTopic._id, currentIdx);
   };
 
-  const closeLoginModal = () => {
-    setIsModalOpen(false);
-  };
-
   return (
     <St.Root>
       <St.VoteOptionContainer>
         {ballotTopic.ballotItems.map((element) => (
           <St.VoteOptionList
             key={element._id}
-            onClick={() => clickHandle(element._id)}
+            onClick={() => handleClickItem(element._id)}
             isClicked={element._id === currentIdx}>
             <St.VoteOptionText>{element.content}</St.VoteOptionText>
             <IcCheck2 />
@@ -67,7 +67,7 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
         </St.VoteBtn>
       </St.VoteBtnContainer>
 
-      {isModalOpen && <LoginModal closeHandler={closeLoginModal} contents={"투표기능인 피클미를"} />}
+      {isModalOpen && <LoginModal closeHandler={toggleLoginModal} contents={"투표기능인 피클미를"} />}
     </St.Root>
   );
 }
