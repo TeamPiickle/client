@@ -1,4 +1,4 @@
-import useSWR from "swr";
+import useSWR, { useSWRConfig } from "swr";
 
 import { PiickleSWRResponse } from "../../types/swr";
 import { realReq } from "./common/axios";
@@ -29,11 +29,15 @@ export interface BallotTopicData {
 // 투표 현황 조회
 export default function useBallotTopic(ballotId: string) {
   const { data, error } = useSWR<PiickleSWRResponse<BallotTopicData>>(`${PATH.BALLOTS}/${ballotId}`, realReq.GET_SWR);
+  const { mutate } = useSWRConfig();
 
   return {
     ballotTopic: data?.data,
     isLoading: !error && !data,
     isError: error,
+    mutateBallotState: () => {
+      mutate(`${PATH.BALLOTS}/${ballotId}`);
+    },
   };
 }
 

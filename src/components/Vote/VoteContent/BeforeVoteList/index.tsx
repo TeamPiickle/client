@@ -7,6 +7,7 @@ import { St } from "./style";
 
 interface BeforeVoteListProps {
   ballotTopic: BallotTopicData;
+  mutateBallotState: () => void;
   isVoted: boolean;
   setIsVoted: React.Dispatch<React.SetStateAction<boolean>>;
   setIsSuccess: React.Dispatch<React.SetStateAction<boolean>>;
@@ -16,7 +17,17 @@ interface BeforeVoteListProps {
 }
 
 export default function BeforeVoteList(props: BeforeVoteListProps) {
-  const { ballotTopic, isVoted, setIsVoted, setIsSuccess, currentIndex, setCurrentIndex, LOGIN_STATE } = props;
+  const {
+    ballotTopic,
+    mutateBallotState,
+    isVoted,
+    setIsVoted,
+    setIsSuccess,
+    currentIndex,
+    setCurrentIndex,
+    LOGIN_STATE,
+  } = props;
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const clickHandle = (key: string) => {
@@ -37,6 +48,7 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
       if (isVoted === true) {
         setIsSuccess(true);
         handlePost();
+        mutateBallotState();
       }
     }
   };
@@ -62,11 +74,13 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
           </St.VoteOptionList>
         ))}
       </St.VoteOptionContainer>
+
       <St.VoteBtnContainer>
         <St.VoteBtn onClick={successVote} role="dialog">
           투표하기
         </St.VoteBtn>
       </St.VoteBtnContainer>
+
       {isModalOpen && <LoginModal closeHandler={closeLoginModal} contents={"투표기능인 피클미를"} />}
     </St.Root>
   );

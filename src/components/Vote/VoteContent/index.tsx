@@ -9,7 +9,7 @@ import { St } from "./style";
 
 export default function VoteContent() {
   const params = useParams();
-  const { ballotTopic } = useBallotTopic(`${params.voteId}`);
+  const { ballotTopic, mutateBallotState } = useBallotTopic(`${params.voteId}`);
 
   const [isVoted, setIsVoted] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -37,6 +37,7 @@ export default function VoteContent() {
         ) : (
           <BeforeVoteList
             ballotTopic={ballotTopic.data}
+            mutateBallotState={mutateBallotState}
             isVoted={isVoted}
             setIsVoted={setIsVoted}
             setIsSuccess={setIsSuccess}
