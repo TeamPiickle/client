@@ -8,16 +8,14 @@ interface AfterVoteListProps {
   ballotTopic: BallotTopicData;
   currentIndex: string;
   setCurrentIndex: React.Dispatch<React.SetStateAction<string>>;
-  setIsVoted: React.Dispatch<React.SetStateAction<boolean>>;
   setIsSuccess: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function AfterVoteList(props: AfterVoteListProps) {
-  const { ballotTopic, currentIndex, setCurrentIndex, setIsVoted, setIsSuccess } = props;
+  const { ballotTopic, currentIndex, setCurrentIndex, setIsSuccess } = props;
 
   const cancelVote = () => {
     setIsSuccess(false);
-    setIsVoted(false);
     postCancelVote();
   };
 

@@ -8,8 +8,6 @@ import { St } from "./style";
 interface BeforeVoteListProps {
   ballotTopic: BallotTopicData;
   mutateBallotState: () => void;
-  isVoted: boolean;
-  setIsVoted: React.Dispatch<React.SetStateAction<boolean>>;
   setIsSuccess: React.Dispatch<React.SetStateAction<boolean>>;
   setCurrentIndex: React.Dispatch<React.SetStateAction<string>>;
   currentIndex: string;
@@ -17,17 +15,9 @@ interface BeforeVoteListProps {
 }
 
 export default function BeforeVoteList(props: BeforeVoteListProps) {
-  const {
-    ballotTopic,
-    mutateBallotState,
-    isVoted,
-    setIsVoted,
-    setIsSuccess,
-    currentIndex,
-    setCurrentIndex,
-    LOGIN_STATE,
-  } = props;
+  const { ballotTopic, mutateBallotState, setIsSuccess, currentIndex, setCurrentIndex, LOGIN_STATE } = props;
 
+  const [isVoted, setIsVoted] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const clickHandle = (key: string) => {

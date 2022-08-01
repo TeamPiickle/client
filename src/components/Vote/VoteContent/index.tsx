@@ -13,9 +13,6 @@ export default function VoteContent() {
   const params = useParams();
   const { ballotTopic, mutateBallotState } = useBallotTopic(`${params.voteId}`);
 
-  console.log(ballotTopic);
-
-  const [isVoted, setIsVoted] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [currentIndex, setCurrentIndex] = useState("");
 
@@ -31,7 +28,6 @@ export default function VoteContent() {
         {isSuccess ? (
           <AfterVoteList
             ballotTopic={ballotTopic.data}
-            setIsVoted={setIsVoted}
             setIsSuccess={setIsSuccess}
             currentIndex={currentIndex}
             setCurrentIndex={setCurrentIndex}
@@ -40,8 +36,6 @@ export default function VoteContent() {
           <BeforeVoteList
             ballotTopic={ballotTopic.data}
             mutateBallotState={mutateBallotState}
-            isVoted={isVoted}
-            setIsVoted={setIsVoted}
             setIsSuccess={setIsSuccess}
             currentIndex={currentIndex}
             setCurrentIndex={setCurrentIndex}
