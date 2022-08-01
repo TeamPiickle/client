@@ -14,35 +14,33 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
   const { ballotTopic, mutateBallotState } = props;
   const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
 
-  const [isVoted, setIsVoted] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState("");
+  const [currentIdx, setCurrentIdx] = useState<string>("");
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const clickHandle = (key: string) => {
-    if (isVoted === true) {
-      if (currentIndex === key) {
-        setIsVoted(false);
-      }
-    } else {
-      setIsVoted(true);
-    }
-    setCurrentIndex(key);
+    setCurrentIdx((prevIdx) => {
+      if (prevIdx === key) return "";
+      else return key;
+    });
   };
 
   const handleClickVote = () => {
-    if (LOGIN_STATE === false) {
-      setIsModalOpen(true);
-    } else {
-      if (isVoted === true) {
-        handlePost();
-        mutateBallotState();
-      }
+    switch (LOGIN_STATE) {
+      case true:
+        if (currentIdx !== "") {
+          handlePost();
+          mutateBallotState();
+        }
+        break;
+      case false:
+        setIsModalOpen(true);
+        break;
     }
   };
 
   const handlePost = () => {
-    voteApi.postVote(ballotTopic.ballotTopic._id, currentIndex);
+    voteApi.postVote(ballotTopic.ballotTopic._id, currentIdx);
   };
 
   const closeLoginModal = () => {
@@ -56,7 +54,7 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
           <St.VoteOptionList
             key={element._id}
             onClick={() => clickHandle(element._id)}
-            isClicked={isVoted && element._id === currentIndex}>
+            isClicked={element._id === currentIdx}>
             <St.VoteOptionText>{element.content}</St.VoteOptionText>
             <IcCheck2 />
           </St.VoteOptionList>
