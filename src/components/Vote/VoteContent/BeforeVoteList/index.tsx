@@ -15,7 +15,7 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
   const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
   const { ballotTopic, mutateBallotState } = props;
 
-  const { isModalOpen, toggleModal } = useModal();
+  const { isModalOpen: isLoginModalOpen, toggleModal: toggleLoginModal } = useModal();
 
   const [currentIdx, setCurrentIdx] = useState<string>("");
 
@@ -35,7 +35,7 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
         }
         break;
       case false:
-        toggleModal();
+        toggleLoginModal();
         break;
     }
   };
@@ -64,7 +64,7 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
         </St.VoteBtn>
       </St.VoteBtnContainer>
 
-      {isModalOpen && <LoginModal closeHandler={toggleModal} contents={"투표기능인 피클미를"} />}
+      {isLoginModalOpen && <LoginModal closeHandler={toggleLoginModal} contents={"투표기능인 피클미를"} />}
     </St.Root>
   );
 }
