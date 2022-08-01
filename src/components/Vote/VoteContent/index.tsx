@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 
 import useBallotTopic from "../../../core/api/vote";
 import Loading from "../../common/Loading";
-import AfterVoteList from "../AfterVoteList";
-import BeforeVoteList from "../BeforeVoteList";
+import AfterVoteList from "./AfterVoteList";
+import BeforeVoteList from "./BeforeVoteList";
 import { St } from "./style";
 
 export default function VoteContent() {

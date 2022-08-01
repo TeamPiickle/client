@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
-import { IcCheck1 } from "../../../asset/icon";
-import { BallotTopicData, voteApi } from "../../../core/api/vote";
+import { IcCheck1 } from "../../../../asset/icon";
+import { BallotTopicData, voteApi } from "../../../../core/api/vote";
 import { St } from "./style";
 
 interface AfterVoteListProps {

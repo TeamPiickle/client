@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { IcCheck1 } from "../../../asset/icon";
+import { IcCheck1 } from "../../../../asset/icon";
 
 export const St = {
   VoteOptionContainer: styled.ul`

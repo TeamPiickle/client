@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import { IcCheck2 } from "../../../asset/icon";
-import { BallotTopicData, voteApi } from "../../../core/api/vote";
-import LoginModal from "../../common/LoginModal";
+import { IcCheck2 } from "../../../../asset/icon";
+import { BallotTopicData, voteApi } from "../../../../core/api/vote";
+import LoginModal from "../../../common/LoginModal";
 import { St } from "./style";
 
 interface BeforeVoteListProps {
