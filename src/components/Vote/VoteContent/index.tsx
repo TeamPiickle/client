@@ -8,14 +8,14 @@ import BeforeVoteList from "./BeforeVoteList";
 import { St } from "./style";
 
 export default function VoteContent() {
+  const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
+
   const params = useParams();
   const { ballotTopic, mutateBallotState } = useBallotTopic(`${params.voteId}`);
 
   const [isVoted, setIsVoted] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [currentIndex, setCurrentIndex] = useState("");
-
-  const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
 
   useEffect(() => {
     if (ballotTopic?.data.userSelect) setIsSuccess(true);

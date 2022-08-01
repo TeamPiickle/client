@@ -41,14 +41,14 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
     setCurrentIndex(key);
   };
 
-  const successVote = () => {
+  const handleClickVote = () => {
     if (LOGIN_STATE === false) {
       setIsModalOpen(true);
     } else {
       if (isVoted === true) {
-        setIsSuccess(true);
         handlePost();
         mutateBallotState();
+        setTimeout(() => setIsSuccess(true), 200);
       }
     }
   };
@@ -76,7 +76,7 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
       </St.VoteOptionContainer>
 
       <St.VoteBtnContainer>
-        <St.VoteBtn onClick={successVote} role="dialog">
+        <St.VoteBtn onClick={handleClickVote} role="dialog">
           투표하기
         </St.VoteBtn>
       </St.VoteBtnContainer>
