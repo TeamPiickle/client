@@ -14,7 +14,7 @@ export default function MyInfo() {
   const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
 
   const navigation = useNavigate();
-  const { isModalOpen, toggleModal: toggleNicknameModal } = useModal();
+  const { isModalOpen: isNicknameModalOpen, toggleModal: toggleNicknameModal } = useModal();
 
   useEffect(() => {
     if (!isLoading) {
@@ -72,7 +72,7 @@ export default function MyInfo() {
         </St.ProfileDetail>
       </St.Profile>
 
-      {isModalOpen && (
+      {isNicknameModalOpen && (
         <NicknameModal closeHandler={closeNicknameModal} nickname={userProfile ? userProfile.data.nickname : "○○○"} />
       )}
     </St.MyInfoContainer>
