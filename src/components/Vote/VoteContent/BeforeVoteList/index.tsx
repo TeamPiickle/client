@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { IcCheck2 } from "../../../../asset/icon";
+import { IcCheckWithNoBg } from "../../../../asset/icon";
 import { BallotTopicData, voteApi } from "../../../../core/api/vote";
 import useModal from "../../../../util/hooks/useModal";
 import LoginModal from "../../../common/LoginModal";
@@ -53,7 +53,7 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
             onClick={() => handleClickItem(element._id)}
             isClicked={element._id === currentIdx}>
             <St.VoteOptionText>{element.content}</St.VoteOptionText>
-            <IcCheck2 />
+            <IcCheckWithNoBg />
           </St.VoteOptionList>
         ))}
       </St.VoteOptionContainer>

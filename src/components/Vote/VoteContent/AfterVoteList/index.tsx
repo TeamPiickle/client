@@ -1,4 +1,4 @@
-import { IcCheck1 } from "../../../../asset/icon";
+import { IcCheckWithBg } from "../../../../asset/icon";
 import { BallotTopicData, voteApi } from "../../../../core/api/vote";
 import { St } from "./style";
 
@@ -28,7 +28,7 @@ export default function AfterVoteList(props: AfterVoteListProps) {
               <St.VoteOptionList key={element._id}>
                 <St.VotedDescription>
                   <St.IconTextContainer>
-                    {SELECTED && <IcCheck1 />}
+                    {SELECTED && <IcCheckWithBg />}
                     <St.VoteOptionText isSelected={SELECTED}>{element.content}</St.VoteOptionText>
                   </St.IconTextContainer>
                   <St.VotedPercent>{element.status}%</St.VotedPercent>
