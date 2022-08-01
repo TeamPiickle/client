@@ -25,26 +25,24 @@ export default function AfterVoteList(props: AfterVoteListProps) {
     voteApi.postVote(ballotTopic.ballotTopic._id, ballotTopic.userSelect.ballotItemId);
   };
 
-  useEffect(() => {
-    if (ballotTopic.userSelect) setCurrentIndex(ballotTopic.userSelect.ballotItemId);
-  }, [ballotTopic, setCurrentIndex]);
-
   return (
     <>
       <St.VoteOptionContainer>
         {ballotTopic &&
           ballotTopic.ballotItems.map((element) => {
+            const SELECTED = element._id === ballotTopic.userSelect?.ballotItemId;
+
             return (
               <St.VoteOptionList key={element._id}>
                 <St.VotedDescription>
                   <St.IconTextContainer>
-                    {currentIndex === element._id && <IcCheck1 />}
-                    <St.VoteOptionText isSelected={element._id === currentIndex}>{element.content}</St.VoteOptionText>
+                    {SELECTED && <IcCheck1 />}
+                    <St.VoteOptionText isSelected={SELECTED}>{element.content}</St.VoteOptionText>
                   </St.IconTextContainer>
                   <St.VotedPercent>{element.status}%</St.VotedPercent>
                 </St.VotedDescription>
-                <St.VotedProgressBarContainer isSelected={element._id === currentIndex}>
-                  <St.VotedProgressBar width={element.status} isSelected={element._id === currentIndex} />
+                <St.VotedProgressBarContainer isSelected={SELECTED}>
+                  <St.VotedProgressBar width={element.status} isSelected={SELECTED} />
                 </St.VotedProgressBarContainer>
               </St.VoteOptionList>
             );
