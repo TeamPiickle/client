@@ -5,12 +5,16 @@ import { IcCloseBtn } from "../../../asset/icon";
 import { ImgDefaultProfile } from "../../../asset/image";
 import { useBallotLists } from "../../../core/api/main";
 import useUserProfile from "../../../core/api/myPage";
-import { activeState } from "../../../core/atom/menuBar";
 import { sliderIdxState } from "../../../core/atom/slider";
 import { St, StContentsContainer } from "./style";
 
-export default function MenuBar() {
-  const setIsActive = useSetRecoilState(activeState);
+interface MenuBarProps {
+  closeMenuBar: () => void;
+}
+
+export default function MenuBar(props: MenuBarProps) {
+  const { closeMenuBar } = props;
+
   const setSliderIdx = useSetRecoilState(sliderIdxState);
   const navigate = useNavigate();
 
@@ -25,10 +29,6 @@ export default function MenuBar() {
     closeMenuBar();
   };
 
-  const closeMenuBar = () => {
-    setIsActive(false);
-  };
-
   const handleLogout = () => {
     localStorage.removeItem("piickle-token");
     navigate("/");
@@ -38,7 +38,7 @@ export default function MenuBar() {
   return (
     <St.Root>
       <StContentsContainer>
-        <St.CloseBtnContainer onClick={() => setIsActive((prevState) => !prevState)}>
+        <St.CloseBtnContainer onClick={closeMenuBar}>
           <IcCloseBtn />
         </St.CloseBtnContainer>
         <St.Contents>

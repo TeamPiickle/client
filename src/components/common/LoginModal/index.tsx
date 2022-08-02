@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import CustomFullHeart from "../../CardCollection/CustomFullHeart";
 import Modal from "../Modal";
 import { St } from "./style";
@@ -8,6 +10,7 @@ interface LoginCheckProps {
 }
 export default function LoginModal(props: LoginCheckProps) {
   const { closeHandler, contents } = props;
+  const navigate = useNavigate();
 
   return (
     <Modal closeHandler={closeHandler}>
@@ -20,10 +23,21 @@ export default function LoginModal(props: LoginCheckProps) {
           <St.ModalContents>로그인을 하시면 {contents} 이용할 수 있어요!</St.ModalContents>
         </St.Wrapper>
         <St.Buttons>
-          <St.LoginLink to="/login">
-            <St.Button type="button">로그인</St.Button>
-          </St.LoginLink>
-          <St.Button type="button">회원가입</St.Button>
+          <St.Button
+            type="button"
+            onClick={() => {
+              closeHandler();
+              navigate("/login");
+            }}>
+            로그인
+          </St.Button>
+          <St.Button
+            type="button"
+            onClick={() => {
+              closeHandler();
+            }}>
+            회원가입
+          </St.Button>
         </St.Buttons>
       </St.Container>
     </Modal>

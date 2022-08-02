@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
 
 import { IcChangeProfileBtn } from "../../../asset/icon/index";
 import { ImgDefaultProfile } from "../../../asset/image";
 import useUserProfile, { myPageApi } from "../../../core/api/myPage";
-import { activeStateModal } from "../../../core/atom/menuBar";
+import useModal from "../../../util/hooks/useModal";
 import Loading from "../../common/Loading";
 import NicknameModal from "../NicknameModal";
 import { St } from "./style";
@@ -14,10 +13,8 @@ export default function MyInfo() {
   const { userProfile, isLoading, handleNewProfile } = useUserProfile();
   const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
 
-  const setIsActiveModal = useSetRecoilState(activeStateModal);
   const navigation = useNavigate();
-
-  const [isOpened, setIsOpened] = useState<boolean>(false);
+  const { isModalOpen: isNicknameModalOpen, toggleModal: toggleNicknameModal } = useModal();
 
   useEffect(() => {
     if (!isLoading) {
@@ -26,13 +23,11 @@ export default function MyInfo() {
   }, [isLoading, LOGIN_STATE, navigation]);
 
   const openNicknameModal = () => {
-    setIsOpened(true);
-    setIsActiveModal(true);
+    toggleNicknameModal();
   };
 
   const closeNicknameModal = () => {
-    setIsOpened(false);
-    setIsActiveModal(false);
+    toggleNicknameModal();
 
     handleNewProfile();
   };
@@ -77,7 +72,7 @@ export default function MyInfo() {
         </St.ProfileDetail>
       </St.Profile>
 
-      {isOpened && (
+      {isNicknameModalOpen && (
         <NicknameModal closeHandler={closeNicknameModal} nickname={userProfile ? userProfile.data.nickname : "○○○"} />
       )}
     </St.MyInfoContainer>
