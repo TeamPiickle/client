@@ -1,7 +1,5 @@
-import styled from "styled-components";
-
 import Header from "../common/Header";
-import VoteContent from "./VoteContent";
+import VoteSlider from "./VoteContent/VoteSlider";
 import VoteTitle from "./VoteTitle";
 
 export default function Vote() {
@@ -9,17 +7,7 @@ export default function Vote() {
     <main>
       <Header />
       <VoteTitle />
-      <St.ContentWrapper>
-        <VoteContent />
-      </St.ContentWrapper>
+      <VoteSlider />
     </main>
   );
 }
-
-const St = {
-  ContentWrapper: styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  `,
-};
