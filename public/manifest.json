@@ -1,0 +1,18 @@
+{
+  "background_color": "#ffffff",
+  "description": "지금 내게 필요한 대화주제 추천 서비스, Piickle",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Piickle",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "Piickle",
+  "start_url": "https://www.piikcle.link",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "images/undefined.png",
+      "type": "image/x-icon"
+    }
+  ]
+}
