@@ -23,7 +23,7 @@
   },
   "include": [
     "**/*.ts",
-    "**/*.tsx", "public/mockServiceWorker.js",
+    "**/*.tsx", "public/mockServiceWorker.js", "public/pwabuilder-sw.js",
   ],
   "exclude": [
     "node_modules"
