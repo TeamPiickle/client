@@ -32,8 +32,8 @@ const St = {
 
     margin: 0 auto;
 
-    @media screen and (min-width: 48rem), screen and (min-height: 48rem) and (orientation: landscape) {
+    ${({ theme }) => theme.media.desktop`
       width: 36rem;
-    }
+    `};
   `,
 };
