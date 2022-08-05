@@ -13,7 +13,8 @@
     {
       "src": "images/logo.png",
       "type": "image/x-icon",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
     },
     {
       "src": "images/logo.png",
@@ -23,7 +24,8 @@
     {
       "src": "images/banner.jpg",
       "type": "image/jpg",
-      "sizes": "480x288"
+      "sizes": "480x288",
+      "purpose": "any maskable"
     }
   ]
 }
