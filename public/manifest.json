@@ -1,18 +1,29 @@
 {
-  "background_color": "#ffffff",
+  "short_name": "Piickle",
+  "name": "Piickle",
   "description": "지금 내게 필요한 대화주제 추천 서비스, Piickle",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
   "dir": "ltr",
   "display": "standalone",
-  "name": "Piickle",
   "orientation": "any",
   "scope": "/",
-  "short_name": "Piickle",
-  "start_url": "https://www.piikcle.link",
-  "theme_color": "#ffffff",
+  "start_url": ".",
   "icons": [
     {
-      "src": "images/undefined.png",
-      "type": "image/x-icon"
+      "src": "images/logo.png",
+      "type": "image/x-icon",
+      "sizes": "512x512"
+    },
+    {
+      "src": "images/logo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "images/banner.jpg",
+      "type": "image/jpg",
+      "sizes": "480x288"
     }
   ]
 }
