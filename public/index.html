@@ -45,8 +45,6 @@
       if("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
           navigator.serviceWorker.register("./pwaServiceWorker.js")
-          .then((reg) => console.log("success: ", reg.scope))
-          .catch((err) => console.log("Failure: ", err));
         })
       }
     </script>
