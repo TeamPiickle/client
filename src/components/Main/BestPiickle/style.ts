@@ -6,12 +6,6 @@ export const St = {
     margin-top: 1.2rem;
   `,
 
-  HeaderWrapper: styled.header``,
-
-  Title: styled.h2``,
-
-  Desc: styled.p``,
-
   SliderWrapper: styled.article`
     touch-action: pan-x;
 
