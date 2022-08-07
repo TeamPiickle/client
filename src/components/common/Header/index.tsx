@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
 
 import { IcHamburger, IcLogo } from "../../../asset/icon";
+import { routePaths } from "../../../core/routes/path";
 import useModal from "../../../util/hooks/useModal";
 import MenuBar from "../MenuBar";
 import { St } from "./style";
@@ -11,7 +12,7 @@ export default function Header() {
 
   return (
     <St.HeaderWrapper iscardview={pathname === "/card-collection"}>
-      <St.Link to="/">
+      <St.Link to={routePaths.Main}>
         <IcLogo aria-label="피클" />
       </St.Link>
       <St.HamburgerContainer isClicked={isModalOpen}>

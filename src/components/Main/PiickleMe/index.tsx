@@ -1,6 +1,7 @@
 import { IcVoteImg } from "../../../asset/icon";
 import { useBallotLists } from "../../../core/api/main";
 import { headingTitles } from "../../../core/main/headingTitles";
+import { routePaths } from "../../../core/routes/path";
 import HeadingTitleContainer from "../../common/HeadingTitleContainer";
 import { St } from "./style";
 
@@ -14,7 +15,9 @@ export default function PiickleMe() {
         <St.RepresentVoteContentText>{ballotLists && ballotLists.data[0].topic}</St.RepresentVoteContentText>
         <St.RepresentVoteContentSubText>현재 가장 참여수가 많은 투표</St.RepresentVoteContentSubText>
         <St.RepresentGoVoteBtnWrapper type="button">
-          <St.RepresentGoVoteBtn to={`/vote/${ballotLists && ballotLists.data[0]._id}`}>투표하기</St.RepresentGoVoteBtn>
+          <St.RepresentGoVoteBtn to={`${routePaths.Vote}/${ballotLists && ballotLists.data[0]._id}`}>
+            투표하기
+          </St.RepresentGoVoteBtn>
         </St.RepresentGoVoteBtnWrapper>
       </St.RepresentVoteContentConTainer>
 
@@ -28,7 +31,7 @@ export default function PiickleMe() {
               </St.VoteTextContainer>
             </St.VoteImgTextWrapper>
             <St.GoVoteBtnWrapper type="button">
-              <St.GoVoteBtn to={`/vote/${ballot._id}`}>투표하기</St.GoVoteBtn>
+              <St.GoVoteBtn to={`${routePaths.Vote}/${ballot._id}`}>투표하기</St.GoVoteBtn>
             </St.GoVoteBtnWrapper>
           </St.VoteContent>
         ))}

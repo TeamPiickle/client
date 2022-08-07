@@ -1,3 +1,4 @@
+import { routePaths } from "../../core/routes/path";
 import { St } from "./style";
 
 export default function Error404() {
@@ -9,7 +10,7 @@ export default function Error404() {
         <br />
         이용에 불편을 드려 대단히 죄송합니다
       </St.Content>
-      <St.GoHomeBtn to={"/"}>홈으로 돌아가기</St.GoHomeBtn>
+      <St.GoHomeBtn to={routePaths.Main}>홈으로 돌아가기</St.GoHomeBtn>
     </St.Root>
   );
 }

@@ -1,4 +1,5 @@
 import { IcNextCardBtn } from "../../../../asset/icon";
+import { routePaths } from "../../../../core/routes/path";
 import { St } from "./style";
 
 export default function LastCard() {
@@ -15,11 +16,11 @@ export default function LastCard() {
         새로운 대화 주제를 둘러보세요
       </St.Content>
 
-      <St.CategoryLink to="/category">
+      <St.CategoryLink to={routePaths.Category}>
         <IcNextCardBtn />
       </St.CategoryLink>
 
-      <St.HomeLink to="/">홈으로 돌아가기</St.HomeLink>
+      <St.HomeLink to={routePaths.Main}>홈으로 돌아가기</St.HomeLink>
     </St.Card>
   );
 }
