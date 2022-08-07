@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
 import { sliderIdxState } from "../../../core/atom/slider";
+import { routePaths } from "../../../core/routes/path";
 import { St } from "./style";
 
 export default function CTABtn() {
@@ -9,7 +10,7 @@ export default function CTABtn() {
   const navigate = useNavigate();
 
   const clickCTABtn = () => {
-    navigate("/card-collection", { state: { type: "all" } });
+    navigate(routePaths.CardCollection, { state: { type: "all" } });
     setSliderIdx(0);
   };
 

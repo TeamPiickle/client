@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { IcChangeProfileBtn } from "../../../asset/icon/index";
 import { ImgDefaultProfile } from "../../../asset/image";
 import useUserProfile, { myPageApi } from "../../../core/api/myPage";
+import { routePaths } from "../../../core/routes/path";
 import useModal from "../../../util/hooks/useModal";
 import Loading from "../../common/Loading";
 import NicknameModal from "../NicknameModal";
@@ -18,7 +19,7 @@ export default function MyInfo() {
 
   useEffect(() => {
     if (!isLoading) {
-      if (!LOGIN_STATE) navigation("/login");
+      if (!LOGIN_STATE) navigation(routePaths.Login);
     }
   }, [isLoading, LOGIN_STATE, navigation]);
 

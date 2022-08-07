@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { loginApi } from "../../../core/api/login";
+import { routePaths } from "../../../core/routes/path";
 import { St } from "./style";
 
 export default function LoginForm() {
@@ -40,7 +41,7 @@ export default function LoginForm() {
     //         break;
     //       case 500:
     //         // 서버 내부 오류
-    //         navigate("/login");
+    //         navigate(routePaths.Login);
     //         break;
     //       default:
     //         throw new Error("로그인 에러");
@@ -51,7 +52,7 @@ export default function LoginForm() {
 
   const LoginNGoMain = (accessToken: string) => {
     localStorage.setItem("piickle-token", accessToken);
-    navigate("/");
+    navigate(routePaths.Main);
   };
 
   return (

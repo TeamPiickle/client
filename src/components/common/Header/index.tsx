@@ -11,7 +11,7 @@ export default function Header() {
   const { isModalOpen, toggleModal } = useModal();
 
   return (
-    <St.HeaderWrapper iscardview={pathname === "/card-collection"}>
+    <St.HeaderWrapper iscardview={pathname === routePaths.CardCollection}>
       <St.Link to={routePaths.Main}>
         <IcLogo aria-label="피클" />
       </St.Link>

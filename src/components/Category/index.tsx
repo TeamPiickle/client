@@ -3,6 +3,7 @@ import { useSetRecoilState } from "recoil";
 
 import { sliderIdxState } from "../../core/atom/slider";
 import { categoryTitles } from "../../core/category/categoryList";
+import { routePaths } from "../../core/routes/path";
 import useScroll from "../../util/hooks/useScroll";
 import Header from "../common/Header";
 import HeadingTitleContainer from "../common/HeadingTitleContainer";
@@ -16,7 +17,7 @@ export default function Category() {
   const navigate = useNavigate();
 
   const moveBestPiickle = () => {
-    navigate("/card-collection", { state: { type: "best" } });
+    navigate(routePaths.CardCollection, { state: { type: "best" } });
     setSliderIdx(0);
   };
 

@@ -5,6 +5,7 @@ import { useCategoryLists } from "../../../core/api/main";
 import { sliderIdxState } from "../../../core/atom/slider";
 import { headingTitles } from "../../../core/main/headingTitles";
 import { gridValue } from "../../../core/main/moodPiickle";
+import { routePaths } from "../../../core/routes/path";
 import HeadingTitleContainer from "../../common/HeadingTitleContainer";
 import { St } from "./style";
 
@@ -21,7 +22,7 @@ export default function MoodPiickle() {
 
   const navigate = useNavigate();
   const moveCategory = (id: string) => {
-    navigate("/card-collection", { state: { type: "category", categoryId: id } });
+    navigate(routePaths.CardCollection, { state: { type: "category", categoryId: id } });
     setSliderIdx(0);
   };
 

@@ -5,6 +5,7 @@ import { useSetRecoilState } from "recoil";
 import { IcSmallEmptyHeart, IcSmallFullHeart } from "../../../asset/icon";
 import { cardCollectionApi } from "../../../core/api/cardCollection";
 import { sliderIdxState } from "../../../core/atom/slider";
+import { routePaths } from "../../../core/routes/path";
 import { myPiickle } from "..";
 import { St } from "./style";
 
@@ -26,7 +27,7 @@ export default function MyPiickleItem(props: MyPiickleItemProps) {
   };
 
   const goCardView = () => {
-    navigate("/card-collection", { state: { type: "bookmark" } });
+    navigate(routePaths.CardCollection, { state: { type: "bookmark" } });
     setSliderIdx(idx);
   };
 

@@ -25,14 +25,14 @@ export default function MenuBar(props: MenuBarProps) {
   const { ballotLists } = useBallotLists();
 
   const moveCardCollection = () => {
-    navigate("/card-collection", { state: { type: "all" } });
+    navigate(routePaths.CardCollection, { state: { type: "all" } });
     setSliderIdx(0);
     closeMenuBar();
   };
 
   const handleLogout = () => {
     localStorage.removeItem("piickle-token");
-    navigate("/");
+    navigate(routePaths.Main);
     closeMenuBar();
   };
 
