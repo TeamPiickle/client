@@ -1,10 +1,6 @@
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-
 import { IcChangeProfileBtn } from "../../../asset/icon/index";
 import { ImgDefaultProfile } from "../../../asset/image";
 import useUserProfile, { myPageApi } from "../../../core/api/myPage";
-import { routePaths } from "../../../core/routes/path";
 import useModal from "../../../util/hooks/useModal";
 import Loading from "../../common/Loading";
 import NicknameModal from "../NicknameModal";
@@ -12,16 +8,7 @@ import { St } from "./style";
 
 export default function MyInfo() {
   const { userProfile, isLoading, handleNewProfile } = useUserProfile();
-  const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
-
-  const navigation = useNavigate();
   const { isModalOpen: isNicknameModalOpen, toggleModal: toggleNicknameModal } = useModal();
-
-  useEffect(() => {
-    if (!isLoading) {
-      if (!LOGIN_STATE) navigation(routePaths.Login);
-    }
-  }, [isLoading, LOGIN_STATE, navigation]);
 
   const openNicknameModal = () => {
     toggleNicknameModal();
@@ -49,7 +36,7 @@ export default function MyInfo() {
     handleNewProfile();
   };
 
-  if (!userProfile) return <Loading backgroundColor="white" />;
+  if (isLoading) return <Loading backgroundColor="white" />;
   return (
     <St.MyInfoContainer>
       <St.Profile>

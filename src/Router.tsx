@@ -12,7 +12,7 @@ export default function Router() {
         <Route path={routePaths.Category} element={PublicRoute({ Component: <Category /> })} />
         <Route path={routePaths.CardCollection} element={PublicRoute({ Component: <CardCollection /> })} />
         <Route path={`${routePaths.Vote}${routePaths.VoteId}`} element={PublicRoute({ Component: <Vote /> })} />
-        <Route path={routePaths.MyPage} element={PublicRoute({ Component: <MyPage /> })} />
+        <Route path={routePaths.MyPage} element={PrivateRoute({ Component: <MyPage /> })} />
         <Route path={routePaths.Bookmark} element={PublicRoute({ Component: <Bookmark /> })} />
         <Route path="*" element={PublicRoute({ Component: <Error404 /> })} />
       </Routes>
@@ -24,8 +24,13 @@ interface PublicRouteProps {
   Component: JSX.Element;
   restricted?: boolean;
 }
+type PrivateRouteProps = Omit<PublicRouteProps, "restricted">;
 
 const PublicRoute = ({ Component, restricted = false }: PublicRouteProps) => {
   const isLogined = localStorage.getItem("piickle-token");
   return isLogined && restricted ? <Main /> : Component;
+};
+const PrivateRoute = ({ Component }: PrivateRouteProps) => {
+  const isLogined = localStorage.getItem("piickle-token");
+  return isLogined ? Component : <Login />;
 };
