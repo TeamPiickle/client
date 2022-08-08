@@ -5,9 +5,9 @@
 // false -> 로그인한 유저가 account 페이지 가려고 하면 막아준다
 export default function Auth(SpecificComponent, option) {
   function AuthenticationCheck(props) {
-    const IS_AUTH = localStorage.getItem("piickle-token");
+    const LOGIN_STATE = localStorage.getItem("piickle-token");
 
-    if (IS_AUTH === null) {
+    if (LOGIN_STATE === null) {
       if (option) {
         props.history.push("/login");
       }
