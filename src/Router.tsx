@@ -7,20 +7,14 @@ export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={routePaths.Main} element={PublicRoute({ Component: <Main />, restricted: true })} />
-        <Route path={routePaths.Login} element={PublicRoute({ Component: <Login />, restricted: false })} />
-        <Route path={routePaths.Category} element={PublicRoute({ Component: <Category />, restricted: true })} />
-        <Route
-          path={routePaths.CardCollection}
-          element={PublicRoute({ Component: <CardCollection />, restricted: true })}
-        />
-        <Route
-          path={`${routePaths.Vote}${routePaths.VoteId}`}
-          element={PublicRoute({ Component: <Vote />, restricted: true })}
-        />
-        <Route path={routePaths.MyPage} element={PublicRoute({ Component: <MyPage />, restricted: true })} />
-        <Route path={routePaths.Bookmark} element={PublicRoute({ Component: <Bookmark />, restricted: true })} />
-        <Route path="*" element={PublicRoute({ Component: <Error404 />, restricted: true })} />
+        <Route path={routePaths.Main} element={PublicRoute({ Component: <Main /> })} />
+        <Route path={routePaths.Login} element={PublicRoute({ Component: <Login />, restricted: true })} />
+        <Route path={routePaths.Category} element={PublicRoute({ Component: <Category /> })} />
+        <Route path={routePaths.CardCollection} element={PublicRoute({ Component: <CardCollection /> })} />
+        <Route path={`${routePaths.Vote}${routePaths.VoteId}`} element={PublicRoute({ Component: <Vote /> })} />
+        <Route path={routePaths.MyPage} element={PublicRoute({ Component: <MyPage /> })} />
+        <Route path={routePaths.Bookmark} element={PublicRoute({ Component: <Bookmark /> })} />
+        <Route path="*" element={PublicRoute({ Component: <Error404 /> })} />
       </Routes>
     </BrowserRouter>
   );
@@ -28,10 +22,10 @@ export default function Router() {
 
 interface PublicRouteProps {
   Component: JSX.Element;
-  restricted: boolean;
+  restricted?: boolean;
 }
 
-const PublicRoute = ({ Component, restricted }: PublicRouteProps) => {
+const PublicRoute = ({ Component, restricted = false }: PublicRouteProps) => {
   const isLogined = localStorage.getItem("piickle-token");
-  return isLogined && !restricted ? <Main /> : Component;
+  return isLogined && restricted ? <Main /> : Component;
 };
