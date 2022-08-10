@@ -18,7 +18,7 @@ export default function AfterVoteList(props: AfterVoteListProps) {
   };
 
   return (
-    <>
+    <St.Root>
       <St.VoteOptionContainer>
         {ballotTopic &&
           ballotTopic.ballotItems.map((element) => {
@@ -43,6 +43,6 @@ export default function AfterVoteList(props: AfterVoteListProps) {
       <St.VoteBtnContainer>
         <St.VoteBtn onClick={cancelVote}>다시 투표하기</St.VoteBtn>
       </St.VoteBtnContainer>
-    </>
+    </St.Root>
   );
 }

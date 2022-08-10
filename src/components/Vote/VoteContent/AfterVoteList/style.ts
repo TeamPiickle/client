@@ -3,16 +3,20 @@ import styled from "styled-components";
 import { IcCheckWithBg } from "../../../../asset/icon";
 
 export const St = {
+  Root: styled.div`
+    display: flex;
+    flex-direction: column;
+  `,
+
   VoteOptionContainer: styled.ul`
     height: 14.3rem;
 
     margin-top: 2.6rem;
+    margin-bottom: 5rem;
 
     display: flex;
     flex-direction: column;
     gap: 1.6rem;
-
-    position: relative;
   `,
 
   VoteOptionList: styled.li`
@@ -75,11 +79,6 @@ export const St = {
   VoteBtnContainer: styled.div`
     display: flex;
     justify-content: center;
-
-    bottom: 3.2rem;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
   `,
 
   VoteBtn: styled.button`
