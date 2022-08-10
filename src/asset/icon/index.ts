@@ -1,6 +1,6 @@
 export { ReactComponent as IcChangeProfileBtn } from "./changeProfileBtn.svg";
-export { ReactComponent as IcCheck1 } from "./check1.svg";
-export { ReactComponent as IcCheck2 } from "./check2.svg";
+export { ReactComponent as IcCheckWithBg } from "./check1.svg";
+export { ReactComponent as IcCheckWithNoBg } from "./check2.svg";
 export { ReactComponent as IcCloseBtn } from "./closeBtn.svg";
 export { ReactComponent as IcEmptyHeart } from "./emptyHeart.svg";
 export { ReactComponent as IcFilterBtn } from "./filterBtn.svg";

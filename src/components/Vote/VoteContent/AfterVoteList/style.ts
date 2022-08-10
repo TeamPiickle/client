@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { IcCheck1 } from "../../../asset/icon";
+import { IcCheckWithBg } from "../../../../asset/icon";
 
 export const St = {
   VoteOptionContainer: styled.ul`
@@ -34,7 +34,7 @@ export const St = {
     display: flex;
   `,
 
-  IcCheck1: styled(IcCheck1)<{ isSelected: boolean }>`
+  IcCheckWithBg: styled(IcCheckWithBg)<{ isSelected: boolean }>`
     display: ${({ isSelected }) => (!isSelected ? "none" : "block")};
   `,
 
