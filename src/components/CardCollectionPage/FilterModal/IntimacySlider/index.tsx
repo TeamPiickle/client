@@ -1,31 +1,33 @@
 import { Range } from "react-range";
 
-import { RangeTrack, St } from "./style";
+import { St } from "./style";
 
 interface IntimacySliderProps {
-  min: number;
-  max: number;
-  step: number;
-
   price: number[];
   onChange: (values: number[]) => void;
 }
 
+const rangeOption = {
+  min: 0,
+  max: 3,
+  step: 1,
+};
+
 export default function IntimacySlider(props: IntimacySliderProps) {
-  const { min, max, step, price, onChange } = props;
+  const { price, onChange } = props;
 
   return (
     <St.IntimacySlider>
       <Range
-        step={step}
-        min={min}
-        max={max}
+        step={rangeOption.step}
+        min={rangeOption.min}
+        max={rangeOption.max}
         values={price}
         onChange={onChange}
         renderTrack={({ props, children }) => (
-          <RangeTrack {...props} min={min} max={max} price={price}>
+          <St.RangeTrack {...props} min={rangeOption.min} max={rangeOption.max} price={price}>
             {children}
-          </RangeTrack>
+          </St.RangeTrack>
         )}
         renderThumb={({ props }) => <St.RangeThumb {...props} />}
       />

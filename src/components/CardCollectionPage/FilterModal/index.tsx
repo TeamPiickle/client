@@ -93,9 +93,6 @@ export default function FilterModal(props: FilterModalProps) {
         <St.FilterIntimacyWrapper>
           <St.FilterTitle>친밀도</St.FilterTitle>
           <IntimacySlider
-            min={0}
-            max={3}
-            step={1}
             price={intimacyValues}
             onChange={(values: number[]) => {
               setIntimacyValues(values);

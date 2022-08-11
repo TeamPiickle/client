@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import { getTrackBackground } from "react-range";
 import styled from "styled-components";
 
@@ -27,20 +28,20 @@ export const St = {
 
     cursor: pointer;
   `,
+
+  RangeTrack: styled.div`
+    position: relative;
+    height: 0.8rem;
+    width: 100%;
+    border-radius: 0.4rem;
+    background: ${(props: RangeTrackProps) =>
+      getTrackBackground({
+        values: props.price,
+        colors: ["#19BE7E", "#ffffff"],
+        min: props.min,
+        max: props.max,
+      })};
+
+    box-shadow: inset 0 0.1rem 0.1rem rgba(0, 0, 0, 0.25);
+  `,
 };
-
-export const RangeTrack = styled.div`
-  position: relative;
-  height: 0.8rem;
-  width: 100%;
-  border-radius: 0.4rem;
-  background: ${(props: RangeTrackProps) =>
-    getTrackBackground({
-      values: props.price,
-      colors: ["#19BE7E", "#ffffff"],
-      min: props.min,
-      max: props.max,
-    })};
-
-  box-shadow: inset 0 0.1rem 0.1rem rgba(0, 0, 0, 0.25);
-`;
