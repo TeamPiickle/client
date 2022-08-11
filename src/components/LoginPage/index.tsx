@@ -2,7 +2,7 @@ import Footer from "../common/Footer";
 import Header from "../common/Header";
 import LoginForm from "./LoginForm";
 
-export default function Login() {
+export default function LoginPage() {
   return (
     <main>
       <Header />

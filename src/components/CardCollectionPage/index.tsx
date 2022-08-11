@@ -10,7 +10,7 @@ import CardSlider from "./CardSlider";
 import FilterModal from "./FilterModal";
 import { St } from "./style";
 
-export default function CardCollection() {
+export default function CardCollectionPage() {
   useScroll();
 
   const location = useLocation();

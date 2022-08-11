@@ -10,7 +10,7 @@ import HeadingTitleContainer from "../common/HeadingTitleContainer";
 import CategoryContents from "./CategoryContents";
 import { St } from "./style";
 
-export default function Category() {
+export default function CategoryPage() {
   useScroll();
 
   const setSliderIdx = useSetRecoilState(sliderIdxState);

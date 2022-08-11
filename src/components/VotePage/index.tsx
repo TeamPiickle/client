@@ -4,7 +4,7 @@ import Header from "../common/Header";
 import VoteContent from "./VoteContent";
 import VoteTitle from "./VoteTitle";
 
-export default function Vote() {
+export default function VotePage() {
   return (
     <main>
       <Header />

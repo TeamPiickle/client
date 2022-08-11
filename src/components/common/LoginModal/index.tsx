@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 import { routePaths } from "../../../core/routes/path";
-import CustomFullHeart from "../../CardCollection/CustomFullHeart";
+import CustomFullHeart from "../../CardCollectionPage/CustomFullHeart";
 import Modal from "../Modal";
 import { St } from "./style";
 

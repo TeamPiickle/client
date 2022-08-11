@@ -7,7 +7,7 @@ import MoodPiickle from "./MoodPiickle";
 import PiickleMe from "./PiickleMe";
 import { St } from "./style";
 
-export default function Main() {
+export default function MainPage() {
   return (
     <St.MainPage>
       <Header />
