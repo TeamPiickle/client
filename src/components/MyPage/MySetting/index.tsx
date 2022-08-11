@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
+import { routePaths } from "../../../core/routes/path";
 import { St } from "./style";
 
 export default function MySetting() {
@@ -9,7 +10,7 @@ export default function MySetting() {
     switch (key) {
       case "로그아웃":
         localStorage.removeItem("piickle-token");
-        navigate("/");
+        navigate(routePaths.Main);
         break;
     }
   };

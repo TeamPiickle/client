@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
-import CustomFullHeart from "../../CardCollection/CustomFullHeart";
+import { routePaths } from "../../../core/routes/path";
+import CustomFullHeart from "../../CardCollectionPage/CustomFullHeart";
 import Modal from "../Modal";
 import { St } from "./style";
 
@@ -27,7 +28,7 @@ export default function LoginModal(props: LoginCheckProps) {
             type="button"
             onClick={() => {
               closeHandler();
-              navigate("/login");
+              navigate(routePaths.Login);
             }}>
             로그인
           </St.Button>
