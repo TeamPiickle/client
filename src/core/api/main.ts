@@ -12,6 +12,7 @@ export function useCategoryLists() {
 
   return {
     categoryLists: data?.data,
+    randomCategoryLists: data && [...data.data.data].sort(() => Math.random() - 0.5),
     isLoading: !error && !data,
     isError: error,
   };
