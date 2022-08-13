@@ -1,4 +1,3 @@
-import Slider from "react-slick";
 import styled from "styled-components";
 
 export const St = {
@@ -21,5 +20,4 @@ export const St = {
       scroll-snap-type: x mandatory;
     }
   `,
-  Slider: styled(Slider)``,
 };
