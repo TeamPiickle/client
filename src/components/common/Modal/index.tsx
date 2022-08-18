@@ -1,12 +1,13 @@
+import { PropsWithChildren } from "react";
+
 import { IcModalCloseBtn } from "../../../asset/icon";
 import { St } from "./style";
 
-type ModalContents = {
+interface ModalContents {
   closeHandler: () => void;
-  children: React.ReactNode;
-};
+}
 
-export default function Modal({ closeHandler, children }: ModalContents) {
+export default function Modal({ closeHandler, children }: PropsWithChildren<ModalContents>) {
   return (
     <St.Root>
       <St.Modal>

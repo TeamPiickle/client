@@ -39,7 +39,6 @@
 
 ## ⚙️ Stack
 
-<img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white"> <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"> <img src="https://img.shields.io/badge/StoryBook-FF4785?style=for-the-badge&logo=StoryBook&logoColor=white"> <img src="https://img.shields.io/badge/StyledComponents-DB7093?style=for-the-badge&logo=StyledComponents&logoColor=white">
 ```json
     "axios": "^0.26.0",
     "react": "^18.1.0",
@@ -55,72 +54,6 @@
     "msw": "^0.42.1",
 ```
 
-<br /><br/>
-
-## 📂 파일구조
-```
-📂 src
-├── 📂 assets
-│   ├── icon
-│   └── image
-|   └── asset.d.ts
-├── 📂 components
-│   ├── Main
-│   ├── Category
-│   ├── CardCollection
-│   ├── Vote
-│   ├── MyPage
-│   ├── BookMark
-|   ├── Common
-|   └── Error404
-├── 📁 core
-|   ├── api
-|   |    ├── common
-|   |    |     ├── axios.ts
-|   |    |     └── constants.ts
-|   |    ├── bookmark.ts
-|   |    ├── cardCollections.ts
-|   |    ├── login.ts
-|   |    ├── main.ts
-|   |    ├── myPage.ts
-|   |    └── vote.ts
-|   ├── atom
-|   |    ├── menuBar.ts
-|   |    └── slider.ts
-|   ├── cardCollection
-|   |    └── filter.ts
-|   ├── category
-|   |    └── categoryList.ts
-|   ├── main
-|   |    └── headingTitles.ts
-|   └── vote
-|   |    └── voteContent.ts
-├── 📂 mocks
-│   ├── handlers
-|   |    ├── ballots.ts
-|   |    ├── cards.ts
-|   |    ├── categories.ts
-|   |    ├── index.ts
-|   |    ├── notice.ts
-|   |    └── user.ts
-│   └── browser.ts
-├── 📂 style
-│   └── globalStyle.ts
-|   └── ModalStyle.ts
-|   └── styled.d.ts
-|   └── theme.ts
-├── 📂 types
-|   └── cardCollection.ts
-|   └── main.ts
-|   └── swr.ts
-|   └── user.ts
-├── 📂 util
-│   └── fetchCardCollection.ts
-├── App.tsx
-├── index.tsx
-└── Router.tsx
-
-```
 <br /><br/>
 ## 🖥 뷰 소개
 ### 1. 메인 페이지

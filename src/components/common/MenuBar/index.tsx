@@ -6,6 +6,7 @@ import { ImgDefaultProfile } from "../../../asset/image";
 import { useBallotLists } from "../../../core/api/main";
 import useUserProfile from "../../../core/api/myPage";
 import { sliderIdxState } from "../../../core/atom/slider";
+import { routePaths } from "../../../core/routes/path";
 import { St, StContentsContainer } from "./style";
 
 interface MenuBarProps {
@@ -24,14 +25,14 @@ export default function MenuBar(props: MenuBarProps) {
   const { ballotLists } = useBallotLists();
 
   const moveCardCollection = () => {
-    navigate("/card-collection", { state: { type: "all" } });
+    navigate(routePaths.CardCollection, { state: { type: "all" } });
     setSliderIdx(0);
     closeMenuBar();
   };
 
   const handleLogout = () => {
     localStorage.removeItem("piickle-token");
-    navigate("/");
+    navigate(routePaths.Main);
     closeMenuBar();
   };
 
@@ -51,7 +52,7 @@ export default function MenuBar(props: MenuBarProps) {
               </St.WelcomeText>
               <St.DescriptText>오늘도 피클과 함께 대화 나눠요</St.DescriptText>
               <St.BtnContainer>
-                <St.MyProfileBtn to="/my-page" onClick={closeMenuBar}>
+                <St.MyProfileBtn to={routePaths.MyPage} onClick={closeMenuBar}>
                   My 프로필
                 </St.MyProfileBtn>
                 <St.LogoutBtn onClick={handleLogout}>로그아웃</St.LogoutBtn>
@@ -63,7 +64,7 @@ export default function MenuBar(props: MenuBarProps) {
               <St.WelcomeText>안녕하세요</St.WelcomeText>
               <St.DescriptText>오늘도 피클과 함께 대화 나눠요</St.DescriptText>
               <St.BtnContainer>
-                <St.MyProfileBtn to="/login" onClick={closeMenuBar}>
+                <St.MyProfileBtn to={routePaths.Login} onClick={closeMenuBar}>
                   로그인
                 </St.MyProfileBtn>
                 <St.LogoutBtn>회원가입</St.LogoutBtn>
@@ -74,11 +75,11 @@ export default function MenuBar(props: MenuBarProps) {
             <St.CardRecomendWrapper onClick={moveCardCollection}>
               <St.Title>대화 주제 추천 카드</St.Title>
             </St.CardRecomendWrapper>
-            <St.RecomendWrapper to="/category" onClick={closeMenuBar}>
+            <St.RecomendWrapper to={routePaths.Category} onClick={closeMenuBar}>
               <St.Title>Mood Piickles</St.Title>
               <St.SubTitle>카테고리별 대화주제 추천</St.SubTitle>
             </St.RecomendWrapper>
-            <St.RecomendWrapper to={`/vote/${ballotLists?.data[0]._id}`} onClick={closeMenuBar}>
+            <St.RecomendWrapper to={`${routePaths.Vote}/${ballotLists?.data[0]._id}`} onClick={closeMenuBar}>
               <St.Title>Piickle Me</St.Title>
               <St.SubTitle>진행중인 투표</St.SubTitle>
             </St.RecomendWrapper>

@@ -12,8 +12,8 @@ export function useCategoryLists() {
 
   return {
     categoryLists: data?.data,
+    randomCategoryLists: data && [...data.data.data].sort(() => Math.random() - 0.5),
     isLoading: !error && !data,
-    isError: error,
   };
 }
 
@@ -23,7 +23,6 @@ export function useBestPiickle() {
   return {
     bestPiickle: data?.data,
     isLoading: !error && !data,
-    isError: error,
   };
 }
 export function useBallotLists() {
@@ -32,6 +31,5 @@ export function useBallotLists() {
   return {
     ballotLists: data?.data,
     isLoading: !error && !data,
-    isError: error,
   };
 }
