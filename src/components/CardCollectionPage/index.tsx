@@ -30,7 +30,6 @@ export default function CardCollectionPage() {
       <CardSlider
         openFilterModalHandler={toggleFilterModal}
         openLoginModalHandler={toggleLoginModal}
-        cardsTypeLoaction={cardsTypeLoaction}
         cardLists={cardLists}
       />
 

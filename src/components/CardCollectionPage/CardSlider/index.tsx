@@ -25,7 +25,6 @@ const sliderSettings = {
 interface CardSliderProps {
   openFilterModalHandler: () => void;
   openLoginModalHandler: () => void;
-  cardsTypeLoaction: CardsTypeLocation;
   cardLists: CardList[] | null;
 }
 
@@ -34,6 +33,7 @@ export default function CardSlider(props: CardSliderProps) {
 
   const [sliderIdx, setSliderIdx] = useRecoilState(sliderIdxState);
   const sliderRef = useRef<Slider | null>(null);
+
   return (
     <St.Wrapper>
       {!cardLists ? (
