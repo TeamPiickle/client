@@ -1,6 +1,6 @@
 import useSWR from "swr";
 
-import { PiickleSWRResponse } from "../../types/swr";
+import { PiickleSWRResponse } from "../../types/remote/swr";
 import { myPiickle } from "../../types/users";
 import { realReq } from "./common/axios";
 import { PATH } from "./common/constants";

@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import useSWR, { useSWRConfig } from "swr";
 
-import { PiickleSWRResponse } from "../../types/swr";
+import { PostingVote } from "../../types/remote/request";
+import { PiickleSWRResponse } from "../../types/remote/swr";
 import { realReq } from "./common/axios";
 import { PATH } from "./common/constants";
 
@@ -55,11 +56,8 @@ export default function useBallotTopic(ballotId: string) {
 }
 
 // 투표하기
-function postVote(ballotTopicId: string, ballotItemId: string) {
-  return realReq.POST(PATH.BALLOTS, {
-    ballotTopicId,
-    ballotItemId,
-  });
+function postVote(postingVote: PostingVote) {
+  return realReq.POST(PATH.BALLOTS, postingVote);
 }
 
 export const voteApi = {

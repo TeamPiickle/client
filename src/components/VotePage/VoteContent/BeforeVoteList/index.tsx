@@ -41,7 +41,7 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
   };
 
   const handlePost = () => {
-    voteApi.postVote(ballotTopic.ballotTopic._id, currentIdx);
+    voteApi.postVote({ ballotTopicId: ballotTopic.ballotTopic._id, ballotItemId: currentIdx });
   };
 
   return (

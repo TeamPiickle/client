@@ -12,7 +12,7 @@ export default function AfterVoteList(props: AfterVoteListProps) {
 
   const cancelVote = () => {
     if (!ballotTopic.userSelect) throw new Error("투표 데이터 에러");
-    voteApi.postVote(ballotTopic.ballotTopic._id, ballotTopic.userSelect.ballotItemId);
+    voteApi.postVote({ ballotTopicId: ballotTopic.ballotTopic._id, ballotItemId: ballotTopic.userSelect.ballotItemId });
 
     mutateBallotState();
   };

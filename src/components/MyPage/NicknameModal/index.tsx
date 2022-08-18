@@ -21,7 +21,7 @@ export default function NicknameModal(props: ModifyNicknameProps) {
 
   const saveNewNickname = async () => {
     try {
-      await myPageApi.patchUserNickName(newNickname);
+      await myPageApi.patchUserNickName({ nickname: newNickname });
       closeHandler();
     } catch (error) {
       if (axios.isAxiosError(error)) {
