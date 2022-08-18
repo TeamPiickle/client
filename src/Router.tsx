@@ -5,6 +5,7 @@ import {
   CardCollectionPage,
   CategoryPage,
   Error404Page,
+  JoinPage,
   LoginPage,
   MainPage,
   MyPage,
@@ -23,6 +24,7 @@ export default function Router() {
         <Route path={`${routePaths.Vote}${routePaths.VoteId}`} element={PublicRoute({ Component: <VotePage /> })} />
         <Route path={routePaths.MyPage} element={PrivateRoute({ Component: <MyPage /> })} />
         <Route path={routePaths.BookmarkPage} element={PublicRoute({ Component: <BookmarkPage /> })} />
+        <Route path={routePaths.Join} element={PublicRoute({ Component: <JoinPage /> })} />
         <Route path="*" element={PublicRoute({ Component: <Error404Page /> })} />
       </Routes>
     </BrowserRouter>
