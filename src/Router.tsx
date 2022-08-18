@@ -5,6 +5,7 @@ import {
   CardCollectionPage,
   CategoryPage,
   Error404Page,
+  JoinPage,
   LoginPage,
   MainPage,
   MyPage,
@@ -19,6 +20,7 @@ export default function Router() {
         <Route path={routePaths.Main} element={PublicRoute({ Component: <MainPage /> })} />
         <Route path={routePaths.Login} element={PublicRoute({ Component: <LoginPage />, restricted: true })} />
         <Route path={routePaths.Category} element={PublicRoute({ Component: <CategoryPage /> })} />
+        <Route path={routePaths.Join} element={PublicRoute({ Component: <JoinPage /> })} />
         <Route path={routePaths.CardCollection} element={PublicRoute({ Component: <CardCollectionPage /> })} />
         <Route path={`${routePaths.Vote}${routePaths.VoteId}`} element={PublicRoute({ Component: <VotePage /> })} />
         <Route path={routePaths.MyPage} element={PrivateRoute({ Component: <MyPage /> })} />
