@@ -1,11 +1,12 @@
 import useSWR from "swr";
 
+import { PiickleSWRResponse } from "../../types/swr";
 import { myPiickle } from "../../types/users";
 import { realReq } from "./common/axios";
 import { PATH } from "./common/constants";
 
 export default function useUserBookmarks() {
-  const { data, error } = useSWR<{ data: { data: myPiickle[] } }>(`${PATH.USERS}/bookmarks`, realReq.GET_SWR);
+  const { data, error } = useSWR<PiickleSWRResponse<myPiickle[]>>(`${PATH.USERS}/bookmarks`, realReq.GET_SWR);
 
   return {
     userBookmarks: data?.data,
