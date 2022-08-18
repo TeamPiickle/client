@@ -12,15 +12,8 @@ const bookmarkHeadingTitles: HeadingTitle = {
   isMoreBtn: false,
 };
 
-export type myPiickle = {
-  cardId: string;
-  content: string;
-};
-
 export default function BookmarkPage() {
   const { userBookmarks } = useUserBookmarks();
-
-  console.log("hello");
 
   return (
     <main>
@@ -28,7 +21,7 @@ export default function BookmarkPage() {
       <HeadingTitleContainer headingTitles={bookmarkHeadingTitles} />
       <St.List>
         {userBookmarks &&
-          userBookmarks.data.map((myPiickle: myPiickle, idx: number) => (
+          userBookmarks.data.map((myPiickle, idx: number) => (
             <MyPiickleItem key={myPiickle.cardId} cardId={myPiickle.cardId} content={myPiickle.content} idx={idx} />
           ))}
       </St.List>
