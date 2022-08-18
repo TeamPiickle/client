@@ -1,11 +1,7 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 
 import { St } from "./style";
 
-interface TagProps {
-  children: React.ReactNode;
-}
-
-export default function Tag({ children }: TagProps) {
+export default function Tag({ children }: PropsWithChildren<unknown>) {
   return <St.Tag>{children}</St.Tag>;
 }

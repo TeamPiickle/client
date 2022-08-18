@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import { CardList, CardsTypeLocation } from "../../types/cardCollection";
-import useModal from "../../util/hooks/useModal";
-import useScroll from "../../util/hooks/useScroll";
 import Header from "../common/Header";
+import useModal from "../common/hooks/useModal";
+import useScroll from "../common/hooks/useScroll";
 import LoginModal from "../common/LoginModal";
 import CardSlider from "./CardSlider";
 import FilterModal from "./FilterModal";

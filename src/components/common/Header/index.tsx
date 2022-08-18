@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 
 import { IcHamburger, IcLogo } from "../../../asset/icon";
 import { routePaths } from "../../../core/routes/path";
-import useModal from "../../../util/hooks/useModal";
+import useModal from "../hooks/useModal";
 import MenuBar from "../MenuBar";
 import { St } from "./style";
 

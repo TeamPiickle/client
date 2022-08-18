@@ -1,7 +1,7 @@
 import { IcChangeProfileBtn } from "../../../asset/icon/index";
 import { ImgDefaultProfile } from "../../../asset/image";
 import useUserProfile, { myPageApi } from "../../../core/api/myPage";
-import useModal from "../../../util/hooks/useModal";
+import useModal from "../../common/hooks/useModal";
 import Loading from "../../common/Loading";
 import NicknameModal from "../NicknameModal";
 import { St } from "./style";

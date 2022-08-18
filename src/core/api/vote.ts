@@ -46,7 +46,6 @@ export default function useBallotTopic(ballotId: string) {
   return {
     ballotTopic: data?.data,
     isLoading: !error && !data,
-    isError: error,
     isBeforeVotingState,
     mutateBallotState: () => {
       setTimeout(() => mutate(`${PATH.BALLOTS}/${ballotId}`), 200);

@@ -18,7 +18,7 @@ export type moodPiickle = {
 
 export default function MoodPiickle() {
   const setSliderIdx = useSetRecoilState(sliderIdxState);
-  const { categoryLists } = useCategoryLists();
+  const { randomCategoryLists } = useCategoryLists();
 
   const navigate = useNavigate();
   const moveCategory = (id: string) => {
@@ -26,15 +26,12 @@ export default function MoodPiickle() {
     setSliderIdx(0);
   };
 
-  const shuffle = () => Math.random() - 0.5;
-  const randomCategory = categoryLists && [...categoryLists.data].sort(shuffle);
-
   return (
     <St.Container>
       <HeadingTitleContainer headingTitles={headingTitles[1]} />
       <St.CategoryWrapper>
-        {randomCategory &&
-          randomCategory.slice(0, 4).map((moodPiickle, index) => (
+        {randomCategoryLists &&
+          randomCategoryLists.slice(0, 4).map((moodPiickle, index) => (
             <St.Category
               key={moodPiickle._id}
               onClick={() => moveCategory(moodPiickle._id)}

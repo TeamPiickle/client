@@ -9,7 +9,6 @@ export default function useUserBookmarks() {
   return {
     userBookmarks: data?.data,
     isLoading: !error && !data,
-    isError: error,
   };
 }
 
