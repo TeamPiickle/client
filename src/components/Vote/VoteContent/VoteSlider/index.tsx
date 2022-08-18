@@ -5,12 +5,16 @@ import { useEffect, useRef } from "react";
 import Slider from "react-slick";
 import { useRecoilState, useSetRecoilState } from "recoil";
 
+import { useBallotLists } from "../../../../core/api/main";
 import { sliderIdxState } from "../../../../core/atom/slider";
 import VoteContent from "../../VoteContent";
 import { St } from "./style";
 
 export default function VoteSlider() {
+  // const { ballotLists } = useBallotLists();
+
   const [sliderIdx, setSliderIdx] = useRecoilState(sliderIdxState);
+  const sliderRef = useRef<Slider | null>(null);
 
   const sliderSettings = {
     className: "center",
@@ -27,7 +31,7 @@ export default function VoteSlider() {
 
   return (
     <St.Wrapper>
-      <Slider {...sliderSettings}>
+      <Slider {...sliderSettings} ref={sliderRef}>
         <VoteContent />
         <VoteContent />
         <VoteContent />
