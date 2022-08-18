@@ -20,6 +20,8 @@ export type myPiickle = {
 export default function BookmarkPage() {
   const { userBookmarks } = useUserBookmarks();
 
+  console.log("hello");
+
   return (
     <main>
       <Header />
@@ -27,7 +29,7 @@ export default function BookmarkPage() {
       <St.List>
         {userBookmarks &&
           userBookmarks.data.map((myPiickle: myPiickle, idx: number) => (
-            <MyPiickleItem key={myPiickle.cardId} myPiickle={myPiickle} idx={idx} />
+            <MyPiickleItem key={myPiickle.cardId} cardId={myPiickle.cardId} content={myPiickle.content} idx={idx} />
           ))}
       </St.List>
       <Footer />

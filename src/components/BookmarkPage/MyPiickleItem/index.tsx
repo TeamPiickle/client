@@ -6,17 +6,16 @@ import { IcSmallEmptyHeart, IcSmallFullHeart } from "../../../asset/icon";
 import { cardCollectionApi } from "../../../core/api/cardCollection";
 import { sliderIdxState } from "../../../core/atom/slider";
 import { routePaths } from "../../../core/routes/path";
-import { myPiickle } from "..";
 import { St } from "./style";
 
 interface MyPiickleItemProps {
-  myPiickle: myPiickle;
+  cardId: string;
+  content: string;
   idx: number;
 }
 
 export default function MyPiickleItem(props: MyPiickleItemProps) {
-  const { myPiickle, idx } = props;
-  const { cardId, content } = myPiickle;
+  const { cardId, content, idx } = props;
   const [isBookmarked, setIsBookmarked] = useState<boolean>(true);
   const navigate = useNavigate();
   const setSliderIdx = useSetRecoilState(sliderIdxState);
