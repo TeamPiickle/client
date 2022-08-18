@@ -12,6 +12,16 @@ import Card from "../Card";
 import LastCard from "../Card/LastCard";
 import { St } from "./style";
 
+const sliderSettings = {
+  className: "center",
+  centerMode: true,
+  arrows: false,
+  dots: false,
+  infinite: false,
+  variableWidth: true,
+  slidesToScroll: 1,
+};
+
 interface CardSliderProps {
   openFilterModalHandler: () => void;
   openLoginModalHandler: () => void;
@@ -24,25 +34,16 @@ export default function CardSlider(props: CardSliderProps) {
 
   const [sliderIdx, setSliderIdx] = useRecoilState(sliderIdxState);
   const sliderRef = useRef<Slider | null>(null);
-
-  const sliderSettings = {
-    className: "center",
-    centerMode: true,
-    arrows: false,
-    dots: false,
-    infinite: false,
-    variableWidth: true,
-    slidesToScroll: 1,
-    initialSlide: sliderIdx,
-    afterChange: (idx: number) => setSliderIdx(idx),
-  };
-
   return (
     <St.Wrapper>
       {!cardLists ? (
         <Loading backgroundColor="transparent" />
       ) : (
-        <Slider {...sliderSettings} ref={sliderRef}>
+        <Slider
+          {...sliderSettings}
+          initialSlide={sliderIdx}
+          afterChange={(idx: number) => setSliderIdx(idx)}
+          ref={sliderRef}>
           {cardLists?.map((cardList) => (
             <Card key={cardList._id} openLoginModalHandler={openLoginModalHandler} {...cardList} />
           ))}
