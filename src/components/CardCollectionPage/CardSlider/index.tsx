@@ -44,7 +44,7 @@ export default function CardSlider(props: CardSliderProps) {
       ) : (
         <Slider {...sliderSettings} ref={sliderRef}>
           {cardLists?.map((cardList) => (
-            <Card key={cardList._id} openLoginModalHandler={openLoginModalHandler} cardList={cardList} />
+            <Card key={cardList._id} openLoginModalHandler={openLoginModalHandler} {...cardList} />
           ))}
           <LastCard />
         </Slider>

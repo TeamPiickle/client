@@ -1,18 +1,19 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 import { cardCollectionApi } from "../../../core/api/cardCollection";
-import { CardList } from "../../../types/cardCollection";
 import CustomFullHeart from "../CustomFullHeart";
 import TagsSlider from "../TagsSlider";
 import { St } from "./style";
 
 interface LoginCheckProps {
-  cardList: CardList;
   openLoginModalHandler: () => void;
+  _id: string;
+  content: string;
+  tags: string[];
 }
 
-export default function Card(props: LoginCheckProps) {
-  const { cardList, openLoginModalHandler } = props;
+const Card = (props: LoginCheckProps) => {
+  const { _id, content, tags, openLoginModalHandler } = props;
   const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
 
   const [isBookmarked, setIsBookmarked] = useState(false);
@@ -32,13 +33,15 @@ export default function Card(props: LoginCheckProps) {
   return (
     <St.Card>
       <St.TagsWrapper>
-        <TagsSlider tags={cardList.tags} />
+        <TagsSlider tags={tags} />
       </St.TagsWrapper>
-      <St.ContentWrapper>{cardList.content}</St.ContentWrapper>
-      <St.HeartWrapper onClick={() => handleClickHeart(cardList._id)} aria-label="북마크" role="dialog">
+      <St.ContentWrapper>{content}</St.ContentWrapper>
+      <St.HeartWrapper onClick={() => handleClickHeart(_id)} aria-label="북마크" role="dialog">
         <St.IcEmptyHeart />
         {isBookmarked && <CustomFullHeart />}
       </St.HeartWrapper>
     </St.Card>
   );
-}
+};
+
+export default React.memo(Card);

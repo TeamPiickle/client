@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useSetRecoilState } from "recoil";
 
 import { activeStateModal } from "../../../core/atom/menuBar";
@@ -7,9 +7,9 @@ export default function useModal() {
   const setIsActiveModal = useSetRecoilState(activeStateModal);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const toggleModal = () => {
+  const toggleModal = useCallback(() => {
     setIsModalOpen((prevModalState) => !prevModalState);
-  };
+  }, []);
 
   useEffect(() => {
     setIsActiveModal(isModalOpen);
