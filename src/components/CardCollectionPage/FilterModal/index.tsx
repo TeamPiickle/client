@@ -1,34 +1,21 @@
-/*
-마지막 편집자: 22-08-11 joohaem
-변경사항 및 참고:
-  - 로직 분리 리팩토링이 필요합니다
-    
-고민점:
-  - 
-*/
-
 import React, { useEffect } from "react";
-import { flushSync } from "react-dom";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 
-import { cardCollectionApi } from "../../../core/api/cardCollection";
-import { filterTagsState, sliderIdxState } from "../../../core/atom/slider";
+import { filterTagsState } from "../../../core/atom/slider";
 import { filterTagsInfo, intimacyTags } from "../../../core/cardCollection/filter";
-import { CardList } from "../../../types/cardCollection";
 import Modal from "../../common/Modal";
 import IntimacySlider from "./IntimacySlider";
 import { St } from "./style";
 
 interface FilterModalProps {
   closeHandler: () => void;
-  setCardLists: React.Dispatch<React.SetStateAction<CardList[] | null>>;
+  fetchCardListsWithFilter: () => void;
 }
 
 export default function FilterModal(props: FilterModalProps) {
-  const { closeHandler, setCardLists } = props;
+  const { closeHandler, fetchCardListsWithFilter } = props;
 
   const [filterTags, setFilterTags] = useRecoilState(filterTagsState);
-  const setSliderIdx = useSetRecoilState(sliderIdxState);
 
   useEffect(() => {
     if (!filterTags.isActive) setFilterTags({ tags: new Set(), intimacy: [0], isActive: false });
@@ -49,37 +36,8 @@ export default function FilterModal(props: FilterModalProps) {
   // 추천 시작하기를 눌렀을 때, 태그 정보들과 친밀도 정보를 담아주고 창닫기
   const submitFilter = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-
-    // 로딩 중 표시
-    flushSync(() => {
-      setCardLists(null);
-    });
+    fetchCardListsWithFilter();
     closeHandler();
-
-    // 남 -> 남자, 여 -> 여자
-    const _fetchingCheckedTags = new Set([...filterTags.tags, intimacyTags[filterTags.intimacy[0]]]);
-    if (_fetchingCheckedTags.has("남")) {
-      _fetchingCheckedTags.delete("남");
-      _fetchingCheckedTags.add("남자");
-    }
-    if (_fetchingCheckedTags.has("여")) {
-      _fetchingCheckedTags.delete("여");
-      _fetchingCheckedTags.add("여자");
-    }
-    if (_fetchingCheckedTags.has("절친해요")) {
-      _fetchingCheckedTags.delete("절친해요");
-      _fetchingCheckedTags.add("깊어요");
-    }
-
-    // 데이터 패칭
-    const { data } = await cardCollectionApi.fetchCardsWithFilter<{ data: CardList[] }>([..._fetchingCheckedTags]);
-    flushSync(() => {
-      setFilterTags((prevFilterTags) => {
-        return { ...prevFilterTags, isActive: true };
-      });
-      setCardLists(data);
-      setSliderIdx(0);
-    });
   };
 
   return (
