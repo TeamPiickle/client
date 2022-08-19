@@ -40,8 +40,12 @@ export default function MoodPiickle() {
               columnEnd={gridValue[index].columnEnd}
               rowStart={gridValue[index].rowStart}
               rowEnd={gridValue[index].rowEnd}>
-              <St.CategoryTitle>{moodPiickle.title}</St.CategoryTitle>
-              <St.CategoryContent>{moodPiickle.content}</St.CategoryContent>
+              <St.CategoryTitle className={`GTM_${moodPiickle.title.slice(0, 4)}`}>
+                {moodPiickle.title}
+              </St.CategoryTitle>
+              <St.CategoryContent className={`GTM_${moodPiickle.title.slice(0, 4)}`}>
+                {moodPiickle.content}
+              </St.CategoryContent>
             </St.Category>
           ))}
       </St.CategoryWrapper>
