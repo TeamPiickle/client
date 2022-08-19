@@ -1,5 +1,9 @@
 import styled from "styled-components";
 export const St = {
+  Root: styled.section`
+    height: 100%;
+  `,
+
   EmailAuthenticationSection: styled.section`
     height: 16.8rem;
     width: 100%;
