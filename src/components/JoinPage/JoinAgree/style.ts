@@ -36,14 +36,14 @@ export const St = {
 
   DetailBtn: styled(Link)`
     position: absolute;
-    right: 0.8rem;
+    right: 1.6rem;
   `,
 
   Line: styled.div`
     position: absolute;
     margin-top: 5.6rem;
     margin-left: -1.6rem;
-    width: 36rem;
+    width: 100%;
 
     hr {
       height: 0.2rem;
@@ -51,6 +51,10 @@ export const St = {
       background-color: ${({ theme }) => theme.colors.gray100};
       color: ${({ theme }) => theme.colors.gray100};
     }
+
+    ${({ theme }) => theme.media.desktop`
+      width: 36rem;
+    `};
   `,
 
   Button: styled.button`
