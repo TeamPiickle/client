@@ -4,8 +4,9 @@ import {
   BookmarkPage,
   CardCollectionPage,
   CategoryPage,
+  EmailAuthenticationPage,
+  EmailConfirmPage,
   Error404Page,
-  JoinPage,
   LoginPage,
   MainPage,
   MyPage,
@@ -24,7 +25,11 @@ export default function Router() {
         <Route path={`${routePaths.Vote}${routePaths.VoteId}`} element={PublicRoute({ Component: <VotePage /> })} />
         <Route path={routePaths.MyPage} element={PrivateRoute({ Component: <MyPage /> })} />
         <Route path={routePaths.BookmarkPage} element={PublicRoute({ Component: <BookmarkPage /> })} />
-        <Route path={routePaths.Join} element={PublicRoute({ Component: <JoinPage /> })} />
+        <Route
+          path={routePaths.EmailAuthentication}
+          element={PublicRoute({ Component: <EmailAuthenticationPage /> })}
+        />
+        <Route path={routePaths.EmailConfirm} element={PublicRoute({ Component: <EmailConfirmPage /> })} />
         <Route path="*" element={PublicRoute({ Component: <Error404Page /> })} />
       </Routes>
     </BrowserRouter>
