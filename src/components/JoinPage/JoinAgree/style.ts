@@ -34,7 +34,9 @@ export const St = {
     color: ${({ theme }) => theme.colors.bg};
   `,
 
-  DetailBtn: styled(Link)`
+  CheckBox: styled.button``,
+
+  DetailButton: styled(Link)`
     position: absolute;
     right: 1.6rem;
   `,
@@ -57,7 +59,7 @@ export const St = {
     `};
   `,
 
-  Button: styled.button`
+  JoinButton: styled.button`
     margin: auto;
     display: block;
     margin-top: 15.4rem;
