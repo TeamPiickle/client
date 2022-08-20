@@ -22,9 +22,8 @@ export default function JoinAgree() {
 
   function ChangeCheckBox(index: number) {
     const currentList = [...lists];
-    const isPicked = index;
     setIsPicked(index);
-    console.log("오류값", isPicked);
+
     if (currentList[index].state === false) {
       currentList[index].checkBox = <IcFullCheckBox />;
     } else if (currentList[index].state === true) {
@@ -35,7 +34,6 @@ export default function JoinAgree() {
 
   useEffect(() => {
     console.log(lists);
-    console.log("lists이라는 값이 업데이트 될 때만 실행");
 
     if (lists[isPicked].state === false) {
       lists[isPicked].state = true;
