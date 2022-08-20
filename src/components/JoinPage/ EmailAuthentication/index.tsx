@@ -1,29 +1,33 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import ErrorPopup from "../ErrorPopup";
 import { St } from "./style";
 
 export default function EmailAuthentication() {
+  const navigate = useNavigate();
   const [emailText, setEmailText] = useState<string>("");
   const [isPopupOpen, setIsPopupOpen] = useState<any>(false);
   const emailInput = useRef<HTMLInputElement | null>(null);
 
-  const getUserEmail = () => {
+  const onChangeEmail = () => {
     console.log(emailInput.current);
     emailInput.current && setEmailText(emailInput.current.value);
-    console.log(emailText);
   };
+
+  useEffect(() => console.log(emailText), [emailText]);
 
   const verifyEmail = () => {
     const email: string | null = emailInput.current && emailInput.current.value;
     const regEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
 
     email && console.log(regEmail.test(email));
+    console.log(email);
 
     if (!email || regEmail.test(email) === false) {
       setIsPopupOpen(true);
     } else {
-      console.log("");
+      navigate("/email-confirm");
     }
   };
 
@@ -40,7 +44,7 @@ export default function EmailAuthentication() {
               id="email"
               placeholder="hello@piickle.com"
               ref={emailInput}
-              onChange={getUserEmail}
+              onChange={onChangeEmail}
               value={emailText}
             />
             <St.SendBtn onClick={verifyEmail}>인증메일 전송</St.SendBtn>
