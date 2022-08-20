@@ -21,7 +21,9 @@ export default function JoinAgree() {
 
   const agreeList = lists.map((item) => (
     <St.AgreeContentItem key={item.id}>
-      {item.checkBox} {item.text} {item.button} {item.line}
+      {item.checkBox} {item.text}
+      <St.DetailBtn to="">{item.button}</St.DetailBtn>
+      <St.Line>{item.line}</St.Line>
     </St.AgreeContentItem>
   ));
 
@@ -29,6 +31,7 @@ export default function JoinAgree() {
     <St.JoinAgree>
       <St.AgreeTitle>약관을 동의해주세요</St.AgreeTitle>
       <St.AgreeContent>{agreeList}</St.AgreeContent>
+      <St.Button type="button">회원가입 완료하기</St.Button>
     </St.JoinAgree>
   );
 }
