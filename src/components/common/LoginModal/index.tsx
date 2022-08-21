@@ -36,6 +36,7 @@ export default function LoginModal(props: LoginCheckProps) {
             type="button"
             onClick={() => {
               closeHandler();
+              navigate(routePaths.EmailAuthentication);
             }}>
             회원가입
           </St.Button>

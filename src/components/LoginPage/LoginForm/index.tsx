@@ -1,8 +1,16 @@
+import { useNavigate } from "react-router-dom";
+
+import { routePaths } from "../../../core/routes/path";
 import useLoginForm from "../hooks/useLoginForm";
 import { St } from "./style";
 
 export default function LoginForm() {
   const { inputRefs, errorMessage, submitLoginForm } = useLoginForm();
+  const navigate = useNavigate();
+
+  const goJoinPage = () => {
+    navigate(routePaths.EmailAuthentication);
+  };
 
   return (
     <St.Section onSubmit={submitLoginForm}>
@@ -29,7 +37,8 @@ export default function LoginForm() {
         <St.LoginBtn type="submit">로그인하기</St.LoginBtn>
       </St.Form>
       <St.LinkWrapper>
-        <St.Link>회원가입</St.Link> <St.Delimeter>|</St.Delimeter> <St.Link>비밀번호 재설정</St.Link>
+        <St.Link onClick={goJoinPage}>회원가입</St.Link> <St.Delimeter>|</St.Delimeter>{" "}
+        <St.Link>비밀번호 재설정</St.Link>
       </St.LinkWrapper>
     </St.Section>
   );

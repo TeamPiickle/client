@@ -36,6 +36,10 @@ export default function MenuBar(props: MenuBarProps) {
     closeMenuBar();
   };
 
+  const handleJoin = () => {
+    navigate(routePaths.EmailAuthentication);
+  };
+
   return (
     <St.Root>
       <StContentsContainer>
@@ -67,7 +71,7 @@ export default function MenuBar(props: MenuBarProps) {
                 <St.MyProfileBtn to={routePaths.Login} onClick={closeMenuBar}>
                   로그인
                 </St.MyProfileBtn>
-                <St.LogoutBtn>회원가입</St.LogoutBtn>
+                <St.LogoutBtn onClick={handleJoin}>회원가입</St.LogoutBtn>
               </St.BtnContainer>
             </St.ProfileContainer>
           )}
