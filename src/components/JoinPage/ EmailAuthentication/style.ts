@@ -1,11 +1,11 @@
 import styled from "styled-components";
 export const St = {
   Root: styled.section`
-    height: 100%;
+    height: 100vh;
   `,
 
   EmailAuthenticationSection: styled.section`
-    height: 16.8rem;
+    height: 54.4rem;
     width: 100%;
   `,
 
@@ -14,9 +14,10 @@ export const St = {
 
     padding: 2.4rem 0 3.2rem 1.6rem;
   `,
-
   EmailAuthenticationTitleText: styled.h1`
     ${({ theme }) => theme.fonts.h1}
+
+    color : ${({ theme }) => theme.colors.bg}
   `,
 
   EmailAuthenticationContent: styled.article`
@@ -31,6 +32,22 @@ export const St = {
 
   EmailAuthenticationContentTitle: styled.h2`
     ${({ theme }) => theme.fonts.body6}
+  `,
+
+  TitleContainer: styled.div`
+    display: flex;
+
+    ${({ theme }) => theme.fonts.body6}
+  `,
+
+  TitleText: styled.h2``,
+
+  EssentialText: styled.div`
+    color: ${({ theme }) => theme.colors.bg};
+  `,
+
+  EssentialIcon: styled.div`
+    color: ${({ theme }) => theme.colors.red};
   `,
 
   EmailAuthenticationInputContainer: styled.div`
@@ -50,6 +67,13 @@ export const St = {
     padding-left: 2.4rem;
 
     ${({ theme }) => theme.fonts.body6}
+  `,
+  EmailWarningText: styled.div`
+    ${({ theme }) => theme.fonts.caption3};
+
+    color: ${({ theme }) => theme.colors.red};
+
+    margin-left: 3.6rem;
   `,
 
   SendBtn: styled.button`

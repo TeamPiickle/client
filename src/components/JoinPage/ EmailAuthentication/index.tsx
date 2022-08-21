@@ -1,44 +1,51 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import ErrorPopup from "../ErrorPopup";
+import { prevPages } from "../../../core/join/prevPages";
+import { progressRate } from "../../../core/join/progressRate";
+import Footer from "../../common/Footer";
+import Header from "../Header";
+import PageProgressBar from "../PageProgressBar";
 import { St } from "./style";
 
 export default function EmailAuthentication() {
   const navigate = useNavigate();
   const [emailText, setEmailText] = useState<string>("");
-  const [isPopupOpen, setIsPopupOpen] = useState<any>(false);
+  const [isEmailInValid, setIsEmailInValid] = useState<any>(false);
   const emailInput = useRef<HTMLInputElement | null>(null);
 
   const onChangeEmail = () => {
     console.log(emailInput.current);
     emailInput.current && setEmailText(emailInput.current.value);
   };
-
-  useEffect(() => console.log(emailText), [emailText]);
-
   const verifyEmail = () => {
     const email: string | null = emailInput.current && emailInput.current.value;
     const regEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
 
-    email && console.log(regEmail.test(email));
-    console.log(email);
-
     if (!email || regEmail.test(email) === false) {
-      setIsPopupOpen(true);
+      setIsEmailInValid(true);
     } else {
-      navigate("/email-confirm");
+      navigate("/email-confirm", {
+        state: {
+          userEmail: emailText,
+        },
+      });
     }
   };
 
   return (
     <St.Root>
+      <Header prevPage={prevPages[0].prevPage} />
+      <PageProgressBar rate={progressRate[0].rate} />
       <St.EmailAuthenticationSection>
         <St.EmailAuthenticationTitle>
           <St.EmailAuthenticationTitleText>이메일 인증이 필요합니다</St.EmailAuthenticationTitleText>
         </St.EmailAuthenticationTitle>
         <St.EmailAuthenticationContent>
-          <St.EmailAuthenticationContentTitle>이메일</St.EmailAuthenticationContentTitle>
+          <St.TitleContainer>
+            <St.TitleText>이메일</St.TitleText>
+            {isEmailInValid ? <St.EssentialIcon>*</St.EssentialIcon> : <St.EssentialText>(필수)</St.EssentialText>}
+          </St.TitleContainer>
           <St.EmailAuthenticationInputContainer>
             <St.EmailAuthenticationInputForm
               id="email"
@@ -50,8 +57,9 @@ export default function EmailAuthentication() {
             <St.SendBtn onClick={verifyEmail}>인증메일 전송</St.SendBtn>
           </St.EmailAuthenticationInputContainer>
         </St.EmailAuthenticationContent>
+        {isEmailInValid && <St.EmailWarningText>이메일 형식이 올바르지 않습니다</St.EmailWarningText>}
       </St.EmailAuthenticationSection>
-      {isPopupOpen && <ErrorPopup isPopupOpen={isPopupOpen} setIsPopupOpen={setIsPopupOpen} />}
+      <Footer />
     </St.Root>
   );
 }
