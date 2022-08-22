@@ -55,6 +55,7 @@ export const St = {
     font-weight: 700;
     font-size: 12px;
     line-height: 140%;
+    //프로토타입 없음
 
     text-decoration-line: underline;
 
