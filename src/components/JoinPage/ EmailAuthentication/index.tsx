@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { prevPages } from "../../../core/join/prevPages";
 import { progressRate } from "../../../core/join/progressRate";
+import { routePaths } from "../../../core/routes/path";
 import Footer from "../../common/Footer";
 import Header from "../Header";
 import PageProgressBar from "../PageProgressBar";
@@ -15,9 +16,9 @@ export default function EmailAuthentication() {
   const emailInput = useRef<HTMLInputElement | null>(null);
 
   const onChangeEmail = () => {
-    console.log(emailInput.current);
     emailInput.current && setEmailText(emailInput.current.value);
   };
+
   const verifyEmail = () => {
     const email: string | null = emailInput.current && emailInput.current.value;
     const regEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
@@ -25,7 +26,7 @@ export default function EmailAuthentication() {
     if (!email || regEmail.test(email) === false) {
       setIsEmailInValid(true);
     } else {
-      navigate("/email-confirm", {
+      navigate(routePaths.EmailConfirm, {
         state: {
           userEmail: emailText,
         },
