@@ -1,4 +1,4 @@
-import { ProgressRate } from "../../../core/join/progressRate";
+import { ProgressRate } from "../../../../core/join/progressRate";
 import { St } from "./style";
 
 export interface ProgressRateProps {

@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 
-import { IcCloseBtn, IcGoBackBtn } from "../../../asset/icon";
-import { PrevPages } from "../../../core/join/prevPages";
-import { routePaths } from "../../../core/routes/path";
+import { IcCloseBtn, IcGoBackBtn } from "../../../../asset/icon";
+import { PrevPages } from "../../../../core/join/prevPages";
+import { routePaths } from "../../../../core/routes/path";
 import { St } from "./style";
 
 export interface HeaderProps {

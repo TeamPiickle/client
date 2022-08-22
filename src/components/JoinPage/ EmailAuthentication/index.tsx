@@ -5,8 +5,8 @@ import { prevPages } from "../../../core/join/prevPages";
 import { progressRate } from "../../../core/join/progressRate";
 import { routePaths } from "../../../core/routes/path";
 import Footer from "../../common/Footer";
-import Header from "../Header";
-import PageProgressBar from "../PageProgressBar";
+import Header from "../common/Header";
+import PageProgressBar from "../common/PageProgressBar";
 import { St } from "./style";
 
 export default function EmailAuthentication() {
