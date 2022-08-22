@@ -62,7 +62,7 @@ export const St = {
   JoinButton: styled.button`
     margin: auto;
     display: block;
-    margin-top: 15.4rem;
+    margin-top: 9.8rem;
 
     border-radius: 5rem;
     background-color: ${({ theme }) => theme.colors.bg};
