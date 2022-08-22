@@ -8,6 +8,18 @@ export default function JoinAgree() {
   //const [allPicked, setAllPicked] = useState(false);
   const [activeBtn, setActiveBtn] = useState(0);
 
+  const [openAlert, setOpenAlert] = useState(false);
+
+  function alertClassName() {
+    if (openAlert === false) {
+      return "login-alert";
+    } else {
+      // 경고창 띄우기
+      // setOpenAlert(true);
+      return "login-alert-view";
+    }
+  }
+
   const [lists, setLists] = useState([
     { id: 1, state: false, checkBox: <IcEmptyCheckBox />, text: "약관 전체동의", line: <hr /> },
     { id: 2, state: false, checkBox: <IcEmptyCheckBox />, text: "이용약관 동의 (필수)", button: <IcNextBtn /> },
@@ -38,7 +50,6 @@ export default function JoinAgree() {
       currentList[index].checkBox = <IcEmptyCheckBox />;
     }
     // aLLClickCheckBox();
-
     setLists(currentList);
   }
 
@@ -140,9 +151,11 @@ export default function JoinAgree() {
     <St.JoinAgree>
       <St.AgreeTitle>약관을 동의해주세요</St.AgreeTitle>
       <St.AgreeContent>{agreeList}</St.AgreeContent>
-      <St.JoinButton onClick={() => (location.href = "")}>회원가입 완료하기</St.JoinButton>
+      <St.ModalContainer className={alertClassName()}>이용약관에 동의해주세요</St.ModalContainer>
+      <St.JoinButton>회원가입 완료하기</St.JoinButton>
     </St.JoinAgree>
   );
 }
 
 // className={`${activeBtn >= 2 ? "active" : ""}`}
+// onClick={() => (location.href = "")

@@ -59,10 +59,35 @@ export const St = {
     `};
   `,
 
+  ModalContainer: styled.div`
+    display: flex;
+    margin: auto;
+    align-items: center;
+
+    margin-top: 5.7rem;
+    padding-left: 1.6rem;
+    width: calc(100% - 3.2rem);
+    height: 4rem;
+
+    background: ${({ theme }) => theme.colors.gray100};
+    border-radius: 10px;
+
+    color: ${({ theme }) => theme.colors.bg};
+    ${({ theme }) => theme.fonts.caption4};
+
+    &.login-alert {
+      visibility: hidden;
+    }
+
+    &.log-alert-view {
+      display: flex;
+    }
+  `,
+
   JoinButton: styled.button`
     margin: auto;
     display: block;
-    margin-top: 9.8rem;
+    margin-top: 1.2rem;
 
     border-radius: 5rem;
     background-color: ${({ theme }) => theme.colors.bg};
