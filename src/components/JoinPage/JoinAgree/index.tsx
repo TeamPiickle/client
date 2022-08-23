@@ -6,9 +6,9 @@ import { St } from "./style";
 export default function JoinAgree() {
   const [isPicked, setIsPicked] = useState(0);
   const [allPicked, setAllPicked] = useState(false);
-  const [activeBtn, setActiveBtn] = useState(0);
-
   const [checkItems, setCheckItems] = useState([0]);
+  const [openAlert, setOpenAlert] = useState(false);
+
   const [lists, setLists] = useState([
     { id: 1, state: false, level: 1, checkBox: <IcEmptyCheckBox />, text: "약관 전체동의", line: <hr /> },
     {
@@ -38,17 +38,29 @@ export default function JoinAgree() {
     { id: 5, state: false, level: 2, checkBox: <IcEmptyCheckBox />, text: "만 14세 이상입니다 (필수)" },
   ]);
 
+  useEffect(() => {
+    console.log(lists);
+    console.log(lists[isPicked]);
+    if (lists[isPicked].state === false) {
+      lists[isPicked].state = true;
+    } else if (lists[isPicked].state === true) {
+      lists[isPicked].state = false;
+    }
+  }, [isPicked, lists]);
+
   function ChangeCheckBox(index: number) {
     const currentList = [...lists];
+    setIsPicked(index);
 
     if (currentList[index].state === false) {
       currentList[index].checkBox = <IcFullCheckBox />;
     } else if (currentList[index].state === true) {
       currentList[index].checkBox = <IcEmptyCheckBox />;
     }
-
-    handleAllCheck(currentList[0].state);
-    CheckAllPicked();
+    alertClassName;
+    setLists(currentList);
+    //handleAllCheck(currentList[0].state);
+    //CheckAllPicked();
 
     // if (currentList[0].state) {
     //   CheckAllPicked();
@@ -62,10 +74,9 @@ export default function JoinAgree() {
     //     console.log("배열 길이", checkItems.length);
     //   }
     // }
-
-    setLists(currentList);
   }
 
+  /*
   function CheckAllPicked() {
     const currentList = [...lists];
 
@@ -107,38 +118,19 @@ export default function JoinAgree() {
     }
   };
 
-  // const [openAlert, setOpenAlert] = useState(false);
-  // State 이용하면 무한루프에 갇힘 왜?
+  */
+
   function alertClassName() {
-    const currentList = [...lists];
-    let alert = false;
-    if (currentList[0].state === false) {
-      //setOpenAlert(false);
-      alert = false;
-    } else if (currentList[1].state === false && currentList[2].state === false && currentList[4].state === false) {
-      //setOpenAlert(false);
-      alert = false;
-    } else {
-      //setOpenAlert(true);
-      alert = true;
-    }
-    if (alert === false) {
-      return "login-alert";
-    } else {
-      // setOpenAlert(true);
-      return "login-alert-view";
-    }
-    // return openAlert === false ? "login-alert" : "login-alert-view";
+    return openAlert === false ? "login-alert" : "login-alert-view";
   }
 
   useEffect(() => {
-    console.log(lists);
-    if (lists[isPicked].state === false) {
-      lists[isPicked].state = true;
-    } else if (lists[isPicked].state === true) {
-      lists[isPicked].state = false;
-    }
-  }, [isPicked, lists]);
+    const A = lists.filter((item) => item.level > 1).length;
+    const B = lists.filter((item) => item.level > 1 && item.state === true).length;
+    const C = lists.filter((item) => item.level === 2).length;
+    const D = lists.filter((item) => item.level === 2 && item.state === true).length;
+    return A === B || C === D ? setOpenAlert(false) : setOpenAlert(true);
+  }, [lists]);
 
   const agreeList = lists.map((item, index) => (
     <St.AgreeContentItem key={item.id}>
