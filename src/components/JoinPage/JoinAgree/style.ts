@@ -31,7 +31,11 @@ export const St = {
     height: 5.6rem;
 
     ${({ theme }) => theme.fonts.body12};
-    color: ${({ theme }) => theme.colors.bg};
+    color: ${({ theme }) => theme.colors.gray600};
+
+    &.active {
+      color: ${({ theme }) => theme.colors.bg};
+    }
   `,
 
   CheckBox: styled.button``,

@@ -8,6 +8,8 @@ export default function JoinAgree() {
   const [allPicked, setAllPicked] = useState(false);
   const [checkItems, setCheckItems] = useState([0]);
   const [openAlert, setOpenAlert] = useState(false);
+  // checkActive는 사용되지도 않는데,,, setCheckActive을 쓰면, 체크박스를 눌렀을 때 글자색이 잘 변경됨 왜지?
+  const [checkActive, setCheckActive] = useState<boolean>();
 
   const [lists, setLists] = useState([
     { id: 1, state: false, level: 1, checkBox: <IcEmptyCheckBox />, text: "약관 전체동의", line: <hr /> },
@@ -43,8 +45,10 @@ export default function JoinAgree() {
     console.log(lists[isPicked]);
     if (lists[isPicked].state === false) {
       lists[isPicked].state = true;
+      setCheckActive(true);
     } else if (lists[isPicked].state === true) {
       lists[isPicked].state = false;
+      setCheckActive(false);
     }
   }, [isPicked, lists]);
 
@@ -54,11 +58,14 @@ export default function JoinAgree() {
 
     if (currentList[index].state === false) {
       currentList[index].checkBox = <IcFullCheckBox />;
+      setCheckActive(false);
     } else if (currentList[index].state === true) {
       currentList[index].checkBox = <IcEmptyCheckBox />;
+      setCheckActive(true);
     }
     alertClassName;
     setLists(currentList);
+
     //handleAllCheck(currentList[0].state);
     //CheckAllPicked();
 
@@ -133,7 +140,7 @@ export default function JoinAgree() {
   }, [lists]);
 
   const agreeList = lists.map((item, index) => (
-    <St.AgreeContentItem key={item.id}>
+    <St.AgreeContentItem key={item.id} className={"checkLists" + (item.state === true ? " active" : "")}>
       <St.CheckBox type="button" onClick={() => ChangeCheckBox(index)}>
         {item.checkBox}
       </St.CheckBox>
