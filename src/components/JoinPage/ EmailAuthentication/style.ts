@@ -54,7 +54,6 @@ export const St = {
     height: 4.4rem;
 
     display: flex;
-    /* justify-content: space-between; */
   `,
 
   EmailAuthenticationInputForm: styled.input`
@@ -77,7 +76,7 @@ export const St = {
   `,
 
   SendBtn: styled.button`
-    width: 1.7rme;
+    width: 1.7rem;
 
     ${({ theme }) => theme.fonts.caption05}
 
