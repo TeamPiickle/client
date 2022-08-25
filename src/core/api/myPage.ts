@@ -1,6 +1,7 @@
 import useSWR, { useSWRConfig } from "swr";
 
-import { PiickleSWRResponse } from "../../types/swr";
+import { PatchingUserNickName, PatchingUserPassword } from "../../types/remote/request";
+import { PiickleSWRResponse } from "../../types/remote/swr";
 import { UserProfile } from "../../types/users";
 import { realReq } from "./common/axios";
 import { PATH } from "./common/constants";
@@ -26,18 +27,13 @@ function patchProfileImg(file: FormData) {
 }
 
 // 유저 닉네임 수정
-function patchUserNickName(nickname: string) {
-  return realReq.PATCH(`${PATH.USERS}/nickname`, {
-    nickname: nickname,
-  });
+function patchUserNickName(patchingUserNickname: PatchingUserNickName) {
+  return realReq.PATCH(`${PATH.USERS}/nickname`, patchingUserNickname);
 }
 
 // 유저 비밀번호 재설정
-function patchUserPassword(email: string, newPassword: string) {
-  return realReq.PATCH(`${PATH.USERS}/me/password`, {
-    email,
-    newPassword,
-  });
+function patchUserPassword(PatchingUserPassword: PatchingUserPassword) {
+  return realReq.PATCH(`${PATH.USERS}/me/password`, PatchingUserPassword);
 }
 
 export const myPageApi = {
