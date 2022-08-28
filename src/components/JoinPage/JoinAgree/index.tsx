@@ -8,7 +8,6 @@ export default function JoinAgree() {
   const [allPicked, setAllPicked] = useState(false);
   const [checkItems, setCheckItems] = useState([0]);
   const [openAlert, setOpenAlert] = useState(false);
-  // checkActive는 사용되지도 않는데,,, setCheckActive을 쓰면, 체크박스를 눌렀을 때 글자색이 잘 변경됨 왜지?
   const [checkActive, setCheckActive] = useState<boolean>();
 
   const [lists, setLists] = useState([
@@ -65,67 +64,7 @@ export default function JoinAgree() {
     }
     alertClassName;
     setLists(currentList);
-
-    //handleAllCheck(currentList[0].state);
-    //CheckAllPicked();
-
-    // if (currentList[0].state) {
-    //   CheckAllPicked();
-    //
-    //   if (checkItems.length != 4) {
-    //     console.log("1");
-    //     handleAllCheck(false);
-    //   } else {
-    //     console.log("2");
-    //     handleAllCheck(true);
-    //     console.log("배열 길이", checkItems.length);
-    //   }
-    // }
   }
-
-  /*
-  function CheckAllPicked() {
-    const currentList = [...lists];
-
-    if (allPicked === false) {
-      //currentList[0].checkBox = <IcFullCheckBox />;
-      currentList[1].checkBox = <IcFullCheckBox />;
-      currentList[2].checkBox = <IcFullCheckBox />;
-      currentList[3].checkBox = <IcFullCheckBox />;
-      currentList[4].checkBox = <IcFullCheckBox />;
-      //currentList[0].state = true;
-      currentList[1].state = true;
-      currentList[2].state = true;
-      currentList[3].state = true;
-      currentList[4].state = true;
-    } else {
-      //currentList[0].checkBox = <IcEmptyCheckBox />;
-      currentList[1].checkBox = <IcEmptyCheckBox />;
-      currentList[2].checkBox = <IcEmptyCheckBox />;
-      currentList[3].checkBox = <IcEmptyCheckBox />;
-      currentList[4].checkBox = <IcEmptyCheckBox />;
-      //currentList[0].state = false;
-      currentList[1].state = false;
-      currentList[2].state = false;
-      currentList[3].state = false;
-      currentList[4].state = false;
-    }
-  }
-
-  const handleAllCheck = (checked: boolean) => {
-    if (checked) {
-      const idArray: Array<number> = [];
-      lists.forEach((el) => idArray.push(el.id));
-      setCheckItems(idArray);
-      setAllPicked(true);
-      console.log("배열 길이", checkItems.length);
-    } else {
-      setCheckItems([]);
-      setAllPicked(false);
-    }
-  };
-
-  */
 
   function alertClassName() {
     return openAlert === false ? "login-alert" : "login-alert-view";
@@ -159,6 +98,3 @@ export default function JoinAgree() {
     </St.JoinAgree>
   );
 }
-
-// className={`${activeBtn >= 2 ? "active" : ""}`}
-// onClick={() => (location.href = "")
