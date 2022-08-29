@@ -13,10 +13,6 @@ export default function EmailConfirm() {
   const location = useLocation();
   const state = location.state as { userEmail: string };
   const userEmail = state.userEmail;
-
-  const resendEmail = () => {
-    navigate(routePaths.EmailAuthentication);
-  };
   return (
     <St.Root>
       <Header prevPage={prevPages[1].prevPage} />
@@ -30,7 +26,7 @@ export default function EmailConfirm() {
         </St.ConfirmDescription>
         <St.EmailErrorContainer>
           <St.SendErrorText>인증 메일이 오지 않았어요</St.SendErrorText>
-          <St.ReSendBtn onClick={resendEmail}>인증메일 재전송</St.ReSendBtn>
+          <St.ReSendBtn>인증메일 재전송</St.ReSendBtn>
         </St.EmailErrorContainer>
       </St.EmailConfirmContainer>
       <Footer />
