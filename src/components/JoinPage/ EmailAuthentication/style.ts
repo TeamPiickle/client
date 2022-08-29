@@ -6,15 +6,14 @@ export const St = {
 
   EmailAuthenticationSection: styled.section`
     height: 54.4rem;
-    width: 100%;
   `,
 
-  EmailAuthenticationTitle: styled.article`
+  TitleContainer: styled.article`
     height: 9.2rem;
 
     padding: 2.4rem 0 3.2rem 1.6rem;
   `,
-  EmailAuthenticationTitleText: styled.h1`
+  TitleText: styled.h1`
     ${({ theme }) => theme.fonts.h1}
 
     color : ${({ theme }) => theme.colors.bg}
@@ -30,17 +29,15 @@ export const St = {
     justify-content: space-between;
   `,
 
-  EmailAuthenticationContentTitle: styled.h2`
+  ContentDescription: styled.h2`
     ${({ theme }) => theme.fonts.body6}
   `,
 
-  TitleContainer: styled.div`
+  DescriptionContainer: styled.div`
     display: flex;
 
     ${({ theme }) => theme.fonts.body6}
   `,
-
-  TitleText: styled.h2``,
 
   EssentialText: styled.div`
     color: ${({ theme }) => theme.colors.bg};
@@ -50,13 +47,13 @@ export const St = {
     color: ${({ theme }) => theme.colors.red};
   `,
 
-  EmailAuthenticationInputContainer: styled.div`
+  InputContainer: styled.div`
     height: 4.4rem;
 
     display: flex;
   `,
 
-  EmailAuthenticationInputForm: styled.input`
+  EmailInputForm: styled.input`
     width: 24.8rem;
 
     border: solid 0.1rem ${({ theme }) => theme.colors.gray300};
@@ -67,7 +64,7 @@ export const St = {
 
     ${({ theme }) => theme.fonts.body6}
   `,
-  EmailWarningText: styled.div`
+  WarningText: styled.div`
     ${({ theme }) => theme.fonts.caption3};
 
     color: ${({ theme }) => theme.colors.red};
@@ -76,8 +73,6 @@ export const St = {
   `,
 
   SendBtn: styled.button`
-    width: 1.7rem;
-
     ${({ theme }) => theme.fonts.caption05}
 
     text-decoration-line: underline;

@@ -39,16 +39,16 @@ export default function EmailAuthentication() {
       <Header prevPage={prevPages[0].prevPage} />
       <PageProgressBar rate={progressRate[0].rate} />
       <St.EmailAuthenticationSection>
-        <St.EmailAuthenticationTitle>
-          <St.EmailAuthenticationTitleText>이메일 인증이 필요합니다</St.EmailAuthenticationTitleText>
-        </St.EmailAuthenticationTitle>
+        <St.TitleContainer>
+          <St.TitleText>이메일 인증이 필요합니다</St.TitleText>
+        </St.TitleContainer>
         <St.EmailAuthenticationContent>
-          <St.TitleContainer>
-            <St.TitleText>이메일</St.TitleText>
+          <St.DescriptionContainer>
+            <St.ContentDescription>이메일</St.ContentDescription>
             {isEmailInValid ? <St.EssentialIcon>*</St.EssentialIcon> : <St.EssentialText>(필수)</St.EssentialText>}
-          </St.TitleContainer>
-          <St.EmailAuthenticationInputContainer>
-            <St.EmailAuthenticationInputForm
+          </St.DescriptionContainer>
+          <St.InputContainer>
+            <St.EmailInputForm
               id="email"
               placeholder="hello@piickle.com"
               ref={emailInput}
@@ -56,9 +56,9 @@ export default function EmailAuthentication() {
               value={emailText}
             />
             <St.SendBtn onClick={verifyEmail}>인증메일 전송</St.SendBtn>
-          </St.EmailAuthenticationInputContainer>
+          </St.InputContainer>
         </St.EmailAuthenticationContent>
-        {isEmailInValid && <St.EmailWarningText>이메일 형식이 올바르지 않습니다</St.EmailWarningText>}
+        {isEmailInValid && <St.WarningText>이메일 형식이 올바르지 않습니다</St.WarningText>}
       </St.EmailAuthenticationSection>
       <Footer />
     </St.Root>
