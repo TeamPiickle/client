@@ -2,7 +2,7 @@ import useSWR from "swr";
 
 import { CardList } from "../../types/cardCollection";
 import { BallotList, CategoryList } from "../../types/main";
-import { PiickleSWRResponse } from "../../types/swr";
+import { PiickleSWRResponse } from "../../types/remote/swr";
 import { realReq } from "./common/axios";
 import { PATH } from "./common/constants";
 
