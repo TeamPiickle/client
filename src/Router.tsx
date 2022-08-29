@@ -27,9 +27,12 @@ export default function Router() {
         <Route path={routePaths.BookmarkPage} element={PublicRoute({ Component: <BookmarkPage /> })} />
         <Route
           path={routePaths.EmailAuthentication}
-          element={PublicRoute({ Component: <EmailAuthenticationPage /> })}
+          element={PublicRoute({ Component: <EmailAuthenticationPage />, restricted: true })}
         />
-        <Route path={routePaths.EmailConfirm} element={PublicRoute({ Component: <EmailConfirmPage /> })} />
+        <Route
+          path={routePaths.EmailConfirm}
+          element={PublicRoute({ Component: <EmailConfirmPage />, restricted: true })}
+        />
         <Route path="*" element={PublicRoute({ Component: <Error404Page /> })} />
       </Routes>
     </BrowserRouter>
