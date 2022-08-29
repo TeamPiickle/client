@@ -8,7 +8,7 @@ export const St = {
 
   ProgressRate: styled.div<{ rate: number }>`
     height: 100%;
-    width: ${({ rate }) => rate}rem;
+    width: ${({ rate }) => rate}%;
 
     background-color: ${({ theme }) => theme.colors.green};
   `,
