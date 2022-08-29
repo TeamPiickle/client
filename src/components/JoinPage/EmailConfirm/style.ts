@@ -3,11 +3,9 @@ import styled from "styled-components";
 export const St = {
   Root: styled.section`
     height: 100vh;
-    width: 100%;
   `,
 
   EmailConfirmContainer: styled.section`
-    width: 100%;
     height: 54.4rem;
 
     padding-top: 2.4rem;
@@ -15,7 +13,7 @@ export const St = {
     position: relative;
   `,
 
-  EmailConfirmTitle: styled.h1`
+  TitleText: styled.h1`
     ${({ theme }) => theme.fonts.h1};
 
     colors: ${({ theme }) => theme.colors.bg};
@@ -24,7 +22,7 @@ export const St = {
     margin-left: 1.6rem;
   `,
 
-  EmailConfirmDescription: styled.h2`
+  ConfirmDescription: styled.h2`
     ${({ theme }) => theme.fonts.body12};
 
     colors: ${({ theme }) => theme.colors.gray600};
@@ -43,19 +41,14 @@ export const St = {
     bottom: 5.2rem;
   `,
 
-  EmailSendErrorText: styled.h3`
+  SendErrorText: styled.h3`
     ${({ theme }) => theme.fonts.caption3};
 
     color: ${({ theme }) => theme.colors.gray600};
   `,
 
-  EmailReSendBtn: styled.button`
-    font-family: "Pretendard";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 140%;
-    //프로토타입 없음
+  ReSendBtn: styled.button`
+    ${({ theme }) => theme.fonts.caption05}
 
     text-decoration-line: underline;
 
