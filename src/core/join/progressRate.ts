@@ -4,9 +4,9 @@ export type ProgressRate = {
 
 export const progressRate: ProgressRate[] = [
   {
-    rate: 6,
+    rate: 16,
   },
   {
-    rate: 12,
+    rate: 32,
   },
 ];
