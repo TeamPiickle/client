@@ -1,4 +1,4 @@
-import Footer from "../common/Footer";
+import Footer from "../@common/Footer";
 import JoinAgree from "./JoinAgree";
 
 export default function JoinPage() {
