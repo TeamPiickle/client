@@ -33,7 +33,6 @@ export default function JoinAgree() {
   const [isPicked, setIsPicked] = useState(0);
   const [isAllPicked, setAllIsPicked] = useState(false);
   const [openAlert, setOpenAlert] = useState(false);
-
   const [isPickedItems, setIsPickedItems] = useState([
     { id: "all", state: false },
     { id: "first", state: false },
@@ -43,8 +42,6 @@ export default function JoinAgree() {
   ]);
 
   useEffect(() => {
-    console.log(isPickedItems);
-    console.log(isPicked);
     if (isPicked === 0) {
       for (let i = 1; i <= 4; i++) {
         if (isPickedItems[0].state) {
@@ -56,17 +53,6 @@ export default function JoinAgree() {
     }
     isPickedItems[isPicked].state ? (isPickedItems[isPicked].state = false) : (isPickedItems[isPicked].state = true);
   }, [isPicked, isPickedItems]);
-
-  useEffect(() => {
-    const A = agreeListContents.filter((item) => item.level > 1).length;
-    const B = agreeListContents.filter((item) => item.level > 1 && isPickedItems[item.id - 1].state === true).length;
-    return A === B ? setAllIsPicked(true) : setAllIsPicked(false);
-  }, [isPickedItems, isAllPicked]);
-
-  const AllCheck =
-    isAllPicked === true
-      ? (agreeListContents[0].checkBox = <IcFullCheckBox />) && (isPickedItems[0].state = true)
-      : (agreeListContents[0].checkBox = <IcEmptyCheckBox />) && (isPickedItems[0].state = false);
 
   function ChangeCheckBox(index: number) {
     const currentList = [...isPickedItems];
@@ -93,15 +79,25 @@ export default function JoinAgree() {
     setIsPickedItems(currentList);
   }
 
+  const AllCheck =
+    isAllPicked === true
+      ? (agreeListContents[0].checkBox = <IcFullCheckBox />) && (isPickedItems[0].state = true)
+      : (agreeListContents[0].checkBox = <IcEmptyCheckBox />) && (isPickedItems[0].state = false);
+
   const alertClassName = openAlert === false ? "login-alert" : "login-alert-view";
 
   useEffect(() => {
-    const A = agreeListContents.filter((item) => item.level > 1).length;
-    const B = agreeListContents.filter((item) => item.level > 1 && isPickedItems[item.id - 1].state === true).length;
-    const C = agreeListContents.filter((item) => item.level === 2).length;
-    const D = agreeListContents.filter((item) => item.level === 2 && isPickedItems[item.id - 1].state === true).length;
-    return A === B || C === D ? setOpenAlert(false) : setOpenAlert(true);
-  }, [isPickedItems, openAlert]);
+    const All = agreeListContents.filter((item) => item.level > 1).length;
+    const TrueAll = agreeListContents.filter(
+      (item) => item.level > 1 && isPickedItems[item.id - 1].state === true,
+    ).length;
+    const Required = agreeListContents.filter((item) => item.level === 2).length;
+    const TrueRequired = agreeListContents.filter(
+      (item) => item.level === 2 && isPickedItems[item.id - 1].state === true,
+    ).length;
+    All === TrueAll ? setAllIsPicked(true) : setAllIsPicked(false);
+    All === TrueAll || Required === TrueRequired ? setOpenAlert(false) : setOpenAlert(true);
+  }, [isPickedItems, openAlert, isAllPicked]);
 
   const agreeList = agreeListContents.map((item, index) => (
     <St.AgreeContentItem
