@@ -47,16 +47,17 @@ export default function JoinAgree() {
   ]);
 
   useEffect(() => {
+    const currentList = [...isPickedItems];
     if (isPicked === 0) {
       for (let i = 1; i <= 4; i++) {
         if (isPickedItems[0].state) {
-          isPickedItems[i].state = false;
+          currentList[i].state = false;
         } else {
-          isPickedItems[i].state = true;
+          currentList[i].state = true;
         }
       }
     }
-    isPickedItems[isPicked].state ? (isPickedItems[isPicked].state = false) : (isPickedItems[isPicked].state = true);
+    isPickedItems[isPicked].state ? (currentList[isPicked].state = false) : (currentList[isPicked].state = true);
   }, [isPicked, isPickedItems]);
 
   function ChangeCheckBox(index: number) {
