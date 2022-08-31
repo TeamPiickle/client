@@ -2,6 +2,10 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const St = {
+  Root: styled.main`
+    height: 100vh;
+  `,
+
   JoinAgree: styled.section`
     height: 54.2rem;
   `,

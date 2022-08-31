@@ -7,7 +7,7 @@ export const routePaths = {
   VoteId: "/:voteId",
   MyPage: "/my-page",
   BookmarkPage: "/bookmark",
-  Join: "/join",
+  JoinAgree: "/join-agree",
 };
 
 export type RoutePaths = typeof routePaths[keyof typeof routePaths];

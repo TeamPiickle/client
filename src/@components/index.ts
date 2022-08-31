@@ -2,7 +2,7 @@ export { default as BookmarkPage } from "./BookmarkPage";
 export { default as CardCollectionPage } from "./CardCollectionPage";
 export { default as CategoryPage } from "./CategoryPage";
 export { default as Error404Page } from "./Error404Page";
-export { default as JoinPage } from "./JoinPage";
+export { default as JoinAgreePage } from "./JoinPage/JoinAgree";
 export { default as LoginPage } from "./LoginPage";
 export { default as MainPage } from "./MainPage";
 export { default as MyPage } from "./MyPage";
