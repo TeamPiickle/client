@@ -32,7 +32,7 @@ const agreeListContents = [
 export default function JoinAgree() {
   const [isPicked, setIsPicked] = useState(0);
   const [isAllPicked, setAllIsPicked] = useState(false);
-  const [openAlert, setOpenAlert] = useState(false);
+  const [isOpenAlert, setIsOpenAlert] = useState(false);
   const [isPickedItems, setIsPickedItems] = useState([
     { id: "all", state: false },
     { id: "first", state: false },
@@ -84,7 +84,7 @@ export default function JoinAgree() {
       ? (agreeListContents[0].checkBox = <IcFullCheckBox />) && (isPickedItems[0].state = true)
       : (agreeListContents[0].checkBox = <IcEmptyCheckBox />) && (isPickedItems[0].state = false);
 
-  const alertClassName = openAlert === false ? "login-alert" : "login-alert-view";
+  const alertClassName = isOpenAlert === false ? "login-alert" : "login-alert-view";
 
   useEffect(() => {
     const All = agreeListContents.filter((item) => item.level > 1).length;
@@ -96,8 +96,8 @@ export default function JoinAgree() {
       (item) => item.level === 2 && isPickedItems[item.id - 1].state === true,
     ).length;
     All === TrueAll ? setAllIsPicked(true) : setAllIsPicked(false);
-    All === TrueAll || Required === TrueRequired ? setOpenAlert(false) : setOpenAlert(true);
-  }, [isPickedItems, openAlert, isAllPicked]);
+    All === TrueAll || Required === TrueRequired ? setIsOpenAlert(false) : setIsOpenAlert(true);
+  }, [isPickedItems, isOpenAlert, isAllPicked]);
 
   const agreeList = agreeListContents.map((item, index) => (
     <St.AgreeContentItem
@@ -116,7 +116,7 @@ export default function JoinAgree() {
     <St.JoinAgree>
       <St.AgreeTitle>약관을 동의해주세요</St.AgreeTitle>
       <St.AgreeContent>{agreeList}</St.AgreeContent>
-      <St.ModalContainer className={alertClassName}>이용약관에 동의해주세요</St.ModalContainer>
+      <St.ModalContainer className={alertClassName}>필수 항목에 동의해주세요</St.ModalContainer>
       <St.JoinButton>회원가입 완료하기</St.JoinButton>
     </St.JoinAgree>
   );
