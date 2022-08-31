@@ -46,16 +46,12 @@ export default function JoinAgree() {
     console.log(isPickedItems);
     console.log(isPicked);
     if (isPicked === 0) {
-      if (isPickedItems[0].state) {
-        isPickedItems[1].state = false;
-        isPickedItems[2].state = false;
-        isPickedItems[3].state = false;
-        isPickedItems[4].state = false;
-      } else if (!isPickedItems[0].state) {
-        isPickedItems[1].state = true;
-        isPickedItems[2].state = true;
-        isPickedItems[3].state = true;
-        isPickedItems[4].state = true;
+      for (let i = 1; i <= 4; i++) {
+        if (isPickedItems[0].state) {
+          isPickedItems[i].state = false;
+        } else {
+          isPickedItems[i].state = true;
+        }
       }
     }
     isPickedItems[isPicked].state ? (isPickedItems[isPicked].state = false) : (isPickedItems[isPicked].state = true);
