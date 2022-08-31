@@ -93,17 +93,17 @@ export default function JoinAgree() {
   const alertClassName = isOpenAlert === false ? "login-alert" : "login-alert-view";
 
   useEffect(() => {
-    const All = agreeListContents.filter((item) => item.level > 1).length;
-    const TrueAll = agreeListContents.filter(
+    const all = agreeListContents.filter((item) => item.level > 1).length;
+    const trueAll = agreeListContents.filter(
       (item) => item.level > 1 && isPickedItems[item.id - 1].state === true,
     ).length;
-    const Required = agreeListContents.filter((item) => item.level === 2).length;
-    const TrueRequired = agreeListContents.filter(
+    const required = agreeListContents.filter((item) => item.level === 2).length;
+    const trueRequired = agreeListContents.filter(
       (item) => item.level === 2 && isPickedItems[item.id - 1].state === true,
     ).length;
 
-    All === TrueAll ? setAllIsPicked(true) : setAllIsPicked(false);
-    All === TrueAll || Required === TrueRequired ? setIsOpenAlert(false) : setIsOpenAlert(true);
+    all === trueAll ? setAllIsPicked(true) : setAllIsPicked(false);
+    all === trueAll || required === trueRequired ? setIsOpenAlert(false) : setIsOpenAlert(true);
   }, [isPickedItems, isOpenAlert, isAllPicked]);
 
   const agreeList = agreeListContents.map((item, index) => (
