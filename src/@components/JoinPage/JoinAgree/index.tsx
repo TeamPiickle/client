@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { IcEmptyCheckBox, IcFullCheckBox, IcNextBtn } from "../../../asset/icon";
+import { routePaths } from "../../../core/routes/path";
 // import { prevPages } from "../../../core/join/prevPages";
 // import { progressRate } from "../../../core/join/progressRate";
 import Footer from "../../@common/Footer";
@@ -35,6 +37,7 @@ const agreeListContents = [
 ];
 
 export default function JoinAgree() {
+  const navigate = useNavigate();
   const [isPicked, setIsPicked] = useState(0);
   const [isAllPicked, setAllIsPicked] = useState(false);
   const [isOpenAlert, setIsOpenAlert] = useState(false);
@@ -45,6 +48,10 @@ export default function JoinAgree() {
     { id: "third", state: false },
     { id: "fourth", state: false },
   ]);
+
+  const completeJoinBtn = () => {
+    !isOpenAlert ? navigate(routePaths.Main) : "";
+  };
 
   useEffect(() => {
     const currentList = [...isPickedItems];
@@ -123,7 +130,7 @@ export default function JoinAgree() {
         <St.AgreeTitle>약관을 동의해주세요</St.AgreeTitle>
         <St.AgreeContent>{agreeList}</St.AgreeContent>
         <St.ModalContainer isOpenAlert={isOpenAlert}>필수 항목에 동의해주세요</St.ModalContainer>
-        <St.JoinButton>회원가입 완료하기</St.JoinButton>
+        <St.JoinButton onClick={completeJoinBtn}>회원가입 완료하기</St.JoinButton>
       </St.JoinAgree>
       <Footer />
     </St.Root>
