@@ -50,7 +50,7 @@ export default function JoinAgree() {
   ]);
 
   const completeJoinBtn = () => {
-    !isOpenAlert ? navigate(routePaths.Main) : "";
+    !isOpenAlert ? navigate(routePaths.Login) : "";
   };
 
   useEffect(() => {
