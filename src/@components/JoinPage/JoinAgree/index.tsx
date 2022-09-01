@@ -81,7 +81,6 @@ export default function JoinAgree() {
     }
 
     AllCheck;
-    alertClassName;
     setIsPickedItems(currentList);
   }
 
@@ -89,8 +88,6 @@ export default function JoinAgree() {
     isAllPicked === true
       ? (agreeListContents[0].checkBox = <IcFullCheckBox />) && (isPickedItems[0].state = true)
       : (agreeListContents[0].checkBox = <IcEmptyCheckBox />) && (isPickedItems[0].state = false);
-
-  const alertClassName = isOpenAlert === false ? "login-alert" : "login-alert-view";
 
   useEffect(() => {
     const all = agreeListContents.filter((item) => item.level > 1).length;
@@ -107,9 +104,7 @@ export default function JoinAgree() {
   }, [isPickedItems, isOpenAlert, isAllPicked]);
 
   const agreeList = agreeListContents.map((item, index) => (
-    <St.AgreeContentItem
-      key={item.id}
-      className={"checkLists" + (isPickedItems[index].state === true ? " active" : "")}>
+    <St.AgreeContentItem key={item.id} isActive={isPickedItems[index].state}>
       <St.CheckBox type="button" onClick={() => ChangeCheckBox(index)}>
         {item.checkBox}
       </St.CheckBox>
@@ -127,7 +122,7 @@ export default function JoinAgree() {
       <St.JoinAgree>
         <St.AgreeTitle>약관을 동의해주세요</St.AgreeTitle>
         <St.AgreeContent>{agreeList}</St.AgreeContent>
-        <St.ModalContainer className={alertClassName}>필수 항목에 동의해주세요</St.ModalContainer>
+        <St.ModalContainer isOpenAlert={isOpenAlert}>필수 항목에 동의해주세요</St.ModalContainer>
         <St.JoinButton>회원가입 완료하기</St.JoinButton>
       </St.JoinAgree>
       <Footer />

@@ -24,7 +24,7 @@ export const St = {
 
   AgreeContent: styled.ul``,
 
-  AgreeContentItem: styled.li`
+  AgreeContentItem: styled.li<{ isActive: boolean }>`
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -35,11 +35,8 @@ export const St = {
     height: 5.6rem;
 
     ${({ theme }) => theme.fonts.body12};
-    color: ${({ theme }) => theme.colors.gray600};
 
-    &.active {
-      color: ${({ theme }) => theme.colors.bg};
-    }
+    color: ${({ theme, isActive }) => (isActive ? theme.colors.bg : theme.colors.gray600)};
   `,
 
   CheckBox: styled.button``,
@@ -67,7 +64,7 @@ export const St = {
     `};
   `,
 
-  ModalContainer: styled.div`
+  ModalContainer: styled.div<{ isOpenAlert: boolean }>`
     display: flex;
     margin: auto;
     align-items: center;
@@ -83,13 +80,8 @@ export const St = {
     color: ${({ theme }) => theme.colors.bg};
     ${({ theme }) => theme.fonts.caption4};
 
-    &.login-alert {
-      visibility: hidden;
-    }
-
-    &.log-alert-view {
-      display: flex;
-    }
+    visibility: ${({ isOpenAlert }) => (isOpenAlert ? "" : "hidden")};
+    display: ${({ isOpenAlert }) => (isOpenAlert ? "flex" : "")};
   `,
 
   JoinButton: styled.button`
