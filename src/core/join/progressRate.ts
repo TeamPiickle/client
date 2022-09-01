@@ -9,4 +9,13 @@ export const progressRate: ProgressRate[] = [
   {
     rate: 32,
   },
+  {
+    rate: 48,
+  },
+  {
+    rate: 64,
+  },
+  {
+    rate: 80,
+  },
 ];

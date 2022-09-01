@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { IcEmptyCheckBox, IcFullCheckBox, IcNextBtn } from "../../../asset/icon";
+import { prevPages } from "../../../core/join/prevPages";
+import { progressRate } from "../../../core/join/progressRate";
 import { routePaths } from "../../../core/routes/path";
-// import { prevPages } from "../../../core/join/prevPages";
-// import { progressRate } from "../../../core/join/progressRate";
 import Footer from "../../@common/Footer";
-// import PageProgressBar from "../common/PageProgressBar";
-// import Header from "../common/Header";
+import Header from "../common/Header";
+import PageProgressBar from "../common/PageProgressBar";
 import { St } from "./style";
 
 const agreeListContents = [
@@ -121,11 +121,10 @@ export default function JoinAgree() {
     </St.AgreeContentItem>
   ));
 
-  // <Header prevPage={prevPages[0].prevPage} />
-  // <PageProgressBar rate={progressRate[0].rate} />
-
   return (
     <St.Root>
+      <Header prevPage={prevPages[5].prevPage} />
+      <PageProgressBar rate={progressRate[4].rate} />
       <St.JoinAgree>
         <St.AgreeTitle>약관을 동의해주세요</St.AgreeTitle>
         <St.AgreeContent>{agreeList}</St.AgreeContent>
