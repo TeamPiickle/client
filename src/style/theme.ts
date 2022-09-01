@@ -67,6 +67,7 @@ const fonts = {
   caption3: FONT({ weight: 400, size: 1.2, lineHeight: 140, letterSpacing: 4 }),
   caption4: FONT({ weight: 400, size: 1.2, lineHeight: 140, letterSpacing: 3 }),
   caption5: FONT({ weight: 400, size: 1.1, lineHeight: 140, letterSpacing: 4 }),
+  caption05: FONT({ weight: 700, size: 1.2, lineHeight: 140, letterSpacing: 4 }),
   btn1: FONT({ weight: 400, size: 1.2, lineHeight: 140, letterSpacing: 3 }),
   btn2: FONT({ weight: 400, size: 1.4, lineHeight: 130, letterSpacing: 4 }),
   btn3: FONT({ weight: 300, size: 1.6, lineHeight: 140, letterSpacing: 4 }),

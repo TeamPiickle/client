@@ -4,6 +4,8 @@ import {
   BookmarkPage,
   CardCollectionPage,
   CategoryPage,
+  EmailAuthenticationPage,
+  EmailConfirmPage,
   Error404Page,
   JoinAgreePage,
   LoginPage,
@@ -25,6 +27,14 @@ export default function Router() {
         <Route path={routePaths.MyPage} element={PrivateRoute({ Component: <MyPage /> })} />
         <Route path={routePaths.BookmarkPage} element={PublicRoute({ Component: <BookmarkPage /> })} />
         <Route path={routePaths.JoinAgree} element={PublicRoute({ Component: <JoinAgreePage />, restricted: true })} />
+        <Route
+          path={routePaths.EmailAuthentication}
+          element={PublicRoute({ Component: <EmailAuthenticationPage />, restricted: true })}
+        />
+        <Route
+          path={routePaths.EmailConfirm}
+          element={PublicRoute({ Component: <EmailConfirmPage />, restricted: true })}
+        />
         <Route path="*" element={PublicRoute({ Component: <Error404Page /> })} />
       </Routes>
     </BrowserRouter>
