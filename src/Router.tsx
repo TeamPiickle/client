@@ -11,7 +11,7 @@ import {
   MainPage,
   MyPage,
   VotePage,
-} from "./components";
+} from "./@components";
 import { routePaths } from "./core/routes/path";
 
 export default function Router() {
