@@ -7,6 +7,7 @@ export const routePaths = {
   VoteId: "/:voteId",
   MyPage: "/my-page",
   BookmarkPage: "/bookmark",
+  JoinAgree: "/join-agree",
   EmailAuthentication: "/email-authentication",
   EmailConfirm: "/email-confirm",
 };

@@ -7,6 +7,7 @@ import {
   EmailAuthenticationPage,
   EmailConfirmPage,
   Error404Page,
+  JoinAgreePage,
   LoginPage,
   MainPage,
   MyPage,
@@ -25,6 +26,7 @@ export default function Router() {
         <Route path={`${routePaths.Vote}${routePaths.VoteId}`} element={PublicRoute({ Component: <VotePage /> })} />
         <Route path={routePaths.MyPage} element={PrivateRoute({ Component: <MyPage /> })} />
         <Route path={routePaths.BookmarkPage} element={PublicRoute({ Component: <BookmarkPage /> })} />
+        <Route path={routePaths.JoinAgree} element={PublicRoute({ Component: <JoinAgreePage />, restricted: true })} />
         <Route
           path={routePaths.EmailAuthentication}
           element={PublicRoute({ Component: <EmailAuthenticationPage />, restricted: true })}
