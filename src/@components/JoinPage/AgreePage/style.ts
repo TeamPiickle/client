@@ -1,5 +1,6 @@
+/* eslint-disable indent */
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const St = {
   Root: styled.main`
@@ -64,7 +65,7 @@ export const St = {
     `};
   `,
 
-  ModalContainer: styled.div<{ isOpenAlert: boolean }>`
+  ModalContainer: styled.div<{ isopen: boolean }>`
     display: flex;
     margin: auto;
     align-items: center;
@@ -80,8 +81,11 @@ export const St = {
     color: ${({ theme }) => theme.colors.bg};
     ${({ theme }) => theme.fonts.caption4};
 
-    visibility: ${({ isOpenAlert }) => (isOpenAlert ? "" : "hidden")};
-    display: ${({ isOpenAlert }) => (isOpenAlert ? "flex" : "")};
+    ${({ isopen }) =>
+      isopen &&
+      css`
+        visibility: hidden;
+      `};
   `,
 
   JoinButton: styled.button`

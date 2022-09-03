@@ -128,7 +128,7 @@ export default function AgreePage() {
       <St.JoinAgree>
         <St.AgreeTitle>약관을 동의해주세요</St.AgreeTitle>
         <St.AgreeContent>{agreeList}</St.AgreeContent>
-        <St.ModalContainer isOpenAlert={isOpenAlert}>필수 항목에 동의해주세요</St.ModalContainer>
+        <St.ModalContainer isopen={isOpenAlert}>필수 항목에 동의해주세요</St.ModalContainer>
         <St.JoinButton onClick={completeJoinBtn}>회원가입 완료하기</St.JoinButton>
       </St.JoinAgree>
       <Footer />
