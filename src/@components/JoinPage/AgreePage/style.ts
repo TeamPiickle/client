@@ -81,7 +81,7 @@ export const St = {
     ${({ theme }) => theme.fonts.caption4};
 
     ${({ isopen }) =>
-      isopen &&
+      !isopen &&
       css`
         visibility: hidden;
       `};
