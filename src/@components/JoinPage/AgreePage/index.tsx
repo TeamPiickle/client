@@ -36,7 +36,7 @@ const agreeListsContents = [
 export default function AgreePage() {
   const navigate = useNavigate();
 
-  const [isPickedItems, setIsPickedItems] = useState([false, false, false, false, false]);
+  const [isPickedItems, setIsPickedItems] = useState<boolean[]>([false, false, false, false, false]);
   const [isAllPicked, setAllIsPicked] = useState(false);
 
   const [isOpenAlert, setIsOpenAlert] = useState(false);
@@ -62,17 +62,38 @@ export default function AgreePage() {
   function handleChecking(index: number) {
     switch (index) {
       case 0:
+        if (isPickedItems[0]) {
+          setIsPickedItems((prevItems) => [...prevItems].fill(false));
+        } else {
+          setIsPickedItems((prevItems) => [...prevItems].fill(true));
+        }
         break;
 
       default:
         setIsPickedItems((prevItems) => {
           const currentItems = [...prevItems];
           currentItems[index] = !currentItems[index];
-          return currentItems;
+
+          return checkAllItems(currentItems);
         });
         break;
     }
   }
+
+  const checkAllItems = (_items: boolean[]) => {
+    const noCheckedItemIndex = _items.slice(1).find((el) => el === false);
+
+    switch (noCheckedItemIndex) {
+      case undefined:
+        _items[0] = true;
+        break;
+      default:
+        _items[0] = false;
+        break;
+    }
+
+    return _items;
+  };
 
   // const AllCheck =
   //   isAllPicked === true
