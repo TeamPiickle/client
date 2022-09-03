@@ -8,7 +8,7 @@ import Header from "../common/Header";
 import PageProgressBar from "../common/PageProgressBar";
 import { St } from "./style";
 
-export default function EmailConfirm() {
+export default function EmailConfirmPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const state = location.state as { userEmail: string };

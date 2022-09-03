@@ -1,13 +1,13 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import {
+  AgreePage,
   BookmarkPage,
   CardCollectionPage,
   CategoryPage,
   EmailAuthenticationPage,
   EmailConfirmPage,
   Error404Page,
-  JoinAgreePage,
   LoginPage,
   MainPage,
   MyPage,
@@ -28,7 +28,7 @@ export default function Router() {
         <Route path={routePaths.MyPage} element={PrivateRoute({ Component: <MyPage /> })} />
         <Route path={routePaths.BookmarkPage} element={PublicRoute({ Component: <BookmarkPage /> })} />
         <Route path={`${routePaths.Join_}/*`} element={PublicRoute({ Component: <JoinPage />, restricted: true })}>
-          <Route path={routePaths.Join_Agree} element={<JoinAgreePage />} />
+          <Route path={routePaths.Join_Agree} element={<AgreePage />} />
           <Route path={routePaths.Join_EmailAuthentication} element={<EmailAuthenticationPage />} />
           <Route path={routePaths.Join_EmailConfirm} element={<EmailConfirmPage />} />
           <Route path="*" element={<Error404Page />} />
