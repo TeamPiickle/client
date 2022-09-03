@@ -37,7 +37,7 @@ export default function MenuBar(props: MenuBarProps) {
   };
 
   const handleJoin = () => {
-    navigate(routePaths.EmailAuthentication);
+    navigate(`${routePaths.Join_}${routePaths.Join_EmailAuthentication}`);
   };
 
   return (

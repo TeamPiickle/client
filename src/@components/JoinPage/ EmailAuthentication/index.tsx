@@ -33,7 +33,7 @@ export default function EmailAuthentication() {
     if (!email || regEmail.test(email) === false) {
       setIsEmailInValid(true);
     } else {
-      navigate(routePaths.EmailConfirm, {
+      navigate(`${routePaths.Join_}${routePaths.Join_EmailConfirm}`, {
         state: {
           userEmail: emailText,
         },
