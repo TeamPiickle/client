@@ -1,18 +1,19 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import {
+  AgreePage,
   BookmarkPage,
   CardCollectionPage,
   CategoryPage,
   EmailAuthenticationPage,
   EmailConfirmPage,
   Error404Page,
-  JoinAgreePage,
   LoginPage,
   MainPage,
   MyPage,
   VotePage,
 } from "./@components";
+import JoinPage from "./@components/JoinPage";
 import { routePaths } from "./core/routes/path";
 
 export default function Router() {
@@ -26,15 +27,12 @@ export default function Router() {
         <Route path={`${routePaths.Vote}${routePaths.VoteId}`} element={PublicRoute({ Component: <VotePage /> })} />
         <Route path={routePaths.MyPage} element={PrivateRoute({ Component: <MyPage /> })} />
         <Route path={routePaths.BookmarkPage} element={PublicRoute({ Component: <BookmarkPage /> })} />
-        <Route path={routePaths.JoinAgree} element={PublicRoute({ Component: <JoinAgreePage />, restricted: true })} />
-        <Route
-          path={routePaths.EmailAuthentication}
-          element={PublicRoute({ Component: <EmailAuthenticationPage />, restricted: true })}
-        />
-        <Route
-          path={routePaths.EmailConfirm}
-          element={PublicRoute({ Component: <EmailConfirmPage />, restricted: true })}
-        />
+        <Route path={`${routePaths.Join_}/*`} element={PublicRoute({ Component: <JoinPage />, restricted: true })}>
+          <Route path={routePaths.Join_Agree} element={<AgreePage />} />
+          <Route path={routePaths.Join_EmailAuthentication} element={<EmailAuthenticationPage />} />
+          <Route path={routePaths.Join_EmailConfirm} element={<EmailConfirmPage />} />
+          <Route path="*" element={<Error404Page />} />
+        </Route>
         <Route path="*" element={PublicRoute({ Component: <Error404Page /> })} />
       </Routes>
     </BrowserRouter>

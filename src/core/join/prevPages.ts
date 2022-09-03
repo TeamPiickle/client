@@ -8,10 +8,10 @@ export const prevPages: PrevPages[] = [
     prevPage: routePaths.Main,
   },
   {
-    prevPage: routePaths.EmailAuthentication,
+    prevPage: `${routePaths.Join_}${routePaths.Join_EmailAuthentication}`,
   },
   {
-    prevPage: routePaths.EmailConfirm,
+    prevPage: `${routePaths.Join_}${routePaths.Join_EmailConfirm}`,
   },
   //3-4번째 페이지는 임의로 이름 설정
   {
@@ -21,6 +21,6 @@ export const prevPages: PrevPages[] = [
     prevPage: "/userProfile",
   },
   {
-    prevPage: routePaths.JoinAgree,
+    prevPage: `${routePaths.Join_}${routePaths.Join_Agree}`,
   },
 ];

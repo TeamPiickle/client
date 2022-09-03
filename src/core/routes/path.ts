@@ -1,3 +1,12 @@
+/*
+마지막 편집자: 22-09-03 joohaem
+변경사항 및 참고:
+  - 
+    
+고민점:
+  - 
+*/
+
 export const routePaths = {
   Main: "/",
   Login: "/login",
@@ -7,9 +16,14 @@ export const routePaths = {
   VoteId: "/:voteId",
   MyPage: "/my-page",
   BookmarkPage: "/bookmark",
-  JoinAgree: "/join-agree",
-  EmailAuthentication: "/email-authentication",
-  EmailConfirm: "/email-confirm",
+
+  Join_: "/join/",
+  // JoinAgree: "/join-agree",
+  Join_Agree: "agree",
+  // EmailAuthentication: "/email-authentication",
+  Join_EmailAuthentication: "email-authentication",
+  // EmailConfirm: "/email-confirm",
+  Join_EmailConfirm: "email-confirm",
 };
 
 export type RoutePaths = typeof routePaths[keyof typeof routePaths];
