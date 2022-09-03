@@ -10,6 +10,7 @@ import Header from "../common/Header";
 import PageProgressBar from "../common/PageProgressBar";
 import { St } from "./style";
 
+// TODO :: 객체 분리 리팩토링 + line/button
 const agreeListsContents = [
   { required: false, text: "약관 전체동의", line: <hr /> },
   { required: true, text: "이용약관 동의 (필수)", button: <IcNextBtn /> },
@@ -22,7 +23,6 @@ export default function AgreePage() {
   const navigate = useNavigate();
 
   const [isPickedItems, setIsPickedItems] = useState<boolean[]>([false, false, false, false, false]);
-
   const [isOpenAlert, setIsOpenAlert] = useState(false);
 
   function handleChecking(index: number) {
