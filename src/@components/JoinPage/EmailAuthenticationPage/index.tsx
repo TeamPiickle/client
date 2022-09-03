@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { prevPages } from "../../../core/join/prevPages";
 import { progressRate } from "../../../core/join/progressRate";
 import { routePaths } from "../../../core/routes/path";
+import checkEmailInvalid from "../../../util/checkInvalidEmail";
 import Footer from "../../@common/Footer";
 import Header from "../common/Header";
 import PageProgressBar from "../common/PageProgressBar";
@@ -12,25 +13,22 @@ import { St } from "./style";
 export default function EmailAuthentication() {
   const navigate = useNavigate();
   const [emailText, setEmailText] = useState<string>("");
-  const [isEmailInvalid, setIsEmailInvalid] = useState<any>(false);
-  const emailInput = useRef<HTMLInputElement | null>(null);
+  const [isEmailInvalid, setIsEmailInvalid] = useState(false);
 
-  const clickSendBtn = () => {
-    if (emailInput.current && emailInput.current.value) {
-      setEmailText(emailInput.current?.value);
-    } else {
-      setIsEmailInvalid(true);
+  const changeEmailInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmailText(e.target.value);
+
+    if (isEmailInvalid && !checkEmailInvalid(e.target.value)) {
+      setIsEmailInvalid(false);
     }
   };
 
-  useEffect(() => {
-    emailText && verifyEmail(emailText);
-  }, [emailText]);
+  const clickSendBtn = () => {
+    // 에러 상태일 때 실행 취소
+    if (isEmailInvalid) return;
 
-  const verifyEmail = (email: string) => {
-    const regEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
-
-    if (!email || regEmail.test(email) === false) {
+    // 유효성 검사
+    if (checkEmailInvalid(emailText)) {
       setIsEmailInvalid(true);
     } else {
       navigate(`${routePaths.Join_}${routePaths.Join_EmailConfirm}`, {
@@ -55,7 +53,12 @@ export default function EmailAuthentication() {
             {isEmailInvalid ? <St.EssentialIcon>*</St.EssentialIcon> : <St.EssentialText>(필수)</St.EssentialText>}
           </St.DescriptionContainer>
           <St.InputContainer>
-            <St.EmailInput id="email" placeholder="hello@piickle.com" ref={emailInput} />
+            <St.EmailInput
+              id="email"
+              placeholder="hello@piickle.com"
+              value={emailText}
+              onChange={(e) => changeEmailInput(e)}
+            />
             <St.SendBtn onClick={clickSendBtn}>인증메일 전송</St.SendBtn>
           </St.InputContainer>
         </St.EmailAuthenticationContent>
