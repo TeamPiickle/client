@@ -11,20 +11,11 @@ import PageProgressBar from "../common/PageProgressBar";
 import { St } from "./style";
 
 const agreeListsContents = [
-  { text: "약관 전체동의", line: <hr /> },
-  {
-    text: "이용약관 동의 (필수)",
-    button: <IcNextBtn />,
-  },
-  {
-    text: "개인정보 수집 및 이용동의 (필수)",
-    button: <IcNextBtn />,
-  },
-  {
-    text: "마케팅 활용/광고성 정부 수신동의 (선택)",
-    button: <IcNextBtn />,
-  },
-  { text: "만 14세 이상입니다 (필수)", button: <IcNextBtn /> },
+  { required: false, text: "약관 전체동의", line: <hr /> },
+  { required: true, text: "이용약관 동의 (필수)", button: <IcNextBtn /> },
+  { required: true, text: "개인정보 수집 및 이용동의 (필수)", button: <IcNextBtn /> },
+  { required: false, text: "마케팅 활용/광고성 정부 수신동의 (선택)", button: <IcNextBtn /> },
+  { required: true, text: "만 14세 이상입니다 (필수)", button: <IcNextBtn /> },
 ];
 
 export default function AgreePage() {
@@ -33,12 +24,6 @@ export default function AgreePage() {
   const [isPickedItems, setIsPickedItems] = useState<boolean[]>([false, false, false, false, false]);
 
   const [isOpenAlert, setIsOpenAlert] = useState(false);
-
-  const completeJoinBtn = () => {
-    !isOpenAlert && navigate(routePaths.Login);
-
-    // TODO :: 회원가입 POST 통신
-  };
 
   function handleChecking(index: number) {
     switch (index) {
@@ -63,12 +48,34 @@ export default function AgreePage() {
       case undefined:
         _items[0] = true;
         break;
+
       default:
         _items[0] = false;
         break;
     }
 
     return _items;
+  };
+
+  const completeJoinBtn = () => {
+    if (checkIsOkayToPass()) {
+      // TODO :: 회원가입 POST 통신
+      navigate(routePaths.Login);
+    } else {
+      setIsOpenAlert(true);
+    }
+  };
+
+  const checkIsOkayToPass = () => {
+    let flag = true;
+
+    agreeListsContents.forEach((content, index) => {
+      if (content.required) {
+        if (isPickedItems[index] === false) return (flag = false);
+      }
+    });
+
+    return flag;
   };
 
   const agreeLists = agreeListsContents.map((item, index) => (
