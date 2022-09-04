@@ -61,10 +61,15 @@ export default function AgreePage() {
   const checkIsOkayToPass = () => {
     let flag = true;
 
-    agreeListsContents.forEach((content, index) => {
+    agreeListsContents.every((content, index) => {
       if (content.required) {
-        if (isPickedItems[index] === false) return (flag = false);
+        if (isPickedItems[index] === false) {
+          flag = false;
+          return false;
+        }
       }
+
+      return true;
     });
 
     return flag;
