@@ -52,7 +52,7 @@ export const St = {
     margin-top: 5.6rem;
     margin-left: -1.6rem;
 
-    hr {
+    & > hr {
       height: 0.2rem;
       border-width: 0;
       background-color: ${({ theme }) => theme.colors.gray100};
