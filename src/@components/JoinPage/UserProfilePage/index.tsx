@@ -10,6 +10,22 @@ export default function UserProfilePage() {
     <St.Root>
       <Header prevPage={prevPages[4].prevPage} />
       <PageProgressBar rate={progressRate[3].rate} />
+      <St.Title>프로필을 설정해주세요</St.Title>
+      <St.ProfileImageContainer>
+        <St.SubTitle>프로필 사진(선택)</St.SubTitle>
+      </St.ProfileImageContainer>
+      <St.ProfileNickNameContainer>
+        <St.SubTitle>닉네임(필수)</St.SubTitle>
+        <St.Requirement></St.Requirement>
+      </St.ProfileNickNameContainer>
+      <St.ProfileBrithContainer>
+        <St.SubTitle>생년월일(필수)</St.SubTitle>
+        <St.Requirement></St.Requirement>
+      </St.ProfileBrithContainer>
+      <St.ProfileGenderContainer>
+        <St.SubTitle>성별</St.SubTitle>
+      </St.ProfileGenderContainer>
+      <St.NextButton>다음으로</St.NextButton>
       <Footer />
     </St.Root>
   );
