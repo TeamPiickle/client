@@ -9,6 +9,8 @@ export const St = {
 
   JoinAgree: styled.section`
     height: 54.2rem;
+
+    position: relative;
   `,
 
   AgreeTitle: styled.article`
@@ -69,9 +71,12 @@ export const St = {
     margin: auto;
     align-items: center;
 
-    margin-top: 5.7rem;
-    padding-left: 1.6rem;
-    width: calc(100% - 3.2rem);
+    position: absolute;
+    right: 1.6rem;
+    bottom: 7.4rem;
+    left: 1.6rem;
+
+    padding: 0 1.6rem;
     height: 4rem;
 
     background: ${({ theme }) => theme.colors.gray100};
@@ -90,7 +95,7 @@ export const St = {
   JoinButton: styled.button`
     margin: auto;
     display: block;
-    margin-top: 1.2rem;
+    margin-top: 10.9rem;
 
     border-radius: 5rem;
     background-color: ${({ theme }) => theme.colors.bg};
