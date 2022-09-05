@@ -9,7 +9,7 @@ import { routePaths } from "../../../core/routes/path";
 import Footer from "../../@common/Footer";
 import Header from "../common/Header";
 import PageProgressBar from "../common/PageProgressBar";
-import { St } from "./style";
+import { ModalContainerWithAnimation, St } from "./style";
 
 export default function AgreePage() {
   const navigate = useNavigate();
@@ -101,7 +101,7 @@ export default function AgreePage() {
       <St.JoinAgree>
         <St.AgreeTitle>약관을 동의해주세요</St.AgreeTitle>
         <St.AgreeContent>{agreeLists}</St.AgreeContent>
-        <St.ModalContainer isopen={isOpenAlert}>필수 항목에 동의해주세요</St.ModalContainer>
+        <ModalContainerWithAnimation isopen={isOpenAlert}>필수 항목에 동의해주세요</ModalContainerWithAnimation>
         <St.JoinButton onClick={completeJoinBtn}>회원가입 완료하기</St.JoinButton>
       </St.JoinAgree>
       <Footer />

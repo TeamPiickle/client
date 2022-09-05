@@ -1,6 +1,6 @@
 /* eslint-disable indent */
 import { Link } from "react-router-dom";
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
 export const St = {
   Root: styled.main`
@@ -67,7 +67,6 @@ export const St = {
   `,
 
   ModalContainer: styled.div<{ isopen: boolean }>`
-    display: flex;
     margin: auto;
     align-items: center;
 
@@ -86,10 +85,13 @@ export const St = {
     ${({ theme }) => theme.fonts.caption4};
 
     ${({ isopen }) =>
-      !isopen &&
-      css`
-        visibility: hidden;
-      `};
+      isopen
+        ? css`
+            display: flex;
+          `
+        : css`
+            display: none;
+          `};
   `,
 
   JoinButton: styled.button`
@@ -111,3 +113,23 @@ export const St = {
     `};
   `,
 };
+
+const 토스트애니메이션 = keyframes`
+  0% {
+    opacity: 0;
+    transform : translateY(1.2rem);
+  } 
+  
+  80% {
+    transform : translateY(-0.3rem);
+  } 
+  
+  100% {
+    opacity: 1;
+    transform : translateY(0);
+  }
+`;
+
+export const ModalContainerWithAnimation = styled(St.ModalContainer)`
+  animation: ${토스트애니메이션} 0.6s ease-in-out;
+`;
