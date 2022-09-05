@@ -11,6 +11,7 @@ import {
   LoginPage,
   MainPage,
   MyPage,
+  UserInfoPage,
   VotePage,
 } from "./@components";
 import JoinPage from "./@components/JoinPage";
@@ -31,6 +32,7 @@ export default function Router() {
           <Route path={routePaths.Join_Agree} element={<AgreePage />} />
           <Route path={routePaths.Join_EmailAuthentication} element={<EmailAuthenticationPage />} />
           <Route path={routePaths.Join_EmailConfirm} element={<EmailConfirmPage />} />
+          <Route path={routePaths.Join_UserInfo} element={<UserInfoPage />} />
           <Route path="*" element={<Error404Page />} />
         </Route>
         <Route path="*" element={PublicRoute({ Component: <Error404Page /> })} />
