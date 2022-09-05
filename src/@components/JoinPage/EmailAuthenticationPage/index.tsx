@@ -16,9 +16,12 @@ export default function EmailAuthentication() {
   const [isEmailInvalid, setIsEmailInvalid] = useState(false);
 
   const changeEmailInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmailText(e.target.value);
+    const currentText = e.target.value;
+    setEmailText(currentText);
 
-    if (isEmailInvalid && !checkEmailInvalid(e.target.value)) {
+    if (checkEmailInvalid(currentText)) {
+      setIsEmailInvalid(true);
+    } else {
       setIsEmailInvalid(false);
     }
   };
@@ -27,16 +30,11 @@ export default function EmailAuthentication() {
     // 에러 상태일 때 실행 취소
     if (isEmailInvalid) return;
 
-    // 유효성 검사
-    if (checkEmailInvalid(emailText)) {
-      setIsEmailInvalid(true);
-    } else {
-      navigate(`${routePaths.Join_}${routePaths.Join_EmailConfirm}`, {
-        state: {
-          userEmail: emailText,
-        },
-      });
-    }
+    navigate(`${routePaths.Join_}${routePaths.Join_EmailConfirm}`, {
+      state: {
+        userEmail: emailText,
+      },
+    });
   };
 
   return (
