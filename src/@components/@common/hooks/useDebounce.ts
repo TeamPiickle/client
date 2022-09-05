@@ -9,7 +9,7 @@ export function useDebounce<T>(defaultValue: T) {
   useEffect(() => {
     const debouncing = setTimeout(() => {
       return setDebouncedQuery(query);
-    }, 500);
+    }, 1000);
 
     return () => clearTimeout(debouncing);
   }, [query]);

@@ -17,7 +17,7 @@ export default function EmailAuthentication() {
   const [isEmailInvalid, setIsEmailInvalid] = useState(false);
 
   useEffect(() => {
-    // 0.5초 이내로 형식 검사
+    // 1초 후, 형식 검사
     if (debouncedQuery !== "" && checkEmailInvalid(debouncedQuery)) {
       setIsEmailInvalid(true);
     } else {
