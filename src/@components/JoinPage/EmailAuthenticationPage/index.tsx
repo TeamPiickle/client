@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { prevPages } from "../../../core/join/prevPages";
@@ -6,24 +6,28 @@ import { progressRate } from "../../../core/join/progressRate";
 import { routePaths } from "../../../core/routes/path";
 import checkEmailInvalid from "../../../util/checkInvalidEmail";
 import Footer from "../../@common/Footer";
+import { useDebounce } from "../../@common/hooks/useDebounce";
 import Header from "../common/Header";
 import PageProgressBar from "../common/PageProgressBar";
 import { St } from "./style";
 
 export default function EmailAuthentication() {
   const navigate = useNavigate();
-  const [emailText, setEmailText] = useState<string>("");
+  const { query, setQuery, debouncedQuery } = useDebounce("");
   const [isEmailInvalid, setIsEmailInvalid] = useState(false);
 
-  const changeEmailInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const currentText = e.target.value;
-    setEmailText(currentText);
-
-    if (checkEmailInvalid(currentText)) {
+  useEffect(() => {
+    // 0.5초 이내로 형식 검사
+    if (debouncedQuery !== "" && checkEmailInvalid(debouncedQuery)) {
       setIsEmailInvalid(true);
     } else {
       setIsEmailInvalid(false);
     }
+  }, [debouncedQuery]);
+
+  const changeEmailInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const currentText = e.target.value;
+    setQuery(currentText);
   };
 
   const clickSendBtn = () => {
@@ -32,7 +36,7 @@ export default function EmailAuthentication() {
 
     navigate(`${routePaths.Join_}${routePaths.Join_EmailConfirm}`, {
       state: {
-        userEmail: emailText,
+        userEmail: query,
       },
     });
   };
@@ -54,7 +58,7 @@ export default function EmailAuthentication() {
             <St.EmailInput
               id="email"
               placeholder="hello@piickle.com"
-              value={emailText}
+              value={query}
               onChange={(e) => changeEmailInput(e)}
             />
             <St.SendBtn onClick={clickSendBtn}>인증메일 전송</St.SendBtn>
