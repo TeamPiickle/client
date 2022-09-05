@@ -43,9 +43,23 @@ export const St = {
     margin-left: 0;
   `,
 
-  PasswordContainer: styled.article`
-    /* height: 14.9rem; */
+  EmailInputForm: styled.input`
+    height: 4.2rem;
+    width: 100%;
 
+    background-color: ${({ theme }) => theme.colors.gray100};
+
+    border-radius: 4.9rem;
+
+    margin-top: 1.2rem;
+    padding-left: 2.4rem;
+
+    color: ${({ theme }) => theme.colors.gray400};
+
+    ${({ theme }) => theme.fonts.body6}
+  `,
+
+  PasswordContainer: styled.article`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -65,6 +79,21 @@ export const St = {
     color: ${({ theme }) => theme.colors.gray600};
 
     margin-top: 0.4rem;
+  `,
+
+  PasswordInputForm: styled.input`
+    height: 4.2rem;
+    width: 100%;
+
+    border: solid 0.1rem ${({ theme }) => theme.colors.gray300};
+    border-radius: 4.9rem;
+
+    margin-top: 1.2rem;
+    padding-left: 2.4rem;
+
+    color: ${({ theme }) => theme.colors.gray400};
+
+    ${({ theme }) => theme.fonts.body6}
   `,
 
   SuccessBtnContainer: styled.div`
