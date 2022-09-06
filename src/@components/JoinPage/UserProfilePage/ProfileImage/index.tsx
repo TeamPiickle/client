@@ -9,7 +9,7 @@ export default function ProfileImage() {
         <St.AddImage src={ImgDefaultBigProfile} alt="프로필" />
         <St.AddBtnWrapper>
           <IcAddProfileBtn />
-          <St.AddButton />
+          <St.AddButton type="file" accept="image/*" />
         </St.AddBtnWrapper>
       </St.Image>
     </St.ProfileImage>

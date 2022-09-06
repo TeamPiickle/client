@@ -1,7 +1,7 @@
 import { IcDownArrow } from "../../../../asset/icon";
 import { St } from "./style";
 
-export default function ProfileImage() {
+export default function ProfileJender() {
   return (
     <St.ProfileJender>
       <St.InputContainer>

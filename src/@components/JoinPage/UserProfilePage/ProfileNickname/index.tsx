@@ -1,6 +1,6 @@
 import { St } from "./style";
 
-export default function ProfileImage() {
+export default function ProfileNickname() {
   return (
     <St.ProfileNickname>
       <St.InputContainer>
