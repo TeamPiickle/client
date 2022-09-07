@@ -13,6 +13,7 @@ export const St = {
 
     padding: 2.4rem 0 3.2rem 1.6rem;
   `,
+
   TitleText: styled.h1`
     ${({ theme }) => theme.fonts.h1}
 
@@ -53,17 +54,18 @@ export const St = {
     display: flex;
   `,
 
-  EmailInputForm: styled.input`
+  EmailInput: styled.input`
     width: 24.8rem;
 
     border: solid 0.1rem ${({ theme }) => theme.colors.gray300};
     border-radius: 4.9rem;
 
     margin-right: 0.8rem;
-    padding-left: 2.4rem;
+    padding: 0 2.4rem;
 
     ${({ theme }) => theme.fonts.body6}
   `,
+
   WarningText: styled.div`
     ${({ theme }) => theme.fonts.caption3};
 
