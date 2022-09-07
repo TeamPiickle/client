@@ -19,6 +19,7 @@ export const St = {
     border-radius: 4.9rem;
     ${({ theme }) => theme.fonts.body6}
     color: ${({ theme }) => theme.colors.bg};
+    background-color: ${({ theme }) => theme.colors.white};
 
     -webkit-appearance: none;
     -moz-appearance: none;
