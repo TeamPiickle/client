@@ -1,5 +1,6 @@
+/* eslint-disable indent */
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
 export const St = {
   Root: styled.main`
@@ -8,6 +9,8 @@ export const St = {
 
   JoinAgree: styled.section`
     height: 54.2rem;
+
+    position: relative;
   `,
 
   AgreeTitle: styled.article`
@@ -50,9 +53,8 @@ export const St = {
     position: absolute;
     margin-top: 5.6rem;
     margin-left: -1.6rem;
-    width: 100%;
 
-    hr {
+    & > hr {
       height: 0.2rem;
       border-width: 0;
       background-color: ${({ theme }) => theme.colors.gray100};
@@ -64,14 +66,16 @@ export const St = {
     `};
   `,
 
-  ModalContainer: styled.div<{ isOpenAlert: boolean }>`
-    display: flex;
+  ModalContainer: styled.div<{ isopen: boolean }>`
     margin: auto;
     align-items: center;
 
-    margin-top: 5.7rem;
-    padding-left: 1.6rem;
-    width: calc(100% - 3.2rem);
+    position: absolute;
+    right: 1.6rem;
+    bottom: 7.4rem;
+    left: 1.6rem;
+
+    padding: 0 1.6rem;
     height: 4rem;
 
     background: ${({ theme }) => theme.colors.gray100};
@@ -80,14 +84,20 @@ export const St = {
     color: ${({ theme }) => theme.colors.bg};
     ${({ theme }) => theme.fonts.caption4};
 
-    visibility: ${({ isOpenAlert }) => (isOpenAlert ? "" : "hidden")};
-    display: ${({ isOpenAlert }) => (isOpenAlert ? "flex" : "")};
+    ${({ isopen }) =>
+      isopen
+        ? css`
+            display: flex;
+          `
+        : css`
+            display: none;
+          `};
   `,
 
   JoinButton: styled.button`
     margin: auto;
     display: block;
-    margin-top: 1.2rem;
+    margin-top: 10.9rem;
 
     border-radius: 5rem;
     background-color: ${({ theme }) => theme.colors.bg};
@@ -103,3 +113,23 @@ export const St = {
     `};
   `,
 };
+
+const 토스트애니메이션 = keyframes`
+  0% {
+    opacity: 0;
+    transform : translateY(1.2rem);
+  } 
+  
+  80% {
+    transform : translateY(-0.3rem);
+  } 
+  
+  100% {
+    opacity: 1;
+    transform : translateY(0);
+  }
+`;
+
+export const ModalContainerWithAnimation = styled(St.ModalContainer)`
+  animation: ${토스트애니메이션} 0.6s ease-in-out;
+`;

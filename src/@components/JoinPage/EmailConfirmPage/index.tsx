@@ -2,7 +2,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import { prevPages } from "../../../core/join/prevPages";
 import { progressRate } from "../../../core/join/progressRate";
-import { routePaths } from "../../../core/routes/path";
 import Footer from "../../@common/Footer";
 import Header from "../common/Header";
 import PageProgressBar from "../common/PageProgressBar";
@@ -10,9 +9,9 @@ import { St } from "./style";
 
 export default function EmailConfirmPage() {
   const navigate = useNavigate();
-  const location = useLocation();
-  const state = location.state as { userEmail: string };
-  const userEmail = state.userEmail;
+  const locationState = useLocation().state as { userEmail: string };
+  const userEmail = locationState.userEmail;
+
   return (
     <St.Root>
       <Header prevPage={prevPages[1].prevPage} />
