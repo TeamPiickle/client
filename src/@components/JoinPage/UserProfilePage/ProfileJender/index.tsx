@@ -19,6 +19,7 @@ export default function ProfileJender() {
         </St.Option>
         <St.Option value="man">남자</St.Option>
         <St.Option value="woman">여자</St.Option>
+        <St.Option value="etc">기타</St.Option>
       </St.GenderInputForm>
       <St.Down isOpened={isOpened} onClick={() => setIsOpened((prev) => !prev)}>
         <IcDownArrow />
