@@ -1,5 +1,6 @@
-/* eslint-disable indent */
-import styled, { css } from "styled-components";
+import styled from "styled-components";
+
+import IcDownArrow from "../../../../asset/icon/downArrow.svg";
 
 export const St = {
   ProfileJender: styled.section`
@@ -10,33 +11,26 @@ export const St = {
     margin: 1.2rem 0 2.4rem 0;
   `,
 
-  GenderInputForm: styled.select`
+  GenderInputForm: styled.select<{ value: string }>`
     width: 32.8rem;
-    padding-left: 2.4rem;
-    margin-left: -1.5rem;
+    height: 100%;
+    padding: 0 2.4rem;
 
     border: solid 0.1rem ${({ theme }) => theme.colors.gray300};
     border-radius: 4.9rem;
+
+    color: ${({ theme, value }) => (value.length === 0 ? theme.colors.gray500 : theme.colors.bg)};
     ${({ theme }) => theme.fonts.body6}
-    color: ${({ theme }) => theme.colors.bg};
-    background-color: ${({ theme }) => theme.colors.white};
 
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+
+    background-image: url(${IcDownArrow});
+    background-repeat: no-repeat;
+    background-position: calc(100% - 10px) center;
+    background-color: ${({ theme }) => theme.colors.white};
   `,
 
   Option: styled.option``,
-
-  Down: styled.div<{ isOpened: boolean }>`
-    display: inline-block;
-    margin-left: -3rem;
-    margin-top: 1.3rem;
-    ${({ isOpened }) =>
-      isOpened &&
-      css`
-        transform: rotate(-180deg);
-        margin-bottom: 1.3rem;
-      `}
-  `,
 };
