@@ -22,6 +22,12 @@ export const St = {
     color: ${({ theme }) => theme.colors.bg};
   `,
 
+  PickerContainer: styled.div`
+    .datepicker {
+      position: fixed;
+    }
+  `,
+
   Down: styled.div`
     display: inline-block;
     margin-left: -3rem;
