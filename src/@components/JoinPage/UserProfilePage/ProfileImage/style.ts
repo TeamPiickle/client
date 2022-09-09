@@ -1,9 +1,7 @@
 import styled from "styled-components";
 
 export const St = {
-  ProfileImage: styled.section``,
-
-  Image: styled.div`
+  ProfileImage: styled.section`
     width: 8rem;
     height: 8rem;
 

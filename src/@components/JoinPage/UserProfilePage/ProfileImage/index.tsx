@@ -5,13 +5,11 @@ import { St } from "./style";
 export default function ProfileImage() {
   return (
     <St.ProfileImage>
-      <St.Image>
-        <St.AddImage src={ImgDefaultBigProfile} alt="프로필" />
-        <St.AddBtnWrapper>
-          <IcAddProfileBtn />
-          <St.AddButton type="file" accept="image/*" />
-        </St.AddBtnWrapper>
-      </St.Image>
+      <St.AddImage src={ImgDefaultBigProfile} alt="프로필" />
+      <St.AddBtnWrapper>
+        <IcAddProfileBtn />
+        <St.AddButton type="file" accept="image/*" />
+      </St.AddBtnWrapper>
     </St.ProfileImage>
   );
 }
