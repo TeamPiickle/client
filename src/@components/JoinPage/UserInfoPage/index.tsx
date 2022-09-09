@@ -5,6 +5,8 @@ import Header from "../common/Header";
 import PageProgressBar from "../common/PageProgressBar";
 import SuccessBtn from "../common/SuccessBtn";
 import { St } from "./style";
+import UserEmail from "./UserEmail";
+import UserPassword from "./UserPassword";
 
 export default function UserInfo() {
   return (
@@ -14,20 +16,8 @@ export default function UserInfo() {
       <St.ContainerWrapper>
         <St.UserInfoContainer>
           <St.ContentTitle>정보를 입력해주세요</St.ContentTitle>
-          <St.EmailContainer>
-            <St.EmailTitleWrapper>
-              <St.EmailTitleText>이메일 아이디 (필수)</St.EmailTitleText>
-            </St.EmailTitleWrapper>
-            <St.EmailInputForm placeholder="hello@piickle.com" />
-          </St.EmailContainer>
-          <St.PasswordContainer>
-            <St.PasswordTitleWrapper>
-              <St.PasswordTitleText>비밀번호 및 확인 (필수)</St.PasswordTitleText>
-              <St.PasswordDescription>※ 영문,숫자, 특수문자 조합 6자 이상</St.PasswordDescription>
-            </St.PasswordTitleWrapper>
-            <St.PasswordInputForm placeholder="비밀번호 입력" />
-            <St.PasswordInputForm placeholder="비밀번호 확인" />
-          </St.PasswordContainer>
+          <UserEmail />
+          <UserPassword />
         </St.UserInfoContainer>
         <St.SuccessBtnContainer>
           <SuccessBtn name="다음으로" />
