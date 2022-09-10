@@ -4,9 +4,14 @@ import DatePicker from "react-mobile-datepicker";
 import { IcDownArrow } from "../../../../asset/icon";
 import { St } from "./style";
 
-export default function ProfileBirth() {
+interface birthTypes {
+  isbirth: string;
+  setIsbirth: (birthDay: string) => void;
+}
+
+export default function ProfileBirth(props: birthTypes) {
+  const { isbirth, setIsbirth } = props;
   const [isOpen, setIsOpen] = useState(false);
-  const [isbirth, setIsbirth] = useState<string>("");
   const [time, setTime] = useState(new Date());
 
   const dateFormat = (defaultTime: typeof time) => {
@@ -19,11 +24,11 @@ export default function ProfileBirth() {
     if (year === time.getFullYear()) {
       if (monthResult >= time.getMonth() + 1) {
         if (day >= time.getDate()) {
-          return "생년월일을 다시 확인해주세요";
+          return "null";
         }
       }
     } else if (year > time.getFullYear()) {
-      return "생년월일을 다시 확인해주세요";
+      return "null";
     }
     return year + "년 " + monthResult + "월 " + dayResult + "일 ";
   };

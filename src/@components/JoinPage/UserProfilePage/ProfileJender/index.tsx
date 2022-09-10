@@ -1,9 +1,12 @@
-import React, { useState } from "react";
-
 import { St } from "./style";
 
-export default function ProfileJender() {
-  const [isSelected, setIsSelected] = useState("");
+interface jenderTypes {
+  isSelected: string;
+  setIsSelected: (jender: string) => void;
+}
+
+export default function ProfileJender(props: jenderTypes) {
+  const { isSelected, setIsSelected } = props;
 
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setIsSelected(e.target.value);
