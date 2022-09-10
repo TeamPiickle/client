@@ -12,11 +12,17 @@ import { St } from "./style";
 import UserEmail from "./UserEmail";
 import UserPassword from "./UserPassword";
 
+const enum Step {
+  input = "input",
+  confirm = "confirm",
+}
+
 export default function UserInfo() {
   const [isPasswordInvalid, setIsPasswordInvalid] = useState([false, false]);
   const { query, setQuery, debouncedQuery } = useDebounce("");
   const [currentPassword, setCurrentPassword] = useState("");
-  const [currentStep, setCurrentStep] = useState("input");
+  const [currentStep, setCurrentStep] = useState<Step>(Step.input);
+  const [isUnfilled, setIsUnfilled] = useState([false, false]);
 
   const navigate = useNavigate();
 
@@ -35,9 +41,10 @@ export default function UserInfo() {
       setIsPasswordInvalid((prev) => [prev[0], false]);
     }
   };
+
   const changePasswordInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (currentStep === "confirm") {
-      setCurrentStep("input");
+    if (currentStep === Step.confirm) {
+      setCurrentStep(Step.input);
     }
     setQuery(e.target.value);
     setCurrentPassword(e.target.value);
@@ -45,18 +52,23 @@ export default function UserInfo() {
 
   const changePasswordConfirm = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(currentPassword);
-    if (currentStep === "input") {
-      setCurrentStep("confirm");
+    if (currentStep === Step.input) {
+      setCurrentStep(Step.confirm);
     }
     setQuery(e.target.value);
     return;
   };
 
   const clickSuccessBtn = () => {
-    console.log(isPasswordInvalid);
+    console.log(currentPassword);
     if (isPasswordInvalid[0] === false && isPasswordInvalid[1] === false) {
       // navigate();
       console.log("okay");
+    } else if (currentPassword === undefined) {
+      setIsUnfilled((prev) => [true, prev[1]]);
+      console.log(isUnfilled);
+    } else if (isPasswordInvalid[1] === true) {
+      setIsUnfilled((prev) => [prev[0], true]);
     }
   };
 
@@ -76,6 +88,7 @@ export default function UserInfo() {
             changePasswordInput={changePasswordInput}
             changePasswordConfirm={changePasswordConfirm}
             currentStep={currentStep}
+            isUnfilled={isUnfilled}
           />
         </St.UserInfoContainer>
         <St.SuccessBtnContainer>
