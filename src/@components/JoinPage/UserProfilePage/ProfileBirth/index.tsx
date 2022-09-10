@@ -15,6 +15,16 @@ export default function ProfileBirth() {
     const day = defaultTime.getDate();
     const monthResult = month < 10 ? "0" + month : month;
     const dayResult = day < 10 ? "0" + day : day;
+
+    if (year === time.getFullYear()) {
+      if (monthResult >= time.getMonth() + 1) {
+        if (day >= time.getDate()) {
+          return "생년월일을 다시 확인해주세요";
+        }
+      }
+    } else if (year > time.getFullYear()) {
+      return "생년월일을 다시 확인해주세요";
+    }
     return year + "년 " + monthResult + "월 " + dayResult + "일 ";
   };
 
