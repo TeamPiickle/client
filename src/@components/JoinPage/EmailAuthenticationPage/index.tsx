@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { emailApi } from "../../../core/api/join";
 import { prevPages } from "../../../core/join/prevPages";
 import { progressRate } from "../../../core/join/progressRate";
 import { routePaths } from "../../../core/routes/path";
+import { userEmail } from "../../../types/users";
 import checkEmailInvalid from "../../../util/checkInvalidEmail";
 import Footer from "../../@common/Footer";
 import { useDebounce } from "../../@common/hooks/useDebounce";
@@ -39,6 +41,12 @@ export default function EmailAuthentication() {
         userEmail: query,
       },
     });
+
+    postEmail();
+  };
+
+  const postEmail = () => {
+    emailApi.postEmail(query);
   };
 
   return (
