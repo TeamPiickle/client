@@ -1,19 +1,26 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-import checkPasswordInvalid from "../../../../util/checkInvalidPassword";
-import { useDebounce } from "../../../@common/hooks/useDebounce";
 import { St } from "./style";
 
-interface isInvalidProps {
+interface UserPasswordProps {
   isPasswordInvalid: boolean[];
-  setIsPasswordInvalid: React.Dispatch<React.SetStateAction<boolean[]>>;
+  checkInputInvalid: () => void;
+  checkConfirmInvalid: () => void;
+  debouncedQuery: string;
+  changePasswordInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  changePasswordConfirm: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  currentStep: string;
 }
-export default function UserPassword(props: isInvalidProps) {
-  const { isPasswordInvalid, setIsPasswordInvalid } = props;
-  const { query, setQuery, debouncedQuery } = useDebounce("");
-  const [currentPassword, setCurrentPassword] = useState("");
-  const [currentStep, setCurrentStep] = useState("input");
-
+export default function UserPassword(props: UserPasswordProps) {
+  const {
+    isPasswordInvalid,
+    checkInputInvalid,
+    checkConfirmInvalid,
+    debouncedQuery,
+    changePasswordInput,
+    changePasswordConfirm,
+    currentStep,
+  } = props;
   useEffect(() => {
     if (currentStep === "input") {
       checkInputInvalid();
@@ -23,38 +30,6 @@ export default function UserPassword(props: isInvalidProps) {
     }
   }, [debouncedQuery]);
 
-  const checkInputInvalid = () => {
-    if (debouncedQuery !== "" && checkPasswordInvalid(debouncedQuery)) {
-      setIsPasswordInvalid((prev) => [true, prev[1]]);
-    } else {
-      setIsPasswordInvalid((prev) => [false, prev[1]]);
-    }
-  };
-
-  const checkConfirmInvalid = () => {
-    if (debouncedQuery !== "" && query !== currentPassword) {
-      setIsPasswordInvalid((prev) => [prev[0], true]);
-    } else {
-      setIsPasswordInvalid((prev) => [prev[0], false]);
-    }
-  };
-
-  const changePasswordInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (currentStep === "confirm") {
-      setCurrentStep("input");
-    }
-    setQuery(e.target.value);
-    setCurrentPassword(e.target.value);
-  };
-
-  const changePasswordConfirm = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(currentPassword);
-    if (currentStep === "input") {
-      setCurrentStep("confirm");
-    }
-    setQuery(e.target.value);
-    return;
-  };
   return (
     <St.PasswordContainer>
       <St.PasswordTitleWrapper>
@@ -71,7 +46,7 @@ export default function UserPassword(props: isInvalidProps) {
         <St.ErrorText>영문, 숫자, 특수 문자를 하나 이상씩 조합해서 6자 이상으로 입력해주세요.</St.ErrorText>
       )}
       <St.PasswordInputForm
-        type="pxassword"
+        type="password"
         placeholder="비밀번호 확인"
         onChange={changePasswordConfirm}
         isFocused={isPasswordInvalid[1]}
