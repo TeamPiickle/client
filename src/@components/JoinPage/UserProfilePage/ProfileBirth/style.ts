@@ -12,7 +12,9 @@ export const St = {
   `,
 
   BirthInputForm: styled.input`
-    width: 32.8rem;
+    width: calc(100% - 3.2rem);
+    height: 100%;
+
     padding-left: 2.4rem;
     margin-left: -1.5rem;
 
@@ -20,6 +22,10 @@ export const St = {
     border-radius: 4.9rem;
     ${({ theme }) => theme.fonts.body6}
     color: ${({ theme }) => theme.colors.bg};
+
+    ${({ theme }) => theme.media.desktop`
+      width: 32.8rem;
+    `};
   `,
 
   PickerContainer: styled.div`

@@ -12,7 +12,8 @@ export const St = {
   `,
 
   NickNameInputForm: styled.input`
-    width: 27.8rem;
+    width: calc(94% - 8.2rem);
+
     margin-right: 0.8rem;
     padding-left: 2.4rem;
 
@@ -20,14 +21,22 @@ export const St = {
     border-radius: 4.9rem;
     ${({ theme }) => theme.fonts.body6}
     color: ${({ theme }) => theme.colors.bg};
+
+    ${({ theme }) => theme.media.desktop`
+      width: 25.9rem;
+    `};
   `,
 
   CheckBtn: styled.button`
-    width: 6.1rem;
+    width: calc(94% - 29.9rem);
 
     ${({ theme }) => theme.fonts.caption4};
     color: ${({ theme }) => theme.colors.bg};
     background-color: ${({ theme }) => theme.colors.gray300};
     border-radius: 3.8rem;
+
+    ${({ theme }) => theme.media.desktop`
+      width: 6.1rem;
+    `};
   `,
 };
