@@ -50,7 +50,13 @@ export default function ProfileBirth(props: birthTypes) {
   return (
     <St.ProfileBirth>
       <St.InputContainer onClick={handleClick}>
-        <St.BirthInputForm type="text" placeholder="생년월일을 선택해주세요" value={isbirth} readOnly />
+        <St.BirthInputForm
+          type="text"
+          placeholder="생년월일을 선택해주세요"
+          value={isbirth}
+          isbirth={isbirth}
+          readOnly
+        />
         <St.Down>
           <IcDownArrow />
         </St.Down>

@@ -46,7 +46,7 @@ export const St = {
   `,
 
   ErrorMessage: styled.div`
-    margin: -2rem 4.2rem 1rem 2rem;
+    margin: -2rem 4.2rem 1.6rem 2rem;
 
     color: ${({ theme }) => theme.colors.red};
     ${({ theme }) => theme.fonts.caption3}

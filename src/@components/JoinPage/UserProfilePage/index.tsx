@@ -47,7 +47,12 @@ export default function UserProfilePage() {
         <ProfileImage />
         <St.SubTitle>닉네임(필수)</St.SubTitle>
         <St.Requirement>※ 한글, 영문, 숫자 상관없이 8자 이내</St.Requirement>
-        <ProfileNickname isChecked={isChecked} setNickName={setNickName} setIsChecked={setIsChecked} />
+        <ProfileNickname
+          nickName={nickName}
+          isChecked={isChecked}
+          setNickName={setNickName}
+          setIsChecked={setIsChecked}
+        />
         {nickName == "" && <St.ErrorMessage>{errorMessage.nickName.input}</St.ErrorMessage>}
         {!isChecked && <St.ErrorMessage>{errorMessage.nickName.check}</St.ErrorMessage>}
         <St.SubTitle>생년월일(필수)</St.SubTitle>

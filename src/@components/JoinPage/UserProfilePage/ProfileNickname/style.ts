@@ -11,13 +11,13 @@ export const St = {
     margin: 1.2rem 0 2.4rem 0;
   `,
 
-  NickNameInputForm: styled.input<{ isChecked: boolean }>`
+  NickNameInputForm: styled.input<{ nickName: string; isChecked: boolean }>`
     width: calc(94% - 8.2rem);
 
     margin-right: 0.8rem;
     padding-left: 2.4rem;
 
-    border: solid 0.1rem ${({ theme }) => theme.colors.gray300};
+    border: solid 0.1rem ${({ nickName, theme }) => (nickName === "" ? theme.colors.red : theme.colors.gray300)};
     border-radius: 4.9rem;
     ${({ theme }) => theme.fonts.body6}
     color: ${({ isChecked, theme }) => (isChecked ? theme.colors.gray400 : theme.colors.bg)};
