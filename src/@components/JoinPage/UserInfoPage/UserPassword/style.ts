@@ -23,6 +23,12 @@ export const St = {
     margin-top: 0.4rem;
   `,
 
+  InputWrapper: styled.div`
+    width: 100%;
+
+    margin-top: 1.2rem;
+  `,
+
   PasswordInputForm: styled.input<{ isFocused: boolean }>`
     height: 4.2rem;
     width: 100%;
@@ -30,12 +36,11 @@ export const St = {
     border: solid 0.1rem ${({ theme, isFocused }) => (isFocused ? theme.colors.red : theme.colors.gray300)};
     border-radius: 4.9rem;
 
-    margin-top: 1.2rem;
-    padding-left: 2.4rem;
-
     color: ${({ theme, isFocused }) => (isFocused ? theme.colors.red : theme.colors.gray400)};
 
     ${({ theme }) => theme.fonts.body6}
+
+    padding-left: 2.4rem;
   `,
 
   ErrorText: styled.div`

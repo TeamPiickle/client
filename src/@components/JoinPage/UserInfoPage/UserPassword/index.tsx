@@ -10,6 +10,7 @@ interface UserPasswordProps {
   changePasswordInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
   changePasswordConfirm: (e: React.ChangeEvent<HTMLInputElement>) => void;
   currentStep: string;
+  isUnfilled: boolean[];
 }
 export default function UserPassword(props: UserPasswordProps) {
   const {
@@ -20,7 +21,9 @@ export default function UserPassword(props: UserPasswordProps) {
     changePasswordInput,
     changePasswordConfirm,
     currentStep,
+    isUnfilled,
   } = props;
+
   useEffect(() => {
     if (currentStep === "input") {
       checkInputInvalid();
@@ -36,22 +39,29 @@ export default function UserPassword(props: UserPasswordProps) {
         <St.PasswordTitleText>비밀번호 및 확인 (필수)</St.PasswordTitleText>
         <St.PasswordDescription>※ 영문,숫자, 특수문자 조합 6자 이상</St.PasswordDescription>
       </St.PasswordTitleWrapper>
-      <St.PasswordInputForm
-        type="password"
-        placeholder="비밀번호 입력"
-        onChange={changePasswordInput}
-        isFocused={isPasswordInvalid[0]}
-      />
-      {isPasswordInvalid[0] && (
-        <St.ErrorText>영문, 숫자, 특수 문자를 하나 이상씩 조합해서 6자 이상으로 입력해주세요.</St.ErrorText>
-      )}
-      <St.PasswordInputForm
-        type="password"
-        placeholder="비밀번호 확인"
-        onChange={changePasswordConfirm}
-        isFocused={isPasswordInvalid[1]}
-      />
-      {isPasswordInvalid[1] && <St.ErrorText>비밀번호가 일치하지 않습니다</St.ErrorText>}
+      <St.InputWrapper>
+        <St.PasswordInputForm
+          type="password"
+          placeholder="비밀번호 입력"
+          onChange={changePasswordInput}
+          isFocused={isPasswordInvalid[0]}
+        />
+        {isPasswordInvalid[0] &&
+          (isUnfilled[0] ? (
+            <St.ErrorText>비밀번호를 입려해주세요</St.ErrorText>
+          ) : (
+            <St.ErrorText>영문, 숫자, 특수 문자를 하나 이상씩 조합해서 6자 이상으로 입력해주세요.</St.ErrorText>
+          ))}
+      </St.InputWrapper>
+      <St.InputWrapper>
+        <St.PasswordInputForm
+          type="password"
+          placeholder="비밀번호 확인"
+          onChange={changePasswordConfirm}
+          isFocused={isPasswordInvalid[1]}
+        />
+        {isPasswordInvalid[1] && <St.ErrorText>비밀번호가 일치하지 않습니다</St.ErrorText>}
+      </St.InputWrapper>
     </St.PasswordContainer>
   );
 }
