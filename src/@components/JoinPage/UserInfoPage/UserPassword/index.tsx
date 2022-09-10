@@ -4,9 +4,13 @@ import checkPasswordInvalid from "../../../../util/checkInvalidPassword";
 import { useDebounce } from "../../../@common/hooks/useDebounce";
 import { St } from "./style";
 
-export default function UserPassword() {
+interface isInvalidProps {
+  isPasswordInvalid: boolean[];
+  setIsPasswordInvalid: React.Dispatch<React.SetStateAction<boolean[]>>;
+}
+export default function UserPassword(props: isInvalidProps) {
+  const { isPasswordInvalid, setIsPasswordInvalid } = props;
   const { query, setQuery, debouncedQuery } = useDebounce("");
-  const [isPasswordInvalid, setIsPasswordInvalid] = useState([false, false]);
   const [currentPassword, setCurrentPassword] = useState("");
   const [currentStep, setCurrentStep] = useState("input");
 
@@ -21,18 +25,17 @@ export default function UserPassword() {
 
   const checkInputInvalid = () => {
     if (debouncedQuery !== "" && checkPasswordInvalid(debouncedQuery)) {
-      setIsPasswordInvalid([true, false]);
+      setIsPasswordInvalid((prev) => [true, prev[1]]);
     } else {
-      setIsPasswordInvalid([false, false]);
-      setCurrentPassword(debouncedQuery);
+      setIsPasswordInvalid((prev) => [false, prev[1]]);
     }
   };
 
   const checkConfirmInvalid = () => {
     if (debouncedQuery !== "" && query !== currentPassword) {
-      setIsPasswordInvalid([false, true]);
+      setIsPasswordInvalid((prev) => [prev[0], true]);
     } else {
-      setIsPasswordInvalid([false, false]);
+      setIsPasswordInvalid((prev) => [prev[0], false]);
     }
   };
 
@@ -41,9 +44,11 @@ export default function UserPassword() {
       setCurrentStep("input");
     }
     setQuery(e.target.value);
+    setCurrentPassword(e.target.value);
   };
 
   const changePasswordConfirm = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(currentPassword);
     if (currentStep === "input") {
       setCurrentStep("confirm");
     }
@@ -57,7 +62,7 @@ export default function UserPassword() {
         <St.PasswordDescription>※ 영문,숫자, 특수문자 조합 6자 이상</St.PasswordDescription>
       </St.PasswordTitleWrapper>
       <St.PasswordInputForm
-        // type="password"
+        type="password"
         placeholder="비밀번호 입력"
         onChange={changePasswordInput}
         isFocused={isPasswordInvalid[0]}
@@ -66,7 +71,7 @@ export default function UserPassword() {
         <St.ErrorText>영문, 숫자, 특수 문자를 하나 이상씩 조합해서 6자 이상으로 입력해주세요.</St.ErrorText>
       )}
       <St.PasswordInputForm
-        // type="pxassword"
+        type="pxassword"
         placeholder="비밀번호 확인"
         onChange={changePasswordConfirm}
         isFocused={isPasswordInvalid[1]}
