@@ -4,4 +4,5 @@ export const PATH = {
   BALLOTS: "/ballots",
   CARDS: "/cards",
   NOTICES: "/notices",
+  EMAIL: "/users/email-verification",
 };
