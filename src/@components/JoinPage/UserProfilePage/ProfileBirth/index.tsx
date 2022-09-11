@@ -2,17 +2,20 @@ import { useState } from "react";
 import DatePicker from "react-mobile-datepicker";
 
 import { IcDownArrow } from "../../../../asset/icon";
+import { errorMessage } from "../../../../core/join/userProfileErrorMsg";
 import { St } from "./style";
 
 interface birthTypes {
   isbirth: string;
+  isInComplete: boolean;
   setIsbirth: (birthDay: string) => void;
 }
 
 export default function ProfileBirth(props: birthTypes) {
-  const { isbirth, setIsbirth } = props;
+  const { isbirth, isInComplete, setIsbirth } = props;
   const [isOpen, setIsOpen] = useState(false);
   const [time, setTime] = useState(new Date());
+  const [isError, setIsError] = useState<string>("");
 
   const dateFormat = (defaultTime: typeof time) => {
     const year = defaultTime.getFullYear();
@@ -21,14 +24,17 @@ export default function ProfileBirth(props: birthTypes) {
     const monthResult = month < 10 ? "0" + month : month;
     const dayResult = day < 10 ? "0" + day : day;
 
-    if (year === time.getFullYear()) {
-      if (monthResult >= time.getMonth() + 1) {
-        if (day >= time.getDate()) {
-          return "null";
-        }
-      }
+    let age = time.getFullYear() - year;
+    time.getMonth() + 1 <= month && time.getDate() <= day ? age-- : null;
+
+    if (year === time.getFullYear() && monthResult >= time.getMonth() + 1 && day >= time.getDate()) {
+      setIsError("valid");
     } else if (year > time.getFullYear()) {
-      return "null";
+      setIsError("valid");
+    } else if (age < 14) {
+      setIsError("check");
+    } else {
+      setIsError("");
     }
     return year + "년 " + monthResult + "월 " + dayResult + "일 ";
   };
@@ -55,6 +61,7 @@ export default function ProfileBirth(props: birthTypes) {
           placeholder="생년월일을 선택해주세요"
           value={isbirth}
           isbirth={isbirth}
+          isInComplete={isInComplete}
           readOnly
         />
         <St.Down>
@@ -77,6 +84,8 @@ export default function ProfileBirth(props: birthTypes) {
           />
         </St.PickerContainer>
       )}
+      {isError === "valid" && <St.ErrorMessage>{errorMessage.birth.valid}</St.ErrorMessage>}
+      {isError === "check" && <St.ErrorMessage>{errorMessage.birth.check}</St.ErrorMessage>}
     </St.ProfileBirth>
   );
 }
