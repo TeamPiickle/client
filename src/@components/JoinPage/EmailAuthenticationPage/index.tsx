@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { emailApi } from "../../../core/api/join";
+import { joinApi } from "../../../core/api/join";
 import { prevPages } from "../../../core/join/prevPages";
 import { progressRate } from "../../../core/join/progressRate";
 import { routePaths } from "../../../core/routes/path";
@@ -46,7 +46,7 @@ export default function EmailAuthentication() {
   };
 
   const postEmail = () => {
-    emailApi.postEmail(query);
+    joinApi.postEmail(query);
   };
 
   return (
