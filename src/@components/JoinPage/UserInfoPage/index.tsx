@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { joinApi } from "../../../core/api/join";
 import { prevPages } from "../../../core/join/prevPages";
 import { progressRate } from "../../../core/join/progressRate";
+import { routePaths } from "../../../core/routes/path";
 import checkPasswordInvalid from "../../../util/checkInvalidPassword";
 import Footer from "../../@common/Footer";
 import { useDebounce } from "../../@common/hooks/useDebounce";
@@ -11,7 +13,6 @@ import PageProgressBar from "../common/PageProgressBar";
 import { St } from "./style";
 import UserEmail from "./UserEmail";
 import UserPassword from "./UserPassword";
-
 const enum Step {
   input = "input",
   confirm = "confirm",
@@ -63,18 +64,25 @@ export default function UserInfo() {
     console.log(currentPassword);
     if (isPasswordInvalid[0] === false && isPasswordInvalid[1] === false) {
       // navigate();
-      console.log("okay");
+      postUserInfo();
     } else if (currentPassword === undefined) {
       setIsUnfilled((prev) => [true, prev[1]]);
-      console.log(isUnfilled);
     } else if (isPasswordInvalid[1] === true) {
       setIsUnfilled((prev) => [prev[0], true]);
     }
   };
 
+  const postUserInfo = () => {
+    const postingUserInfo = {
+      email: localStorage.getItem("user-email"),
+      password: currentPassword,
+    };
+    joinApi.postUserInfo(postingUserInfo);
+  };
+
   return (
     <>
-      <Header prevPage={prevPages[2].prevPage} />
+      <Header prevPage={prevPages[1].prevPage} />
       <PageProgressBar rate={progressRate[2].rate} />
       <St.ContainerWrapper>
         <St.UserInfoContainer>
