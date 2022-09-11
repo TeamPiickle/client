@@ -18,9 +18,9 @@ export default function ProfileJender(props: jenderTypes) {
         <St.Option value="" disabled selected hidden>
           성별을 선택해주세요
         </St.Option>
-        <St.Option value="man">남자</St.Option>
-        <St.Option value="woman">여자</St.Option>
-        <St.Option value="etc">기타</St.Option>
+        <St.Option value="남">남자</St.Option>
+        <St.Option value="여">여자</St.Option>
+        <St.Option value="기타">기타</St.Option>
       </St.GenderInputForm>
     </St.ProfileJender>
   );
