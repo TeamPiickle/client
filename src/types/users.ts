@@ -13,3 +13,8 @@ export interface myPiickle {
 export interface userEmail {
   email: string;
 }
+
+export interface userInfo {
+  email: string | null;
+  password: string;
+}
