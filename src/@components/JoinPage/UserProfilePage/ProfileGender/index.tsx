@@ -1,11 +1,11 @@
 import { St } from "./style";
 
-interface jenderTypes {
+interface ProfileJenderProps {
   isSelected: string;
   setIsSelected: (jender: string) => void;
 }
 
-export default function ProfileJender(props: jenderTypes) {
+export default function ProfileJender(props: ProfileJenderProps) {
   const { isSelected, setIsSelected } = props;
 
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {

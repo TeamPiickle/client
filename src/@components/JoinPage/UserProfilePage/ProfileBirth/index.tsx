@@ -5,13 +5,13 @@ import { IcDownArrow } from "../../../../asset/icon";
 import { errorMessage } from "../../../../core/join/userProfileErrorMsg";
 import { St } from "./style";
 
-interface birthTypes {
+interface ProfileBirthProps {
   isbirth: string;
   isInComplete: boolean;
   setIsbirth: (birthDay: string) => void;
 }
 
-export default function ProfileBirth(props: birthTypes) {
+export default function ProfileBirth(props: ProfileBirthProps) {
   const { isbirth, isInComplete, setIsbirth } = props;
   const [isOpen, setIsOpen] = useState(false);
   const [time, setTime] = useState(new Date());

@@ -5,7 +5,7 @@ import { joinApi } from "../../../../core/api/join";
 import { errorMessage } from "../../../../core/join/userProfileErrorMsg";
 import { St } from "./style";
 
-interface nickNameTypes {
+interface ProfileNicknameProps {
   nickName: string;
   setNickName: (nickName: string) => void;
   isChecked: boolean;
@@ -13,7 +13,7 @@ interface nickNameTypes {
   setIsChecked: (button: boolean) => void;
 }
 
-export default function ProfileNickname(props: nickNameTypes) {
+export default function ProfileNickname(props: ProfileNicknameProps) {
   const { nickName, setNickName, isChecked, setIsChecked, isInComplete } = props;
   const [isError, setIsError] = useState<string>("");
   const onChangeNickname = (e: React.ChangeEvent<HTMLInputElement>) => {

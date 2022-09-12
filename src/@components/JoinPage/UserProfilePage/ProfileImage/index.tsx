@@ -4,11 +4,11 @@ import { IcAddProfileBtn } from "../../../../asset/icon";
 import { ImgDefaultBigProfile } from "../../../../asset/image";
 import { St } from "./style";
 
-interface ImageTypes {
+interface ProfileImageProps {
   setImage: (file: FormData) => void;
 }
 
-export default function ProfileImage(props: ImageTypes) {
+export default function ProfileImage(props: ProfileImageProps) {
   const { setImage } = props;
   const [imgUrl, setImgUrl] = useState<string>("");
 
