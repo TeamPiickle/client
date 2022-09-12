@@ -1,40 +1,45 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
+import { joinApi } from "../../../core/api/join";
 import { prevPages } from "../../../core/join/prevPages";
 import { progressRate } from "../../../core/join/progressRate";
+import { routePaths } from "../../../core/routes/path";
 import Footer from "../../@common/Footer";
 import Header from "../common/Header";
 import PageProgressBar from "../common/PageProgressBar";
 import ProfileBirth from "./ProfileBirth";
+import ProfileGender from "./ProfileGender";
 import ProfileImage from "./ProfileImage";
-import ProfileJender from "./ProfileJender";
 import ProfileNickname from "./ProfileNickname";
 import { St } from "./style";
 
-const errorMessage = {
-  nickName: {
-    input: "닉네임을 입력해주세요",
-    check: "닉네임 중복 확인을 해주세요",
-    fail: "이미 존재하는 닉네임입니다",
-    success: "사용가능한 닉네임입니다",
-  },
-  birth: {
-    input: "생년월일을 입력해주세요",
-    check: "만 14세 이상이 맞는지 다시 한번 확인해주세요",
-    fail: "유효하지 않은 생년월일입니다",
-  },
-};
-
 export default function UserProfilePage() {
+  const navigate = useNavigate();
   const [nickName, setNickName] = useState<string>("");
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(false); //닉넴 중복 확인
   const [isbirth, setIsbirth] = useState<string>("");
-  const [isSelected, setIsSelected] = useState("");
+  const [isSelected, setIsSelected] = useState(""); // 성별
+  const [isInComplete, setisInComplete] = useState(false); // 다음으로 버튼
+  const [image, setImage] = useState(new FormData());
 
   const completeBtn = () => {
-    console.log(nickName);
-    console.log(isbirth);
-    console.log(isSelected);
+    setisInComplete(true);
+    patchUserProfile();
+
+    /*
+    nickName && isbirth && isChecked ? navigate(`${routePaths.Join_}${routePaths.Join_Agree}`) : null;
+    */
+  };
+
+  const patchUserProfile = () => {
+    const patchingUserProfile = {
+      file: image,
+      nickname: nickName,
+      birthday: isbirth,
+      gender: isSelected,
+    };
+    joinApi.patchUserProfile(patchingUserProfile);
   };
 
   return (
@@ -44,24 +49,21 @@ export default function UserProfilePage() {
       <St.ProfileContainer>
         <St.Title>프로필을 설정해주세요</St.Title>
         <St.SubTitle>프로필 사진(선택)</St.SubTitle>
-        <ProfileImage />
+        <ProfileImage setImage={setImage} />
         <St.SubTitle>닉네임(필수)</St.SubTitle>
         <St.Requirement>※ 한글, 영문, 숫자 상관없이 8자 이내</St.Requirement>
         <ProfileNickname
           nickName={nickName}
           isChecked={isChecked}
+          isInComplete={isInComplete}
           setNickName={setNickName}
           setIsChecked={setIsChecked}
         />
-        {nickName == "" && <St.ErrorMessage>{errorMessage.nickName.input}</St.ErrorMessage>}
-        {!isChecked && <St.ErrorMessage>{errorMessage.nickName.check}</St.ErrorMessage>}
         <St.SubTitle>생년월일(필수)</St.SubTitle>
         <St.Requirement>※ 만 14세 이상만 가입가능합니다.</St.Requirement>
-        <ProfileBirth isbirth={isbirth} setIsbirth={setIsbirth} />
-        {isbirth == "" && <St.ErrorMessage>{errorMessage.birth.input}</St.ErrorMessage>}
-        {isbirth === "null" && <St.ErrorMessage>{errorMessage.birth.fail}</St.ErrorMessage>}
-        <St.SubTitle>성별</St.SubTitle>
-        <ProfileJender isSelected={isSelected} setIsSelected={setIsSelected} />
+        <ProfileBirth isbirth={isbirth} setIsbirth={setIsbirth} isInComplete={isInComplete} />
+        <St.SubTitle>성별(선택)</St.SubTitle>
+        <ProfileGender isSelected={isSelected} setIsSelected={setIsSelected} />
         <St.NextButton onClick={completeBtn}>다음으로</St.NextButton>
       </St.ProfileContainer>
       <Footer />
