@@ -13,7 +13,7 @@ export default function ProfileJender(props: jenderTypes) {
   };
 
   return (
-    <St.ProfileJender>
+    <St.ProfileGender>
       <St.GenderInputForm onChange={handleSelect} value={isSelected}>
         <St.Option value="" disabled selected hidden>
           성별을 선택해주세요
@@ -22,6 +22,6 @@ export default function ProfileJender(props: jenderTypes) {
         <St.Option value="여">여자</St.Option>
         <St.Option value="기타">기타</St.Option>
       </St.GenderInputForm>
-    </St.ProfileJender>
+    </St.ProfileGender>
   );
 }

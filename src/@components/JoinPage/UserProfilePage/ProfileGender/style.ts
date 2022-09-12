@@ -3,7 +3,7 @@ import styled from "styled-components";
 import IcDownArrow from "../../../../asset/icon/downArrow.svg";
 
 export const St = {
-  ProfileJender: styled.section`
+  ProfileGender: styled.section`
     height: 4.4rem;
 
     display: flex;

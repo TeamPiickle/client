@@ -55,12 +55,15 @@ export default function ProfileNickname(props: nickNameTypes) {
         />
         <St.CheckBtn onClick={isVaildCheckBtn}>중복확인</St.CheckBtn>
       </St.InputContainer>
+      {(isInComplete && nickName == "") || isError === "input" ? (
+        <St.ErrorMessage>{errorMessage.nickName.input}</St.ErrorMessage>
+      ) : isInComplete && !isChecked ? (
+        <St.ErrorMessage>{errorMessage.nickName.check}</St.ErrorMessage>
+      ) : null}
       {isError === "fail" ? (
         <St.ErrorMessage>{errorMessage.nickName.fail}</St.ErrorMessage>
       ) : isError === "success" ? (
         <St.SuccessMessage>{errorMessage.nickName.success}</St.SuccessMessage>
-      ) : isError === "input" ? (
-        <St.ErrorMessage>{errorMessage.nickName.input}</St.ErrorMessage>
       ) : (
         ""
       )}

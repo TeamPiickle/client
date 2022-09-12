@@ -36,7 +36,7 @@ export default function ProfileBirth(props: birthTypes) {
     } else {
       setIsError("");
     }
-    return year + "년 " + monthResult + "월 " + dayResult + "일 ";
+    return year + "년 " + monthResult + "월 " + dayResult + "일";
   };
 
   const handleClick = () => {
@@ -84,6 +84,7 @@ export default function ProfileBirth(props: birthTypes) {
           />
         </St.PickerContainer>
       )}
+      {isInComplete && isbirth == "" && <St.ErrorMessage>{errorMessage.birth.input}</St.ErrorMessage>}
       {isError === "valid" && <St.ErrorMessage>{errorMessage.birth.valid}</St.ErrorMessage>}
       {isError === "check" && <St.ErrorMessage>{errorMessage.birth.check}</St.ErrorMessage>}
     </St.ProfileBirth>
