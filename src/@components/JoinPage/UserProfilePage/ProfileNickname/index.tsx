@@ -17,6 +17,7 @@ export default function ProfileNickname(props: ProfileNicknameProps) {
   const { nickName, setNickName, isChecked, setIsChecked, isInComplete } = props;
   const [isError, setIsError] = useState<string>("");
   const onChangeNickname = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value.length > 8) e.target.value = e.target.value.slice(0, 8);
     setNickName(e.target.value);
   };
 
