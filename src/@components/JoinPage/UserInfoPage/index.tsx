@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 import { joinApi } from "../../../core/api/join";
 import { prevPages } from "../../../core/join/prevPages";
 import { progressRate } from "../../../core/join/progressRate";
 import { routePaths } from "../../../core/routes/path";
+import { useOutletContexts } from "../../../types/users";
 import checkPasswordInvalid from "../../../util/checkInvalidPassword";
 import Footer from "../../@common/Footer";
 import { useDebounce } from "../../@common/hooks/useDebounce";
@@ -13,36 +14,43 @@ import PageProgressBar from "../common/PageProgressBar";
 import { St } from "./style";
 import UserEmail from "./UserEmail";
 import UserPassword from "./UserPassword";
+
 const enum Step {
   input = "input",
   confirm = "confirm",
 }
 
 export default function UserInfo() {
-  const [isPasswordInvalid, setIsPasswordInvalid] = useState([false, false]);
+  const [isPasswordInvalid, setIsPasswordInvalid] = useState({
+    input: false,
+    confirm: false,
+  });
   const { query, setQuery, debouncedQuery } = useDebounce("");
   const [currentPassword, setCurrentPassword] = useState("");
   const [currentStep, setCurrentStep] = useState<Step>(Step.input);
-  const [isUnfilled, setIsUnfilled] = useState([false, false]);
+  const [isUnfilled, setIsUnfilled] = useState({
+    input: false,
+    confirm: false,
+  });
 
   const navigate = useNavigate();
+  const { userEmail, setUserPassword } = useOutletContext<useOutletContexts>();
 
   const checkInputInvalid = () => {
     if (debouncedQuery !== "" && checkPasswordInvalid(debouncedQuery)) {
-      setIsPasswordInvalid((prev) => [true, prev[1]]);
+      setIsPasswordInvalid({ ...isPasswordInvalid, input: true });
     } else {
-      setIsPasswordInvalid((prev) => [false, prev[1]]);
+      setIsPasswordInvalid({ ...isPasswordInvalid, input: false });
     }
   };
 
   const checkConfirmInvalid = () => {
     if (debouncedQuery !== "" && query !== currentPassword) {
-      setIsPasswordInvalid((prev) => [prev[0], true]);
+      setIsPasswordInvalid({ ...isPasswordInvalid, confirm: true });
     } else {
-      setIsPasswordInvalid((prev) => [prev[0], false]);
+      setIsPasswordInvalid({ ...isPasswordInvalid, confirm: false });
     }
   };
-
   const changePasswordInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (currentStep === Step.confirm) {
       setCurrentStep(Step.input);
@@ -62,19 +70,20 @@ export default function UserInfo() {
 
   const clickSuccessBtn = () => {
     console.log(currentPassword);
-    if (isPasswordInvalid[0] === false && isPasswordInvalid[1] === false) {
+    if (isPasswordInvalid.input === false && isPasswordInvalid.confirm === false) {
       // navigate();
+      setUserPassword(currentPassword);
       postUserInfo();
     } else if (currentPassword === undefined) {
-      setIsUnfilled((prev) => [true, prev[1]]);
-    } else if (isPasswordInvalid[1] === true) {
-      setIsUnfilled((prev) => [prev[0], true]);
+      setIsUnfilled({ ...isUnfilled, input: true });
+    } else if (isPasswordInvalid.confirm === true) {
+      setIsUnfilled({ ...isUnfilled, confirm: true });
     }
   };
 
   const postUserInfo = () => {
     const postingUserInfo = {
-      email: localStorage.getItem("user-email"),
+      email: userEmail,
       password: currentPassword,
     };
     joinApi.postUserInfo(postingUserInfo);
