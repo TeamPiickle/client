@@ -45,10 +45,8 @@ export default function ProfileNickname(props: ProfileNicknameProps) {
           id="nickname"
           placeholder="홍길동"
           onChange={onChangeNickname}
-          nickName={nickName}
-          isChecked={isChecked}
-          isInComplete={isInComplete}
-          isError={isError}
+          isincompletestate={nickName === "" && isInComplete}
+          iserrorstate={isError === "success" && isChecked}
         />
         <St.CheckBtn onClick={isVaildCheckBtn}>중복확인</St.CheckBtn>
       </St.InputContainer>
