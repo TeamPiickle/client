@@ -84,7 +84,7 @@ function fetchCardsWithFilter<T>(types: string[]) {
 
 // 북마크 생성
 function addNDeleteBookmark(cardId: string) {
-  return realReq.PUT(`${PATH.USERS}/bookmarks`, { cardId });
+  return realReq.PUT(`${PATH.USERS_}/bookmarks`, { cardId });
 }
 
 export const cardCollectionApi = {

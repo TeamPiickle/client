@@ -7,11 +7,11 @@ import { realReq } from "./common/axios";
 import { PATH } from "./common/constants";
 
 export default function useUserProfile() {
-  const { data, error } = useSWR<PiickleSWRResponse<UserProfile>>(PATH.USERS, realReq.GET_SWR);
+  const { data, error } = useSWR<PiickleSWRResponse<UserProfile>>(PATH.USERS_, realReq.GET_SWR);
   const { mutate } = useSWRConfig();
 
   const handleNewProfile = () => {
-    mutate(PATH.USERS);
+    mutate(PATH.USERS_);
   };
 
   return {
@@ -23,17 +23,17 @@ export default function useUserProfile() {
 
 // 프로필사진 수정
 function patchProfileImg(file: FormData) {
-  return realReq.PATCH(`${PATH.USERS}/profile-image`, file);
+  return realReq.PATCH(`${PATH.USERS_}/profile-image`, file);
 }
 
 // 유저 닉네임 수정
 function patchUserNickName(patchingUserNickname: PatchingUserNickName) {
-  return realReq.PATCH(`${PATH.USERS}/nickname`, patchingUserNickname);
+  return realReq.PATCH(`${PATH.USERS_}/nickname`, patchingUserNickname);
 }
 
 // 유저 비밀번호 재설정
 function patchUserPassword(PatchingUserPassword: PatchingUserPassword) {
-  return realReq.PATCH(`${PATH.USERS}/me/password`, PatchingUserPassword);
+  return realReq.PATCH(`${PATH.USERS_}/me/password`, PatchingUserPassword);
 }
 
 export const myPageApi = {

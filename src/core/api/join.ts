@@ -3,11 +3,11 @@ import { realReq } from "./common/axios";
 import { PATH } from "./common/constants";
 
 function postEmail(postingEmail: string) {
-  return realReq.POST(PATH.EMAIL, postingEmail);
+  return realReq.POST(`${PATH.USERS_}${PATH.USERS_EMAIL}`, postingEmail);
 }
 
 function postUserInfo(postingUserInfo: userInfo) {
-  return realReq.POST(PATH.USERS, postingUserInfo);
+  return realReq.POST(PATH.USERS_, postingUserInfo);
 }
 
 export const joinApi = {

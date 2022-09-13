@@ -1,8 +1,9 @@
 export const PATH = {
   CATEGORIES: "/categories",
-  USERS: "/users",
+  USERS_: "/users",
   BALLOTS: "/ballots",
   CARDS: "/cards",
   NOTICES: "/notices",
-  EMAIL: "/users/email-verification",
+  USERS_EMAIL: "/email-verification",
+  USERS_BOOKMARK: "/bookmark",
 };
