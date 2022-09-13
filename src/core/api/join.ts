@@ -2,7 +2,7 @@ import { userEmail, userInfo } from "./../../types/users";
 import { realReq } from "./common/axios";
 import { PATH } from "./common/constants";
 
-function postEmail(postingEmail: string) {
+function postEmail(postingEmail: userEmail) {
   return realReq.POST(`${PATH.USERS_}${PATH.USERS_EMAIL}`, postingEmail);
 }
 
