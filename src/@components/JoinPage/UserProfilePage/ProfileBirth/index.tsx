@@ -6,16 +6,16 @@ import { errorMessage } from "../../../../core/join/userProfileErrorMsg";
 import { St } from "./style";
 
 interface ProfileBirthProps {
-  isbirth: string;
+  birthData: string;
   isInComplete: boolean;
-  setIsbirth: (birthDay: string) => void;
+  setBirthData: (birthDay: string) => void;
 }
 
 export default function ProfileBirth(props: ProfileBirthProps) {
-  const { isbirth, isInComplete, setIsbirth } = props;
+  const { birthData, isInComplete, setBirthData } = props;
   const [isOpen, setIsOpen] = useState(false);
-  const [time, setTime] = useState(new Date());
   const [isError, setIsError] = useState<string>("");
+  const time = new Date();
 
   const dateFormat = (defaultTime: typeof time) => {
     const year = defaultTime.getFullYear();
@@ -49,7 +49,7 @@ export default function ProfileBirth(props: ProfileBirthProps) {
 
   const handleSelect = (nextTime: typeof time) => {
     const getTime = dateFormat(nextTime);
-    setIsbirth(getTime);
+    setBirthData(getTime);
     setIsOpen(false);
   };
 
@@ -59,8 +59,8 @@ export default function ProfileBirth(props: ProfileBirthProps) {
         <St.BirthInputForm
           type="text"
           placeholder="생년월일을 선택해주세요"
-          value={isbirth}
-          isbirth={isbirth}
+          value={birthData}
+          birthData={birthData}
           isInComplete={isInComplete}
           readOnly
         />
@@ -84,7 +84,7 @@ export default function ProfileBirth(props: ProfileBirthProps) {
           />
         </St.PickerContainer>
       )}
-      {isInComplete && isbirth == "" && <St.ErrorMessage>{errorMessage.birth.input}</St.ErrorMessage>}
+      {isInComplete && birthData == "" && <St.ErrorMessage>{errorMessage.birth.input}</St.ErrorMessage>}
       {isError === "valid" && <St.ErrorMessage>{errorMessage.birth.valid}</St.ErrorMessage>}
       {isError === "check" && <St.ErrorMessage>{errorMessage.birth.check}</St.ErrorMessage>}
     </St.ProfileBirth>

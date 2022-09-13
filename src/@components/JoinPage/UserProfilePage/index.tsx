@@ -18,7 +18,7 @@ export default function UserProfilePage() {
   const navigate = useNavigate();
   const [nickName, setNickName] = useState<string>("");
   const [isChecked, setIsChecked] = useState(false); //닉넴 중복 확인
-  const [isbirth, setIsbirth] = useState<string>("");
+  const [birthData, setBirthData] = useState<string>("");
   const [isSelected, setIsSelected] = useState(""); // 성별
   const [isInComplete, setisInComplete] = useState(false); // 다음으로 버튼
   const [image, setImage] = useState(new FormData());
@@ -38,7 +38,7 @@ export default function UserProfilePage() {
       password: "1234",
       file: image,
       nickname: nickName,
-      birthday: isbirth,
+      birthday: birthData,
       gender: isSelected,
     };
     joinApi.postJoin(postingUserInfo);
@@ -63,7 +63,7 @@ export default function UserProfilePage() {
         />
         <St.SubTitle>생년월일(필수)</St.SubTitle>
         <St.Requirement>※ 만 14세 이상만 가입가능합니다.</St.Requirement>
-        <ProfileBirth isbirth={isbirth} setIsbirth={setIsbirth} isInComplete={isInComplete} />
+        <ProfileBirth birthData={birthData} setBirthData={setBirthData} isInComplete={isInComplete} />
         <St.SubTitle>성별(선택)</St.SubTitle>
         <ProfileGender isSelected={isSelected} setIsSelected={setIsSelected} />
         <St.NextButton onClick={completeBtn}>다음으로</St.NextButton>

@@ -12,7 +12,7 @@ export const St = {
     margin: 1.2rem 0 2.4rem 0;
   `,
 
-  BirthInputForm: styled.input<{ isbirth: string; isInComplete: boolean }>`
+  BirthInputForm: styled.input<{ birthData: string; isInComplete: boolean }>`
     width: calc(100% - 3.2rem);
     height: 100%;
 
@@ -20,8 +20,8 @@ export const St = {
     margin-left: -1.5rem;
 
     border: solid 0.1rem
-      ${({ isbirth, isInComplete, theme }) =>
-        isInComplete && isbirth === "" ? theme.colors.red : theme.colors.gray300};
+      ${({ birthData, isInComplete, theme }) =>
+        isInComplete && birthData === "" ? theme.colors.red : theme.colors.gray300};
     border-radius: 4.9rem;
     ${({ theme }) => theme.fonts.body6}
     color: ${({ theme }) => theme.colors.bg};
