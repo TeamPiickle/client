@@ -24,7 +24,7 @@ export default function EmailAuthentication() {
   const navigate = useNavigate();
   const { query, setQuery, debouncedQuery } = useDebounce<string>("");
   const [isEmailInvalid, setIsEmailInvalid] = useState(false);
-  const { setUserEmail } = useOutletContext<useOutletContexts>();
+  const { userEmail, setUserEmail } = useOutletContext<useOutletContexts>();
 
   useEffect(() => {
     // 1초 후, 형식 검사
@@ -42,7 +42,7 @@ export default function EmailAuthentication() {
 
   const clickSendBtn = () => {
     // 에러 상태일 때 실행 취소
-    if (isEmailInvalid) return;
+    if (isEmailInvalid || query === "") return;
 
     setUserEmail(query);
 
@@ -56,7 +56,10 @@ export default function EmailAuthentication() {
   };
 
   const postEmail = () => {
-    joinApi.postEmail(query);
+    const postingEmail = {
+      email: query,
+    };
+    joinApi.postEmail(postingEmail);
   };
 
   return (
