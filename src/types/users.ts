@@ -4,7 +4,10 @@ export interface UserProfile {
   email: string;
   profileImageUrl: string;
 }
+
 export interface JoinUserInfo {
+  email: string;
+  password: string;
   nickname: string;
   birthday: string;
   gender: string;

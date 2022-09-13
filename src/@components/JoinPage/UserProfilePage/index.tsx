@@ -25,21 +25,23 @@ export default function UserProfilePage() {
 
   const completeBtn = () => {
     setisInComplete(true);
-    patchUserProfile();
+    postJoin();
 
     /*
     nickName && isbirth && isChecked ? navigate(`${routePaths.Join_}${routePaths.Join_Agree}`) : null;
     */
   };
 
-  const patchUserProfile = () => {
-    const patchingUserProfile = {
+  const postJoin = () => {
+    const postingUserInfo = {
+      email: "skdus728@gmail.com",
+      password: "1234",
       file: image,
       nickname: nickName,
       birthday: isbirth,
       gender: isSelected,
     };
-    joinApi.patchUserProfile(patchingUserProfile);
+    joinApi.postJoin(postingUserInfo);
   };
 
   return (

@@ -3,15 +3,17 @@ import qs from "qs";
 import { realReq } from "./common/axios";
 import { PATH } from "./common/constants";
 
-type patchingUserProfile = {
+type postingUserInfo = {
+  email: string;
+  password: string;
   file: FormData;
   nickname: string;
   birthday: string;
   gender: string;
 };
 
-function patchUserProfile(patchingUserProfile: patchingUserProfile) {
-  return realReq.PATCH(PATH.USERS, patchingUserProfile);
+function postJoin(postingUserInfo: postingUserInfo) {
+  return realReq.POST(PATH.USERS, postingUserInfo);
 }
 
 function fetchNickNameValid<T>(nickname: string) {
@@ -22,6 +24,6 @@ function fetchNickNameValid<T>(nickname: string) {
 }
 
 export const joinApi = {
-  patchUserProfile,
+  postJoin,
   fetchNickNameValid,
 };
