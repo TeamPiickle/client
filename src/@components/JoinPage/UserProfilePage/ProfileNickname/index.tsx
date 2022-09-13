@@ -24,8 +24,6 @@ export default function ProfileNickname(props: ProfileNicknameProps) {
   const isVaildCheckBtn = async () => {
     try {
       const response: AxiosResponse = await joinApi.fetchNickNameValid(nickName);
-      console.log(joinApi.fetchNickNameValid(nickName));
-      console.log(response);
       if (response.data) {
         setIsError("fail");
       } else {
@@ -35,8 +33,6 @@ export default function ProfileNickname(props: ProfileNicknameProps) {
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const errorData = error.response?.data;
-        console.log("Error: ", errorData);
-
         if (errorData.status === 400) setIsError("input");
       }
     }
