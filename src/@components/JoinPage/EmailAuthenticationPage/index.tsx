@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 import { joinApi } from "../../../core/api/join";
 import { prevPages } from "../../../core/join/prevPages";
 import { progressRate } from "../../../core/join/progressRate";
 import { routePaths } from "../../../core/routes/path";
-import { userEmail } from "../../../types/users";
+import { useOutletContexts } from "../../../types/users";
 import checkEmailInvalid from "../../../util/checkInvalidEmail";
 import Footer from "../../@common/Footer";
 import { useDebounce } from "../../@common/hooks/useDebounce";
@@ -13,10 +13,18 @@ import Header from "../common/Header";
 import PageProgressBar from "../common/PageProgressBar";
 import { St } from "./style";
 
+interface useDebouneType {
+  query: string;
+  setQuery: React.Dispatch<React.SetStateAction<string>>;
+  debouncedQuery: string;
+  setDebouncedQuery: React.Dispatch<React.SetStateAction<string>>;
+}
+
 export default function EmailAuthentication() {
   const navigate = useNavigate();
-  const { query, setQuery, debouncedQuery } = useDebounce("");
+  const { query, setQuery, debouncedQuery } = useDebounce<string>("");
   const [isEmailInvalid, setIsEmailInvalid] = useState(false);
+  const { setUserEmail } = useOutletContext<useOutletContexts>();
 
   useEffect(() => {
     // 1초 후, 형식 검사
@@ -35,6 +43,8 @@ export default function EmailAuthentication() {
   const clickSendBtn = () => {
     // 에러 상태일 때 실행 취소
     if (isEmailInvalid) return;
+
+    setUserEmail(query);
 
     navigate(`${routePaths.Join_}${routePaths.Join_EmailConfirm}`, {
       state: {
