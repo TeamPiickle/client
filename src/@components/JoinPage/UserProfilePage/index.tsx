@@ -17,14 +17,14 @@ import ProfileNickname from "./ProfileNickname";
 import { St } from "./style";
 export default function UserProfilePage() {
   const navigate = useNavigate();
-  const [nickName, setNickName] = useState<string>("");
-  const [birthData, setBirthData] = useState<string>("");
-  const [isSelected, setIsSelected] = useState(""); // 성별
-  const [image, setImage] = useState(ImgDefaultBigProfile);
+  const [nickName, setNickName] = useState<string>(""); // 닉네임
+  const [birthData, setBirthData] = useState<string>(""); // 생년월일
+  const [isSelected, setIsSelected] = useState<string>(""); // 성별
+  const [image, setImage] = useState(ImgDefaultBigProfile); // 이미지
 
   const [isChecked, setIsChecked] = useState(false); //닉넴 중복 확인
   const [isInComplete, setisInComplete] = useState(false); // 다음으로 버튼
-  const [isError, setIsError] = useState<string>("");
+  const [isError, setIsError] = useState<string>(""); // 에러메세지
 
   const completeBtn = () => {
     setisInComplete(true);
@@ -45,6 +45,7 @@ export default function UserProfilePage() {
     };
 
     joinApi.postJoin(postingUserInfo);
+    console.log(joinApi.postJoin(postingUserInfo));
   };
 
   const errorHandler = (err: string) => {
@@ -65,10 +66,10 @@ export default function UserProfilePage() {
           nickName={nickName}
           isChecked={isChecked}
           isInComplete={isInComplete}
-          isError={isError}
           setNickName={setNickName}
           setIsChecked={setIsChecked}
           errorMsg={errorHandler}
+          isError={isError}
         />
         {(isInComplete && nickName == "") || isError === "nickNameInput" ? (
           <St.ErrorMessage>{errorMessage.nickName.input}</St.ErrorMessage>

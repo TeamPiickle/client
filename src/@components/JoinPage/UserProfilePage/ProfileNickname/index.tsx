@@ -14,7 +14,7 @@ interface ProfileNicknameProps {
 }
 
 export default function ProfileNickname(props: ProfileNicknameProps) {
-  const { nickName, setNickName, isChecked, setIsChecked, isInComplete, errorMsg, isError } = props;
+  const { nickName, setNickName, isChecked, setIsChecked, isInComplete, errorMsg } = props;
   const onChangeNickname = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.length > 8) e.target.value = e.target.value.slice(0, 8);
     if (nickName !== e.target.value) {
