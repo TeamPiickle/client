@@ -1,8 +1,6 @@
 import axios, { AxiosResponse } from "axios";
-import { useState } from "react";
 
 import { joinApi } from "../../../../core/api/join";
-import { errorMessage } from "../../../../core/join/userProfileErrorMsg";
 import { St } from "./style";
 
 interface ProfileNicknameProps {
@@ -11,15 +9,16 @@ interface ProfileNicknameProps {
   isChecked: boolean;
   isInComplete: boolean;
   setIsChecked: (button: boolean) => void;
+  errorMsg: (err: string) => void;
+  isError: string;
 }
 
 export default function ProfileNickname(props: ProfileNicknameProps) {
-  const { nickName, setNickName, isChecked, setIsChecked, isInComplete } = props;
-  const [isError, setIsError] = useState<string>("");
+  const { nickName, setNickName, isChecked, setIsChecked, isInComplete, errorMsg, isError } = props;
   const onChangeNickname = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.length > 8) e.target.value = e.target.value.slice(0, 8);
     if (nickName !== e.target.value) {
-      setIsError("");
+      errorMsg("");
       setIsChecked(false);
     }
     setNickName(e.target.value);
@@ -29,15 +28,15 @@ export default function ProfileNickname(props: ProfileNicknameProps) {
     try {
       const response: AxiosResponse = await joinApi.fetchNickNameValid(nickName);
       if (response.data) {
-        setIsError("fail");
+        errorMsg("nickNameFail");
       } else {
         setIsChecked(true);
-        setIsError("success");
+        errorMsg("");
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const errorData = error.response?.data;
-        if (errorData.status === 400) setIsError("input");
+        if (errorData.status === 400) errorMsg("nickNameInput");
       }
     }
   };
@@ -50,22 +49,10 @@ export default function ProfileNickname(props: ProfileNicknameProps) {
           placeholder="홍길동"
           onChange={onChangeNickname}
           isincompletestate={nickName === "" && isInComplete}
-          iserrorstate={isError === "success" && isChecked}
+          isvalidstate={isChecked}
         />
         <St.CheckBtn onClick={isVaildCheckBtn}>중복확인</St.CheckBtn>
       </St.InputContainer>
-      {(isInComplete && nickName == "") || isError === "input" ? (
-        <St.ErrorMessage>{errorMessage.nickName.input}</St.ErrorMessage>
-      ) : isInComplete && !isChecked ? (
-        <St.ErrorMessage>{errorMessage.nickName.check}</St.ErrorMessage>
-      ) : null}
-      {isError === "fail" ? (
-        <St.ErrorMessage>{errorMessage.nickName.fail}</St.ErrorMessage>
-      ) : isError === "success" ? (
-        <St.SuccessMessage>{errorMessage.nickName.success}</St.SuccessMessage>
-      ) : (
-        ""
-      )}
     </St.ProfileNickname>
   );
 }

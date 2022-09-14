@@ -42,11 +42,4 @@ export const St = {
     margin-left: -3rem;
     margin-top: 1.3rem;
   `,
-
-  ErrorMessage: styled.div`
-    margin: -2rem 4.2rem 1.6rem 2rem;
-
-    color: ${({ theme }) => theme.colors.red};
-    ${({ theme }) => theme.fonts.caption3}
-  `,
 };

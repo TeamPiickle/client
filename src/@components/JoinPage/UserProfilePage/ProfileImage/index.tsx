@@ -5,7 +5,7 @@ import { ImgDefaultBigProfile } from "../../../../asset/image";
 import { St } from "./style";
 
 interface ProfileImageProps {
-  setImage: (file: FormData) => void;
+  setImage: (file: File) => void;
 }
 
 export default function ProfileImage(props: ProfileImageProps) {
@@ -18,9 +18,10 @@ export default function ProfileImage(props: ProfileImageProps) {
     const selectedImg = e.target.files[0];
     setImgUrl(URL.createObjectURL(selectedImg));
 
-    const formData = new FormData();
-    formData.append("file", selectedImg);
-    setImage(formData);
+    //const formData = new FormData();
+    //formData.append("file", selectedImg);
+
+    setImage(selectedImg);
   };
 
   return (

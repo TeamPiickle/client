@@ -51,4 +51,11 @@ export const St = {
     color: ${({ theme }) => theme.colors.red};
     ${({ theme }) => theme.fonts.caption3}
   `,
+
+  SuccessMessage: styled.div`
+    margin: -2rem 4.2rem 1.6rem 2rem;
+
+    color: ${({ theme }) => theme.colors.green};
+    ${({ theme }) => theme.fonts.caption3}
+  `,
 };
