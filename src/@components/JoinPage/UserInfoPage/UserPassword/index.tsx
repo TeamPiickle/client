@@ -1,22 +1,8 @@
 import { useEffect } from "react";
 
+import { invalidType, UserPasswordProps } from "../../../../types/join";
 import { St } from "./style";
 
-type invalidType = {
-  input: boolean;
-  confirm: boolean;
-};
-
-interface UserPasswordProps {
-  isPasswordInvalid: invalidType;
-  checkInputInvalid: () => void;
-  checkConfirmInvalid: () => void;
-  debouncedQuery: string;
-  changePasswordInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  changePasswordConfirm: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  currentStep: string;
-  isUnfilled: invalidType;
-}
 export default function UserPassword(props: UserPasswordProps) {
   const {
     isPasswordInvalid,
@@ -28,6 +14,7 @@ export default function UserPassword(props: UserPasswordProps) {
     currentStep,
     isUnfilled,
   } = props;
+
   useEffect(() => {
     if (currentStep === "input") {
       checkInputInvalid();
