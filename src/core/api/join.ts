@@ -6,10 +6,10 @@ import { PATH } from "./common/constants";
 type postingUserInfo = {
   email: string;
   password: string;
-  file: FormData;
   nickname: string;
   birthday: string;
   gender: string;
+  imgFile: File;
 };
 
 function postJoin(postingUserInfo: postingUserInfo) {
