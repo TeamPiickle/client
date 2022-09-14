@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import { prevPages } from "../../../core/join/prevPages";
 import { progressRate } from "../../../core/join/progressRate";
@@ -8,7 +8,6 @@ import PageProgressBar from "../common/PageProgressBar";
 import { St } from "./style";
 
 export default function EmailConfirmPage() {
-  const navigate = useNavigate();
   const locationState = useLocation().state as { userEmail: string };
   const userEmail = locationState.userEmail;
 
