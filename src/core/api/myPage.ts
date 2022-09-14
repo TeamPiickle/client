@@ -23,12 +23,12 @@ export default function useUserProfile() {
 
 // 프로필사진 수정
 function patchProfileImg(file: FormData) {
-  return realReq.PATCH(`${PATH.USERS_}/profile-image`, file);
+  return realReq.PATCH(`${PATH.USERS_}${PATH.USERS_PROFILEIMAGE}`, file);
 }
 
 // 유저 닉네임 수정
 function patchUserNickName(patchingUserNickname: PatchingUserNickName) {
-  return realReq.PATCH(`${PATH.USERS_}/nickname`, patchingUserNickname);
+  return realReq.PATCH(`${PATH.USERS_}${PATH.USERS_NICKNAME}`, patchingUserNickname);
 }
 
 // 유저 비밀번호 재설정
