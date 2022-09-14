@@ -1,6 +1,28 @@
+import qs from "qs";
+
 import { userEmail, userInfo } from "./../../types/users";
 import { realReq } from "./common/axios";
 import { PATH } from "./common/constants";
+
+type postingUserInfo = {
+  email: string;
+  password: string;
+  nickname: string;
+  birthday: string;
+  gender: string;
+  imgFile: File;
+};
+
+function postJoin(postingUserInfo: postingUserInfo) {
+  return realReq.POST(PATH.USERS_, postingUserInfo);
+}
+
+function fetchNickNameValid<T>(nickname: string) {
+  const nicknameParams = qs.stringify({
+    nickname: nickname,
+  });
+  return realReq.GET<T>(`${PATH.USERS_}/nickname/is-exist?${nicknameParams}`);
+}
 
 function postEmail(postingEmail: userEmail) {
   return realReq.POST(`${PATH.USERS_}${PATH.USERS_EMAIL}`, postingEmail);
@@ -13,4 +35,6 @@ function postUserInfo(postingUserInfo: userInfo) {
 export const joinApi = {
   postEmail,
   postUserInfo,
+  postJoin,
+  fetchNickNameValid,
 };
