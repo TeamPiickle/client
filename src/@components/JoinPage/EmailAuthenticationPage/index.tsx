@@ -12,19 +12,11 @@ import { useDebounce } from "../../@common/hooks/useDebounce";
 import Header from "../common/Header";
 import PageProgressBar from "../common/PageProgressBar";
 import { St } from "./style";
-
-interface useDebouneType {
-  query: string;
-  setQuery: React.Dispatch<React.SetStateAction<string>>;
-  debouncedQuery: string;
-  setDebouncedQuery: React.Dispatch<React.SetStateAction<string>>;
-}
-
 export default function EmailAuthentication() {
   const navigate = useNavigate();
   const { query, setQuery, debouncedQuery } = useDebounce<string>("");
   const [isEmailInvalid, setIsEmailInvalid] = useState(false);
-  const { userEmail, setUserEmail } = useOutletContext<useOutletContexts>();
+  const { setUserEmail } = useOutletContext<useOutletContexts>();
 
   useEffect(() => {
     // 1초 후, 형식 검사

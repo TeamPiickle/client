@@ -1,11 +1,8 @@
 import { useState } from "react";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-import { joinApi } from "../../../core/api/join";
 import { prevPages } from "../../../core/join/prevPages";
 import { progressRate } from "../../../core/join/progressRate";
-import { routePaths } from "../../../core/routes/path";
-import { useOutletContexts } from "../../../types/users";
 import checkPasswordInvalid from "../../../util/checkInvalidPassword";
 import Footer from "../../@common/Footer";
 import { useDebounce } from "../../@common/hooks/useDebounce";
@@ -34,7 +31,6 @@ export default function UserInfo() {
   });
 
   const navigate = useNavigate();
-  const { userEmail, setUserPassword } = useOutletContext<useOutletContexts>();
 
   const checkInputInvalid = () => {
     if (debouncedQuery !== "" && checkPasswordInvalid(debouncedQuery)) {
@@ -60,7 +56,6 @@ export default function UserInfo() {
   };
 
   const changePasswordConfirm = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(currentPassword);
     if (currentStep === Step.input) {
       setCurrentStep(Step.confirm);
     }
@@ -69,24 +64,17 @@ export default function UserInfo() {
   };
 
   const clickSuccessBtn = () => {
-    console.log(currentPassword);
     if (isPasswordInvalid.input === false && isPasswordInvalid.confirm === false) {
-      // navigate();
-      setUserPassword(currentPassword);
-      postUserInfo();
+      //   navigate(path... {s
+      // state : {
+      //   userPassword : currentPassword,
+      // userEmail : window.location.search.substring(6)
+      // }});
     } else if (currentPassword === undefined) {
       setIsUnfilled({ ...isUnfilled, input: true });
     } else if (isPasswordInvalid.confirm === true) {
       setIsUnfilled({ ...isUnfilled, confirm: true });
     }
-  };
-
-  const postUserInfo = () => {
-    const postingUserInfo = {
-      email: userEmail,
-      password: currentPassword,
-    };
-    joinApi.postUserInfo(postingUserInfo);
   };
 
   return (
