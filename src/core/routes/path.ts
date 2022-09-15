@@ -18,11 +18,8 @@ export const routePaths = {
   BookmarkPage: "/bookmark",
 
   Join_: "/join/",
-  // JoinAgree: "/join-agree",
   Join_Agree: "agree",
-  // EmailAuthentication: "/email-authentication",
   Join_EmailAuthentication: "email-authentication",
-  // EmailConfirm: "/email-confirm",
   Join_EmailConfirm: "email-confirm",
   Join_UserProfile: "user-profile",
   Join_UserInfo: "user-info",
