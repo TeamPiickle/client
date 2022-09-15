@@ -22,7 +22,7 @@ export const St = {
     margin-left: 0;
   `,
 
-  EmailInputForm: styled.input`
+  EmailInputForm: styled.div`
     height: 4.2rem;
     width: 100%;
 
@@ -32,6 +32,9 @@ export const St = {
 
     margin-top: 1.2rem;
     padding-left: 2.4rem;
+
+    display: flex;
+    align-items: center;
 
     color: ${({ theme }) => theme.colors.gray400};
 
