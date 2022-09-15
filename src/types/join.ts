@@ -4,6 +4,6 @@ export interface InvalidType {
 }
 
 export interface UserInfoStack {
-  userEmail: string;
-  userPassword: string;
+  email: string;
+  password: string;
 }

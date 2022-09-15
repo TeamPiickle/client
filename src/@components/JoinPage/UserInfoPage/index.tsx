@@ -69,12 +69,12 @@ export default function UserInfo() {
 
   const clickSuccessBtn = () => {
     if (isPasswordInvalid.input === false && isPasswordInvalid.confirm === false) {
-      const userFormData = new FormData();
-      userFormData.append("email", userEmail);
-      userFormData.append("password", currentPassword);
+      // const userFormData = new FormData();
+      // userFormData.append("email", userEmail);
+      // userFormData.append("password", currentPassword);
 
       navigate(`${routePaths.Join_}${routePaths.Join_UserProfile}`, {
-        state: userFormData,
+        state: { email: userEmail, passowrd: currentPassword },
       });
     } else if (currentPassword === undefined) {
       setIsUnfilled({ ...isUnfilled, input: true });

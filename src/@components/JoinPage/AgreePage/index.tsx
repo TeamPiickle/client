@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { IcEmptyCheckBox, IcFullCheckBox, IcNextBtn } from "../../../asset/icon";
 import { agreeListsContents } from "../../../core/join/agreeListsContents";
@@ -13,6 +13,9 @@ import { ModalContainerWithAnimation, St } from "./style";
 
 export default function AgreePage() {
   const navigate = useNavigate();
+
+  const { state } = useLocation();
+  console.log("state", state);
 
   const [isPickedItems, setIsPickedItems] = useState<boolean[]>([false, false, false, false, false]);
   const [isOpenAlert, setIsOpenAlert] = useState(false);

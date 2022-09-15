@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { ImgDefaultBigProfile } from "../../../asset/image";
-import { joinApi } from "../../../core/api/join";
 import { prevPages } from "../../../core/join/prevPages";
 import { progressRate } from "../../../core/join/progressRate";
 import { errorMessage } from "../../../core/join/userProfileErrorMsg";
@@ -20,6 +19,7 @@ import { St } from "./style";
 export default function UserProfilePage() {
   const [nickName, setNickName] = useState<string>(""); // 닉네임
   const [birthData, setBirthData] = useState<string>(""); // 생년월일
+  // TODO :: 변수명 gender로 바꾸기
   const [isSelected, setIsSelected] = useState<string>(""); // 성별
   const [image, setImage] = useState(ImgDefaultBigProfile); // 이미지
 
@@ -28,28 +28,23 @@ export default function UserProfilePage() {
   const [isError, setIsError] = useState<string>(""); // 에러메세지
 
   const navigate = useNavigate();
-  const { state: userFormData } = useLocation();
+
+  const { state } = useLocation();
+  const userInfoStack = state as UserInfoStack;
 
   const completeBtn = () => {
     setisInComplete(true);
     if (nickName && birthData && isError === "") {
-      postJoin();
-      navigate(`${routePaths.Join_}${routePaths.Join_Agree}`);
+      navigate(`${routePaths.Join_}${routePaths.Join_Agree}`, {
+        state: {
+          ...userInfoStack,
+          nickname: nickName,
+          birthday: birthData,
+          gender: isSelected,
+          imgFile: image,
+        },
+      });
     }
-  };
-
-  const postJoin = async () => {
-    const postingUserInfo = {
-      email: "",
-      password: "",
-      nickname: nickName,
-      birthday: birthData,
-      gender: isSelected,
-      imgFile: image,
-    };
-
-    joinApi.postJoin(postingUserInfo);
-    console.log(joinApi.postJoin(postingUserInfo));
   };
 
   const errorHandler = (err: string) => {
