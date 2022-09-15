@@ -65,7 +65,7 @@ export default function UserInfo() {
 
   const clickSuccessBtn = () => {
     if (isPasswordInvalid.input === false && isPasswordInvalid.confirm === false) {
-      //   navigate(path... {s
+      //   navigate( `${routePaths.Join_}${routePaths.Join_UserProfile},
       // state : {
       //   userPassword : currentPassword,
       // userEmail : window.location.search.substring(6)

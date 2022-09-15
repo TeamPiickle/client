@@ -3,7 +3,7 @@ import { rest } from "msw";
 import { PATH } from "../../core/api/common/constants";
 
 export const cardsHandler = [
-  rest.get(`${process.env.REACT_APP_BASE_URL}${PATH.CARDS_}/best`, (req, res, ctx) => {
+  rest.get(`${process.env.REACT_APP_BASE_URL}${PATH.CARDS_}${PATH.CARDS_BEST}`, (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
