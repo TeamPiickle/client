@@ -3,7 +3,11 @@ export interface InvalidType {
   confirm: boolean;
 }
 
-export interface UserInfoStack {
+export interface PostingUserInfo {
   email: string;
   password: string;
+  nickname: string;
+  birthday: string;
+  gender: string;
+  imgFile: File;
 }

@@ -1,12 +1,11 @@
 import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { ImgDefaultBigProfile } from "../../../asset/image";
 import { prevPages } from "../../../core/join/prevPages";
 import { progressRate } from "../../../core/join/progressRate";
 import { errorMessage } from "../../../core/join/userProfileErrorMsg";
 import { routePaths } from "../../../core/routes/path";
-import { UserInfoStack } from "../../../types/join";
 import Footer from "../../@common/Footer";
 import Header from "../common/Header";
 import PageProgressBar from "../common/PageProgressBar";
@@ -29,21 +28,10 @@ export default function UserProfilePage() {
 
   const navigate = useNavigate();
 
-  const { state } = useLocation();
-  const userInfoStack = state as UserInfoStack;
-
   const completeBtn = () => {
     setisInComplete(true);
     if (nickName && birthData && isError === "") {
-      navigate(`${routePaths.Join_}${routePaths.Join_Agree}`, {
-        state: {
-          ...userInfoStack,
-          nickname: nickName,
-          birthday: birthData,
-          gender: isSelected,
-          imgFile: image,
-        },
-      });
+      navigate(`${routePaths.Join_}${routePaths.Join_Agree}`);
     }
   };
 

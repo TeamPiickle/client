@@ -1,19 +1,11 @@
 import qs from "qs";
 
+import { PostingUserInfo } from "../../types/join";
 import { userEmail, userInfo } from "./../../types/users";
 import { realReq } from "./common/axios";
 import { PATH } from "./common/constants";
 
-type postingUserInfo = {
-  email: string;
-  password: string;
-  nickname: string;
-  birthday: string;
-  gender: string;
-  imgFile: File;
-};
-
-function postJoin(postingUserInfo: postingUserInfo) {
+function postJoin(postingUserInfo: PostingUserInfo) {
   return realReq.POST(PATH.USERS_, postingUserInfo);
 }
 
