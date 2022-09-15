@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { ImgDefaultBigProfile } from "../../../asset/image";
 import { joinApi } from "../../../core/api/join";
@@ -7,6 +7,7 @@ import { prevPages } from "../../../core/join/prevPages";
 import { progressRate } from "../../../core/join/progressRate";
 import { errorMessage } from "../../../core/join/userProfileErrorMsg";
 import { routePaths } from "../../../core/routes/path";
+import { UserInfoStack } from "../../../types/join";
 import Footer from "../../@common/Footer";
 import Header from "../common/Header";
 import PageProgressBar from "../common/PageProgressBar";
@@ -15,8 +16,8 @@ import ProfileGender from "./ProfileGender";
 import ProfileImage from "./ProfileImage";
 import ProfileNickname from "./ProfileNickname";
 import { St } from "./style";
+
 export default function UserProfilePage() {
-  const navigate = useNavigate();
   const [nickName, setNickName] = useState<string>(""); // 닉네임
   const [birthData, setBirthData] = useState<string>(""); // 생년월일
   const [isSelected, setIsSelected] = useState<string>(""); // 성별
@@ -25,6 +26,10 @@ export default function UserProfilePage() {
   const [isChecked, setIsChecked] = useState(false); //닉넴 중복 확인
   const [isInComplete, setisInComplete] = useState(false); // 다음으로 버튼
   const [isError, setIsError] = useState<string>(""); // 에러메세지
+
+  const navigate = useNavigate();
+  const { state: userFormData } = useLocation();
+  console.log("userFormData", userFormData);
 
   const completeBtn = () => {
     setisInComplete(true);
