@@ -29,7 +29,6 @@ export default function UserProfilePage() {
 
   const navigate = useNavigate();
   const { state: userFormData } = useLocation();
-  console.log("userFormData", userFormData);
 
   const completeBtn = () => {
     setisInComplete(true);
