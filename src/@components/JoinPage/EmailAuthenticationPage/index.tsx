@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { joinApi } from "../../../core/api/join";
 import { prevPages } from "../../../core/join/prevPages";
 import { progressRate } from "../../../core/join/progressRate";
 import { routePaths } from "../../../core/routes/path";
-import { useOutletContexts } from "../../../types/users";
 import checkEmailInvalid from "../../../util/checkInvalidEmail";
 import Footer from "../../@common/Footer";
 import { useDebounce } from "../../@common/hooks/useDebounce";
@@ -16,7 +15,6 @@ export default function EmailAuthentication() {
   const navigate = useNavigate();
   const { query, setQuery, debouncedQuery } = useDebounce<string>("");
   const [isEmailInvalid, setIsEmailInvalid] = useState(false);
-  const { setUserEmail } = useOutletContext<useOutletContexts>();
 
   useEffect(() => {
     // 1초 후, 형식 검사
@@ -36,7 +34,7 @@ export default function EmailAuthentication() {
     // 에러 상태일 때 실행 취소
     if (isEmailInvalid || query === "") return;
 
-    setUserEmail(query);
+    setQuery(query);
 
     navigate(`${routePaths.Join_}${routePaths.Join_EmailConfirm}`, {
       state: {
