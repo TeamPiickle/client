@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { prevPages } from "../../../core/join/prevPages";
 import { progressRate } from "../../../core/join/progressRate";
+import { routePaths } from "../../../core/routes/path";
 import checkPasswordInvalid from "../../../util/checkInvalidPassword";
 import Footer from "../../@common/Footer";
 import { useDebounce } from "../../@common/hooks/useDebounce";
@@ -31,6 +32,9 @@ export default function UserInfo() {
   });
 
   const navigate = useNavigate();
+
+  const { search } = useLocation();
+  const userEmail = new URLSearchParams(search).get("email") as string;
 
   const checkInputInvalid = () => {
     if (debouncedQuery !== "" && checkPasswordInvalid(debouncedQuery)) {
@@ -65,11 +69,12 @@ export default function UserInfo() {
 
   const clickSuccessBtn = () => {
     if (isPasswordInvalid.input === false && isPasswordInvalid.confirm === false) {
-      //   navigate( `${routePaths.Join_}${routePaths.Join_UserProfile},
-      // state : {
-      //   userPassword : currentPassword,
-      // userEmail : window.location.search.substring(6)
-      // }});
+      navigate(`${routePaths.Join_}${routePaths.Join_UserProfile}`, {
+        state: {
+          userPassword: currentPassword,
+          userEmail,
+        },
+      });
     } else if (currentPassword === undefined) {
       setIsUnfilled({ ...isUnfilled, input: true });
     } else if (isPasswordInvalid.confirm === true) {
@@ -84,7 +89,7 @@ export default function UserInfo() {
       <St.ContainerWrapper>
         <St.UserInfoContainer>
           <St.ContentTitle>정보를 입력해주세요</St.ContentTitle>
-          <UserEmail />
+          <UserEmail text={userEmail} />
           <UserPassword
             isPasswordInvalid={isPasswordInvalid}
             checkInputInvalid={checkInputInvalid}

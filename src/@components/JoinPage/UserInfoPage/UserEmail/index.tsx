@@ -1,17 +1,18 @@
-import { useLocation } from "react-router-dom";
-
 import { St } from "./style";
 
-export default function UserEmail() {
-  const { search } = useLocation();
-  const userEmail = new URLSearchParams(search).get("email") as string;
+interface UserEmailProps {
+  text: string;
+}
+
+export default function UserEmail(props: UserEmailProps) {
+  const { text } = props;
 
   return (
     <St.EmailContainer>
       <St.EmailTitleWrapper>
         <St.EmailTitleText>이메일 아이디 (필수)</St.EmailTitleText>
       </St.EmailTitleWrapper>
-      <St.EmailInputForm>{userEmail}</St.EmailInputForm>
+      <St.EmailInputForm>{text}</St.EmailInputForm>
     </St.EmailContainer>
   );
 }
