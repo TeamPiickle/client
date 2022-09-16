@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 import { ImgDefaultBigProfile } from "../../../asset/image";
 import { prevPages } from "../../../core/join/prevPages";
@@ -7,6 +7,7 @@ import { progressRate } from "../../../core/join/progressRate";
 import { errorMessage } from "../../../core/join/userProfileErrorMsg";
 import { routePaths } from "../../../core/routes/path";
 import Footer from "../../@common/Footer";
+import { UserInfoFormDataContext } from "..";
 import Header from "../common/Header";
 import PageProgressBar from "../common/PageProgressBar";
 import ProfileBirth from "./ProfileBirth";
@@ -27,10 +28,28 @@ export default function UserProfilePage() {
   const [isError, setIsError] = useState<string>(""); // 에러메세지
 
   const navigate = useNavigate();
+  const { setUserInfoFormData } = useOutletContext<UserInfoFormDataContext>();
 
   const completeBtn = () => {
     setisInComplete(true);
     if (nickName && birthData && isError === "") {
+      setUserInfoFormData((prevFormData) => {
+        const currentFormData = new FormData();
+
+        // email, password
+        for (const pair of prevFormData.entries()) {
+          currentFormData.append(pair[0], pair[1]);
+        }
+
+        currentFormData.append("nickname", nickName);
+        currentFormData.append("birthday", birthData);
+
+        if (isSelected) currentFormData.append("gender", isSelected);
+        if (image) currentFormData.append("imgFile", image);
+
+        return currentFormData;
+      });
+
       navigate(`${routePaths.Join_}${routePaths.Join_Agree}`);
     }
   };

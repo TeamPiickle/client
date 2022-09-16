@@ -37,7 +37,7 @@ export default function UserInfo() {
   const { search } = useLocation();
   const userEmail = new URLSearchParams(search).get("email") as string;
 
-  const { userInfoFormData, setUserInfoFormData } = useOutletContext<UserInfoFormDataContext>();
+  const { setUserInfoFormData } = useOutletContext<UserInfoFormDataContext>();
 
   const checkInputInvalid = () => {
     if (debouncedQuery !== "" && checkPasswordInvalid(debouncedQuery)) {
@@ -74,8 +74,10 @@ export default function UserInfo() {
     if (isPasswordInvalid.input === false && isPasswordInvalid.confirm === false) {
       setUserInfoFormData(() => {
         const currentFormData = new FormData();
+
         currentFormData.append("email", userEmail);
         currentFormData.append("password", currentPassword);
+
         return currentFormData;
       });
 
