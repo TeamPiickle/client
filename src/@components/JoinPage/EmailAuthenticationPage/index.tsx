@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { joinApi } from "../../../core/api/join";
 import { prevPages } from "../../../core/join/prevPages";
 import { progressRate } from "../../../core/join/progressRate";
 import { routePaths } from "../../../core/routes/path";
@@ -10,10 +11,9 @@ import { useDebounce } from "../../@common/hooks/useDebounce";
 import Header from "../common/Header";
 import PageProgressBar from "../common/PageProgressBar";
 import { St } from "./style";
-
 export default function EmailAuthentication() {
   const navigate = useNavigate();
-  const { query, setQuery, debouncedQuery } = useDebounce("");
+  const { query, setQuery, debouncedQuery } = useDebounce<string>("");
   const [isEmailInvalid, setIsEmailInvalid] = useState(false);
 
   useEffect(() => {
@@ -32,13 +32,24 @@ export default function EmailAuthentication() {
 
   const clickSendBtn = () => {
     // 에러 상태일 때 실행 취소
-    if (isEmailInvalid) return;
+    if (isEmailInvalid || query === "") return;
+
+    setQuery(query);
 
     navigate(`${routePaths.Join_}${routePaths.Join_EmailConfirm}`, {
       state: {
         userEmail: query,
       },
     });
+
+    postEmail();
+  };
+
+  const postEmail = () => {
+    const postingEmail = {
+      email: query,
+    };
+    joinApi.postEmail(postingEmail);
   };
 
   return (

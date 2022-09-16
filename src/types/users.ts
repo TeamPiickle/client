@@ -5,7 +5,25 @@ export interface UserProfile {
   profileImageUrl: string;
 }
 
-export interface myPiickle {
+export interface JoinUserInfo {
+  email: string;
+  password: string;
+  nickname: string;
+  birthday: string;
+  gender: string;
+  imgFile: File;
+}
+
+export interface MyPiickle {
   cardId: string;
   content: string;
+}
+
+export interface UserEmail {
+  email: string;
+}
+
+export interface UserInfo {
+  email: string;
+  password: string;
 }

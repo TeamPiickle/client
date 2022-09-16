@@ -3,7 +3,7 @@ import { rest } from "msw";
 import { PATH } from "../../core/api/common/constants";
 
 export const categoriesHandler = [
-  rest.get(`${process.env.REACT_APP_BASE_URL}${PATH.CATEGORIES}`, (req, res, ctx) => {
+  rest.get(`${process.env.REACT_APP_BASE_URL}${PATH.CATEGORIES_}`, (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
@@ -61,7 +61,7 @@ export const categoriesHandler = [
     );
   }),
 
-  rest.get(`${process.env.REACT_APP_BASE_URL}${PATH.CATEGORIES}/:categoryId`, (req, res, ctx) => {
+  rest.get(`${process.env.REACT_APP_BASE_URL}${PATH.CATEGORIES_}/:categoryId`, (req, res, ctx) => {
     const { categoryId } = req.params;
 
     return res(

@@ -1,18 +1,22 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 import { IcEmptyCheckBox, IcFullCheckBox, IcNextBtn } from "../../../asset/icon";
+import { joinApi } from "../../../core/api/join";
 import { agreeListsContents } from "../../../core/join/agreeListsContents";
 import { prevPages } from "../../../core/join/prevPages";
 import { progressRate } from "../../../core/join/progressRate";
 import { routePaths } from "../../../core/routes/path";
 import Footer from "../../@common/Footer";
+import { UserInfoFormDataContext } from "..";
 import Header from "../common/Header";
 import PageProgressBar from "../common/PageProgressBar";
 import { ModalContainerWithAnimation, St } from "./style";
 
 export default function AgreePage() {
   const navigate = useNavigate();
+
+  const { userInfoFormData } = useOutletContext<UserInfoFormDataContext>();
 
   const [isPickedItems, setIsPickedItems] = useState<boolean[]>([false, false, false, false, false]);
   const [isOpenAlert, setIsOpenAlert] = useState(false);
@@ -51,7 +55,7 @@ export default function AgreePage() {
 
   const completeJoinBtn = () => {
     if (checkIsOkayToPass()) {
-      // TODO :: 회원가입 POST 통신
+      joinApi.postJoin(userInfoFormData);
       navigate(routePaths.Login);
     } else {
       setIsOpenAlert(true);
