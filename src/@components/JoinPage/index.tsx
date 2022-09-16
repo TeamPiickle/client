@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
 export interface UserInfoFormDataContext {
@@ -8,11 +8,6 @@ export interface UserInfoFormDataContext {
 
 export default function JoinPage() {
   const [userInfoFormData, setUserInfoFormData] = useState<FormData>(new FormData());
-  useEffect(() => {
-    for (const pair of userInfoFormData.entries()) {
-      console.log(pair[0] + ", " + pair[1]);
-    }
-  }, [userInfoFormData]);
 
   // TODO
   // :: useUserInfo 커스텀훅으로 빼내기
