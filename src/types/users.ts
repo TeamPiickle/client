@@ -14,23 +14,16 @@ export interface JoinUserInfo {
   imgFile: File;
 }
 
-export interface myPiickle {
+export interface MyPiickle {
   cardId: string;
   content: string;
 }
 
-export interface userEmail {
+export interface UserEmail {
   email: string;
 }
 
-export interface userInfo {
+export interface UserInfo {
   email: string;
   password: string;
-}
-
-export interface useOutletContexts {
-  userEmail: string;
-  setUserEmail: React.Dispatch<React.SetStateAction<string>>;
-  userPassword: string;
-  setUserPassword: React.Dispatch<React.SetStateAction<string>>;
 }
