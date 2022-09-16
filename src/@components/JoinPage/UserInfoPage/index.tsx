@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 
 import { prevPages } from "../../../core/join/prevPages";
 import { progressRate } from "../../../core/join/progressRate";
@@ -7,6 +7,7 @@ import { routePaths } from "../../../core/routes/path";
 import checkPasswordInvalid from "../../../util/checkInvalidPassword";
 import Footer from "../../@common/Footer";
 import { useDebounce } from "../../@common/hooks/useDebounce";
+import { UserInfoFormDataContext } from "..";
 import Header from "../common/Header";
 import PageProgressBar from "../common/PageProgressBar";
 import { St } from "./style";
@@ -35,6 +36,8 @@ export default function UserInfo() {
 
   const { search } = useLocation();
   const userEmail = new URLSearchParams(search).get("email") as string;
+
+  const { userInfoFormData, setUserInfoFormData } = useOutletContext<UserInfoFormDataContext>();
 
   const checkInputInvalid = () => {
     if (debouncedQuery !== "" && checkPasswordInvalid(debouncedQuery)) {
@@ -69,13 +72,14 @@ export default function UserInfo() {
 
   const clickSuccessBtn = () => {
     if (isPasswordInvalid.input === false && isPasswordInvalid.confirm === false) {
-      // const userFormData = new FormData();
-      // userFormData.append("email", userEmail);
-      // userFormData.append("password", currentPassword);
-
-      navigate(`${routePaths.Join_}${routePaths.Join_UserProfile}`, {
-        state: { email: userEmail, passowrd: currentPassword },
+      setUserInfoFormData(() => {
+        const currentFormData = new FormData();
+        currentFormData.append("email", userEmail);
+        currentFormData.append("password", currentPassword);
+        return currentFormData;
       });
+
+      navigate(`${routePaths.Join_}${routePaths.Join_UserProfile}`);
     } else if (currentPassword === undefined) {
       setIsUnfilled({ ...isUnfilled, input: true });
     } else if (isPasswordInvalid.confirm === true) {

@@ -8,6 +8,6 @@ export interface PostingUserInfo {
   password: string;
   nickname: string;
   birthday: string;
-  gender: string;
-  imgFile: File;
+  gender?: string;
+  imgFile?: File;
 }
