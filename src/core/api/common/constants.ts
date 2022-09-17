@@ -3,7 +3,7 @@ export const PATH = {
   CATEGORIES_CARDS: "/cards",
   USERS_: "/users",
   USERS_EMAIL: "/email-verification",
-  USERS_BOOKMARK: "/bookmark",
+  USERS_BOOKMARK: "/bookmarks",
   USERS_LOGIN: "/login",
   USERS_PROFILEIMAGE: "/profile-image",
   USERS_NICKNAME: "/nickname",
