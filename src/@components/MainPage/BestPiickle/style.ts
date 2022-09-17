@@ -12,8 +12,12 @@ export const St = {
 
     & .slick-list {
       height: 15.3rem;
-
+      margin-left: -13.5rem;
       padding: 0.4rem 1.6rem;
+    }
+
+    & .slick-initialized {
+      overflow: hidden;
     }
 
     & .slick-track {
