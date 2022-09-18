@@ -19,11 +19,9 @@ export const St = {
   `,
 
   ProfileImage: styled.img`
-    width: 6rem;
-    height: 6rem;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
-    background-color: pink;
-    z-index: 10;
   `,
 
   ChangeButton: styled.input`
