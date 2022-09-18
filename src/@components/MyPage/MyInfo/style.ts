@@ -13,8 +13,8 @@ export const St = {
   `,
 
   Images: styled.div`
-    width: 58px;
-    height: 58px;
+    width: 5.8rem;
+    height: 5.8rem;
     position: relative;
   `,
 
