@@ -41,7 +41,14 @@ export default function MyInfo() {
     <St.MyInfoContainer>
       <St.Profile>
         <St.Images>
-          <St.ProfileImage src={userProfile ? userProfile.data.profileImageUrl : ImgDefaultProfile} alt="프로필" />
+          <St.ProfileImage
+            src={
+              userProfile && userProfile.data.profileImageUrl !== "test"
+                ? userProfile.data.profileImageUrl
+                : ImgDefaultProfile
+            }
+            alt="프로필"
+          />
           <St.ProfileChangeBtnLabel aria-label="프로필 이미지 수정">
             <St.ChangeBtnWrapper>
               <IcChangeProfileBtn />
