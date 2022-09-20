@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 
 import { myPageApi } from "../../../core/api/myPage";
+import checkInvalidNickName from "../../../util/checkInvalidNickName";
 import Modal from "../../@common/Modal";
 import { St } from "./style";
 
@@ -24,7 +25,7 @@ export default function NicknameModal(props: ModifyNicknameProps) {
   const saveNewNickname = async () => {
     try {
       await myPageApi.patchUserNickName({ nickname: newNickname });
-      closeHandler();
+      checkInvalidNickName(newNickname) ? setErrorMessage("닉네임에 특수문자를 포함할 수 없습니다") : closeHandler();
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const errorData = error.response?.data;
