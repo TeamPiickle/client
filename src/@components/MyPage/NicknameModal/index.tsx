@@ -16,6 +16,8 @@ export default function NicknameModal(props: ModifyNicknameProps) {
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   const onChangeNickname = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value.length > 8) e.target.value = e.target.value.slice(0, 8);
+
     setNewNickname(e.target.value);
   };
 
