@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 
 import { joinApi } from "../../../../core/api/join";
+import checkInvalidNickName from "../../../../util/checkInvalidNickName";
 import { St } from "./style";
 
 interface ProfileNicknameProps {
@@ -36,7 +37,9 @@ export default function ProfileNickname(props: ProfileNicknameProps) {
   const isVaildCheckBtn = async () => {
     try {
       const response: AxiosResponse = await joinApi.fetchNickNameValid(nickName);
-      if (response.data) {
+      if (checkInvalidNickName(nickName)) {
+        errorMsg("nickNameValid");
+      } else if (response.data) {
         errorMsg("nickNameFail");
       } else {
         setIsChecked(true);
