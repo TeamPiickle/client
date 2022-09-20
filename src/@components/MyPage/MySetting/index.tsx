@@ -13,6 +13,9 @@ export default function MySetting() {
         localStorage.removeItem("piickle-token");
         navigate(routePaths.Main);
         break;
+      case "회원 탈퇴":
+        navigate(routePaths.Delete);
+        break;
     }
   };
 
