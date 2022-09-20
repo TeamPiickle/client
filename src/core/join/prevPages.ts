@@ -14,7 +14,7 @@ export const prevPages: PrevPages[] = [
     prevPage: `${routePaths.Join_}${routePaths.Join_EmailConfirm}`,
   },
   {
-    prevPage: "/userinfo",
+    prevPage: `${routePaths.Join_}${routePaths.Join_UserInfo}`,
   },
   {
     prevPage: `${routePaths.Join_}${routePaths.Join_UserProfile}`,
