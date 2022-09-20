@@ -15,13 +15,22 @@ interface ProfileNicknameProps {
 
 export default function ProfileNickname(props: ProfileNicknameProps) {
   const { nickName, setNickName, isChecked, setIsChecked, isInComplete, errorMsg } = props;
+
   const onChangeNickname = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.length > 8) e.target.value = e.target.value.slice(0, 8);
+
     if (nickName !== e.target.value) {
       errorMsg("");
       setIsChecked(false);
     }
     setNickName(e.target.value);
+  };
+
+  const checkSpaceBar = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === " ") {
+      e.preventDefault();
+      return false;
+    }
   };
 
   const isVaildCheckBtn = async () => {
@@ -50,6 +59,7 @@ export default function ProfileNickname(props: ProfileNicknameProps) {
           onChange={onChangeNickname}
           isincompletestate={nickName === "" && isInComplete}
           isvalidstate={isChecked}
+          onKeyDown={(e) => checkSpaceBar(e)}
         />
         <St.CheckBtn onClick={isVaildCheckBtn}>중복확인</St.CheckBtn>
       </St.InputContainer>
