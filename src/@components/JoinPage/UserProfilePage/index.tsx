@@ -60,7 +60,7 @@ export default function UserProfilePage() {
 
   return (
     <St.Root>
-      <Header prevPage={prevPages[4].prevPage} />
+      <Header prevPage={prevPages[3].prevPage} />
       <PageProgressBar rate={progressRate[3].rate} />
       <St.ProfileContainer>
         <St.Title>프로필을 설정해주세요</St.Title>
