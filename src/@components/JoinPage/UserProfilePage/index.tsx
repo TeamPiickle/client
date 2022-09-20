@@ -79,11 +79,12 @@ export default function UserProfilePage() {
         />
         {(isInComplete && nickName == "") || isError === "nickNameInput" ? (
           <St.ErrorMessage>{errorMessage.nickName.input}</St.ErrorMessage>
+        ) : isError === "nickNameFail" ? (
+          <St.ErrorMessage>{errorMessage.nickName.fail}</St.ErrorMessage>
+        ) : isError === "nickNameValid" ? (
+          <St.ErrorMessage>{errorMessage.nickName.valid}</St.ErrorMessage>
         ) : isInComplete && !isChecked ? (
           <St.ErrorMessage>{errorMessage.nickName.check}</St.ErrorMessage>
-        ) : null}
-        {isError === "nickNameFail" ? (
-          <St.ErrorMessage>{errorMessage.nickName.fail}</St.ErrorMessage>
         ) : isChecked ? (
           <St.SuccessMessage>{errorMessage.nickName.success}</St.SuccessMessage>
         ) : (
