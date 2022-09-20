@@ -32,6 +32,13 @@ export default function NicknameModal(props: ModifyNicknameProps) {
     }
   };
 
+  const checkSpaceBar = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === " ") {
+      e.preventDefault();
+      return false;
+    }
+  };
+
   return (
     <Modal closeHandler={closeHandler}>
       <St.Container>
@@ -41,7 +48,13 @@ export default function NicknameModal(props: ModifyNicknameProps) {
         </St.Wrapper>
         <St.Wrapper>
           <St.Label>새로운 닉네임</St.Label>
-          <St.NewNickname aria-label="새로운 닉네임 입력칸" type="text" id="newNickname" onChange={onChangeNickname} />
+          <St.NewNickname
+            aria-label="새로운 닉네임 입력칸"
+            type="text"
+            id="newNickname"
+            onChange={onChangeNickname}
+            onKeyDown={(e) => checkSpaceBar(e)}
+          />
           {errorMessage !== "" && <St.ErrorMessage>{errorMessage}</St.ErrorMessage>}
         </St.Wrapper>
         <St.ButtonWrapper>
