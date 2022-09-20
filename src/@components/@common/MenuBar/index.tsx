@@ -50,7 +50,7 @@ export default function MenuBar(props: MenuBarProps) {
           {LOGIN_STATE && userProfile ? (
             <St.ProfileContainer>
               <St.ProfileImage
-                src={userProfile.data.profileImageUrl !== "test" ? userProfile.data.profileImageUrl : ImgDefaultProfile}
+                src={userProfile.data.profileImageUrl === "test" ? ImgDefaultProfile : userProfile.data.profileImageUrl}
                 alt="프로필"
               />
               <St.WelcomeText>

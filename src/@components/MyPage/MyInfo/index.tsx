@@ -43,9 +43,8 @@ export default function MyInfo() {
         <St.Images>
           <St.ProfileImage
             src={
-              userProfile && userProfile.data.profileImageUrl !== "test"
-                ? userProfile.data.profileImageUrl
-                : ImgDefaultProfile
+              userProfile &&
+              (userProfile.data.profileImageUrl === "test" ? ImgDefaultProfile : userProfile.data.profileImageUrl)
             }
             alt="프로필"
           />
