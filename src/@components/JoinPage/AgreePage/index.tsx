@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { MouseEvent, useEffect, useRef, useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
 import { IcEmptyCheckBox, IcFullCheckBox, IcNextBtn } from "../../../asset/icon";
@@ -20,6 +20,7 @@ export default function AgreePage() {
 
   const [isPickedItems, setIsPickedItems] = useState<boolean[]>([false, false, false, false, false]);
   const [isOpenAlert, setIsOpenAlert] = useState(false);
+  const alertElement = useRef<HTMLDivElement | null>(null);
 
   function handleChecking(index: number) {
     switch (index) {
@@ -78,6 +79,19 @@ export default function AgreePage() {
 
     return flag;
   };
+  useEffect(() => {
+    const clickOutside = (e: any) => {
+      if (isOpenAlert && alertElement.current && !alertElement.current.contains(e.target as HTMLElement)) {
+        setIsOpenAlert(false);
+      }
+    };
+
+    document.addEventListener("mousedown", clickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", clickOutside);
+    };
+  }, [isOpenAlert]);
 
   const agreeLists = agreeListsContents.map((item, index) => (
     <St.AgreeContentItem key={`condition-${index}`} isActive={isPickedItems[index]}>
@@ -100,12 +114,14 @@ export default function AgreePage() {
 
   return (
     <St.Root>
-      <Header prevPage={prevPages[5].prevPage} />
+      <Header prevPage={prevPages[4].prevPage} />
       <PageProgressBar rate={progressRate[4].rate} />
       <St.JoinAgree>
         <St.AgreeTitle>약관을 동의해주세요</St.AgreeTitle>
         <St.AgreeContent>{agreeLists}</St.AgreeContent>
-        <ModalContainerWithAnimation isopen={isOpenAlert}>필수 항목에 동의해주세요</ModalContainerWithAnimation>
+        <ModalContainerWithAnimation isopen={isOpenAlert} ref={alertElement}>
+          필수 항목에 동의해주세요
+        </ModalContainerWithAnimation>
         <St.JoinButton onClick={completeJoinBtn}>회원가입 완료하기</St.JoinButton>
       </St.JoinAgree>
       <Footer />
