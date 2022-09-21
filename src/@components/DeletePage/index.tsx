@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { IcEmptyCheckBox, IcFullCheckBox, IcSmallEmptyCheckBox, IcSmallFullCheckBox } from "../../asset/icon";
 import { feedBackListsContents } from "../../core/delete/feedBackListsContents";
 import { routePaths } from "../../core/routes/path";
@@ -6,6 +9,11 @@ import Header from "../JoinPage/common/Header";
 import { St } from "./style";
 
 export default function DeletePage() {
+  const navigate = useNavigate();
+
+  const [ischecked, setIsChecked] = useState(false);
+  const [isOpenAlert, setIsOpenAlert] = useState(false);
+
   const feedBackLists = feedBackListsContents.map((item, index) => (
     <St.FeedBackListsContents key={index}>
       <St.OptionalCheckBox type="button">
@@ -14,6 +22,23 @@ export default function DeletePage() {
       {item.text}
     </St.FeedBackListsContents>
   ));
+
+  const handleChecking = () => {
+    if (ischecked) {
+      setIsChecked(false);
+    } else {
+      setIsChecked(true);
+      setIsOpenAlert(false);
+    }
+  };
+
+  const deleteBtn = () => {
+    if (ischecked) {
+      navigate(routePaths.Main);
+    } else {
+      setIsOpenAlert(true);
+    }
+  };
 
   return (
     <St.Root>
@@ -31,8 +56,8 @@ export default function DeletePage() {
           <br /> 사라집니다. 삭제된 정보는 복구할 수 없으니 신중하게 결정해주세요
         </St.AgreeTitle>
         <St.AgreeCheck>
-          <St.CheckBox>
-            <IcSmallEmptyCheckBox />
+          <St.CheckBox type="button" onClick={handleChecking}>
+            {ischecked ? <IcSmallFullCheckBox /> : <IcSmallEmptyCheckBox />}
           </St.CheckBox>
           안내사항을 모두 확인했으며, 이에 동의합니다
         </St.AgreeCheck>
@@ -42,7 +67,8 @@ export default function DeletePage() {
         <St.FeedBackSubTitle>소중한 피드백을 바탕으로 더 나은 서비스를 만들기 위해 노력하겠습니다</St.FeedBackSubTitle>
         <St.FeedBackList>{feedBackLists}</St.FeedBackList>
       </St.FeedBackContainer>
-      <St.DeleteBtn>탈퇴하기</St.DeleteBtn>
+      <St.ModalContainer isopen={isOpenAlert}>탈퇴 전 확인 항목에 동의해주세요</St.ModalContainer>
+      <St.DeleteBtn onClick={deleteBtn}>탈퇴하기</St.DeleteBtn>
       <Footer />
     </St.Root>
   );
