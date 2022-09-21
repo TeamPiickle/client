@@ -12,18 +12,27 @@ export default function DeletePage() {
   const navigate = useNavigate();
 
   const [ischecked, setIsChecked] = useState(false);
+  const [isFeedBackItems, setIsFeedBackItems] = useState<boolean[]>([false, false, false, false, false]);
   const [isOpenAlert, setIsOpenAlert] = useState(false);
 
   const feedBackLists = feedBackListsContents.map((item, index) => (
     <St.FeedBackListsContents key={index}>
-      <St.OptionalCheckBox type="button">
-        <IcEmptyCheckBox />
+      <St.OptionalCheckBox type="button" onClick={() => handleChecking(index)}>
+        {isFeedBackItems[index] ? <IcFullCheckBox /> : <IcEmptyCheckBox />}
       </St.OptionalCheckBox>
       {item.text}
     </St.FeedBackListsContents>
   ));
 
-  const handleChecking = () => {
+  const handleChecking = (index: number) => {
+    setIsFeedBackItems((prevItems) => {
+      const currentItems = [...prevItems];
+      currentItems[index] = !currentItems[index];
+      return currentItems;
+    });
+  };
+
+  const agreeDeleteBtn = () => {
     if (ischecked) {
       setIsChecked(false);
     } else {
@@ -56,7 +65,7 @@ export default function DeletePage() {
           <br /> 사라집니다. 삭제된 정보는 복구할 수 없으니 신중하게 결정해주세요
         </St.AgreeTitle>
         <St.AgreeCheck>
-          <St.CheckBox type="button" onClick={handleChecking}>
+          <St.CheckBox type="button" onClick={agreeDeleteBtn}>
             {ischecked ? <IcSmallFullCheckBox /> : <IcSmallEmptyCheckBox />}
           </St.CheckBox>
           안내사항을 모두 확인했으며, 이에 동의합니다
