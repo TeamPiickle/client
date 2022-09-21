@@ -1,8 +1,12 @@
+//import { prevPages } from "../../core/delete/prevPages";
+import { routePaths } from "../../core/routes/path";
+import Header from "../JoinPage/common/Header";
 import { St } from "./style";
 
 export default function DeletePage() {
   return (
     <St.Root>
+      <Header prevPage={routePaths.MyPage} />
       <St.TitleContainer>
         <St.Title>정말 피클을 떠나시는 건가요?</St.Title>
         <St.SubTitle>
