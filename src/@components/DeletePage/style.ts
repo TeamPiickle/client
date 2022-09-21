@@ -39,22 +39,29 @@ export const St = {
   `,
 
   AgreeCheck: styled.div`
+    display: flex;
+    align-items: center;
+
     ${({ theme }) => theme.fonts.body4};
     color: ${({ theme }) => theme.colors.bg};
   `,
 
-  ReasonContainer: styled.section`
+  CheckBox: styled.button`
+    margin-right: 0.8rem;
+  `,
+
+  FeedBackContainer: styled.section`
     height: 25.9rem;
     margin: 2.4rem 0 1.8rem 0;
     padding: 0px 1.6rem;
   `,
 
-  ReasonTitle: styled.strong`
+  FeedBackTitle: styled.strong`
     ${({ theme }) => theme.fonts.body12};
     color: ${({ theme }) => theme.colors.bg};
   `,
 
-  ReasonSubTitle: styled.p`
+  FeedBackSubTitle: styled.p`
     display: block;
     margin: 0.4rem 0 1.6rem 0;
 
@@ -62,7 +69,21 @@ export const St = {
     color: ${({ theme }) => theme.colors.gray600};
   `,
 
-  ReasonList: styled.ul``,
+  FeedBackList: styled.ul``,
+
+  FeedBackListsContents: styled.li`
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 0;
+
+    ${({ theme }) => theme.fonts.body12};
+    color: ${({ theme }) => theme.colors.bg};
+  `,
+
+  OptionalCheckBox: styled.button`
+    margin-right: 1.6rem;
+  `,
 
   DeleteBtn: styled.button`
     width: calc(100% - 3.2rem);
