@@ -68,7 +68,7 @@ export const St = {
     width: calc(100% - 3.2rem);
     height: 5rem;
 
-    margin: auto;
+    margin: 0 auto 2rem auto;
     display: block;
 
     border-radius: 5rem;

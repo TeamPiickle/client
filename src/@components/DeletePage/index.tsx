@@ -1,5 +1,5 @@
-//import { prevPages } from "../../core/delete/prevPages";
 import { routePaths } from "../../core/routes/path";
+import Footer from "../@common/Footer";
 import Header from "../JoinPage/common/Header";
 import { St } from "./style";
 
@@ -27,6 +27,7 @@ export default function DeletePage() {
         <St.ReasonList></St.ReasonList>
       </St.ReasonContainer>
       <St.DeleteBtn>탈퇴하기</St.DeleteBtn>
+      <Footer />
     </St.Root>
   );
 }
