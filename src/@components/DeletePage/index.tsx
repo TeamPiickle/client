@@ -1,9 +1,20 @@
+import { IcEmptyCheckBox, IcFullCheckBox, IcSmallEmptyCheckBox, IcSmallFullCheckBox } from "../../asset/icon";
+import { feedBackListsContents } from "../../core/delete/feedBackListsContents";
 import { routePaths } from "../../core/routes/path";
 import Footer from "../@common/Footer";
 import Header from "../JoinPage/common/Header";
 import { St } from "./style";
 
 export default function DeletePage() {
+  const feedBackLists = feedBackListsContents.map((item, index) => (
+    <St.FeedBackListsContents key={index}>
+      <St.OptionalCheckBox type="button">
+        <IcEmptyCheckBox />
+      </St.OptionalCheckBox>
+      {item.text}
+    </St.FeedBackListsContents>
+  ));
+
   return (
     <St.Root>
       <Header prevPage={routePaths.MyPage} />
@@ -19,13 +30,18 @@ export default function DeletePage() {
           계정을 삭제하면 투표 기록을 제외한 회원님의 모든 정보와 기록이
           <br /> 사라집니다. 삭제된 정보는 복구할 수 없으니 신중하게 결정해주세요
         </St.AgreeTitle>
-        <St.AgreeCheck>안내사항을 모두 확인했으며, 이에 동의합니다</St.AgreeCheck>
+        <St.AgreeCheck>
+          <St.CheckBox>
+            <IcSmallEmptyCheckBox />
+          </St.CheckBox>
+          안내사항을 모두 확인했으며, 이에 동의합니다
+        </St.AgreeCheck>
       </St.AgreeContainer>
-      <St.ReasonContainer>
-        <St.ReasonTitle>계정을 삭제하시는 이유가 궁금해요</St.ReasonTitle>
-        <St.ReasonSubTitle>소중한 피드백을 바탕으로 더 나은 서비스를 만들기 위해 노력하겠습니다</St.ReasonSubTitle>
-        <St.ReasonList></St.ReasonList>
-      </St.ReasonContainer>
+      <St.FeedBackContainer>
+        <St.FeedBackTitle>계정을 삭제하시는 이유가 궁금해요</St.FeedBackTitle>
+        <St.FeedBackSubTitle>소중한 피드백을 바탕으로 더 나은 서비스를 만들기 위해 노력하겠습니다</St.FeedBackSubTitle>
+        <St.FeedBackList>{feedBackLists}</St.FeedBackList>
+      </St.FeedBackContainer>
       <St.DeleteBtn>탈퇴하기</St.DeleteBtn>
       <Footer />
     </St.Root>
