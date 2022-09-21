@@ -1,4 +1,5 @@
-import styled from "styled-components";
+/* eslint-disable indent */
+import styled, { css } from "styled-components";
 
 export const St = {
   Root: styled.main`
@@ -83,6 +84,33 @@ export const St = {
 
   OptionalCheckBox: styled.button`
     margin-right: 1.6rem;
+  `,
+
+  ModalContainer: styled.div<{ isopen: boolean }>`
+    margin: auto;
+    align-items: center;
+
+    position: absolute;
+    right: 1.6rem;
+    left: 1.6rem;
+
+    padding: 0 1.6rem;
+    height: 4rem;
+
+    background: ${({ theme }) => theme.colors.gray100};
+    border-radius: 10px;
+
+    color: ${({ theme }) => theme.colors.bg};
+    ${({ theme }) => theme.fonts.caption4};
+
+    ${({ isopen }) =>
+      isopen
+        ? css`
+            display: flex;
+          `
+        : css`
+            display: none;
+          `};
   `,
 
   DeleteBtn: styled.button`
