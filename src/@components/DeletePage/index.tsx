@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { IcEmptyCheckBox, IcFullCheckBox, IcSmallEmptyCheckBox, IcSmallFullCheckBox } from "../../asset/icon";
+import { deleteApi } from "../../core/api/delete";
 import { feedBackListsContents } from "../../core/delete/feedBackListsContents";
 import { routePaths } from "../../core/routes/path";
 import Footer from "../@common/Footer";
@@ -46,14 +47,17 @@ export default function DeletePage() {
   const deleteBtn = () => {
     if (ischecked) {
       isFeedBackItems.forEach(function (item, index) {
-        if (item) {
-          sendFeedBack.push(feedBackListsContents[index].text);
-        }
+        if (item) sendFeedBack.push(feedBackListsContents[index].text);
       });
+      putDelete();
       navigate(routePaths.Main);
     } else {
       setIsOpenAlert(true);
     }
+  };
+
+  const putDelete = () => {
+    deleteApi.putDelete(sendFeedBack);
   };
 
   return (
