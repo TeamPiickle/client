@@ -8,6 +8,7 @@ import { prevPages } from "../../../core/join/prevPages";
 import { progressRate } from "../../../core/join/progressRate";
 import { routePaths } from "../../../core/routes/path";
 import Footer from "../../@common/Footer";
+import useOutClickCloser from "../../@common/hooks/useOutClickCloser";
 import { UserInfoFormDataContext } from "..";
 import Header from "../common/Header";
 import PageProgressBar from "../common/PageProgressBar";
@@ -20,6 +21,12 @@ export default function AgreePage() {
 
   const [isPickedItems, setIsPickedItems] = useState<boolean[]>([false, false, false, false, false]);
   const [isOpenAlert, setIsOpenAlert] = useState(false);
+
+  const alertElement = useOutClickCloser({
+    handleOutClickCloser: () => {
+      setIsOpenAlert(false);
+    },
+  });
 
   function handleChecking(index: number) {
     switch (index) {
@@ -100,12 +107,14 @@ export default function AgreePage() {
 
   return (
     <St.Root>
-      <Header prevPage={prevPages[5].prevPage} />
+      <Header prevPage={prevPages[4].prevPage} />
       <PageProgressBar rate={progressRate[4].rate} />
       <St.JoinAgree>
         <St.AgreeTitle>약관을 동의해주세요</St.AgreeTitle>
         <St.AgreeContent>{agreeLists}</St.AgreeContent>
-        <ModalContainerWithAnimation isopen={isOpenAlert}>필수 항목에 동의해주세요</ModalContainerWithAnimation>
+        <ModalContainerWithAnimation isopen={isOpenAlert} ref={alertElement}>
+          필수 항목에 동의해주세요
+        </ModalContainerWithAnimation>
         <St.JoinButton onClick={completeJoinBtn} className="GTM_Agree">
           회원가입 완료하기
         </St.JoinButton>
