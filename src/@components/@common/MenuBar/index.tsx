@@ -49,7 +49,10 @@ export default function MenuBar(props: MenuBarProps) {
         <St.Contents>
           {LOGIN_STATE && userProfile ? (
             <St.ProfileContainer>
-              <St.ProfileImage src={userProfile.data.profileImageUrl} alt="프로필" />
+              <St.ProfileImage
+                src={userProfile.data.profileImageUrl === "test" ? ImgDefaultProfile : userProfile.data.profileImageUrl}
+                alt="프로필"
+              />
               <St.WelcomeText>
                 {userProfile.data.nickname}님, <br />
                 안녕하세요

@@ -13,17 +13,15 @@ export const St = {
   `,
 
   Images: styled.div`
-    width: 58px;
-    height: 58px;
+    width: 5.8rem;
+    height: 5.8rem;
     position: relative;
   `,
 
   ProfileImage: styled.img`
-    width: 6rem;
-    height: 6rem;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
-    background-color: pink;
-    z-index: 10;
   `,
 
   ChangeButton: styled.input`
