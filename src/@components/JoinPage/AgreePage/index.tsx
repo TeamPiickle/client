@@ -1,4 +1,4 @@
-import React, { MouseEvent, useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
 import { IcEmptyCheckBox, IcFullCheckBox, IcNextBtn } from "../../../asset/icon";
@@ -8,6 +8,7 @@ import { prevPages } from "../../../core/join/prevPages";
 import { progressRate } from "../../../core/join/progressRate";
 import { routePaths } from "../../../core/routes/path";
 import Footer from "../../@common/Footer";
+import useOutClickCloser from "../../@common/hooks/useOutClickCloser";
 import { UserInfoFormDataContext } from "..";
 import Header from "../common/Header";
 import PageProgressBar from "../common/PageProgressBar";
@@ -20,7 +21,14 @@ export default function AgreePage() {
 
   const [isPickedItems, setIsPickedItems] = useState<boolean[]>([false, false, false, false, false]);
   const [isOpenAlert, setIsOpenAlert] = useState(false);
+
   const alertElement = useRef<HTMLDivElement | null>(null);
+  useOutClickCloser({
+    ref: alertElement,
+    handleOutClickCloser: () => {
+      setIsOpenAlert(false);
+    },
+  });
 
   function handleChecking(index: number) {
     switch (index) {
@@ -79,19 +87,6 @@ export default function AgreePage() {
 
     return flag;
   };
-  useEffect(() => {
-    const clickOutside = (e: any) => {
-      if (isOpenAlert && alertElement.current && !alertElement.current.contains(e.target as HTMLElement)) {
-        setIsOpenAlert(false);
-      }
-    };
-
-    document.addEventListener("mousedown", clickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", clickOutside);
-    };
-  }, [isOpenAlert]);
 
   const agreeLists = agreeListsContents.map((item, index) => (
     <St.AgreeContentItem key={`condition-${index}`} isActive={isPickedItems[index]}>
