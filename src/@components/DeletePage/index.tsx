@@ -37,11 +37,7 @@ export default function DeletePage() {
   };
 
   const agreeDeleteBtn = () => {
-    if (ischecked) {
-      setIsChecked(false);
-    } else {
-      setIsChecked(true);
-    }
+    ischecked ? setIsChecked(false) : setIsChecked(true);
   };
 
   const deleteBtn = async () => {
