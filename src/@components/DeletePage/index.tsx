@@ -14,6 +14,8 @@ export default function DeletePage() {
   const [ischecked, setIsChecked] = useState(false);
   const [isFeedBackItems, setIsFeedBackItems] = useState<boolean[]>([false, false, false, false, false]);
   const [isOpenAlert, setIsOpenAlert] = useState(false);
+  // eslint-disable-next-line prefer-const
+  let sendFeedBack: string[] = [];
 
   const feedBackLists = feedBackListsContents.map((item, index) => (
     <St.FeedBackListsContents key={index}>
@@ -43,6 +45,11 @@ export default function DeletePage() {
 
   const deleteBtn = () => {
     if (ischecked) {
+      isFeedBackItems.forEach(function (item, index) {
+        if (item) {
+          sendFeedBack.push(feedBackListsContents[index].text);
+        }
+      });
       navigate(routePaths.Main);
     } else {
       setIsOpenAlert(true);
