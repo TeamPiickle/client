@@ -1,17 +1,18 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 interface UseOutClickCloserProps {
-  ref: React.MutableRefObject<HTMLDivElement | null>;
   handleOutClickCloser: () => void;
 }
 
 export default function useOutClickCloser(props: UseOutClickCloserProps) {
-  const { ref, handleOutClickCloser } = props;
+  const { handleOutClickCloser } = props;
+
+  const currentRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent | TouchEvent) => {
       if (!(e.target instanceof HTMLElement)) return;
-      if (ref.current && !ref.current.contains(e.target)) {
+      if (currentRef.current && !currentRef.current.contains(e.target)) {
         handleOutClickCloser();
       }
     };
@@ -23,5 +24,7 @@ export default function useOutClickCloser(props: UseOutClickCloserProps) {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("touchstart", handleClickOutside);
     };
-  }, [ref, handleOutClickCloser]);
+  }, [currentRef, handleOutClickCloser]);
+
+  return currentRef;
 }

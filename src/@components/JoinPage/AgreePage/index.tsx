@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
 import { IcEmptyCheckBox, IcFullCheckBox, IcNextBtn } from "../../../asset/icon";
@@ -22,9 +22,7 @@ export default function AgreePage() {
   const [isPickedItems, setIsPickedItems] = useState<boolean[]>([false, false, false, false, false]);
   const [isOpenAlert, setIsOpenAlert] = useState(false);
 
-  const alertElement = useRef<HTMLDivElement | null>(null);
-  useOutClickCloser({
-    ref: alertElement,
+  const alertElement = useOutClickCloser({
     handleOutClickCloser: () => {
       setIsOpenAlert(false);
     },
