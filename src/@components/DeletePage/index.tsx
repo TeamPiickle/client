@@ -6,6 +6,7 @@ import { deleteApi } from "../../core/api/delete";
 import { feedBackListsContents } from "../../core/delete/feedBackListsContents";
 import { routePaths } from "../../core/routes/path";
 import Footer from "../@common/Footer";
+import useOutClickCloser from "../@common/hooks/useOutClickCloser";
 import Header from "../JoinPage/common/Header";
 import { St } from "./style";
 
@@ -40,7 +41,6 @@ export default function DeletePage() {
       setIsChecked(false);
     } else {
       setIsChecked(true);
-      setIsOpenAlert(false);
     }
   };
 
@@ -60,6 +60,12 @@ export default function DeletePage() {
   const putDelete = () => {
     deleteApi.putDelete(sendFeedBack);
   };
+
+  const alertElement = useOutClickCloser({
+    handleOutClickCloser: () => {
+      setIsOpenAlert(false);
+    },
+  });
 
   return (
     <St.Root>
@@ -88,7 +94,9 @@ export default function DeletePage() {
         <St.FeedBackSubTitle>소중한 피드백을 바탕으로 더 나은 서비스를 만들기 위해 노력하겠습니다</St.FeedBackSubTitle>
         <St.FeedBackList>{feedBackLists}</St.FeedBackList>
       </St.FeedBackContainer>
-      <St.ModalContainer isopen={isOpenAlert}>탈퇴 전 확인 항목에 동의해주세요</St.ModalContainer>
+      <St.ModalContainer isopen={isOpenAlert} ref={alertElement}>
+        탈퇴 전 확인 항목에 동의해주세요
+      </St.ModalContainer>
       <St.DeleteBtn onClick={deleteBtn}>탈퇴하기</St.DeleteBtn>
       <Footer />
     </St.Root>
