@@ -60,7 +60,7 @@ export default function UserProfilePage() {
 
   return (
     <St.Root>
-      <Header prevPage={prevPages[4].prevPage} />
+      <Header prevPage={prevPages[3].prevPage} />
       <PageProgressBar rate={progressRate[3].rate} />
       <St.ProfileContainer>
         <St.Title>프로필을 설정해주세요</St.Title>
@@ -79,11 +79,12 @@ export default function UserProfilePage() {
         />
         {(isInComplete && nickName == "") || isError === "nickNameInput" ? (
           <St.ErrorMessage>{errorMessage.nickName.input}</St.ErrorMessage>
+        ) : isError === "nickNameFail" ? (
+          <St.ErrorMessage>{errorMessage.nickName.fail}</St.ErrorMessage>
+        ) : isError === "nickNameValid" ? (
+          <St.ErrorMessage>{errorMessage.nickName.valid}</St.ErrorMessage>
         ) : isInComplete && !isChecked ? (
           <St.ErrorMessage>{errorMessage.nickName.check}</St.ErrorMessage>
-        ) : null}
-        {isError === "nickNameFail" ? (
-          <St.ErrorMessage>{errorMessage.nickName.fail}</St.ErrorMessage>
         ) : isChecked ? (
           <St.SuccessMessage>{errorMessage.nickName.success}</St.SuccessMessage>
         ) : (
@@ -104,7 +105,9 @@ export default function UserProfilePage() {
 
         <St.SubTitle>성별(선택)</St.SubTitle>
         <ProfileGender isSelected={isSelected} setIsSelected={setIsSelected} />
-        <St.NextButton onClick={completeBtn}>다음으로</St.NextButton>
+        <St.NextButton onClick={completeBtn} className="GTM_Profile">
+          다음으로
+        </St.NextButton>
       </St.ProfileContainer>
       <Footer />
     </St.Root>

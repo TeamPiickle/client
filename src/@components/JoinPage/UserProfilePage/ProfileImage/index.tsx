@@ -18,9 +18,6 @@ export default function ProfileImage(props: ProfileImageProps) {
     const selectedImg = e.target.files[0];
     setImgUrl(URL.createObjectURL(selectedImg));
 
-    //const formData = new FormData();
-    //formData.append("file", selectedImg);
-
     setImage(selectedImg);
   };
 

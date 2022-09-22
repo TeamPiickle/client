@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -11,17 +12,25 @@ import { useDebounce } from "../../@common/hooks/useDebounce";
 import Header from "../common/Header";
 import PageProgressBar from "../common/PageProgressBar";
 import { St } from "./style";
+
+const emailInvalidMessage = {
+  NULL: "",
+  form: "이메일 형식이 올바르지 않습니다",
+  duplicaton: "중복된 이메일입니다",
+};
+type EmailInvalidMessage = typeof emailInvalidMessage[keyof typeof emailInvalidMessage];
+
 export default function EmailAuthentication() {
   const navigate = useNavigate();
   const { query, setQuery, debouncedQuery } = useDebounce<string>("");
-  const [isEmailInvalid, setIsEmailInvalid] = useState(false);
+  const [emailInvalidType, setEmailInvalidType] = useState<EmailInvalidMessage>(emailInvalidMessage.NULL);
 
   useEffect(() => {
     // 1초 후, 형식 검사
     if (debouncedQuery !== "" && checkEmailInvalid(debouncedQuery)) {
-      setIsEmailInvalid(true);
+      setEmailInvalidType(emailInvalidMessage.form);
     } else {
-      setIsEmailInvalid(false);
+      setEmailInvalidType(emailInvalidMessage.NULL);
     }
   }, [debouncedQuery]);
 
@@ -30,26 +39,43 @@ export default function EmailAuthentication() {
     setQuery(currentText);
   };
 
-  const clickSendBtn = () => {
+  const clickSendBtn = async () => {
     // 에러 상태일 때 실행 취소
-    if (isEmailInvalid || query === "") return;
+    if (emailInvalidType || query === "") return;
 
     setQuery(query);
+
+    // TODO :: 중복된 이메일일 경우의 에러처리 없음. 소통해야함
+    // TODO :: 로딩처리 필요할 듯
+    try {
+      await postEmail();
+    } catch (error) {
+      if (!axios.isAxiosError(error)) return;
+
+      switch (error.response?.data.message) {
+        case "이미 가입된 메일입니다.":
+          setEmailInvalidType(emailInvalidMessage.duplicaton);
+          return;
+
+        default:
+          setEmailInvalidType(emailInvalidMessage.form);
+          return;
+      }
+    }
 
     navigate(`${routePaths.Join_}${routePaths.Join_EmailConfirm}`, {
       state: {
         userEmail: query,
       },
     });
-
-    postEmail();
   };
 
-  const postEmail = () => {
+  const postEmail = async () => {
     const postingEmail = {
       email: query,
     };
-    joinApi.postEmail(postingEmail);
+
+    await joinApi.postEmail(postingEmail);
   };
 
   return (
@@ -63,7 +89,7 @@ export default function EmailAuthentication() {
         <St.EmailAuthenticationContent>
           <St.DescriptionContainer>
             <St.ContentDescription>이메일</St.ContentDescription>
-            {isEmailInvalid ? <St.EssentialIcon>*</St.EssentialIcon> : <St.EssentialText>(필수)</St.EssentialText>}
+            {emailInvalidType ? <St.EssentialIcon>*</St.EssentialIcon> : <St.EssentialText>(필수)</St.EssentialText>}
           </St.DescriptionContainer>
           <St.InputContainer>
             <St.EmailInput
@@ -72,10 +98,12 @@ export default function EmailAuthentication() {
               value={query}
               onChange={(e) => changeEmailInput(e)}
             />
-            <St.SendBtn onClick={clickSendBtn}>인증메일 전송</St.SendBtn>
+            <St.SendBtn onClick={clickSendBtn} className="GTM_SendEmail">
+              인증메일 전송
+            </St.SendBtn>
           </St.InputContainer>
         </St.EmailAuthenticationContent>
-        {isEmailInvalid && <St.WarningText>이메일 형식이 올바르지 않습니다</St.WarningText>}
+        <St.WarningText>{emailInvalidType}</St.WarningText>
       </St.EmailAuthenticationSection>
       <Footer />
     </St.Root>

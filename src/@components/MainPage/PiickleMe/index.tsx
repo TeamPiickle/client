@@ -15,7 +15,9 @@ export default function PiickleMe() {
         <St.RepresentVoteContentText>{ballotLists && ballotLists.data[0].topic}</St.RepresentVoteContentText>
         <St.RepresentVoteContentSubText>현재 가장 참여수가 많은 투표</St.RepresentVoteContentSubText>
         <St.RepresentGoVoteBtnWrapper type="button">
-          <St.RepresentGoVoteBtn to={`${routePaths.Vote}/${ballotLists && ballotLists.data[0]._id}`}>
+          <St.RepresentGoVoteBtn
+            to={`${routePaths.Vote}/${ballotLists && ballotLists.data[0]._id}`}
+            className={`GTM_${ballotLists && ballotLists.data[0].topic.slice(0, 4)}`}>
             투표하기
           </St.RepresentGoVoteBtn>
         </St.RepresentGoVoteBtnWrapper>
@@ -31,7 +33,11 @@ export default function PiickleMe() {
               </St.VoteTextContainer>
             </St.VoteImgTextWrapper>
             <St.GoVoteBtnWrapper type="button">
-              <St.GoVoteBtn to={`${routePaths.Vote}/${ballot._id}`}>투표하기</St.GoVoteBtn>
+              <St.GoVoteBtn
+                to={`${routePaths.Vote}/${ballot._id}`}
+                className={`GTM_${ballot && ballot.topic.slice(0, 4)}`}>
+                투표하기
+              </St.GoVoteBtn>
             </St.GoVoteBtnWrapper>
           </St.VoteContent>
         ))}

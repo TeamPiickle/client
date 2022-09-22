@@ -16,11 +16,13 @@ export default function LastCard() {
         새로운 대화 주제를 둘러보세요
       </St.Content>
 
-      <St.CategoryLink to={routePaths.Category}>
+      <St.CategoryLink to={routePaths.Category} className="GTM_GoCategory">
         <IcNextCardBtn />
       </St.CategoryLink>
 
-      <St.HomeLink to={routePaths.Main}>홈으로 돌아가기</St.HomeLink>
+      <St.HomeLink to={routePaths.Main} className="GTM_GoMain">
+        홈으로 돌아가기
+      </St.HomeLink>
     </St.Card>
   );
 }
