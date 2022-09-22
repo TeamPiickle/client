@@ -5,6 +5,6 @@ function putDelete(reasons: string[]) {
   return realReq.PUT(`${PATH.USERS_}/me`, reasons);
 }
 
-export const joinApi = {
+export const deleteApi = {
   putDelete,
 };
