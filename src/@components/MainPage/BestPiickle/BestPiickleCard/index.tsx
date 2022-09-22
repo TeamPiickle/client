@@ -22,7 +22,7 @@ export default function BestPiickleCard(props: BestPiickleCardProps) {
   const navigation = useNavigate();
 
   return (
-    <St.BestPiickleCard>
+    <St.BestPiickleCard className={`GTM_${content.slice(0, 4)}`}>
       <St.TagsWrapper>
         {tags.map((tag: string, i: number) => {
           return <St.Tag key={i}>{tag}</St.Tag>;

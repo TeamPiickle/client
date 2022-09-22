@@ -15,7 +15,11 @@ export default function HeadingTitleContainer(props: HeadingTitleContainerProps)
         <St.Title>{headingTitles.title}</St.Title>
         <St.Content>{headingTitles.content}</St.Content>
       </St.Wrapper>
-      {headingTitles && headingTitles.isMoreBtn && <St.Link to={routePaths.Category}>더보기</St.Link>}
+      {headingTitles && headingTitles.isMoreBtn && (
+        <St.Link to={routePaths.Category} className="GTM_더보기">
+          더보기
+        </St.Link>
+      )}
     </St.Container>
   );
 }

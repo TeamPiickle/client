@@ -56,10 +56,12 @@ export default function MenuBar(props: MenuBarProps) {
               </St.WelcomeText>
               <St.DescriptText>오늘도 피클과 함께 대화 나눠요</St.DescriptText>
               <St.BtnContainer>
-                <St.MyProfileBtn to={routePaths.MyPage} onClick={closeMenuBar}>
+                <St.MyProfileBtn to={routePaths.MyPage} onClick={closeMenuBar} className="GTM_MyProfile">
                   My 프로필
                 </St.MyProfileBtn>
-                <St.LogoutBtn onClick={handleLogout}>로그아웃</St.LogoutBtn>
+                <St.LogoutBtn onClick={handleLogout} className="GTM_Logout">
+                  로그아웃
+                </St.LogoutBtn>
               </St.BtnContainer>
             </St.ProfileContainer>
           ) : (
@@ -68,23 +70,25 @@ export default function MenuBar(props: MenuBarProps) {
               <St.WelcomeText>안녕하세요</St.WelcomeText>
               <St.DescriptText>오늘도 피클과 함께 대화 나눠요</St.DescriptText>
               <St.BtnContainer>
-                <St.MyProfileBtn to={routePaths.Login} onClick={closeMenuBar}>
+                <St.MyProfileBtn to={routePaths.Login} onClick={closeMenuBar} className="GTM_Login">
                   로그인
                 </St.MyProfileBtn>
-                <St.LogoutBtn onClick={handleJoin}>회원가입</St.LogoutBtn>
+                <St.LogoutBtn onClick={handleJoin} className="GTM_Join">
+                  회원가입
+                </St.LogoutBtn>
               </St.BtnContainer>
             </St.ProfileContainer>
           )}
           <St.RecomendContainer>
             <St.CardRecomendWrapper onClick={moveCardCollection}>
-              <St.Title>대화 주제 추천 카드</St.Title>
+              <St.Title className="GTM_대화주제추천">대화 주제 추천 카드</St.Title>
             </St.CardRecomendWrapper>
             <St.RecomendWrapper to={routePaths.Category} onClick={closeMenuBar}>
-              <St.Title>Mood Piickles</St.Title>
+              <St.Title className="GTM_MoodPiickle">Mood Piickles</St.Title>
               <St.SubTitle>카테고리별 대화주제 추천</St.SubTitle>
             </St.RecomendWrapper>
             <St.RecomendWrapper to={`${routePaths.Vote}/${ballotLists?.data[0]._id}`} onClick={closeMenuBar}>
-              <St.Title>Piickle Me</St.Title>
+              <St.Title className="GTM_PiickleMe">Piickle Me</St.Title>
               <St.SubTitle>진행중인 투표</St.SubTitle>
             </St.RecomendWrapper>
           </St.RecomendContainer>
