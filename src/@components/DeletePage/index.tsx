@@ -44,13 +44,14 @@ export default function DeletePage() {
     }
   };
 
-  const deleteBtn = () => {
+  const deleteBtn = async () => {
     if (ischecked) {
       isFeedBackItems.forEach(function (item, index) {
         if (item) sendFeedBack.push(feedBackListsContents[index].text);
       });
-      putDelete();
+      await putDelete();
       navigate(routePaths.Main);
+      localStorage.removeItem("piickle-token");
     } else {
       setIsOpenAlert(true);
     }
