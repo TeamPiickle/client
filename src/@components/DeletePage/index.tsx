@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { IcEmptyCheckBox, IcFullCheckBox, IcSmallEmptyCheckBox, IcSmallFullCheckBox } from "../../asset/icon";
@@ -16,8 +16,7 @@ export default function DeletePage() {
   const [ischecked, setIsChecked] = useState(false);
   const [isFeedBackItems, setIsFeedBackItems] = useState<boolean[]>([false, false, false, false, false]);
   const [isOpenAlert, setIsOpenAlert] = useState(false);
-  // eslint-disable-next-line prefer-const
-  let sendFeedBack: string[] = [];
+  const sendFeedBack = useRef<string[]>([]);
 
   const feedBackLists = feedBackListsContents.map((item, index) => (
     <St.FeedBackListsContents key={index}>
@@ -43,7 +42,7 @@ export default function DeletePage() {
   const deleteBtn = async () => {
     if (ischecked) {
       isFeedBackItems.forEach(function (item, index) {
-        if (item) sendFeedBack.push(feedBackListsContents[index].text);
+        if (item) sendFeedBack.current.push(feedBackListsContents[index].text);
       });
       await deleteAccount();
       navigate(routePaths.Main);
@@ -54,7 +53,7 @@ export default function DeletePage() {
   };
 
   const deleteAccount = () => {
-    deleteApi.putDelete(sendFeedBack);
+    deleteApi.putDelete(sendFeedBack.current);
   };
 
   const alertElement = useOutClickCloser({
