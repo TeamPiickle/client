@@ -29,7 +29,7 @@ const serviceInfo: ServiceInfo[] = [
 
 export default function Footer() {
   const basicInfoLists = basicInfo.map((info, index) => (
-    <St.BasicInfoTitle key={index}>
+    <St.BasicInfoTitle key={`title-${index}`}>
       <a href={info.link}>{info.text}</a>
     </St.BasicInfoTitle>
   ));
@@ -40,7 +40,7 @@ export default function Footer() {
 
       <St.ServiceInfo>
         {serviceInfo.map((info, index) => (
-          <React.Fragment key={index}>
+          <React.Fragment key={`service-${index}`}>
             <St.ServiceInfoTitle>{info.title}</St.ServiceInfoTitle>
             <St.ServiceInfoDetail>{info.detail}</St.ServiceInfoDetail>
           </React.Fragment>

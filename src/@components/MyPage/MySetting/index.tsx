@@ -26,7 +26,7 @@ export default function MySetting() {
   };
 
   const mySettingList = mySetting.map((setting, index) => (
-    <St.MySettingList key={index}>
+    <St.MySettingList key={`setting-${index}`}>
       <St.MySettingListDetail onClick={() => handleClickDetail(setting.text)}>
         {setting.link ? <a href={setting.link}>{setting.text}</a> : setting.text}
       </St.MySettingListDetail>
