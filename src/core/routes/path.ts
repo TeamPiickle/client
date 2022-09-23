@@ -16,6 +16,7 @@ export const routePaths = {
   VoteId: "/:voteId",
   MyPage: "/my-page",
   BookmarkPage: "/bookmark",
+  Delete: "/delete",
 
   Join_: "/join/",
   Join_Agree: "agree",

@@ -5,6 +5,7 @@ import {
   BookmarkPage,
   CardCollectionPage,
   CategoryPage,
+  DeletePage,
   EmailAuthenticationPage,
   EmailConfirmPage,
   Error404Page,
@@ -29,6 +30,7 @@ export default function Router() {
         <Route path={`${routePaths.Vote}${routePaths.VoteId}`} element={PublicRoute({ Component: <VotePage /> })} />
         <Route path={routePaths.MyPage} element={PrivateRoute({ Component: <MyPage /> })} />
         <Route path={routePaths.BookmarkPage} element={PublicRoute({ Component: <BookmarkPage /> })} />
+        <Route path={routePaths.Delete} element={PrivateRoute({ Component: <DeletePage /> })} />
         <Route path={`${routePaths.Join_}*`} element={PublicRoute({ Component: <JoinPage />, restricted: true })}>
           <Route path={routePaths.Join_Agree} element={<AgreePage />} />
           <Route path={routePaths.Join_EmailAuthentication} element={<EmailAuthenticationPage />} />
