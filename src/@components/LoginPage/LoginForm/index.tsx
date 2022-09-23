@@ -38,7 +38,9 @@ export default function LoginForm() {
       </St.Form>
       <St.LinkWrapper>
         <St.Link onClick={goJoinPage}>회원가입</St.Link> <St.Delimeter>|</St.Delimeter>{" "}
-        <St.Link>비밀번호 재설정</St.Link>
+        <St.Link>
+          <a href="https://www.notion.so/13e1fd1b107241e3921f29e50f5144e0">비밀번호 재설정</a>
+        </St.Link>
       </St.LinkWrapper>
     </St.Section>
   );

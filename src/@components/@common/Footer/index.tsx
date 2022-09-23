@@ -7,7 +7,11 @@ interface ServiceInfo {
   detail: string | ReactElement;
 }
 
-const basicInfo = ["이용약관", "개인정보처리방침", "제휴/광고 문의"];
+const basicInfo = [
+  { text: "이용약관", link: "https://joyous-ghost-8c7.notion.site/bc0872dc420d44f4851c5969f933db0b" },
+  { text: "개인정보처리방침", link: "https://www.notion.so/0525fb9e664f4ce4a317cef1e7abdcd3" },
+  { text: "제휴/광고 문의", link: "https://forms.gle/ygNPumAxTmP4vqvY7" },
+];
 const serviceInfo: ServiceInfo[] = [
   {
     title: "Contact",
@@ -24,7 +28,11 @@ const serviceInfo: ServiceInfo[] = [
 ];
 
 export default function Footer() {
-  const basicInfoLists = basicInfo.map((info, index) => <St.BasicInfoTitle key={index}>{info}</St.BasicInfoTitle>);
+  const basicInfoLists = basicInfo.map((info, index) => (
+    <St.BasicInfoTitle key={index}>
+      <a href={info.link}>{info.text}</a>
+    </St.BasicInfoTitle>
+  ));
 
   return (
     <St.Footer>
