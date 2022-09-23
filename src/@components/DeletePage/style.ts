@@ -32,7 +32,6 @@ export const St = {
   `,
 
   AgreeTitle: styled.p`
-    display: block;
     margin-bottom: 0.8rem;
 
     ${({ theme }) => theme.fonts.body4};
@@ -63,7 +62,6 @@ export const St = {
   `,
 
   FeedBackSubTitle: styled.p`
-    display: block;
     margin: 0.4rem 0 1.6rem 0;
 
     ${({ theme }) => theme.fonts.body4};
@@ -124,9 +122,5 @@ export const St = {
     background-color: ${({ theme }) => theme.colors.bg};
     color: ${({ theme }) => theme.colors.white};
     ${({ theme }) => theme.fonts.btn2};
-
-    ${({ theme }) => theme.media.desktop`
-    width: 32.8rem;
-  `};
   `,
 };
