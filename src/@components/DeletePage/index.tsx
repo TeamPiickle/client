@@ -45,7 +45,7 @@ export default function DeletePage() {
       isFeedBackItems.forEach(function (item, index) {
         if (item) sendFeedBack.push(feedBackListsContents[index].text);
       });
-      await putDelete();
+      await deleteAccount();
       navigate(routePaths.Main);
       localStorage.removeItem("piickle-token");
     } else {
@@ -53,7 +53,7 @@ export default function DeletePage() {
     }
   };
 
-  const putDelete = () => {
+  const deleteAccount = () => {
     deleteApi.putDelete(sendFeedBack);
   };
 
