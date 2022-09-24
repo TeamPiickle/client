@@ -12,7 +12,7 @@ export const agreeListsContents = [
   },
   {
     required: false,
-    text: "마케팅 활용/광고성 정부 수신동의 (선택)",
+    text: "마케팅 활용/광고성 정보 수신동의 (선택)",
     link: "https://www.notion.so/df173163c9bc426c92ea6bc3686102ef",
   },
   { required: true, text: "만 14세 이상입니다 (필수)" },
