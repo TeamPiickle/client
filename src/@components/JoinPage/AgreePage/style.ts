@@ -44,7 +44,7 @@ export const St = {
 
   CheckBox: styled.button``,
 
-  DetailButton: styled(Link)`
+  DetailButton: styled.a`
     position: absolute;
     right: 1.6rem;
   `,

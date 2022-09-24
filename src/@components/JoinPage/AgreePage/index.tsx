@@ -91,9 +91,9 @@ export default function AgreePage() {
       <St.CheckBox type="button" onClick={() => handleChecking(index)}>
         {isPickedItems[index] ? <IcFullCheckBox /> : <IcEmptyCheckBox />}
       </St.CheckBox>
-      {item.link ? <a href={item.link}>{item.text}</a> : item.text}
-      {index !== 0 && (
-        <St.DetailButton to="">
+      {item.text}
+      {item.link && (
+        <St.DetailButton href={item.link}>
           <IcNextBtn />
         </St.DetailButton>
       )}
