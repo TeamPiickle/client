@@ -2,11 +2,12 @@ import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
 import { IcCloseBtn } from "../../../asset/icon";
-import { ImgDefaultProfile } from "../../../asset/image";
 import { useBallotLists } from "../../../core/api/main";
 import useUserProfile from "../../../core/api/myPage";
 import { sliderIdxState } from "../../../core/atom/slider";
 import { routePaths } from "../../../core/routes/path";
+import ProfileContainer from "./ProfileContainer";
+import DefaultProfileContainer from "./ProfileContainer/DefaultProfileContainer";
 import { St, StContentsContainer } from "./style";
 
 interface MenuBarProps {
@@ -19,7 +20,6 @@ export default function MenuBar(props: MenuBarProps) {
   const setSliderIdx = useSetRecoilState(sliderIdxState);
   const navigate = useNavigate();
 
-  const { userProfile } = useUserProfile();
   const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
 
   const { ballotLists } = useBallotLists();
@@ -30,16 +30,6 @@ export default function MenuBar(props: MenuBarProps) {
     closeMenuBar();
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("piickle-token");
-    navigate(routePaths.Main);
-    closeMenuBar();
-  };
-
-  const handleJoin = () => {
-    navigate(`${routePaths.Join_}${routePaths.Join_EmailAuthentication}`);
-  };
-
   return (
     <St.Root>
       <StContentsContainer>
@@ -47,40 +37,10 @@ export default function MenuBar(props: MenuBarProps) {
           <IcCloseBtn />
         </St.CloseBtnContainer>
         <St.Contents>
-          {LOGIN_STATE && userProfile ? (
-            <St.ProfileContainer>
-              <St.ProfileImage
-                src={userProfile.data.profileImageUrl === "test" ? ImgDefaultProfile : userProfile.data.profileImageUrl}
-                alt="프로필"
-              />
-              <St.WelcomeText>
-                {userProfile.data.nickname}님, <br />
-                안녕하세요
-              </St.WelcomeText>
-              <St.DescriptText>오늘도 피클과 함께 대화 나눠요</St.DescriptText>
-              <St.BtnContainer>
-                <St.MyProfileBtn to={routePaths.MyPage} onClick={closeMenuBar} className="GTM_MyProfile">
-                  My 프로필
-                </St.MyProfileBtn>
-                <St.LogoutBtn onClick={handleLogout} className="GTM_Logout">
-                  로그아웃
-                </St.LogoutBtn>
-              </St.BtnContainer>
-            </St.ProfileContainer>
+          {LOGIN_STATE ? (
+            <ProfileContainer closeMenuBar={closeMenuBar} />
           ) : (
-            <St.ProfileContainer>
-              <St.ProfileImage src={ImgDefaultProfile} alt="프로필" />
-              <St.WelcomeText>안녕하세요</St.WelcomeText>
-              <St.DescriptText>오늘도 피클과 함께 대화 나눠요</St.DescriptText>
-              <St.BtnContainer>
-                <St.MyProfileBtn to={routePaths.Login} onClick={closeMenuBar} className="GTM_Login">
-                  로그인
-                </St.MyProfileBtn>
-                <St.LogoutBtn onClick={handleJoin} className="GTM_Join">
-                  회원가입
-                </St.LogoutBtn>
-              </St.BtnContainer>
-            </St.ProfileContainer>
+            <DefaultProfileContainer closeMenuBar={closeMenuBar} />
           )}
           <St.RecomendContainer>
             <St.CardRecomendWrapper onClick={moveCardCollection}>
