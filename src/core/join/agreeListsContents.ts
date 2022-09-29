@@ -10,10 +10,10 @@ export const agreeListsContents = [
     text: "개인정보 수집 및 이용동의 (필수)",
     link: "https://www.notion.so/0525fb9e664f4ce4a317cef1e7abdcd3",
   },
+  { required: true, text: "만 14세 이상입니다 (필수)" },
   {
     required: false,
     text: "마케팅 활용/광고성 정보 수신동의 (선택)",
     link: "https://www.notion.so/df173163c9bc426c92ea6bc3686102ef",
   },
-  { required: true, text: "만 14세 이상입니다 (필수)" },
 ];
