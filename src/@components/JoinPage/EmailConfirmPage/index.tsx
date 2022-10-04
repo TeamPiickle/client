@@ -10,8 +10,7 @@
 import { useLocation } from "react-router-dom";
 
 import { joinApi } from "../../../core/api/join";
-import { prevPages } from "../../../core/join/prevPages";
-import { progressRate } from "../../../core/join/progressRate";
+import { subHeaderInfo } from "../../../core/join/subHeaderInfo";
 import Footer from "../../@common/Footer";
 import SubHeader from "../../@common/SubHeader";
 import { St } from "./style";
@@ -26,7 +25,7 @@ export default function EmailConfirmPage() {
 
   return (
     <St.Root>
-      <SubHeader prevPage={prevPages[1].prevPage} rate={progressRate[1].rate} />
+      <SubHeader prevPage={subHeaderInfo[1].prevPage} rate={subHeaderInfo[1].rate} />
       <St.EmailConfirmContainer>
         <St.TitleText>인증 메일을 확인해주세요</St.TitleText>
         <St.ConfirmDescription>

@@ -4,8 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import { joinApi } from "../../../core/api/join";
 import { EmailInvalidMessage, emailInvalidMessage } from "../../../core/join/emailErrorMessage";
-import { prevPages } from "../../../core/join/prevPages";
-import { progressRate } from "../../../core/join/progressRate";
+import { subHeaderInfo } from "../../../core/join/subHeaderInfo";
 import { routePaths } from "../../../core/routes/path";
 import checkEmailInvalid from "../../../util/checkInvalidEmail";
 import Footer from "../../@common/Footer";
@@ -64,7 +63,7 @@ export default function EmailAuthentication() {
 
   return (
     <St.Root>
-      <SubHeader prevPage={prevPages[0].prevPage} rate={progressRate[0].rate} />
+      <SubHeader prevPage={subHeaderInfo[0].prevPage} rate={subHeaderInfo[0].rate} />
       <St.EmailAuthenticationSection>
         <St.TitleContainer>
           <St.TitleText>이메일 인증이 필요합니다</St.TitleText>

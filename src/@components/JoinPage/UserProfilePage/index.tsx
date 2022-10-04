@@ -2,8 +2,7 @@ import { useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
 import { ImgDefaultBigProfile } from "../../../asset/image";
-import { prevPages } from "../../../core/join/prevPages";
-import { progressRate } from "../../../core/join/progressRate";
+import { subHeaderInfo } from "../../../core/join/subHeaderInfo";
 import { errorMessage } from "../../../core/join/userProfileErrorMessage";
 import { routePaths } from "../../../core/routes/path";
 import Footer from "../../@common/Footer";
@@ -59,7 +58,7 @@ export default function UserProfilePage() {
 
   return (
     <St.Root>
-      <SubHeader prevPage={prevPages[3].prevPage} rate={progressRate[3].rate} />
+      <SubHeader prevPage={subHeaderInfo[3].prevPage} rate={subHeaderInfo[3].rate} />
       <St.ProfileContainer>
         <St.Title>프로필을 설정해주세요</St.Title>
         <St.SubTitle>프로필 사진(선택)</St.SubTitle>
