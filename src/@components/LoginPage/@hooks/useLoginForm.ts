@@ -12,11 +12,10 @@ export default function useLoginForm() {
 
   const submitLoginForm = async (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
-
-    // 피클 테스트 계정
-    // LoginNGoMain(
-    //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjJkNmJiMzEwMWRiNGIyNmRhM2M5NWFlIn0sImlhdCI6MTY1ODM4NDIwMCwiZXhwIjoxNjg5OTIwMjAwfQ.G6vpi0Tr3LmALeUpQuvXXx_KjuROKHWMQ9UAtCMs8mY",
-    // );
+    if (!inputRefs.current[0].value)
+      return setErrorMessage({ emailError: "이메일을 입력해주세요.", passwordError: "" });
+    if (!inputRefs.current[1].value)
+      return setErrorMessage({ emailError: "", passwordError: "비밀번호를 입력해주세요." });
 
     try {
       const { data } = await loginApi.postLogin(inputRefs.current[0].value, inputRefs.current[1].value);
