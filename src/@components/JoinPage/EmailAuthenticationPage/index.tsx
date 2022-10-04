@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { joinApi } from "../../../core/api/join";
+import { EmailInvalidMessage, emailInvalidMessage } from "../../../core/join/emailErrorMessage";
 import { prevPages } from "../../../core/join/prevPages";
 import { progressRate } from "../../../core/join/progressRate";
 import { routePaths } from "../../../core/routes/path";
@@ -12,13 +13,6 @@ import { useDebounce } from "../../@common/hooks/useDebounce";
 import Header from "../common/Header";
 import PageProgressBar from "../common/PageProgressBar";
 import { St } from "./style";
-
-const emailInvalidMessage = {
-  NULL: "",
-  form: "이메일 형식이 올바르지 않습니다",
-  duplicaton: "이미 사용중인 이메일입니다",
-};
-type EmailInvalidMessage = typeof emailInvalidMessage[keyof typeof emailInvalidMessage];
 
 export default function EmailAuthentication() {
   const navigate = useNavigate();
