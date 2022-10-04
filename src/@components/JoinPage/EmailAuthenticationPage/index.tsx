@@ -39,13 +39,20 @@ export default function EmailAuthentication() {
     setQuery(currentText);
   };
 
+  const postEmail = async () => {
+    const postingEmail = {
+      email: query,
+    };
+
+    await joinApi.postEmail(postingEmail);
+  };
+
   const clickSendBtn = async () => {
     // 에러 상태일 때 실행 취소
     if (emailInvalidType || query === "") return;
 
     setQuery(query);
 
-    // TODO :: 중복된 이메일일 경우의 에러처리 없음. 소통해야함
     // TODO :: 로딩처리 필요할 듯
     try {
       await postEmail();
@@ -68,14 +75,6 @@ export default function EmailAuthentication() {
         userEmail: query,
       },
     });
-  };
-
-  const postEmail = async () => {
-    const postingEmail = {
-      email: query,
-    };
-
-    await joinApi.postEmail(postingEmail);
   };
 
   return (
