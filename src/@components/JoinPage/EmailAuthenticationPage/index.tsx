@@ -39,14 +39,6 @@ export default function EmailAuthentication() {
     setQuery(currentText);
   };
 
-  const postEmail = async () => {
-    const postingEmail = {
-      email: query,
-    };
-
-    await joinApi.postEmail(postingEmail);
-  };
-
   const clickSendBtn = async () => {
     // 에러 상태일 때 실행 취소
     if (emailInvalidType || query === "") return;
@@ -55,7 +47,7 @@ export default function EmailAuthentication() {
 
     // TODO :: 로딩처리 필요할 듯
     try {
-      await postEmail();
+      await joinApi.postEmail(query);
     } catch (error) {
       if (!axios.isAxiosError(error)) return;
 

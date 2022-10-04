@@ -9,6 +9,7 @@
 
 import { useLocation } from "react-router-dom";
 
+import { joinApi } from "../../../core/api/join";
 import { prevPages } from "../../../core/join/prevPages";
 import { progressRate } from "../../../core/join/progressRate";
 import Footer from "../../@common/Footer";
@@ -19,6 +20,10 @@ import { St } from "./style";
 export default function EmailConfirmPage() {
   const locationState = useLocation().state as { userEmail: string };
   const userEmail = locationState.userEmail;
+
+  const repostEmail = async () => {
+    await joinApi.postEmail(userEmail);
+  };
 
   return (
     <St.Root>
@@ -33,7 +38,7 @@ export default function EmailConfirmPage() {
         </St.ConfirmDescription>
         <St.EmailErrorContainer>
           <St.SendErrorText>인증 메일이 오지 않았어요</St.SendErrorText>
-          <St.ReSendBtn>인증메일 재전송</St.ReSendBtn>
+          <St.ReSendBtn onClick={repostEmail}>인증메일 재전송</St.ReSendBtn>
         </St.EmailErrorContainer>
       </St.EmailConfirmContainer>
       <Footer />
