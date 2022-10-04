@@ -1,4 +1,5 @@
 import { routePaths } from "./../routes/path";
+
 export type PrevPages = {
   prevPage: string;
 };

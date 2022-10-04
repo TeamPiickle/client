@@ -10,8 +10,7 @@ import { routePaths } from "../../../core/routes/path";
 import checkEmailInvalid from "../../../util/checkInvalidEmail";
 import Footer from "../../@common/Footer";
 import { useDebounce } from "../../@common/hooks/useDebounce";
-import Header from "../common/Header";
-import PageProgressBar from "../common/PageProgressBar";
+import SubHeader from "../../@common/SubHeader";
 import { St } from "./style";
 
 export default function EmailAuthentication() {
@@ -65,8 +64,7 @@ export default function EmailAuthentication() {
 
   return (
     <St.Root>
-      <Header prevPage={prevPages[0].prevPage} />
-      <PageProgressBar rate={progressRate[0].rate} />
+      <SubHeader prevPage={prevPages[0].prevPage} rate={progressRate[0].rate} />
       <St.EmailAuthenticationSection>
         <St.TitleContainer>
           <St.TitleText>이메일 인증이 필요합니다</St.TitleText>

@@ -9,9 +9,8 @@ import { progressRate } from "../../../core/join/progressRate";
 import { routePaths } from "../../../core/routes/path";
 import Footer from "../../@common/Footer";
 import useOutClickCloser from "../../@common/hooks/useOutClickCloser";
+import SubHeader from "../../@common/SubHeader";
 import { UserInfoFormDataContext } from "..";
-import Header from "../common/Header";
-import PageProgressBar from "../common/PageProgressBar";
 import { ModalContainerWithAnimation, St } from "./style";
 
 export default function AgreePage() {
@@ -107,8 +106,7 @@ export default function AgreePage() {
 
   return (
     <St.Root>
-      <Header prevPage={prevPages[4].prevPage} />
-      <PageProgressBar rate={progressRate[4].rate} />
+      <SubHeader prevPage={prevPages[4].prevPage} rate={progressRate[4].rate} />
       <St.JoinAgree>
         <St.AgreeTitle>약관을 동의해주세요</St.AgreeTitle>
         <St.AgreeContent>{agreeLists}</St.AgreeContent>

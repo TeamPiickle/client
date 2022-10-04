@@ -13,8 +13,7 @@ import { joinApi } from "../../../core/api/join";
 import { prevPages } from "../../../core/join/prevPages";
 import { progressRate } from "../../../core/join/progressRate";
 import Footer from "../../@common/Footer";
-import Header from "../common/Header";
-import PageProgressBar from "../common/PageProgressBar";
+import SubHeader from "../../@common/SubHeader";
 import { St } from "./style";
 
 export default function EmailConfirmPage() {
@@ -27,8 +26,7 @@ export default function EmailConfirmPage() {
 
   return (
     <St.Root>
-      <Header prevPage={prevPages[1].prevPage} />
-      <PageProgressBar rate={progressRate[1].rate} />
+      <SubHeader prevPage={prevPages[1].prevPage} rate={progressRate[1].rate} />
       <St.EmailConfirmContainer>
         <St.TitleText>인증 메일을 확인해주세요</St.TitleText>
         <St.ConfirmDescription>
