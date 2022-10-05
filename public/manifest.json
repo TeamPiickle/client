@@ -5,7 +5,7 @@
   "theme_color": "#000000",
   "background_color": "#ffffff",
   "dir": "ltr",
-  "display": "minimul-ui",
+  "display": "standalone",
   "orientation": "any",
   "scope": "/",
   "start_url": ".",
