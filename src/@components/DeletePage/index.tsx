@@ -7,7 +7,7 @@ import { feedBackListsContents } from "../../core/delete/feedBackListsContents";
 import { routePaths } from "../../core/routes/path";
 import Footer from "../@common/Footer";
 import useOutClickCloser from "../@common/hooks/useOutClickCloser";
-import Header from "../JoinPage/common/Header";
+import SubHeader from "../@common/SubHeader";
 import { St } from "./style";
 
 export default function DeletePage() {
@@ -64,7 +64,7 @@ export default function DeletePage() {
 
   return (
     <St.Root>
-      <Header prevPage={routePaths.MyPage} />
+      <SubHeader prevPage={routePaths.MyPage} />
       <St.TitleContainer>
         <St.Title>정말 피클을 떠나시는 건가요?</St.Title>
         <St.SubTitle>

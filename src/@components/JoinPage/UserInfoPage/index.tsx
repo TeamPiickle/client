@@ -1,15 +1,13 @@
 import { useState } from "react";
 import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 
-import { prevPages } from "../../../core/join/prevPages";
-import { progressRate } from "../../../core/join/progressRate";
+import { subHeaderInfo } from "../../../core/join/subHeaderInfo";
 import { routePaths } from "../../../core/routes/path";
 import checkPasswordInvalid from "../../../util/checkInvalidPassword";
 import Footer from "../../@common/Footer";
 import { useDebounce } from "../../@common/hooks/useDebounce";
+import SubHeader from "../../@common/SubHeader";
 import { UserInfoFormDataContext } from "..";
-import Header from "../common/Header";
-import PageProgressBar from "../common/PageProgressBar";
 import { St } from "./style";
 import UserEmail from "./UserEmail";
 import UserPassword from "./UserPassword";
@@ -54,6 +52,7 @@ export default function UserInfo() {
       setIsPasswordInvalid({ ...isPasswordInvalid, confirm: false });
     }
   };
+
   const changePasswordInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (currentStep === Step.confirm) {
       setCurrentStep(Step.input);
@@ -91,8 +90,7 @@ export default function UserInfo() {
 
   return (
     <>
-      <Header prevPage={prevPages[1].prevPage} />
-      <PageProgressBar rate={progressRate[2].rate} />
+      <SubHeader prevPage={subHeaderInfo[2].prevPage} rate={subHeaderInfo[2].rate} />
       <St.ContainerWrapper>
         <St.UserInfoContainer>
           <St.ContentTitle>정보를 입력해주세요</St.ContentTitle>

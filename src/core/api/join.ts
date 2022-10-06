@@ -1,6 +1,6 @@
 import qs from "qs";
 
-import { UserEmail, UserInfo } from "./../../types/users";
+import { UserInfo } from "./../../types/users";
 import { realReq } from "./common/axios";
 import { PATH } from "./common/constants";
 
@@ -15,8 +15,12 @@ function fetchNickNameValid<T>(nickname: string) {
   return realReq.GET<T>(`${PATH.USERS_}/nickname/is-exist?${nicknameParams}`);
 }
 
-function postEmail(postingEmail: UserEmail) {
-  return realReq.POST(`${PATH.USERS_}${PATH.USERS_EMAIL}`, postingEmail);
+async function postEmail(email: string) {
+  const postingEmail = {
+    email,
+  };
+
+  return await realReq.POST(`${PATH.USERS_}${PATH.USERS_EMAIL}`, postingEmail);
 }
 
 function postUserInfo(postingUserInfo: UserInfo) {

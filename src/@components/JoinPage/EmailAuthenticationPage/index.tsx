@@ -3,22 +3,14 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { joinApi } from "../../../core/api/join";
-import { prevPages } from "../../../core/join/prevPages";
-import { progressRate } from "../../../core/join/progressRate";
+import { EmailInvalidMessage, emailInvalidMessage } from "../../../core/join/emailErrorMessage";
+import { subHeaderInfo } from "../../../core/join/subHeaderInfo";
 import { routePaths } from "../../../core/routes/path";
 import checkEmailInvalid from "../../../util/checkInvalidEmail";
 import Footer from "../../@common/Footer";
 import { useDebounce } from "../../@common/hooks/useDebounce";
-import Header from "../common/Header";
-import PageProgressBar from "../common/PageProgressBar";
+import SubHeader from "../../@common/SubHeader";
 import { St } from "./style";
-
-const emailInvalidMessage = {
-  NULL: "",
-  form: "이메일 형식이 올바르지 않습니다",
-  duplicaton: "이미 사용중인 이메일입니다",
-};
-type EmailInvalidMessage = typeof emailInvalidMessage[keyof typeof emailInvalidMessage];
 
 export default function EmailAuthentication() {
   const navigate = useNavigate();
@@ -45,10 +37,9 @@ export default function EmailAuthentication() {
 
     setQuery(query);
 
-    // TODO :: 중복된 이메일일 경우의 에러처리 없음. 소통해야함
     // TODO :: 로딩처리 필요할 듯
     try {
-      await postEmail();
+      await joinApi.postEmail(query);
     } catch (error) {
       if (!axios.isAxiosError(error)) return;
 
@@ -70,18 +61,9 @@ export default function EmailAuthentication() {
     });
   };
 
-  const postEmail = async () => {
-    const postingEmail = {
-      email: query,
-    };
-
-    await joinApi.postEmail(postingEmail);
-  };
-
   return (
     <St.Root>
-      <Header prevPage={prevPages[0].prevPage} />
-      <PageProgressBar rate={progressRate[0].rate} />
+      <SubHeader prevPage={subHeaderInfo[0].prevPage} rate={subHeaderInfo[0].rate} />
       <St.EmailAuthenticationSection>
         <St.TitleContainer>
           <St.TitleText>이메일 인증이 필요합니다</St.TitleText>

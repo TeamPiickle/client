@@ -2,14 +2,12 @@ import { useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
 import { ImgDefaultBigProfile } from "../../../asset/image";
-import { prevPages } from "../../../core/join/prevPages";
-import { progressRate } from "../../../core/join/progressRate";
-import { errorMessage } from "../../../core/join/userProfileErrorMsg";
+import { subHeaderInfo } from "../../../core/join/subHeaderInfo";
+import { errorMessage } from "../../../core/join/userProfileErrorMessage";
 import { routePaths } from "../../../core/routes/path";
 import Footer from "../../@common/Footer";
+import SubHeader from "../../@common/SubHeader";
 import { UserInfoFormDataContext } from "..";
-import Header from "../common/Header";
-import PageProgressBar from "../common/PageProgressBar";
 import ProfileBirth from "./ProfileBirth";
 import ProfileGender from "./ProfileGender";
 import ProfileImage from "./ProfileImage";
@@ -60,8 +58,7 @@ export default function UserProfilePage() {
 
   return (
     <St.Root>
-      <Header prevPage={prevPages[3].prevPage} />
-      <PageProgressBar rate={progressRate[3].rate} />
+      <SubHeader prevPage={subHeaderInfo[3].prevPage} rate={subHeaderInfo[3].rate} />
       <St.ProfileContainer>
         <St.Title>프로필을 설정해주세요</St.Title>
         <St.SubTitle>프로필 사진(선택)</St.SubTitle>
