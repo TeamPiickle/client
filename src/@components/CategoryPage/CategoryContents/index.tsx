@@ -34,7 +34,7 @@ export default function CategoryContents() {
                 rowEnd={gridValue[index].rowEnd}
                 onClick={() => moveCategory(item._id)}
                 imgUrl={item.imgurl}
-                className={`GTM_${index}`}>
+                className={`GTM_item_${item.title.slice(0, 4)}`}>
                 <St.CategoryTitle className={`GTM_${item.title.slice(0, 4)}`}>{item.title}</St.CategoryTitle>
                 <St.CategoryDescription className={`GTM_${item.content.slice(0, 4)}`}>
                   {item.content}
