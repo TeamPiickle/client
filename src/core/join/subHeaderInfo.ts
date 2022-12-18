@@ -1,25 +1,24 @@
-import { routePaths } from "./../routes/path";
-export type PrevPages = {
-  prevPage: string;
-};
+import { routePaths } from "../routes/path";
 
-export const prevPages: PrevPages[] = [
+export const subHeaderInfo = [
   {
     prevPage: routePaths.Main,
+    rate: 16,
   },
   {
     prevPage: `${routePaths.Join_}${routePaths.Join_EmailAuthentication}`,
+    rate: 32,
   },
   {
-    prevPage: `${routePaths.Join_}${routePaths.Join_EmailConfirm}`,
+    prevPage: `${routePaths.Join_}${routePaths.Join_EmailAuthentication}`,
+    rate: 48,
   },
   {
     prevPage: `${routePaths.Join_}${routePaths.Join_UserInfo}`,
+    rate: 64,
   },
   {
     prevPage: `${routePaths.Join_}${routePaths.Join_UserProfile}`,
-  },
-  {
-    prevPage: `${routePaths.Join_}${routePaths.Join_Agree}`,
+    rate: 80,
   },
 ];

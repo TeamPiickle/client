@@ -19,10 +19,6 @@ export interface MyPiickle {
   content: string;
 }
 
-export interface UserEmail {
-  email: string;
-}
-
 export interface UserInfo {
   email: string;
   password: string;
