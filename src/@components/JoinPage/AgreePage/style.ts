@@ -1,5 +1,4 @@
 /* eslint-disable indent */
-import { Link } from "react-router-dom";
 import styled, { css, keyframes } from "styled-components";
 
 export const St = {

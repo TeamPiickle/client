@@ -6,7 +6,7 @@ import Slider from "react-slick";
 import { useRecoilState } from "recoil";
 
 import { sliderIdxState } from "../../../core/atom/slider";
-import { CardList, CardsTypeLocation } from "../../../types/cardCollection";
+import { CardList } from "../../../types/cardCollection";
 import Loading from "../../@common/Loading";
 import Card from "../Card";
 import LastCard from "../Card/LastCard";

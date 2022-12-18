@@ -33,7 +33,7 @@ export default function UserPassword(props: UserPasswordProps) {
     if (currentStep === "confirm") {
       checkConfirmInvalid();
     }
-  }, [debouncedQuery]);
+  }, [checkConfirmInvalid, checkInputInvalid, currentStep, debouncedQuery]);
 
   return (
     <St.PasswordContainer>
