@@ -15,10 +15,12 @@
     "build-storybook": "build-storybook -s public"
   },
   "dependencies": {
+    "@types/react-gtm-module": "^2.0.1",
     "axios": "^0.26.0",
     "qs": "^6.11.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-gtm-module": "^2.0.11",
     "react-mobile-datepicker": "^4.0.2",
     "react-range": "^1.8.13",
     "react-router-dom": "^6.2.1",
