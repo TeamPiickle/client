@@ -26,6 +26,7 @@ export default function UserPassword(props: UserPasswordProps) {
     isUnfilled,
   } = props;
 
+  /* Error */
   useEffect(() => {
     if (currentStep === "input") {
       checkInputInvalid();

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 import { subHeaderInfo } from "../../../core/join/subHeaderInfo";
 import { routePaths } from "../../../core/routes/path";
@@ -18,6 +18,7 @@ const enum Step {
 }
 
 export default function UserInfo() {
+  const [isEmailInvalid, setIsEmailInvalid] = useState("");
   const [isPasswordInvalid, setIsPasswordInvalid] = useState({
     input: false,
     confirm: false,
@@ -31,9 +32,6 @@ export default function UserInfo() {
   });
 
   const navigate = useNavigate();
-
-  const { search } = useLocation();
-  const userEmail = new URLSearchParams(search).get("email") as string;
 
   const { setUserInfoFormData } = useOutletContext<UserInfoFormDataContext>();
 
@@ -74,7 +72,7 @@ export default function UserInfo() {
       setUserInfoFormData(() => {
         const currentFormData = new FormData();
 
-        currentFormData.append("email", userEmail);
+        currentFormData.append("email", isEmailInvalid);
         currentFormData.append("password", currentPassword);
 
         return currentFormData;
@@ -90,11 +88,11 @@ export default function UserInfo() {
 
   return (
     <>
-      <SubHeader prevPage={subHeaderInfo[2].prevPage} rate={subHeaderInfo[2].rate} />
+      <SubHeader prevPage={subHeaderInfo[0].prevPage} rate={subHeaderInfo[0].rate} />
       <St.ContainerWrapper>
         <St.UserInfoContainer>
           <St.ContentTitle>정보를 입력해주세요</St.ContentTitle>
-          <UserEmail text={userEmail} />
+          <UserEmail setIsEmailInvalid={setIsEmailInvalid} />
           <UserPassword
             isPasswordInvalid={isPasswordInvalid}
             checkInputInvalid={checkInputInvalid}
