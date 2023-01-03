@@ -20,8 +20,6 @@ export const routePaths = {
 
   Join_: "/join/",
   Join_Agree: "agree",
-  Join_EmailAuthentication: "email-authentication",
-  Join_EmailConfirm: "email-confirm",
   Join_UserProfile: "user-profile",
   Join_UserInfo: "user-info",
 };
