@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 
 import { joinApi } from "../../../../core/api/join";
@@ -21,62 +21,41 @@ export default function UserEmail(props: UserEmailProps) {
     if (debouncedQuery !== "" && checkEmailInvalid(debouncedQuery)) {
       setEmailInvalidType(emailInvalidMessage.form);
     } else {
+      if (debouncedQuery !== "") checkEmailExist(debouncedQuery);
       setEmailInvalidType(emailInvalidMessage.NULL);
     }
   }, [debouncedQuery]);
 
-  const changeEmailInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const currentText = e.target.value;
-    setIsEmailInvalid(currentText);
-    setQuery(currentText);
-  };
-
-  const clickSendBtn = async () => {
-    // 에러 상태일 때 실행 취소
-    if (emailInvalidType || query === "") return;
-
-    setQuery(query);
-
-    // TODO :: 로딩처리 필요할 듯
+  const checkEmailExist = async (email: string) => {
     try {
-      await joinApi.postEmail(query);
+      const response: AxiosResponse = await joinApi.fetchEmailValid(email);
+      response.data.isAlreadyExisting ? setEmailInvalidType(emailInvalidMessage.duplicaton) : setIsEmailInvalid(email);
     } catch (error) {
       if (!axios.isAxiosError(error)) return;
-      switch (error.response?.data.message) {
-        case "이미 가입된 메일입니다.":
-          setEmailInvalidType(emailInvalidMessage.duplicaton);
-          return;
-        default:
-          setEmailInvalidType(emailInvalidMessage.form);
-          return;
-      }
     }
+  };
+
+  const changeEmailInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const currentText = e.target.value;
+    setQuery(currentText);
   };
 
   return (
     <St.EmailContainer>
-      <St.EmailAuthenticationContent>
-        <St.DescriptionContainer>
-          <St.ContentDescription>이메일</St.ContentDescription>
-          {emailInvalidType ? <St.EssentialIcon>*</St.EssentialIcon> : <St.EssentialText>(필수)</St.EssentialText>}
-        </St.DescriptionContainer>
-        <St.InputContainer>
-          <St.EmailInput
-            id="email"
-            placeholder="hello@piickle.com"
-            value={query}
-            onChange={(e) => changeEmailInput(e)}
-          />
-        </St.InputContainer>
-      </St.EmailAuthenticationContent>
-      <St.WarningText>{emailInvalidType}</St.WarningText>
+      <St.EmailTitleWrapper>
+        <St.EmailTitleText>이메일 (필수)</St.EmailTitleText>
+        <St.EmailDescription>※ 이메일은 아이디로 사용됩니다</St.EmailDescription>
+      </St.EmailTitleWrapper>
+      <St.InputContainer>
+        <St.EmailInput
+          id="email"
+          placeholder="hello@piickle.com"
+          value={query}
+          onChange={(e) => changeEmailInput(e)}
+          emailInvalid={emailInvalidType}
+        />
+        <St.WarningText>{emailInvalidType}</St.WarningText>
+      </St.InputContainer>
     </St.EmailContainer>
   );
 }
-
-/*
-        <St.SendBtn onClick={clickSendBtn} className="GTM_SendEmail">
-          인증메일 전송
-        </St.SendBtn>
-
-*/
