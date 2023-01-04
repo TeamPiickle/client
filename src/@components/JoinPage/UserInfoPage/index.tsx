@@ -18,12 +18,13 @@ const enum Step {
 }
 
 export default function UserInfo() {
-  const [isEmailInvalid, setIsEmailInvalid] = useState("");
+  const [isEmailInvalid, setIsEmailInvalid] = useState(false);
   const [isPasswordInvalid, setIsPasswordInvalid] = useState({
     input: false,
     confirm: false,
   });
-  const { query, setQuery, debouncedQuery } = useDebounce("");
+  const { query: emailQuery, setQuery: setEmailQuery, debouncedQuery: debouncedEmailQuery } = useDebounce("");
+  const { query: passwordQuery, setQuery: setPasswordQuery, debouncedQuery: debouncedPasswordQuery } = useDebounce("");
   const [currentPassword, setCurrentPassword] = useState("");
   const [currentStep, setCurrentStep] = useState<Step>(Step.input);
   const [isUnfilled, setIsUnfilled] = useState({
@@ -33,10 +34,22 @@ export default function UserInfo() {
 
   const navigate = useNavigate();
 
+  // const { search } = useLocation();
+  // const userEmail = new URLSearchParams(search).get("email") as string;
+
   const { setUserInfoFormData } = useOutletContext<UserInfoFormDataContext>();
 
+  const changeEmailInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const currentText = e.target.value;
+    setEmailQuery(currentText);
+  };
+
+  const checkIsEmailInvalid = (isInvalid: boolean) => {
+    setIsEmailInvalid(isInvalid);
+  };
+
   const checkInputInvalid = () => {
-    if (debouncedQuery !== "" && checkPasswordInvalid(debouncedQuery)) {
+    if (debouncedPasswordQuery !== "" && checkPasswordInvalid(debouncedPasswordQuery)) {
       setIsPasswordInvalid({ ...isPasswordInvalid, input: true });
     } else {
       setIsPasswordInvalid({ ...isPasswordInvalid, input: false });
@@ -44,7 +57,7 @@ export default function UserInfo() {
   };
 
   const checkConfirmInvalid = () => {
-    if (debouncedQuery !== "" && query !== currentPassword) {
+    if (debouncedPasswordQuery !== "" && passwordQuery !== currentPassword) {
       setIsPasswordInvalid({ ...isPasswordInvalid, confirm: true });
     } else {
       setIsPasswordInvalid({ ...isPasswordInvalid, confirm: false });
@@ -55,7 +68,7 @@ export default function UserInfo() {
     if (currentStep === Step.confirm) {
       setCurrentStep(Step.input);
     }
-    setQuery(e.target.value);
+    setPasswordQuery(e.target.value);
     setCurrentPassword(e.target.value);
   };
 
@@ -63,15 +76,16 @@ export default function UserInfo() {
     if (currentStep === Step.input) {
       setCurrentStep(Step.confirm);
     }
-    setQuery(e.target.value);
+    setPasswordQuery(e.target.value);
     return;
   };
 
   const clickSuccessBtn = () => {
-    if (isEmailInvalid !== "" && isPasswordInvalid.input === false && isPasswordInvalid.confirm === false) {
+    if (!isEmailInvalid && isPasswordInvalid.input === false && isPasswordInvalid.confirm === false) {
       setUserInfoFormData(() => {
         const currentFormData = new FormData();
-        currentFormData.append("email", isEmailInvalid);
+        // currentFormData.append("email", userEmail);
+        currentFormData.append("email", emailQuery);
         currentFormData.append("password", currentPassword);
 
         return currentFormData;
@@ -86,16 +100,22 @@ export default function UserInfo() {
 
   return (
     <>
+      {/* <SubHeader prevPage={subHeaderInfo[2].prevPage} rate={subHeaderInfo[2].rate} /> */}
       <SubHeader prevPage={subHeaderInfo[0].prevPage} rate={subHeaderInfo[0].rate} />
       <St.ContainerWrapper>
         <St.UserInfoContainer>
           <St.ContentTitle>정보를 입력해주세요</St.ContentTitle>
-          <UserEmail setIsEmailInvalid={setIsEmailInvalid} />
+          <UserEmail
+            query={emailQuery}
+            debouncedQuery={debouncedEmailQuery}
+            onChange={changeEmailInput}
+            checkIsEmailInvalid={checkIsEmailInvalid}
+          />
           <UserPassword
             isPasswordInvalid={isPasswordInvalid}
             checkInputInvalid={checkInputInvalid}
             checkConfirmInvalid={checkConfirmInvalid}
-            debouncedQuery={debouncedQuery}
+            debouncedQuery={debouncedPasswordQuery}
             changePasswordInput={changePasswordInput}
             changePasswordConfirm={changePasswordConfirm}
             currentStep={currentStep}

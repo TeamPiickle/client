@@ -4,54 +4,63 @@ import { useEffect, useState } from "react";
 import { joinApi } from "../../../../core/api/join";
 import { EmailInvalidMessage, emailInvalidMessage } from "../../../../core/join/emailErrorMessage";
 import checkEmailInvalid from "../../../../util/checkInvalidEmail";
-import { useDebounce } from "../../../@common/hooks/useDebounce";
 import { St } from "./style";
 
 interface UserEmailProps {
-  setIsEmailInvalid: (email: string) => void;
+  query: string;
+  debouncedQuery: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  checkIsEmailInvalid: (isInvalid: boolean) => void;
 }
 
 export default function UserEmail(props: UserEmailProps) {
-  const { setIsEmailInvalid } = props;
-  const { query, setQuery, debouncedQuery } = useDebounce<string>("");
+  const { query, debouncedQuery, onChange, checkIsEmailInvalid } = props;
   const [emailInvalidType, setEmailInvalidType] = useState<EmailInvalidMessage>(emailInvalidMessage.NULL);
 
   useEffect(() => {
     // 1초 후, 형식 검사
-    if (debouncedQuery !== "" && checkEmailInvalid(debouncedQuery)) {
-      setEmailInvalidType(emailInvalidMessage.form);
-    } else {
-      if (debouncedQuery !== "") checkEmailExist(debouncedQuery);
+    if (debouncedQuery === "") {
       setEmailInvalidType(emailInvalidMessage.NULL);
+      return;
     }
+    if (checkEmailInvalid(debouncedQuery)) {
+      setEmailInvalidType(emailInvalidMessage.form);
+      return;
+    }
+    checkEmailExist(debouncedQuery);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedQuery]);
 
   const checkEmailExist = async (email: string) => {
     try {
       const response: AxiosResponse = await joinApi.fetchEmailValid(email);
-      response.data.isAlreadyExisting ? setEmailInvalidType(emailInvalidMessage.duplicaton) : setIsEmailInvalid(email);
+      if (response.data.isAlreadyExisting) {
+        setEmailInvalidType(emailInvalidMessage.duplicaton);
+        return;
+      }
+      if (!response.data.isAlreadyExisting) {
+        setEmailInvalidType(emailInvalidMessage.NULL);
+        checkIsEmailInvalid(false);
+      }
     } catch (error) {
       if (!axios.isAxiosError(error)) return;
     }
   };
 
-  const changeEmailInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const currentText = e.target.value;
-    setQuery(currentText);
-  };
-
   return (
     <St.EmailContainer>
       <St.EmailTitleWrapper>
+        {/* <St.EmailTitleText>이메일 아이디 (필수)</St.EmailTitleText> */}
         <St.EmailTitleText>이메일 (필수)</St.EmailTitleText>
         <St.EmailDescription>※ 이메일은 아이디로 사용됩니다</St.EmailDescription>
       </St.EmailTitleWrapper>
+      {/* <St.EmailInputForm>{text}</St.EmailInputForm> */}
       <St.InputContainer>
         <St.EmailInput
           id="email"
           placeholder="hello@piickle.com"
           value={query}
-          onChange={(e) => changeEmailInput(e)}
+          onChange={onChange}
           emailInvalid={emailInvalidType}
         />
         <St.WarningText>{emailInvalidType}</St.WarningText>
