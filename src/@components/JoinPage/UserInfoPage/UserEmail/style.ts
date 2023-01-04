@@ -1,18 +1,10 @@
 import styled from "styled-components";
 
 export const St = {
-  EmailContainer: styled.section`
+  EmailContainer: styled.article`
     display: flex;
     flex-direction: column;
     align-items: center;
-  `,
-
-  EmailAuthenticationContent: styled.article`
-    width: 100%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
   `,
 
   EmailTitleWrapper: styled.div`
