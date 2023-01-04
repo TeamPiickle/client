@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 
 import { InvalidType } from "../../../../types/join";
+import { Step } from "..";
 import { St } from "./style";
 
 interface UserPasswordProps {
@@ -26,15 +27,15 @@ export default function UserPassword(props: UserPasswordProps) {
     isUnfilled,
   } = props;
 
-  /* Error */
   useEffect(() => {
-    if (currentStep === "input") {
+    if (currentStep === Step.input) {
       checkInputInvalid();
     }
-    if (currentStep === "confirm") {
+    if (currentStep === Step.confirm) {
       checkConfirmInvalid();
     }
-  }, [checkConfirmInvalid, checkInputInvalid, currentStep, debouncedQuery]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedQuery]);
 
   return (
     <St.PasswordContainer>

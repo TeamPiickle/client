@@ -21,9 +21,11 @@ export default function UserEmail(props: UserEmailProps) {
     // 1초 후, 형식 검사
     if (debouncedQuery === "") {
       setEmailInvalidType(emailInvalidMessage.NULL);
+      checkIsEmailInvalid(true);
       return;
     }
     if (checkEmailInvalid(debouncedQuery)) {
+      checkIsEmailInvalid(true);
       setEmailInvalidType(emailInvalidMessage.form);
       return;
     }
@@ -35,12 +37,13 @@ export default function UserEmail(props: UserEmailProps) {
     try {
       const response: AxiosResponse = await joinApi.fetchEmailValid(email);
       if (response.data.isAlreadyExisting) {
+        checkIsEmailInvalid(true);
         setEmailInvalidType(emailInvalidMessage.duplicaton);
         return;
       }
       if (!response.data.isAlreadyExisting) {
-        setEmailInvalidType(emailInvalidMessage.NULL);
         checkIsEmailInvalid(false);
+        setEmailInvalidType(emailInvalidMessage.NULL);
       }
     } catch (error) {
       if (!axios.isAxiosError(error)) return;

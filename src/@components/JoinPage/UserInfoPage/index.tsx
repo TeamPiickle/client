@@ -12,13 +12,13 @@ import { St } from "./style";
 import UserEmail from "./UserEmail";
 import UserPassword from "./UserPassword";
 
-const enum Step {
+export const enum Step {
   input = "input",
   confirm = "confirm",
 }
 
 export default function UserInfo() {
-  const [isEmailInvalid, setIsEmailInvalid] = useState(false);
+  const [isEmailInvalid, setIsEmailInvalid] = useState(true);
   const [isPasswordInvalid, setIsPasswordInvalid] = useState({
     input: false,
     confirm: false,
@@ -81,7 +81,12 @@ export default function UserInfo() {
   };
 
   const clickSuccessBtn = () => {
-    if (!isEmailInvalid && isPasswordInvalid.input === false && isPasswordInvalid.confirm === false) {
+    if (
+      !isEmailInvalid &&
+      emailQuery !== "" &&
+      isPasswordInvalid.input === false &&
+      isPasswordInvalid.confirm === false
+    ) {
       setUserInfoFormData(() => {
         const currentFormData = new FormData();
         // currentFormData.append("email", userEmail);
