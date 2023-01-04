@@ -37,6 +37,7 @@ export default function LoginModal(props: LoginCheckProps) {
             type="button"
             onClick={() => {
               closeHandler();
+              // navigate(`${routePaths.Join_}${routePaths.Join_EmailAuthentication}`);
               navigate(`${routePaths.Join_}${routePaths.Join_UserInfo}`);
             }}
             className="GTM_ModalJoin">

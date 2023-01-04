@@ -9,6 +9,7 @@ export default function LoginForm() {
   const navigate = useNavigate();
 
   const goJoinPage = () => {
+    // navigate(`${routePaths.Join_}${routePaths.Join_EmailAuthentication}`);
     navigate(`${routePaths.Join_}${routePaths.Join_UserInfo}`);
   };
 

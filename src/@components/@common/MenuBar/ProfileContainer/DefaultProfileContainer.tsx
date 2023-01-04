@@ -11,6 +11,7 @@ export default function DefaultProfileContainer(props: ProfileContainerProps) {
   const navigate = useNavigate();
 
   const handleJoin = () => {
+    // navigate(`${routePaths.Join_}${routePaths.Join_EmailAuthentication}`);
     navigate(`${routePaths.Join_}${routePaths.Join_UserInfo}`);
   };
 

@@ -2,11 +2,16 @@ import styled from "styled-components";
 
 export const St = {
   EmailContainer: styled.article`
+    /* height: 7.4rem; */
+
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    /* margin-bottom: 2.4rem; */
   `,
 
+  // EmailTitleWrapper: styled.h2`
   EmailTitleWrapper: styled.div`
     width: 100%;
   `,
@@ -23,6 +28,8 @@ export const St = {
     margin-top: 0.4rem;
   `,
 
+  // EmailInputForm: styled.div`
+  //   height: 4.2rem;
   InputContainer: styled.div`
     margin-top: 1.2rem;
 

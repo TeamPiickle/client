@@ -105,6 +105,7 @@ export default function AgreePage() {
 
   return (
     <St.Root>
+      {/* <SubHeader prevPage={subHeaderInfo[4].prevPage} rate={subHeaderInfo[4].rate} /> */}
       <SubHeader prevPage={subHeaderInfo[2].prevPage} rate={subHeaderInfo[2].rate} />
       <St.JoinAgree>
         <St.AgreeTitle>약관을 동의해주세요</St.AgreeTitle>
