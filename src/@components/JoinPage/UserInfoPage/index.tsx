@@ -68,16 +68,14 @@ export default function UserInfo() {
   };
 
   const clickSuccessBtn = () => {
-    if (isPasswordInvalid.input === false && isPasswordInvalid.confirm === false) {
+    if (isEmailInvalid !== "" && isPasswordInvalid.input === false && isPasswordInvalid.confirm === false) {
       setUserInfoFormData(() => {
         const currentFormData = new FormData();
-
         currentFormData.append("email", isEmailInvalid);
         currentFormData.append("password", currentPassword);
 
         return currentFormData;
       });
-
       navigate(`${routePaths.Join_}${routePaths.Join_UserProfile}`);
     } else if (currentPassword === undefined) {
       setIsUnfilled({ ...isUnfilled, input: true });
