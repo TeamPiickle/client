@@ -58,7 +58,8 @@ export default function UserProfilePage() {
 
   return (
     <St.Root>
-      <SubHeader prevPage={subHeaderInfo[3].prevPage} rate={subHeaderInfo[3].rate} />
+      {/* <SubHeader prevPage={subHeaderInfo[3].prevPage} rate={subHeaderInfo[3].rate} /> */}
+      <SubHeader prevPage={subHeaderInfo[1].prevPage} rate={subHeaderInfo[1].rate} />
       <St.ProfileContainer>
         <St.Title>프로필을 설정해주세요</St.Title>
         <St.SubTitle>프로필 사진(선택)</St.SubTitle>

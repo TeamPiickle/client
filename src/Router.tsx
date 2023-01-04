@@ -6,8 +6,8 @@ import {
   CardCollectionPage,
   CategoryPage,
   DeletePage,
-  EmailAuthenticationPage,
-  EmailConfirmPage,
+  // EmailAuthenticationPage,
+  // EmailConfirmPage,
   Error404Page,
   LoginPage,
   MainPage,
@@ -33,8 +33,8 @@ export default function Router() {
         <Route path={routePaths.Delete} element={PrivateRoute({ Component: <DeletePage /> })} />
         <Route path={`${routePaths.Join_}*`} element={PublicRoute({ Component: <JoinPage />, restricted: true })}>
           <Route path={routePaths.Join_Agree} element={<AgreePage />} />
-          <Route path={routePaths.Join_EmailAuthentication} element={<EmailAuthenticationPage />} />
-          <Route path={routePaths.Join_EmailConfirm} element={<EmailConfirmPage />} />
+          {/* <Route path={routePaths.Join_EmailAuthentication} element={<EmailAuthenticationPage />} />
+          <Route path={routePaths.Join_EmailConfirm} element={<EmailConfirmPage />} /> */}
           <Route path={routePaths.Join_UserProfile} element={<UserProfilePage />} />
           <Route path={routePaths.Join_UserInfo} element={<UserInfoPage />} />
           <Route path="*" element={<Error404Page />} />

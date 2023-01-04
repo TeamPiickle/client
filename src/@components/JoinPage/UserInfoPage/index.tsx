@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 import { subHeaderInfo } from "../../../core/join/subHeaderInfo";
 import { routePaths } from "../../../core/routes/path";
@@ -12,17 +12,19 @@ import { St } from "./style";
 import UserEmail from "./UserEmail";
 import UserPassword from "./UserPassword";
 
-const enum Step {
+export const enum Step {
   input = "input",
   confirm = "confirm",
 }
 
 export default function UserInfo() {
+  const [isEmailInvalid, setIsEmailInvalid] = useState(true);
   const [isPasswordInvalid, setIsPasswordInvalid] = useState({
     input: false,
     confirm: false,
   });
-  const { query, setQuery, debouncedQuery } = useDebounce("");
+  const { query: emailQuery, setQuery: setEmailQuery, debouncedQuery: debouncedEmailQuery } = useDebounce("");
+  const { query: passwordQuery, setQuery: setPasswordQuery, debouncedQuery: debouncedPasswordQuery } = useDebounce("");
   const [currentPassword, setCurrentPassword] = useState("");
   const [currentStep, setCurrentStep] = useState<Step>(Step.input);
   const [isUnfilled, setIsUnfilled] = useState({
@@ -32,13 +34,22 @@ export default function UserInfo() {
 
   const navigate = useNavigate();
 
-  const { search } = useLocation();
-  const userEmail = new URLSearchParams(search).get("email") as string;
+  // const { search } = useLocation();
+  // const userEmail = new URLSearchParams(search).get("email") as string;
 
   const { setUserInfoFormData } = useOutletContext<UserInfoFormDataContext>();
 
+  const changeEmailInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const currentText = e.target.value;
+    setEmailQuery(currentText);
+  };
+
+  const checkIsEmailInvalid = (isInvalid: boolean) => {
+    setIsEmailInvalid(isInvalid);
+  };
+
   const checkInputInvalid = () => {
-    if (debouncedQuery !== "" && checkPasswordInvalid(debouncedQuery)) {
+    if (debouncedPasswordQuery !== "" && checkPasswordInvalid(debouncedPasswordQuery)) {
       setIsPasswordInvalid({ ...isPasswordInvalid, input: true });
     } else {
       setIsPasswordInvalid({ ...isPasswordInvalid, input: false });
@@ -46,7 +57,7 @@ export default function UserInfo() {
   };
 
   const checkConfirmInvalid = () => {
-    if (debouncedQuery !== "" && query !== currentPassword) {
+    if (debouncedPasswordQuery !== "" && passwordQuery !== currentPassword) {
       setIsPasswordInvalid({ ...isPasswordInvalid, confirm: true });
     } else {
       setIsPasswordInvalid({ ...isPasswordInvalid, confirm: false });
@@ -57,7 +68,7 @@ export default function UserInfo() {
     if (currentStep === Step.confirm) {
       setCurrentStep(Step.input);
     }
-    setQuery(e.target.value);
+    setPasswordQuery(e.target.value);
     setCurrentPassword(e.target.value);
   };
 
@@ -65,21 +76,25 @@ export default function UserInfo() {
     if (currentStep === Step.input) {
       setCurrentStep(Step.confirm);
     }
-    setQuery(e.target.value);
+    setPasswordQuery(e.target.value);
     return;
   };
 
   const clickSuccessBtn = () => {
-    if (isPasswordInvalid.input === false && isPasswordInvalid.confirm === false) {
+    if (
+      !isEmailInvalid &&
+      emailQuery !== "" &&
+      isPasswordInvalid.input === false &&
+      isPasswordInvalid.confirm === false
+    ) {
       setUserInfoFormData(() => {
         const currentFormData = new FormData();
-
-        currentFormData.append("email", userEmail);
+        // currentFormData.append("email", userEmail);
+        currentFormData.append("email", emailQuery);
         currentFormData.append("password", currentPassword);
 
         return currentFormData;
       });
-
       navigate(`${routePaths.Join_}${routePaths.Join_UserProfile}`);
     } else if (currentPassword === undefined) {
       setIsUnfilled({ ...isUnfilled, input: true });
@@ -90,16 +105,22 @@ export default function UserInfo() {
 
   return (
     <>
-      <SubHeader prevPage={subHeaderInfo[2].prevPage} rate={subHeaderInfo[2].rate} />
+      {/* <SubHeader prevPage={subHeaderInfo[2].prevPage} rate={subHeaderInfo[2].rate} /> */}
+      <SubHeader prevPage={subHeaderInfo[0].prevPage} rate={subHeaderInfo[0].rate} />
       <St.ContainerWrapper>
         <St.UserInfoContainer>
           <St.ContentTitle>정보를 입력해주세요</St.ContentTitle>
-          <UserEmail text={userEmail} />
+          <UserEmail
+            query={emailQuery}
+            debouncedQuery={debouncedEmailQuery}
+            onChange={changeEmailInput}
+            checkIsEmailInvalid={checkIsEmailInvalid}
+          />
           <UserPassword
             isPasswordInvalid={isPasswordInvalid}
             checkInputInvalid={checkInputInvalid}
             checkConfirmInvalid={checkConfirmInvalid}
-            debouncedQuery={debouncedQuery}
+            debouncedQuery={debouncedPasswordQuery}
             changePasswordInput={changePasswordInput}
             changePasswordConfirm={changePasswordConfirm}
             currentStep={currentStep}

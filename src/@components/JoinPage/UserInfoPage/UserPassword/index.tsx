@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 
 import { InvalidType } from "../../../../types/join";
+import { Step } from "..";
 import { St } from "./style";
 
 interface UserPasswordProps {
@@ -27,13 +28,14 @@ export default function UserPassword(props: UserPasswordProps) {
   } = props;
 
   useEffect(() => {
-    if (currentStep === "input") {
+    if (currentStep === Step.input) {
       checkInputInvalid();
     }
-    if (currentStep === "confirm") {
+    if (currentStep === Step.confirm) {
       checkConfirmInvalid();
     }
-  }, [checkConfirmInvalid, checkInputInvalid, currentStep, debouncedQuery]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedQuery]);
 
   return (
     <St.PasswordContainer>
@@ -50,9 +52,9 @@ export default function UserPassword(props: UserPasswordProps) {
         />
         {isPasswordInvalid.input &&
           (isUnfilled.input ? (
-            <St.ErrorText>비밀번호를 입려해주세요</St.ErrorText>
+            <St.ErrorText>비밀번호를 입력해주세요</St.ErrorText>
           ) : (
-            <St.ErrorText>영문, 숫자, 특수 문자를 하나 이상씩 조합해서 6자 이상으로 입력해주세요.</St.ErrorText>
+            <St.ErrorText>영문, 숫자, 특수 문자를 하나 이상씩 조합해서 6자 이상으로 입력해주세요</St.ErrorText>
           ))}
       </St.InputWrapper>
       <St.InputWrapper>

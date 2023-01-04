@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
-import { joinApi } from "../../../core/api/join";
+// import { useNavigate } from "react-router-dom";
+// import { joinApi } from "../../../core/api/join";
 import { EmailInvalidMessage, emailInvalidMessage } from "../../../core/join/emailErrorMessage";
 import { subHeaderInfo } from "../../../core/join/subHeaderInfo";
-import { routePaths } from "../../../core/routes/path";
+// import { routePaths } from "../../../core/routes/path";
 import checkEmailInvalid from "../../../util/checkInvalidEmail";
 import Footer from "../../@common/Footer";
 import { useDebounce } from "../../@common/hooks/useDebounce";
@@ -13,7 +13,7 @@ import SubHeader from "../../@common/SubHeader";
 import { St } from "./style";
 
 export default function EmailAuthentication() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { query, setQuery, debouncedQuery } = useDebounce<string>("");
   const [emailInvalidType, setEmailInvalidType] = useState<EmailInvalidMessage>(emailInvalidMessage.NULL);
 
@@ -39,7 +39,7 @@ export default function EmailAuthentication() {
 
     // TODO :: 로딩처리 필요할 듯
     try {
-      await joinApi.postEmail(query);
+      // await joinApi.postEmail(query);
     } catch (error) {
       if (!axios.isAxiosError(error)) return;
 
@@ -54,11 +54,11 @@ export default function EmailAuthentication() {
       }
     }
 
-    navigate(`${routePaths.Join_}${routePaths.Join_EmailConfirm}`, {
-      state: {
-        userEmail: query,
-      },
-    });
+    // navigate(`${routePaths.Join_}${routePaths.Join_EmailConfirm}`, {
+    //   state: {
+    //     userEmail: query,
+    //   },
+    // });
   };
 
   return (
