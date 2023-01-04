@@ -9,7 +9,7 @@
 
 import { useLocation } from "react-router-dom";
 
-import { joinApi } from "../../../core/api/join";
+// import { joinApi } from "../../../core/api/join";
 import { subHeaderInfo } from "../../../core/join/subHeaderInfo";
 import Footer from "../../@common/Footer";
 import SubHeader from "../../@common/SubHeader";
@@ -20,7 +20,7 @@ export default function EmailConfirmPage() {
   const userEmail = locationState.userEmail;
 
   const repostEmail = async () => {
-    await joinApi.postEmail(userEmail);
+    // await joinApi.postEmail(userEmail);
   };
 
   return (
