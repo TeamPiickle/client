@@ -2,17 +2,12 @@ import styled from "styled-components";
 
 export const St = {
   EmailContainer: styled.section`
-    height: 7.4rem;
-
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    margin-bottom: 2.4rem;
   `,
 
   EmailAuthenticationContent: styled.article`
-    height: 7.6rem;
     width: 100%;
 
     display: flex;
@@ -20,39 +15,37 @@ export const St = {
     justify-content: space-between;
   `,
 
-  ContentDescription: styled.h2`
-    ${({ theme }) => theme.fonts.body6}
+  EmailTitleWrapper: styled.div`
+    width: 100%;
   `,
 
-  DescriptionContainer: styled.div`
-    display: flex;
-
-    ${({ theme }) => theme.fonts.body6}
-  `,
-
-  EssentialText: styled.div`
+  EmailTitleText: styled.h2`
+    ${({ theme }) => theme.fonts.body6};
     color: ${({ theme }) => theme.colors.bg};
   `,
 
-  EssentialIcon: styled.div`
-    color: ${({ theme }) => theme.colors.red};
+  EmailDescription: styled.h3`
+    ${({ theme }) => theme.fonts.caption3};
+    color: ${({ theme }) => theme.colors.gray600};
+
+    margin-top: 0.4rem;
   `,
 
   InputContainer: styled.div`
-    height: 4.4rem;
     margin-top: 1.2rem;
 
-    display: flex;
+    width: 100%;
   `,
 
-  EmailInput: styled.input`
+  EmailInput: styled.input<{ emailInvalid: string }>`
     width: 100%;
+    height: 4.2rem;
+    padding: 0 2.4rem;
 
-    border: solid 0.1rem ${({ theme }) => theme.colors.gray300};
+    border: solid 0.1rem ${({ theme, emailInvalid }) => (emailInvalid ? theme.colors.red : theme.colors.gray300)};
     border-radius: 4.9rem;
 
-    margin-right: 0.8rem;
-    padding: 0 2.4rem;
+    color: ${({ theme, emailInvalid }) => (emailInvalid ? theme.colors.red : theme.colors.gray400)};
 
     ${({ theme }) => theme.fonts.body6}
   `,
@@ -60,17 +53,9 @@ export const St = {
   WarningText: styled.div`
     width: 100%;
 
-    margin-left: 3.6rem;
+    margin: 0 4.2rem 0 2rem;
 
     ${({ theme }) => theme.fonts.caption3};
     color: ${({ theme }) => theme.colors.red};
   `,
 };
-
-/*
-  SendBtn: styled.button`
-    ${({ theme }) => theme.fonts.caption05}
-
-    text-decoration-line: underline;
-  `,
-*/
