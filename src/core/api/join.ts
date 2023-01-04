@@ -15,6 +15,14 @@ function fetchNickNameValid<T>(nickname: string) {
   return realReq.GET<T>(`${PATH.USERS_}/nickname/is-exist?${nicknameParams}`);
 }
 
+function fetchEmailValid<T>(email: string) {
+  const emailParams = qs.stringify({
+    email: email,
+  });
+
+  return realReq.GET<T>(`${PATH.USERS_}/existing?${emailParams}`);
+}
+
 function postUserInfo(postingUserInfo: UserInfo) {
   return realReq.POST(PATH.USERS_, postingUserInfo);
 }
@@ -23,4 +31,5 @@ export const joinApi = {
   postUserInfo,
   postJoin,
   fetchNickNameValid,
+  fetchEmailValid,
 };
