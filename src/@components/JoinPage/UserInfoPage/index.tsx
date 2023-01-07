@@ -23,8 +23,9 @@ export default function UserInfo() {
   // const { search } = useLocation();
   // const userEmail = new URLSearchParams(search).get("email") as string;
   const navigate = useNavigate();
-  const { query: emailQuery, handleChangeEmailInputValue, emailInvalidType } = useEmail();
+  const { query: emailQuery, handleChangeEmailInputValue, emailInvalidType, alertEmptyEmailInputValue } = useEmail();
 
+  // TODO :: usePassword 훅 작성
   const [isPasswordInvalid, setIsPasswordInvalid] = useState({
     input: false,
     confirm: false,
@@ -74,7 +75,6 @@ export default function UserInfo() {
   const onClickSuccessBtn = () => {
     if (
       emailInvalidType === emailInvalidMessage.PASS &&
-      emailQuery !== "" &&
       isPasswordInvalid.input === false &&
       isPasswordInvalid.confirm === false
     ) {
@@ -86,11 +86,24 @@ export default function UserInfo() {
 
         return currentFormData;
       });
+
       navigate(`${routePaths.Join_}${routePaths.Join_UserProfile}`);
-    } else if (currentPassword === undefined) {
+      return;
+    }
+    // 이메일 비어있음 묹제
+    if (emailInvalidType === emailInvalidMessage.NULL) {
+      alertEmptyEmailInputValue();
+      return;
+    }
+    // 비밀번호 없음 문제
+    if (currentPassword === undefined) {
       setIsUnfilled({ ...isUnfilled, input: true });
-    } else if (isPasswordInvalid.confirm === true) {
+      return;
+    }
+    // 비밀번호 확인 문제
+    if (isPasswordInvalid.confirm === true) {
       setIsUnfilled({ ...isUnfilled, confirm: true });
+      return;
     }
   };
 

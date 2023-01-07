@@ -45,5 +45,9 @@ export default function useEmail() {
     setQuery(currentText);
   };
 
-  return { query, handleChangeEmailInputValue, emailInvalidType };
+  const alertEmptyEmailInputValue = () => {
+    setEmailInvalidType(emailInvalidMessage.nullError);
+  };
+
+  return { query, handleChangeEmailInputValue, emailInvalidType, alertEmptyEmailInputValue };
 }
