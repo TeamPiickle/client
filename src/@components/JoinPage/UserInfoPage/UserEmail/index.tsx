@@ -1,54 +1,15 @@
-import axios, { AxiosResponse } from "axios";
-import { useEffect, useState } from "react";
-
-import { joinApi } from "../../../../core/api/join";
 import { EmailInvalidMessage, emailInvalidMessage } from "../../../../core/join/emailErrorMessage";
-import checkEmailInvalid from "../../../../util/checkInvalidEmail";
 import { St } from "./style";
 
 interface UserEmailProps {
   query: string;
-  debouncedQuery: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  checkIsEmailInvalid: (isInvalid: boolean) => void;
+  invalidType: EmailInvalidMessage;
 }
 
 export default function UserEmail(props: UserEmailProps) {
-  const { query, debouncedQuery, onChange, checkIsEmailInvalid } = props;
-  const [emailInvalidType, setEmailInvalidType] = useState<EmailInvalidMessage>(emailInvalidMessage.NULL);
-
-  useEffect(() => {
-    // 1초 후, 형식 검사
-    if (debouncedQuery === "") {
-      setEmailInvalidType(emailInvalidMessage.NULL);
-      checkIsEmailInvalid(true);
-      return;
-    }
-    if (checkEmailInvalid(debouncedQuery)) {
-      checkIsEmailInvalid(true);
-      setEmailInvalidType(emailInvalidMessage.form);
-      return;
-    }
-    checkEmailExist(debouncedQuery);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedQuery]);
-
-  const checkEmailExist = async (email: string) => {
-    try {
-      const response: AxiosResponse = await joinApi.fetchEmailValid(email);
-      if (response.data.isAlreadyExisting) {
-        checkIsEmailInvalid(true);
-        setEmailInvalidType(emailInvalidMessage.duplicaton);
-        return;
-      }
-      if (!response.data.isAlreadyExisting) {
-        checkIsEmailInvalid(false);
-        setEmailInvalidType(emailInvalidMessage.NULL);
-      }
-    } catch (error) {
-      if (!axios.isAxiosError(error)) return;
-    }
-  };
+  const { query, onChange, invalidType } = props;
+  const IS_INVALID = invalidType !== emailInvalidMessage.PASS && invalidType !== emailInvalidMessage.NULL;
 
   return (
     <St.EmailContainer>

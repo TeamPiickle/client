@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
+import { emailInvalidMessage } from "../../../core/join/emailErrorMessage";
 import { subHeaderInfo } from "../../../core/join/subHeaderInfo";
 import { routePaths } from "../../../core/routes/path";
 import checkPasswordInvalid from "../../../util/checkInvalidPassword";
@@ -8,6 +9,7 @@ import Footer from "../../@common/Footer";
 import { useDebounce } from "../../@common/hooks/useDebounce";
 import SubHeader from "../../@common/SubHeader";
 import { UserInfoFormDataContext } from "..";
+import useEmail from "./hooks/useEmail";
 import { St } from "./style";
 import UserEmail from "./UserEmail";
 import UserPassword from "./UserPassword";
@@ -18,12 +20,15 @@ export const enum Step {
 }
 
 export default function UserInfo() {
-  const [isEmailInvalid, setIsEmailInvalid] = useState(true);
+  // const { search } = useLocation();
+  // const userEmail = new URLSearchParams(search).get("email") as string;
+  const navigate = useNavigate();
+  const { query: emailQuery, handleChangeEmailInputValue, emailInvalidType } = useEmail();
+
   const [isPasswordInvalid, setIsPasswordInvalid] = useState({
     input: false,
     confirm: false,
   });
-  const { query: emailQuery, setQuery: setEmailQuery, debouncedQuery: debouncedEmailQuery } = useDebounce("");
   const { query: passwordQuery, setQuery: setPasswordQuery, debouncedQuery: debouncedPasswordQuery } = useDebounce("");
   const [currentPassword, setCurrentPassword] = useState("");
   const [currentStep, setCurrentStep] = useState<Step>(Step.input);
@@ -32,21 +37,7 @@ export default function UserInfo() {
     confirm: false,
   });
 
-  const navigate = useNavigate();
-
-  // const { search } = useLocation();
-  // const userEmail = new URLSearchParams(search).get("email") as string;
-
   const { setUserInfoFormData } = useOutletContext<UserInfoFormDataContext>();
-
-  const changeEmailInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const currentText = e.target.value;
-    setEmailQuery(currentText);
-  };
-
-  const checkIsEmailInvalid = (isInvalid: boolean) => {
-    setIsEmailInvalid(isInvalid);
-  };
 
   const checkInputInvalid = () => {
     if (debouncedPasswordQuery !== "" && checkPasswordInvalid(debouncedPasswordQuery)) {
@@ -80,9 +71,9 @@ export default function UserInfo() {
     return;
   };
 
-  const clickSuccessBtn = () => {
+  const onClickSuccessBtn = () => {
     if (
-      !isEmailInvalid &&
+      emailInvalidType === emailInvalidMessage.PASS &&
       emailQuery !== "" &&
       isPasswordInvalid.input === false &&
       isPasswordInvalid.confirm === false
@@ -110,12 +101,7 @@ export default function UserInfo() {
       <St.ContainerWrapper>
         <St.UserInfoContainer>
           <St.ContentTitle>정보를 입력해주세요</St.ContentTitle>
-          <UserEmail
-            query={emailQuery}
-            debouncedQuery={debouncedEmailQuery}
-            onChange={changeEmailInput}
-            checkIsEmailInvalid={checkIsEmailInvalid}
-          />
+          <UserEmail query={emailQuery} onChange={handleChangeEmailInputValue} invalidType={emailInvalidType} />
           <UserPassword
             isPasswordInvalid={isPasswordInvalid}
             checkInputInvalid={checkInputInvalid}
@@ -128,7 +114,7 @@ export default function UserInfo() {
           />
         </St.UserInfoContainer>
         <St.SuccessBtnContainer>
-          <St.SuccessBtn onClick={clickSuccessBtn} className="GTM_Password">
+          <St.SuccessBtn onClick={onClickSuccessBtn} className="GTM_Password">
             다음으로
           </St.SuccessBtn>
         </St.SuccessBtnContainer>
