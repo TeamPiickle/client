@@ -31,14 +31,14 @@ export const St = {
     margin-top: 1.2rem;
   `,
 
-  PasswordInputForm: styled.input<{ isFocused: boolean }>`
+  PasswordInputForm: styled.input<{ isinvalid: boolean }>`
     height: 4.2rem;
     width: 100%;
 
-    border: solid 0.1rem ${({ theme, isFocused }) => (isFocused ? theme.colors.red : theme.colors.gray300)};
+    border: solid 0.1rem ${({ theme, isinvalid }) => (isinvalid ? theme.colors.red : theme.colors.gray300)};
     border-radius: 4.9rem;
 
-    color: ${({ theme, isFocused }) => (isFocused ? theme.colors.red : theme.colors.gray400)};
+    color: ${({ theme, isinvalid }) => (isinvalid ? theme.colors.red : theme.colors.gray400)};
 
     ${({ theme }) => theme.fonts.body6}
 

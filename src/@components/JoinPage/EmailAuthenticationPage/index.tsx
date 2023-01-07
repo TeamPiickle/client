@@ -10,10 +10,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+import { subHeaderInfo } from "../../../core/join/subHeaderInfo";
 // import { useNavigate } from "react-router-dom";
 // import { joinApi } from "../../../core/api/join";
-import { EmailInvalidMessage, emailInvalidMessage } from "../../../core/join/emailErrorMessage";
-import { subHeaderInfo } from "../../../core/join/subHeaderInfo";
+import { EmailInvalidMessage, emailInvalidMessage } from "../../../core/join/userInfoInputErrorMessage";
 // import { routePaths } from "../../../core/routes/path";
 import checkEmailInvalid from "../../../util/checkInvalidEmail";
 import Footer from "../../@common/Footer";

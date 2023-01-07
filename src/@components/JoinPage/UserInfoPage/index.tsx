@@ -1,15 +1,17 @@
-import { useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
-import { emailInvalidMessage } from "../../../core/join/emailErrorMessage";
 import { subHeaderInfo } from "../../../core/join/subHeaderInfo";
+import {
+  emailInvalidMessage,
+  passwordConfirmInvalidMessage,
+  passwordInvalidMessage,
+} from "../../../core/join/userInfoInputErrorMessage";
 import { routePaths } from "../../../core/routes/path";
-import checkPasswordInvalid from "../../../util/checkInvalidPassword";
 import Footer from "../../@common/Footer";
-import { useDebounce } from "../../@common/hooks/useDebounce";
 import SubHeader from "../../@common/SubHeader";
 import { UserInfoFormDataContext } from "..";
 import useEmail from "./hooks/useEmail";
+import usePasswords from "./hooks/usePasswords";
 import { St } from "./style";
 import UserEmail from "./UserEmail";
 import UserPassword from "./UserPassword";
@@ -23,66 +25,30 @@ export default function UserInfo() {
   // const { search } = useLocation();
   // const userEmail = new URLSearchParams(search).get("email") as string;
   const navigate = useNavigate();
-  const { query: emailQuery, handleChangeEmailInputValue, emailInvalidType, alertEmptyEmailInputValue } = useEmail();
-
-  // TODO :: usePassword 훅 작성
-  const [isPasswordInvalid, setIsPasswordInvalid] = useState({
-    input: false,
-    confirm: false,
-  });
-  const { query: passwordQuery, setQuery: setPasswordQuery, debouncedQuery: debouncedPasswordQuery } = useDebounce("");
-  const [currentPassword, setCurrentPassword] = useState("");
-  const [currentStep, setCurrentStep] = useState<Step>(Step.input);
-  const [isUnfilled, setIsUnfilled] = useState({
-    input: false,
-    confirm: false,
-  });
-
   const { setUserInfoFormData } = useOutletContext<UserInfoFormDataContext>();
-
-  const checkInputInvalid = () => {
-    if (debouncedPasswordQuery !== "" && checkPasswordInvalid(debouncedPasswordQuery)) {
-      setIsPasswordInvalid({ ...isPasswordInvalid, input: true });
-    } else {
-      setIsPasswordInvalid({ ...isPasswordInvalid, input: false });
-    }
-  };
-
-  const checkConfirmInvalid = () => {
-    if (debouncedPasswordQuery !== "" && passwordQuery !== currentPassword) {
-      setIsPasswordInvalid({ ...isPasswordInvalid, confirm: true });
-    } else {
-      setIsPasswordInvalid({ ...isPasswordInvalid, confirm: false });
-    }
-  };
-
-  const changePasswordInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (currentStep === Step.confirm) {
-      setCurrentStep(Step.input);
-    }
-    setPasswordQuery(e.target.value);
-    setCurrentPassword(e.target.value);
-  };
-
-  const changePasswordConfirm = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (currentStep === Step.input) {
-      setCurrentStep(Step.confirm);
-    }
-    setPasswordQuery(e.target.value);
-    return;
-  };
+  const { query: emailQuery, handleChangeEmailInputValue, emailInvalidType, alertEmptyEmailInputValue } = useEmail();
+  const {
+    pwQuery,
+    handleChangePwInputValue,
+    pwInvalidType,
+    alertEmptyPwInputValue,
+    pwConfirmQuery,
+    handleChangePwConfirmInputValue,
+    pwConfirmInvalidType,
+    alertEmptyPwConfirmInputValue,
+  } = usePasswords();
 
   const onClickSuccessBtn = () => {
     if (
       emailInvalidType === emailInvalidMessage.PASS &&
-      isPasswordInvalid.input === false &&
-      isPasswordInvalid.confirm === false
+      pwInvalidType === passwordInvalidMessage.PASS &&
+      pwConfirmInvalidType === passwordConfirmInvalidMessage.PASS
     ) {
       setUserInfoFormData(() => {
         const currentFormData = new FormData();
         // currentFormData.append("email", userEmail);
         currentFormData.append("email", emailQuery);
-        currentFormData.append("password", currentPassword);
+        currentFormData.append("password", pwConfirmQuery);
 
         return currentFormData;
       });
@@ -90,19 +56,17 @@ export default function UserInfo() {
       navigate(`${routePaths.Join_}${routePaths.Join_UserProfile}`);
       return;
     }
-    // 이메일 비어있음 묹제
+    // 비어있음 묹제
     if (emailInvalidType === emailInvalidMessage.NULL) {
       alertEmptyEmailInputValue();
       return;
     }
-    // 비밀번호 없음 문제
-    if (currentPassword === undefined) {
-      setIsUnfilled({ ...isUnfilled, input: true });
+    if (pwInvalidType === passwordInvalidMessage.NULL) {
+      alertEmptyPwInputValue();
       return;
     }
-    // 비밀번호 확인 문제
-    if (isPasswordInvalid.confirm === true) {
-      setIsUnfilled({ ...isUnfilled, confirm: true });
+    if (pwConfirmInvalidType === passwordConfirmInvalidMessage.NULL) {
+      alertEmptyPwConfirmInputValue();
       return;
     }
   };
@@ -116,14 +80,12 @@ export default function UserInfo() {
           <St.ContentTitle>정보를 입력해주세요</St.ContentTitle>
           <UserEmail query={emailQuery} onChange={handleChangeEmailInputValue} invalidType={emailInvalidType} />
           <UserPassword
-            isPasswordInvalid={isPasswordInvalid}
-            checkInputInvalid={checkInputInvalid}
-            checkConfirmInvalid={checkConfirmInvalid}
-            debouncedQuery={debouncedPasswordQuery}
-            changePasswordInput={changePasswordInput}
-            changePasswordConfirm={changePasswordConfirm}
-            currentStep={currentStep}
-            isUnfilled={isUnfilled}
+            pwQuery={pwQuery}
+            handleChangePwInputValue={handleChangePwInputValue}
+            pwInvalidType={pwInvalidType}
+            pwConfirmQuery={pwConfirmQuery}
+            handleChangePwConfirmInputValue={handleChangePwConfirmInputValue}
+            pwConfirmInvalidType={pwConfirmInvalidType}
           />
         </St.UserInfoContainer>
         <St.SuccessBtnContainer>
