@@ -64,9 +64,9 @@ export default function UserEmail(props: UserEmailProps) {
           placeholder="hello@piickle.com"
           value={query}
           onChange={onChange}
-          emailInvalid={emailInvalidType}
+          isemailinvalid={IS_INVALID}
         />
-        <St.WarningText>{emailInvalidType}</St.WarningText>
+        <St.WarningText>{IS_INVALID && invalidType}</St.WarningText>
       </St.InputContainer>
     </St.EmailContainer>
   );
