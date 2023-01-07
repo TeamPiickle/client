@@ -1,3 +1,12 @@
+/*
+마지막 편집자: 23-01-07 joohaem
+변경사항 및 참고:
+  - 임시 삭제된 페이지입니다
+    
+고민점:
+  - 
+*/
+
 import axios from "axios";
 import { useEffect, useState } from "react";
 

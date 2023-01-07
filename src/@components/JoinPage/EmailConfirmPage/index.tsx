@@ -1,10 +1,11 @@
 /*
-마지막 편집자: 22-10-04 joohaem
+마지막 편집자: 23-01-07 joohaem
 변경사항 및 참고:
   - 
   url로 접근하게 되면, 
   userEmail 이 string 으로 단언되었지만 null 값이 들어가
   에러가 나게 됩니다!
+  - 임시 삭제된 페이지입니다
 */
 
 import { useLocation } from "react-router-dom";
