@@ -36,15 +36,15 @@ export const St = {
     width: 100%;
   `,
 
-  EmailInput: styled.input<{ emailInvalid: string }>`
+  EmailInput: styled.input<{ isemailinvalid: boolean }>`
     width: 100%;
     height: 4.2rem;
     padding: 0 2.4rem;
 
-    border: solid 0.1rem ${({ theme, emailInvalid }) => (emailInvalid ? theme.colors.red : theme.colors.gray300)};
+    border: solid 0.1rem ${({ theme, isemailinvalid }) => (isemailinvalid ? theme.colors.red : theme.colors.gray300)};
     border-radius: 4.9rem;
 
-    color: ${({ theme, emailInvalid }) => (emailInvalid ? theme.colors.red : theme.colors.gray400)};
+    color: ${({ theme, isemailinvalid }) => (isemailinvalid ? theme.colors.red : theme.colors.gray400)};
 
     ${({ theme }) => theme.fonts.body6}
   `,

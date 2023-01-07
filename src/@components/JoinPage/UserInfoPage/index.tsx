@@ -1,13 +1,17 @@
-import { useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
 import { subHeaderInfo } from "../../../core/join/subHeaderInfo";
+import {
+  emailInvalidMessage,
+  passwordConfirmInvalidMessage,
+  passwordInvalidMessage,
+} from "../../../core/join/userInfoInputErrorMessage";
 import { routePaths } from "../../../core/routes/path";
-import checkPasswordInvalid from "../../../util/checkInvalidPassword";
 import Footer from "../../@common/Footer";
-import { useDebounce } from "../../@common/hooks/useDebounce";
 import SubHeader from "../../@common/SubHeader";
 import { UserInfoFormDataContext } from "..";
+import useEmail from "./hooks/useEmail";
+import usePasswords from "./hooks/usePasswords";
 import { St } from "./style";
 import UserEmail from "./UserEmail";
 import UserPassword from "./UserPassword";
@@ -18,88 +22,52 @@ export const enum Step {
 }
 
 export default function UserInfo() {
-  const [isEmailInvalid, setIsEmailInvalid] = useState(true);
-  const [isPasswordInvalid, setIsPasswordInvalid] = useState({
-    input: false,
-    confirm: false,
-  });
-  const { query: emailQuery, setQuery: setEmailQuery, debouncedQuery: debouncedEmailQuery } = useDebounce("");
-  const { query: passwordQuery, setQuery: setPasswordQuery, debouncedQuery: debouncedPasswordQuery } = useDebounce("");
-  const [currentPassword, setCurrentPassword] = useState("");
-  const [currentStep, setCurrentStep] = useState<Step>(Step.input);
-  const [isUnfilled, setIsUnfilled] = useState({
-    input: false,
-    confirm: false,
-  });
-
-  const navigate = useNavigate();
-
   // const { search } = useLocation();
   // const userEmail = new URLSearchParams(search).get("email") as string;
-
+  const navigate = useNavigate();
   const { setUserInfoFormData } = useOutletContext<UserInfoFormDataContext>();
+  const { query: emailQuery, handleChangeEmailInputValue, emailInvalidType, alertEmptyEmailInputValue } = useEmail();
+  const {
+    pwQuery,
+    handleChangePwInputValue,
+    pwInvalidType,
+    alertEmptyPwInputValue,
+    pwConfirmQuery,
+    handleChangePwConfirmInputValue,
+    pwConfirmInvalidType,
+    alertEmptyPwConfirmInputValue,
+  } = usePasswords();
 
-  const changeEmailInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const currentText = e.target.value;
-    setEmailQuery(currentText);
-  };
-
-  const checkIsEmailInvalid = (isInvalid: boolean) => {
-    setIsEmailInvalid(isInvalid);
-  };
-
-  const checkInputInvalid = () => {
-    if (debouncedPasswordQuery !== "" && checkPasswordInvalid(debouncedPasswordQuery)) {
-      setIsPasswordInvalid({ ...isPasswordInvalid, input: true });
-    } else {
-      setIsPasswordInvalid({ ...isPasswordInvalid, input: false });
-    }
-  };
-
-  const checkConfirmInvalid = () => {
-    if (debouncedPasswordQuery !== "" && passwordQuery !== currentPassword) {
-      setIsPasswordInvalid({ ...isPasswordInvalid, confirm: true });
-    } else {
-      setIsPasswordInvalid({ ...isPasswordInvalid, confirm: false });
-    }
-  };
-
-  const changePasswordInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (currentStep === Step.confirm) {
-      setCurrentStep(Step.input);
-    }
-    setPasswordQuery(e.target.value);
-    setCurrentPassword(e.target.value);
-  };
-
-  const changePasswordConfirm = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (currentStep === Step.input) {
-      setCurrentStep(Step.confirm);
-    }
-    setPasswordQuery(e.target.value);
-    return;
-  };
-
-  const clickSuccessBtn = () => {
+  const onClickSuccessBtn = () => {
     if (
-      !isEmailInvalid &&
-      emailQuery !== "" &&
-      isPasswordInvalid.input === false &&
-      isPasswordInvalid.confirm === false
+      emailInvalidType === emailInvalidMessage.PASS &&
+      pwInvalidType === passwordInvalidMessage.PASS &&
+      pwConfirmInvalidType === passwordConfirmInvalidMessage.PASS
     ) {
       setUserInfoFormData(() => {
         const currentFormData = new FormData();
         // currentFormData.append("email", userEmail);
         currentFormData.append("email", emailQuery);
-        currentFormData.append("password", currentPassword);
+        currentFormData.append("password", pwConfirmQuery);
 
         return currentFormData;
       });
+
       navigate(`${routePaths.Join_}${routePaths.Join_UserProfile}`);
-    } else if (currentPassword === undefined) {
-      setIsUnfilled({ ...isUnfilled, input: true });
-    } else if (isPasswordInvalid.confirm === true) {
-      setIsUnfilled({ ...isUnfilled, confirm: true });
+      return;
+    }
+    // 비어있음 묹제
+    if (emailInvalidType === emailInvalidMessage.NULL) {
+      alertEmptyEmailInputValue();
+      return;
+    }
+    if (pwInvalidType === passwordInvalidMessage.NULL) {
+      alertEmptyPwInputValue();
+      return;
+    }
+    if (pwConfirmInvalidType === passwordConfirmInvalidMessage.NULL) {
+      alertEmptyPwConfirmInputValue();
+      return;
     }
   };
 
@@ -110,25 +78,18 @@ export default function UserInfo() {
       <St.ContainerWrapper>
         <St.UserInfoContainer>
           <St.ContentTitle>정보를 입력해주세요</St.ContentTitle>
-          <UserEmail
-            query={emailQuery}
-            debouncedQuery={debouncedEmailQuery}
-            onChange={changeEmailInput}
-            checkIsEmailInvalid={checkIsEmailInvalid}
-          />
+          <UserEmail query={emailQuery} onChange={handleChangeEmailInputValue} invalidType={emailInvalidType} />
           <UserPassword
-            isPasswordInvalid={isPasswordInvalid}
-            checkInputInvalid={checkInputInvalid}
-            checkConfirmInvalid={checkConfirmInvalid}
-            debouncedQuery={debouncedPasswordQuery}
-            changePasswordInput={changePasswordInput}
-            changePasswordConfirm={changePasswordConfirm}
-            currentStep={currentStep}
-            isUnfilled={isUnfilled}
+            pwQuery={pwQuery}
+            handleChangePwInputValue={handleChangePwInputValue}
+            pwInvalidType={pwInvalidType}
+            pwConfirmQuery={pwConfirmQuery}
+            handleChangePwConfirmInputValue={handleChangePwConfirmInputValue}
+            pwConfirmInvalidType={pwConfirmInvalidType}
           />
         </St.UserInfoContainer>
         <St.SuccessBtnContainer>
-          <St.SuccessBtn onClick={clickSuccessBtn} className="GTM_Password">
+          <St.SuccessBtn onClick={onClickSuccessBtn} className="GTM_Password">
             다음으로
           </St.SuccessBtn>
         </St.SuccessBtnContainer>

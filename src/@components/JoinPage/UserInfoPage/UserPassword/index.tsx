@@ -1,41 +1,33 @@
-import { useEffect } from "react";
-
-import { InvalidType } from "../../../../types/join";
-import { Step } from "..";
+import {
+  PasswordConfirmInvalidMessage,
+  passwordConfirmInvalidMessage,
+  PasswordInvalidMessage,
+  passwordInvalidMessage,
+} from "../../../../core/join/userInfoInputErrorMessage";
 import { St } from "./style";
 
 interface UserPasswordProps {
-  isPasswordInvalid: InvalidType;
-  checkInputInvalid: () => void;
-  checkConfirmInvalid: () => void;
-  debouncedQuery: string;
-  changePasswordInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  changePasswordConfirm: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  currentStep: string;
-  isUnfilled: InvalidType;
+  pwQuery: string;
+  handleChangePwInputValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  pwInvalidType: PasswordInvalidMessage;
+  pwConfirmQuery: string;
+  handleChangePwConfirmInputValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  pwConfirmInvalidType: PasswordConfirmInvalidMessage;
 }
 
 export default function UserPassword(props: UserPasswordProps) {
   const {
-    isPasswordInvalid,
-    checkInputInvalid,
-    checkConfirmInvalid,
-    debouncedQuery,
-    changePasswordInput,
-    changePasswordConfirm,
-    currentStep,
-    isUnfilled,
+    pwQuery,
+    handleChangePwInputValue,
+    pwInvalidType,
+    pwConfirmQuery,
+    handleChangePwConfirmInputValue,
+    pwConfirmInvalidType,
   } = props;
-
-  useEffect(() => {
-    if (currentStep === Step.input) {
-      checkInputInvalid();
-    }
-    if (currentStep === Step.confirm) {
-      checkConfirmInvalid();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedQuery]);
+  const IS_PW_INVALID = pwInvalidType !== passwordInvalidMessage.PASS && pwInvalidType !== passwordInvalidMessage.NULL;
+  const IS_PW_CONFIRM_INVALID =
+    pwConfirmInvalidType !== passwordConfirmInvalidMessage.PASS &&
+    pwConfirmInvalidType !== passwordConfirmInvalidMessage.NULL;
 
   return (
     <St.PasswordContainer>
@@ -47,24 +39,21 @@ export default function UserPassword(props: UserPasswordProps) {
         <St.PasswordInputForm
           type="password"
           placeholder="비밀번호 입력"
-          onChange={changePasswordInput}
-          isFocused={isPasswordInvalid.input}
+          value={pwQuery}
+          onChange={handleChangePwInputValue}
+          isinvalid={IS_PW_INVALID}
         />
-        {isPasswordInvalid.input &&
-          (isUnfilled.input ? (
-            <St.ErrorText>비밀번호를 입력해주세요</St.ErrorText>
-          ) : (
-            <St.ErrorText>영문, 숫자, 특수 문자를 하나 이상씩 조합해서 6자 이상으로 입력해주세요</St.ErrorText>
-          ))}
+        {IS_PW_INVALID && <St.ErrorText>{pwInvalidType}</St.ErrorText>}
       </St.InputWrapper>
       <St.InputWrapper>
         <St.PasswordInputForm
           type="password"
           placeholder="비밀번호 확인"
-          onChange={changePasswordConfirm}
-          isFocused={isPasswordInvalid.confirm}
+          value={pwConfirmQuery}
+          onChange={handleChangePwConfirmInputValue}
+          isinvalid={IS_PW_CONFIRM_INVALID}
         />
-        {isPasswordInvalid.confirm && <St.ErrorText>비밀번호가 일치하지 않습니다</St.ErrorText>}
+        {IS_PW_CONFIRM_INVALID && <St.ErrorText>{pwConfirmInvalidType}</St.ErrorText>}
       </St.InputWrapper>
     </St.PasswordContainer>
   );
