@@ -40,9 +40,11 @@ export default function UserInfo() {
 
   const onClickSuccessBtn = () => {
     if (
+      // TODO :: checkSuccess 함수화하여 모든 경우 체크
       emailInvalidType === emailInvalidMessage.PASS &&
       pwInvalidType === passwordInvalidMessage.PASS &&
-      pwConfirmInvalidType === passwordConfirmInvalidMessage.PASS
+      pwConfirmInvalidType === passwordConfirmInvalidMessage.PASS &&
+      pwQuery === pwConfirmQuery
     ) {
       setUserInfoFormData(() => {
         const currentFormData = new FormData();
@@ -56,7 +58,7 @@ export default function UserInfo() {
       navigate(`${routePaths.Join_}${routePaths.Join_UserProfile}`);
       return;
     }
-    // 비어있음 묹제
+    // 비어있음 문제
     if (emailInvalidType === emailInvalidMessage.NULL) {
       alertEmptyEmailInputValue();
       return;
