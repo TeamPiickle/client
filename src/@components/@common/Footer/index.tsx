@@ -10,7 +10,7 @@ interface ServiceInfo {
 const basicInfo = [
   { text: "이용약관", link: "https://joyous-ghost-8c7.notion.site/bc0872dc420d44f4851c5969f933db0b" },
   { text: "개인정보처리방침", link: "https://www.notion.so/0525fb9e664f4ce4a317cef1e7abdcd3" },
-  { text: "제휴/광고 문의", link: "https://forms.gle/ygNPumAxTmP4vqvY7" },
+  { text: "서비스 피드백", link: "https://forms.gle/cDybnShCkaX2aXok8" },
 ];
 const serviceInfo: ServiceInfo[] = [
   {
