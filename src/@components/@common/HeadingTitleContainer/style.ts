@@ -12,7 +12,7 @@ export const St = {
 
   Wrapper: styled.div<{ ismore: boolean }>`
     margin-left: 1.6rem;
-    width: ${({ ismore }) => (ismore ? "23.8rem" : "100%")};
+    width: ${({ ismore }) => (ismore ? "28rem" : "100%")};
   `,
 
   Title: styled.h2`
