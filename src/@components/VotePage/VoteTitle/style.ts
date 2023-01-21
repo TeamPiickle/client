@@ -1,21 +1,27 @@
 import styled from "styled-components";
-export const St = {
-  VoteTitleContainer: styled.article`
-    height: 7.4rem;
-    padding: 0 1.6rem 4.6rem;
-  `,
 
-  VoteTitleText: styled.h1`
-    ${({ theme }) => theme.fonts.h1}
+const VoteTitleContainer = styled.article`
+  padding: 0 1.6rem;
+`;
 
-    color: ${({ theme }) => theme.colors.bg};
+const VoteTitleText = styled.h1`
+  ${({ theme }) => theme.newFonts.h1}
 
-    margin-bottom: 0.4rem;
-  `,
+  color: ${({ theme }) => theme.colors.gray900};
 
-  VoteSubTitleText: styled.h2`
-    ${({ theme }) => theme.fonts.h2}
+  margin-bottom: 0.4rem;
+`;
 
-    color: ${({ theme }) => theme.colors.gray600};
-  `,
+const VoteSubTitleText = styled.h2`
+  ${({ theme }) => theme.newFonts.h2}
+
+  color: ${({ theme }) => theme.colors.gray700};
+`;
+
+const St = {
+  VoteTitleContainer,
+  VoteTitleText,
+  VoteSubTitleText,
 };
+
+export default St;

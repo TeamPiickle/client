@@ -9,7 +9,7 @@ const VoteContentContainer = styled.article`
 `;
 
 const VoteContentTitle = styled.h2`
-  ${({ theme }) => theme.fonts.body5}
+  ${({ theme }) => theme.newFonts.body1}
   color: ${({ theme }) => theme.colors.gray900};
 `;
 
@@ -31,7 +31,7 @@ const MoveBtn = styled.button`
   width: 100%;
   height: 5.8rem;
 
-  ${({ theme }) => theme.fonts.btn3}
+  ${({ theme }) => theme.newFonts.btn1}
 
   background-color: ${({ theme }) => theme.colors.gray900};
   color: ${({ theme }) => theme.colors.white};
@@ -45,7 +45,7 @@ const LinkBtn = styled(Link)`
   width: 100%;
   height: 5.8rem;
 
-  ${({ theme }) => theme.fonts.btn3}
+  ${({ theme }) => theme.newFonts.btn1}
 
   background-color: ${({ theme }) => theme.colors.gray900};
   color: ${({ theme }) => theme.colors.white};
@@ -59,7 +59,7 @@ const NoLinkBtn = styled.div`
   width: 100%;
   height: 5.8rem;
 
-  ${({ theme }) => theme.fonts.btn3}
+  ${({ theme }) => theme.newFonts.btn1}
 
   background-color: ${({ theme }) => theme.colors.gray900};
   color: ${({ theme }) => theme.colors.gray600};

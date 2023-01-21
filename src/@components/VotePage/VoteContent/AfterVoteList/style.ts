@@ -36,14 +36,14 @@ const IcCheckWithBg = styled(_IcCheckWithBg)<{ isSelected: boolean }>`
 `;
 
 const VoteOptionText = styled.strong<{ isSelected: boolean }>`
-  ${({ theme }) => theme.fonts.btn2};
-  color: ${({ theme, isSelected }) => (isSelected ? theme.colors.gray800 : theme.colors.gray600)};
+  ${({ theme }) => theme.newFonts.caption1};
+  color: ${({ theme, isSelected }) => (isSelected ? theme.colors.gray900 : theme.colors.gray700)};
 
   margin-left: 0.4rem;
 `;
 
 const VotedPercent = styled.strong`
-  ${({ theme }) => theme.fonts.h2};
+  ${({ theme }) => theme.newFonts.caption1};
 `;
 
 const VotedProgressBarContainer = styled.div<{ isSelected: boolean }>`
@@ -77,7 +77,7 @@ const VoteBtn = styled.button`
 
   border-radius: 0.4rem;
 
-  ${({ theme }) => theme.fonts.btn3}
+  ${({ theme }) => theme.newFonts.btn1}
   background-color: ${({ theme }) => theme.colors.gray900};
   color: ${({ theme }) => theme.colors.white};
 `;

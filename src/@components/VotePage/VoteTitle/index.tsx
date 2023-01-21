@@ -1,4 +1,4 @@
-import { St } from "./style";
+import St from "./style";
 
 export default function VoteTitle() {
   return (

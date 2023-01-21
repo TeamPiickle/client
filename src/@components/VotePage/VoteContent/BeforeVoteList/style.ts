@@ -15,7 +15,7 @@ const VoteOptionList = styled.li<{ isClicked: boolean }>`
   border-radius: 0.5rem;
 
   background-color: ${({ theme, isClicked }) => (isClicked ? theme.colors.green : theme.colors.white)};
-  color: ${({ theme, isClicked }) => (isClicked ? theme.colors.white : theme.colors.gray600)};
+  color: ${({ theme, isClicked }) => (isClicked ? theme.colors.white : theme.colors.gray700)};
 
   display: flex;
   justify-content: space-between;
@@ -26,7 +26,7 @@ const VoteOptionList = styled.li<{ isClicked: boolean }>`
 `;
 
 const VoteOptionText = styled.strong`
-  ${({ theme }) => theme.fonts.body11}
+  ${({ theme }) => theme.newFonts.btn1}
 `;
 
 const VoteBtn = styled.button`
@@ -37,7 +37,7 @@ const VoteBtn = styled.button`
 
   border-radius: 0.4rem;
 
-  ${({ theme }) => theme.fonts.btn3}
+  ${({ theme }) => theme.newFonts.btn1}
   background-color: ${({ theme }) => theme.colors.gray900};
   color: ${({ theme }) => theme.colors.white};
 `;
