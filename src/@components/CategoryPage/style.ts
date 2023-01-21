@@ -11,7 +11,7 @@ export const St = {
   `,
 
   CategoryBanner: styled.section`
-    height: 19.8rem;
+    height: 17.9rem;
     padding: 2rem 0 0 1.6rem;
 
     background: url(${ImgCategoryBanner});
@@ -32,18 +32,20 @@ export const St = {
 
   GoBestPiickleBtn: styled.button`
     position: absolute;
-    bottom: 0rem;
 
-    background-color: ${({ theme }) => theme.colors.black};
-    color: ${({ theme }) => theme.colors.white};
-    ${({ theme }) => theme.newFonts.btn1};
+    height: 20px;
+    right: 11.76px;
+    bottom: 12px;
 
-    width: 100%;
-    height: 5.4rem;
-    margin-left: -1.6rem;
+    color: ${({ theme }) => theme.colors.gray900};
+    ${({ theme }) => theme.newFonts.caption1};
 
     display: flex;
     justify-content: center;
     align-items: center;
+  `,
+
+  BtnTitle: styled.p`
+    margin-right: 0.8rem;
   `,
 };
