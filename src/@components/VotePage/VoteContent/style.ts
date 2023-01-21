@@ -13,15 +13,28 @@ const VoteContentTitle = styled.h2`
   color: ${({ theme }) => theme.colors.gray900};
 `;
 
-const LinkBtnContainer = styled.div`
+const BtnContainer = styled.div`
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
 
   display: flex;
-  justify-content: center;
   gap: 0.1rem;
+`;
+
+const MoveBtn = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 5.8rem;
+
+  ${({ theme }) => theme.fonts.btn3}
+
+  background-color: ${({ theme }) => theme.colors.gray900};
+  color: ${({ theme }) => theme.colors.white};
 `;
 
 const LinkBtn = styled(Link)`
@@ -55,7 +68,8 @@ const NoLinkBtn = styled.div`
 const St = {
   VoteContentContainer,
   VoteContentTitle,
-  LinkBtnContainer,
+  BtnContainer,
+  MoveBtn,
   LinkBtn,
   NoLinkBtn,
 };
