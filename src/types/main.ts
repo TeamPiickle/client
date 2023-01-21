@@ -3,6 +3,7 @@ export interface CategoryList {
   title: string;
   content: string;
   imgurl: string;
+  unicode: string;
 }
 
 export interface BallotList {
