@@ -69,23 +69,15 @@ const VotedProgressBar = styled.div<{ isSelected: boolean; width: number }>`
   opacity: 1;
 `;
 
-const VoteBtnContainer = styled.div`
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-
-  display: flex;
-  justify-content: center;
-  gap: 0.1rem;
-`;
-
 const VoteBtn = styled.button`
   width: 100%;
-  height: 5.8rem;
+  height: 5.4rem;
+
+  margin-top: 4rem;
+
+  border-radius: 0.4rem;
 
   ${({ theme }) => theme.fonts.btn3}
-
   background-color: ${({ theme }) => theme.colors.gray900};
   color: ${({ theme }) => theme.colors.white};
 `;
@@ -100,7 +92,6 @@ const St = {
   VotedPercent,
   VotedProgressBarContainer,
   VotedProgressBar,
-  VoteBtnContainer,
   VoteBtn,
 };
 

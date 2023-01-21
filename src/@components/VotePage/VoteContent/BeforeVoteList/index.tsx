@@ -1,7 +1,8 @@
 import { useState } from "react";
 
 import { IcCheckWithNoBg } from "../../../../asset/icon";
-import { BallotTopicData, voteApi } from "../../../../core/api/vote";
+import { voteApi } from "../../../../core/api/vote";
+import { BallotTopicData } from "../../../../types/ballots";
 import useModal from "../../../@common/hooks/useModal";
 import LoginModal from "../../../@common/LoginModal";
 import St from "./style";

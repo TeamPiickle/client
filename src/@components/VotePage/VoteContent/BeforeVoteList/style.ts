@@ -30,12 +30,12 @@ const VoteOptionText = styled.strong`
 `;
 
 const VoteBtn = styled.button`
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  width: 100%;
+  height: 5.4rem;
 
-  height: 5.8rem;
+  margin-top: 4rem;
+
+  border-radius: 0.4rem;
 
   ${({ theme }) => theme.fonts.btn3}
   background-color: ${({ theme }) => theme.colors.gray900};

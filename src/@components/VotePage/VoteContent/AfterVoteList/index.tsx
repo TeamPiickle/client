@@ -1,5 +1,6 @@
 import { IcCheckWithBg } from "../../../../asset/icon";
-import { BallotTopicData, voteApi } from "../../../../core/api/vote";
+import { voteApi } from "../../../../core/api/vote";
+import { BallotTopicData } from "../../../../types/ballots";
 import St from "./style";
 
 interface AfterVoteListProps {
@@ -39,11 +40,7 @@ export default function AfterVoteList(props: AfterVoteListProps) {
             );
           })}
       </St.VoteOptionContainer>
-
-      <St.VoteBtnContainer>
-        <St.VoteBtn onClick={cancelVote}>다시 투표하기</St.VoteBtn>
-        <St.VoteBtn onClick={cancelVote}>다시 투표하기</St.VoteBtn>
-      </St.VoteBtnContainer>
+      <St.VoteBtn onClick={cancelVote}>다시 투표하기</St.VoteBtn>
     </>
   );
 }

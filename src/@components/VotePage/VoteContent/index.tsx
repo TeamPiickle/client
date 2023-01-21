@@ -13,13 +13,20 @@ export default function VoteContent() {
   if (!ballotTopic) return <Loading backgroundColor="white" />;
 
   return (
-    <St.VoteContentContainer>
-      <St.VoteContentTitle>{ballotTopic.data.ballotTopic.ballotTopicContent}</St.VoteContentTitle>
-      {isBeforeVotingState ? (
-        <BeforeVoteList ballotTopic={ballotTopic.data} mutateBallotState={mutateBallotState} />
-      ) : (
-        <AfterVoteList ballotTopic={ballotTopic.data} mutateBallotState={mutateBallotState} />
-      )}
-    </St.VoteContentContainer>
+    <>
+      <St.VoteContentContainer>
+        <St.VoteContentTitle>{ballotTopic.data.ballotTopic.ballotTopicContent}</St.VoteContentTitle>
+        {isBeforeVotingState ? (
+          <BeforeVoteList ballotTopic={ballotTopic.data} mutateBallotState={mutateBallotState} />
+        ) : (
+          <AfterVoteList ballotTopic={ballotTopic.data} mutateBallotState={mutateBallotState} />
+        )}
+      </St.VoteContentContainer>
+
+      <St.VoteBtnContainer>
+        <St.VoteBtn>다시 투표하기</St.VoteBtn>
+        <St.VoteBtn>다시 투표하기</St.VoteBtn>
+      </St.VoteBtnContainer>
+    </>
   );
 }
