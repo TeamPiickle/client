@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 
 import useBallotTopic from "../../../core/api/vote";
+import { routePaths } from "../../../core/routes/path";
 import Loading from "../../@common/Loading";
 import AfterVoteList from "./AfterVoteList";
 import BeforeVoteList from "./BeforeVoteList";
@@ -23,10 +24,18 @@ export default function VoteContent() {
         )}
       </St.VoteContentContainer>
 
-      <St.VoteBtnContainer>
-        <St.VoteBtn>다시 투표하기</St.VoteBtn>
-        <St.VoteBtn>다시 투표하기</St.VoteBtn>
-      </St.VoteBtnContainer>
+      <St.LinkBtnContainer>
+        {ballotTopic.data.beforeTopicId ? (
+          <St.LinkBtn to={`${routePaths.Vote}/${ballotTopic.data.beforeTopicId}`}>이전 질문</St.LinkBtn>
+        ) : (
+          <St.NoLinkBtn>이전 질문</St.NoLinkBtn>
+        )}
+        {ballotTopic.data.nextTopicId ? (
+          <St.LinkBtn to={`${routePaths.Vote}/${ballotTopic.data.nextTopicId}`}>다음 질문</St.LinkBtn>
+        ) : (
+          <St.LinkBtn to={routePaths.Main}>홈으로</St.LinkBtn>
+        )}
+      </St.LinkBtnContainer>
     </>
   );
 }

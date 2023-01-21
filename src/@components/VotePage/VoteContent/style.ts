@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const VoteContentContainer = styled.article`
@@ -12,7 +13,7 @@ const VoteContentTitle = styled.h2`
   color: ${({ theme }) => theme.colors.gray900};
 `;
 
-const VoteBtnContainer = styled.div`
+const LinkBtnContainer = styled.div`
   position: fixed;
   bottom: 0;
   left: 0;
@@ -23,7 +24,11 @@ const VoteBtnContainer = styled.div`
   gap: 0.1rem;
 `;
 
-const VoteBtn = styled.button`
+const LinkBtn = styled(Link)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   width: 100%;
   height: 5.8rem;
 
@@ -33,11 +38,26 @@ const VoteBtn = styled.button`
   color: ${({ theme }) => theme.colors.white};
 `;
 
+const NoLinkBtn = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 5.8rem;
+
+  ${({ theme }) => theme.fonts.btn3}
+
+  background-color: ${({ theme }) => theme.colors.gray900};
+  color: ${({ theme }) => theme.colors.gray600};
+`;
+
 const St = {
   VoteContentContainer,
   VoteContentTitle,
-  VoteBtnContainer,
-  VoteBtn,
+  LinkBtnContainer,
+  LinkBtn,
+  NoLinkBtn,
 };
 
 export default St;
