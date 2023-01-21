@@ -16,7 +16,8 @@ export const St = {
   `,
 
   Title: styled.h2`
-    ${({ theme }) => theme.fonts.h1};
+    ${({ theme }) => theme.newFonts.h1};
+    color: ${({ theme }) => theme.colors.gray900};
   `,
 
   Content: styled.p`
@@ -24,8 +25,8 @@ export const St = {
 
     white-space: pre-wrap;
 
-    color: ${({ theme }) => theme.colors.gray600};
-    ${({ theme }) => theme.fonts.h2};
+    ${({ theme }) => theme.newFonts.h2};
+    color: ${({ theme }) => theme.colors.gray700};
   `,
 
   Link: styled(Link)`
