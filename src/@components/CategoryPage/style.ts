@@ -11,37 +11,36 @@ export const St = {
   `,
 
   CategoryBanner: styled.section`
-    height: 13.6rem;
+    height: 19.8rem;
     padding: 2rem 0 0 1.6rem;
 
     background: url(${ImgCategoryBanner});
+    background-size: cover;
 
     position: relative;
   `,
 
   BannerTitle: styled.h2`
     ${({ theme }) => theme.fonts.body10};
-    color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.darkblue};
   `,
 
   BannerSubTitle: styled.p`
     ${({ theme }) => theme.fonts.body4};
-    color: ${({ theme }) => theme.colors.gray600};
+    color: ${({ theme }) => theme.colors.gray800};
   `,
 
   GoBestPiickleBtn: styled.button`
     position: absolute;
-    right: 1.2rem;
-    bottom: 1.4rem;
+    bottom: 0rem;
 
     background-color: ${({ theme }) => theme.colors.black};
     color: ${({ theme }) => theme.colors.white};
-    ${({ theme }) => theme.fonts.btn1};
+    ${({ theme }) => theme.newFonts.btn1};
 
-    width: 7.1rem;
-    height: 2.5rem;
-
-    border-radius: 4.2rem;
+    width: 100%;
+    height: 5.4rem;
+    margin-left: -1.6rem;
 
     display: flex;
     justify-content: center;
