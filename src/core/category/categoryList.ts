@@ -51,7 +51,7 @@ export const categoryList: categoryListProps[] = [
 
 export const categoryTitles: HeadingTitle = {
   title: "Mood Piickle",
-  content: "더욱 쉽게 피클을 즐길 수 있는 방법!\n지금 나의 무드에 맞는 카테고리를 골라보세요",
+  content: "지금 나의 무드에 맞는 카테고리를 골라 대화해 보세요",
   isMoreBtn: false,
 };
 
