@@ -77,6 +77,17 @@ const fonts = {
   cardBody5: FONT({ weight: 700, size: 2.3, lineHeight: 140, letterSpacing: 4 }),
 } as const;
 
+const newFonts = {
+  h1: FONT({ weight: 600, size: 2.0, lineHeight: 140, letterSpacing: 3 }),
+  h2: FONT({ weight: 400, size: 1.4, lineHeight: 140, letterSpacing: 3 }),
+  body1: FONT({ weight: 600, size: 2.4, lineHeight: 140, letterSpacing: 3 }),
+  body2: FONT({ weight: 600, size: 2.0, lineHeight: 140, letterSpacing: 0 }),
+  body3: FONT({ weight: 500, size: 1.8, lineHeight: 140, letterSpacing: 35 }),
+  btn1: FONT({ weight: 400, size: 1.6, lineHeight: 140, letterSpacing: 4 }),
+  btn2: FONT({ weight: 400, size: 1.2, lineHeight: 140, letterSpacing: 4 }),
+  caption1: FONT({ weight: 300, size: 1.2, lineHeight: 140, letterSpacing: 3 }),
+} as const;
+
 type BackQuoteArgs = string[];
 
 interface Media {
@@ -95,6 +106,7 @@ const media: Media = {
 const theme = {
   colors,
   fonts,
+  newFonts,
   media,
 } as const;
 
