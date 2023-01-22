@@ -21,12 +21,12 @@ export const St = {
   `,
 
   BannerTitle: styled.h2`
-    ${({ theme }) => theme.fonts.body10};
+    ${({ theme }) => theme.newFonts.graphic1};
     color: ${({ theme }) => theme.colors.darkblue};
   `,
 
   BannerSubTitle: styled.p`
-    ${({ theme }) => theme.fonts.body4};
+    ${({ theme }) => theme.newFonts.h2};
     color: ${({ theme }) => theme.colors.gray800};
   `,
 
@@ -38,7 +38,7 @@ export const St = {
     bottom: 12px;
 
     color: ${({ theme }) => theme.colors.gray900};
-    ${({ theme }) => theme.newFonts.caption1};
+    ${({ theme }) => theme.newFonts.btn1};
 
     display: flex;
     justify-content: center;
