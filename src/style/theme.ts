@@ -20,6 +20,7 @@ const colors = {
   gray600: "#606060",
   gray700: "#404040",
   gray800: "#202020",
+  gray900: "#0A0A0A",
   caption2_color: "#575757",
   sub1: "#F2F25A",
   sub3: "#706E2B",
