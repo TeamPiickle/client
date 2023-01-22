@@ -1,32 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
 import useSWR, { useSWRConfig } from "swr";
 
+import { BallotTopicData } from "../../types/ballots";
 import { PostingVote } from "../../types/remote/request";
 import { PiickleSWRResponse } from "../../types/remote/swr";
 import { realReq } from "./common/axios";
 import { PATH } from "./common/constants";
-
-type BallotTopic = {
-  _id: string;
-  ballotTopicContent: string;
-};
-
-type BallotItems = {
-  _id: string;
-  status: number;
-  content: string;
-};
-
-type UserSelect = {
-  _id: string;
-  ballotItemId: string;
-};
-
-export interface BallotTopicData {
-  ballotTopic: BallotTopic;
-  ballotItems: BallotItems[];
-  userSelect: UserSelect | null;
-}
 
 // 투표 현황 조회
 export default function useBallotTopic(ballotId: string) {
