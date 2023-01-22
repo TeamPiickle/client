@@ -11,7 +11,7 @@ const VoteOptionContainer = styled.ul`
 const VoteOptionList = styled.li<{ isClicked: boolean }>`
   height: 4rem;
 
-  border: solid 0.1rem #e0e0e0;
+  border: solid 0.1rem ${({ theme }) => theme.colors.gray200};
   border-radius: 0.5rem;
 
   background-color: ${({ theme, isClicked }) => (isClicked ? theme.colors.green : theme.colors.white)};
