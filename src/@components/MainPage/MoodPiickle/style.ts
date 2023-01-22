@@ -25,7 +25,7 @@ export const St = {
     columnEnd: number;
     rowStart: number;
     rowEnd: number;
-    imgUrl: string;
+    gradation: string;
   }>`
     display: flex;
     flex-direction: column;
@@ -35,7 +35,7 @@ export const St = {
     border: 0.1rem solid #e0e0e0;
     border-radius: 1.6rem;
 
-    background: url(${({ imgUrl }) => imgUrl});
+    background: ${({ gradation }) => gradation};
     background-size: cover;
 
     grid-column-start: ${({ columnStart }) => columnStart};

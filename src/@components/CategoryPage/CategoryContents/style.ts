@@ -23,14 +23,14 @@ export const St = {
     columnEnd: number;
     rowStart: number;
     rowEnd: number;
-    imgUrl: string;
+    gradation: string;
   }>`
     grid-column-start: ${({ columnStart }) => columnStart};
     grid-column-end: ${({ columnEnd }) => columnEnd};
     grid-row-start: ${({ rowStart }) => rowStart};
     grid-row-end: ${({ rowEnd }) => rowEnd};
 
-    background: url(${({ imgUrl }) => imgUrl});
+    background: ${({ gradation }) => gradation};
     background-size: cover;
 
     display: flex;

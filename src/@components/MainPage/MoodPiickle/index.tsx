@@ -13,7 +13,7 @@ export type moodPiickle = {
   _id: string;
   title: string;
   content: string;
-  imgurl: string;
+  gradation: string;
 };
 
 export default function MoodPiickle() {
@@ -35,11 +35,11 @@ export default function MoodPiickle() {
             <St.Category
               key={moodPiickle._id}
               onClick={() => moveCategory(moodPiickle._id)}
-              imgUrl={moodPiickle.imgurl}
               columnStart={gridValue[index].columnStart}
               columnEnd={gridValue[index].columnEnd}
               rowStart={gridValue[index].rowStart}
-              rowEnd={gridValue[index].rowEnd}>
+              rowEnd={gridValue[index].rowEnd}
+              gradation={moodPiickle.gradation}>
               <St.CategoryTitle className={`GTM_${moodPiickle.title.slice(0, 4)}`}>
                 {moodPiickle.title}
               </St.CategoryTitle>
