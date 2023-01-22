@@ -18,7 +18,6 @@ export default function CategoryContents() {
     navigate(routePaths.CardCollection, { state: { type: "category", categoryId: id } });
     setSliderIdx(0);
   };
-
   if (categoryLists?.data === undefined) return <Loading backgroundColor="transparent" />;
   else
     return (
@@ -35,10 +34,11 @@ export default function CategoryContents() {
                 onClick={() => moveCategory(item._id)}
                 imgUrl={item.imgurl}
                 className={`GTM_item_${item.title.slice(0, 4)}`}>
-                <St.CategoryTitle className={`GTM_${item.title.slice(0, 4)}`}>{item.title}</St.CategoryTitle>
+                <St.CategoryImoji>{`${String.fromCodePoint(parseInt(item.unicode, 16))}`}</St.CategoryImoji>
                 <St.CategoryDescription className={`GTM_${item.content.slice(0, 4)}`}>
                   {item.content}
                 </St.CategoryDescription>
+                <St.CategoryTitle className={`GTM_${item.title.slice(0, 4)}`}>{item.title}</St.CategoryTitle>
               </St.CategoryItem>
             );
           })}
