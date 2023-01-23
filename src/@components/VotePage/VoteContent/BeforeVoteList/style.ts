@@ -1,59 +1,52 @@
 import styled from "styled-components";
 
-export const St = {
-  Root: styled.div`
-    display: flex;
-    flex-direction: column;
-  `,
-  VoteOptionContainer: styled.ul`
-    height: 14.3rem;
+const VoteOptionContainer = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
 
-    display: flex;
-    flex-direction: column;
-    gap: 1.6rem;
+  margin-top: 4rem;
+`;
 
-    margin-top: 2.6rem;
-    margin-bottom: 5rem;
-  `,
+const VoteOptionList = styled.li<{ isClicked: boolean }>`
+  height: 4rem;
 
-  VoteOptionList: styled.li<{ isClicked: boolean }>`
-    height: 3.7rem;
+  border: solid 0.1rem ${({ theme }) => theme.colors.gray200};
+  border-radius: 0.5rem;
 
-    border: solid 0.1rem #e0e0e0;
-    border-radius: 0.5rem;
+  background-color: ${({ theme, isClicked }) => (isClicked ? theme.colors.green : theme.colors.white)};
+  color: ${({ theme, isClicked }) => (isClicked ? theme.colors.white : theme.colors.gray700)};
 
-    background-color: ${({ theme, isClicked }) => (isClicked ? theme.colors.green : theme.colors.white)};
-    color: ${({ theme, isClicked }) => (isClicked ? theme.colors.white : theme.colors.gray600)};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  padding-left: 1.6rem;
+  padding-right: 2.3rem;
+`;
 
-    padding-left: 1.6rem;
-    padding-right: 2.3rem;
-  `,
+const VoteOptionText = styled.strong`
+  ${({ theme }) => theme.newFonts.btn1}
+`;
 
-  VoteOptionText: styled.strong`
-    ${({ theme }) => theme.fonts.body11}
-  `,
+const VoteBtn = styled.button`
+  width: 100%;
+  height: 5.4rem;
 
-  VoteOptionCheck: styled.div`
-    color: ${({ theme }) => theme.colors.black};
-  `,
+  margin-top: 4rem;
 
-  VoteBtnContainer: styled.div`
-    display: flex;
-    justify-content: center;
-  `,
+  border-radius: 0.4rem;
 
-  VoteBtn: styled.button`
-    width: 15.6rem;
-    height: 3.4rem;
+  ${({ theme }) => theme.newFonts.btn1}
+  background-color: ${({ theme }) => theme.colors.gray900};
+  color: ${({ theme }) => theme.colors.white};
+`;
 
-    border-radius: 6.6rem;
-
-    ${({ theme }) => theme.fonts.body6}
-    background-color: ${({ theme }) => theme.colors.gray800};
-    color: ${({ theme }) => theme.colors.white};
-  `,
+const St = {
+  VoteOptionContainer,
+  VoteOptionList,
+  VoteOptionText,
+  VoteBtn,
 };
+
+export default St;

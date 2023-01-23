@@ -1,82 +1,77 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const St = {
-  ContainerWrapper: styled.section`
-    padding: 0 2.4rem;
-  `,
+const VoteContentContainer = styled.article`
+  padding: 2.4rem 1.6rem 3.4rem;
 
-  VoteContentContainer: styled.article`
-    width: 30.4rem;
-    height: 44.2rem;
+  display: flex;
+  flex-direction: column;
+`;
 
-    box-shadow: 0rem 0.4rem 0.4rem rgba(0, 0, 0, 0.25), 0rem 0rem 0.2rem rgba(0, 0, 0, 0.25);
-    border-radius: 1.5rem;
+const VoteContentTitle = styled.h2`
+  ${({ theme }) => theme.newFonts.body1}
+  color: ${({ theme }) => theme.colors.gray900};
+`;
 
-    padding: 5.3rem 1.6rem 3.4rem;
+const BtnContainer = styled.div`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 
-    display: flex;
-    flex-direction: column;
-  `,
+  display: flex;
+  gap: 0.1rem;
+`;
 
-  VoteContentTitle: styled.h2`
-    ${({ theme }) => theme.fonts.body5}
-    color: ${({ theme }) => theme.colors.bg};
+const MoveBtn = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    width: 27.2rem;
-    height: 10.2rem;
-  `,
+  width: 100%;
+  height: 5.8rem;
 
-  VoteOptionContainer: styled.ul`
-    width: 100%;
-    height: 14.3rem;
+  ${({ theme }) => theme.newFonts.btn1}
 
-    margin-top: 2.6rem;
-    gap: 1.6rem;
+  background-color: ${({ theme }) => theme.colors.gray900};
+  color: ${({ theme }) => theme.colors.white};
+`;
 
-    display: flex;
-    flex-direction: column;
-  `,
+const LinkBtn = styled(Link)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  VoteOptionList: styled.li`
-    width: 100%;
-    height: 3.7rem;
+  width: 100%;
+  height: 5.8rem;
 
-    border: solid 0.1rem #e0e0e0;
-    border-radius: 0.5rem;
+  ${({ theme }) => theme.newFonts.btn1}
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background-color: ${({ theme }) => theme.colors.gray900};
+  color: ${({ theme }) => theme.colors.white};
+`;
 
-    padding-left: 1.6rem;
-    padding-right: 2.3rem;
-  `,
+const NoLinkBtn = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  VoteOptionText: styled.strong`
-    color: ${({ theme }) => theme.colors.gray600};
+  width: 100%;
+  height: 5.8rem;
 
-    ${({ theme }) => theme.fonts.body11}
-  `,
+  ${({ theme }) => theme.newFonts.btn1}
 
-  VoteOptionCheck: styled.div`
-    color: ${({ theme }) => theme.colors.black};
-  `,
+  background-color: ${({ theme }) => theme.colors.gray900};
+  color: ${({ theme }) => theme.colors.gray600};
+`;
 
-  VoteBtnContainer: styled.div`
-    display: flex;
-    justify-content: center;
-  `,
-  VoteBtn: styled.button`
-    width: 15.6rem;
-    height: 3.4rem;
-
-    border-radius: 6.6rem;
-
-    ${({ theme }) => theme.fonts.btn2}
-
-    background-color: ${({ theme }) => theme.colors.gray800};
-    color: ${({ theme }) => theme.colors.white};
-
-    margin-top: 8.4rem;
-  `,
+const St = {
+  VoteContentContainer,
+  VoteContentTitle,
+  BtnContainer,
+  MoveBtn,
+  LinkBtn,
+  NoLinkBtn,
 };
+
+export default St;
