@@ -11,40 +11,41 @@ export const St = {
   `,
 
   CategoryBanner: styled.section`
-    height: 13.6rem;
+    height: 17.9rem;
     padding: 2rem 0 0 1.6rem;
 
     background: url(${ImgCategoryBanner});
+    background-size: cover;
 
     position: relative;
   `,
 
   BannerTitle: styled.h2`
-    ${({ theme }) => theme.fonts.body10};
-    color: ${({ theme }) => theme.colors.white};
+    ${({ theme }) => theme.newFonts.graphic1};
+    color: ${({ theme }) => theme.colors.darkblue};
   `,
 
   BannerSubTitle: styled.p`
-    ${({ theme }) => theme.fonts.body4};
-    color: ${({ theme }) => theme.colors.gray600};
+    ${({ theme }) => theme.newFonts.h2};
+    color: ${({ theme }) => theme.colors.gray800};
   `,
 
   GoBestPiickleBtn: styled.button`
     position: absolute;
-    right: 1.2rem;
-    bottom: 1.4rem;
 
-    background-color: ${({ theme }) => theme.colors.black};
-    color: ${({ theme }) => theme.colors.white};
-    ${({ theme }) => theme.fonts.btn1};
+    height: 20px;
+    right: 11.76px;
+    bottom: 12px;
 
-    width: 7.1rem;
-    height: 2.5rem;
-
-    border-radius: 4.2rem;
+    color: ${({ theme }) => theme.colors.gray900};
+    ${({ theme }) => theme.newFonts.btn1};
 
     display: flex;
     justify-content: center;
     align-items: center;
+  `,
+
+  BtnTitle: styled.p`
+    margin-right: 0.8rem;
   `,
 };

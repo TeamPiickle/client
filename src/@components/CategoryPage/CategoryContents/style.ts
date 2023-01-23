@@ -23,32 +23,36 @@ export const St = {
     columnEnd: number;
     rowStart: number;
     rowEnd: number;
-    imgUrl: string;
+    gradation: string;
   }>`
     grid-column-start: ${({ columnStart }) => columnStart};
     grid-column-end: ${({ columnEnd }) => columnEnd};
     grid-row-start: ${({ rowStart }) => rowStart};
     grid-row-end: ${({ rowEnd }) => rowEnd};
 
-    background: url(${({ imgUrl }) => imgUrl});
+    background: ${({ gradation }) => gradation};
     background-size: cover;
-
-    border-radius: 1.6rem;
-    border: 0.1rem solid #e0e0e0;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: left;
+    padding-left: 0.8rem;
   `,
 
   CategoryTitle: styled.h2`
-    ${({ theme }) => theme.fonts.h1};
-    color: ${({ theme }) => theme.colors.bg};
+    ${({ theme }) => theme.newFonts.body2};
+    color: ${({ theme }) => theme.colors.gray900};
   `,
 
   CategoryDescription: styled.p`
-    ${({ theme }) => theme.fonts.h2};
-    color: ${({ theme }) => theme.colors.gray600};
+    ${({ theme }) => theme.newFonts.caption1};
+    color: ${({ theme }) => theme.colors.gray800};
+  `,
+
+  CategoryImoji: styled.p`
+    font-size: 3rem;
+
+    margin-bottom: 0.7rem;
   `,
 };
