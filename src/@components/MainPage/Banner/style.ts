@@ -5,7 +5,7 @@ export const St = {
     touch-action: pan-x;
 
     position: relative;
-    height: 21.7rem;
+    height: 21.6rem;
     margin-top: -2.4rem;
 
     & .slick-track {
@@ -15,7 +15,7 @@ export const St = {
 
   ImageWrapper: styled.img`
     width: 36rem;
-    height: 21.7rem;
+    height: 21.6rem;
   `,
 
   ContentsPages: styled.div`
@@ -25,17 +25,17 @@ export const St = {
 
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 0.8rem;
 
-    width: 3.9rem;
-    height: 1.8rem;
+    width: 4.8rem;
+    height: 2.4rem;
 
     background: rgba(0, 0, 0, 0.5);
   `,
 
   CurrentPage: styled.span`
-    ${({ theme }) => theme.fonts.caption4};
-    line-height: 1.8rem;
+    ${({ theme }) => theme.newFonts.caption1};
     color: ${({ theme }) => theme.colors.white};
   `,
 };
