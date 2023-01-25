@@ -6,14 +6,15 @@ export const St = {
   `,
 
   CategoryWrapper: styled.div`
-    height: 37.6rem;
+    height: 32.8rem;
+    width: 32.8rem;
 
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     grid-gap: 0.8rem;
 
-    margin: 0 1.6rem;
+    margin: auto;
   `,
 
   CategoryOneLine: styled.div`
@@ -29,11 +30,12 @@ export const St = {
   }>`
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     justify-content: center;
+    padding-left: 0.8rem;
 
-    border: 0.1rem solid #e0e0e0;
-    border-radius: 1.6rem;
+    width: 16rem;
+    height: 16rem;
 
     background: ${({ gradation }) => gradation};
     background-size: cover;
@@ -45,12 +47,18 @@ export const St = {
   `,
 
   CategoryTitle: styled.strong`
-    ${({ theme }) => theme.fonts.body1};
-    color: ${({ theme }) => theme.colors.bg};
+    ${({ theme }) => theme.newFonts.body3};
+    color: ${({ theme }) => theme.colors.gray900};
   `,
 
   CategoryContent: styled.p`
-    ${({ theme }) => theme.fonts.caption2};
-    color: ${({ theme }) => theme.colors.gray600};
+    ${({ theme }) => theme.newFonts.caption1};
+    color: ${({ theme }) => theme.colors.gray800};
+  `,
+
+  CategoryImoji: styled.p`
+    font-size: 3rem;
+
+    margin-bottom: 0.7rem;
   `,
 };
