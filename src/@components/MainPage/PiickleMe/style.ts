@@ -70,23 +70,13 @@ export const St = {
   `,
 
   RepresentGoVoteBtnWrapper: styled.button`
-    width: 7.6rem;
-    height: 2.8rem;
+    width: 100%;
+    height: 4rem;
 
-    background-color: ${({ theme }) => theme.colors.green};
+    background-color: ${({ theme }) => theme.colors.gray900};
     color: ${({ theme }) => theme.colors.white};
 
-    float: right;
-
-    padding: 0.4rem 1.4rem;
-
-    border-radius: 4.2rem;
-
-    ${({ theme }) => theme.fonts.h2}
-
-    position: absolute;
-    bottom: 1.8rem;
-    right: 1.6rem;
+    ${({ theme }) => theme.newFonts.btn2}
   `,
 
   RepresentGoVoteBtn: styled(Link)``,

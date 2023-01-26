@@ -14,14 +14,14 @@ export default function PiickleMe() {
       <St.RepresentVoteContentConTainer>
         <St.RepresentVoteContentText>{ballotLists && ballotLists.data[0].topic}</St.RepresentVoteContentText>
         <St.RepresentVoteContentSubText>현재 가장 참여수가 많은 투표</St.RepresentVoteContentSubText>
-        <St.RepresentGoVoteBtnWrapper type="button">
-          <St.RepresentGoVoteBtn
-            to={`${routePaths.Vote}/${ballotLists && ballotLists.data[0]._id}`}
-            className={`GTM_${ballotLists && ballotLists.data[0].topic.slice(0, 4)}`}>
-            투표하기
-          </St.RepresentGoVoteBtn>
-        </St.RepresentGoVoteBtnWrapper>
       </St.RepresentVoteContentConTainer>
+      <St.RepresentGoVoteBtnWrapper type="button">
+        <St.RepresentGoVoteBtn
+          to={`${routePaths.Vote}/${ballotLists && ballotLists.data[0]._id}`}
+          className={`GTM_${ballotLists && ballotLists.data[0].topic.slice(0, 4)}`}>
+          투표하기
+        </St.RepresentGoVoteBtn>
+      </St.RepresentGoVoteBtnWrapper>
 
       {ballotLists &&
         ballotLists.data.slice(1).map((ballot, idx: number) => (
