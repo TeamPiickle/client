@@ -41,6 +41,7 @@ const newColors = {
   gray700: "#616161",
   gray800: "#424242",
   gray900: "#0A0A0A",
+  lightgreen1: "#7DE0B9",
 } as const;
 
 interface Font {
