@@ -19,7 +19,7 @@ export const St = {
 
     backdrop-filter: blur(0.6rem);
     color: ${({ theme }) => theme.colors.white};
-    ${({ theme }) => theme.newFonts.h2};
+    ${({ theme }) => theme.fonts.btn2};
 
     ${({ theme }) => theme.media.desktop`
       width: 36rem;
