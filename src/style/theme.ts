@@ -31,6 +31,18 @@ const colors = {
   card: "linear-gradient(180deg, #DBFFF1 0%, #FFFFEB 100%);",
 } as const;
 
+const newColors = {
+  gray100: "#F5F5F5",
+  gray200: "#EDEDED",
+  gray300: "#E0E0E0",
+  gray400: "#C2C2C2",
+  gray500: "#9E9E9E",
+  gray600: "#757575",
+  gray700: "#616161",
+  gray800: "#424242",
+  gray900: "#0A0A0A",
+} as const;
+
 interface Font {
   weight: 300 | 400 | 500 | 600 | 700;
   size: number;
@@ -111,6 +123,7 @@ const media: Media = {
 
 const theme = {
   colors,
+  newColors,
   fonts,
   newFonts,
   media,
