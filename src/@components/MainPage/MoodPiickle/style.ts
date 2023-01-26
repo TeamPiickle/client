@@ -1,9 +1,7 @@
 import styled from "styled-components";
 
 export const St = {
-  Container: styled.section`
-    margin: 4.8rem 0;
-  `,
+  Container: styled.section``,
 
   CategoryWrapper: styled.div`
     height: 32.8rem;
