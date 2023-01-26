@@ -1,17 +1,19 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+import { ImgVoteBanner } from "../../../asset/image";
+
 export const St = {
   Container: styled.section``,
 
   RepresentVoteContentConTainer: styled.section`
     position: relative;
     width: 100%;
-    height: 15.2rem;
+    height: 11.2rem;
 
     padding: 2.6rem 2.4rem 2rem;
 
-    background-color: #c9f2de; //확정 아니어서 일단 노가다로 박음
+    background: url(${ImgVoteBanner});
   `,
 
   VoteContent: styled.article`
