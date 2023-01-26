@@ -11,7 +11,9 @@ export const St = {
     width: 100%;
     height: 11.2rem;
 
-    padding: 2.6rem 2.4rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     background: url(${ImgVoteBanner});
   `,
@@ -39,20 +41,27 @@ export const St = {
     flex-direction: column;
   `,
 
-  RepresentVoteContentText: styled.p`
-    line-height: 1.4;
+  RepresentVoteContentText: styled.div`
+    position: absolute;
 
-    margin-bottom: 0.4rem;
-    padding-right: 5.8rem;
+    margin-top: 2.3rem;
 
-    ${({ theme }) => theme.fonts.body3};
-    color: ${({ theme }) => theme.colors.gray800};
+    ${({ theme }) => theme.newFonts.body3};
+    color: ${({ theme }) => theme.colors.gray900};
+  `,
+
+  RepresentVoteContentWrapper: styled.div`
+    margin-bottom: 2.3rem;
+
+    width: 13.9rem;
+    text-align: center;
+
+    background-color: ${({ theme }) => theme.newColors.lightgreen1};
   `,
 
   RepresentVoteContentSubText: styled.p`
-    ${({ theme }) => theme.fonts.caption3}
-
-    color: ${({ theme }) => theme.colors.gray600};
+    ${({ theme }) => theme.newFonts.caption1}
+    color: ${({ theme }) => theme.colors.gray900};
   `,
 
   VoteContentText: styled.p`

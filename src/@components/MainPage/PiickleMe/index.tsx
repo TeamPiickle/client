@@ -12,8 +12,10 @@ export default function PiickleMe() {
     <St.Container>
       <HeadingTitleContainer headingTitles={headingTitles[2]} />
       <St.RepresentVoteContentConTainer>
+        <St.RepresentVoteContentWrapper>
+          <St.RepresentVoteContentSubText>현재 가장 참여수가 많은 투표</St.RepresentVoteContentSubText>
+        </St.RepresentVoteContentWrapper>
         <St.RepresentVoteContentText>{ballotLists && ballotLists.data[0].topic}</St.RepresentVoteContentText>
-        <St.RepresentVoteContentSubText>현재 가장 참여수가 많은 투표</St.RepresentVoteContentSubText>
       </St.RepresentVoteContentConTainer>
       <St.RepresentGoVoteBtnWrapper type="button">
         <St.RepresentGoVoteBtn
