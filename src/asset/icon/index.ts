@@ -22,4 +22,3 @@ export { ReactComponent as IcSmallEmptyCheckBox } from "./smallEmptyCheckBox.svg
 export { ReactComponent as IcSmallEmptyHeart } from "./smallEmptyHeart.svg";
 export { ReactComponent as IcSmallFullCheckBox } from "./smallFullCheckBox.svg";
 export { ReactComponent as IcSmallFullHeart } from "./smallFullHeart.svg";
-export { ReactComponent as IcVoteImg } from "./voteImg.svg";

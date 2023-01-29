@@ -31,6 +31,20 @@ const colors = {
   card: "linear-gradient(180deg, #DBFFF1 0%, #FFFFEB 100%);",
 } as const;
 
+const newColors = {
+  gray100: "#F5F5F5",
+  gray200: "#EDEDED",
+  gray300: "#E0E0E0",
+  gray400: "#C2C2C2",
+  gray500: "#9E9E9E",
+  gray600: "#757575",
+  gray700: "#616161",
+  gray800: "#424242",
+  gray900: "#0A0A0A",
+  lightgreen1: "#7DE0B9",
+  white: "#FFFFFF",
+} as const;
+
 interface Font {
   weight: 300 | 400 | 500 | 600 | 700;
   size: number;
@@ -84,10 +98,13 @@ const newFonts = {
   h2: FONT({ weight: 400, size: 1.4, lineHeight: 140, letterSpacing: 3 }),
   body1: FONT({ weight: 600, size: 2.4, lineHeight: 140, letterSpacing: 3 }),
   body2: FONT({ weight: 600, size: 2.0, lineHeight: 140, letterSpacing: 0 }),
-  body3: FONT({ weight: 500, size: 1.8, lineHeight: 140, letterSpacing: 35 }),
+  body3: FONT({ weight: 500, size: 1.8, lineHeight: 120, letterSpacing: 35 }),
+  body4: FONT({ weight: 400, size: 1.4, lineHeight: 130, letterSpacing: 4 }),
   btn1: FONT({ weight: 400, size: 1.6, lineHeight: 140, letterSpacing: 4 }),
   btn2: FONT({ weight: 400, size: 1.2, lineHeight: 140, letterSpacing: 4 }),
   caption1: FONT({ weight: 300, size: 1.2, lineHeight: 140, letterSpacing: 3 }),
+  footer1: FONT({ weight: 600, size: 1.4, lineHeight: 140, letterSpacing: 4 }),
+  footer2: FONT({ weight: 400, size: 1.4, lineHeight: 130, letterSpacing: 4 }),
   graphic1: FONT({ weight: 600, size: 2.6, lineHeight: 130, letterSpacing: 3 }),
 } as const;
 
@@ -108,6 +125,7 @@ const media: Media = {
 
 const theme = {
   colors,
+  newColors,
   fonts,
   newFonts,
   media,

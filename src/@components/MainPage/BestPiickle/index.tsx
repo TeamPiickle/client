@@ -8,7 +8,7 @@ import { headingTitles } from "../../../core/main/headingTitles";
 import HeadingTitleContainer from "../../@common/HeadingTitleContainer";
 import Loading from "../../@common/Loading";
 import BestPiickleCard from "./BestPiickleCard";
-import { St } from "./style";
+import St from "./style";
 
 const sliderSettings = {
   arrows: false,

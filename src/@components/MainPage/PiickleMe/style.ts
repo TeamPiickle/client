@@ -1,97 +1,91 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+import { ImgVoteBanner } from "../../../asset/image";
+
 export const St = {
   Container: styled.section``,
 
   RepresentVoteContentConTainer: styled.section`
     position: relative;
     width: 100%;
-    height: 15.2rem;
+    height: 11.2rem;
 
-    padding: 2.6rem 2.4rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    background-color: #c9f2de; //확정 아니어서 일단 노가다로 박음
+    background-image: url(${ImgVoteBanner});
+  `,
+  RepresentVoteContentText: styled.div`
+    position: absolute;
+
+    margin-top: 2.3rem;
+
+    ${({ theme }) => theme.newFonts.body3};
+    color: ${({ theme }) => theme.colors.gray900};
   `,
 
-  VoteContent: styled.article`
-    height: 8.9rem;
+  RepresentVoteContentWrapper: styled.div`
+    margin-bottom: 2.3rem;
+
+    width: 13.9rem;
+    text-align: center;
+
+    background-color: ${({ theme }) => theme.newColors.lightgreen1};
+  `,
+
+  RepresentVoteContentSubText: styled.p`
+    ${({ theme }) => theme.newFonts.caption1}
+    color: ${({ theme }) => theme.colors.gray900};
+  `,
+  RepresentGoVoteBtnWrapper: styled.button`
+    width: 100%;
+    height: 4rem;
+
+    background-color: ${({ theme }) => theme.colors.gray900};
+    color: ${({ theme }) => theme.colors.white};
+
+    ${({ theme }) => theme.newFonts.btn2}
+  `,
+
+  RepresentGoVoteBtn: styled(Link)``,
+
+  ContentWrapper: styled.article`
+    height: 8rem;
+
+    padding: 0 1.6rem;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    &:not(:first-child) {
+      border-top: 0.1rem solid ${({ theme }) => theme.newColors.gray300};
+    }
   `,
 
-  VoteImgTextWrapper: styled.div`
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  ContentText: styled.p`
+    width: 28rem; // MEMO :: 말줄임표를 위한 값
 
-    margin-left: 1.6rem;
-  `,
-
-  VoteTextContainer: styled.div`
-    margin-left: 1.8rem;
-
-    display: flex;
-    flex-direction: column;
-  `,
-
-  RepresentVoteContentText: styled.p`
-    line-height: 1.4;
-
-    margin-bottom: 0.4rem;
-    padding-right: 5.8rem;
-
-    ${({ theme }) => theme.fonts.body3};
-    color: ${({ theme }) => theme.colors.gray800};
-  `,
-
-  RepresentVoteContentSubText: styled.p`
-    ${({ theme }) => theme.fonts.caption3}
-
-    color: ${({ theme }) => theme.colors.gray600};
-  `,
-
-  VoteContentText: styled.p`
-    width: 17rem;
-
-    line-height: 1.4;
-
-    margin-bottom: 0.4rem;
-
-    ${({ theme }) => theme.fonts.body4};
+    ${({ theme }) => theme.newFonts.body4};
+    color: ${({ theme }) => theme.newColors.gray900};
 
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   `,
 
-  RepresentGoVoteBtnWrapper: styled.button`
-    width: 7.6rem;
-    height: 2.8rem;
+  GoVoteBtn: styled(Link)`
+    width: 4.9rem;
+    height: 1.7rem;
 
-    background-color: ${({ theme }) => theme.colors.green};
-    color: ${({ theme }) => theme.colors.white};
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    float: right;
-
-    padding: 0.4rem 1.4rem;
-
-    border-radius: 4.2rem;
-
-    ${({ theme }) => theme.fonts.h2}
-
-    position: absolute;
-    bottom: 1.8rem;
-    right: 1.6rem;
+    ${({ theme }) => theme.newFonts.btn2};
+    color: ${({ theme }) => theme.newColors.gray100};
+    background-color: ${({ theme }) => theme.newColors.gray900};
   `,
-
-  RepresentGoVoteBtn: styled(Link)``,
-
-  GoVoteBtnWrapper: styled.button`
-    margin-right: 1.6rem;
-  `,
-
-  GoVoteBtn: styled(Link)``,
 };

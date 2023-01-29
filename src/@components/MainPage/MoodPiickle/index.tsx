@@ -7,7 +7,7 @@ import { headingTitles } from "../../../core/main/headingTitles";
 import { gridValue } from "../../../core/main/moodPiickle";
 import { routePaths } from "../../../core/routes/path";
 import HeadingTitleContainer from "../../@common/HeadingTitleContainer";
-import { St } from "./style";
+import St from "./style";
 
 export type moodPiickle = {
   _id: string;
@@ -40,12 +40,13 @@ export default function MoodPiickle() {
               rowStart={gridValue[index].rowStart}
               rowEnd={gridValue[index].rowEnd}
               gradation={moodPiickle.gradation}>
-              <St.CategoryTitle className={`GTM_${moodPiickle.title.slice(0, 4)}`}>
-                {moodPiickle.title}
-              </St.CategoryTitle>
+              <St.CategoryImoji>{String.fromCodePoint(parseInt(moodPiickle.unicode, 16))}</St.CategoryImoji>
               <St.CategoryContent className={`GTM_${moodPiickle.title.slice(0, 4)}`}>
                 {moodPiickle.content}
               </St.CategoryContent>
+              <St.CategoryTitle className={`GTM_${moodPiickle.title.slice(0, 4)}`}>
+                {moodPiickle.title}
+              </St.CategoryTitle>
             </St.Category>
           ))}
       </St.CategoryWrapper>

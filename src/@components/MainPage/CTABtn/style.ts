@@ -5,25 +5,24 @@ export const St = {
     display: flex;
 
     position: fixed;
-    bottom: 2.4rem;
+    bottom: 0rem;
     left: 50%;
     transform: translate(-50%, 0);
 
     align-items: center;
     justify-content: center;
 
-    border-radius: 6.6rem;
-    background-color: ${({ theme }) => theme.colors.black};
+    background-color: ${({ theme }) => theme.colors.gray900};
 
-    width: calc(100% - 3.2rem);
-    height: 5rem;
+    width: 100%;
+    height: 5.8rem;
 
-    backdrop-filter: blur(1.2rem);
+    backdrop-filter: blur(0.6rem);
     color: ${({ theme }) => theme.colors.white};
     ${({ theme }) => theme.fonts.btn2};
 
     ${({ theme }) => theme.media.desktop`
-      width: 32.8rem;
+      width: 36rem;
     `};
   `,
 };
