@@ -17,30 +17,6 @@ export const St = {
 
     background-image: url(${ImgVoteBanner});
   `,
-
-  VoteContent: styled.article`
-    height: 8.9rem;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  `,
-
-  VoteImgTextWrapper: styled.div`
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-
-    margin-left: 1.6rem;
-  `,
-
-  VoteTextContainer: styled.div`
-    margin-left: 1.8rem;
-
-    display: flex;
-    flex-direction: column;
-  `,
-
   RepresentVoteContentText: styled.div`
     position: absolute;
 
@@ -63,21 +39,6 @@ export const St = {
     ${({ theme }) => theme.newFonts.caption1}
     color: ${({ theme }) => theme.colors.gray900};
   `,
-
-  VoteContentText: styled.p`
-    width: 17rem;
-
-    line-height: 1.4;
-
-    margin-bottom: 0.4rem;
-
-    ${({ theme }) => theme.fonts.body4};
-
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  `,
-
   RepresentGoVoteBtnWrapper: styled.button`
     width: 100%;
     height: 4rem;
@@ -90,9 +51,41 @@ export const St = {
 
   RepresentGoVoteBtn: styled(Link)``,
 
-  GoVoteBtnWrapper: styled.button`
-    margin-right: 1.6rem;
+  ContentWrapper: styled.article`
+    height: 8rem;
+
+    padding: 0 1.6rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &:not(:first-child) {
+      border-top: 0.1rem solid ${({ theme }) => theme.newColors.gray300};
+    }
   `,
 
-  GoVoteBtn: styled(Link)``,
+  ContentText: styled.p`
+    width: 28rem; // MEMO :: 말줄임표를 위한 값
+
+    ${({ theme }) => theme.newFonts.body4};
+    color: ${({ theme }) => theme.newColors.gray900};
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  `,
+
+  GoVoteBtn: styled(Link)`
+    width: 4.9rem;
+    height: 1.7rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    ${({ theme }) => theme.newFonts.btn2};
+    color: ${({ theme }) => theme.newColors.gray100};
+    background-color: ${({ theme }) => theme.newColors.gray900};
+  `,
 };
