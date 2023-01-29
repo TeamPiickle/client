@@ -7,7 +7,7 @@ import { headingTitles } from "../../../core/main/headingTitles";
 import { gridValue } from "../../../core/main/moodPiickle";
 import { routePaths } from "../../../core/routes/path";
 import HeadingTitleContainer from "../../@common/HeadingTitleContainer";
-import { St } from "./style";
+import St from "./style";
 
 export type moodPiickle = {
   _id: string;
