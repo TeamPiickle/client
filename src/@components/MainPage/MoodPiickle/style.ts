@@ -12,7 +12,7 @@ export const St = {
     grid-template-rows: repeat(2, 1fr);
     grid-gap: 0.8rem;
 
-    margin: auto;
+    margin: 0 auto;
   `,
 
   CategoryOneLine: styled.div`

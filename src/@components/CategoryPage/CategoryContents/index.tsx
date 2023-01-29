@@ -35,7 +35,7 @@ export default function CategoryContents() {
                   onClick={() => moveCategory(item._id)}
                   gradation={item.gradation}
                   className={`GTM_item_${item.title.slice(0, 4)}`}>
-                  <St.CategoryImoji>{`${String.fromCodePoint(parseInt(item.unicode, 16))}`}</St.CategoryImoji>
+                  <St.CategoryImoji>{String.fromCodePoint(parseInt(item.unicode, 16))}</St.CategoryImoji>
                   <St.CategoryDescription className={`GTM_${item.content.slice(0, 4)}`}>
                     {item.content}
                   </St.CategoryDescription>

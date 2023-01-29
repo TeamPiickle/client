@@ -15,7 +15,7 @@ export const St = {
     justify-content: center;
     align-items: center;
 
-    background: url(${ImgVoteBanner});
+    background-image: url(${ImgVoteBanner});
   `,
 
   VoteContent: styled.article`
