@@ -1,27 +1,29 @@
 import styled from "styled-components";
 
-export const St = {
-  Root: styled.section`
-    margin-top: 1.2rem;
-  `,
+const Root = styled.section`
+  margin-top: 1.2rem;
+`;
 
-  SliderWrapper: styled.article`
-    touch-action: pan-x;
+const SliderWrapper = styled.article`
+  touch-action: pan-x;
 
-    width: 100%;
+  & .slick-list {
+    height: 13.6rem;
+    margin-left: -17rem; // MEMO :: 눈대중 임의의 값
+    padding: 1.6rem;
+  }
 
-    & .slick-list {
-      height: 15.3rem;
-      margin-left: -13.5rem;
-      padding: 0.4rem 1.6rem;
-    }
+  & .slick-initialized {
+    overflow: hidden;
+  }
 
-    & .slick-initialized {
-      overflow: hidden;
-    }
+  & .slick-track {
+    scroll-snap-type: x mandatory;
+  }
+`;
 
-    & .slick-track {
-      scroll-snap-type: x mandatory;
-    }
-  `,
+const St = {
+  Root,
+  SliderWrapper,
 };
+export default St;

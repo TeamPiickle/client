@@ -3,7 +3,7 @@ import { useSetRecoilState } from "recoil";
 
 import { sliderIdxState } from "../../../../core/atom/slider";
 import { routePaths } from "../../../../core/routes/path";
-import { St } from "./style";
+import St from "./style";
 
 interface BestPiickleCardProps {
   bestPiickle: {
@@ -25,19 +25,17 @@ export default function BestPiickleCard(props: BestPiickleCardProps) {
     <St.BestPiickleCard className={`GTM_${content.slice(0, 4)}`}>
       <St.TagsWrapper>
         {tags.map((tag: string, i: number) => {
-          return <St.Tag key={i}>{tag}</St.Tag>;
+          return <St.Tag key={i}>{tag.slice(1)}</St.Tag>;
         })}
       </St.TagsWrapper>
       <St.Content>{content}</St.Content>
-      <St.PickButtonWrapper>
-        <St.PickButton
-          type="button"
-          onClick={() => {
-            navigation(routePaths.CardCollection, { state: { type: "best" } });
-            setSliderIdx(idx);
-          }}>
-          카드 보기
-        </St.PickButton>
+      <St.PickButtonWrapper
+        type="button"
+        onClick={() => {
+          navigation(routePaths.CardCollection, { state: { type: "best" } });
+          setSliderIdx(idx);
+        }}>
+        카드 보기
       </St.PickButtonWrapper>
     </St.BestPiickleCard>
   );
