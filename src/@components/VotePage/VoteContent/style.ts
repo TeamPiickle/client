@@ -46,6 +46,7 @@ const LinkBtn = styled(Link)`
   align-items: center;
 
   width: 100%;
+  height: 5.8rem;
 
   ${({ theme }) => theme.newFonts.btn1}
 
