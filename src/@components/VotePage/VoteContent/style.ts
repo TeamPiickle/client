@@ -16,6 +16,7 @@ const VoteContentTitle = styled.h2`
 const BtnContainer = styled.div`
   position: fixed;
   bottom: 0;
+  width: 100%;
 
   display: flex;
   gap: 0.1rem;
