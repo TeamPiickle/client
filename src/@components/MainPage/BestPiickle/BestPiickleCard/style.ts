@@ -41,10 +41,11 @@ const Content = styled.p`
 
 const PickButtonWrapper = styled.button`
   position: absolute;
-  left: 0;
+  left: -0.1rem;
   right: 0;
   bottom: 0;
 
+  width: 20rem;
   height: 3.2rem;
 
   display: flex;
