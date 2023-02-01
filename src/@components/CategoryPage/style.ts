@@ -38,7 +38,7 @@ export const St = {
     bottom: 12px;
 
     color: ${({ theme }) => theme.colors.gray900};
-    ${({ theme }) => theme.newFonts.btn1};
+    ${({ theme }) => theme.newFonts.btn2};
 
     display: flex;
     justify-content: center;
