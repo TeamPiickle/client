@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
-import { IcRightArrow } from "../../asset/icon/index";
+import { IcSmallRightArrow } from "../../asset/icon/index";
 import { sliderIdxState } from "../../core/atom/slider";
 import { categoryTitles } from "../../core/category/categoryList";
 import { routePaths } from "../../core/routes/path";
@@ -30,7 +30,7 @@ export default function CategoryPage() {
         <St.BannerSubTitle>북마크를 가장 많이 달성한 핫한 대화 주제 30선</St.BannerSubTitle>
         <St.GoBestPiickleBtn type="button" onClick={moveBestPiickle} className="GTM_카드보기">
           <St.BtnTitle>카드보기</St.BtnTitle>
-          <IcRightArrow />
+          <IcSmallRightArrow />
         </St.GoBestPiickleBtn>
       </St.CategoryBanner>
       <HeadingTitleContainer headingTitles={categoryTitles} />
