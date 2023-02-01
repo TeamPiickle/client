@@ -19,14 +19,13 @@ const BtnContainer = styled.div`
   width: 100%;
 
   display: flex;
-  gap: 0.1rem;
 
   ${({ theme }) => theme.media.desktop`
     width: 36rem;
   `};
 `;
 
-const MoveBtn = styled.button`
+const MoveBtn = styled.button<{ beforeId: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,6 +35,7 @@ const MoveBtn = styled.button`
 
   ${({ theme }) => theme.newFonts.btn1}
 
+  border-right: 0.1rem solid ${({ theme, beforeId }) => (beforeId ? theme.colors.white : theme.colors.gray900)};
   background-color: ${({ theme }) => theme.colors.gray900};
   color: ${({ theme }) => theme.colors.white};
 `;
@@ -46,7 +46,6 @@ const LinkBtn = styled(Link)`
   align-items: center;
 
   width: 100%;
-  height: 5.8rem;
 
   ${({ theme }) => theme.newFonts.btn1}
 
@@ -64,6 +63,7 @@ const NoLinkBtn = styled.div`
 
   ${({ theme }) => theme.newFonts.btn1}
 
+  border-right: 0.1rem solid white;
   background-color: ${({ theme }) => theme.colors.gray900};
   color: ${({ theme }) => theme.colors.gray600};
 `;

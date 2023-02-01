@@ -28,12 +28,16 @@ export default function VoteContent() {
 
       <St.BtnContainer>
         {ballotTopic.data.beforeTopicId ? (
-          <St.MoveBtn onClick={() => setVoteId(`${ballotTopic.data.beforeTopicId}`)}>이전 질문</St.MoveBtn>
+          <St.MoveBtn beforeId={true} onClick={() => setVoteId(`${ballotTopic.data.beforeTopicId}`)}>
+            이전 질문
+          </St.MoveBtn>
         ) : (
           <St.NoLinkBtn>이전 질문</St.NoLinkBtn>
         )}
         {ballotTopic.data.nextTopicId ? (
-          <St.MoveBtn onClick={() => setVoteId(`${ballotTopic.data.nextTopicId}`)}>다음 질문</St.MoveBtn>
+          <St.MoveBtn beforeId={false} onClick={() => setVoteId(`${ballotTopic.data.nextTopicId}`)}>
+            다음 질문
+          </St.MoveBtn>
         ) : (
           <St.LinkBtn to={routePaths.Main}>홈으로</St.LinkBtn>
         )}
