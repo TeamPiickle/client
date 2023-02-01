@@ -26,13 +26,9 @@ export default function PiickleMe() {
 
       {ballotLists &&
         ballotLists.data.slice(1).map((ballot, idx: number) => (
-          <St.ContentWrapper key={`${ballot._id}-${idx}`}>
+          <St.ContentWrapper to={`${routePaths.Vote}/${ballot._id}`} key={`${ballot._id}-${idx}`}>
             <St.ContentText>{ballot && ballot.topic}</St.ContentText>
-            <St.GoVoteBtn
-              to={`${routePaths.Vote}/${ballot._id}`}
-              className={`GTM_${ballot && ballot.topic.slice(0, 4)}`}>
-              투표하기
-            </St.GoVoteBtn>
+            <St.GoVoteBtn className={`GTM_${ballot && ballot.topic.slice(0, 4)}`}>투표하기</St.GoVoteBtn>
           </St.ContentWrapper>
         ))}
     </St.Container>

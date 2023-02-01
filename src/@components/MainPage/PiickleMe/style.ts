@@ -51,7 +51,7 @@ export const St = {
 
   RepresentGoVoteBtn: styled(Link)``,
 
-  ContentWrapper: styled.article`
+  ContentWrapper: styled(Link)`
     height: 8rem;
 
     padding: 0 1.6rem;
@@ -76,7 +76,7 @@ export const St = {
     white-space: nowrap;
   `,
 
-  GoVoteBtn: styled(Link)`
+  GoVoteBtn: styled.div`
     width: 4.9rem;
     height: 1.7rem;
 
