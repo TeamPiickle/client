@@ -4,7 +4,7 @@ export const St = {
   Footer: styled.section`
     display: flex;
     position: relative;
-    padding-bottom: 26rem;
+    padding-bottom: 29.6rem;
     height: 22rem;
 
     background-color: ${({ theme }) => theme.newColors.gray100};
