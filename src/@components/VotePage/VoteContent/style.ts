@@ -16,11 +16,13 @@ const VoteContentTitle = styled.h2`
 const BtnContainer = styled.div`
   position: fixed;
   bottom: 0;
-  left: 0;
-  right: 0;
 
   display: flex;
   gap: 0.1rem;
+
+  ${({ theme }) => theme.media.desktop`
+    width: 36rem;
+  `};
 `;
 
 const MoveBtn = styled.button`
