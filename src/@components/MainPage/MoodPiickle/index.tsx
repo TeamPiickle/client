@@ -6,6 +6,7 @@ import { sliderIdxState } from "../../../core/atom/slider";
 import { headingTitles } from "../../../core/main/headingTitles";
 import { gridValue } from "../../../core/main/moodPiickle";
 import { routePaths } from "../../../core/routes/path";
+import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import HeadingTitleContainer from "../../@common/HeadingTitleContainer";
 import St from "./style";
 

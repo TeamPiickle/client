@@ -7,6 +7,7 @@ import { useRecoilState } from "recoil";
 
 import { sliderIdxState } from "../../../core/atom/slider";
 import { CardList } from "../../../types/cardCollection";
+import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import Loading from "../../@common/Loading";
 import Card from "../Card";
 import LastCard from "../Card/LastCard";
@@ -50,7 +51,12 @@ export default function CardSlider(props: CardSliderProps) {
           <LastCard />
         </Slider>
       )}
-      <St.IcFilterBtn onClick={openFilterModalHandler} aria-label="카드 추천 필터" role="dialog" />
+      <St.IcFilterBtn
+        aria-label="카드 추천 필터"
+        role="dialog"
+        className={GTM_CLASS_NAME.cardRecommendFilter}
+        onClick={openFilterModalHandler}
+      />
     </St.Wrapper>
   );
 }

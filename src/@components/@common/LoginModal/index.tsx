@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 import { routePaths } from "../../../core/routes/path";
+import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import CustomFullHeart from "../../CardCollectionPage/CustomFullHeart";
 import Modal from "../Modal";
 import { St } from "./style";
@@ -26,6 +27,7 @@ export default function LoginModal(props: LoginCheckProps) {
         <St.Buttons>
           <St.Button
             type="button"
+            className={GTM_CLASS_NAME.cardLogin}
             onClick={() => {
               closeHandler();
               navigate(routePaths.Login);
@@ -34,6 +36,7 @@ export default function LoginModal(props: LoginCheckProps) {
           </St.Button>
           <St.Button
             type="button"
+            className={GTM_CLASS_NAME.cardJoin}
             onClick={() => {
               closeHandler();
               // navigate(`${routePaths.Join_}${routePaths.Join_EmailAuthentication}`);
