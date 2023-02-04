@@ -5,6 +5,7 @@ import { useCategoryLists } from "../../../core/api/main";
 import { sliderIdxState } from "../../../core/atom/slider";
 import { gridValue } from "../../../core/category/categoryList";
 import { routePaths } from "../../../core/routes/path";
+import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import Loading from "../../@common/Loading";
 import { St } from "./style";
 
@@ -18,29 +19,28 @@ export default function CategoryContents() {
     navigate(routePaths.CardCollection, { state: { type: "category", categoryId: id } });
     setSliderIdx(0);
   };
+
   if (categoryLists?.data === undefined) return <Loading backgroundColor="transparent" />;
-  else
-    return (
-      <St.FlexContainer>
-        <St.CategoryItemContainer>
-          {categoryLists &&
-            categoryLists.data.slice(0, 8).map((item, index) => {
-              return (
-                <St.CategoryItem
-                  key={index}
-                  columnStart={gridValue[index].columnStart}
-                  columnEnd={gridValue[index].columnEnd}
-                  rowStart={gridValue[index].rowStart}
-                  rowEnd={gridValue[index].rowEnd}
-                  onClick={() => moveCategory(item._id)}
-                  gradation={item.gradation}>
-                  <St.CategoryImoji>{String.fromCodePoint(parseInt(item.unicode, 16))}</St.CategoryImoji>
-                  <St.CategoryDescription>{item.content}</St.CategoryDescription>
-                  <St.CategoryTitle>{item.title}</St.CategoryTitle>
-                </St.CategoryItem>
-              );
-            })}
-        </St.CategoryItemContainer>
-      </St.FlexContainer>
-    );
+  return (
+    <St.FlexContainer>
+      <St.CategoryItemContainer>
+        {categoryLists &&
+          categoryLists.data.slice(0, 8).map((item, index) => (
+            <St.CategoryItem
+              key={index}
+              className={GTM_CLASS_NAME[`mood${item.title}`]}
+              columnStart={gridValue[index].columnStart}
+              columnEnd={gridValue[index].columnEnd}
+              rowStart={gridValue[index].rowStart}
+              rowEnd={gridValue[index].rowEnd}
+              gradation={item.gradation}
+              onClick={() => moveCategory(item._id)}>
+              <St.CategoryImoji>{String.fromCodePoint(parseInt(item.unicode, 16))}</St.CategoryImoji>
+              <St.CategoryDescription>{item.content}</St.CategoryDescription>
+              <St.CategoryTitle>{item.title}</St.CategoryTitle>
+            </St.CategoryItem>
+          ))}
+      </St.CategoryItemContainer>
+    </St.FlexContainer>
+  );
 }

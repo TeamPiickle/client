@@ -7,14 +7,14 @@ type GtmClassName = {
   mainBestPiickle4: string;
   mainBestPiickle5: string;
   mainMoodPiickleMore: string;
-  mainCategory1: string;
-  mainCategory2: string;
-  mainCategory3: string;
-  mainCategory4: string;
-  mainCategory5: string;
-  mainCategory6: string;
-  mainCategory7: string;
-  mainCategory8: string;
+  main아이스브레이킹: string;
+  main커플: string;
+  main친구: string;
+  "main진지한 대화": string;
+  mainIF: string;
+  main밸런스게임: string;
+  main소개팅: string;
+  mainSOPT: string;
   mainVote1: string;
   mainVote2: string;
   mainVote3: string;
@@ -33,29 +33,29 @@ type GtmClassName = {
   cardJoin: string;
   cardRecommendFilter: string;
   filterClose: string;
-  filterMan: string;
-  filterWoman: string;
-  filterG10: string;
-  filterG20: string;
-  filterG30: string;
-  filterAlone: string;
-  filterCouple: string;
-  filterFriend: string;
-  filterClub: string;
-  filter19: string;
-  filterDontCare: string;
-  filterNew: string;
-  filterFriendly: string;
-  filterTight: string;
+  filter남: string;
+  filter여: string;
+  filter10대: string;
+  filter20대: string;
+  filter30대: string;
+  filter개인: string;
+  filter커플: string;
+  filter친구: string;
+  filter단체: string;
+  filter19금: string;
+  filter상관없음: string;
+  filter새로워요: string;
+  filter친근해요: string;
+  filter절친해요: string;
   filterStart: string;
   moodShowCard: string;
-  moodIce: string;
-  moodCouple: string;
-  moodFriend: string;
-  moodDeepConversation: string;
-  moodIf: string;
-  moodBalanceGame: string;
-  moodDate: string;
+  mood아이스브레이킹: string;
+  mood커플: string;
+  mood친구: string;
+  "mood진지한 대화": string;
+  moodIF: string;
+  mood밸런스게임: string;
+  mood소개팅: string;
   moodSOPT: string;
   piicleMe1: string;
   piicleMe2: string;
@@ -70,6 +70,7 @@ type GtmClassName = {
   joinProfileNext: string;
   joinAcceptComplete: string;
 };
+
 export const GTM_CLASS_NAME: GtmClassName = {
   mainPiickleLogo: "click_main_logo",
   mainBestPiickle1: "click_main_best_1",
@@ -78,14 +79,14 @@ export const GTM_CLASS_NAME: GtmClassName = {
   mainBestPiickle4: "click_main_best_4",
   mainBestPiickle5: "click_main_best_5",
   mainMoodPiickleMore: "click_main_mood_plus",
-  mainCategory1: "click_main_mood_ice",
-  mainCategory2: "click_main_mood_couple",
-  mainCategory3: "click_main_mood_friend",
-  mainCategory4: "click_main_mood_deep",
-  mainCategory5: "click_main_mood_if",
-  mainCategory6: "click_main_mood_vs",
-  mainCategory7: "click_main_mood_date",
-  mainCategory8: "click_main_mood_sopt",
+  main아이스브레이킹: "click_main_mood_ice",
+  main커플: "click_main_mood_couple",
+  main친구: "click_main_mood_friend",
+  "main진지한 대화": "click_main_mood_deep",
+  mainIF: "click_main_mood_if",
+  main밸런스게임: "click_main_mood_vs",
+  main소개팅: "click_main_mood_date",
+  mainSOPT: "click_main_mood_sopt",
   mainVote1: "click_main_vote_1",
   mainVote2: "click_main_vote_2",
   mainVote3: "click_main_vote_3",
@@ -104,29 +105,29 @@ export const GTM_CLASS_NAME: GtmClassName = {
   cardJoin: "click_card_joinmember",
   cardRecommendFilter: "click_card_filter",
   filterClose: "click_filter_close",
-  filterMan: "click_filter_man",
-  filterWoman: "click_filter_woman",
-  filterG10: "click_filter_10",
-  filterG20: "click_filter_20",
-  filterG30: "click_filter_30",
-  filterAlone: "click_filter_alone",
-  filterCouple: "click_filter_couple",
-  filterFriend: "click_filter_friend",
-  filterClub: "click_filter_club",
-  filter19: "click_filter_19",
-  filterDontCare: "click_filter_dontcare",
-  filterNew: "click_filter_new",
-  filterFriendly: "click_filter_friendly",
-  filterTight: "click_filter_tight",
+  filter남: "click_filter_man",
+  filter여: "click_filter_woman",
+  filter10대: "click_filter_10",
+  filter20대: "click_filter_20",
+  filter30대: "click_filter_30",
+  filter개인: "click_filter_alone",
+  filter커플: "click_filter_couple",
+  filter친구: "click_filter_friend",
+  filter단체: "click_filter_club",
+  filter19금: "click_filter_19",
+  filter상관없음: "click_filter_dontcare",
+  filter새로워요: "click_filter_new",
+  filter친근해요: "click_filter_friendly",
+  filter절친해요: "click_filter_tight",
   filterStart: "click_filter_start",
   moodShowCard: "click_mood_bestcard",
-  moodIce: "click_mood_ice",
-  moodCouple: "click_mood_couple",
-  moodFriend: "click_mood_friend",
-  moodDeepConversation: "click_mood_deep",
-  moodIf: "click_mood_if",
-  moodBalanceGame: "click_mood_vs",
-  moodDate: "click_mood_date",
+  mood아이스브레이킹: "click_mood_ice",
+  mood커플: "click_mood_couple",
+  mood친구: "click_mood_friend",
+  "mood진지한 대화": "click_mood_deep",
+  moodIF: "click_mood_if",
+  mood밸런스게임: "click_mood_vs",
+  mood소개팅: "click_mood_date",
   moodSOPT: "click_mood_sopt",
   piicleMe1: "click_vote_1",
   piicleMe2: "click_vote_2",

@@ -35,12 +35,13 @@ export default function MoodPiickle() {
           randomCategoryLists.slice(0, 4).map((moodPiickle, index) => (
             <St.Category
               key={moodPiickle._id}
-              onClick={() => moveCategory(moodPiickle._id)}
+              className={GTM_CLASS_NAME[`main${moodPiickle.title}`]}
               columnStart={gridValue[index].columnStart}
               columnEnd={gridValue[index].columnEnd}
               rowStart={gridValue[index].rowStart}
               rowEnd={gridValue[index].rowEnd}
-              gradation={moodPiickle.gradation}>
+              gradation={moodPiickle.gradation}
+              onClick={() => moveCategory(moodPiickle._id)}>
               <St.CategoryImoji>{String.fromCodePoint(parseInt(moodPiickle.unicode, 16))}</St.CategoryImoji>
               <St.CategoryContent>{moodPiickle.content}</St.CategoryContent>
               <St.CategoryTitle>{moodPiickle.title}</St.CategoryTitle>
