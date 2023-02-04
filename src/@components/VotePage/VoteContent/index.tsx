@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import useBallotTopic from "../../../core/api/vote";
 import { routePaths } from "../../../core/routes/path";
@@ -12,6 +12,7 @@ export default function VoteContent() {
   const params = useParams();
   const [voteId, setVoteId] = useState(`${params.voteId}`);
   const { ballotTopic, isBeforeVotingState, mutateBallotState } = useBallotTopic(voteId);
+  const navigate = useNavigate();
 
   if (!ballotTopic) return <Loading backgroundColor="white" />;
 
@@ -28,18 +29,19 @@ export default function VoteContent() {
 
       <St.BtnContainer>
         {ballotTopic.data.beforeTopicId ? (
-          <St.MoveBtn beforeId={true} onClick={() => setVoteId(`${ballotTopic.data.beforeTopicId}`)}>
-            이전 질문
-          </St.MoveBtn>
+          <St.BeforeBtn onClick={() => setVoteId(`${ballotTopic.data.beforeTopicId}`)}>이전 질문</St.BeforeBtn>
         ) : (
           <St.NoLinkBtn>이전 질문</St.NoLinkBtn>
         )}
         {ballotTopic.data.nextTopicId ? (
-          <St.MoveBtn beforeId={false} onClick={() => setVoteId(`${ballotTopic.data.nextTopicId}`)}>
-            다음 질문
-          </St.MoveBtn>
+          <St.MoveBtn onClick={() => setVoteId(`${ballotTopic.data.nextTopicId}`)}>다음 질문</St.MoveBtn>
         ) : (
-          <St.LinkBtn to={routePaths.Main}>홈으로</St.LinkBtn>
+          <St.MoveBtn
+            onClick={() => {
+              navigate(routePaths.Main);
+            }}>
+            홈으로
+          </St.MoveBtn>
         )}
       </St.BtnContainer>
     </>
