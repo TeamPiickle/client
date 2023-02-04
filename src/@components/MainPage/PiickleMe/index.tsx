@@ -17,12 +17,10 @@ export default function PiickleMe() {
         </St.RepresentVoteContentWrapper>
         <St.RepresentVoteContentText>{ballotLists && ballotLists.data[0].topic}</St.RepresentVoteContentText>
       </St.RepresentVoteContentConTainer>
-      <St.RepresentGoVoteBtnWrapper type="button">
-        <St.RepresentGoVoteBtn
-          to={`${routePaths.Vote}/${ballotLists && ballotLists.data[0]._id}`}
-          className={GTM_CLASS_NAME.mainVote1}>
-          투표하기
-        </St.RepresentGoVoteBtn>
+      <St.RepresentGoVoteBtnWrapper
+        to={`${routePaths.Vote}/${ballotLists && ballotLists.data[0]._id}`}
+        className={GTM_CLASS_NAME.mainVote1}>
+        투표하기
       </St.RepresentGoVoteBtnWrapper>
 
       {ballotLists &&

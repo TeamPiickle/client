@@ -39,17 +39,19 @@ export const St = {
     ${({ theme }) => theme.newFonts.caption1}
     color: ${({ theme }) => theme.colors.gray900};
   `,
-  RepresentGoVoteBtnWrapper: styled.button`
+  RepresentGoVoteBtnWrapper: styled(Link)`
     width: 100%;
     height: 4rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     background-color: ${({ theme }) => theme.colors.gray900};
     color: ${({ theme }) => theme.colors.white};
 
     ${({ theme }) => theme.newFonts.btn2}
   `,
-
-  RepresentGoVoteBtn: styled(Link)``,
 
   ContentWrapper: styled.article`
     height: 8rem;
