@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const VoteContentContainer = styled.article`
@@ -25,22 +24,7 @@ const BtnContainer = styled.div`
   `};
 `;
 
-const MoveBtn = styled.button<{ beforeId: boolean }>`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 100%;
-  height: 5.8rem;
-
-  ${({ theme }) => theme.newFonts.btn1}
-
-  border-right: 0.1rem solid ${({ theme, beforeId }) => (beforeId ? theme.colors.white : theme.colors.gray900)};
-  background-color: ${({ theme }) => theme.colors.gray900};
-  color: ${({ theme }) => theme.colors.white};
-`;
-
-const LinkBtn = styled(Link)`
+const MoveBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,18 +38,11 @@ const LinkBtn = styled(Link)`
   color: ${({ theme }) => theme.colors.white};
 `;
 
-const NoLinkBtn = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+const BeforeBtn = styled(MoveBtn)`
+  border-right: 0.1rem solid ${({ theme }) => theme.colors.white};
+`;
 
-  width: 100%;
-  height: 5.8rem;
-
-  ${({ theme }) => theme.newFonts.btn1}
-
-  border-right: 0.1rem solid white;
-  background-color: ${({ theme }) => theme.colors.gray900};
+const NoLinkBtn = styled(BeforeBtn)`
   color: ${({ theme }) => theme.colors.gray600};
 `;
 
@@ -74,7 +51,7 @@ const St = {
   VoteContentTitle,
   BtnContainer,
   MoveBtn,
-  LinkBtn,
+  BeforeBtn,
   NoLinkBtn,
 };
 
