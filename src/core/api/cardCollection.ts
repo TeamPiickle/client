@@ -41,10 +41,6 @@ export default function useCardLists(cardsTypeLocation: CardsTypeLocation) {
       _fetchingCheckedTags.delete("여");
       _fetchingCheckedTags.add("여자");
     }
-    if (_fetchingCheckedTags.has("절친해요")) {
-      _fetchingCheckedTags.delete("절친해요");
-      _fetchingCheckedTags.add("깊어요");
-    }
 
     const { data } = await cardCollectionApi.fetchCardsWithFilter<{ data: CardList[] }>([..._fetchingCheckedTags]);
 
