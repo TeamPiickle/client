@@ -103,9 +103,7 @@ export default function UserProfilePage() {
 
         <St.SubTitle>성별(선택)</St.SubTitle>
         <ProfileGender isSelected={isSelected} setIsSelected={setIsSelected} />
-        <St.NextButton onClick={completeBtn} className="GTM_Profile">
-          다음으로
-        </St.NextButton>
+        <St.NextButton onClick={completeBtn}>다음으로</St.NextButton>
       </St.ProfileContainer>
       <Footer />
     </St.Root>

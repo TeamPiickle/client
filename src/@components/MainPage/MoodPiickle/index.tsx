@@ -41,12 +41,8 @@ export default function MoodPiickle() {
               rowEnd={gridValue[index].rowEnd}
               gradation={moodPiickle.gradation}>
               <St.CategoryImoji>{String.fromCodePoint(parseInt(moodPiickle.unicode, 16))}</St.CategoryImoji>
-              <St.CategoryContent className={`GTM_${moodPiickle.title.slice(0, 4)}`}>
-                {moodPiickle.content}
-              </St.CategoryContent>
-              <St.CategoryTitle className={`GTM_${moodPiickle.title.slice(0, 4)}`}>
-                {moodPiickle.title}
-              </St.CategoryTitle>
+              <St.CategoryContent>{moodPiickle.content}</St.CategoryContent>
+              <St.CategoryTitle>{moodPiickle.title}</St.CategoryTitle>
             </St.Category>
           ))}
       </St.CategoryWrapper>

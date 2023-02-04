@@ -29,8 +29,7 @@ export default function LoginModal(props: LoginCheckProps) {
             onClick={() => {
               closeHandler();
               navigate(routePaths.Login);
-            }}
-            className="GTM_ModalLogin">
+            }}>
             로그인
           </St.Button>
           <St.Button
@@ -39,8 +38,7 @@ export default function LoginModal(props: LoginCheckProps) {
               closeHandler();
               // navigate(`${routePaths.Join_}${routePaths.Join_EmailAuthentication}`);
               navigate(`${routePaths.Join_}${routePaths.Join_UserInfo}`);
-            }}
-            className="GTM_ModalJoin">
+            }}>
             회원가입
           </St.Button>
         </St.Buttons>

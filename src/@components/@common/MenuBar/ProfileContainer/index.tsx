@@ -35,12 +35,10 @@ export default function ProfileContainer(props: ProfileContainerProps) {
       </St.WelcomeText>
       <St.DescriptText>오늘도 피클과 함께 대화 나눠요</St.DescriptText>
       <St.BtnContainer>
-        <St.MyProfileBtn to={routePaths.MyPage} onClick={closeMenuBar} className="GTM_MyProfile">
+        <St.MyProfileBtn to={routePaths.MyPage} onClick={closeMenuBar}>
           My 프로필
         </St.MyProfileBtn>
-        <St.LogoutBtn onClick={handleLogout} className="GTM_Logout">
-          로그아웃
-        </St.LogoutBtn>
+        <St.LogoutBtn onClick={handleLogout}>로그아웃</St.LogoutBtn>
       </St.BtnContainer>
     </St.ProfileContainer>
   );

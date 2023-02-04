@@ -15,7 +15,7 @@ export default function CTABtn() {
   };
 
   return (
-    <St.Button type="button" onClick={clickCTABtn} className="GTM_CTA">
+    <St.Button type="button" onClick={clickCTABtn}>
       대화주제 추천 바로가기
     </St.Button>
   );

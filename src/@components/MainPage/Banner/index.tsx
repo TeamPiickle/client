@@ -22,7 +22,7 @@ export default function Banner() {
   };
 
   return (
-    <St.BannerSlider className="GTM_Banner">
+    <St.BannerSlider>
       <Slider {...settings}>
         {bannerImage.map((img, index) => (
           <St.ImageWrapper key={index} src={img.src} alt={img.alt} />

@@ -28,7 +28,7 @@ export default function CategoryPage() {
       <St.CategoryBanner>
         <St.BannerTitle>베스트 카드들만 모아서 보기</St.BannerTitle>
         <St.BannerSubTitle>북마크를 가장 많이 달성한 핫한 대화 주제 30선</St.BannerSubTitle>
-        <St.GoBestPiickleBtn type="button" onClick={moveBestPiickle} className="GTM_카드보기">
+        <St.GoBestPiickleBtn type="button" onClick={moveBestPiickle}>
           <St.BtnTitle>카드보기</St.BtnTitle>
           <IcSmallRightArrow />
         </St.GoBestPiickleBtn>

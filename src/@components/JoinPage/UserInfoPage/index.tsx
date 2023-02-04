@@ -91,9 +91,7 @@ export default function UserInfo() {
           />
         </St.UserInfoContainer>
         <St.SuccessBtnContainer>
-          <St.SuccessBtn onClick={onClickSuccessBtn} className="GTM_Password">
-            다음으로
-          </St.SuccessBtn>
+          <St.SuccessBtn onClick={onClickSuccessBtn}>다음으로</St.SuccessBtn>
         </St.SuccessBtnContainer>
       </St.ContainerWrapper>
       <Footer />

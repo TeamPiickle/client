@@ -13,7 +13,7 @@ export default function Header() {
   return (
     <St.HeaderWrapper iscardview={pathname === routePaths.CardCollection}>
       <St.Link to={routePaths.Main}>
-        <IcLogo aria-label="피클" className="GTM_logo" />
+        <IcLogo aria-label="피클" />
       </St.Link>
       <St.HamburgerContainer isClicked={isModalOpen}>
         <IcHamburger aria-label="메뉴" onClick={toggleModal} />

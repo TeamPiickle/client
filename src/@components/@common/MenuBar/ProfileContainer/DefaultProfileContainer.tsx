@@ -21,12 +21,10 @@ export default function DefaultProfileContainer(props: ProfileContainerProps) {
       <St.WelcomeText>안녕하세요</St.WelcomeText>
       <St.DescriptText>오늘도 피클과 함께 대화 나눠요</St.DescriptText>
       <St.BtnContainer>
-        <St.MyProfileBtn to={routePaths.Login} onClick={closeMenuBar} className="GTM_Login">
+        <St.MyProfileBtn to={routePaths.Login} onClick={closeMenuBar}>
           로그인
         </St.MyProfileBtn>
-        <St.LogoutBtn onClick={handleJoin} className="GTM_Join">
-          회원가입
-        </St.LogoutBtn>
+        <St.LogoutBtn onClick={handleJoin}>회원가입</St.LogoutBtn>
       </St.BtnContainer>
     </St.ProfileContainer>
   );
