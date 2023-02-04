@@ -9,9 +9,11 @@ import { St } from "./style";
 interface LoginCheckProps {
   closeHandler: () => void;
   contents: string;
+  voteLoginClassName?: string;
+  voteJoinClassName?: string;
 }
 export default function LoginModal(props: LoginCheckProps) {
-  const { closeHandler, contents } = props;
+  const { closeHandler, contents, voteLoginClassName, voteJoinClassName } = props;
   const navigate = useNavigate();
 
   return (
@@ -27,7 +29,8 @@ export default function LoginModal(props: LoginCheckProps) {
         <St.Buttons>
           <St.Button
             type="button"
-            className={GTM_CLASS_NAME.cardLogin}
+            // 투표에서의 로그인인지, 카드 좋아요에서의 로그인인지
+            className={voteLoginClassName ? voteLoginClassName : GTM_CLASS_NAME.cardLogin}
             onClick={() => {
               closeHandler();
               navigate(routePaths.Login);
@@ -36,7 +39,8 @@ export default function LoginModal(props: LoginCheckProps) {
           </St.Button>
           <St.Button
             type="button"
-            className={GTM_CLASS_NAME.cardJoin}
+            // 투표에서의 회원가입인지, 카드 좋아요에서의 회원가입인지
+            className={voteJoinClassName ? voteJoinClassName : GTM_CLASS_NAME.cardJoin}
             onClick={() => {
               closeHandler();
               // navigate(`${routePaths.Join_}${routePaths.Join_EmailAuthentication}`);

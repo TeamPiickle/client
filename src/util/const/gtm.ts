@@ -57,18 +57,18 @@ type GtmClassName = {
   mood밸런스게임: string;
   mood소개팅: string;
   moodSOPT: string;
-  piicleMe1: string;
-  piicleMe2: string;
-  piicleMe3: string;
-  piicleMeVote: string;
-  piicleMeLogin: string;
-  piicleMeJoin: string;
-  piicleMeBack: string;
-  piicleMeNext: string;
-  piicleMeHome: string;
+  piickleMe1: string;
+  piickleMe2: string;
+  piickleMe3: string;
+  piickleMeVote: string;
+  piickleMeLogin: string;
+  piickleMeJoin: string;
+  piickleMeBack: string;
+  piickleMeNext: string;
+  piickleMeHome: string;
   joinInfoNext: string;
   joinProfileNext: string;
-  joinAcceptComplete: string;
+  joinAgreeComplete: string;
 };
 
 export const GTM_CLASS_NAME: GtmClassName = {
@@ -129,16 +129,16 @@ export const GTM_CLASS_NAME: GtmClassName = {
   mood밸런스게임: "click_mood_vs",
   mood소개팅: "click_mood_date",
   moodSOPT: "click_mood_sopt",
-  piicleMe1: "click_vote_1",
-  piicleMe2: "click_vote_2",
-  piicleMe3: "click_vote_3",
-  piicleMeVote: "click_vote_votecompl",
-  piicleMeLogin: "click_vote_log",
-  piicleMeJoin: "click_vote_joinmember",
-  piicleMeBack: "click_vote_back",
-  piicleMeNext: "click_vote_next",
-  piicleMeHome: "click_vote_gohome",
+  piickleMe1: "click_vote_1",
+  piickleMe2: "click_vote_2",
+  piickleMe3: "click_vote_3",
+  piickleMeVote: "click_vote_votecompl",
+  piickleMeLogin: "click_vote_log",
+  piickleMeJoin: "click_vote_joinmember",
+  piickleMeBack: "click_vote_back",
+  piickleMeNext: "click_vote_next",
+  piickleMeHome: "click_vote_gohome",
   joinInfoNext: "click_joinmember_next1",
   joinProfileNext: "click_joinmember_next2",
-  joinAcceptComplete: "click_joinmember_compl",
+  joinAgreeComplete: "click_joinmember_compl",
 };

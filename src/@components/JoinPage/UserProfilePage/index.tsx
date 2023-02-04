@@ -5,6 +5,7 @@ import { ImgDefaultBigProfile } from "../../../asset/image";
 import { subHeaderInfo } from "../../../core/join/subHeaderInfo";
 import { errorMessage } from "../../../core/join/userProfileErrorMessage";
 import { routePaths } from "../../../core/routes/path";
+import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import Footer from "../../@common/Footer";
 import SubHeader from "../../@common/SubHeader";
 import { UserInfoFormDataContext } from "..";
@@ -103,7 +104,9 @@ export default function UserProfilePage() {
 
         <St.SubTitle>성별(선택)</St.SubTitle>
         <ProfileGender isSelected={isSelected} setIsSelected={setIsSelected} />
-        <St.NextButton onClick={completeBtn}>다음으로</St.NextButton>
+        <St.NextButton className={GTM_CLASS_NAME.joinProfileNext} onClick={completeBtn}>
+          다음으로
+        </St.NextButton>
       </St.ProfileContainer>
       <Footer />
     </St.Root>
