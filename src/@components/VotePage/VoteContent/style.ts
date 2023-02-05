@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const VoteContentContainer = styled.article`
@@ -16,11 +15,13 @@ const VoteContentTitle = styled.h2`
 const BtnContainer = styled.div`
   position: fixed;
   bottom: 0;
-  left: 0;
-  right: 0;
+  width: 100%;
 
   display: flex;
-  gap: 0.1rem;
+
+  ${({ theme }) => theme.media.desktop`
+    width: 36rem;
+  `};
 `;
 
 const MoveBtn = styled.button`
@@ -37,31 +38,11 @@ const MoveBtn = styled.button`
   color: ${({ theme }) => theme.colors.white};
 `;
 
-const LinkBtn = styled(Link)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 100%;
-  height: 5.8rem;
-
-  ${({ theme }) => theme.newFonts.btn1}
-
-  background-color: ${({ theme }) => theme.colors.gray900};
-  color: ${({ theme }) => theme.colors.white};
+const BeforeBtn = styled(MoveBtn)`
+  border-right: 0.1rem solid ${({ theme }) => theme.colors.white};
 `;
 
-const NoLinkBtn = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 100%;
-  height: 5.8rem;
-
-  ${({ theme }) => theme.newFonts.btn1}
-
-  background-color: ${({ theme }) => theme.colors.gray900};
+const NoLinkBtn = styled(BeforeBtn)`
   color: ${({ theme }) => theme.colors.gray600};
 `;
 
@@ -70,7 +51,7 @@ const St = {
   VoteContentTitle,
   BtnContainer,
   MoveBtn,
-  LinkBtn,
+  BeforeBtn,
   NoLinkBtn,
 };
 
