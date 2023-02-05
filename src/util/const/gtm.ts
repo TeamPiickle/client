@@ -57,9 +57,6 @@ type GtmClassName = {
   mood밸런스게임: string;
   mood소개팅: string;
   moodSOPT: string;
-  piickleMe1: string;
-  piickleMe2: string;
-  piickleMe3: string;
   piickleMeVote: string;
   piickleMeLogin: string;
   piickleMeJoin: string;
@@ -129,9 +126,6 @@ export const GTM_CLASS_NAME: GtmClassName = {
   mood밸런스게임: "click_mood_vs",
   mood소개팅: "click_mood_date",
   moodSOPT: "click_mood_sopt",
-  piickleMe1: "click_vote_1",
-  piickleMe2: "click_vote_2",
-  piickleMe3: "click_vote_3",
   piickleMeVote: "click_vote_votecompl",
   piickleMeLogin: "click_vote_log",
   piickleMeJoin: "click_vote_joinmember",
