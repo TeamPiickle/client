@@ -3,6 +3,7 @@ import { useState } from "react";
 import { IcCheckWithNoBg } from "../../../../asset/icon";
 import { voteApi } from "../../../../core/api/vote";
 import { BallotTopicData } from "../../../../types/ballots";
+import { GTM_CLASS_NAME } from "../../../../util/const/gtm";
 import useModal from "../../../@common/hooks/useModal";
 import LoginModal from "../../../@common/LoginModal";
 import St from "./style";
@@ -59,11 +60,18 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
         ))}
       </St.VoteOptionContainer>
 
-      <St.VoteBtn onClick={handleClickVote} role="dialog">
+      <St.VoteBtn role="dialog" className={GTM_CLASS_NAME.piicleMeVote} onClick={handleClickVote}>
         투표하기
       </St.VoteBtn>
 
-      {isLoginModalOpen && <LoginModal closeHandler={toggleLoginModal} contents={"투표기능인 피클미를"} />}
+      {isLoginModalOpen && (
+        <LoginModal
+          closeHandler={toggleLoginModal}
+          contents={"투표기능인 피클미를"}
+          voteLoginClassName={GTM_CLASS_NAME.piickleMeLogin}
+          voteJoinClassName={GTM_CLASS_NAME.piickleMeJoin}
+        />
+      )}
     </>
   );
 }

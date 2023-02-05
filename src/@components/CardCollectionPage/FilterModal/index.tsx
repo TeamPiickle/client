@@ -3,6 +3,7 @@ import { useRecoilState } from "recoil";
 
 import { filterTagsState } from "../../../core/atom/slider";
 import { filterTagsInfo, intimacyTags } from "../../../core/cardCollection/filter";
+import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import Modal from "../../@common/Modal";
 import IntimacySlider from "./IntimacySlider";
 import { St } from "./style";
@@ -41,14 +42,18 @@ export default function FilterModal(props: FilterModalProps) {
   };
 
   return (
-    <Modal closeHandler={closeHandler}>
+    <Modal closeHandler={closeHandler} closeBtnClassName={GTM_CLASS_NAME.filterClose}>
       <St.ModalContentsWrapper>
         {filterTagsInfo.map((filterTagInfo, idx) => (
           <React.Fragment key={`filter-${idx}`}>
             <St.FilterTitle>{filterTagInfo.type}</St.FilterTitle>
             <St.FilterTagsWrapper>
               {filterTagInfo.tags.map((tag, index) => (
-                <St.FilterTag key={index} isactive={filterTags.tags.has(tag)} onClick={() => toggleTag(tag)}>
+                <St.FilterTag
+                  key={index}
+                  className={GTM_CLASS_NAME[`filter${tag}`]}
+                  isactive={filterTags.tags.has(tag)}
+                  onClick={() => toggleTag(tag)}>
                   {tag}
                 </St.FilterTag>
               ))}
@@ -77,7 +82,7 @@ export default function FilterModal(props: FilterModalProps) {
       </St.ModalContentsWrapper>
 
       <St.SubmitBtnWrapper>
-        <St.SubmitBtn onClick={submitFilter} type="submit">
+        <St.SubmitBtn type="submit" className={GTM_CLASS_NAME.filterStart} onClick={submitFilter}>
           추천 시작하기
         </St.SubmitBtn>
       </St.SubmitBtnWrapper>

@@ -5,6 +5,7 @@ import { IcCloseBtn } from "../../../asset/icon";
 import { useBallotLists } from "../../../core/api/main";
 import { sliderIdxState } from "../../../core/atom/slider";
 import { routePaths } from "../../../core/routes/path";
+import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import ProfileContainer from "./ProfileContainer";
 import DefaultProfileContainer from "./ProfileContainer/DefaultProfileContainer";
 import { St, StContentsContainer } from "./style";
@@ -42,16 +43,22 @@ export default function MenuBar(props: MenuBarProps) {
             <DefaultProfileContainer closeMenuBar={closeMenuBar} />
           )}
           <St.RecomendContainer>
-            <St.CardRecomendWrapper onClick={moveCardCollection}>
-              <St.Title className="GTM_대화주제추천">대화 주제 추천 카드</St.Title>
+            <St.CardRecomendWrapper className={GTM_CLASS_NAME.menuRecommendCard} onClick={moveCardCollection}>
+              <St.Title>대화 주제 추천 카드</St.Title>
             </St.CardRecomendWrapper>
-            <St.RecomendWrapper to={routePaths.Category} onClick={closeMenuBar}>
-              <St.Title className="GTM_MoodPiickle">Mood Piickles</St.Title>
-              <St.SubTitle className="GTM_MoodPiickle_sub">카테고리별 대화주제 추천</St.SubTitle>
+            <St.RecomendWrapper
+              to={routePaths.Category}
+              className={GTM_CLASS_NAME.menuMoodPiickle}
+              onClick={closeMenuBar}>
+              <St.Title>Mood Piickles</St.Title>
+              <St.SubTitle className={GTM_CLASS_NAME.menuMoodPiickleSub}>카테고리별 대화주제 추천</St.SubTitle>
             </St.RecomendWrapper>
-            <St.RecomendWrapper to={`${routePaths.Vote}/${ballotLists?.data[0]._id}`} onClick={closeMenuBar}>
-              <St.Title className="GTM_PiickleMe">Piickle Me</St.Title>
-              <St.SubTitle className="GTM_PiickleMe_sub">진행중인 투표</St.SubTitle>
+            <St.RecomendWrapper
+              to={`${routePaths.Vote}/${ballotLists?.data[0]._id}`}
+              className={GTM_CLASS_NAME.menuPiickleMe}
+              onClick={closeMenuBar}>
+              <St.Title>Piickle Me</St.Title>
+              <St.SubTitle className={GTM_CLASS_NAME.menuPiickleMeSub}>진행중인 투표</St.SubTitle>
             </St.RecomendWrapper>
           </St.RecomendContainer>
         </St.Contents>

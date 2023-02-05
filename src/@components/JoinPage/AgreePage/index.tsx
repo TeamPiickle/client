@@ -6,6 +6,7 @@ import { joinApi } from "../../../core/api/join";
 import { agreeListsContents } from "../../../core/join/agreeListsContents";
 import { subHeaderInfo } from "../../../core/join/subHeaderInfo";
 import { routePaths } from "../../../core/routes/path";
+import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import Footer from "../../@common/Footer";
 import useOutClickCloser from "../../@common/hooks/useOutClickCloser";
 import SubHeader from "../../@common/SubHeader";
@@ -113,7 +114,7 @@ export default function AgreePage() {
         <ModalContainerWithAnimation isopen={isOpenAlert} ref={alertElement}>
           필수 항목에 동의해주세요
         </ModalContainerWithAnimation>
-        <St.JoinButton onClick={completeJoinBtn} className="GTM_Agree">
+        <St.JoinButton className={GTM_CLASS_NAME.joinAgreeComplete} onClick={completeJoinBtn}>
           회원가입 완료하기
         </St.JoinButton>
       </St.JoinAgree>

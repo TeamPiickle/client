@@ -7,6 +7,7 @@ import {
   passwordInvalidMessage,
 } from "../../../core/join/userInfoInputErrorMessage";
 import { routePaths } from "../../../core/routes/path";
+import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import Footer from "../../@common/Footer";
 import SubHeader from "../../@common/SubHeader";
 import { UserInfoFormDataContext } from "..";
@@ -91,7 +92,7 @@ export default function UserInfo() {
           />
         </St.UserInfoContainer>
         <St.SuccessBtnContainer>
-          <St.SuccessBtn onClick={onClickSuccessBtn} className="GTM_Password">
+          <St.SuccessBtn className={GTM_CLASS_NAME.joinInfoNext} onClick={onClickSuccessBtn}>
             다음으로
           </St.SuccessBtn>
         </St.SuccessBtnContainer>

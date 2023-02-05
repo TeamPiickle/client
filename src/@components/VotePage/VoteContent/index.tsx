@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import useBallotTopic from "../../../core/api/vote";
 import { routePaths } from "../../../core/routes/path";
+import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import Loading from "../../@common/Loading";
 import AfterVoteList from "./AfterVoteList";
 import BeforeVoteList from "./BeforeVoteList";
@@ -29,14 +30,23 @@ export default function VoteContent() {
 
       <St.BtnContainer>
         {ballotTopic.data.beforeTopicId ? (
-          <St.BeforeBtn onClick={() => setVoteId(`${ballotTopic.data.beforeTopicId}`)}>이전 질문</St.BeforeBtn>
+          <St.BeforeBtn
+            className={GTM_CLASS_NAME.piickleMeBack}
+            onClick={() => setVoteId(`${ballotTopic.data.beforeTopicId}`)}>
+            이전 질문
+          </St.BeforeBtn>
         ) : (
           <St.NoLinkBtn>이전 질문</St.NoLinkBtn>
         )}
         {ballotTopic.data.nextTopicId ? (
-          <St.MoveBtn onClick={() => setVoteId(`${ballotTopic.data.nextTopicId}`)}>다음 질문</St.MoveBtn>
+          <St.MoveBtn
+            className={GTM_CLASS_NAME.piickleMeNext}
+            onClick={() => setVoteId(`${ballotTopic.data.nextTopicId}`)}>
+            다음 질문
+          </St.MoveBtn>
         ) : (
           <St.MoveBtn
+            className={GTM_CLASS_NAME.piickleMeHome}
             onClick={() => {
               navigate(routePaths.Main);
             }}>
