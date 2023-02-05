@@ -42,8 +42,7 @@ const Content = styled.p`
 const PickButtonWrapper = styled.button`
   position: absolute;
   left: -0.1rem;
-  right: 0;
-  bottom: 0;
+  bottom: -0.1rem;
 
   width: 20rem;
   height: 3.2rem;
