@@ -19,7 +19,7 @@ const serviceInfo: ServiceInfo[] = [
   },
   {
     title: "Info",
-    detail: <a href="https://www.notion.so/piickle-a44992440f3b4e808a175f7fc1a4fe25">공식 노션 바로가기</a>,
+    detail: <a href="https://www.notion.so/Piickle-f05fdd0eb67041ebb28aa39c64a268ef">공식 노션 바로가기</a>,
   },
   {
     title: "Instagram",
