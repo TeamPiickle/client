@@ -38,7 +38,7 @@ export default function BestPiickleCard(props: BestPiickleCardProps) {
           navigation(routePaths.CardCollection, { state: { type: "best" } });
           setSliderIdx(idx);
         }}>
-        카드 보기``
+        카드 보기
       </St.PickButtonWrapper>
     </St.BestPiickleCard>
   );
