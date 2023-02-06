@@ -42,7 +42,7 @@ const Card = (props: LoginCheckProps) => {
         onClick={() => handleClickHeart(_id)}
         aria-label="북마크"
         role="dialog">
-        <St.IcEmptyHeart />
+        <St.IcEmptyHeart className={GTM_CLASS_NAME.cardLike} />
         {isBookmarked && <CustomFullHeart />}
       </St.HeartWrapper>
     </St.Card>

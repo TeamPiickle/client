@@ -16,7 +16,7 @@ export default function Header() {
       <St.Link to={routePaths.Main} className={GTM_CLASS_NAME.mainPiickleLogo}>
         <IcLogo aria-label="피클" />
       </St.Link>
-      <St.HamburgerContainer isClicked={isModalOpen}>
+      <St.HamburgerContainer className={GTM_CLASS_NAME.mainMenuBtn} isClicked={isModalOpen}>
         <IcHamburger aria-label="메뉴" className={GTM_CLASS_NAME.mainMenuBtn} onClick={toggleModal} />
       </St.HamburgerContainer>
       {isModalOpen && <MenuBar closeMenuBar={toggleModal} />}

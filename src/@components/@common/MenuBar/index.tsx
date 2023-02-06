@@ -44,20 +44,20 @@ export default function MenuBar(props: MenuBarProps) {
           )}
           <St.RecomendContainer>
             <St.CardRecomendWrapper className={GTM_CLASS_NAME.menuRecommendCard} onClick={moveCardCollection}>
-              <St.Title>대화 주제 추천 카드</St.Title>
+              <St.Title className={GTM_CLASS_NAME.menuRecommendCard}>대화 주제 추천 카드</St.Title>
             </St.CardRecomendWrapper>
             <St.RecomendWrapper
               to={routePaths.Category}
               className={GTM_CLASS_NAME.menuMoodPiickle}
               onClick={closeMenuBar}>
-              <St.Title>Mood Piickles</St.Title>
+              <St.Title className={GTM_CLASS_NAME.menuMoodPiickle}>Mood Piickles</St.Title>
               <St.SubTitle className={GTM_CLASS_NAME.menuMoodPiickleSub}>카테고리별 대화주제 추천</St.SubTitle>
             </St.RecomendWrapper>
             <St.RecomendWrapper
               to={`${routePaths.Vote}/${ballotLists?.data[0]._id}`}
               className={GTM_CLASS_NAME.menuPiickleMe}
               onClick={closeMenuBar}>
-              <St.Title>Piickle Me</St.Title>
+              <St.Title className={GTM_CLASS_NAME.menuPiickleMe}>Piickle Me</St.Title>
               <St.SubTitle className={GTM_CLASS_NAME.menuPiickleMeSub}>진행중인 투표</St.SubTitle>
             </St.RecomendWrapper>
           </St.RecomendContainer>

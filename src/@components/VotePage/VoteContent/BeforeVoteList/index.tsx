@@ -60,7 +60,7 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
         ))}
       </St.VoteOptionContainer>
 
-      <St.VoteBtn role="dialog" className={GTM_CLASS_NAME.piicleMeVote} onClick={handleClickVote}>
+      <St.VoteBtn role="dialog" className={GTM_CLASS_NAME.piickleMeVote} onClick={handleClickVote}>
         투표하기
       </St.VoteBtn>
 
