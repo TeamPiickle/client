@@ -14,8 +14,6 @@ const sliderSettings = {
   arrows: false,
   dots: false,
   infinite: false,
-  slidesToShow: 1.3,
-  centerMode: true,
   variableWidth: true,
   slidesToScroll: 1,
 };
