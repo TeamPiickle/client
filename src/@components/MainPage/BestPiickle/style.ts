@@ -9,12 +9,7 @@ const SliderWrapper = styled.article`
 
   & .slick-list {
     height: 13.6rem;
-    margin-left: -14.5rem; // MEMO :: 눈대중 임의의 값
-    padding: 1.6rem;
-  }
-
-  & .slick-initialized {
-    overflow: hidden;
+    padding-left: 1.6rem;
   }
 
   & .slick-track {
