@@ -35,9 +35,13 @@ export default function CategoryContents() {
               rowEnd={gridValue[index].rowEnd}
               gradation={item.gradation}
               onClick={() => moveCategory(item._id)}>
-              <St.CategoryImoji>{String.fromCodePoint(parseInt(item.unicode, 16))}</St.CategoryImoji>
-              <St.CategoryDescription>{item.content}</St.CategoryDescription>
-              <St.CategoryTitle>{item.title}</St.CategoryTitle>
+              <St.CategoryImoji className={GTM_CLASS_NAME[`mood${item.title}`]}>
+                {String.fromCodePoint(parseInt(item.unicode, 16))}
+              </St.CategoryImoji>
+              <St.CategoryDescription className={GTM_CLASS_NAME[`mood${item.title}`]}>
+                {item.content}
+              </St.CategoryDescription>
+              <St.CategoryTitle className={GTM_CLASS_NAME[`mood${item.title}`]}>{item.title}</St.CategoryTitle>
             </St.CategoryItem>
           ))}
       </St.CategoryItemContainer>

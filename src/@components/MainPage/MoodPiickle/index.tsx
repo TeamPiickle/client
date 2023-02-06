@@ -42,9 +42,15 @@ export default function MoodPiickle() {
               rowEnd={gridValue[index].rowEnd}
               gradation={moodPiickle.gradation}
               onClick={() => moveCategory(moodPiickle._id)}>
-              <St.CategoryImoji>{String.fromCodePoint(parseInt(moodPiickle.unicode, 16))}</St.CategoryImoji>
-              <St.CategoryContent>{moodPiickle.content}</St.CategoryContent>
-              <St.CategoryTitle>{moodPiickle.title}</St.CategoryTitle>
+              <St.CategoryImoji className={GTM_CLASS_NAME[`main${moodPiickle.title}`]}>
+                {String.fromCodePoint(parseInt(moodPiickle.unicode, 16))}
+              </St.CategoryImoji>
+              <St.CategoryContent className={GTM_CLASS_NAME[`main${moodPiickle.title}`]}>
+                {moodPiickle.content}
+              </St.CategoryContent>
+              <St.CategoryTitle className={GTM_CLASS_NAME[`main${moodPiickle.title}`]}>
+                {moodPiickle.title}
+              </St.CategoryTitle>
             </St.Category>
           ))}
       </St.CategoryWrapper>
