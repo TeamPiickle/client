@@ -33,12 +33,12 @@ export const St = {
   GoBestPiickleBtn: styled.button`
     position: absolute;
 
-    height: 20px;
-    right: 11.76px;
-    bottom: 12px;
+    height: 1.5rem;
+    right: 1.6rem;
+    bottom: 1.2rem;
 
     color: ${({ theme }) => theme.colors.gray900};
-    ${({ theme }) => theme.newFonts.btn1};
+    ${({ theme }) => theme.newFonts.btn2};
 
     display: flex;
     justify-content: center;

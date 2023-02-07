@@ -6,6 +6,7 @@ import { sliderIdxState } from "../../../core/atom/slider";
 import { headingTitles } from "../../../core/main/headingTitles";
 import { gridValue } from "../../../core/main/moodPiickle";
 import { routePaths } from "../../../core/routes/path";
+import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import HeadingTitleContainer from "../../@common/HeadingTitleContainer";
 import St from "./style";
 
@@ -34,17 +35,20 @@ export default function MoodPiickle() {
           randomCategoryLists.slice(0, 4).map((moodPiickle, index) => (
             <St.Category
               key={moodPiickle._id}
-              onClick={() => moveCategory(moodPiickle._id)}
+              className={GTM_CLASS_NAME[`main${moodPiickle.title}`]}
               columnStart={gridValue[index].columnStart}
               columnEnd={gridValue[index].columnEnd}
               rowStart={gridValue[index].rowStart}
               rowEnd={gridValue[index].rowEnd}
-              gradation={moodPiickle.gradation}>
-              <St.CategoryImoji>{String.fromCodePoint(parseInt(moodPiickle.unicode, 16))}</St.CategoryImoji>
-              <St.CategoryContent className={`GTM_${moodPiickle.title.slice(0, 4)}`}>
+              gradation={moodPiickle.gradation}
+              onClick={() => moveCategory(moodPiickle._id)}>
+              <St.CategoryImoji className={GTM_CLASS_NAME[`main${moodPiickle.title}`]}>
+                {String.fromCodePoint(parseInt(moodPiickle.unicode, 16))}
+              </St.CategoryImoji>
+              <St.CategoryContent className={GTM_CLASS_NAME[`main${moodPiickle.title}`]}>
                 {moodPiickle.content}
               </St.CategoryContent>
-              <St.CategoryTitle className={`GTM_${moodPiickle.title.slice(0, 4)}`}>
+              <St.CategoryTitle className={GTM_CLASS_NAME[`main${moodPiickle.title}`]}>
                 {moodPiickle.title}
               </St.CategoryTitle>
             </St.Category>

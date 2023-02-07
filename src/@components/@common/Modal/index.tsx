@@ -1,18 +1,20 @@
 import { PropsWithChildren } from "react";
 
 import { IcModalCloseBtn } from "../../../asset/icon";
+import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import { St } from "./style";
 
 interface ModalContents {
   closeHandler: () => void;
+  closeBtnClassName?: string;
 }
 
-export default function Modal({ closeHandler, children }: PropsWithChildren<ModalContents>) {
+export default function Modal({ closeHandler, closeBtnClassName, children }: PropsWithChildren<ModalContents>) {
   return (
     <St.Root>
       <St.Modal>
-        <St.CloseBtn type="button" onClick={closeHandler}>
-          <IcModalCloseBtn aria-label="필터 모달 닫기" />
+        <St.CloseBtn type="button" className={closeBtnClassName} onClick={closeHandler}>
+          <IcModalCloseBtn />
         </St.CloseBtn>
         <St.ModalContents>{children}</St.ModalContents>
       </St.Modal>

@@ -89,9 +89,7 @@ export default function EmailAuthentication() {
               value={query}
               onChange={(e) => changeEmailInput(e)}
             />
-            <St.SendBtn onClick={clickSendBtn} className="GTM_SendEmail">
-              인증메일 전송
-            </St.SendBtn>
+            <St.SendBtn onClick={clickSendBtn}>인증메일 전송</St.SendBtn>
           </St.InputContainer>
         </St.EmailAuthenticationContent>
         <St.WarningText>{emailInvalidType}</St.WarningText>

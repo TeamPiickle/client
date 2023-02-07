@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { cardCollectionApi } from "../../../core/api/cardCollection";
+import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import CustomFullHeart from "../CustomFullHeart";
 import TagsSlider from "../TagsSlider";
 import { St } from "./style";
@@ -36,8 +37,12 @@ const Card = (props: LoginCheckProps) => {
         <TagsSlider tags={tags} />
       </St.TagsWrapper>
       <St.ContentWrapper>{content}</St.ContentWrapper>
-      <St.HeartWrapper onClick={() => handleClickHeart(_id)} aria-label="북마크" role="dialog">
-        <St.IcEmptyHeart />
+      <St.HeartWrapper
+        className={GTM_CLASS_NAME.cardLike}
+        onClick={() => handleClickHeart(_id)}
+        aria-label="북마크"
+        role="dialog">
+        <St.IcEmptyHeart className={GTM_CLASS_NAME.cardLike} />
         {isBookmarked && <CustomFullHeart />}
       </St.HeartWrapper>
     </St.Card>
