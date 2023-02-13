@@ -69,6 +69,8 @@ export const GlobalStyle = createGlobalStyle`
     font-family: sans-serif;
     font-size: 62.5%;
     user-select: none;
+
+    background-color: white;
   }
   ul, li {
     padding-left: 0rem;
