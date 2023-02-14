@@ -11,25 +11,26 @@ export default function PiickleMe() {
   return (
     <St.Container>
       <HeadingTitleContainer headingTitles={headingTitles[2]} />
-      <St.RepresentVoteContentConTainer>
-        <St.RepresentVoteContentWrapper>
-          <St.RepresentVoteContentSubText>현재 가장 참여수가 많은 투표</St.RepresentVoteContentSubText>
-        </St.RepresentVoteContentWrapper>
-        <St.RepresentVoteContentText>{ballotLists && ballotLists.data[0].topic}</St.RepresentVoteContentText>
-      </St.RepresentVoteContentConTainer>
-      <St.RepresentGoVoteBtnWrapper
+      <St.RepresentVoteConTainer
         to={`${routePaths.Vote}/${ballotLists && ballotLists.data[0]._id}`}
         className={GTM_CLASS_NAME.mainVote1}>
-        투표하기
-      </St.RepresentGoVoteBtnWrapper>
+        <St.RepresentVoteContentConTainer>
+          <St.RepresentVoteContentWrapper>
+            <St.RepresentVoteContentSubText>현재 가장 참여수가 많은 투표</St.RepresentVoteContentSubText>
+          </St.RepresentVoteContentWrapper>
+          <St.RepresentVoteContentText>{ballotLists && ballotLists.data[0].topic}</St.RepresentVoteContentText>
+        </St.RepresentVoteContentConTainer>
+        <St.RepresentGoVoteBtnWrapper>투표하기</St.RepresentGoVoteBtnWrapper>
+      </St.RepresentVoteConTainer>
 
       {ballotLists &&
         ballotLists.data.slice(1).map((ballot, idx: number) => (
-          <St.ContentWrapper key={`${ballot._id}-${idx}`}>
+          <St.ContentWrapper
+            key={`${ballot._id}-${idx}`}
+            to={`${routePaths.Vote}/${ballot._id}`}
+            className={GTM_CLASS_NAME[`mainVote${idx + 2}`]}>
             <St.ContentText>{ballot && ballot.topic}</St.ContentText>
-            <St.GoVoteBtn to={`${routePaths.Vote}/${ballot._id}`} className={GTM_CLASS_NAME[`mainVote${idx + 2}`]}>
-              투표하기
-            </St.GoVoteBtn>
+            <St.GoVoteBtn>투표하기</St.GoVoteBtn>
           </St.ContentWrapper>
         ))}
     </St.Container>

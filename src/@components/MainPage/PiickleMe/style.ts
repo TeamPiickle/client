@@ -6,6 +6,8 @@ import { ImgVoteBanner } from "../../../asset/image";
 export const St = {
   Container: styled.section``,
 
+  RepresentVoteConTainer: styled(Link)``,
+
   RepresentVoteContentConTainer: styled.section`
     position: relative;
     width: 100%;
@@ -17,6 +19,7 @@ export const St = {
 
     background-image: url(${ImgVoteBanner});
   `,
+
   RepresentVoteContentText: styled.div`
     position: absolute;
 
@@ -39,7 +42,8 @@ export const St = {
     ${({ theme }) => theme.newFonts.caption1}
     color: ${({ theme }) => theme.colors.gray900};
   `,
-  RepresentGoVoteBtnWrapper: styled(Link)`
+
+  RepresentGoVoteBtnWrapper: styled.div`
     width: 100%;
     height: 4rem;
 
@@ -53,7 +57,7 @@ export const St = {
     ${({ theme }) => theme.newFonts.btn2}
   `,
 
-  ContentWrapper: styled.article`
+  ContentWrapper: styled(Link)`
     height: 8rem;
 
     padding: 0 1.6rem;
@@ -78,7 +82,7 @@ export const St = {
     white-space: nowrap;
   `,
 
-  GoVoteBtn: styled(Link)`
+  GoVoteBtn: styled.div`
     width: 4.9rem;
     height: 1.7rem;
 
