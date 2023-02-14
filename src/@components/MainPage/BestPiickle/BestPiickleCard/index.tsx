@@ -24,22 +24,22 @@ export default function BestPiickleCard(props: BestPiickleCardProps) {
   const navigation = useNavigate();
 
   return (
-    <St.BestPiickleCard>
-      <St.TagsWrapper>
-        {tags.map((tag: string, i: number) => {
-          return <St.Tag key={i}>{tag.slice(1)}</St.Tag>;
-        })}
-      </St.TagsWrapper>
-      <St.Content>{content}</St.Content>
-      <St.PickButtonWrapper
-        type="button"
-        className={GTM_CLASS_NAME[GTM_IDX_KEY]}
-        onClick={() => {
-          navigation(routePaths.CardCollection, { state: { type: "best" } });
-          setSliderIdx(idx);
-        }}>
-        카드 보기
-      </St.PickButtonWrapper>
-    </St.BestPiickleCard>
+    <St.Container
+      type="button"
+      className={GTM_CLASS_NAME[GTM_IDX_KEY]}
+      onClick={() => {
+        navigation(routePaths.CardCollection, { state: { type: "best" } });
+        setSliderIdx(idx);
+      }}>
+      <St.BestPiickleCard>
+        <St.TagsWrapper>
+          {tags.map((tag: string, i: number) => {
+            return <St.Tag key={i}>{tag.slice(1)}</St.Tag>;
+          })}
+        </St.TagsWrapper>
+        <St.Content>{content}</St.Content>
+        <St.PickButtonWrapper>카드 보기</St.PickButtonWrapper>
+      </St.BestPiickleCard>
+    </St.Container>
   );
 }
