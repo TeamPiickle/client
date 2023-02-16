@@ -5,9 +5,9 @@ import { ImgVoteBanner } from "../../../asset/image";
 
 const Container = styled.section``;
 
-const RepresentVoteConTainer = styled(Link)``;
+const VoteBanner = styled(Link)``;
 
-const RepresentVoteContentConTainer = styled.section`
+const BannerContainer = styled.section`
   position: relative;
   width: 100%;
   height: 11.2rem;
@@ -19,16 +19,7 @@ const RepresentVoteContentConTainer = styled.section`
   background-image: url(${ImgVoteBanner});
 `;
 
-const RepresentVoteContentText = styled.div`
-  position: absolute;
-
-  margin-top: 2.3rem;
-
-  ${({ theme }) => theme.newFonts.body3};
-  color: ${({ theme }) => theme.colors.gray900};
-`;
-
-const RepresentVoteContentWrapper = styled.div`
+const BannerContentWrapper = styled.div`
   margin-bottom: 2.3rem;
 
   width: 13.9rem;
@@ -37,12 +28,21 @@ const RepresentVoteContentWrapper = styled.div`
   background-color: ${({ theme }) => theme.newColors.lightgreen1};
 `;
 
-const RepresentVoteContentSubText = styled.p`
+const MainContentText = styled.div`
+  position: absolute;
+
+  margin-top: 2.3rem;
+
+  ${({ theme }) => theme.newFonts.body3};
+  color: ${({ theme }) => theme.colors.gray900};
+`;
+
+const MainContentSubText = styled.p`
   ${({ theme }) => theme.newFonts.caption1}
   color: ${({ theme }) => theme.colors.gray900};
 `;
 
-const RepresentGoVoteBtnWrapper = styled.div`
+const BannerVoteBtn = styled.div`
   width: 100%;
   height: 4rem;
 
@@ -81,7 +81,7 @@ const ContentText = styled.p`
   white-space: nowrap;
 `;
 
-const GoVoteBtn = styled.div`
+const VoteBtn = styled.div`
   width: 4.9rem;
   height: 1.7rem;
 
@@ -96,14 +96,14 @@ const GoVoteBtn = styled.div`
 
 const St = {
   Container,
-  RepresentVoteConTainer,
-  RepresentVoteContentConTainer,
-  RepresentVoteContentText,
-  RepresentVoteContentWrapper,
-  RepresentVoteContentSubText,
-  RepresentGoVoteBtnWrapper,
+  VoteBanner,
+  BannerContainer,
+  BannerContentWrapper,
+  MainContentText,
+  MainContentSubText,
+  BannerVoteBtn,
   ContentWrapper,
   ContentText,
-  GoVoteBtn,
+  VoteBtn,
 };
 export default St;
