@@ -2,30 +2,37 @@ import { useState } from "react";
 
 import { IcAddProfileBtn } from "../../../../asset/icon";
 import { ImgDefaultBigProfile } from "../../../../asset/image";
+import compressImage from "../../../../util/imageCompressor";
 import { St } from "./style";
 
 interface ProfileImageProps {
-  setImage: (file: File) => void;
+  setProfileImage: (file: File) => void;
 }
 
+const MAX_IMAGE_SIZE = 80 * 2;
+
 export default function ProfileImage(props: ProfileImageProps) {
-  const { setImage } = props;
-  const [imgUrl, setImgUrl] = useState<string>("");
+  const { setProfileImage } = props;
+  const [previewImgUrl, setPreviewImgUrl] = useState("");
 
   const handleImagePatch = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files === null) return;
 
     const selectedImg = e.target.files[0];
-    setImgUrl(URL.createObjectURL(selectedImg));
+    const compressedSelectedImg = await compressImage(selectedImg, {
+      maxWidth: MAX_IMAGE_SIZE,
+      maxHeight: MAX_IMAGE_SIZE,
+    });
 
-    setImage(selectedImg);
+    setProfileImage(compressedSelectedImg);
+    setPreviewImgUrl(URL.createObjectURL(compressedSelectedImg));
   };
 
   return (
     <St.ProfileImage>
       <St.ImageContainer>
         <St.ImageWrapper>
-          <St.AddImage src={imgUrl ? imgUrl : ImgDefaultBigProfile} alt="프로필" />
+          <St.AddImage src={previewImgUrl ? previewImgUrl : ImgDefaultBigProfile} alt="프로필" />
         </St.ImageWrapper>
         <St.AddBtnWrapper>
           <IcAddProfileBtn />
