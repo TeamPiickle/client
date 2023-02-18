@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const BestPiickleCard = styled.article`
+const BestPiickleCard = styled.button`
   position: relative;
 
   width: 20rem;
