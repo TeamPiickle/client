@@ -3,91 +3,107 @@ import styled from "styled-components";
 
 import { ImgVoteBanner } from "../../../asset/image";
 
-export const St = {
-  Container: styled.section``,
+const Container = styled.section``;
 
-  RepresentVoteContentConTainer: styled.section`
-    position: relative;
-    width: 100%;
-    height: 11.2rem;
+const VoteBanner = styled(Link)``;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+const BannerContainer = styled.section`
+  position: relative;
+  width: 100%;
+  height: 11.2rem;
 
-    background-image: url(${ImgVoteBanner});
-  `,
-  RepresentVoteContentText: styled.div`
-    position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    margin-top: 2.3rem;
+  background-image: url(${ImgVoteBanner});
+`;
 
-    ${({ theme }) => theme.newFonts.body3};
-    color: ${({ theme }) => theme.colors.gray900};
-  `,
+const BannerContentWrapper = styled.div`
+  margin-bottom: 2.3rem;
 
-  RepresentVoteContentWrapper: styled.div`
-    margin-bottom: 2.3rem;
+  width: 13.9rem;
+  text-align: center;
 
-    width: 13.9rem;
-    text-align: center;
+  background-color: ${({ theme }) => theme.newColors.lightgreen1};
+`;
 
-    background-color: ${({ theme }) => theme.newColors.lightgreen1};
-  `,
+const MainContentText = styled.div`
+  position: absolute;
 
-  RepresentVoteContentSubText: styled.p`
-    ${({ theme }) => theme.newFonts.caption1}
-    color: ${({ theme }) => theme.colors.gray900};
-  `,
-  RepresentGoVoteBtnWrapper: styled(Link)`
-    width: 100%;
-    height: 4rem;
+  margin-top: 2.3rem;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  ${({ theme }) => theme.newFonts.body3};
+  color: ${({ theme }) => theme.colors.gray900};
+`;
 
-    background-color: ${({ theme }) => theme.colors.gray900};
-    color: ${({ theme }) => theme.colors.white};
+const MainContentSubText = styled.p`
+  ${({ theme }) => theme.newFonts.caption1}
+  color: ${({ theme }) => theme.colors.gray900};
+`;
 
-    ${({ theme }) => theme.newFonts.btn2}
-  `,
+const BannerVoteBtn = styled.div`
+  width: 100%;
+  height: 4rem;
 
-  ContentWrapper: styled.article`
-    height: 8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    padding: 0 1.6rem;
+  background-color: ${({ theme }) => theme.colors.gray900};
+  color: ${({ theme }) => theme.colors.white};
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  ${({ theme }) => theme.newFonts.btn2}
+`;
 
-    &:not(:first-child) {
-      border-top: 0.1rem solid ${({ theme }) => theme.newColors.gray300};
-    }
-  `,
+const ContentWrapper = styled(Link)`
+  height: 8rem;
 
-  ContentText: styled.p`
-    width: 28rem; // MEMO :: 말줄임표를 위한 값
+  padding: 0 1.6rem;
 
-    ${({ theme }) => theme.newFonts.body4};
-    color: ${({ theme }) => theme.newColors.gray900};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  `,
+  &:not(:first-child) {
+    border-top: 0.1rem solid ${({ theme }) => theme.newColors.gray300};
+  }
+`;
 
-  GoVoteBtn: styled(Link)`
-    width: 4.9rem;
-    height: 1.7rem;
+const ContentText = styled.p`
+  width: 28rem; // MEMO :: 말줄임표를 위한 값
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  ${({ theme }) => theme.newFonts.body4};
+  color: ${({ theme }) => theme.newColors.gray900};
 
-    ${({ theme }) => theme.newFonts.btn2};
-    color: ${({ theme }) => theme.newColors.gray100};
-    background-color: ${({ theme }) => theme.newColors.gray900};
-  `,
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
+
+const VoteBtn = styled.div`
+  width: 4.9rem;
+  height: 1.7rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  ${({ theme }) => theme.newFonts.btn2};
+  color: ${({ theme }) => theme.newColors.gray100};
+  background-color: ${({ theme }) => theme.newColors.gray900};
+`;
+
+const St = {
+  Container,
+  VoteBanner,
+  BannerContainer,
+  BannerContentWrapper,
+  MainContentText,
+  MainContentSubText,
+  BannerVoteBtn,
+  ContentWrapper,
+  ContentText,
+  VoteBtn,
 };
+export default St;

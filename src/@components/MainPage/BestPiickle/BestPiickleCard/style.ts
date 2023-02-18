@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+const Container = styled.button``;
+
 const BestPiickleCard = styled.article`
   position: relative;
 
@@ -28,6 +30,8 @@ const Content = styled.p`
 
   margin-top: 0.4rem;
 
+  text-align: left;
+
   // 말줄임표 설정
   white-space: normal;
   display: -webkit-box;
@@ -39,7 +43,7 @@ const Content = styled.p`
   color: ${({ theme }) => theme.newColors.gray900};
 `;
 
-const PickButtonWrapper = styled.button`
+const PickButtonWrapper = styled.div`
   position: absolute;
   left: -0.1rem;
   bottom: -0.1rem;
@@ -58,6 +62,7 @@ const PickButtonWrapper = styled.button`
 `;
 
 const St = {
+  Container,
   BestPiickleCard,
   TagsWrapper,
   Tag,
