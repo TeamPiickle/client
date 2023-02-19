@@ -20,7 +20,7 @@ export default function UserProfilePage() {
   const [birthData, setBirthData] = useState<string>(""); // 생년월일
   // TODO :: 변수명 gender로 바꾸기
   const [isSelected, setIsSelected] = useState<string>(""); // 성별
-  const [image, setImage] = useState(ImgDefaultBigProfile); // 이미지
+  const [profileImage, setProfileImage] = useState(ImgDefaultBigProfile); // 이미지
 
   const [isChecked, setIsChecked] = useState(false); //닉넴 중복 확인
   const [isInComplete, setisInComplete] = useState(false); // 다음으로 버튼
@@ -44,7 +44,7 @@ export default function UserProfilePage() {
         currentFormData.append("birthday", birthData);
 
         if (isSelected) currentFormData.append("gender", isSelected);
-        if (image) currentFormData.append("imgFile", image);
+        if (profileImage) currentFormData.append("imgFile", profileImage);
 
         return currentFormData;
       });
@@ -64,7 +64,8 @@ export default function UserProfilePage() {
       <St.ProfileContainer>
         <St.Title>프로필을 설정해주세요</St.Title>
         <St.SubTitle>프로필 사진(선택)</St.SubTitle>
-        <ProfileImage setImage={setImage} />
+        <ProfileImage setProfileImage={setProfileImage} />
+
         <St.SubTitle>닉네임(필수)</St.SubTitle>
         <St.Requirement>※ 한글, 영문, 숫자 상관없이 8자 이내</St.Requirement>
         <ProfileNickname
