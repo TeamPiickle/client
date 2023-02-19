@@ -5,15 +5,15 @@ const Root = styled.section`
 `;
 
 const SliderWrapper = styled.article`
-  touch-action: pan-x;
+  display: flex;
+  overflow-x: scroll;
 
-  & .slick-list {
-    height: 13.6rem;
-    padding-left: 1.6rem;
-  }
+  padding: 0 1.6rem;
 
-  & .slick-track {
-    scroll-snap-type: x mandatory;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
   }
 `;
 
