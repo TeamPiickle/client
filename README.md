@@ -41,8 +41,12 @@
 
 ```json
     "axios": "^0.26.0",
+    "compressorjs": "^1.1.1",
+    "qs": "^6.11.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-gtm-module": "^2.0.11",
+    "react-mobile-datepicker": "^4.0.2",
     "react-range": "^1.8.13",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.1",
@@ -51,7 +55,6 @@
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.5",
     "swr": "^1.3.0"
-    "msw": "^0.42.1",
 ```
 
 <br /><br/>
