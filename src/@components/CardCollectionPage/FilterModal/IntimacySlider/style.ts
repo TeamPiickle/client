@@ -36,7 +36,7 @@ const RangeTrack = styled.div`
   background: ${(props: RangeTrackProps) =>
     getTrackBackground({
       values: props.price,
-      colors: ["#19BE7E", "#ffffff"], // [newColors.green, newColors.white]
+      colors: ["#19BE7E", "#E0E0E0"], // [newColors.green, newColors.gray300]
       min: props.min,
       max: props.max,
     })};
