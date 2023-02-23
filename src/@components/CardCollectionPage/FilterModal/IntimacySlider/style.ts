@@ -1,10 +1,16 @@
 import { getTrackBackground } from "react-range";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 interface RangeTrackProps {
   min: number;
   max: number;
   price: number[];
+}
+
+interface RangeThumbAriaProps {
+  "aria-valuemax": number;
+  "aria-valuemin": number;
+  "aria-valuenow": number;
 }
 
 const IntimacySlider = styled.div`
@@ -13,11 +19,8 @@ const IntimacySlider = styled.div`
   margin: 1.2rem 0 0.2rem;
 `;
 
-const RangeThumb = styled.div`
-  position: absolute;
-  top: 0;
-
-  width: 2em;
+const RangeThumb = styled.div<RangeThumbAriaProps>`
+  width: 2rem;
   height: 2rem;
 
   border-radius: 50%;
@@ -26,6 +29,27 @@ const RangeThumb = styled.div`
   background-color: ${({ theme }) => theme.newColors.white};
 
   cursor: pointer;
+
+  ${(ariaProps) =>
+    ariaProps["aria-valuenow"] === ariaProps["aria-valuemin"] &&
+    css`
+      left: 1rem;
+    `}
+  ${(ariaProps) =>
+    ariaProps["aria-valuenow"] === 1 &&
+    css`
+      left: 0.7rem;
+    `}
+  ${(ariaProps) =>
+    ariaProps["aria-valuenow"] === 2 &&
+    css`
+      left: -0.7rem;
+    `}
+  ${(ariaProps) =>
+    ariaProps["aria-valuenow"] === ariaProps["aria-valuemax"] &&
+    css`
+      left: -1rem;
+    `}
 `;
 
 const RangeTrack = styled.div`
