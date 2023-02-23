@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const ModalContentsWrapper = styled.div`
-  padding-top: 1.6rem;
+  padding: 1.6rem 1.6rem 0;
 `;
 
 const Title = styled.strong`

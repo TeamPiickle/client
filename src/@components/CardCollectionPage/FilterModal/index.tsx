@@ -42,7 +42,7 @@ export default function FilterModal(props: FilterModalProps) {
   };
 
   return (
-    <Modal closeHandler={closeHandler} closeBtnClassName={GTM_CLASS_NAME.filterClose}>
+    <Modal theme="WHITE" closeHandler={closeHandler} closeBtnClassName={GTM_CLASS_NAME.filterClose}>
       <St.ModalContentsWrapper>
         {filterTagsInfo.map((filterTagInfo, idx) => (
           <React.Fragment key={`filter-${idx}`}>
