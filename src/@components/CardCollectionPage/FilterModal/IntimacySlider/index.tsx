@@ -1,7 +1,6 @@
 import { Range } from "react-range";
 
-import { St } from "./style";
-
+import St from "./style";
 interface IntimacySliderProps {
   price: number[];
   onChange: (values: number[]) => void;
