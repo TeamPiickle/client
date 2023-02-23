@@ -1,8 +1,7 @@
 import { PropsWithChildren } from "react";
 
 import { IcModalCloseBtn } from "../../../asset/icon";
-import { GTM_CLASS_NAME } from "../../../util/const/gtm";
-import { St } from "./style";
+import St from "./style";
 
 interface ModalContents {
   closeHandler: () => void;

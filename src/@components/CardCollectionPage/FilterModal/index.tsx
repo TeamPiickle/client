@@ -6,7 +6,7 @@ import { filterTagsInfo, intimacyTags } from "../../../core/cardCollection/filte
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import Modal from "../../@common/Modal";
 import IntimacySlider from "./IntimacySlider";
-import { St } from "./style";
+import St from "./style";
 
 interface FilterModalProps {
   closeHandler: () => void;
@@ -46,7 +46,8 @@ export default function FilterModal(props: FilterModalProps) {
       <St.ModalContentsWrapper>
         {filterTagsInfo.map((filterTagInfo, idx) => (
           <React.Fragment key={`filter-${idx}`}>
-            <St.FilterTitle>{filterTagInfo.type}</St.FilterTitle>
+            <St.Title>{filterTagInfo.type}</St.Title>
+            {filterTagInfo.description && <St.Description>{filterTagInfo.description}</St.Description>}
             <St.FilterTagsWrapper>
               {filterTagInfo.tags.map((tag, index) => (
                 <St.FilterTag
@@ -62,7 +63,7 @@ export default function FilterModal(props: FilterModalProps) {
         ))}
 
         <St.FilterIntimacyWrapper>
-          <St.FilterTitle>친밀도</St.FilterTitle>
+          <St.Title>친밀도</St.Title>
           <IntimacySlider
             price={filterTags.intimacy}
             onChange={(values: number[]) => {
@@ -83,7 +84,7 @@ export default function FilterModal(props: FilterModalProps) {
 
       <St.SubmitBtnWrapper>
         <St.SubmitBtn type="submit" className={GTM_CLASS_NAME.filterStart} onClick={submitFilter}>
-          추천 시작하기
+          카드 추천 받기
         </St.SubmitBtn>
       </St.SubmitBtnWrapper>
     </Modal>
