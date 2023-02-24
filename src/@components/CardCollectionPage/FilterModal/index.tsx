@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
-import { useRecoilState } from "recoil";
+import React from "react";
 
-import { filterTagsState } from "../../../core/atom/slider";
 import { filterTagsInfo, intimacyTags } from "../../../core/cardCollection/filter";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import Modal from "../../@common/Modal";
+import useFilterTags from "./@hooks/useFilterTags";
 import IntimacySlider from "./IntimacySlider";
 import St from "./style";
 
@@ -16,23 +15,7 @@ interface FilterModalProps {
 export default function FilterModal(props: FilterModalProps) {
   const { closeHandler, fetchCardListsWithFilter } = props;
 
-  const [filterTags, setFilterTags] = useRecoilState(filterTagsState);
-
-  useEffect(() => {
-    if (!filterTags.isActive) setFilterTags({ tags: new Set(), intimacy: [0], isActive: false });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filterTags.isActive]);
-
-  // 태그를 눌렀을 때 함수
-  const toggleTag = (_tag: string) => {
-    if (_tag === "19금") return;
-
-    setFilterTags((prevFilterTags) => {
-      const tempCheckedTags = new Set(filterTags.tags);
-      tempCheckedTags.has(_tag) ? tempCheckedTags.delete(_tag) : tempCheckedTags.add(_tag);
-      return { ...prevFilterTags, tags: tempCheckedTags };
-    });
-  };
+  const { filterTags, toggleTag } = useFilterTags();
 
   // 추천 시작하기를 눌렀을 때, 태그 정보들과 친밀도 정보를 담아주고 창닫기
   const submitFilter = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -64,14 +47,7 @@ export default function FilterModal(props: FilterModalProps) {
 
         <St.FilterIntimacyWrapper>
           <St.Title>친밀도</St.Title>
-          <IntimacySlider
-            price={filterTags.intimacy}
-            onChange={(values: number[]) => {
-              setFilterTags((prevFilterTags) => {
-                return { ...prevFilterTags, intimacy: values };
-              });
-            }}
-          />
+          <IntimacySlider price={filterTags.intimacy} />
           <St.FilterIntimacyTagsWrapper>
             {intimacyTags.map((tag, index) => (
               <St.FilterIntimacyTag isactive={index === filterTags.intimacy[0]} key={index}>

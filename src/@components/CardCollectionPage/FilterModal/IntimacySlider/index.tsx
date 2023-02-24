@@ -1,9 +1,9 @@
 import { Range } from "react-range";
 
+import useFilterTags from "../@hooks/useFilterTags";
 import St from "./style";
 interface IntimacySliderProps {
   price: number[];
-  onChange: (values: number[]) => void;
 }
 
 const rangeOption = {
@@ -13,7 +13,9 @@ const rangeOption = {
 };
 
 export default function IntimacySlider(props: IntimacySliderProps) {
-  const { price, onChange } = props;
+  const { price } = props;
+
+  const { handleChangeIntimacyValue } = useFilterTags();
 
   return (
     <St.IntimacySlider>
@@ -22,7 +24,7 @@ export default function IntimacySlider(props: IntimacySliderProps) {
         min={rangeOption.min}
         max={rangeOption.max}
         values={price}
-        onChange={onChange}
+        onChange={handleChangeIntimacyValue}
         renderTrack={({ props, children }) => (
           <St.RangeTrack {...props} min={rangeOption.min} max={rangeOption.max} price={price}>
             {children}
