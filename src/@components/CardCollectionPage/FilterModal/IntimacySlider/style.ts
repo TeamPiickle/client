@@ -1,10 +1,15 @@
 import { getTrackBackground } from "react-range";
-import styled, { css } from "styled-components";
+import styled, { css, DefaultTheme } from "styled-components";
 
 interface RangeTrackProps {
   min: number;
   max: number;
   price: number[];
+  theme: DefaultTheme & {
+    newColors: {
+      [key: string]: string;
+    };
+  };
 }
 
 interface RangeThumbAriaProps {
@@ -57,12 +62,12 @@ const RangeTrack = styled.div`
 
   height: 1.1rem;
 
-  background: ${(props: RangeTrackProps) =>
+  background: ${({ theme, price, min, max }: RangeTrackProps) =>
     getTrackBackground({
-      values: props.price,
-      colors: ["#19BE7E", "#E0E0E0"], // [newColors.green, newColors.gray300]
-      min: props.min,
-      max: props.max,
+      values: price,
+      colors: [theme.newColors.green, theme.newColors.gray300],
+      min: min,
+      max: max,
     })};
 `;
 
