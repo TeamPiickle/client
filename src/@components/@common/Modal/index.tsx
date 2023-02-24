@@ -31,14 +31,14 @@ export default function Modal(props: PropsWithChildren<ModalContents>) {
 
   return (
     <ModalPortal>
-      <St.Root>
-        <St.Modal>
+      <St.DefaultRoot>
+        <St.DefaultModal>
           <St.CloseBtn type="button" className={closeBtnClassName} onClick={closeHandler}>
             <IcModalCloseBtn />
           </St.CloseBtn>
           <St.ModalContents>{children}</St.ModalContents>
-        </St.Modal>
-      </St.Root>
+        </St.DefaultModal>
+      </St.DefaultRoot>
     </ModalPortal>
   );
 }

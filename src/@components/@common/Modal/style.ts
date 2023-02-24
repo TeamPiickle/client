@@ -1,19 +1,5 @@
 import styled from "styled-components";
 
-const WhiteRoot = styled.div`
-  height: 100vh;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  z-index: 10;
-
-  background-color: rgb(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-`;
-
 const Root = styled.div`
   height: 100vh;
 
@@ -26,7 +12,11 @@ const Root = styled.div`
   background-color: rgb(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
+`;
 
+const WhiteRoot = styled(Root)``;
+
+const DefaultRoot = styled(Root)`
   padding: 1.6rem;
 `;
 
@@ -36,17 +26,15 @@ const WhiteModal = styled.section`
   background-color: ${({ theme }) => theme.newColors.white};
 
   padding: 2rem 0 0;
-  width: 100%;
 `;
 
-const Modal = styled.section`
+const DefaultModal = styled.section`
   position: relative;
 
   background-color: ${({ theme }) => theme.colors.sub_green5};
   border-radius: 2rem;
 
   padding: 2rem 1.6rem;
-  width: 100%;
 `;
 
 const CloseBtn = styled.button`
@@ -69,8 +57,8 @@ const ModalContents = styled.main`
 const St = {
   WhiteRoot,
   WhiteModal,
-  Root,
-  Modal,
+  DefaultRoot,
+  DefaultModal,
   CloseBtn,
   ModalContents,
 };
