@@ -1,46 +1,65 @@
 import styled from "styled-components";
 
-export const St = {
-  Root: styled.div`
-    height: 100vh;
+const Root = styled.div`
+  height: 100vh;
 
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    z-index: 10;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 10;
 
-    background-color: rgb(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
+  background-color: rgb(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+`;
 
-    padding: 1.6rem;
-  `,
+const WhiteRoot = styled(Root)``;
 
-  Modal: styled.section`
-    position: relative;
+const DefaultRoot = styled(Root)`
+  padding: 1.6rem;
+`;
 
-    background-color: ${({ theme }) => theme.colors.sub_green5};
-    border-radius: 2rem;
+const WhiteModal = styled.section`
+  position: relative;
 
-    padding: 2rem 1.6rem;
-    width: 100%;
-  `,
+  background-color: ${({ theme }) => theme.newColors.white};
 
-  CloseBtn: styled.button`
-    position: absolute;
-    right: 1.6rem;
-    top: 2rem;
+  padding: 2rem 0 0;
+`;
 
-    cursor: pointer;
+const DefaultModal = styled.section`
+  position: relative;
 
-    width: 2.2rem;
-    height: 2.2rem;
+  background-color: ${({ theme }) => theme.colors.sub_green5};
+  border-radius: 2rem;
 
-    z-index: 10;
-  `,
+  padding: 2rem 1.6rem;
+`;
 
-  ModalContents: styled.main`
-    position: relative;
-  `,
+const CloseBtn = styled.button`
+  position: absolute;
+  right: 1.6rem;
+  top: 2rem;
+
+  cursor: pointer;
+
+  width: 2.2rem;
+  height: 2.2rem;
+
+  z-index: 10;
+`;
+
+const ModalContents = styled.main`
+  position: relative;
+`;
+
+const St = {
+  WhiteRoot,
+  WhiteModal,
+  DefaultRoot,
+  DefaultModal,
+  CloseBtn,
+  ModalContents,
 };
+export default St;

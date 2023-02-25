@@ -1,47 +1,79 @@
-/* eslint-disable indent */
 import { getTrackBackground } from "react-range";
-import styled from "styled-components";
+import styled, { css, DefaultTheme } from "styled-components";
 
 interface RangeTrackProps {
   min: number;
   max: number;
   price: number[];
+  theme: DefaultTheme & {
+    newColors: {
+      [key: string]: string;
+    };
+  };
 }
 
-export const St = {
-  IntimacySlider: styled.div`
-    height: 2.2rem;
+interface RangeThumbAriaProps {
+  "aria-valuemax": number;
+  "aria-valuemin": number;
+  "aria-valuenow": number;
+}
 
-    margin: 1.2rem 0 0.2rem;
-    padding: 0 1.5rem;
-  `,
+const IntimacySlider = styled.div`
+  height: 2rem;
 
-  RangeThumb: styled.div`
-    position: absolute;
-    top: 0;
-    width: 1.8em;
-    height: 1.8rem;
-    border-radius: 2.4rem;
+  margin: 1.2rem 0 0.2rem;
+`;
 
-    background-color: ${({ theme }) => theme.colors.white};
-    box-shadow: 0 0.1rem 0.4rem 0.1rem rgba(0, 0, 0, 0.25);
+const RangeThumb = styled.div<RangeThumbAriaProps>`
+  width: 2rem;
+  height: 2rem;
 
-    cursor: pointer;
-  `,
+  border-radius: 50%;
+  box-shadow: 0rem 0.1rem 0.4rem rgba(0, 0, 0, 0.25), 0rem -0.1rem 0.2rem rgba(0, 0, 0, 0.1);
 
-  RangeTrack: styled.div`
-    position: relative;
-    height: 0.8rem;
-    width: 100%;
-    border-radius: 0.4rem;
-    background: ${(props: RangeTrackProps) =>
-      getTrackBackground({
-        values: props.price,
-        colors: ["#19BE7E", "#ffffff"],
-        min: props.min,
-        max: props.max,
-      })};
+  background-color: ${({ theme }) => theme.newColors.white};
 
-    box-shadow: inset 0 0.1rem 0.1rem rgba(0, 0, 0, 0.25);
-  `,
+  cursor: pointer;
+
+  ${(ariaProps) =>
+    ariaProps["aria-valuenow"] === ariaProps["aria-valuemin"] &&
+    css`
+      left: 1rem;
+    `}
+  ${(ariaProps) =>
+    ariaProps["aria-valuenow"] === 1 &&
+    css`
+      left: 0.7rem;
+    `}
+  ${(ariaProps) =>
+    ariaProps["aria-valuenow"] === 2 &&
+    css`
+      left: -0.7rem;
+    `}
+  ${(ariaProps) =>
+    ariaProps["aria-valuenow"] === ariaProps["aria-valuemax"] &&
+    css`
+      left: -1rem;
+    `}
+`;
+
+const RangeTrack = styled.div`
+  position: relative;
+
+  height: 1.1rem;
+
+  background: ${({ theme, price, min, max }: RangeTrackProps) =>
+    getTrackBackground({
+      values: price,
+      colors: [theme.newColors.green, theme.newColors.gray300],
+      min: min,
+      max: max,
+    })};
+`;
+
+const St = {
+  IntimacySlider,
+  RangeThumb,
+  RangeTrack,
 };
+export default St;

@@ -16,8 +16,9 @@ export default function App() {
 
   return (
     <St.MobileContainer>
-      {isActiveModal && <ModalStyle />}
       <Router />
+      {isActiveModal && <ModalStyle />}
+      <div id="modal"></div>
     </St.MobileContainer>
   );
 }
