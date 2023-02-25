@@ -29,7 +29,7 @@ const RecomendContainer = styled.article`
 `;
 
 const Title = styled.h1`
-  ${({ theme }) => theme.newFonts.body3};
+  ${({ theme }) => theme.newFonts.body3}
   color: ${({ theme }) => theme.newColors.gray900};
   margin-right: 0.8rem;
 `;
@@ -46,7 +46,7 @@ const RecomendWrapper = styled(Link)`
 `;
 
 const SubTitle = styled.div`
-  ${({ theme }) => theme.newFonts.caption1};
+  ${({ theme }) => theme.newFonts.caption1}
   color: ${({ theme }) => theme.newColors.gray700};
 `;
 

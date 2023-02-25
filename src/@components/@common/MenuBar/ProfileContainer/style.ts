@@ -14,14 +14,14 @@ const ProfileImage = styled.img`
 `;
 
 const WelcomeText = styled.h1`
-  ${({ theme }) => theme.newFonts.body1};
+  ${({ theme }) => theme.newFonts.body1}
   color: ${({ theme }) => theme.newColors.gray900};
 
   margin-top: 1.6rem;
 `;
 
 const DescriptText = styled.h2`
-  ${({ theme }) => theme.newFonts.body4};
+  ${({ theme }) => theme.newFonts.body4}
   color: ${({ theme }) => theme.newColors.gray700};
 
   margin-top: 0.2rem;
@@ -35,7 +35,7 @@ const BtnContainer = styled.div`
 `;
 
 const MyProfileBtn = styled(Link)`
-  ${({ theme }) => theme.newFonts.btn2};
+  ${({ theme }) => theme.newFonts.btn2}
   color: ${({ theme }) => theme.newColors.gray700};
 
   border-right: solid 0.15rem ${({ theme }) => theme.newColors.gray700};
@@ -44,7 +44,7 @@ const MyProfileBtn = styled(Link)`
 `;
 
 const LogoutBtn = styled.button`
-  ${({ theme }) => theme.newFonts.btn2};
+  ${({ theme }) => theme.newFonts.btn2}
   color: ${({ theme }) => theme.colors.gray700};
 
   padding-left: 1rem;
