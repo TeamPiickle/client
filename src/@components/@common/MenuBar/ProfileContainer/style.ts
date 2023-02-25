@@ -50,7 +50,7 @@ const LogoutBtn = styled.button`
   padding-left: 1rem;
 `;
 
-export const St = {
+const St = {
   ProfileContainer,
   ProfileImage,
   WelcomeText,
@@ -59,3 +59,4 @@ export const St = {
   MyProfileBtn,
   LogoutBtn,
 };
+export default St;

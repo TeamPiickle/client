@@ -9,7 +9,7 @@ import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import useOutClickCloser from "../../@common/hooks/useOutClickCloser";
 import ProfileContainer from "./ProfileContainer";
 import DefaultProfileContainer from "./ProfileContainer/DefaultProfileContainer";
-import { St, StContentsContainer } from "./style";
+import St from "./style";
 interface MenuBarProps {
   closeMenuBar: () => void;
 }
@@ -38,7 +38,7 @@ export default function MenuBar(props: MenuBarProps) {
 
   return (
     <St.Root>
-      <StContentsContainer ref={openElement}>
+      <St.ContentsContainer ref={openElement}>
         <St.CloseBtnContainer onClick={closeMenuBar}>
           <IcCloseBtn />
         </St.CloseBtnContainer>
@@ -80,7 +80,7 @@ export default function MenuBar(props: MenuBarProps) {
             )}
           </St.RecomendContainer>
         </St.Contents>
-      </StContentsContainer>
+      </St.ContentsContainer>
     </St.Root>
   );
 }
