@@ -45,6 +45,7 @@ export default function MenuBar(props: MenuBarProps) {
           <St.RecomendContainer>
             <St.CardRecomendWrapper className={GTM_CLASS_NAME.menuRecommendCard} onClick={moveCardCollection}>
               <St.Title className={GTM_CLASS_NAME.menuRecommendCard}>대화 주제 추천 카드</St.Title>
+              <St.SubTitle>다양한 주제를 담은 카드</St.SubTitle>
             </St.CardRecomendWrapper>
             <St.RecomendWrapper
               to={routePaths.Category}

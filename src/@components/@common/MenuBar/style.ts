@@ -35,7 +35,10 @@ export const St = {
     margin-right: 1.2rem;
   `,
 
-  CardRecomendWrapper: styled.div``,
+  CardRecomendWrapper: styled.div`
+    display: flex;
+    align-items: center;
+  `,
 
   RecomendWrapper: styled(Link)`
     display: flex;
