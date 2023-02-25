@@ -45,7 +45,7 @@ const MyProfileBtn = styled(Link)`
 
 const LogoutBtn = styled.button`
   ${({ theme }) => theme.newFonts.btn2}
-  color: ${({ theme }) => theme.colors.gray700};
+  color: ${({ theme }) => theme.newColors.gray700};
 
   padding-left: 1rem;
 `;
