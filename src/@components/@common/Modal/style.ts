@@ -50,9 +50,7 @@ const CloseBtn = styled.button`
   z-index: 10;
 `;
 
-const ModalContents = styled.main`
-  position: relative;
-`;
+const ModalContents = styled.main``;
 
 const St = {
   WhiteRoot,
