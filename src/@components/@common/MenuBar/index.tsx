@@ -61,6 +61,17 @@ export default function MenuBar(props: MenuBarProps) {
               <St.Title className={GTM_CLASS_NAME.menuPiickleMe}>Piickle Me</St.Title>
               <St.SubTitle className={GTM_CLASS_NAME.menuPiickleMeSub}>진행중인 투표</St.SubTitle>
             </St.RecomendWrapper>
+            {LOGIN_STATE ? (
+              <St.RecomendWrapper to={routePaths.BookmarkPage} onClick={closeMenuBar}>
+                <St.Title>My Piickle</St.Title>
+                <St.SubTitle>북마크된 카드</St.SubTitle>
+              </St.RecomendWrapper>
+            ) : (
+              <St.RecomendWrapper to={routePaths.Login} onClick={closeMenuBar}>
+                <St.Title>My Piickle</St.Title>
+                <St.SubTitle>로그인 시 사용 가능</St.SubTitle>
+              </St.RecomendWrapper>
+            )}
           </St.RecomendContainer>
         </St.Contents>
       </StContentsContainer>
