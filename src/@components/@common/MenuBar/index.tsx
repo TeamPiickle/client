@@ -6,10 +6,10 @@ import { useBallotLists } from "../../../core/api/main";
 import { sliderIdxState } from "../../../core/atom/slider";
 import { routePaths } from "../../../core/routes/path";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
+import useOutClickCloser from "../../@common/hooks/useOutClickCloser";
 import ProfileContainer from "./ProfileContainer";
 import DefaultProfileContainer from "./ProfileContainer/DefaultProfileContainer";
 import { St, StContentsContainer } from "./style";
-
 interface MenuBarProps {
   closeMenuBar: () => void;
 }
@@ -30,9 +30,15 @@ export default function MenuBar(props: MenuBarProps) {
     closeMenuBar();
   };
 
+  const openElement = useOutClickCloser({
+    handleOutClickCloser: () => {
+      closeMenuBar();
+    },
+  });
+
   return (
     <St.Root>
-      <StContentsContainer>
+      <StContentsContainer ref={openElement}>
         <St.CloseBtnContainer onClick={closeMenuBar}>
           <IcCloseBtn />
         </St.CloseBtnContainer>
