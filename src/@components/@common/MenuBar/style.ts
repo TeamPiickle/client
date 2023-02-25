@@ -9,30 +9,30 @@ export const St = {
     left: 0;
     height: 100vh;
 
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: ${({ theme }) => theme.newColors.black50};
 
     z-index: 10;
   `,
 
   CloseBtnContainer: styled.div`
     position: absolute;
-    top: 1.9rem;
+    top: 6.2rem;
     right: 1.6rem;
   `,
 
   Contents: styled.section`
     position: absolute;
-    top: 10rem;
+    top: 13.3rem;
   `,
 
   RecomendContainer: styled.article`
-    padding-top: 3.6rem;
+    padding-top: 2.4rem;
   `,
 
   Title: styled.h1`
-    ${({ theme }) => theme.fonts.body1};
-    color: ${({ theme }) => theme.colors.bg};
-    margin-right: 1.2rem;
+    ${({ theme }) => theme.newFonts.body3};
+    color: ${({ theme }) => theme.newColors.gray900};
+    margin-right: 0.8rem;
   `,
 
   CardRecomendWrapper: styled.div`
@@ -47,8 +47,8 @@ export const St = {
   `,
 
   SubTitle: styled.div`
-    ${({ theme }) => theme.fonts.body4};
-    color: ${({ theme }) => theme.colors.gray600};
+    ${({ theme }) => theme.newFonts.caption1};
+    color: ${({ theme }) => theme.newColors.gray700};
   `,
 };
 
@@ -76,9 +76,9 @@ export const StContentsContainer = styled.section`
   height: 100vh;
   float: right;
 
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.newColors.white};
 
-  padding-left: 1.8rem;
+  padding-left: 1.6rem;
 
   animation: ${ani} 0.8s ease-in-out;
 `;
