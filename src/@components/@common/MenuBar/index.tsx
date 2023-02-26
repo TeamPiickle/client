@@ -16,6 +16,7 @@ interface MenuBarProps {
 
 export default function MenuBar(props: MenuBarProps) {
   const { closeMenuBar } = props;
+  const outClickCloserRef = useOutClickCloser(closeMenuBar);
 
   const setSliderIdx = useSetRecoilState(sliderIdxState);
   const navigate = useNavigate();
@@ -29,16 +30,9 @@ export default function MenuBar(props: MenuBarProps) {
     setSliderIdx(0);
     closeMenuBar();
   };
-
-  const openElement = useOutClickCloser({
-    handleOutClickCloser: () => {
-      closeMenuBar();
-    },
-  });
-
   return (
     <St.Root>
-      <St.ContentsContainer ref={openElement}>
+      <St.ContentsContainer ref={outClickCloserRef}>
         <St.CloseBtnContainer onClick={closeMenuBar}>
           <IcCloseBtn />
         </St.CloseBtnContainer>
