@@ -4,13 +4,16 @@ const Root = styled.div`
   height: 100vh;
 
   position: absolute;
-  left: 0;
-  right: 0;
   top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
   z-index: 10;
 
   background-color: rgb(0, 0, 0, 0.5);
   display: flex;
+  justify-content: center;
   align-items: center;
 `;
 
