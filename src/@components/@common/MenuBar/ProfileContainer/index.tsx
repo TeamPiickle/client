@@ -4,7 +4,7 @@ import { ImgDefaultProfile } from "../../../../asset/image";
 import useUserProfile from "../../../../core/api/myPage";
 import { routePaths } from "../../../../core/routes/path";
 import DefaultProfileContainer from "./DefaultProfileContainer";
-import { St } from "./style";
+import St from "./style";
 
 export interface ProfileContainerProps {
   closeMenuBar: () => void;

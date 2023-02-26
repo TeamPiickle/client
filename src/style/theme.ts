@@ -44,6 +44,7 @@ const newColors = {
   green: "#19BE7E",
   lightgreen1: "#7DE0B9",
   white: "#FFFFFF",
+  black50: "rgba(0, 0, 0, 0.5)",
 } as const;
 
 interface Font {

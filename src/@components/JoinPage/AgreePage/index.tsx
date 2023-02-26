@@ -14,18 +14,16 @@ import { UserInfoFormDataContext } from "..";
 import { ModalContainerWithAnimation, St } from "./style";
 
 export default function AgreePage() {
+  const { userInfoFormData } = useOutletContext<UserInfoFormDataContext>();
+
   const navigate = useNavigate();
 
-  const { userInfoFormData } = useOutletContext<UserInfoFormDataContext>();
+  const outClickCloserRef = useOutClickCloser(() => {
+    setIsOpenAlert(false);
+  });
 
   const [isPickedItems, setIsPickedItems] = useState<boolean[]>([false, false, false, false, false]);
   const [isOpenAlert, setIsOpenAlert] = useState(false);
-
-  const alertElement = useOutClickCloser({
-    handleOutClickCloser: () => {
-      setIsOpenAlert(false);
-    },
-  });
 
   function handleChecking(index: number) {
     switch (index) {
@@ -111,7 +109,7 @@ export default function AgreePage() {
       <St.JoinAgree>
         <St.AgreeTitle>약관을 동의해주세요</St.AgreeTitle>
         <St.AgreeContent>{agreeLists}</St.AgreeContent>
-        <ModalContainerWithAnimation isopen={isOpenAlert} ref={alertElement}>
+        <ModalContainerWithAnimation isopen={isOpenAlert} ref={outClickCloserRef}>
           필수 항목에 동의해주세요
         </ModalContainerWithAnimation>
         <St.JoinButton className={GTM_CLASS_NAME.joinAgreeComplete} onClick={completeJoinBtn}>

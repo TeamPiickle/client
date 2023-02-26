@@ -1,12 +1,8 @@
 import { useEffect, useRef } from "react";
 
-interface UseOutClickCloserProps {
-  handleOutClickCloser: () => void;
-}
+type HandleOutClickCloser = () => void;
 
-export default function useOutClickCloser(props: UseOutClickCloserProps) {
-  const { handleOutClickCloser } = props;
-
+export default function useOutClickCloser(handleOutClickCloser: HandleOutClickCloser) {
   const currentRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {

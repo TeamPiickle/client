@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const ProfileContainer = styled.article`
-  border-bottom: solid 0.2rem #f1f1f1;
+  border-bottom: solid 0.1rem ${({ theme }) => theme.newColors.gray300};
 
-  padding-bottom: 3.6rem;
+  padding-bottom: 2.4rem;
 `;
 
 const ProfileImage = styled.img`
@@ -14,45 +14,43 @@ const ProfileImage = styled.img`
 `;
 
 const WelcomeText = styled.h1`
-  ${({ theme }) => theme.fonts.body10};
-  color: ${({ theme }) => theme.colors.bg};
+  ${({ theme }) => theme.newFonts.body1}
+  color: ${({ theme }) => theme.newColors.gray900};
 
   margin-top: 1.6rem;
 `;
 
 const DescriptText = styled.h2`
-  ${({ theme }) => theme.fonts.body12};
-  color: ${({ theme }) => theme.colors.gray600};
+  ${({ theme }) => theme.newFonts.body4}
+  color: ${({ theme }) => theme.newColors.gray700};
 
-  margin-top: 0.4rem;
+  margin-top: 0.2rem;
 `;
 
 const BtnContainer = styled.div`
   display: flex;
   align-items: center;
 
-  color: ${({ theme }) => theme.colors.gray600};
-
-  margin-top: 3.6rem;
+  margin-top: 1.6rem;
 `;
 
 const MyProfileBtn = styled(Link)`
-  ${({ theme }) => theme.fonts.btn2};
-  color: ${({ theme }) => theme.colors.gray600};
+  ${({ theme }) => theme.newFonts.btn2}
+  color: ${({ theme }) => theme.newColors.gray700};
 
-  border-right: solid 0.15rem ${({ theme }) => theme.colors.gray600};
+  border-right: solid 0.15rem ${({ theme }) => theme.newColors.gray700};
 
   padding-right: 1rem;
 `;
 
 const LogoutBtn = styled.button`
-  ${({ theme }) => theme.fonts.btn2};
-  color: ${({ theme }) => theme.colors.gray600};
+  ${({ theme }) => theme.newFonts.btn2}
+  color: ${({ theme }) => theme.newColors.gray700};
 
   padding-left: 1rem;
 `;
 
-export const St = {
+const St = {
   ProfileContainer,
   ProfileImage,
   WelcomeText,
@@ -61,3 +59,4 @@ export const St = {
   MyProfileBtn,
   LogoutBtn,
 };
+export default St;

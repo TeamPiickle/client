@@ -6,16 +6,17 @@ import { useBallotLists } from "../../../core/api/main";
 import { sliderIdxState } from "../../../core/atom/slider";
 import { routePaths } from "../../../core/routes/path";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
+import useOutClickCloser from "../../@common/hooks/useOutClickCloser";
 import ProfileContainer from "./ProfileContainer";
 import DefaultProfileContainer from "./ProfileContainer/DefaultProfileContainer";
-import { St, StContentsContainer } from "./style";
-
+import St from "./style";
 interface MenuBarProps {
   closeMenuBar: () => void;
 }
 
 export default function MenuBar(props: MenuBarProps) {
   const { closeMenuBar } = props;
+  const outClickCloserRef = useOutClickCloser(closeMenuBar);
 
   const setSliderIdx = useSetRecoilState(sliderIdxState);
   const navigate = useNavigate();
@@ -29,10 +30,9 @@ export default function MenuBar(props: MenuBarProps) {
     setSliderIdx(0);
     closeMenuBar();
   };
-
   return (
     <St.Root>
-      <StContentsContainer>
+      <St.ContentsContainer ref={outClickCloserRef}>
         <St.CloseBtnContainer onClick={closeMenuBar}>
           <IcCloseBtn />
         </St.CloseBtnContainer>
@@ -45,6 +45,7 @@ export default function MenuBar(props: MenuBarProps) {
           <St.RecomendContainer>
             <St.CardRecomendWrapper className={GTM_CLASS_NAME.menuRecommendCard} onClick={moveCardCollection}>
               <St.Title className={GTM_CLASS_NAME.menuRecommendCard}>대화 주제 추천 카드</St.Title>
+              <St.SubTitle>다양한 주제를 담은 카드</St.SubTitle>
             </St.CardRecomendWrapper>
             <St.RecomendWrapper
               to={routePaths.Category}
@@ -60,9 +61,20 @@ export default function MenuBar(props: MenuBarProps) {
               <St.Title className={GTM_CLASS_NAME.menuPiickleMe}>Piickle Me</St.Title>
               <St.SubTitle className={GTM_CLASS_NAME.menuPiickleMeSub}>진행중인 투표</St.SubTitle>
             </St.RecomendWrapper>
+            {LOGIN_STATE ? (
+              <St.RecomendWrapper to={routePaths.BookmarkPage} onClick={closeMenuBar}>
+                <St.Title>My Piickle</St.Title>
+                <St.SubTitle>북마크된 카드</St.SubTitle>
+              </St.RecomendWrapper>
+            ) : (
+              <St.RecomendWrapper to={routePaths.Login} onClick={closeMenuBar}>
+                <St.Title>My Piickle</St.Title>
+                <St.SubTitle>로그인 시 사용 가능</St.SubTitle>
+              </St.RecomendWrapper>
+            )}
           </St.RecomendContainer>
         </St.Contents>
-      </StContentsContainer>
+      </St.ContentsContainer>
     </St.Root>
   );
 }
