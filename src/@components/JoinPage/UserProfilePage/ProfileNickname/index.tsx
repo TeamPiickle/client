@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 
 import { joinApi } from "../../../../core/api/join";
+import { JOIN_ERROR_KEY } from "../../../../core/join/userProfileErrorMessage";
 import checkInvalidNickName from "../../../../util/checkInvalidNickName";
 import { St } from "./style";
 
@@ -10,18 +11,18 @@ interface ProfileNicknameProps {
   isChecked: boolean;
   isInComplete: boolean;
   setIsChecked: (button: boolean) => void;
-  errorMsg: (err: string) => void;
+  handleErrorMsg: (err: string) => void;
   isError: string;
 }
 
 export default function ProfileNickname(props: ProfileNicknameProps) {
-  const { nickName, setNickName, isChecked, setIsChecked, isInComplete, errorMsg } = props;
+  const { nickName, setNickName, isChecked, setIsChecked, isInComplete, handleErrorMsg } = props;
 
   const onChangeNickname = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.length > 8) e.target.value = e.target.value.slice(0, 8);
 
     if (nickName !== e.target.value) {
-      errorMsg("");
+      handleErrorMsg(JOIN_ERROR_KEY.Okay);
       setIsChecked(false);
     }
     setNickName(e.target.value);
@@ -38,17 +39,17 @@ export default function ProfileNickname(props: ProfileNicknameProps) {
     try {
       const response: AxiosResponse = await joinApi.fetchNickNameValid(nickName);
       if (checkInvalidNickName(nickName)) {
-        errorMsg("nickNameValid");
+        handleErrorMsg(JOIN_ERROR_KEY.nickName.valid);
       } else if (response.data) {
-        errorMsg("nickNameFail");
+        handleErrorMsg(JOIN_ERROR_KEY.nickName.fail);
       } else {
         setIsChecked(true);
-        errorMsg("");
+        handleErrorMsg(JOIN_ERROR_KEY.Okay);
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const errorData = error.response?.data;
-        if (errorData.status === 400) errorMsg("nickNameInput");
+        if (errorData.status === 400) handleErrorMsg(JOIN_ERROR_KEY.nickName.input);
       }
     }
   };

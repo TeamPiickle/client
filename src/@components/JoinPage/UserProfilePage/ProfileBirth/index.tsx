@@ -2,17 +2,18 @@ import { useState } from "react";
 import DatePicker from "react-mobile-datepicker";
 
 import { IcDownArrow } from "../../../../asset/icon";
+import { JOIN_ERROR_KEY } from "../../../../core/join/userProfileErrorMessage";
 import { St } from "./style";
 
 interface ProfileBirthProps {
   birthData: string;
   isInComplete: boolean;
   setBirthData: (birthDay: string) => void;
-  errorMsg: (err: string) => void;
+  handleErrorMsg: (err: string) => void;
 }
 
 export default function ProfileBirth(props: ProfileBirthProps) {
-  const { birthData, isInComplete, setBirthData, errorMsg } = props;
+  const { birthData, isInComplete, setBirthData, handleErrorMsg } = props;
   const [isOpen, setIsOpen] = useState(false);
   const time = new Date();
 
@@ -27,13 +28,13 @@ export default function ProfileBirth(props: ProfileBirthProps) {
     time.getMonth() + 1 <= month && time.getDate() <= day ? age-- : null;
 
     if (year === time.getFullYear() && monthResult >= time.getMonth() + 1 && day >= time.getDate()) {
-      errorMsg("birthValid");
+      handleErrorMsg(JOIN_ERROR_KEY.birth.valid);
     } else if (year > time.getFullYear()) {
-      errorMsg("birthValid");
+      handleErrorMsg(JOIN_ERROR_KEY.birth.valid);
     } else if (age < 14) {
-      errorMsg("birthCheck");
+      handleErrorMsg(JOIN_ERROR_KEY.birth.check);
     } else {
-      errorMsg("");
+      handleErrorMsg(JOIN_ERROR_KEY.Okay);
     }
     return year + "년 " + monthResult + "월 " + dayResult + "일";
   };

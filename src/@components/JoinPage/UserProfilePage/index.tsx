@@ -4,7 +4,7 @@ import { useNavigate, useOutletContext } from "react-router-dom";
 import { ImgDefaultBigProfile } from "../../../asset/image";
 import { JOIN_FORM_DATA_KEY } from "../../../core/join/formData";
 import { subHeaderInfo } from "../../../core/join/subHeaderInfo";
-import { errorMessage } from "../../../core/join/userProfileErrorMessage";
+import { JOIN_ERROR_KEY, JOIN_ERROR_MESSAGE } from "../../../core/join/userProfileErrorMessage";
 import { routePaths } from "../../../core/routes/path";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import Footer from "../../@common/Footer";
@@ -86,22 +86,20 @@ export default function UserProfilePage() {
           isInComplete={isInComplete}
           setNickName={setNickName}
           setIsChecked={setIsChecked}
-          errorMsg={errorHandler}
+          handleErrorMsg={errorHandler}
           isError={isError}
         />
-        {(isInComplete && nickName == "") || isError === "nickNameInput" ? (
-          <St.ErrorMessage>{errorMessage.nickName.input}</St.ErrorMessage>
-        ) : isError === "nickNameFail" ? (
-          <St.ErrorMessage>{errorMessage.nickName.fail}</St.ErrorMessage>
-        ) : isError === "nickNameValid" ? (
-          <St.ErrorMessage>{errorMessage.nickName.valid}</St.ErrorMessage>
+        {(isInComplete && nickName == "") || isError === JOIN_ERROR_KEY.nickName.input ? (
+          <St.ErrorMessage>{JOIN_ERROR_MESSAGE.nickName.input}</St.ErrorMessage>
+        ) : isError === JOIN_ERROR_KEY.nickName.fail ? (
+          <St.ErrorMessage>{JOIN_ERROR_MESSAGE.nickName.fail}</St.ErrorMessage>
+        ) : isError === JOIN_ERROR_KEY.nickName.valid ? (
+          <St.ErrorMessage>{JOIN_ERROR_MESSAGE.nickName.valid}</St.ErrorMessage>
         ) : isInComplete && !isChecked ? (
-          <St.ErrorMessage>{errorMessage.nickName.check}</St.ErrorMessage>
+          <St.ErrorMessage>{JOIN_ERROR_MESSAGE.nickName.check}</St.ErrorMessage>
         ) : isChecked ? (
-          <St.SuccessMessage>{errorMessage.nickName.success}</St.SuccessMessage>
-        ) : (
-          ""
-        )}
+          <St.SuccessMessage>{JOIN_ERROR_MESSAGE.nickName.success}</St.SuccessMessage>
+        ) : null}
 
         <St.SubTitle>생년월일(필수)</St.SubTitle>
         <St.Requirement>※ 만 14세 이상만 가입가능합니다.</St.Requirement>
@@ -109,11 +107,13 @@ export default function UserProfilePage() {
           birthData={birthData}
           setBirthData={setBirthData}
           isInComplete={isInComplete}
-          errorMsg={errorHandler}
+          handleErrorMsg={errorHandler}
         />
-        {isInComplete && birthData == "" && <St.ErrorMessage>{errorMessage.birth.input}</St.ErrorMessage>}
-        {isError === "birthValid" && <St.ErrorMessage>{errorMessage.birth.valid}</St.ErrorMessage>}
-        {isError === "birthCheck" && <St.ErrorMessage>{errorMessage.birth.check}</St.ErrorMessage>}
+        {isInComplete && birthData == "" && <St.ErrorMessage>{JOIN_ERROR_MESSAGE.birth.input}</St.ErrorMessage>}
+        {isError === JOIN_ERROR_KEY.birth.valid && <St.ErrorMessage>{JOIN_ERROR_MESSAGE.birth.valid}</St.ErrorMessage>}
+        {isError === JOIN_ERROR_KEY.nickName.check && (
+          <St.ErrorMessage>{JOIN_ERROR_MESSAGE.birth.check}</St.ErrorMessage>
+        )}
 
         <St.SubTitle>성별(선택)</St.SubTitle>
         <ProfileGender gender={gender} setGender={setGender} />
