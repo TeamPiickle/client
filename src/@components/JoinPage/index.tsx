@@ -10,6 +10,7 @@ export interface UserInfoFormDataContext {
   formDataNicknameValue: string;
   formDataBirthdayValue: string;
   formDataGenderValue: string;
+  formDataImgFile: File;
   setUserInfoFormData: React.Dispatch<React.SetStateAction<FormData>>;
 }
 
@@ -25,6 +26,7 @@ export default function JoinPage() {
         formDataNicknameValue: userInfoFormData.get(JOIN_FORM_DATA_KEY.Nickname) ?? "",
         formDataBirthdayValue: userInfoFormData.get(JOIN_FORM_DATA_KEY.Birthday) ?? "",
         formDataGenderValue: userInfoFormData.get(JOIN_FORM_DATA_KEY.Gender) ?? "",
+        formDataImgFile: userInfoFormData.get(JOIN_FORM_DATA_KEY.ImgFile),
         setUserInfoFormData,
       }}
     />
