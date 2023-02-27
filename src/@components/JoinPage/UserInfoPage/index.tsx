@@ -1,5 +1,6 @@
 import { useNavigate, useOutletContext } from "react-router-dom";
 
+import { JOIN_FORM_DATA_KEY } from "../../../core/join/formData";
 import { subHeaderInfo } from "../../../core/join/subHeaderInfo";
 import {
   emailInvalidMessage,
@@ -26,8 +27,14 @@ export default function UserInfo() {
   // const { search } = useLocation();
   // const userEmail = new URLSearchParams(search).get("email") as string;
   const navigate = useNavigate();
-  const { setUserInfoFormData } = useOutletContext<UserInfoFormDataContext>();
-  const { query: emailQuery, handleChangeEmailInputValue, emailInvalidType, alertEmptyEmailInputValue } = useEmail();
+  const { formDataEmailValue, formDataPasswordValue, setUserInfoFormData } =
+    useOutletContext<UserInfoFormDataContext>();
+  const {
+    query: emailQuery,
+    handleChangeEmailInputValue,
+    emailInvalidType,
+    alertEmptyEmailInputValue,
+  } = useEmail(formDataEmailValue);
   const {
     pwQuery,
     handleChangePwInputValue,
@@ -37,7 +44,7 @@ export default function UserInfo() {
     handleChangePwConfirmInputValue,
     pwConfirmInvalidType,
     alertEmptyPwConfirmInputValue,
-  } = usePasswords();
+  } = usePasswords(formDataPasswordValue);
 
   const onClickSuccessBtn = () => {
     if (
@@ -50,8 +57,8 @@ export default function UserInfo() {
       setUserInfoFormData(() => {
         const currentFormData = new FormData();
         // currentFormData.append("email", userEmail);
-        currentFormData.append("email", emailQuery);
-        currentFormData.append("password", pwConfirmQuery);
+        currentFormData.append(JOIN_FORM_DATA_KEY.Email, emailQuery);
+        currentFormData.append(JOIN_FORM_DATA_KEY.Password, pwConfirmQuery);
 
         return currentFormData;
       });

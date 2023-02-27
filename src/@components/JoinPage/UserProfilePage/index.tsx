@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
 import { ImgDefaultBigProfile } from "../../../asset/image";
+import { JOIN_FORM_DATA_KEY } from "../../../core/join/formData";
 import { subHeaderInfo } from "../../../core/join/subHeaderInfo";
 import { errorMessage } from "../../../core/join/userProfileErrorMessage";
 import { routePaths } from "../../../core/routes/path";
@@ -18,14 +19,20 @@ import { St } from "./style";
 export default function UserProfilePage() {
   const navigate = useNavigate();
 
-  const { setUserInfoFormData } = useOutletContext<UserInfoFormDataContext>();
+  const {
+    formDataImgFileValue,
+    formDataNicknameValue,
+    formDataBirthdayValue,
+    formDataGenderValue,
+    setUserInfoFormData,
+  } = useOutletContext<UserInfoFormDataContext>();
 
-  const [nickName, setNickName] = useState(""); // 닉네임
-  const [birthData, setBirthData] = useState(""); // 생년월일
-  const [gender, setGender] = useState(""); // 성별
-  const [profileImage, setProfileImage] = useState(ImgDefaultBigProfile); // 이미지
+  const [profileImage, setProfileImage] = useState(formDataImgFileValue);
+  const [nickName, setNickName] = useState(formDataNicknameValue);
+  const [birthData, setBirthData] = useState(formDataBirthdayValue);
+  const [gender, setGender] = useState(formDataGenderValue);
 
-  const [isChecked, setIsChecked] = useState(false); //닉넴 중복 확인
+  const [isChecked, setIsChecked] = useState(false); //닉네임 중복 확인
   const [isInComplete, setisInComplete] = useState(false); // 다음으로 버튼
   const [isError, setIsError] = useState(""); // 에러메세지
 
@@ -40,11 +47,11 @@ export default function UserProfilePage() {
           currentFormData.append(pair[0], pair[1]);
         }
 
-        currentFormData.append("nickname", nickName);
-        currentFormData.append("birthday", birthData);
+        currentFormData.append(JOIN_FORM_DATA_KEY.Nickname, nickName);
+        currentFormData.append(JOIN_FORM_DATA_KEY.Birthday, birthData);
 
-        if (gender !== "") currentFormData.append("gender", gender);
-        if (profileImage) currentFormData.append("imgFile", profileImage);
+        if (gender !== "") currentFormData.append(JOIN_FORM_DATA_KEY.Gender, gender);
+        if (profileImage !== ImgDefaultBigProfile) currentFormData.append(JOIN_FORM_DATA_KEY.ImgFile, profileImage);
 
         return currentFormData;
       });
