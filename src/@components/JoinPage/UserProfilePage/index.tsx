@@ -4,7 +4,7 @@ import { useNavigate, useOutletContext } from "react-router-dom";
 import { ImgDefaultBigProfile } from "../../../asset/image";
 import { JOIN_FORM_DATA_KEY } from "../../../core/join/formData";
 import { subHeaderInfo } from "../../../core/join/subHeaderInfo";
-import { JOIN_ERROR_KEY, JOIN_ERROR_MESSAGE } from "../../../core/join/userProfileErrorMessage";
+import { JOIN_PROFILE_ALERT_KEY, JOIN_PROFILE_ALERT_MESSAGE } from "../../../core/join/userProfileErrorMessage";
 import { routePaths } from "../../../core/routes/path";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import Footer from "../../@common/Footer";
@@ -34,16 +34,17 @@ export default function UserProfilePage() {
 
   const [isChecked, setIsChecked] = useState(false); //닉네임 중복 확인
   const [isInComplete, setisInComplete] = useState(false); // 다음으로 버튼
-  const [isError, setIsError] = useState(""); // 에러메세지
+  const [errorKey, setErrorKey] = useState(""); // 에러메세지
 
   const completeBtn = () => {
     setisInComplete(true);
+
     // 중복확인
     if (!isChecked) {
       return;
     }
 
-    if (nickName && birthData && isError === "") {
+    if (nickName && birthData && errorKey === "") {
       setUserInfoFormData((prevFormData) => {
         const currentFormData = new FormData();
 
@@ -66,7 +67,7 @@ export default function UserProfilePage() {
   };
 
   const errorHandler = (err: string) => {
-    setIsError(err);
+    setErrorKey(err);
   };
 
   return (
@@ -87,18 +88,17 @@ export default function UserProfilePage() {
           setNickName={setNickName}
           setIsChecked={setIsChecked}
           handleErrorMsg={errorHandler}
-          isError={isError}
         />
-        {(isInComplete && nickName == "") || isError === JOIN_ERROR_KEY.nickName.input ? (
-          <St.ErrorMessage>{JOIN_ERROR_MESSAGE.nickName.input}</St.ErrorMessage>
-        ) : isError === JOIN_ERROR_KEY.nickName.fail ? (
-          <St.ErrorMessage>{JOIN_ERROR_MESSAGE.nickName.fail}</St.ErrorMessage>
-        ) : isError === JOIN_ERROR_KEY.nickName.valid ? (
-          <St.ErrorMessage>{JOIN_ERROR_MESSAGE.nickName.valid}</St.ErrorMessage>
+        {(isInComplete && nickName === "") || errorKey === JOIN_PROFILE_ALERT_KEY.nickName.input ? (
+          <St.ErrorMessage>{JOIN_PROFILE_ALERT_MESSAGE.nickName.input}</St.ErrorMessage>
+        ) : errorKey === JOIN_PROFILE_ALERT_KEY.nickName.fail ? (
+          <St.ErrorMessage>{JOIN_PROFILE_ALERT_MESSAGE.nickName.fail}</St.ErrorMessage>
+        ) : errorKey === JOIN_PROFILE_ALERT_KEY.nickName.valid ? (
+          <St.ErrorMessage>{JOIN_PROFILE_ALERT_MESSAGE.nickName.valid}</St.ErrorMessage>
         ) : isInComplete && !isChecked ? (
-          <St.ErrorMessage>{JOIN_ERROR_MESSAGE.nickName.check}</St.ErrorMessage>
+          <St.ErrorMessage>{JOIN_PROFILE_ALERT_MESSAGE.nickName.check}</St.ErrorMessage>
         ) : isChecked ? (
-          <St.SuccessMessage>{JOIN_ERROR_MESSAGE.nickName.success}</St.SuccessMessage>
+          <St.SuccessMessage>{JOIN_PROFILE_ALERT_MESSAGE.nickName.success}</St.SuccessMessage>
         ) : null}
 
         <St.SubTitle>생년월일(필수)</St.SubTitle>
@@ -109,10 +109,14 @@ export default function UserProfilePage() {
           isInComplete={isInComplete}
           handleErrorMsg={errorHandler}
         />
-        {isInComplete && birthData == "" && <St.ErrorMessage>{JOIN_ERROR_MESSAGE.birth.input}</St.ErrorMessage>}
-        {isError === JOIN_ERROR_KEY.birth.valid && <St.ErrorMessage>{JOIN_ERROR_MESSAGE.birth.valid}</St.ErrorMessage>}
-        {isError === JOIN_ERROR_KEY.nickName.check && (
-          <St.ErrorMessage>{JOIN_ERROR_MESSAGE.birth.check}</St.ErrorMessage>
+        {isInComplete && birthData === "" && (
+          <St.ErrorMessage>{JOIN_PROFILE_ALERT_MESSAGE.birth.input}</St.ErrorMessage>
+        )}
+        {errorKey === JOIN_PROFILE_ALERT_KEY.birth.valid && (
+          <St.ErrorMessage>{JOIN_PROFILE_ALERT_MESSAGE.birth.valid}</St.ErrorMessage>
+        )}
+        {errorKey === JOIN_PROFILE_ALERT_KEY.birth.check && (
+          <St.ErrorMessage>{JOIN_PROFILE_ALERT_MESSAGE.birth.check}</St.ErrorMessage>
         )}
 
         <St.SubTitle>성별(선택)</St.SubTitle>

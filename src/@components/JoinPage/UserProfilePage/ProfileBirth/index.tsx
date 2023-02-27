@@ -2,7 +2,7 @@ import { useState } from "react";
 import DatePicker from "react-mobile-datepicker";
 
 import { IcDownArrow } from "../../../../asset/icon";
-import { JOIN_ERROR_KEY } from "../../../../core/join/userProfileErrorMessage";
+import { JOIN_PROFILE_ALERT_KEY } from "../../../../core/join/userProfileErrorMessage";
 import { St } from "./style";
 
 interface ProfileBirthProps {
@@ -28,13 +28,13 @@ export default function ProfileBirth(props: ProfileBirthProps) {
     time.getMonth() + 1 <= month && time.getDate() <= day ? age-- : null;
 
     if (year === time.getFullYear() && monthResult >= time.getMonth() + 1 && day >= time.getDate()) {
-      handleErrorMsg(JOIN_ERROR_KEY.birth.valid);
+      handleErrorMsg(JOIN_PROFILE_ALERT_KEY.birth.valid);
     } else if (year > time.getFullYear()) {
-      handleErrorMsg(JOIN_ERROR_KEY.birth.valid);
+      handleErrorMsg(JOIN_PROFILE_ALERT_KEY.birth.valid);
     } else if (age < 14) {
-      handleErrorMsg(JOIN_ERROR_KEY.birth.check);
+      handleErrorMsg(JOIN_PROFILE_ALERT_KEY.birth.check);
     } else {
-      handleErrorMsg(JOIN_ERROR_KEY.Okay);
+      handleErrorMsg(JOIN_PROFILE_ALERT_KEY.Okay);
     }
     return year + "년 " + monthResult + "월 " + dayResult + "일";
   };

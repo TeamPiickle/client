@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 
 import { joinApi } from "../../../../core/api/join";
-import { JOIN_ERROR_KEY } from "../../../../core/join/userProfileErrorMessage";
+import { JOIN_PROFILE_ALERT_KEY } from "../../../../core/join/userProfileErrorMessage";
 import checkInvalidNickName from "../../../../util/checkInvalidNickName";
 import { St } from "./style";
 
@@ -12,7 +12,6 @@ interface ProfileNicknameProps {
   isInComplete: boolean;
   setIsChecked: (button: boolean) => void;
   handleErrorMsg: (err: string) => void;
-  isError: string;
 }
 
 export default function ProfileNickname(props: ProfileNicknameProps) {
@@ -22,7 +21,7 @@ export default function ProfileNickname(props: ProfileNicknameProps) {
     if (e.target.value.length > 8) e.target.value = e.target.value.slice(0, 8);
 
     if (nickName !== e.target.value) {
-      handleErrorMsg(JOIN_ERROR_KEY.Okay);
+      handleErrorMsg(JOIN_PROFILE_ALERT_KEY.Okay);
       setIsChecked(false);
     }
     setNickName(e.target.value);
@@ -39,17 +38,17 @@ export default function ProfileNickname(props: ProfileNicknameProps) {
     try {
       const response: AxiosResponse = await joinApi.fetchNickNameValid(nickName);
       if (checkInvalidNickName(nickName)) {
-        handleErrorMsg(JOIN_ERROR_KEY.nickName.valid);
+        handleErrorMsg(JOIN_PROFILE_ALERT_KEY.nickName.valid);
       } else if (response.data) {
-        handleErrorMsg(JOIN_ERROR_KEY.nickName.fail);
+        handleErrorMsg(JOIN_PROFILE_ALERT_KEY.nickName.fail);
       } else {
         setIsChecked(true);
-        handleErrorMsg(JOIN_ERROR_KEY.Okay);
+        handleErrorMsg(JOIN_PROFILE_ALERT_KEY.Okay);
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const errorData = error.response?.data;
-        if (errorData.status === 400) handleErrorMsg(JOIN_ERROR_KEY.nickName.input);
+        if (errorData.status === 400) handleErrorMsg(JOIN_PROFILE_ALERT_KEY.nickName.input);
       }
     }
   };
