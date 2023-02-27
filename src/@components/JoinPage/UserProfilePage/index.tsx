@@ -38,6 +38,11 @@ export default function UserProfilePage() {
 
   const completeBtn = () => {
     setisInComplete(true);
+    // 중복확인
+    if (!isChecked) {
+      return;
+    }
+
     if (nickName && birthData && isError === "") {
       setUserInfoFormData((prevFormData) => {
         const currentFormData = new FormData();
