@@ -16,18 +16,18 @@ import ProfileNickname from "./ProfileNickname";
 import { St } from "./style";
 
 export default function UserProfilePage() {
-  const [nickName, setNickName] = useState<string>(""); // 닉네임
-  const [birthData, setBirthData] = useState<string>(""); // 생년월일
-  // TODO :: 변수명 gender로 바꾸기
-  const [isSelected, setIsSelected] = useState<string>(""); // 성별
+  const navigate = useNavigate();
+
+  const { setUserInfoFormData } = useOutletContext<UserInfoFormDataContext>();
+
+  const [nickName, setNickName] = useState(""); // 닉네임
+  const [birthData, setBirthData] = useState(""); // 생년월일
+  const [gender, setGender] = useState(""); // 성별
   const [profileImage, setProfileImage] = useState(ImgDefaultBigProfile); // 이미지
 
   const [isChecked, setIsChecked] = useState(false); //닉넴 중복 확인
   const [isInComplete, setisInComplete] = useState(false); // 다음으로 버튼
-  const [isError, setIsError] = useState<string>(""); // 에러메세지
-
-  const navigate = useNavigate();
-  const { setUserInfoFormData } = useOutletContext<UserInfoFormDataContext>();
+  const [isError, setIsError] = useState(""); // 에러메세지
 
   const completeBtn = () => {
     setisInComplete(true);
@@ -43,7 +43,7 @@ export default function UserProfilePage() {
         currentFormData.append("nickname", nickName);
         currentFormData.append("birthday", birthData);
 
-        if (isSelected) currentFormData.append("gender", isSelected);
+        if (gender !== "") currentFormData.append("gender", gender);
         if (profileImage) currentFormData.append("imgFile", profileImage);
 
         return currentFormData;
@@ -104,7 +104,7 @@ export default function UserProfilePage() {
         {isError === "birthCheck" && <St.ErrorMessage>{errorMessage.birth.check}</St.ErrorMessage>}
 
         <St.SubTitle>성별(선택)</St.SubTitle>
-        <ProfileGender isSelected={isSelected} setIsSelected={setIsSelected} />
+        <ProfileGender gender={gender} setGender={setGender} />
         <St.NextButton className={GTM_CLASS_NAME.joinProfileNext} onClick={completeBtn}>
           다음으로
         </St.NextButton>
