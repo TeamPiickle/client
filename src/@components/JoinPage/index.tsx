@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 import { JOIN_FORM_DATA_KEY } from "../../core/join/formData";
 
 export interface UserInfoFormDataContext {
-  userInfoFormData: FormData;
+  userInfoFormDataForPost: FormData;
   formDataEmailValue: string;
   formDataPasswordValue: string;
   formDataNicknameValue: string;
@@ -19,7 +19,7 @@ export default function JoinPage() {
   return (
     <Outlet
       context={{
-        userInfoFormData,
+        userInfoFormDataForPost: userInfoFormData,
         formDataEmailValue: userInfoFormData.get(JOIN_FORM_DATA_KEY.Email) ?? "",
         formDataPasswordValue: userInfoFormData.get(JOIN_FORM_DATA_KEY.Password) ?? "",
         formDataNicknameValue: userInfoFormData.get(JOIN_FORM_DATA_KEY.Nickname) ?? "",

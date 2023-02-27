@@ -15,7 +15,7 @@ export default function ProfileJender(props: ProfileJenderProps) {
   return (
     <St.ProfileGender>
       <St.GenderInputForm onChange={handleSelect} value={gender}>
-        <St.Option value="" disabled selected hidden>
+        <St.Option value="" disabled hidden>
           성별을 선택해주세요
         </St.Option>
         <St.Option value="남">남자</St.Option>
