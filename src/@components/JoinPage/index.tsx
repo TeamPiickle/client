@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
-import { ImgDefaultBigProfile } from "../../asset/image";
 import { JOIN_FORM_DATA_KEY } from "../../core/join/formData";
 
 export interface UserInfoFormDataContext {
   userInfoFormData: FormData;
   formDataEmailValue: string;
   formDataPasswordValue: string;
-  formDataImgFileValue: File;
   formDataNicknameValue: string;
   formDataBirthdayValue: string;
   formDataGenderValue: string;
@@ -27,7 +25,6 @@ export default function JoinPage() {
         formDataNicknameValue: userInfoFormData.get(JOIN_FORM_DATA_KEY.Nickname) ?? "",
         formDataBirthdayValue: userInfoFormData.get(JOIN_FORM_DATA_KEY.Birthday) ?? "",
         formDataGenderValue: userInfoFormData.get(JOIN_FORM_DATA_KEY.Gender) ?? "",
-        formDataImgFileValue: userInfoFormData.get(JOIN_FORM_DATA_KEY.ImgFile) ?? ImgDefaultBigProfile,
         setUserInfoFormData,
       }}
     />

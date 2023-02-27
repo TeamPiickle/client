@@ -32,7 +32,7 @@ export default function ProfileImage(props: ProfileImageProps) {
     <St.ProfileImage>
       <St.ImageContainer>
         <St.ImageWrapper>
-          <St.AddImage src={previewImgUrl ? previewImgUrl : ImgDefaultBigProfile} alt="프로필" />
+          <St.AddImage src={previewImgUrl === "" ? ImgDefaultBigProfile : previewImgUrl} alt="프로필" />
         </St.ImageWrapper>
         <St.AddBtnWrapper>
           <IcAddProfileBtn />

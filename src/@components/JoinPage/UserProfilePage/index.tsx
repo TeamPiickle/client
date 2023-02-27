@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
-import { ImgDefaultBigProfile } from "../../../asset/image";
 import { JOIN_FORM_DATA_KEY } from "../../../core/join/formData";
 import { subHeaderInfo } from "../../../core/join/subHeaderInfo";
 import { JOIN_PROFILE_ALERT_KEY, JOIN_PROFILE_ALERT_MESSAGE } from "../../../core/join/userProfileErrorMessage";
@@ -19,15 +18,10 @@ import { St } from "./style";
 export default function UserProfilePage() {
   const navigate = useNavigate();
 
-  const {
-    formDataImgFileValue,
-    formDataNicknameValue,
-    formDataBirthdayValue,
-    formDataGenderValue,
-    setUserInfoFormData,
-  } = useOutletContext<UserInfoFormDataContext>();
+  const { formDataNicknameValue, formDataBirthdayValue, formDataGenderValue, setUserInfoFormData } =
+    useOutletContext<UserInfoFormDataContext>();
 
-  const [profileImage, setProfileImage] = useState(formDataImgFileValue);
+  const [profileImage, setProfileImage] = useState<File>();
   const [nickName, setNickName] = useState(formDataNicknameValue);
   const [birthData, setBirthData] = useState(formDataBirthdayValue);
   const [gender, setGender] = useState(formDataGenderValue);
@@ -48,16 +42,12 @@ export default function UserProfilePage() {
       setUserInfoFormData((prevFormData) => {
         const currentFormData = new FormData();
 
-        // email, password
-        for (const pair of prevFormData.entries()) {
-          currentFormData.append(pair[0], pair[1]);
-        }
-
+        currentFormData.append(JOIN_FORM_DATA_KEY.Email, prevFormData.get(JOIN_FORM_DATA_KEY.Email) ?? "");
+        currentFormData.append(JOIN_FORM_DATA_KEY.Password, prevFormData.get(JOIN_FORM_DATA_KEY.Password) ?? "");
         currentFormData.append(JOIN_FORM_DATA_KEY.Nickname, nickName);
         currentFormData.append(JOIN_FORM_DATA_KEY.Birthday, birthData);
-
         if (gender !== "") currentFormData.append(JOIN_FORM_DATA_KEY.Gender, gender);
-        if (profileImage !== ImgDefaultBigProfile) currentFormData.append(JOIN_FORM_DATA_KEY.ImgFile, profileImage);
+        if (profileImage) currentFormData.append(JOIN_FORM_DATA_KEY.ImgFile, profileImage);
 
         return currentFormData;
       });

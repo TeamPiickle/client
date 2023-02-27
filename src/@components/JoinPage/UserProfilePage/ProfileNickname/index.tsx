@@ -59,10 +59,11 @@ export default function ProfileNickname(props: ProfileNicknameProps) {
         <St.NickNameInputForm
           id="nickname"
           placeholder="홍길동"
+          defaultValue={nickName}
           onChange={onChangeNickname}
           isincompletestate={nickName === "" && isInComplete}
           isvalidstate={isChecked}
-          onKeyDown={(e) => checkSpaceBar(e)}
+          onKeyDown={checkSpaceBar}
         />
         <St.CheckBtn onClick={isVaildCheckBtn}>중복확인</St.CheckBtn>
       </St.InputContainer>
