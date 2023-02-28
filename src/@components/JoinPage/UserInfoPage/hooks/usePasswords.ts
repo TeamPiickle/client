@@ -9,13 +9,17 @@ import {
 import checkPasswordInvalid from "../../../../util/checkInvalidPassword";
 import { useDebounce } from "../../../@common/hooks/useDebounce";
 
-export default function usePasswords() {
-  const { query: pwQuery, setQuery: setPwQuery, debouncedQuery: debouncedPwQuery } = useDebounce("");
+export default function usePasswords(defaultFormDataPasswordValue: string) {
+  const {
+    query: pwQuery,
+    setQuery: setPwQuery,
+    debouncedQuery: debouncedPwQuery,
+  } = useDebounce(defaultFormDataPasswordValue);
   const {
     query: pwConfirmQuery,
     setQuery: setPwConfirmQuery,
     debouncedQuery: debouncedPwConfirmQuery,
-  } = useDebounce("");
+  } = useDebounce(defaultFormDataPasswordValue);
 
   const [pwInvalidType, setPwInvalidType] = useState<PasswordInvalidMessage>(passwordInvalidMessage.NULL);
   const [pwConfirmInvalidType, setPwConfirmInvalidType] = useState<PasswordConfirmInvalidMessage>(

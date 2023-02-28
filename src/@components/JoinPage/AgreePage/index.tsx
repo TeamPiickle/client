@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
@@ -14,7 +15,7 @@ import { UserInfoFormDataContext } from "..";
 import { ModalContainerWithAnimation, St } from "./style";
 
 export default function AgreePage() {
-  const { userInfoFormData } = useOutletContext<UserInfoFormDataContext>();
+  const { userInfoFormDataForPost } = useOutletContext<UserInfoFormDataContext>();
 
   const navigate = useNavigate();
 
@@ -22,7 +23,7 @@ export default function AgreePage() {
     setIsOpenAlert(false);
   });
 
-  const [isPickedItems, setIsPickedItems] = useState<boolean[]>([false, false, false, false, false]);
+  const [isPickedItems, setIsPickedItems] = useState<boolean[]>([false, true, true, true, false]);
   const [isOpenAlert, setIsOpenAlert] = useState(false);
 
   function handleChecking(index: number) {
@@ -57,12 +58,18 @@ export default function AgreePage() {
     return _items;
   };
 
-  const completeJoinBtn = () => {
-    if (checkIsOkayToPass()) {
-      joinApi.postJoin(userInfoFormData);
-      navigate(routePaths.Login);
-    } else {
-      setIsOpenAlert(true);
+  const completeJoinBtn = async () => {
+    try {
+      if (checkIsOkayToPass()) {
+        await joinApi.postJoin(userInfoFormDataForPost);
+        navigate(routePaths.Login);
+      } else {
+        setIsOpenAlert(true);
+      }
+    } catch (error) {
+      if (!axios.isAxiosError(error)) return;
+
+      alert("회원가입을 다시 시도해주세요.");
     }
   };
 

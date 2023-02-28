@@ -6,8 +6,8 @@ import { EmailInvalidMessage, emailInvalidMessage } from "../../../../core/join/
 import checkEmailInvalid from "../../../../util/checkInvalidEmail";
 import { useDebounce } from "../../../@common/hooks/useDebounce";
 
-export default function useEmail() {
-  const { query, setQuery, debouncedQuery } = useDebounce("");
+export default function useEmail(defaultFormDataEmailValue: string) {
+  const { query, setQuery, debouncedQuery } = useDebounce(defaultFormDataEmailValue);
 
   const [emailInvalidType, setEmailInvalidType] = useState<EmailInvalidMessage>(emailInvalidMessage.NULL);
 

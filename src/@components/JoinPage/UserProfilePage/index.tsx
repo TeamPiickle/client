@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
-import { ImgDefaultBigProfile } from "../../../asset/image";
+import { JOIN_FORM_DATA_KEY } from "../../../core/join/formData";
 import { subHeaderInfo } from "../../../core/join/subHeaderInfo";
-import { errorMessage } from "../../../core/join/userProfileErrorMessage";
+import { JOIN_PROFILE_ALERT_KEY, JOIN_PROFILE_ALERT_MESSAGE } from "../../../core/join/userProfileErrorMessage";
 import { routePaths } from "../../../core/routes/path";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import Footer from "../../@common/Footer";
@@ -16,35 +16,38 @@ import ProfileNickname from "./ProfileNickname";
 import { St } from "./style";
 
 export default function UserProfilePage() {
-  const [nickName, setNickName] = useState<string>(""); // 닉네임
-  const [birthData, setBirthData] = useState<string>(""); // 생년월일
-  // TODO :: 변수명 gender로 바꾸기
-  const [isSelected, setIsSelected] = useState<string>(""); // 성별
-  const [profileImage, setProfileImage] = useState(ImgDefaultBigProfile); // 이미지
-
-  const [isChecked, setIsChecked] = useState(false); //닉넴 중복 확인
-  const [isInComplete, setisInComplete] = useState(false); // 다음으로 버튼
-  const [isError, setIsError] = useState<string>(""); // 에러메세지
-
   const navigate = useNavigate();
-  const { setUserInfoFormData } = useOutletContext<UserInfoFormDataContext>();
+
+  const { formDataNicknameValue, formDataBirthdayValue, formDataGenderValue, setUserInfoFormData } =
+    useOutletContext<UserInfoFormDataContext>();
+
+  const [profileImage, setProfileImage] = useState<File>();
+  const [nickName, setNickName] = useState(formDataNicknameValue);
+  const [birthData, setBirthData] = useState(formDataBirthdayValue);
+  const [gender, setGender] = useState(formDataGenderValue);
+
+  const [isChecked, setIsChecked] = useState(false); //닉네임 중복 확인
+  const [isInComplete, setisInComplete] = useState(false); // 다음으로 버튼
+  const [errorKey, setErrorKey] = useState(""); // 에러메세지
 
   const completeBtn = () => {
     setisInComplete(true);
-    if (nickName && birthData && isError === "") {
+
+    // 중복확인
+    if (!isChecked) {
+      return;
+    }
+
+    if (nickName && birthData && errorKey === "") {
       setUserInfoFormData((prevFormData) => {
         const currentFormData = new FormData();
 
-        // email, password
-        for (const pair of prevFormData.entries()) {
-          currentFormData.append(pair[0], pair[1]);
-        }
-
-        currentFormData.append("nickname", nickName);
-        currentFormData.append("birthday", birthData);
-
-        if (isSelected) currentFormData.append("gender", isSelected);
-        if (profileImage) currentFormData.append("imgFile", profileImage);
+        currentFormData.append(JOIN_FORM_DATA_KEY.Email, prevFormData.get(JOIN_FORM_DATA_KEY.Email) ?? "");
+        currentFormData.append(JOIN_FORM_DATA_KEY.Password, prevFormData.get(JOIN_FORM_DATA_KEY.Password) ?? "");
+        currentFormData.append(JOIN_FORM_DATA_KEY.Nickname, nickName);
+        currentFormData.append(JOIN_FORM_DATA_KEY.Birthday, birthData);
+        if (gender !== "") currentFormData.append(JOIN_FORM_DATA_KEY.Gender, gender);
+        if (profileImage) currentFormData.append(JOIN_FORM_DATA_KEY.ImgFile, profileImage);
 
         return currentFormData;
       });
@@ -54,7 +57,7 @@ export default function UserProfilePage() {
   };
 
   const errorHandler = (err: string) => {
-    setIsError(err);
+    setErrorKey(err);
   };
 
   return (
@@ -74,22 +77,19 @@ export default function UserProfilePage() {
           isInComplete={isInComplete}
           setNickName={setNickName}
           setIsChecked={setIsChecked}
-          errorMsg={errorHandler}
-          isError={isError}
+          handleErrorMsg={errorHandler}
         />
-        {(isInComplete && nickName == "") || isError === "nickNameInput" ? (
-          <St.ErrorMessage>{errorMessage.nickName.input}</St.ErrorMessage>
-        ) : isError === "nickNameFail" ? (
-          <St.ErrorMessage>{errorMessage.nickName.fail}</St.ErrorMessage>
-        ) : isError === "nickNameValid" ? (
-          <St.ErrorMessage>{errorMessage.nickName.valid}</St.ErrorMessage>
+        {(isInComplete && nickName === "") || errorKey === JOIN_PROFILE_ALERT_KEY.nickName.input ? (
+          <St.ErrorMessage>{JOIN_PROFILE_ALERT_MESSAGE.nickName.input}</St.ErrorMessage>
+        ) : errorKey === JOIN_PROFILE_ALERT_KEY.nickName.fail ? (
+          <St.ErrorMessage>{JOIN_PROFILE_ALERT_MESSAGE.nickName.fail}</St.ErrorMessage>
+        ) : errorKey === JOIN_PROFILE_ALERT_KEY.nickName.valid ? (
+          <St.ErrorMessage>{JOIN_PROFILE_ALERT_MESSAGE.nickName.valid}</St.ErrorMessage>
         ) : isInComplete && !isChecked ? (
-          <St.ErrorMessage>{errorMessage.nickName.check}</St.ErrorMessage>
+          <St.ErrorMessage>{JOIN_PROFILE_ALERT_MESSAGE.nickName.check}</St.ErrorMessage>
         ) : isChecked ? (
-          <St.SuccessMessage>{errorMessage.nickName.success}</St.SuccessMessage>
-        ) : (
-          ""
-        )}
+          <St.SuccessMessage>{JOIN_PROFILE_ALERT_MESSAGE.nickName.success}</St.SuccessMessage>
+        ) : null}
 
         <St.SubTitle>생년월일(필수)</St.SubTitle>
         <St.Requirement>※ 만 14세 이상만 가입가능합니다.</St.Requirement>
@@ -97,14 +97,20 @@ export default function UserProfilePage() {
           birthData={birthData}
           setBirthData={setBirthData}
           isInComplete={isInComplete}
-          errorMsg={errorHandler}
+          handleErrorMsg={errorHandler}
         />
-        {isInComplete && birthData == "" && <St.ErrorMessage>{errorMessage.birth.input}</St.ErrorMessage>}
-        {isError === "birthValid" && <St.ErrorMessage>{errorMessage.birth.valid}</St.ErrorMessage>}
-        {isError === "birthCheck" && <St.ErrorMessage>{errorMessage.birth.check}</St.ErrorMessage>}
+        {isInComplete && birthData === "" && (
+          <St.ErrorMessage>{JOIN_PROFILE_ALERT_MESSAGE.birth.input}</St.ErrorMessage>
+        )}
+        {errorKey === JOIN_PROFILE_ALERT_KEY.birth.valid && (
+          <St.ErrorMessage>{JOIN_PROFILE_ALERT_MESSAGE.birth.valid}</St.ErrorMessage>
+        )}
+        {errorKey === JOIN_PROFILE_ALERT_KEY.birth.check && (
+          <St.ErrorMessage>{JOIN_PROFILE_ALERT_MESSAGE.birth.check}</St.ErrorMessage>
+        )}
 
         <St.SubTitle>성별(선택)</St.SubTitle>
-        <ProfileGender isSelected={isSelected} setIsSelected={setIsSelected} />
+        <ProfileGender gender={gender} setGender={setGender} />
         <St.NextButton className={GTM_CLASS_NAME.joinProfileNext} onClick={completeBtn}>
           다음으로
         </St.NextButton>

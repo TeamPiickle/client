@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useOutletContext } from "react-router-dom";
 
 import { IcAddProfileBtn } from "../../../../asset/icon";
 import { ImgDefaultBigProfile } from "../../../../asset/image";
 import compressImage from "../../../../util/imageCompressor";
+import { UserInfoFormDataContext } from "../..";
 import { St } from "./style";
 
 interface ProfileImageProps {
@@ -13,7 +15,15 @@ const MAX_IMAGE_SIZE = 80 * 2;
 
 export default function ProfileImage(props: ProfileImageProps) {
   const { setProfileImage } = props;
+  const { formDataImgFile } = useOutletContext<UserInfoFormDataContext>();
+
   const [previewImgUrl, setPreviewImgUrl] = useState("");
+
+  // MEMO :: initialize
+  useEffect(() => {
+    if (!formDataImgFile) return;
+    setPreviewImgUrl(URL.createObjectURL(formDataImgFile));
+  }, [formDataImgFile]);
 
   const handleImagePatch = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files === null) return;
@@ -32,7 +42,7 @@ export default function ProfileImage(props: ProfileImageProps) {
     <St.ProfileImage>
       <St.ImageContainer>
         <St.ImageWrapper>
-          <St.AddImage src={previewImgUrl ? previewImgUrl : ImgDefaultBigProfile} alt="프로필" />
+          <St.AddImage src={previewImgUrl === "" ? ImgDefaultBigProfile : previewImgUrl} alt="프로필" />
         </St.ImageWrapper>
         <St.AddBtnWrapper>
           <IcAddProfileBtn />
