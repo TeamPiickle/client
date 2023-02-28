@@ -70,6 +70,7 @@ export default function AgreePage() {
       if (!axios.isAxiosError(error)) return;
 
       alert("회원가입을 다시 시도해주세요.");
+      navigate(`${routePaths.Join_}${routePaths.Join_UserInfo}`);
     }
   };
 

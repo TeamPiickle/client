@@ -27,8 +27,7 @@ export default function UserInfo() {
   // const { search } = useLocation();
   // const userEmail = new URLSearchParams(search).get("email") as string;
   const navigate = useNavigate();
-  const { formDataEmailValue, formDataPasswordValue, setUserInfoFormData } =
-    useOutletContext<UserInfoFormDataContext>();
+  const { formDataEmailValue, setUserInfoFormData } = useOutletContext<UserInfoFormDataContext>();
   const {
     query: emailQuery,
     handleChangeEmailInputValue,
@@ -44,7 +43,7 @@ export default function UserInfo() {
     handleChangePwConfirmInputValue,
     pwConfirmInvalidType,
     alertEmptyPwConfirmInputValue,
-  } = usePasswords(formDataPasswordValue);
+  } = usePasswords();
 
   const onClickSuccessBtn = () => {
     if (
