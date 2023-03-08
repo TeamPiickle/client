@@ -1,11 +1,22 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
 
 import { useMedleyLists } from "../../../core/api/main";
+import { sliderIdxState } from "../../../core/atom/slider";
+import { routePaths } from "../../../core/routes/path";
 import Loading from "../../@common/Loading";
 import St from "./style";
 
 export default function Medly() {
+  const setSliderIdx = useSetRecoilState(sliderIdxState);
   const { medleyLists } = useMedleyLists();
+  const navigate = useNavigate();
+
+  const moveMedley = (id: string) => {
+    navigate(routePaths.CardCollection, { state: { type: "medley", medleyId: id } });
+    setSliderIdx(0);
+  };
 
   return (
     <St.Container>
@@ -13,9 +24,9 @@ export default function Medly() {
       {medleyLists ? (
         <St.Medley>
           {medleyLists &&
-            medleyLists.data.slice(0, 2).map((medleyLists, idx) => {
+            medleyLists.data.map((medleyLists, idx) => {
               return (
-                <St.MedleyWrapper key={medleyLists._id}>
+                <St.MedleyWrapper key={medleyLists._id} onClick={() => moveMedley(medleyLists._id)}>
                   <St.ContentTag>{medleyLists.sticker}</St.ContentTag>
                   <St.ContentTitle>{medleyLists.title}</St.ContentTitle>
                 </St.MedleyWrapper>
