@@ -61,9 +61,14 @@ function fetchCardsWithCategory<T>(categoryId: string) {
   return realReq.GET<T>(`${PATH.CATEGORIES_}/${categoryId}`);
 }
 
-// 카테고리에 있는 카드 리스트 조회
+// 베스트피클에 있는 카드 리스트 조회
 function fetchCardsWithBest<T>() {
   return realReq.GET<T>(`${PATH.CARDS_}${PATH.CARDS_BEST}`);
+}
+
+// 메들리에 있는 카드 리스트 조회
+function fetchCardsWithMedley<T>(medleyId: string) {
+  return realReq.GET<T>(`${PATH.MEDLEY}/${medleyId}`);
 }
 
 // 필터로 카드 리스트 조회
@@ -86,6 +91,7 @@ function addNDeleteBookmark(cardId: string) {
 export const cardCollectionApi = {
   fetchCardsWithCategory,
   fetchCardsWithBest,
+  fetchCardsWithMedley,
   fetchCardsWithFilter,
   addNDeleteBookmark,
 };
