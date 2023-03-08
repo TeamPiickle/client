@@ -28,6 +28,12 @@ const Container = styled.section`
   `};
 `;
 
+const CloseBtnContainer = styled.div`
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+`;
+
 const MedleyPreview = styled.div`
   display: flex;
   flex-direction: column;
@@ -98,6 +104,7 @@ const MoveBtn = styled.button`
 const St = {
   Root,
   Container,
+  CloseBtnContainer,
   MedleyPreview,
   Tag,
   Title,
