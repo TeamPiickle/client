@@ -9,7 +9,7 @@ const Title = styled.h1`
   padding: 1.6rem;
 
   ${({ theme }) => theme.newFonts.h2}
-  color: ${({ theme }) => theme.colors.gray900};
+  color: ${({ theme }) => theme.newColors.gray900};
 `;
 
 const Medley = styled.article`
@@ -48,13 +48,13 @@ const ContentTag = styled.p`
   margin-top: 2.4rem;
 
   ${({ theme }) => theme.newFonts.caption1}
-  color: ${({ theme }) => theme.colors.gray200};
-  background-color: ${({ theme }) => theme.colors.darkblue};
+  color: ${({ theme }) => theme.newColors.gray200};
+  background-color: ${({ theme }) => theme.newColors.darkblue};
 `;
 
 const ContentTitle = styled.strong`
   ${({ theme }) => theme.newFonts.body3}
-  color: ${({ theme }) => theme.colors.gray900};
+  color: ${({ theme }) => theme.newColors.gray900};
 `;
 
 const St = {
