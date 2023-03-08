@@ -33,5 +33,14 @@ export default function fetchCardCollection<T>(CARD_TYPE_LOCATION: CardsTypeLoca
         handler(data);
       })();
       break;
+
+    case LocationType.MEDLEY:
+      (async () => {
+        const { data } = await cardCollectionApi.fetchCardsWithMedley<{ data: { cards: T } }>(
+          CARD_TYPE_LOCATION.medleyId,
+        );
+        handler(data.cards);
+      })();
+      break;
   }
 }
