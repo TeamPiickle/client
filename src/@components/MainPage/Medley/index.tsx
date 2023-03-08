@@ -6,7 +6,7 @@ import Loading from "../../@common/Loading";
 import MedleyPreview from "./MedleyPreview";
 import St from "./style";
 
-export default function Medly() {
+export default function Medley() {
   const { medleyLists } = useMedleyLists();
   const { isModalOpen, toggleModal } = useModal();
 
