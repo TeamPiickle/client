@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
@@ -32,21 +31,19 @@ export default function MedleyPreview(props: MedleyPreviewProps) {
           <IcCloseBtn />
         </St.CloseBtnContainer>
         {medleyLists &&
-          medleyLists.data.map((medleyLists) => {
-            return (
-              <St.MedleyPreview key={medleyLists._id}>
-                <St.Tag>{medleyLists.sticker}</St.Tag>
-                <St.Title>{medleyLists.title}</St.Title>
-                <St.Description>{medleyLists.description}</St.Description>
-                <St.PreviewCards>
-                  {medleyLists.previewCards.map((item: object, i: number) => {
-                    return <St.CardWrapper key={i}>{medleyLists.previewCards[i].content}</St.CardWrapper>;
-                  })}
-                </St.PreviewCards>
-                <St.MoveBtn onClick={() => moveMedley(medleyLists._id)}>카드 보기</St.MoveBtn>
-              </St.MedleyPreview>
-            );
-          })}
+          medleyLists.data.map((medleyLists) => (
+            <St.MedleyPreview key={medleyLists._id}>
+              <St.Tag>{medleyLists.sticker}</St.Tag>
+              <St.Title>{medleyLists.title}</St.Title>
+              <St.Description>{medleyLists.description}</St.Description>
+              <St.PreviewCards>
+                {medleyLists.previewCards.map((item: object, i: number) => (
+                  <St.CardWrapper key={i}>{medleyLists.previewCards[i].content}</St.CardWrapper>
+                ))}
+              </St.PreviewCards>
+              <St.MoveBtn onClick={() => moveMedley(medleyLists._id)}>카드 보기</St.MoveBtn>
+            </St.MedleyPreview>
+          ))}
       </St.Container>
     </St.Root>
   );

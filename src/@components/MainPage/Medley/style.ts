@@ -25,8 +25,6 @@ const Medley = styled.article`
   }
 `;
 
-const MedleyContainer = styled.div<{ isClicked: boolean }>``;
-
 const MedleyWrapper = styled.div`
   width: 14rem;
   height: 20rem;
@@ -63,7 +61,6 @@ const St = {
   Container,
   Title,
   Medley,
-  MedleyContainer,
   MedleyWrapper,
   ContentTag,
   ContentTitle,
