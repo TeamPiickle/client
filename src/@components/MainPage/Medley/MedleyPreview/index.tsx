@@ -1,20 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
-import { IcCloseBtn } from "../../../../asset/icon";
 import { useMedleyLists } from "../../../../core/api/main";
 import { sliderIdxState } from "../../../../core/atom/slider";
 import { routePaths } from "../../../../core/routes/path";
-import useOutClickCloser from "../../../@common/hooks/useOutClickCloser";
+import Modal from "../../../@common/Modal";
 import St from "./style";
-
 interface MedleyPreviewProps {
-  closePreview: () => void;
+  closeHandler: () => void;
+  medleyIdx: number;
 }
 
 export default function MedleyPreview(props: MedleyPreviewProps) {
-  const { closePreview } = props;
-  const outClickCloserRef = useOutClickCloser(closePreview);
+  const { closeHandler, medleyIdx } = props;
   const { medleyLists } = useMedleyLists();
   const setSliderIdx = useSetRecoilState(sliderIdxState);
   const navigate = useNavigate();
@@ -25,26 +23,22 @@ export default function MedleyPreview(props: MedleyPreviewProps) {
   };
 
   return (
-    <St.Root>
-      <St.Container ref={outClickCloserRef}>
-        <St.CloseBtnContainer onClick={closePreview}>
-          <IcCloseBtn />
-        </St.CloseBtnContainer>
-        {medleyLists &&
-          medleyLists.data.map((medleyLists) => (
-            <St.MedleyPreview key={medleyLists._id}>
-              <St.Tag>{medleyLists.sticker}</St.Tag>
-              <St.Title>{medleyLists.title}</St.Title>
-              <St.Description>{medleyLists.description}</St.Description>
-              <St.PreviewCards>
-                {medleyLists.previewCards.map((item: object, i: number) => (
-                  <St.CardWrapper key={i}>{medleyLists.previewCards[i].content}</St.CardWrapper>
-                ))}
-              </St.PreviewCards>
-              <St.MoveBtn onClick={() => moveMedley(medleyLists._id)}>카드 보기</St.MoveBtn>
-            </St.MedleyPreview>
-          ))}
+    <Modal theme="WHITE" closeHandler={closeHandler}>
+      <St.Container>
+        {medleyLists && (
+          <St.MedleyPreview>
+            <St.Tag>{medleyLists.data[medleyIdx].sticker}</St.Tag>
+            <St.Title>{medleyLists.data[medleyIdx].title}</St.Title>
+            <St.Description>{medleyLists.data[medleyIdx].description}</St.Description>
+            <St.PreviewCards>
+              {medleyLists.data[medleyIdx].previewCards.map((item: object, i: number) => (
+                <St.CardWrapper key={i}>{medleyLists.data[medleyIdx].previewCards[i].content}</St.CardWrapper>
+              ))}
+            </St.PreviewCards>
+            <St.MoveBtn onClick={() => moveMedley(medleyLists.data[medleyIdx]._id)}>카드 보기</St.MoveBtn>
+          </St.MedleyPreview>
+        )}
       </St.Container>
-    </St.Root>
+    </Modal>
   );
 }

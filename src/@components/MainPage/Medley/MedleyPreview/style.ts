@@ -1,18 +1,6 @@
 import styled from "styled-components";
 
-const Root = styled.main`
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: 100vh;
-
-  background-color: ${({ theme }) => theme.newColors.black50};
-
-  z-index: 10;
-`;
-
-const Container = styled.section`
+const Container = styled.div`
   width: 100%;
   height: 37.7rem;
 
@@ -24,14 +12,8 @@ const Container = styled.section`
   background-color: ${({ theme }) => theme.newColors.gray100};
 
   ${({ theme }) => theme.media.desktop`
-    width: 36rem;
+  width: 36rem;
   `};
-`;
-
-const CloseBtnContainer = styled.div`
-  position: absolute;
-  top: 1.2rem;
-  right: 1.2rem;
 `;
 
 const MedleyPreview = styled.div`
@@ -102,9 +84,7 @@ const MoveBtn = styled.button`
 `;
 
 const St = {
-  Root,
   Container,
-  CloseBtnContainer,
   MedleyPreview,
   Tag,
   Title,
