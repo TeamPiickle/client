@@ -17,7 +17,7 @@ export default function MedleyPreview(props: MedleyPreviewProps) {
   const setSliderIdx = useSetRecoilState(sliderIdxState);
   const navigate = useNavigate();
 
-  const moveMedley = (id: string) => {
+  const moveCardCollectionFromMedley = (id: string) => {
     navigate(routePaths.CardCollection, { state: { type: "medley", medleyId: id } });
     setSliderIdx(0);
   };
@@ -35,7 +35,9 @@ export default function MedleyPreview(props: MedleyPreviewProps) {
                 <St.CardWrapper key={i}>{medleyLists.data[medleyIdx].previewCards[i].content}</St.CardWrapper>
               ))}
             </St.PreviewCards>
-            <St.MoveBtn onClick={() => moveMedley(medleyLists.data[medleyIdx]._id)}>카드 보기</St.MoveBtn>
+            <St.MoveBtn onClick={() => moveCardCollectionFromMedley(medleyLists.data[medleyIdx]._id)}>
+              카드 보기
+            </St.MoveBtn>
           </St.MedleyPreview>
         )}
       </St.Container>
