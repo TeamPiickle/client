@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
-const Container = styled.section`
-  height: 25.2rem;
-`;
+const Container = styled.section``;
 
 const Title = styled.h1`
   height: 5.2rem;
@@ -17,6 +15,7 @@ const Medley = styled.article`
   overflow-x: scroll;
 
   padding: 0 1.6rem;
+  gap: 0.8rem;
 
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
@@ -25,7 +24,7 @@ const Medley = styled.article`
   }
 `;
 
-const MedleyWrapper = styled.div`
+const MedleyWrapper = styled.button`
   width: 14rem;
   height: 20rem;
 
@@ -53,6 +52,8 @@ const ContentTag = styled.p`
 `;
 
 const ContentTitle = styled.strong`
+  width: 12.2rem;
+
   ${({ theme }) => theme.newFonts.body3}
   color: ${({ theme }) => theme.newColors.gray900};
 `;
