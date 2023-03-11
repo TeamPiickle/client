@@ -25,7 +25,10 @@ export default function Banner() {
     <St.BannerSlider>
       <Slider {...settings}>
         {bannerImage.map((img, index) => (
-          <St.ImageWrapper key={index} src={img.src} alt={img.alt} loading="lazy" />
+          <picture key={index}>
+            <source srcSet={img.src} type="image/webp" />
+            <St.ImageWrapper src={img.subSrc} alt={img.alt} loading="lazy" />
+          </picture>
         ))}
       </Slider>
 
