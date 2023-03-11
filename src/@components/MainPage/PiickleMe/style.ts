@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { ImgVoteBanner } from "../../../asset/image";
+import { OriginImgVoteBanner } from "../../../asset/image/origin";
 
 const Container = styled.section``;
 
@@ -17,6 +18,7 @@ const BannerContainer = styled.section`
   align-items: center;
 
   background-image: url(${ImgVoteBanner});
+  background-image: image-set(${ImgVoteBanner} type("image/webp"), ${OriginImgVoteBanner} type("image/png"));
 `;
 
 const BannerContentWrapper = styled.div`

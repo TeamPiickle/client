@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import { ImgCategoryBanner } from "../../asset/image";
+import { OriginImgCategoryBanner } from "../../asset/image/origin";
 
 export const St = {
   Root: styled.main`
@@ -14,7 +15,11 @@ export const St = {
     height: 17.9rem;
     padding: 2rem 0 0 1.6rem;
 
-    background: url(${ImgCategoryBanner});
+    background-image: url(${ImgCategoryBanner});
+    background-image: image-set(
+      ${ImgCategoryBanner} type("image/webp"),
+      ${OriginImgCategoryBanner} type("image/png"),
+    )
     background-size: cover;
 
     position: relative;
