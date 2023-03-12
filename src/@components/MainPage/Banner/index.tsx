@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useState } from "react";
 import Slider from "react-slick";
 
-import { bannerImage } from "../../../core/main/banner";
+import { bannerImage } from "../../../util/main/banner";
 import { St } from "./style";
 
 export default function Banner() {

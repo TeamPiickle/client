@@ -1,8 +1,8 @@
 import axios, { AxiosResponse } from "axios";
 
 import { joinApi } from "../../../../core/api/join";
-import { JOIN_PROFILE_ALERT_KEY } from "../../../../core/join/userProfileErrorMessage";
 import checkInvalidNickName from "../../../../util/checkInvalidNickName";
+import { JOIN_PROFILE_ALERT_KEY } from "../../../../util/join/userProfileErrorMessage";
 import { St } from "./style";
 
 interface ProfileNicknameProps {

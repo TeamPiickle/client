@@ -1,6 +1,5 @@
 import { useLocation } from "react-router-dom";
 
-import useCardLists from "../../core/api/cardCollection";
 import { CardsTypeLocation } from "../../types/cardCollection";
 import Header from "../@common/Header";
 import useModal from "../@common/hooks/useModal";
@@ -8,6 +7,7 @@ import useScroll from "../@common/hooks/useScroll";
 import LoginModal from "../@common/LoginModal";
 import CardSlider from "./CardSlider";
 import FilterModal from "./FilterModal";
+import { useCardLists } from "./hooks/useCardLists";
 import { St } from "./style";
 
 // 1. 카테고리 :: /categories/:categoryId :: { type: "category", categoryId: "62cbb7d8a8c54f168a6ddfe1"}

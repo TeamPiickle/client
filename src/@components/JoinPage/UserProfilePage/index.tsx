@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
-import { JOIN_FORM_DATA_KEY } from "../../../core/join/formData";
-import { subHeaderInfo } from "../../../core/join/subHeaderInfo";
-import { JOIN_PROFILE_ALERT_KEY, JOIN_PROFILE_ALERT_MESSAGE } from "../../../core/join/userProfileErrorMessage";
 import { routePaths } from "../../../core/routes/path";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
+import { JOIN_FORM_DATA_KEY } from "../../../util/join/formData";
+import { subHeaderInfo } from "../../../util/join/subHeaderInfo";
+import { JOIN_PROFILE_ALERT_KEY, JOIN_PROFILE_ALERT_MESSAGE } from "../../../util/join/userProfileErrorMessage";
 import Footer from "../../@common/Footer";
 import SubHeader from "../../@common/SubHeader";
 import { UserInfoFormDataContext } from "..";

@@ -1,14 +1,14 @@
 import { useNavigate, useOutletContext } from "react-router-dom";
 
-import { JOIN_FORM_DATA_KEY } from "../../../core/join/formData";
-import { subHeaderInfo } from "../../../core/join/subHeaderInfo";
+import { routePaths } from "../../../core/routes/path";
+import { GTM_CLASS_NAME } from "../../../util/const/gtm";
+import { JOIN_FORM_DATA_KEY } from "../../../util/join/formData";
+import { subHeaderInfo } from "../../../util/join/subHeaderInfo";
 import {
   emailInvalidMessage,
   passwordConfirmInvalidMessage,
   passwordInvalidMessage,
-} from "../../../core/join/userInfoInputErrorMessage";
-import { routePaths } from "../../../core/routes/path";
-import { GTM_CLASS_NAME } from "../../../util/const/gtm";
+} from "../../../util/join/userInfoInputErrorMessage";
 import Footer from "../../@common/Footer";
 import SubHeader from "../../@common/SubHeader";
 import { UserInfoFormDataContext } from "..";

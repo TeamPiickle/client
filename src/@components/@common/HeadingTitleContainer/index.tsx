@@ -1,6 +1,6 @@
-import { HeadingTitle } from "../../../core/main/headingTitles";
 import { routePaths } from "../../../core/routes/path";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
+import { HeadingTitle } from "../../../util/main/headingTitles";
 import { St } from "./style";
 
 export interface HeadingTitleContainerProps {

@@ -10,9 +10,7 @@
     "lint": "yarn run lint-prettier && yarn run lint-eslint && yarn run lint-css",
     "lint-eslint": "eslint --ignore-path .gitignore src/**/*{ts,tsx} --fix",
     "lint-prettier": "prettier --write \"src/**/*.(ts|tsx)\"",
-    "lint-css": "stylelint --ignore-path .gitignore \"src/**/*.(css|tsx|ts)\" --fix",
-    "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "lint-css": "stylelint --ignore-path .gitignore \"src/**/*.(css|tsx|ts)\" --fix"
   },
   "dependencies": {
     "axios": "^0.26.0",
@@ -35,16 +33,6 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ],
-    "overrides": [
-      {
-        "files": [
-          "**/*.stories.*"
-        ],
-        "rules": {
-          "import/no-anonymous-default-export": "off"
-        }
-      }
     ]
   },
   "browserslist": {
@@ -60,16 +48,6 @@
     ]
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^6.5.9",
-    "@storybook/addon-essentials": "^6.5.9",
-    "@storybook/addon-interactions": "^6.5.9",
-    "@storybook/addon-links": "^6.5.9",
-    "@storybook/builder-webpack5": "^6.5.9",
-    "@storybook/manager-webpack5": "^6.5.9",
-    "@storybook/node-logger": "^6.5.9",
-    "@storybook/preset-create-react-app": "^4.1.2",
-    "@storybook/react": "^6.5.9",
-    "@storybook/testing-library": "^0.0.13",
     "@stylelint/postcss-css-in-js": "^0.38.0",
     "@types/jest": "^27.0.1",
     "@types/node": "^16.7.13",
@@ -89,7 +67,6 @@
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
-    "eslint-plugin-storybook": "^0.5.13",
     "lint-staged": "^12.3.7",
     "msw": "^0.42.1",
     "postcss-html": "^1.4.1",

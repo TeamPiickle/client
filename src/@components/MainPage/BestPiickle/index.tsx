@@ -1,7 +1,7 @@
-import { useBestPiickle } from "../../../core/api/main";
-import { headingTitles } from "../../../core/main/headingTitles";
+import { headingTitles } from "../../../util/main/headingTitles";
 import HeadingTitleContainer from "../../@common/HeadingTitleContainer";
 import Loading from "../../@common/Loading";
+import { useBestPiickle } from "../hooks/useBestPiickle";
 import BestPiickleCard from "./BestPiickleCard";
 import St from "./style";
 

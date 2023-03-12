@@ -2,8 +2,8 @@ import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 
 import { joinApi } from "../../../../core/api/join";
-import { EmailInvalidMessage, emailInvalidMessage } from "../../../../core/join/userInfoInputErrorMessage";
 import checkEmailInvalid from "../../../../util/checkInvalidEmail";
+import { EmailInvalidMessage, emailInvalidMessage } from "../../../../util/join/userInfoInputErrorMessage";
 import { useDebounce } from "../../../@common/hooks/useDebounce";
 
 export default function useEmail(defaultFormDataEmailValue: string) {

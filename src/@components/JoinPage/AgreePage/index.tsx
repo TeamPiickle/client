@@ -1,13 +1,13 @@
 import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
 import { IcEmptyCheckBox, IcFullCheckBox, IcNextBtn } from "../../../asset/icon";
 import { joinApi } from "../../../core/api/join";
-import { agreeListsContents } from "../../../core/join/agreeListsContents";
-import { subHeaderInfo } from "../../../core/join/subHeaderInfo";
 import { routePaths } from "../../../core/routes/path";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
+import { agreeListsContents } from "../../../util/join/agreeListsContents";
+import { subHeaderInfo } from "../../../util/join/subHeaderInfo";
 import Footer from "../../@common/Footer";
 import useOutClickCloser from "../../@common/hooks/useOutClickCloser";
 import SubHeader from "../../@common/SubHeader";
