@@ -114,10 +114,8 @@ function getSWROptionsByLocation(cardsTypeLocation: CardsTypeLocation) {
     case LocationType.CATEGORY:
     case LocationType.ALL:
     case LocationType.FILTER:
-      return { revalidateOnFocus: false, revalidateOnMount: true, dedupingInterval: 700 };
-    case LocationType.BEST:
-    case LocationType.BOOKMARK:
-    case LocationType.MEDLEY:
-      return { revalidateOnFocus: false };
+      return { revalidateOnMount: true, dedupingInterval: 700 };
+    default:
+      return {};
   }
 }
