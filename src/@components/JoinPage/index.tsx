@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
-import { JOIN_FORM_DATA_KEY } from "../../core/join/formData";
+import { JOIN_FORM_DATA_KEY } from "../../util/join/formData";
 
 export interface UserInfoFormDataContext {
   userInfoFormDataForPost: FormData;

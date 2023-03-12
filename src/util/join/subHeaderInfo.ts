@@ -1,4 +1,4 @@
-import { routePaths } from "../routes/path";
+import { routePaths } from "../../core/routes/path";
 
 export const subHeaderInfo = [
   {

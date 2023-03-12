@@ -6,7 +6,7 @@ import { useRecoilState, useSetRecoilState } from "recoil";
 import { CardList, CardsTypeLocation } from "../../types/cardCollection";
 import fetchCardCollection from "../../util/fetchCardCollection";
 import { filterTagsState, sliderIdxState } from "../atom/slider";
-import { intimacyTags } from "../cardCollection/filter";
+import { intimacyTags } from "../../util/cardCollection/filter";
 import { realReq } from "./common/axios";
 import { PATH } from "./common/constants";
 

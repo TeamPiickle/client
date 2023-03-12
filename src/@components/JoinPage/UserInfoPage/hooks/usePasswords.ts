@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
+import checkPasswordInvalid from "../../../../util/checkInvalidPassword";
 import {
   PasswordConfirmInvalidMessage,
   passwordConfirmInvalidMessage,
   PasswordInvalidMessage,
   passwordInvalidMessage,
-} from "../../../../core/join/userInfoInputErrorMessage";
-import checkPasswordInvalid from "../../../../util/checkInvalidPassword";
+} from "../../../../util/join/userInfoInputErrorMessage";
 import { useDebounce } from "../../../@common/hooks/useDebounce";
 
 export default function usePasswords() {

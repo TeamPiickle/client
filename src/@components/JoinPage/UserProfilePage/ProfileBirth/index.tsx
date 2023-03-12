@@ -2,7 +2,7 @@ import { useState } from "react";
 import DatePicker from "react-mobile-datepicker";
 
 import { IcDownArrow } from "../../../../asset/icon";
-import { JOIN_PROFILE_ALERT_KEY } from "../../../../core/join/userProfileErrorMessage";
+import { JOIN_PROFILE_ALERT_KEY } from "../../../../util/join/userProfileErrorMessage";
 import { St } from "./style";
 
 interface ProfileBirthProps {

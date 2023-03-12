@@ -3,10 +3,10 @@ import { useSetRecoilState } from "recoil";
 
 import { useCategoryLists } from "../../../core/api/main";
 import { sliderIdxState } from "../../../core/atom/slider";
-import { headingTitles } from "../../../core/main/headingTitles";
-import { gridValue } from "../../../core/main/moodPiickle";
 import { routePaths } from "../../../core/routes/path";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
+import { headingTitles } from "../../../util/main/headingTitles";
+import { gridValue } from "../../../util/main/moodPiickle";
 import HeadingTitleContainer from "../../@common/HeadingTitleContainer";
 import St from "./style";
 

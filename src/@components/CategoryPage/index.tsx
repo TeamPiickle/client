@@ -3,8 +3,8 @@ import { useSetRecoilState } from "recoil";
 
 import { IcSmallRightArrow } from "../../asset/icon/index";
 import { sliderIdxState } from "../../core/atom/slider";
-import { categoryTitles } from "../../core/category/categoryList";
 import { routePaths } from "../../core/routes/path";
+import { categoryTitles } from "../../util/category/categoryList";
 import { GTM_CLASS_NAME } from "../../util/const/gtm";
 import Header from "../@common/Header";
 import HeadingTitleContainer from "../@common/HeadingTitleContainer";

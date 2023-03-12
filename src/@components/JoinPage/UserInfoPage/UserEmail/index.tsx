@@ -1,4 +1,4 @@
-import { EmailInvalidMessage, emailInvalidMessage } from "../../../../core/join/userInfoInputErrorMessage";
+import { EmailInvalidMessage, emailInvalidMessage } from "../../../../util/join/userInfoInputErrorMessage";
 import { St } from "./style";
 
 interface UserEmailProps {

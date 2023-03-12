@@ -1,5 +1,5 @@
 import useUserBookmarks from "../../core/api/bookmark";
-import { HeadingTitle } from "../../core/main/headingTitles";
+import { HeadingTitle } from "../../util/main/headingTitles";
 import Footer from "../@common/Footer";
 import Header from "../@common/Header";
 import HeadingTitleContainer from "../@common/HeadingTitleContainer";

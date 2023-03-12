@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 import { IcEmptyCheckBox, IcFullCheckBox, IcSmallEmptyCheckBox, IcSmallFullCheckBox } from "../../asset/icon";
 import { deleteApi } from "../../core/api/delete";
-import { feedBackListsContents } from "../../core/delete/feedBackListsContents";
 import { routePaths } from "../../core/routes/path";
+import { feedBackListsContents } from "../../util/delete/feedBackListsContents";
 import Footer from "../@common/Footer";
 import useOutClickCloser from "../@common/hooks/useOutClickCloser";
 import SubHeader from "../@common/SubHeader";

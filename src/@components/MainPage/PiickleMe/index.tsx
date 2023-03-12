@@ -1,7 +1,7 @@
 import { useBallotLists } from "../../../core/api/main";
-import { headingTitles } from "../../../core/main/headingTitles";
 import { routePaths } from "../../../core/routes/path";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
+import { headingTitles } from "../../../util/main/headingTitles";
 import HeadingTitleContainer from "../../@common/HeadingTitleContainer";
 import St from "./style";
 
