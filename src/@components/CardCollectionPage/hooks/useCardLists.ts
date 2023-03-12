@@ -26,25 +26,11 @@ export function useCardLists(cardsTypeLocation: CardsTypeLocation) {
   const fetchingKey = getFetchingKeyByLocation(cardsTypeLocation);
   const { data } = useSWR<PiickleSWRResponse<ExtendedCardList>>(fetchingKey, realReq.GET_SWR);
 
-  // TODO :: return 시에 함수로 분리
-  let _cardLists;
-  switch (cardsTypeLocation.type) {
-    case LocationType.CATEGORY:
-      _cardLists = data?.data.data.cardList;
-      break;
-    case LocationType.MEDLEY:
-      _cardLists = data?.data.data.cards;
-      break;
-    default:
-      _cardLists = data?.data.data;
-      break;
-  }
-
   useEffect(() => {
     setFilterTags((prev) => ({ ...prev, isActive: false }));
   }, [cardsTypeLocation, setFilterTags]);
 
-  const fetchCardListsWithFilter = async () => {
+  const fetchCardListsWithFilter = () => {
     // 남 -> 남자, 여 -> 여자
     const _fetchingCheckedTags = new Set([...filterTags.tags, intimacyTags[filterTags.intimacy[0]]]);
     if (_fetchingCheckedTags.has("남")) {
@@ -66,7 +52,21 @@ export function useCardLists(cardsTypeLocation: CardsTypeLocation) {
     });
   };
 
-  return { cardLists: _cardLists ?? [], fetchCardListsWithFilter };
+  return { cardLists: getReturnCardLists(data, cardsTypeLocation) ?? [], fetchCardListsWithFilter };
+}
+
+function getReturnCardLists(
+  data: PiickleSWRResponse<ExtendedCardList> | undefined,
+  cardsTypeLocation: CardsTypeLocation,
+) {
+  switch (cardsTypeLocation.type) {
+    case LocationType.CATEGORY:
+      return data?.data.data.cardList;
+    case LocationType.MEDLEY:
+      return data?.data.data.cards;
+    default:
+      return data?.data.data;
+  }
 }
 
 function getFetchingKeyByLocation(cardsTypeLocation: CardsTypeLocation) {
