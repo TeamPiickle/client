@@ -23,8 +23,13 @@ export function useCardLists(cardsTypeLocation: CardsTypeLocation) {
   const [filterTags, setFilterTags] = useRecoilState(filterTagsState);
   const setSliderIdx = useSetRecoilState(sliderIdxState);
 
-  const fetchingKey = getFetchingKeyByLocation(cardsTypeLocation);
-  const { data, error } = useSWR<PiickleSWRResponse<ExtendedCardList>>(fetchingKey, realReq.GET_SWR);
+  const fetchingKeyByLocation = getSWRFetchingKeyByLocation(cardsTypeLocation);
+  const optionsByLocation = getSWROptionsByLocation(cardsTypeLocation);
+  const { data, error } = useSWR<PiickleSWRResponse<ExtendedCardList>>(
+    fetchingKeyByLocation,
+    realReq.GET_SWR,
+    optionsByLocation,
+  );
 
   useEffect(() => {
     setFilterTags((prev) => ({ ...prev, isActive: false }));
@@ -73,7 +78,7 @@ function getReturnCardLists(
   }
 }
 
-function getFetchingKeyByLocation(cardsTypeLocation: CardsTypeLocation) {
+function getSWRFetchingKeyByLocation(cardsTypeLocation: CardsTypeLocation) {
   switch (cardsTypeLocation.type) {
     case LocationType.CATEGORY:
       return `${PATH.CATEGORIES_}/${cardsTypeLocation.categoryId}`;
@@ -101,5 +106,18 @@ function getFetchingKeyByLocation(cardsTypeLocation: CardsTypeLocation) {
       );
       return `${PATH.CATEGORIES_}${PATH.CATEGORIES_CARDS}?${searchParams}`;
     }
+  }
+}
+
+function getSWROptionsByLocation(cardsTypeLocation: CardsTypeLocation) {
+  switch (cardsTypeLocation.type) {
+    case LocationType.CATEGORY:
+    case LocationType.ALL:
+    case LocationType.FILTER:
+      return { revalidateOnFocus: false, revalidateOnMount: true, dedupingInterval: 700 };
+    case LocationType.BEST:
+    case LocationType.BOOKMARK:
+    case LocationType.MEDLEY:
+      return { revalidateOnFocus: false };
   }
 }
