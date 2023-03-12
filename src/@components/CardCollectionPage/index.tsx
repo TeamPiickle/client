@@ -11,10 +11,6 @@ import FilterModal from "./FilterModal";
 import { useCardLists } from "./hooks/useCardLists";
 import { St } from "./style";
 
-// 1. 카테고리 :: /categories/:categoryId :: { type: "category", categoryId: "62cbb7d8a8c54f168a6ddfe1"}
-// 2. 베스트 카드 :: /cards/best :: { type: "best" }
-// 3. all 전체 카드 :: /categories/cards :: { type: "all" }
-// 4. 마이 피클 :: /users/bookmarks :: { type: "bookmark" }
 export default function CardCollectionPage() {
   useScroll();
 

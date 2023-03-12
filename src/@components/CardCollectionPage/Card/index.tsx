@@ -10,14 +10,15 @@ interface LoginCheckProps {
   openLoginModalHandler: () => void;
   _id: string;
   content: string;
+  isBookmark: boolean;
   tags: string[];
 }
 
 const Card = (props: LoginCheckProps) => {
-  const { _id, content, tags, openLoginModalHandler } = props;
+  const { _id, content, isBookmark, tags, openLoginModalHandler } = props;
   const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
 
-  const [isBookmarked, setIsBookmarked] = useState(false);
+  const [isBookmarked, setIsBookmarked] = useState(isBookmark);
 
   const handleClickHeart = (_id: string) => {
     switch (LOGIN_STATE) {
