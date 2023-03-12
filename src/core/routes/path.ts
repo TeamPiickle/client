@@ -1,12 +1,3 @@
-/*
-마지막 편집자: 22-09-03 joohaem
-변경사항 및 참고:
-  - 
-    
-고민점:
-  - 
-*/
-
 export const routePaths = {
   Main: "/",
   Login: "/login",
