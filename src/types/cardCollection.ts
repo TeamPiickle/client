@@ -4,6 +4,7 @@ export const enum LocationType {
   ALL = "all",
   BOOKMARK = "bookmark",
   MEDLEY = "medley",
+  FILTER = "filter",
 }
 
 interface CategoryTypeLocation {
@@ -28,12 +29,18 @@ interface MedleyTypeLocation {
   medleyId: string;
 }
 
+interface FilterTypeLocation {
+  type: LocationType.FILTER;
+  filterTypes: string;
+}
+
 export type CardsTypeLocation =
   | CategoryTypeLocation
   | BestTypeLocation
   | AllTypeLocation
   | BookmarkTypeLocation
-  | MedleyTypeLocation;
+  | MedleyTypeLocation
+  | FilterTypeLocation;
 
 export interface CardList {
   _id: string;
