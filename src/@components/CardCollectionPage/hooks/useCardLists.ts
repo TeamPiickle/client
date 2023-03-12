@@ -24,7 +24,7 @@ export function useCardLists(cardsTypeLocation: CardsTypeLocation) {
   const setSliderIdx = useSetRecoilState(sliderIdxState);
 
   const fetchingKey = getFetchingKeyByLocation(cardsTypeLocation);
-  const { data } = useSWR<PiickleSWRResponse<ExtendedCardList>>(fetchingKey, realReq.GET_SWR);
+  const { data, error } = useSWR<PiickleSWRResponse<ExtendedCardList>>(fetchingKey, realReq.GET_SWR);
 
   useEffect(() => {
     setFilterTags((prev) => ({ ...prev, isActive: false }));
@@ -52,7 +52,11 @@ export function useCardLists(cardsTypeLocation: CardsTypeLocation) {
     });
   };
 
-  return { cardLists: getReturnCardLists(data, cardsTypeLocation) ?? [], fetchCardListsWithFilter };
+  return {
+    cardLists: getReturnCardLists(data, cardsTypeLocation) ?? [],
+    isLoading: !error && !data,
+    fetchCardListsWithFilter,
+  };
 }
 
 function getReturnCardLists(
