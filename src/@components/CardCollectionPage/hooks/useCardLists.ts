@@ -4,8 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import useSWR from "swr";
 
-import { bookmarkApi } from "../../../core/api/bookmark";
-import { cardCollectionApi } from "../../../core/api/cardCollection";
 import { realReq } from "../../../core/api/common/axios";
 import { PATH } from "../../../core/api/common/constants";
 import { filterTagsState, sliderIdxState } from "../../../core/atom/slider";
