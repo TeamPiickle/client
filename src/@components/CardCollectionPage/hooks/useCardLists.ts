@@ -32,7 +32,7 @@ export function useCardLists(cardsTypeLocation: CardsTypeLocation) {
   );
 
   useEffect(() => {
-    setFilterTags((prev) => ({ ...prev, isActive: false }));
+    if (cardsTypeLocation.type !== LocationType.FILTER) setFilterTags((prev) => ({ ...prev, isActive: false }));
   }, [cardsTypeLocation, setFilterTags]);
 
   const fetchCardListsWithFilter = () => {
