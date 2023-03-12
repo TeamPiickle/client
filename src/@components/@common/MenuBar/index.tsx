@@ -2,11 +2,11 @@ import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
 import { IcCloseBtn } from "../../../asset/icon";
-import { useBallotLists } from "../../../core/api/main";
 import { sliderIdxState } from "../../../core/atom/slider";
 import { routePaths } from "../../../core/routes/path";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import useOutClickCloser from "../../@common/hooks/useOutClickCloser";
+import { useBallotLists } from "../../MainPage/hooks/useBallotLists";
 import ProfileContainer from "./ProfileContainer";
 import DefaultProfileContainer from "./ProfileContainer/DefaultProfileContainer";
 import St from "./style";

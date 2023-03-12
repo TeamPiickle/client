@@ -1,8 +1,8 @@
-import { useBallotLists } from "../../../core/api/main";
 import { routePaths } from "../../../core/routes/path";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import { headingTitles } from "../../../util/main/headingTitles";
 import HeadingTitleContainer from "../../@common/HeadingTitleContainer";
+import { useBallotLists } from "../hooks/useBallotLists";
 import St from "./style";
 
 export default function PiickleMe() {

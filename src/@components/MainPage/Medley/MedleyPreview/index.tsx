@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
-import { useMedleyLists } from "../../../../core/api/main";
 import { sliderIdxState } from "../../../../core/atom/slider";
 import { routePaths } from "../../../../core/routes/path";
 import Modal from "../../../@common/Modal";
+import { useMedleyLists } from "../../hooks/useMedleyLists";
 import St from "./style";
 interface MedleyPreviewProps {
   closeHandler: () => void;

@@ -1,5 +1,5 @@
-import { useMedleyLists } from "../../../core/api/main";
 import Loading from "../../@common/Loading";
+import { useMedleyLists } from "../hooks/useMedleyLists";
 import MedleyCard from "./MedleyCard";
 import St from "./style";
 

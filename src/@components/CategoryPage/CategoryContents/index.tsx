@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
-import { useCategoryLists } from "../../../core/api/main";
 import { sliderIdxState } from "../../../core/atom/slider";
 import { routePaths } from "../../../core/routes/path";
 import { gridValue } from "../../../util/category/categoryList";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import Loading from "../../@common/Loading";
+import { useCategoryLists } from "../../MainPage/hooks/useCategoryLists";
 import { St } from "./style";
 
 export default function CategoryContents() {
