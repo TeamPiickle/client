@@ -20,7 +20,7 @@ export default function MedleyCard(props: MedleyCardProps) {
 
   return (
     <>
-      <St.MedleyWrapper key={medleyCard._id} onClick={toggleModal}>
+      <St.MedleyWrapper medleyId={medleyCard._id} onClick={toggleModal}>
         <St.ContentTag>{medleyCard.sticker}</St.ContentTag>
         <St.ContentTitle>{medleyCard.coverTitle}</St.ContentTitle>
         {isModalOpen && <MedleyPreview closeHandler={toggleModal} medleyPreview={medleyCard} medleyIdx={medleyIdx} />}
