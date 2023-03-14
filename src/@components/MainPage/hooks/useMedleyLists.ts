@@ -10,6 +10,7 @@ export function useMedleyLists() {
 
   return {
     medleyLists: data?.data,
+    randomMedleyLists: data && [...data.data.data].sort(() => Math.random() - 0.5),
     isLoading: !error && !data,
   };
 }
