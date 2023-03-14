@@ -7,6 +7,8 @@ interface MedleyCardProps {
     _id: string;
     title: string;
     sticker: string;
+    description: string;
+    previewCards: { _id: string; content: string }[];
   };
   medleyIdx: number;
 }
@@ -20,7 +22,7 @@ export default function MedleyCard(props: MedleyCardProps) {
       <St.MedleyWrapper key={medleyCard._id} onClick={toggleModal}>
         <St.ContentTag>{medleyCard.sticker}</St.ContentTag>
         <St.ContentTitle>{medleyCard.title}</St.ContentTitle>
-        {isModalOpen && <MedleyPreview closeHandler={toggleModal} medleyIdx={medleyIdx} />}
+        {isModalOpen && <MedleyPreview closeHandler={toggleModal} medleyPreview={medleyCard} medleyIdx={medleyIdx} />}
       </St.MedleyWrapper>
     </>
   );
