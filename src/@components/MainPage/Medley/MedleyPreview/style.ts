@@ -1,4 +1,17 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const ani = keyframes`
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+  50% {
+    height: 37.7rem;
+  }
+  100% {
+    opacity: 1;
+  }
+  `;
 
 const Container = styled.div`
   width: 100%;
@@ -10,6 +23,8 @@ const Container = styled.div`
   transform: translate(-50%, 0);
 
   background-color: ${({ theme }) => theme.newColors.gray100};
+
+  animation: ${ani} 0.8s ease-in-out;
 
   ${({ theme }) => theme.media.desktop`
   width: 36rem;
