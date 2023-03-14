@@ -49,6 +49,8 @@ const Tag = styled.p`
 const Title = styled.strong`
   margin: 0.4rem 1.6rem 0 1.6rem;
 
+  white-space: pre-wrap;
+
   ${({ theme }) => theme.newFonts.body1}
   color: ${({ theme }) => theme.newColors.gray900};
 `;

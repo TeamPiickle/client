@@ -30,6 +30,8 @@ const ContentTag = styled.p`
 const ContentTitle = styled.strong`
   width: 12.2rem;
 
+  white-space: pre-wrap;
+
   ${({ theme }) => theme.newFonts.body3}
   color: ${({ theme }) => theme.newColors.gray900};
 `;
