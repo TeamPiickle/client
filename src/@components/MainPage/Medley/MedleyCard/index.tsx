@@ -5,6 +5,7 @@ import St from "./style";
 interface MedleyCardProps {
   medleyCard: {
     _id: string;
+    coverTitle: string;
     title: string;
     sticker: string;
     description: string;
@@ -21,7 +22,7 @@ export default function MedleyCard(props: MedleyCardProps) {
     <>
       <St.MedleyWrapper key={medleyCard._id} onClick={toggleModal}>
         <St.ContentTag>{medleyCard.sticker}</St.ContentTag>
-        <St.ContentTitle>{medleyCard.title}</St.ContentTitle>
+        <St.ContentTitle>{medleyCard.coverTitle}</St.ContentTitle>
         {isModalOpen && <MedleyPreview closeHandler={toggleModal} medleyPreview={medleyCard} medleyIdx={medleyIdx} />}
       </St.MedleyWrapper>
     </>

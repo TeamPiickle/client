@@ -14,6 +14,7 @@ export interface BallotList {
 
 export interface MedleyList {
   _id: string;
+  coverTitle: string;
   title: string;
   sticker: string;
   description: string;
