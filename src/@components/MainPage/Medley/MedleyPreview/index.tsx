@@ -28,7 +28,7 @@ export default function MedleyPreview(props: MedleyPreviewProps) {
   };
 
   return (
-    <Modal theme="WHITE" closeHandler={closeHandler}>
+    <Modal theme="GRAY" closeHandler={closeHandler}>
       <St.Container>
         <St.MedleyPreview>
           <St.Tag>{medleyPreview.sticker}</St.Tag>
