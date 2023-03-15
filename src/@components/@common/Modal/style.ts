@@ -31,6 +31,9 @@ const GrayModal = styled.section`
   bottom: 0;
 
   width: 100%;
+  ${({ theme }) => theme.media.desktop`
+  width: 36rem;
+  `};
 
   background-color: ${({ theme }) => theme.newColors.gray100};
 `;
