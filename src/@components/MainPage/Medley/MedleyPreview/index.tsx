@@ -14,11 +14,10 @@ interface MedleyPreviewProps {
     description: string;
     previewCards: { _id: string; content: string }[];
   };
-  medleyIdx: number;
 }
 
 export default function MedleyPreview(props: MedleyPreviewProps) {
-  const { closeHandler, medleyPreview, medleyIdx } = props;
+  const { closeHandler, medleyPreview } = props;
   const setSliderIdx = useSetRecoilState(sliderIdxState);
   const navigate = useNavigate();
 

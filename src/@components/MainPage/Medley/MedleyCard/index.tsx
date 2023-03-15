@@ -11,11 +11,10 @@ interface MedleyCardProps {
     description: string;
     previewCards: { _id: string; content: string }[];
   };
-  medleyIdx: number;
 }
 
 export default function MedleyCard(props: MedleyCardProps) {
-  const { medleyCard, medleyIdx } = props;
+  const { medleyCard } = props;
   const { isModalOpen, toggleModal } = useModal();
 
   return (
@@ -23,7 +22,7 @@ export default function MedleyCard(props: MedleyCardProps) {
       <St.MedleyWrapper medleyId={medleyCard._id} onClick={toggleModal}>
         <St.ContentTag>{medleyCard.sticker}</St.ContentTag>
         <St.ContentTitle>{medleyCard.coverTitle}</St.ContentTitle>
-        {isModalOpen && <MedleyPreview closeHandler={toggleModal} medleyPreview={medleyCard} medleyIdx={medleyIdx} />}
+        {isModalOpen && <MedleyPreview closeHandler={toggleModal} medleyPreview={medleyCard} />}
       </St.MedleyWrapper>
     </>
   );

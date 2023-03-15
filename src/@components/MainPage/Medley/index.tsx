@@ -12,8 +12,8 @@ export default function Medley() {
       {medleyLists ? (
         <St.Medley>
           {randomMedleyLists &&
-            randomMedleyLists.map((medleyLists, idx) => {
-              return <MedleyCard key={medleyLists._id} medleyCard={medleyLists} medleyIdx={idx} />;
+            randomMedleyLists.map((medleyLists) => {
+              return <MedleyCard key={medleyLists._id} medleyCard={medleyLists} />;
             })}
         </St.Medley>
       ) : (
