@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 const Root = styled.div`
-  height: 100vh;
-
   position: absolute;
   top: 0;
   right: 0;
@@ -17,10 +15,27 @@ const Root = styled.div`
   align-items: center;
 `;
 
-const WhiteRoot = styled(Root)``;
+const GrayRoot = styled(Root)``;
+
+const WhiteRoot = styled(Root)`
+  height: 100vh;
+`;
 
 const DefaultRoot = styled(Root)`
+  height: 100vh;
   padding: 1.6rem;
+`;
+
+const GrayModal = styled.section`
+  position: fixed;
+  bottom: 0;
+
+  width: 100%;
+  ${({ theme }) => theme.media.desktop`
+  width: 36rem;
+  `};
+
+  background-color: ${({ theme }) => theme.newColors.gray100};
 `;
 
 const WhiteModal = styled.section`
@@ -56,6 +71,8 @@ const CloseBtn = styled.button`
 const ModalContents = styled.main``;
 
 const St = {
+  GrayRoot,
+  GrayModal,
   WhiteRoot,
   WhiteModal,
   DefaultRoot,

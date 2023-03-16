@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-const MedleyWrapper = styled.button`
+import { medleyGradation } from "../../../../util/main/medleyGradation";
+
+const MedleyWrapper = styled.button<{ medleyId: string }>`
   width: 14rem;
   height: 20rem;
 
@@ -11,11 +13,7 @@ const MedleyWrapper = styled.button`
   flex-direction: column;
   align-items: center;
   text-align: center;
-
-  background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(79, 72, 236, 0.102) 100%),
-    linear-gradient(0deg, rgba(79, 72, 236, 0.37), rgba(79, 72, 236, 0.37)),
-    linear-gradient(180deg, #00ff9c 0%, rgba(255, 255, 255, 0) 100%);
+  background: ${({ medleyId }) => medleyGradation[medleyGradation.findIndex((card) => card.id === medleyId)].gradation};
 `;
 
 const ContentTag = styled.p`
@@ -29,6 +27,8 @@ const ContentTag = styled.p`
 
 const ContentTitle = styled.strong`
   width: 12.2rem;
+
+  white-space: pre-wrap;
 
   ${({ theme }) => theme.newFonts.body3}
   color: ${({ theme }) => theme.newColors.gray900};
