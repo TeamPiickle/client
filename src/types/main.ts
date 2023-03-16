@@ -12,7 +12,7 @@ export interface BallotList {
   __v: number;
 }
 
-export interface MedleyList {
+export interface MedleyCard {
   _id: string;
   coverTitle: string;
   title: string;

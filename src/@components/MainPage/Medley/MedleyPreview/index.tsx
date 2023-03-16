@@ -3,21 +3,16 @@ import { useSetRecoilState } from "recoil";
 
 import { sliderIdxState } from "../../../../core/atom/slider";
 import { routePaths } from "../../../../core/routes/path";
+import { MedleyCard } from "../../../../types/main";
 import Modal from "../../../@common/Modal";
 import St from "./style";
 interface MedleyPreviewProps {
   closeHandler: () => void;
-  medleyPreview: {
-    _id: string;
-    title: string;
-    sticker: string;
-    description: string;
-    previewCards: { _id: string; content: string }[];
-  };
+  medleyCard: MedleyCard;
 }
 
 export default function MedleyPreview(props: MedleyPreviewProps) {
-  const { closeHandler, medleyPreview } = props;
+  const { closeHandler, medleyCard } = props;
   const setSliderIdx = useSetRecoilState(sliderIdxState);
   const navigate = useNavigate();
 
@@ -30,15 +25,15 @@ export default function MedleyPreview(props: MedleyPreviewProps) {
     <Modal theme="GRAY" closeHandler={closeHandler}>
       <St.Container>
         <St.MedleyPreview>
-          <St.Tag>{medleyPreview.sticker}</St.Tag>
-          <St.Title>{medleyPreview.title}</St.Title>
-          <St.Description>{medleyPreview.description}</St.Description>
+          <St.Tag>{medleyCard.sticker}</St.Tag>
+          <St.Title>{medleyCard.title}</St.Title>
+          <St.Description>{medleyCard.description}</St.Description>
           <St.PreviewCards>
-            {medleyPreview.previewCards.map((item: object, i: number) => (
-              <St.CardWrapper key={i}>{medleyPreview.previewCards[i].content}</St.CardWrapper>
+            {medleyCard.previewCards.map((_, i: number) => (
+              <St.CardWrapper key={i}>{medleyCard.previewCards[i].content}</St.CardWrapper>
             ))}
           </St.PreviewCards>
-          <St.MoveBtn onClick={() => moveCardCollectionFromMedley(medleyPreview._id)}>카드 보기</St.MoveBtn>
+          <St.MoveBtn onClick={() => moveCardCollectionFromMedley(medleyCard._id)}>카드 보기</St.MoveBtn>
         </St.MedleyPreview>
       </St.Container>
     </Modal>

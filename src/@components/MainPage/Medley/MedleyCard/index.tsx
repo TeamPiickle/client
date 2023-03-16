@@ -1,16 +1,10 @@
+import { MedleyCard as MedlyCardType } from "../../../../types/main";
 import useModal from "../../../@common/hooks/useModal";
 import MedleyPreview from "../MedleyPreview";
 import St from "./style";
 
 interface MedleyCardProps {
-  medleyCard: {
-    _id: string;
-    coverTitle: string;
-    title: string;
-    sticker: string;
-    description: string;
-    previewCards: { _id: string; content: string }[];
-  };
+  medleyCard: MedlyCardType;
 }
 
 export default function MedleyCard(props: MedleyCardProps) {
@@ -22,7 +16,7 @@ export default function MedleyCard(props: MedleyCardProps) {
       <St.MedleyWrapper medleyId={medleyCard._id} onClick={toggleModal}>
         <St.ContentTag>{medleyCard.sticker}</St.ContentTag>
         <St.ContentTitle>{medleyCard.coverTitle}</St.ContentTitle>
-        {isModalOpen && <MedleyPreview closeHandler={toggleModal} medleyPreview={medleyCard} />}
+        {isModalOpen && <MedleyPreview closeHandler={toggleModal} medleyCard={medleyCard} />}
       </St.MedleyWrapper>
     </>
   );
