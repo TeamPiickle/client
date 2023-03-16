@@ -14,6 +14,7 @@ interface ModalContents {
 
 export default function Modal(props: PropsWithChildren<ModalContents>) {
   const { theme = "DEFAULT", closeHandler, closeBtnClassName, children } = props;
+  // TODO :: useOutClickCloser
 
   if (theme === "GRAY")
     return (
