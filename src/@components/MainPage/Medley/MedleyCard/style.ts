@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { medleyGradation } from "../../../../util/main/medleyGradation";
 
-const MedleyWrapper = styled.button<{ medleyId: string }>`
+const MedleyWrapper = styled.button<{ bgcolorId: string }>`
   width: 14rem;
   height: 20rem;
 
@@ -13,7 +13,7 @@ const MedleyWrapper = styled.button<{ medleyId: string }>`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background: ${({ medleyId }) => medleyGradation[medleyGradation.findIndex((card) => card.id === medleyId)].gradation};
+  background: ${({ bgcolorId }) => medleyGradation[bgcolorId]};
 `;
 
 const ContentTag = styled.p`

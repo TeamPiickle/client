@@ -13,7 +13,7 @@ export default function Medley() {
   return (
     <St.Container>
       <St.Title>👍 여러분을 위해 피클이 직접 뽑은 주제들!</St.Title>
-      <St.Medley {...scrollableContainerProps}>
+      <St.Medley>
         {randomMedleyLists &&
           randomMedleyLists.map((medleyCard) => <MedleyCard key={medleyCard._id} medleyCard={medleyCard} />)}
       </St.Medley>

@@ -13,7 +13,7 @@ export default function MedleyCard(props: MedleyCardProps) {
 
   return (
     <>
-      <St.MedleyWrapper medleyId={medleyCard._id} onClick={toggleModal}>
+      <St.MedleyWrapper bgcolorId={medleyCard._id} onClick={toggleModal}>
         <St.ContentTag>{medleyCard.sticker}</St.ContentTag>
         <St.ContentTitle>{medleyCard.coverTitle}</St.ContentTitle>
       </St.MedleyWrapper>
