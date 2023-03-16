@@ -14,8 +14,9 @@ export const St = {
   `,
 
   ImageWrapper: styled.img`
-    width: 36rem;
+    width: 100%;
     height: 21.6rem;
+    object-fit: cover;
   `,
 
   ContentsPages: styled.div`
