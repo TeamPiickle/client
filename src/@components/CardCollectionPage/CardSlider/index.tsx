@@ -8,7 +8,6 @@ import { useRecoilState } from "recoil";
 import { sliderIdxState } from "../../../core/atom/slider";
 import { CardList } from "../../../types/cardCollection";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
-import Loading from "../../@common/Loading";
 import Card from "../Card";
 import LastCard from "../Card/LastCard";
 import { St } from "./style";
@@ -26,7 +25,7 @@ const sliderSettings = {
 interface CardSliderProps {
   openFilterModalHandler: () => void;
   openLoginModalHandler: () => void;
-  cardLists: CardList[] | null;
+  cardLists: CardList[];
 }
 
 export default function CardSlider(props: CardSliderProps) {
@@ -37,20 +36,17 @@ export default function CardSlider(props: CardSliderProps) {
 
   return (
     <St.Wrapper>
-      {!cardLists ? (
-        <Loading backgroundColor="transparent" />
-      ) : (
-        <Slider
-          {...sliderSettings}
-          initialSlide={sliderIdx}
-          afterChange={(idx: number) => setSliderIdx(idx)}
-          ref={sliderRef}>
-          {cardLists?.map((cardList) => (
-            <Card key={cardList._id} openLoginModalHandler={openLoginModalHandler} {...cardList} />
-          ))}
-          <LastCard />
-        </Slider>
-      )}
+      <Slider
+        {...sliderSettings}
+        initialSlide={sliderIdx}
+        afterChange={(idx: number) => setSliderIdx(idx)}
+        ref={sliderRef}>
+        {cardLists.map((cardList) => (
+          <Card key={cardList._id} openLoginModalHandler={openLoginModalHandler} {...cardList} />
+        ))}
+        <LastCard />
+      </Slider>
+
       <St.IcFilterBtn
         aria-label="카드 추천 필터"
         role="dialog"

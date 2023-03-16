@@ -1,34 +1,41 @@
-import { useEffect, useState } from "react";
-import { flushSync } from "react-dom";
+import qs from "qs";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useRecoilState, useSetRecoilState } from "recoil";
+import useSWR from "swr";
 
-import { cardCollectionApi } from "../../../core/api/cardCollection";
+import { realReq } from "../../../core/api/common/axios";
+import { PATH } from "../../../core/api/common/constants";
 import { filterTagsState, sliderIdxState } from "../../../core/atom/slider";
-import { CardList, CardsTypeLocation } from "../../../types/cardCollection";
+import { routePaths } from "../../../core/routes/path";
+import { CardList, CardsTypeLocation, LocationType } from "../../../types/cardCollection";
+import { PiickleSWRResponse } from "../../../types/remote/swr";
 import { intimacyTags } from "../../../util/cardCollection/filter";
-import fetchCardCollection from "../../../util/fetchCardCollection";
 
-// TODO :: SWR로 get 하기
+interface ExtendedCardList extends Array<CardList> {
+  cardList?: CardList[]; // with category id
+  cards?: CardList[]; // with medly id
+}
+
 export function useCardLists(cardsTypeLocation: CardsTypeLocation) {
-  const [cardLists, setCardLists] = useState<CardList[] | null>(null);
+  const navigate = useNavigate();
 
   const [filterTags, setFilterTags] = useRecoilState(filterTagsState);
   const setSliderIdx = useSetRecoilState(sliderIdxState);
 
+  const fetchingKeyByLocation = getSWRFetchingKeyByLocation(cardsTypeLocation);
+  const optionsByLocation = getSWROptionsByLocation(cardsTypeLocation);
+  const { data, error } = useSWR<PiickleSWRResponse<ExtendedCardList>>(
+    fetchingKeyByLocation,
+    realReq.GET_SWR,
+    optionsByLocation,
+  );
+
   useEffect(() => {
-    fetchCardCollection(cardsTypeLocation, (data: CardList[]) => {
-      setCardLists(data);
-    });
-    // 필터 정보 초기화
-    setFilterTags((prev) => ({ ...prev, isActive: false }));
+    if (cardsTypeLocation.type !== LocationType.FILTER) setFilterTags((prev) => ({ ...prev, isActive: false }));
   }, [cardsTypeLocation, setFilterTags]);
 
-  const fetchCardListsWithFilter = async () => {
-    // 로딩 중 표시
-    flushSync(() => {
-      setCardLists(null);
-    });
-
+  const fetchCardListsWithFilter = () => {
     // 남 -> 남자, 여 -> 여자
     const _fetchingCheckedTags = new Set([...filterTags.tags, intimacyTags[filterTags.intimacy[0]]]);
     if (_fetchingCheckedTags.has("남")) {
@@ -40,16 +47,75 @@ export function useCardLists(cardsTypeLocation: CardsTypeLocation) {
       _fetchingCheckedTags.add("여자");
     }
 
-    const { data } = await cardCollectionApi.fetchCardsWithFilter<{ data: CardList[] }>([..._fetchingCheckedTags]);
+    setFilterTags((prevFilterTags) => {
+      return { ...prevFilterTags, isActive: true };
+    });
+    setSliderIdx(0);
 
-    flushSync(() => {
-      setFilterTags((prevFilterTags) => {
-        return { ...prevFilterTags, isActive: true };
-      });
-      setCardLists(data);
-      setSliderIdx(0);
+    navigate(routePaths.CardCollection, {
+      state: { type: LocationType.FILTER, filterTypes: [..._fetchingCheckedTags] },
     });
   };
 
-  return { cardLists, fetchCardListsWithFilter };
+  return {
+    cardLists: getReturnCardLists(data, cardsTypeLocation) ?? [],
+    isLoading: !error && !data,
+    fetchCardListsWithFilter,
+  };
+}
+
+function getReturnCardLists(
+  data: PiickleSWRResponse<ExtendedCardList> | undefined,
+  cardsTypeLocation: CardsTypeLocation,
+) {
+  switch (cardsTypeLocation.type) {
+    case LocationType.CATEGORY:
+      return data?.data.data.cardList;
+    case LocationType.MEDLEY:
+      return data?.data.data.cards;
+    default:
+      return data?.data.data;
+  }
+}
+
+function getSWRFetchingKeyByLocation(cardsTypeLocation: CardsTypeLocation) {
+  switch (cardsTypeLocation.type) {
+    case LocationType.CATEGORY:
+      return `${PATH.CATEGORIES_}/${cardsTypeLocation.categoryId}`;
+    case LocationType.BEST:
+      return `${PATH.CARDS_}${PATH.CARDS_BEST}`;
+    case LocationType.BOOKMARK:
+      return `${PATH.USERS_}${PATH.USERS_BOOKMARK}`;
+    case LocationType.MEDLEY:
+      return `${PATH.MEDLEY}/${cardsTypeLocation.medleyId}`;
+    case LocationType.ALL: {
+      const searchParams = qs.stringify(
+        {
+          search: ["태그"],
+        },
+        { arrayFormat: "repeat" },
+      );
+      return `${PATH.CATEGORIES_}${PATH.CATEGORIES_CARDS}?${searchParams}`;
+    }
+    case LocationType.FILTER: {
+      const searchParams = qs.stringify(
+        {
+          search: cardsTypeLocation.filterTypes,
+        },
+        { arrayFormat: "repeat" },
+      );
+      return `${PATH.CATEGORIES_}${PATH.CATEGORIES_CARDS}?${searchParams}`;
+    }
+  }
+}
+
+function getSWROptionsByLocation(cardsTypeLocation: CardsTypeLocation) {
+  switch (cardsTypeLocation.type) {
+    case LocationType.CATEGORY:
+    case LocationType.ALL:
+    case LocationType.FILTER:
+      return { revalidateOnMount: true, dedupingInterval: 700 };
+    default:
+      return {};
+  }
 }
