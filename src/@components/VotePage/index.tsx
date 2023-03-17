@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
 import Header from "../@common/Header";
+import useGTMPage from "../@common/hooks/useGTMPage";
 import VoteContent from "./VoteContent";
 import VoteTitle from "./VoteTitle";
 
 export default function VotePage() {
+  useGTMPage();
+
   return (
     <main>
       <Header />

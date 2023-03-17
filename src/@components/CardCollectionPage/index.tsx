@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 
 import { CardsTypeLocation } from "../../types/cardCollection";
 import Header from "../@common/Header";
+import useGTMPage from "../@common/hooks/useGTMPage";
 import useModal from "../@common/hooks/useModal";
 import useScroll from "../@common/hooks/useScroll";
 import Loading from "../@common/Loading";
@@ -12,6 +13,7 @@ import { useCardLists } from "./hooks/useCardLists";
 import { St } from "./style";
 
 export default function CardCollectionPage() {
+  useGTMPage();
   useScroll();
 
   const location = useLocation();

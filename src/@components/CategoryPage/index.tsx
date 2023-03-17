@@ -8,11 +8,13 @@ import { categoryTitles } from "../../util/category/categoryList";
 import { GTM_CLASS_NAME } from "../../util/const/gtm";
 import Header from "../@common/Header";
 import HeadingTitleContainer from "../@common/HeadingTitleContainer";
+import useGTMPage from "../@common/hooks/useGTMPage";
 import useScroll from "../@common/hooks/useScroll";
 import CategoryContents from "./CategoryContents";
 import { St } from "./style";
 
 export default function CategoryPage() {
+  useGTMPage();
   useScroll();
 
   const setSliderIdx = useSetRecoilState(sliderIdxState);
