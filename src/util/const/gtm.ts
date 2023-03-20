@@ -69,21 +69,21 @@ type GtmClassName = {
   joinInfoNext: string;
   joinProfileNext: string;
   joinAgreeComplete: string;
-  medley커플: string;
-  medley소개팅: string;
-  medley아이스브레이킹: string;
-  medley스스로: string;
-  medley밸런스게임: string;
-  medleyPreview커플: string;
-  medleyPreview소개팅: string;
-  medleyPreview아이스브레이킹: string;
-  medleyPreview스스로: string;
-  medleyPreview밸런스게임: string;
-  medleyPreviewClose커플: string;
-  medleyPreviewClose소개팅: string;
-  medleyPreviewClose아이스브레이킹: string;
-  medleyPreviewClose스스로: string;
-  medleyPreviewClose밸런스게임: string;
+  medley사랑: string;
+  medley애프: string;
+  medley여럿: string;
+  medley피클: string;
+  medley송강: string;
+  medleyPreview사랑: string;
+  medleyPreview애프: string;
+  medleyPreview여럿: string;
+  medleyPreview피클: string;
+  medleyPreview송강: string;
+  medleyPreviewClose사랑: string;
+  medleyPreviewClose애프: string;
+  medleyPreviewClose여럿: string;
+  medleyPreviewClose피클: string;
+  medleyPreviewClose송강: string;
 };
 
 export const GTM_CLASS_NAME: GtmClassName = {
@@ -156,19 +156,19 @@ export const GTM_CLASS_NAME: GtmClassName = {
   joinInfoNext: "click_joinmember_next1",
   joinProfileNext: "click_joinmember_next2",
   joinAgreeComplete: "click_joinmember_compl",
-  medley커플: "click_main_medley_couple",
-  medley소개팅: "click_main_medley_date",
-  medley아이스브레이킹: "click_main_medley_ice",
-  medley스스로: "click_main_medley_self",
-  medley밸런스게임: "click_main_medley_vs",
-  medleyPreview커플: "click_couple_preview_start",
-  medleyPreview소개팅: "click_date_preview_start",
-  medleyPreview아이스브레이킹: "click_ice_preview_start",
-  medleyPreview스스로: "click_self_preview_start",
-  medleyPreview밸런스게임: "click_vs_preview_start",
-  medleyPreviewClose커플: "click_couple_preview_close",
-  medleyPreviewClose소개팅: "click_date_preview_close",
-  medleyPreviewClose아이스브레이킹: "click_ice_preview_close",
-  medleyPreviewClose스스로: "click_self_preview_close",
-  medleyPreviewClose밸런스게임: "click_vs_preview_close",
+  medley사랑: "click_main_medley_couple",
+  medley애프: "click_main_medley_date",
+  medley여럿: "click_main_medley_ice",
+  medley피클: "click_main_medley_self",
+  medley송강: "click_main_medley_vs",
+  medleyPreview사랑: "click_couple_preview_start",
+  medleyPreview애프: "click_date_preview_start",
+  medleyPreview여럿: "click_ice_preview_start",
+  medleyPreview피클: "click_self_preview_start",
+  medleyPreview송강: "click_vs_preview_start",
+  medleyPreviewClose사랑: "click_couple_preview_close",
+  medleyPreviewClose애프: "click_date_preview_close",
+  medleyPreviewClose여럿: "click_ice_preview_close",
+  medleyPreviewClose피클: "click_self_preview_close",
+  medleyPreviewClose송강: "click_vs_preview_close",
 };
