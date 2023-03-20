@@ -28,10 +28,13 @@ type GtmClassName = {
   menuMoodPiickleSub: string;
   menuPiickleMe: string;
   menuPiickleMeSub: string;
+  menuBookmark: string;
+  menuOpacityClose: string;
   cardLike: string;
   cardLogin: string;
   cardJoin: string;
   cardRecommendFilter: string;
+  cardKeep: string;
   filterClose: string;
   filter남: string;
   filter여: string;
@@ -66,6 +69,21 @@ type GtmClassName = {
   joinInfoNext: string;
   joinProfileNext: string;
   joinAgreeComplete: string;
+  medley커플: string;
+  medley소개팅: string;
+  medley아이스브레이킹: string;
+  medley스스로: string;
+  medley밸런스게임: string;
+  medleyPreview커플: string;
+  medleyPreview소개팅: string;
+  medleyPreview아이스브레이킹: string;
+  medleyPreview스스로: string;
+  medleyPreview밸런스게임: string;
+  medleyPreviewClose커플: string;
+  medleyPreviewClose소개팅: string;
+  medleyPreviewClose아이스브레이킹: string;
+  medleyPreviewClose스스로: string;
+  medleyPreviewClose밸런스게임: string;
 };
 
 export const GTM_CLASS_NAME: GtmClassName = {
@@ -97,10 +115,13 @@ export const GTM_CLASS_NAME: GtmClassName = {
   menuMoodPiickleSub: "click_menu_mood_sub",
   menuPiickleMe: "click_menu_vote_main",
   menuPiickleMeSub: "click_menu_vote_sub",
+  menuBookmark: "click_menu_bookmark",
+  menuOpacityClose: "click_menu_opacityclose",
   cardLike: "click_card_like",
   cardLogin: "click_card_log",
   cardJoin: "click_card_joinmember",
   cardRecommendFilter: "click_card_filter",
+  cardKeep: "click_card_keep",
   filterClose: "click_filter_close",
   filter남: "click_filter_man",
   filter여: "click_filter_woman",
@@ -135,4 +156,19 @@ export const GTM_CLASS_NAME: GtmClassName = {
   joinInfoNext: "click_joinmember_next1",
   joinProfileNext: "click_joinmember_next2",
   joinAgreeComplete: "click_joinmember_compl",
+  medley커플: "click_main_medley_couple",
+  medley소개팅: "click_main_medley_date",
+  medley아이스브레이킹: "click_main_medley_ice",
+  medley스스로: "click_main_medley_self",
+  medley밸런스게임: "click_main_medley_vs",
+  medleyPreview커플: "click_couple_preview_start",
+  medleyPreview소개팅: "click_date_preview_start",
+  medleyPreview아이스브레이킹: "click_ice_preview_start",
+  medleyPreview스스로: "click_self_preview_start",
+  medleyPreview밸런스게임: "click_vs_preview_start",
+  medleyPreviewClose커플: "click_couple_preview_close",
+  medleyPreviewClose소개팅: "click_date_preview_close",
+  medleyPreviewClose아이스브레이킹: "click_ice_preview_close",
+  medleyPreviewClose스스로: "click_self_preview_close",
+  medleyPreviewClose밸런스게임: "click_vs_preview_close",
 };
