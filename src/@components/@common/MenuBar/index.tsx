@@ -31,7 +31,7 @@ export default function MenuBar(props: MenuBarProps) {
     closeMenuBar();
   };
   return (
-    <St.Root>
+    <St.Root className={GTM_CLASS_NAME.menuOpacityClose}>
       <St.ContentsContainer ref={outClickCloserRef}>
         <St.CloseBtnContainer onClick={closeMenuBar}>
           <IcCloseBtn />
@@ -62,9 +62,12 @@ export default function MenuBar(props: MenuBarProps) {
               <St.SubTitle className={GTM_CLASS_NAME.menuPiickleMeSub}>진행중인 투표</St.SubTitle>
             </St.RecomendWrapper>
             {LOGIN_STATE ? (
-              <St.RecomendWrapper to={routePaths.BookmarkPage} onClick={closeMenuBar}>
-                <St.Title>My Piickle</St.Title>
-                <St.SubTitle>북마크된 카드</St.SubTitle>
+              <St.RecomendWrapper
+                to={routePaths.BookmarkPage}
+                className={GTM_CLASS_NAME.menuBookmark}
+                onClick={closeMenuBar}>
+                <St.Title className={GTM_CLASS_NAME.menuBookmark}>My Piickle</St.Title>
+                <St.SubTitle className={GTM_CLASS_NAME.menuBookmark}>북마크된 카드</St.SubTitle>
               </St.RecomendWrapper>
             ) : (
               <St.RecomendWrapper to={routePaths.Login} onClick={closeMenuBar}>

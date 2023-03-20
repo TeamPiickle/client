@@ -1,5 +1,6 @@
 import { IcNextCardBtn } from "../../../../asset/icon";
 import { routePaths } from "../../../../core/routes/path";
+import { GTM_CLASS_NAME } from "../../../../util/const/gtm";
 import { St } from "./style";
 
 export default function LastCard() {
@@ -16,7 +17,7 @@ export default function LastCard() {
         새로운 대화 주제를 둘러보세요
       </St.Content>
 
-      <St.CategoryLink to={routePaths.Category}>
+      <St.CategoryLink className={GTM_CLASS_NAME.cardKeep} to={routePaths.Category}>
         <IcNextCardBtn />
       </St.CategoryLink>
 
