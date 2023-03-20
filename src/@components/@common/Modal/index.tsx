@@ -9,17 +9,18 @@ type ModalTheme = "DEFAULT" | "WHITE" | "GRAY";
 interface ModalContents {
   theme?: ModalTheme;
   closeHandler: () => void;
+  closeOpacityClassName?: string;
   closeBtnClassName?: string;
 }
 
 export default function Modal(props: PropsWithChildren<ModalContents>) {
-  const { theme = "DEFAULT", closeHandler, closeBtnClassName, children } = props;
+  const { theme = "DEFAULT", closeHandler, closeOpacityClassName, closeBtnClassName, children } = props;
   // TODO :: useOutClickCloser
 
   if (theme === "GRAY")
     return (
       <ModalPortal>
-        <St.GrayRoot>
+        <St.GrayRoot className={closeOpacityClassName}>
           <St.GrayModal>
             <St.CloseBtn type="button" className={closeBtnClassName} onClick={closeHandler}>
               <IcModalCloseBtn />
