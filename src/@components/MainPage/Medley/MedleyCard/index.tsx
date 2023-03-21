@@ -11,12 +11,13 @@ interface MedleyCardProps {
 export default function MedleyCard(props: MedleyCardProps) {
   const { medleyCard } = props;
   const { isModalOpen, toggleModal } = useModal();
+  const GTM_MEDLERY_KEY = `${medleyCard.sticker.slice(0, 2)}`;
 
   return (
     <>
       <St.MedleyWrapper
         bgcolorId={medleyCard._id}
-        className={GTM_CLASS_NAME[`medley${medleyCard.sticker.slice(0, 2)}`]}
+        className={GTM_CLASS_NAME["medley" + GTM_MEDLERY_KEY]}
         onClick={toggleModal}>
         <St.ContentTag>{medleyCard.sticker}</St.ContentTag>
         <St.ContentTitle>{medleyCard.coverTitle}</St.ContentTitle>
