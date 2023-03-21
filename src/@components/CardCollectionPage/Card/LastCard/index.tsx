@@ -18,7 +18,7 @@ export default function LastCard() {
       </St.Content>
 
       <St.CategoryLink className={GTM_CLASS_NAME.cardKeep} to={routePaths.Category}>
-        <IcNextCardBtn />
+        <IcNextCardBtn className={GTM_CLASS_NAME.cardKeep} />
       </St.CategoryLink>
 
       <St.HomeLink to={routePaths.Main}>홈으로 돌아가기</St.HomeLink>
