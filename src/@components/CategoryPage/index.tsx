@@ -13,7 +13,7 @@ import Header from "../@common/Header";
 import HeadingTitleContainer from "../@common/HeadingTitleContainer";
 import useScroll from "../@common/hooks/useScroll";
 import CategoryContents from "./CategoryContents";
-import { St } from "./style";
+import St from "./style";
 
 export default function CategoryPage() {
   useScroll();
