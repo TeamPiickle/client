@@ -19,10 +19,14 @@ const GrayRoot = styled(Root)``;
 
 const WhiteRoot = styled(Root)`
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  min-height: -webkit-fill-available;
 `;
 
 const DefaultRoot = styled(Root)`
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  min-height: -webkit-fill-available;
   padding: 1.6rem;
 `;
 
