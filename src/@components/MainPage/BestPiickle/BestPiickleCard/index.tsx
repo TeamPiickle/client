@@ -13,10 +13,11 @@ interface BestPiickleCardProps {
     content: string;
   };
   idx: number;
+  canNavigate: boolean;
 }
 
 export default function BestPiickleCard(props: BestPiickleCardProps) {
-  const { bestPiickle, idx } = props;
+  const { bestPiickle, idx, canNavigate } = props;
   const { content, tags } = bestPiickle;
   const GTM_IDX_KEY = `mainBestPiickle${idx + 1}`;
 
@@ -28,6 +29,8 @@ export default function BestPiickleCard(props: BestPiickleCardProps) {
       type="button"
       className={GTM_CLASS_NAME[GTM_IDX_KEY]}
       onClick={() => {
+        if (!canNavigate) return;
+
         navigation(routePaths.CardCollection, { state: { type: "best" } });
         setSliderIdx(idx);
       }}>

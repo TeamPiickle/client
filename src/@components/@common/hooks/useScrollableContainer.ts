@@ -2,24 +2,49 @@ import { useRef, useState } from "react";
 
 export default function useScrollableContainer() {
   const containerRef = useRef<HTMLElement | null>(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
+
+  const [isStartDragging, setIsStartDragging] = useState(false);
+  const currentX = useRef(0);
+
+  const standardX = useRef(0);
+  const [draggedX, setDraggedX] = useState(0);
 
   function handleMouseDown(event: React.MouseEvent<HTMLElement, MouseEvent>) {
-    setIsDragging(true);
-    setStartX(event.pageX);
+    setIsStartDragging(true);
+
+    currentX.current = event.pageX;
+
+    initializeForDraggedX(event.pageX);
+  }
+
+  function initializeForDraggedX(standartX: number) {
+    setDraggedX(0);
+    standardX.current = standartX;
   }
 
   function handleMouseMove(event: React.MouseEvent<HTMLElement, MouseEvent>) {
     const container = containerRef.current;
-    if (!isDragging || !container) return;
+    if (!container) return;
+    if (!isStartDragging) return;
 
-    container.scrollLeft += startX - event.pageX;
-    setStartX(event.pageX);
+    moveContainerByCurrentX(container, event.pageX);
+
+    setDraggedX(Math.abs(event.pageX - standardX.current));
   }
 
-  function handleMouseUp() {
-    setIsDragging(false);
+  function moveContainerByCurrentX(container: HTMLElement, movedMouseX: number) {
+    container.scrollLeft += currentX.current - movedMouseX;
+    currentX.current = movedMouseX;
+  }
+
+  function handleMouseUpOrLeave() {
+    reset();
+  }
+
+  function reset() {
+    setIsStartDragging(false);
+    currentX.current = 0;
+    standardX.current = 0;
   }
 
   return {
@@ -27,8 +52,9 @@ export default function useScrollableContainer() {
       ref: containerRef,
       onMouseDown: handleMouseDown,
       onMouseMove: handleMouseMove,
-      onMouseUp: handleMouseUp,
-      onMouseLeave: handleMouseUp,
+      onMouseUp: handleMouseUpOrLeave,
+      onMouseLeave: handleMouseUpOrLeave,
     },
+    isDragging: draggedX > 10,
   };
 }
