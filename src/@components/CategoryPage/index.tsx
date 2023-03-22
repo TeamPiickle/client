@@ -27,25 +27,27 @@ export default function CategoryPage() {
   };
 
   return (
-    <St.Root>
+    <>
       <Helmet>
         <link rel="preload" as="image" href={ImgCategoryBanner} />
       </Helmet>
-      <Header />
-      <St.CategoryBanner>
-        <picture>
-          <source srcSet={ImgCategoryBanner} type="image/webp" />
-          <St.BgImg src={OriginImgCategoryBanner} alt="" />
-        </picture>
-        <St.BannerTitle>베스트 카드들만 모아서 보기</St.BannerTitle>
-        <St.BannerSubTitle>북마크를 가장 많이 달성한 핫한 대화 주제 30선</St.BannerSubTitle>
-        <St.GoBestPiickleBtn type="button" className={GTM_CLASS_NAME.moodShowCard} onClick={moveBestPiickle}>
-          <St.BtnTitle>카드보기</St.BtnTitle>
-          <IcSmallRightArrow />
-        </St.GoBestPiickleBtn>
-      </St.CategoryBanner>
-      <HeadingTitleContainer headingTitles={categoryTitles} />
-      <CategoryContents />
-    </St.Root>
+      <St.Root>
+        <Header />
+        <St.CategoryBanner>
+          <picture>
+            <source srcSet={ImgCategoryBanner} type="image/webp" />
+            <St.BgImg src={OriginImgCategoryBanner} alt="" />
+          </picture>
+          <St.BannerTitle>베스트 카드들만 모아서 보기</St.BannerTitle>
+          <St.BannerSubTitle>북마크를 가장 많이 달성한 핫한 대화 주제 30선</St.BannerSubTitle>
+          <St.GoBestPiickleBtn type="button" className={GTM_CLASS_NAME.moodShowCard} onClick={moveBestPiickle}>
+            <St.BtnTitle>카드보기</St.BtnTitle>
+            <IcSmallRightArrow />
+          </St.GoBestPiickleBtn>
+        </St.CategoryBanner>
+        <HeadingTitleContainer headingTitles={categoryTitles} />
+        <CategoryContents />
+      </St.Root>
+    </>
   );
 }
