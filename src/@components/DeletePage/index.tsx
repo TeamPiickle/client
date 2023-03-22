@@ -6,11 +6,14 @@ import { deleteApi } from "../../core/api/delete";
 import { routePaths } from "../../core/routes/path";
 import { feedBackListsContents } from "../../util/delete/feedBackListsContents";
 import Footer from "../@common/Footer";
+import useGTMPage from "../@common/hooks/useGTMPage";
 import useOutClickCloser from "../@common/hooks/useOutClickCloser";
 import SubHeader from "../@common/SubHeader";
 import { St } from "./style";
 
 export default function DeletePage() {
+  useGTMPage();
+
   const navigate = useNavigate();
 
   const outClickCloserRef = useOutClickCloser(() => {

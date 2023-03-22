@@ -9,12 +9,15 @@ import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import { agreeListsContents } from "../../../util/join/agreeListsContents";
 import { subHeaderInfo } from "../../../util/join/subHeaderInfo";
 import Footer from "../../@common/Footer";
+import useGTMPage from "../../@common/hooks/useGTMPage";
 import useOutClickCloser from "../../@common/hooks/useOutClickCloser";
 import SubHeader from "../../@common/SubHeader";
 import { UserInfoFormDataContext } from "..";
 import { ModalContainerWithAnimation, St } from "./style";
 
 export default function AgreePage() {
+  useGTMPage();
+
   const { userInfoFormDataForPost } = useOutletContext<UserInfoFormDataContext>();
 
   const navigate = useNavigate();
