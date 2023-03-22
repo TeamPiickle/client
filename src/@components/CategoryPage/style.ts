@@ -1,8 +1,5 @@
 import styled from "styled-components";
 
-import { ImgCategoryBanner } from "../../asset/image";
-import { OriginImgCategoryBanner } from "../../asset/image/origin";
-
 export const St = {
   Root: styled.main`
     display: flex;
@@ -15,14 +12,20 @@ export const St = {
     height: 17.9rem;
     padding: 2rem 0 0 1.6rem;
 
-    background-image: url(${ImgCategoryBanner});
-    background-image: image-set(
-      ${ImgCategoryBanner} type("image/webp"),
-      ${OriginImgCategoryBanner} type("image/png"),
-    )
-    background-size: cover;
-
     position: relative;
+  `,
+
+  BgImg: styled.img`
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 17.9rem;
+
+    object-fit: cover;
+
+    z-index: -10;
   `,
 
   BannerTitle: styled.h2`

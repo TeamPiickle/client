@@ -1,7 +1,10 @@
+import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
 import { IcSmallRightArrow } from "../../asset/icon/index";
+import { ImgCategoryBanner } from "../../asset/image";
+import { OriginImgCategoryBanner } from "../../asset/image/origin";
 import { sliderIdxState } from "../../core/atom/slider";
 import { routePaths } from "../../core/routes/path";
 import { categoryTitles } from "../../util/category/categoryList";
@@ -25,8 +28,15 @@ export default function CategoryPage() {
 
   return (
     <St.Root>
+      <Helmet>
+        <link rel="preload" as="image" href={ImgCategoryBanner} />
+      </Helmet>
       <Header />
       <St.CategoryBanner>
+        <picture>
+          <source srcSet={ImgCategoryBanner} type="image/webp" />
+          <St.BgImg src={OriginImgCategoryBanner} alt="" />
+        </picture>
         <St.BannerTitle>베스트 카드들만 모아서 보기</St.BannerTitle>
         <St.BannerSubTitle>북마크를 가장 많이 달성한 핫한 대화 주제 30선</St.BannerSubTitle>
         <St.GoBestPiickleBtn type="button" className={GTM_CLASS_NAME.moodShowCard} onClick={moveBestPiickle}>
