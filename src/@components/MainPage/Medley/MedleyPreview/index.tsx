@@ -1,5 +1,6 @@
 import { LocationType } from "../../../../types/cardCollection";
 import { MedleyCard } from "../../../../types/main";
+import { GTM_CLASS_NAME } from "../../../../util/const/gtm";
 import useNavigateCardCollection, {
   NavigateCardCollectionMedleyType,
 } from "../../../@common/hooks/useNavigateCardCollection";
@@ -14,9 +15,14 @@ interface MedleyPreviewProps {
 export default function MedleyPreview(props: MedleyPreviewProps) {
   const { closeHandler, medleyCard } = props;
   const navigateCardCollection = useNavigateCardCollection(LocationType.MEDLEY) as NavigateCardCollectionMedleyType;
+  const GTM_MEDLERY_KEY = medleyCard.sticker.slice(0, 2);
 
   return (
-    <Modal theme="GRAY" closeHandler={closeHandler}>
+    <Modal
+      theme="GRAY"
+      closeOpacityClassName={GTM_CLASS_NAME[`medleyPreviewClose${GTM_MEDLERY_KEY}`]}
+      closeBtnClassName={GTM_CLASS_NAME[`medleyPreviewClose${GTM_MEDLERY_KEY}`]}
+      closeHandler={closeHandler}>
       <St.Container>
         <St.MedleyPreview>
           <St.Tag>{medleyCard.sticker}</St.Tag>
@@ -27,7 +33,11 @@ export default function MedleyPreview(props: MedleyPreviewProps) {
               <St.CardWrapper key={i}>{medleyCard.previewCards[i].content}</St.CardWrapper>
             ))}
           </St.PreviewCards>
-          <St.MoveBtn onClick={() => navigateCardCollection(medleyCard._id)}>카드 보기</St.MoveBtn>
+          <St.MoveBtn
+            className={GTM_CLASS_NAME[`medleyPreview${GTM_MEDLERY_KEY}`]}
+            onClick={() => navigateCardCollection(medleyCard._id)}>
+            카드 보기
+          </St.MoveBtn>
         </St.MedleyPreview>
       </St.Container>
     </Modal>
