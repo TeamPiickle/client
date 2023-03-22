@@ -1,15 +1,14 @@
-import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
-
 import { IcCloseBtn } from "../../../asset/icon";
-import { sliderIdxState } from "../../../core/atom/slider";
 import { routePaths } from "../../../core/routes/path";
+import { LocationType } from "../../../types/cardCollection";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import useOutClickCloser from "../../@common/hooks/useOutClickCloser";
 import { useBallotLists } from "../../MainPage/hooks/useBallotLists";
+import useNavigateCardCollection, { NavigateCardCollectionAllType } from "../hooks/useNavigateCardCollection";
 import ProfileContainer from "./ProfileContainer";
 import DefaultProfileContainer from "./ProfileContainer/DefaultProfileContainer";
 import St from "./style";
+
 interface MenuBarProps {
   closeMenuBar: () => void;
 }
@@ -18,16 +17,13 @@ export default function MenuBar(props: MenuBarProps) {
   const { closeMenuBar } = props;
   const outClickCloserRef = useOutClickCloser(closeMenuBar);
 
-  const setSliderIdx = useSetRecoilState(sliderIdxState);
-  const navigate = useNavigate();
-
   const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
 
   const { ballotLists } = useBallotLists();
+  const navigateCardCollection = useNavigateCardCollection(LocationType.ALL) as NavigateCardCollectionAllType;
 
   const moveCardCollection = () => {
-    navigate(routePaths.CardCollection, { state: { type: "all" } });
-    setSliderIdx(0);
+    navigateCardCollection();
     closeMenuBar();
   };
   return (
