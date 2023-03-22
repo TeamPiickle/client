@@ -1,9 +1,9 @@
 import { LocationType } from "../../../../types/cardCollection";
 import { MedleyCard } from "../../../../types/main";
+import { GTM_CLASS_NAME } from "../../../../util/const/gtm";
 import useNavigateCardCollection, {
   NavigateCardCollectionMedleyType,
 } from "../../../@common/hooks/useNavigateCardCollection";
-import { GTM_CLASS_NAME } from "../../../../util/const/gtm";
 import Modal from "../../../@common/Modal";
 import St from "./style";
 
