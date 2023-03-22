@@ -109,6 +109,8 @@ const newFonts = {
   footer1: FONT({ weight: 600, size: 1.4, lineHeight: 140, letterSpacing: 4 }),
   footer2: FONT({ weight: 400, size: 1.4, lineHeight: 130, letterSpacing: 4 }),
   graphic1: FONT({ weight: 600, size: 2.6, lineHeight: 130, letterSpacing: 3 }),
+  test1: FONT({ weight: 700, size: 1.4, lineHeight: 140, letterSpacing: 4 }),
+  test2: FONT({ weight: 400, size: 1.0, lineHeight: 140, letterSpacing: 4 }),
 } as const;
 
 type BackQuoteArgs = string[];
