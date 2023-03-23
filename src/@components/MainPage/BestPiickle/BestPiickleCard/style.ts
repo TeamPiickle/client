@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
-const Container = styled.button`
-  display: block;
-`;
+const Container = styled.button``;
 
 const BestPiickleCard = styled.div`
   position: relative;

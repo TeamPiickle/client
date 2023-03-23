@@ -9,10 +9,10 @@ const SliderWrapper = styled.article`
   overflow-x: scroll;
 
   padding-left: 1.6rem;
-  & > button:not(:last-child) {
+  & > button:not(:last-child) > div {
     margin-right: 0.8rem;
   }
-  & > button:last-child {
+  & > button:last-child > div {
     margin-right: 1.6rem;
   }
 

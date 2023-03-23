@@ -2,7 +2,9 @@ import styled from "styled-components";
 
 import { medleyGradation } from "../../../../util/main/medleyGradation";
 
-const MedleyWrapper = styled.button<{ bgcolorId: string }>`
+const Container = styled.button``;
+
+const MedleyCard = styled.div<{ bgcolorId: string }>`
   width: 14rem;
   height: 20rem;
 
@@ -35,7 +37,8 @@ const ContentTitle = styled.strong`
 `;
 
 const St = {
-  MedleyWrapper,
+  Container,
+  MedleyCard,
   ContentTag,
   ContentTitle,
 };
