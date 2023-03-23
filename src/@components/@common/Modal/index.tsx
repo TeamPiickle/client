@@ -1,6 +1,7 @@
 import { PropsWithChildren } from "react";
 
 import { IcGtmFilterModalCloseBtn, IcModalCloseBtn } from "../../../asset/icon";
+import useOutClickCloser from "../hooks/useOutClickCloser";
 import ModalPortal from "./Portal";
 import St from "./style";
 
@@ -15,13 +16,13 @@ interface ModalContents {
 
 export default function Modal(props: PropsWithChildren<ModalContents>) {
   const { theme = "DEFAULT", closeHandler, closeOpacityClassName, closeBtnClassName, children } = props;
-  // TODO :: useOutClickCloser
+  const outClickCloserRef = useOutClickCloser(closeHandler);
 
   if (theme === "GRAY")
     return (
       <ModalPortal>
         <St.GrayRoot className={closeOpacityClassName}>
-          <St.GrayModal>
+          <St.GrayModal ref={outClickCloserRef}>
             <St.CloseBtn type="button" className={closeBtnClassName} onClick={closeHandler}>
               <IcModalCloseBtn className={closeBtnClassName} />
             </St.CloseBtn>
