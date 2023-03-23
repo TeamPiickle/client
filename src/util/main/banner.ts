@@ -1,5 +1,5 @@
-import { ImgBanner1, ImgBanner2, ImgBanner3 } from "../../asset/image";
-import { OriginImgBanner1, OriginImgBanner2, OriginImgBanner3 } from "../../asset/image/origin";
+import { ImgBanner1, ImgBanner2 } from "../../asset/image";
+import { OriginImgBanner1, OriginImgBanner2 } from "../../asset/image/origin";
 
 type BannerImage = {
   src: string;
