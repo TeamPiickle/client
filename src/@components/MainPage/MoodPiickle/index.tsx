@@ -1,12 +1,11 @@
-import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
-
-import { sliderIdxState } from "../../../core/atom/slider";
-import { routePaths } from "../../../core/routes/path";
+import { LocationType } from "../../../types/cardCollection";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import { headingTitles } from "../../../util/main/headingTitles";
 import { gridValue } from "../../../util/main/moodPiickle";
 import HeadingTitleContainer from "../../@common/HeadingTitleContainer";
+import useNavigateCardCollection, {
+  NavigateCardCollectionCategoryType,
+} from "../../@common/hooks/useNavigateCardCollection";
 import { useCategoryLists } from "../hooks/useCategoryLists";
 import St from "./style";
 
@@ -18,14 +17,8 @@ export type moodPiickle = {
 };
 
 export default function MoodPiickle() {
-  const setSliderIdx = useSetRecoilState(sliderIdxState);
   const { randomCategoryLists } = useCategoryLists();
-
-  const navigate = useNavigate();
-  const moveCategory = (id: string) => {
-    navigate(routePaths.CardCollection, { state: { type: "category", categoryId: id } });
-    setSliderIdx(0);
-  };
+  const navigateCardCollection = useNavigateCardCollection(LocationType.CATEGORY) as NavigateCardCollectionCategoryType;
 
   return (
     <St.Container>
@@ -41,7 +34,7 @@ export default function MoodPiickle() {
               rowStart={gridValue[index].rowStart}
               rowEnd={gridValue[index].rowEnd}
               gradation={moodPiickle.gradation}
-              onClick={() => moveCategory(moodPiickle._id)}>
+              onClick={() => navigateCardCollection(moodPiickle._id, 0)}>
               <St.CategoryImoji className={GTM_CLASS_NAME[`main${moodPiickle.title}`]}>
                 {String.fromCodePoint(parseInt(moodPiickle.unicode, 16))}
               </St.CategoryImoji>

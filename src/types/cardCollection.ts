@@ -1,10 +1,21 @@
 export const enum LocationType {
-  CATEGORY = "category",
-  BEST = "best",
   ALL = "all",
+  BEST = "best",
   BOOKMARK = "bookmark",
-  MEDLEY = "medley",
+  CATEGORY = "category",
   FILTER = "filter",
+  MEDLEY = "medley",
+}
+
+interface AllTypeLocation {
+  type: LocationType.ALL;
+}
+
+interface BestTypeLocation {
+  type: LocationType.BEST;
+}
+interface BookmarkTypeLocation {
+  type: LocationType.BOOKMARK;
 }
 
 interface CategoryTypeLocation {
@@ -12,16 +23,9 @@ interface CategoryTypeLocation {
   categoryId: string;
 }
 
-interface BestTypeLocation {
-  type: LocationType.BEST;
-}
-
-interface AllTypeLocation {
-  type: LocationType.ALL;
-}
-
-interface BookmarkTypeLocation {
-  type: LocationType.BOOKMARK;
+interface FilterTypeLocation {
+  type: LocationType.FILTER;
+  filterTypes: string[];
 }
 
 interface MedleyTypeLocation {
@@ -29,18 +33,13 @@ interface MedleyTypeLocation {
   medleyId: string;
 }
 
-interface FilterTypeLocation {
-  type: LocationType.FILTER;
-  filterTypes: string;
-}
-
 export type CardsTypeLocation =
-  | CategoryTypeLocation
-  | BestTypeLocation
   | AllTypeLocation
+  | BestTypeLocation
   | BookmarkTypeLocation
-  | MedleyTypeLocation
-  | FilterTypeLocation;
+  | CategoryTypeLocation
+  | FilterTypeLocation
+  | MedleyTypeLocation;
 
 export interface CardList {
   _id: string;

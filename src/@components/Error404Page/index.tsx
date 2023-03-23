@@ -1,7 +1,10 @@
 import { routePaths } from "../../core/routes/path";
+import useGTMPage from "../@common/hooks/useGTMPage";
 import { St } from "./style";
 
 export default function Error404Page() {
+  useGTMPage();
+
   return (
     <St.Root>
       <St.Title>찾을 수 없는 페이지입니다</St.Title>
