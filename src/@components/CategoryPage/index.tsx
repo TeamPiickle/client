@@ -1,12 +1,8 @@
 import { Helmet } from "react-helmet";
-import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
 
 import { IcSmallRightArrow } from "../../asset/icon/index";
 import { ImgCategoryBanner } from "../../asset/image";
 import { OriginImgCategoryBanner } from "../../asset/image/origin";
-import { sliderIdxState } from "../../core/atom/slider";
-import { routePaths } from "../../core/routes/path";
 import { LocationType } from "../../types/cardCollection";
 import { categoryTitles } from "../../util/category/categoryList";
 import { GTM_CLASS_NAME } from "../../util/const/gtm";
