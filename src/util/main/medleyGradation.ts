@@ -1,7 +1,7 @@
 export const medleyGradation: { [key: string]: string } = {
   // 소개팅 가기 전 미리 보면 좋을대화주제 20선
   "6409d356bbaeffe1c2f5621b":
-    "linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), linear-gradient(180deg, rgba(255, 0, 0, 0.2) 0%, rgba(79, 72, 236, 0.102) 100%, rgba(11, 0, 255, 0.102) 100%), linear-gradient(0deg, rgba(250, 255, 0, 0.37), rgba(250, 255, 0, 0.37)), linear-gradient(180deg, #00FF9C 0%, rgba(255, 255, 255, 0) 100%);",
+    "linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), linear-gradient(0deg, rgba(0, 224, 255, 0.2), rgba(0, 224, 255, 0.2)), linear-gradient(180deg, #4F48EC 0%, #FFBF18 100%);",
   // 커플이 여행 가서 하기 좋은 대화주제 30선
   "6409d356bbaeffe1c2f5621d":
     "linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(79, 72, 236, 0.102) 100%), linear-gradient(0deg, rgba(79, 72, 236, 0.37), rgba(79, 72, 236, 0.37)), linear-gradient(180deg, #00FF9C 0%, rgba(255, 255, 255, 0) 100%);",

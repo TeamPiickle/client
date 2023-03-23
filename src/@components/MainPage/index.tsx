@@ -7,6 +7,7 @@ import CTABtn from "./CTABtn";
 import Medley from "./Medley";
 import MoodPiickle from "./MoodPiickle";
 import PiickleMe from "./PiickleMe";
+import StripBanner from "./StripBanner";
 import { St } from "./style";
 
 export default function MainPage() {
@@ -17,8 +18,9 @@ export default function MainPage() {
       <Header />
       <Banner />
       <BestPiickle />
-      <MoodPiickle />
       <Medley />
+      <MoodPiickle />
+      <StripBanner />
       <PiickleMe />
       <Footer />
       <CTABtn />

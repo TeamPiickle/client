@@ -11,7 +11,13 @@ export default function Medley() {
   if (isLoading) return <Loading backgroundColor="white" />;
   return (
     <St.Container>
-      <St.Title>👍 여러분을 위해 피클이 직접 뽑은 주제들!</St.Title>
+      <St.TitleTag>💥 NEW 💥 새로운 기능 업데이트</St.TitleTag>
+      <St.Title>
+        새로운 대화카드 주제
+        <br />
+        업데이트
+      </St.Title>
+      <St.SubTitle>👇 나에게 딱 맞는 주제, 피클이 대신 골라드립니다 👇</St.SubTitle>
       <St.Medley {...scrollableContainerProps}>
         {randomMedleyLists &&
           randomMedleyLists.map((medleyCard) => <MedleyCard key={medleyCard._id} medleyCard={medleyCard} />)}
