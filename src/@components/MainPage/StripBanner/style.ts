@@ -1,11 +1,14 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { ImgStripBanner } from "../../../asset/image";
 import { OriginImgStripBanner } from "../../../asset/image/origin";
 
-const Container = styled.button`
+const Container = styled(Link)`
   width: 100%;
   height: 8rem;
+
+  display: block;
 
   padding: 2.2rem 1.6rem;
   margin-top: 1.6rem;
@@ -20,12 +23,12 @@ const Container = styled.button`
 const Content = styled.p`
   margin-bottom: 0.2rem;
 
-  ${({ theme }) => theme.newFonts.test1}
+  ${({ theme }) => theme.newFonts.footer1}
   color: ${({ theme }) => theme.newColors.green};
 `;
 
 const SubContent = styled.p`
-  ${({ theme }) => theme.newFonts.test2}
+  ${({ theme }) => theme.newFonts.caption2}
   color: ${({ theme }) => theme.newColors.white};
 `;
 
