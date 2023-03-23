@@ -40,7 +40,7 @@ export default function MenuBar(props: MenuBarProps) {
           )}
           <St.RecomendContainer>
             <St.CardRecomendWrapper className={GTM_CLASS_NAME.menuRecommendCard} onClick={moveCardCollection}>
-              <St.Title className={GTM_CLASS_NAME.menuRecommendCard}>대화 주제 추천 카드</St.Title>
+              <St.Title className={GTM_CLASS_NAME.menuRecommendCard}>대화주제 추천 카드</St.Title>
               <St.SubTitle>다양한 주제를 담은 카드</St.SubTitle>
             </St.CardRecomendWrapper>
             <St.RecomendWrapper
@@ -68,7 +68,7 @@ export default function MenuBar(props: MenuBarProps) {
             ) : (
               <St.RecomendWrapper to={routePaths.Login} onClick={closeMenuBar}>
                 <St.Title>My Piickle</St.Title>
-                <St.SubTitle>로그인 시 사용 가능</St.SubTitle>
+                <St.SubTitle>로그인 시 사용 가능합니다</St.SubTitle>
               </St.RecomendWrapper>
             )}
           </St.RecomendContainer>
