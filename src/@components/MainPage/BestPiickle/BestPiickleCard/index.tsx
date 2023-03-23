@@ -1,9 +1,8 @@
-import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
-
-import { sliderIdxState } from "../../../../core/atom/slider";
-import { routePaths } from "../../../../core/routes/path";
+import { LocationType } from "../../../../types/cardCollection";
 import { GTM_CLASS_NAME } from "../../../../util/const/gtm";
+import useNavigateCardCollection, {
+  NavigateCardCollectionBestType,
+} from "../../../@common/hooks/useNavigateCardCollection";
 import St from "./style";
 
 interface BestPiickleCardProps {
@@ -13,23 +12,23 @@ interface BestPiickleCardProps {
     content: string;
   };
   idx: number;
+  canNavigate: boolean;
 }
 
 export default function BestPiickleCard(props: BestPiickleCardProps) {
-  const { bestPiickle, idx } = props;
+  const { bestPiickle, idx, canNavigate } = props;
   const { content, tags } = bestPiickle;
   const GTM_IDX_KEY = `mainBestPiickle${idx + 1}`;
 
-  const setSliderIdx = useSetRecoilState(sliderIdxState);
-  const navigation = useNavigate();
+  const navigateCardCollection = useNavigateCardCollection(LocationType.BEST) as NavigateCardCollectionBestType;
 
   return (
     <St.Container
       type="button"
       className={GTM_CLASS_NAME[GTM_IDX_KEY]}
       onClick={() => {
-        navigation(routePaths.CardCollection, { state: { type: "best" } });
-        setSliderIdx(idx);
+        if (!canNavigate) return;
+        navigateCardCollection(idx);
       }}>
       <St.BestPiickleCard>
         <St.TagsWrapper>

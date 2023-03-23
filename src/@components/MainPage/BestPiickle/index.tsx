@@ -8,7 +8,7 @@ import St from "./style";
 
 export default function BestPiickle() {
   const { bestPiickle } = useBestPiickle();
-  const { scrollableContainerProps } = useScrollableContainer();
+  const { scrollableContainerProps, isDragging } = useScrollableContainer();
 
   return (
     <St.Root>
@@ -18,7 +18,9 @@ export default function BestPiickle() {
         <St.SliderWrapper {...scrollableContainerProps}>
           {bestPiickle &&
             bestPiickle.data.slice(0, 5).map((bestPiickle, idx) => {
-              return <BestPiickleCard key={bestPiickle._id} bestPiickle={bestPiickle} idx={idx} />;
+              return (
+                <BestPiickleCard key={bestPiickle._id} bestPiickle={bestPiickle} idx={idx} canNavigate={!isDragging} />
+              );
             })}
         </St.SliderWrapper>
       ) : (

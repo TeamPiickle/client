@@ -1,12 +1,12 @@
-import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
-
-import { sliderIdxState } from "../../../../core/atom/slider";
-import { routePaths } from "../../../../core/routes/path";
+import { LocationType } from "../../../../types/cardCollection";
 import { MedleyCard } from "../../../../types/main";
 import { GTM_CLASS_NAME } from "../../../../util/const/gtm";
+import useNavigateCardCollection, {
+  NavigateCardCollectionMedleyType,
+} from "../../../@common/hooks/useNavigateCardCollection";
 import Modal from "../../../@common/Modal";
 import St from "./style";
+
 interface MedleyPreviewProps {
   closeHandler: () => void;
   medleyCard: MedleyCard;
@@ -14,14 +14,8 @@ interface MedleyPreviewProps {
 
 export default function MedleyPreview(props: MedleyPreviewProps) {
   const { closeHandler, medleyCard } = props;
-  const setSliderIdx = useSetRecoilState(sliderIdxState);
-  const navigate = useNavigate();
+  const navigateCardCollection = useNavigateCardCollection(LocationType.MEDLEY) as NavigateCardCollectionMedleyType;
   const GTM_MEDLERY_KEY = medleyCard.sticker.slice(0, 2);
-
-  const moveCardCollectionFromMedley = (id: string) => {
-    navigate(routePaths.CardCollection, { state: { type: "medley", medleyId: id } });
-    setSliderIdx(0);
-  };
 
   return (
     <Modal
@@ -41,7 +35,7 @@ export default function MedleyPreview(props: MedleyPreviewProps) {
           </St.PreviewCards>
           <St.MoveBtn
             className={GTM_CLASS_NAME[`medleyPreview${GTM_MEDLERY_KEY}`]}
-            onClick={() => moveCardCollectionFromMedley(medleyCard._id)}>
+            onClick={() => navigateCardCollection(medleyCard._id)}>
             카드 보기
           </St.MoveBtn>
         </St.MedleyPreview>
