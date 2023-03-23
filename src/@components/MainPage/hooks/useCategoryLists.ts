@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import useSWR from "swr";
 
 import { realReq } from "../../../core/api/common/axios";
@@ -7,10 +8,11 @@ import { PiickleSWRResponse } from "../../../types/remote/swr";
 
 export function useCategoryLists() {
   const { data, error } = useSWR<PiickleSWRResponse<CategoryList[]>>(PATH.CATEGORIES_, realReq.GET_SWR);
+  const randomCategoryLists = useMemo(() => data?.data.data.sort(() => Math.random() - 0.5), [data]);
 
   return {
     categoryLists: data?.data,
-    randomCategoryLists: data && [...data.data.data].sort(() => Math.random() - 0.5),
+    randomCategoryLists,
     isLoading: !error && !data,
   };
 }
