@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
 
 import { IcSmallEmptyHeart, IcSmallFullHeart } from "../../../asset/icon";
 import { cardCollectionApi } from "../../../core/api/cardCollection";
-import { sliderIdxState } from "../../../core/atom/slider";
-import { routePaths } from "../../../core/routes/path";
+import { LocationType } from "../../../types/cardCollection";
+import useNavigateCardCollection, {
+  NavigateCardCollectionBookMarkType,
+} from "../../@common/hooks/useNavigateCardCollection";
 import { St } from "./style";
 
 interface MyPiickleItemProps {
@@ -16,18 +16,13 @@ interface MyPiickleItemProps {
 
 export default function MyPiickleItem(props: MyPiickleItemProps) {
   const { cardId, content, idx } = props;
-  const [isBookmarked, setIsBookmarked] = useState<boolean>(true);
-  const navigate = useNavigate();
-  const setSliderIdx = useSetRecoilState(sliderIdxState);
 
+  const navigateCardCollection = useNavigateCardCollection(LocationType.BOOKMARK) as NavigateCardCollectionBookMarkType;
+
+  const [isBookmarked, setIsBookmarked] = useState<boolean>(true);
   const toggleBookmark = () => {
     setIsBookmarked((prev) => !prev);
     cardCollectionApi.addNDeleteBookmark(cardId);
-  };
-
-  const goCardView = () => {
-    navigate(routePaths.CardCollection, { state: { type: "bookmark" } });
-    setSliderIdx(idx);
   };
 
   return (
@@ -36,7 +31,7 @@ export default function MyPiickleItem(props: MyPiickleItemProps) {
       <St.HeartWrapper onClick={toggleBookmark}>
         {isBookmarked ? <IcSmallFullHeart /> : <IcSmallEmptyHeart />}
       </St.HeartWrapper>
-      <St.MyPiickleLink type="button" onClick={goCardView} />
+      <St.MyPiickleLink type="button" onClick={() => navigateCardCollection(idx)} />
     </St.MyPiickle>
   );
 }

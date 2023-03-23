@@ -1,16 +1,17 @@
 import qs from "qs";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import useSWR from "swr";
 
 import { realReq } from "../../../core/api/common/axios";
 import { PATH } from "../../../core/api/common/constants";
-import { filterTagsState, sliderIdxState } from "../../../core/atom/slider";
-import { routePaths } from "../../../core/routes/path";
+import { filterTagsState } from "../../../core/atom/slider";
 import { CardList, CardsTypeLocation, LocationType } from "../../../types/cardCollection";
 import { PiickleSWRResponse } from "../../../types/remote/swr";
 import { intimacyTags } from "../../../util/cardCollection/filter";
+import useNavigateCardCollection, {
+  NavigateCardCollectionFilterType,
+} from "../../@common/hooks/useNavigateCardCollection";
 
 interface ExtendedCardList extends Array<CardList> {
   cardList?: CardList[]; // with category id
@@ -18,10 +19,8 @@ interface ExtendedCardList extends Array<CardList> {
 }
 
 export function useCardLists(cardsTypeLocation: CardsTypeLocation) {
-  const navigate = useNavigate();
-
   const [filterTags, setFilterTags] = useRecoilState(filterTagsState);
-  const setSliderIdx = useSetRecoilState(sliderIdxState);
+  const navigateCardCollection = useNavigateCardCollection(LocationType.FILTER) as NavigateCardCollectionFilterType;
 
   const fetchingKeyByLocation = getSWRFetchingKeyByLocation(cardsTypeLocation);
   const optionsByLocation = getSWROptionsByLocation(cardsTypeLocation);
@@ -50,11 +49,8 @@ export function useCardLists(cardsTypeLocation: CardsTypeLocation) {
     setFilterTags((prevFilterTags) => {
       return { ...prevFilterTags, isActive: true };
     });
-    setSliderIdx(0);
 
-    navigate(routePaths.CardCollection, {
-      state: { type: LocationType.FILTER, filterTypes: [..._fetchingCheckedTags] },
-    });
+    navigateCardCollection([..._fetchingCheckedTags]);
   };
 
   return {
