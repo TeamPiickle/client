@@ -15,7 +15,7 @@ const Root = styled.main`
 
 const CloseBtnContainer = styled.div`
   position: absolute;
-  top: 6.2rem;
+  top: 1.9rem;
   right: 1.6rem;
 `;
 
