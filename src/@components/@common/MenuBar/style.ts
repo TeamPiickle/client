@@ -7,6 +7,8 @@ const Root = styled.main`
   right: 0;
   left: 0;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  min-height: -webkit-fill-available;
 
   background-color: ${({ theme }) => theme.newColors.black50};
 
@@ -72,6 +74,8 @@ const ContentsContainer = styled.section`
 
   width: 28.8rem;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  min-height: -webkit-fill-available;
   float: right;
 
   background-color: ${({ theme }) => theme.newColors.white};

@@ -4,6 +4,8 @@ import styled, { css } from "styled-components";
 export const St = {
   Root: styled.main`
     height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    min-height: -webkit-fill-available;
   `,
 
   TitleContainer: styled.section`

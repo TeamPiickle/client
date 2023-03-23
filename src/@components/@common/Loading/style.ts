@@ -9,6 +9,8 @@ export const St = {
     left: 0;
 
     height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    min-height: -webkit-fill-available;
 
     display: flex;
     justify-content: center;
