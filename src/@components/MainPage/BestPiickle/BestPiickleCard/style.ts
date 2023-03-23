@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 const Container = styled.button``;
 
-const BestPiickleCard = styled.article`
+const BestPiickleCard = styled.article<{ cardIdx: number }>`
   position: relative;
 
   width: 20rem;
   height: 13.6rem;
 
-  margin-right: 0.8rem;
+  margin-right: ${({ cardIdx }) => (cardIdx === 4 ? 1.6 : 0.8)}rem;
   padding: 1.2rem;
 
   border: 0.1rem solid ${({ theme }) => theme.newColors.gray300};

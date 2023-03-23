@@ -30,7 +30,7 @@ export default function BestPiickleCard(props: BestPiickleCardProps) {
         if (!canNavigate) return;
         navigateCardCollection(idx);
       }}>
-      <St.BestPiickleCard>
+      <St.BestPiickleCard cardIdx={idx}>
         <St.TagsWrapper>
           {tags.map((tag: string, i: number) => {
             return <St.Tag key={i}>{tag.slice(1)}</St.Tag>;

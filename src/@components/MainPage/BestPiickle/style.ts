@@ -8,7 +8,7 @@ const SliderWrapper = styled.article`
   display: flex;
   overflow-x: scroll;
 
-  padding: 0 1.6rem;
+  padding-left: 1.6rem;
 
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
