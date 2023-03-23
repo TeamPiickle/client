@@ -46,8 +46,13 @@ const Medley = styled.article`
   display: flex;
   overflow-x: scroll;
 
-  padding: 0 1.6rem;
-  gap: 0.8rem;
+  padding-left: 1.6rem;
+  & > button:not(:last-child) {
+    margin-right: 0.8rem;
+  }
+  & > button:last-child {
+    margin-right: 1.6rem;
+  }
 
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */

@@ -1,14 +1,15 @@
 import styled from "styled-components";
 
-const Container = styled.button``;
+const Container = styled.button`
+  display: block;
+`;
 
-const BestPiickleCard = styled.article`
+const BestPiickleCard = styled.div`
   position: relative;
 
   width: 20rem;
   height: 13.6rem;
 
-  margin-right: 0.8rem;
   padding: 1.2rem;
 
   border: 0.1rem solid ${({ theme }) => theme.newColors.gray300};
