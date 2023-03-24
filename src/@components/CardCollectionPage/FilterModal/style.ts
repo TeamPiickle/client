@@ -73,6 +73,7 @@ const SubmitBtn = styled.button`
   background-color: ${({ theme }) => theme.newColors.gray900};
   color: ${({ theme }) => theme.newColors.gray100};
 
+  width: 100%;
   height: 5.8rem;
 
   display: flex;
