@@ -9,12 +9,14 @@ export default function useOutClickCloser(handleOutClickCloser: HandleOutClickCl
     const handleClickOutside = (e: MouseEvent | TouchEvent) => {
       if (!(e.target instanceof HTMLElement)) return;
       if (currentRef.current && !currentRef.current.contains(e.target)) {
+        e.preventDefault();
+        e.stopPropagation();
         handleOutClickCloser();
       }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("touchstart", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside, { passive: false });
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
