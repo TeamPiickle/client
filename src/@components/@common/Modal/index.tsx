@@ -36,7 +36,7 @@ export default function Modal(props: PropsWithChildren<ModalContents>) {
     return (
       <ModalPortal>
         <St.WhiteRoot>
-          <St.WhiteModal>
+          <St.WhiteModal ref={outClickCloserRef}>
             <St.CloseBtn type="button" className={closeBtnClassName} onClick={closeHandler}>
               <IcGtmFilterModalCloseBtn className={closeBtnClassName} />
             </St.CloseBtn>
