@@ -15,10 +15,10 @@ const Container = styled.section`
 `;
 
 const TitleTag = styled.p`
-  width: 17rem;
+  display: inline-block;
 
   padding: 0rem 0.4rem;
-  margin: 0.8rem 0 0 1.6rem;
+  margin: 0 0 0.8rem 1.6rem;
 
   ${({ theme }) => theme.newFonts.caption1}
   color: ${({ theme }) => theme.newColors.gray900};

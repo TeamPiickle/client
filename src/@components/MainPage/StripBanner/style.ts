@@ -11,7 +11,7 @@ const Container = styled(Link)`
   display: block;
 
   padding: 2.2rem 1.6rem;
-  margin-top: 1.6rem;
+  margin-top: 2.4rem;
 
   text-align: left;
 
