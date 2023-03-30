@@ -30,14 +30,14 @@ export default function BestPiickleCard(props: BestPiickleCardProps) {
         if (!canNavigate) return;
         navigateCardCollection(idx);
       }}>
-      <St.BestPiickleCard>
-        <St.TagsWrapper>
+      <St.BestPiickleCard className={GTM_CLASS_NAME[GTM_IDX_KEY]}>
+        <St.TagsWrapper className={GTM_CLASS_NAME[GTM_IDX_KEY]}>
           {tags.map((tag: string, i: number) => {
             return <St.Tag key={i}>{tag.slice(1)}</St.Tag>;
           })}
         </St.TagsWrapper>
-        <St.Content>{content}</St.Content>
-        <St.PickButtonWrapper>카드 보기</St.PickButtonWrapper>
+        <St.Content className={GTM_CLASS_NAME[GTM_IDX_KEY]}>{content}</St.Content>
+        <St.PickButtonWrapper className={GTM_CLASS_NAME[GTM_IDX_KEY]}>카드 보기</St.PickButtonWrapper>
       </St.BestPiickleCard>
     </St.Container>
   );

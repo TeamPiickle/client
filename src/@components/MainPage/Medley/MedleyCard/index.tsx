@@ -22,9 +22,11 @@ export default function MedleyCard(props: MedleyCardProps) {
           if (!canToggleModal) return;
           toggleModal();
         }}>
-        <St.MedleyCard bgcolorId={medleyCard._id}>
-          <St.ContentTag>{medleyCard.sticker}</St.ContentTag>
-          <St.ContentTitle>{medleyCard.coverTitle}</St.ContentTitle>
+        <St.MedleyCard className={GTM_CLASS_NAME[`medley${GTM_MEDLERY_KEY}`]} bgcolorId={medleyCard._id}>
+          <St.ContentTag className={GTM_CLASS_NAME[`medley${GTM_MEDLERY_KEY}`]}>{medleyCard.sticker}</St.ContentTag>
+          <St.ContentTitle className={GTM_CLASS_NAME[`medley${GTM_MEDLERY_KEY}`]}>
+            {medleyCard.coverTitle}
+          </St.ContentTitle>
         </St.MedleyCard>
       </St.Container>
       {isModalOpen && <MedleyPreview closeHandler={toggleModal} medleyCard={medleyCard} />}
