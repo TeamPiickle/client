@@ -10,7 +10,7 @@ export default function useOutClickCloser(handleOutClickCloser: HandleOutClickCl
       if (!(e.target instanceof HTMLElement)) return;
       if (currentRef.current && !currentRef.current.contains(e.target)) {
         e.preventDefault();
-        e.stopPropagation();
+        //e.stopPropagation();
         handleOutClickCloser();
       }
     };
