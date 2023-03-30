@@ -1,13 +1,14 @@
 import { useNavigate, useOutletContext } from "react-router-dom";
 
-import { subHeaderInfo } from "../../../core/join/subHeaderInfo";
+import { routePaths } from "../../../core/routes/path";
+import { GTM_CLASS_NAME } from "../../../util/const/gtm";
+import { JOIN_FORM_DATA_KEY } from "../../../util/join/formData";
+import { subHeaderInfo } from "../../../util/join/subHeaderInfo";
 import {
   emailInvalidMessage,
   passwordConfirmInvalidMessage,
   passwordInvalidMessage,
-} from "../../../core/join/userInfoInputErrorMessage";
-import { routePaths } from "../../../core/routes/path";
-import { GTM_CLASS_NAME } from "../../../util/const/gtm";
+} from "../../../util/join/userInfoInputErrorMessage";
 import Footer from "../../@common/Footer";
 import SubHeader from "../../@common/SubHeader";
 import { UserInfoFormDataContext } from "..";
@@ -26,8 +27,13 @@ export default function UserInfo() {
   // const { search } = useLocation();
   // const userEmail = new URLSearchParams(search).get("email") as string;
   const navigate = useNavigate();
-  const { setUserInfoFormData } = useOutletContext<UserInfoFormDataContext>();
-  const { query: emailQuery, handleChangeEmailInputValue, emailInvalidType, alertEmptyEmailInputValue } = useEmail();
+  const { formDataEmailValue, setUserInfoFormData } = useOutletContext<UserInfoFormDataContext>();
+  const {
+    query: emailQuery,
+    handleChangeEmailInputValue,
+    emailInvalidType,
+    alertEmptyEmailInputValue,
+  } = useEmail(formDataEmailValue);
   const {
     pwQuery,
     handleChangePwInputValue,
@@ -50,8 +56,8 @@ export default function UserInfo() {
       setUserInfoFormData(() => {
         const currentFormData = new FormData();
         // currentFormData.append("email", userEmail);
-        currentFormData.append("email", emailQuery);
-        currentFormData.append("password", pwConfirmQuery);
+        currentFormData.append(JOIN_FORM_DATA_KEY.Email, emailQuery);
+        currentFormData.append(JOIN_FORM_DATA_KEY.Password, pwConfirmQuery);
 
         return currentFormData;
       });

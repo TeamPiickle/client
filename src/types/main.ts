@@ -11,3 +11,12 @@ export interface BallotList {
   topic: string;
   __v: number;
 }
+
+export interface MedleyCard {
+  _id: string;
+  coverTitle: string;
+  title: string;
+  sticker: string;
+  description: string;
+  previewCards: { _id: string; content: string }[];
+}

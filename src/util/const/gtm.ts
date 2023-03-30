@@ -28,10 +28,13 @@ type GtmClassName = {
   menuMoodPiickleSub: string;
   menuPiickleMe: string;
   menuPiickleMeSub: string;
+  menuBookmark: string;
+  menuOpacityClose: string;
   cardLike: string;
   cardLogin: string;
   cardJoin: string;
   cardRecommendFilter: string;
+  cardKeep: string;
   filterClose: string;
   filter남: string;
   filter여: string;
@@ -66,6 +69,21 @@ type GtmClassName = {
   joinInfoNext: string;
   joinProfileNext: string;
   joinAgreeComplete: string;
+  medley사랑: string;
+  medley애프: string;
+  medley여럿: string;
+  medley피클: string;
+  medley송강: string;
+  medleyPreview사랑: string;
+  medleyPreview애프: string;
+  medleyPreview여럿: string;
+  medleyPreview피클: string;
+  medleyPreview송강: string;
+  medleyPreviewClose사랑: string;
+  medleyPreviewClose애프: string;
+  medleyPreviewClose여럿: string;
+  medleyPreviewClose피클: string;
+  medleyPreviewClose송강: string;
 };
 
 export const GTM_CLASS_NAME: GtmClassName = {
@@ -97,10 +115,13 @@ export const GTM_CLASS_NAME: GtmClassName = {
   menuMoodPiickleSub: "click_menu_mood_sub",
   menuPiickleMe: "click_menu_vote_main",
   menuPiickleMeSub: "click_menu_vote_sub",
+  menuBookmark: "click_menu_bookmark",
+  menuOpacityClose: "click_menu_opacityclose",
   cardLike: "click_card_like",
   cardLogin: "click_card_log",
   cardJoin: "click_card_joinmember",
   cardRecommendFilter: "click_card_filter",
+  cardKeep: "click_card_keep",
   filterClose: "click_filter_close",
   filter남: "click_filter_man",
   filter여: "click_filter_woman",
@@ -135,4 +156,19 @@ export const GTM_CLASS_NAME: GtmClassName = {
   joinInfoNext: "click_joinmember_next1",
   joinProfileNext: "click_joinmember_next2",
   joinAgreeComplete: "click_joinmember_compl",
+  medley사랑: "click_main_medley_couple",
+  medley애프: "click_main_medley_date",
+  medley여럿: "click_main_medley_ice",
+  medley피클: "click_main_medley_self",
+  medley송강: "click_main_medley_vs",
+  medleyPreview사랑: "click_couple_preview_start",
+  medleyPreview애프: "click_date_preview_start",
+  medleyPreview여럿: "click_ice_preview_start",
+  medleyPreview피클: "click_self_preview_start",
+  medleyPreview송강: "click_vs_preview_start",
+  medleyPreviewClose사랑: "click_couple_preview_close",
+  medleyPreviewClose애프: "click_date_preview_close",
+  medleyPreviewClose여럿: "click_ice_preview_close",
+  medleyPreviewClose피클: "click_self_preview_close",
+  medleyPreviewClose송강: "click_vs_preview_close",
 };

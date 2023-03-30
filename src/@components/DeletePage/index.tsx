@@ -3,15 +3,22 @@ import { useNavigate } from "react-router-dom";
 
 import { IcEmptyCheckBox, IcFullCheckBox, IcSmallEmptyCheckBox, IcSmallFullCheckBox } from "../../asset/icon";
 import { deleteApi } from "../../core/api/delete";
-import { feedBackListsContents } from "../../core/delete/feedBackListsContents";
 import { routePaths } from "../../core/routes/path";
+import { feedBackListsContents } from "../../util/delete/feedBackListsContents";
 import Footer from "../@common/Footer";
+import useGTMPage from "../@common/hooks/useGTMPage";
 import useOutClickCloser from "../@common/hooks/useOutClickCloser";
 import SubHeader from "../@common/SubHeader";
 import { St } from "./style";
 
 export default function DeletePage() {
+  useGTMPage();
+
   const navigate = useNavigate();
+
+  const outClickCloserRef = useOutClickCloser(() => {
+    setIsOpenAlert(false);
+  });
 
   const [ischecked, setIsChecked] = useState(false);
   const [isFeedBackItems, setIsFeedBackItems] = useState<boolean[]>([false, false, false, false, false]);
@@ -44,7 +51,7 @@ export default function DeletePage() {
       isFeedBackItems.forEach(function (item, index) {
         if (item) sendFeedBack.current.push(feedBackListsContents[index].text);
       });
-      await deleteAccount();
+      deleteAccount();
       navigate(routePaths.Main);
       localStorage.removeItem("piickle-token");
     } else {
@@ -55,13 +62,6 @@ export default function DeletePage() {
   const deleteAccount = () => {
     deleteApi.putDelete(sendFeedBack.current);
   };
-
-  const alertElement = useOutClickCloser({
-    handleOutClickCloser: () => {
-      setIsOpenAlert(false);
-    },
-  });
-
   return (
     <St.Root>
       <SubHeader prevPage={routePaths.MyPage} />
@@ -89,7 +89,7 @@ export default function DeletePage() {
         <St.FeedBackSubTitle>소중한 피드백을 바탕으로 더 나은 서비스를 만들기 위해 노력하겠습니다</St.FeedBackSubTitle>
         <St.FeedBackList>{feedBackLists}</St.FeedBackList>
       </St.FeedBackContainer>
-      <St.ModalContainer isopen={isOpenAlert} ref={alertElement}>
+      <St.ModalContainer isopen={isOpenAlert} ref={outClickCloserRef}>
         탈퇴 전 확인 항목에 동의해주세요
       </St.ModalContainer>
       <St.DeleteBtn onClick={deleteBtn}>탈퇴하기</St.DeleteBtn>

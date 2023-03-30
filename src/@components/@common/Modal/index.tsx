@@ -1,27 +1,44 @@
 import { PropsWithChildren } from "react";
 
-import { IcModalCloseBtn } from "../../../asset/icon";
+import { IcGtmFilterModalCloseBtn, IcModalCloseBtn } from "../../../asset/icon";
+import useOutClickCloser from "../hooks/useOutClickCloser";
 import ModalPortal from "./Portal";
 import St from "./style";
 
-type ModalTheme = "DEFAULT" | "WHITE";
+type ModalTheme = "DEFAULT" | "WHITE" | "GRAY";
 
 interface ModalContents {
   theme?: ModalTheme;
   closeHandler: () => void;
+  closeOpacityClassName?: string;
   closeBtnClassName?: string;
 }
 
 export default function Modal(props: PropsWithChildren<ModalContents>) {
-  const { theme = "DEFAULT", closeHandler, closeBtnClassName, children } = props;
+  const { theme = "DEFAULT", closeHandler, closeOpacityClassName, closeBtnClassName, children } = props;
+  const outClickCloserRef = useOutClickCloser(closeHandler);
+
+  if (theme === "GRAY")
+    return (
+      <ModalPortal>
+        <St.GrayRoot className={closeOpacityClassName}>
+          <St.GrayModal ref={outClickCloserRef}>
+            <St.CloseBtn type="button" className={closeBtnClassName} onClick={closeHandler}>
+              <IcModalCloseBtn className={closeBtnClassName} />
+            </St.CloseBtn>
+            <St.ModalContents>{children}</St.ModalContents>
+          </St.GrayModal>
+        </St.GrayRoot>
+      </ModalPortal>
+    );
 
   if (theme === "WHITE")
     return (
       <ModalPortal>
         <St.WhiteRoot>
-          <St.WhiteModal>
+          <St.WhiteModal ref={outClickCloserRef}>
             <St.CloseBtn type="button" className={closeBtnClassName} onClick={closeHandler}>
-              <IcModalCloseBtn />
+              <IcGtmFilterModalCloseBtn className={closeBtnClassName} />
             </St.CloseBtn>
             <St.ModalContents>{children}</St.ModalContents>
           </St.WhiteModal>
@@ -34,7 +51,7 @@ export default function Modal(props: PropsWithChildren<ModalContents>) {
       <St.DefaultRoot>
         <St.DefaultModal>
           <St.CloseBtn type="button" className={closeBtnClassName} onClick={closeHandler}>
-            <IcModalCloseBtn />
+            <IcModalCloseBtn className={closeBtnClassName} />
           </St.CloseBtn>
           <St.ModalContents>{children}</St.ModalContents>
         </St.DefaultModal>

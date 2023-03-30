@@ -10,6 +10,7 @@ export const St = {
 
     & .slick-slide {
       height: calc(100vh - 14.8rem);
+      height: calc(calc(var(--vh, 1vh) * 100) - 14.8rem);
       max-height: 49.5em;
     }
 
@@ -31,7 +32,6 @@ export const St = {
     }
 
     & .slick-track {
-      /* height: calc(100vh - 10.5rem); */
       height: 52rem;
 
       display: flex;

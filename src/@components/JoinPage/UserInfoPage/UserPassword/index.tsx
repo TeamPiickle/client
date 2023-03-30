@@ -3,7 +3,7 @@ import {
   passwordConfirmInvalidMessage,
   PasswordInvalidMessage,
   passwordInvalidMessage,
-} from "../../../../core/join/userInfoInputErrorMessage";
+} from "../../../../util/join/userInfoInputErrorMessage";
 import { St } from "./style";
 
 interface UserPasswordProps {

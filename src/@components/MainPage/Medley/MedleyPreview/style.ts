@@ -1,0 +1,109 @@
+import styled, { keyframes } from "styled-components";
+
+const ani = keyframes`
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+  50% {
+    height: 37.7rem;
+  }
+  100% {
+    opacity: 1;
+  }
+  `;
+
+const Container = styled.div`
+  width: 100%;
+  height: 37.7rem;
+
+  animation: ${ani} 0.8s ease-in-out;
+
+  ${({ theme }) => theme.media.desktop`
+  width: 36rem;
+  `};
+`;
+
+const MedleyPreview = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+`;
+
+const Tag = styled.p`
+  margin: 4.4rem 1.6rem 0 1.6rem;
+  padding: 0 0.4rem;
+
+  ${({ theme }) => theme.newFonts.caption1}
+  color: ${({ theme }) => theme.newColors.gray200};
+  background-color: ${({ theme }) => theme.newColors.gray900};
+`;
+
+const Title = styled.strong`
+  margin: 0.4rem 1.6rem 0 1.6rem;
+  white-space: pre-wrap;
+
+  ${({ theme }) => theme.newFonts.body1}
+  color: ${({ theme }) => theme.newColors.gray900};
+`;
+
+const Description = styled.p`
+  margin: 0.8rem 1.6rem 1.6rem 1.6rem;
+
+  ${({ theme }) => theme.newFonts.caption1}
+  color: ${({ theme }) => theme.newColors.gray900};
+`;
+
+const PreviewCards = styled.div`
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.8rem;
+`;
+
+const CardWrapper = styled.p`
+  padding: 0.8rem 1.6rem;
+
+  ${({ theme }) => theme.newFonts.body4}
+  color: ${({ theme }) => theme.newColors.gray900};
+  background-color: ${({ theme }) => theme.newColors.white};
+`;
+
+const MoveBtn = styled.button`
+  display: flex;
+
+  width: 100%;
+  height: 5.8rem;
+  margin-top: 1.6rem;
+
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+
+  align-items: center;
+  justify-content: center;
+
+  backdrop-filter: blur(0.6rem);
+  ${({ theme }) => theme.newFonts.btn1}
+  color: ${({ theme }) => theme.newColors.white};
+  background-color: ${({ theme }) => theme.newColors.gray900};
+
+  ${({ theme }) => theme.media.desktop`
+  width: 36rem;
+  `};
+`;
+
+const St = {
+  Container,
+  MedleyPreview,
+  Tag,
+  Title,
+  Description,
+  PreviewCards,
+  CardWrapper,
+  MoveBtn,
+};
+export default St;

@@ -1,24 +1,22 @@
 import { useEffect, useRef } from "react";
 
-interface UseOutClickCloserProps {
-  handleOutClickCloser: () => void;
-}
+type HandleOutClickCloser = () => void;
 
-export default function useOutClickCloser(props: UseOutClickCloserProps) {
-  const { handleOutClickCloser } = props;
-
+export default function useOutClickCloser(handleOutClickCloser: HandleOutClickCloser) {
   const currentRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent | TouchEvent) => {
       if (!(e.target instanceof HTMLElement)) return;
       if (currentRef.current && !currentRef.current.contains(e.target)) {
+        e.preventDefault();
+        e.stopPropagation();
         handleOutClickCloser();
       }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("touchstart", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside, { passive: false });
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);

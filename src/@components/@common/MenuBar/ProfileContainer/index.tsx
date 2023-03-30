@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 
 import { ImgDefaultProfile } from "../../../../asset/image";
-import useUserProfile from "../../../../core/api/myPage";
 import { routePaths } from "../../../../core/routes/path";
+import useUserProfile from "../../../MyPage/hooks/useUserProfile";
 import DefaultProfileContainer from "./DefaultProfileContainer";
-import { St } from "./style";
+import St from "./style";
 
 export interface ProfileContainerProps {
   closeMenuBar: () => void;

@@ -1,24 +1,16 @@
-import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
-
-import { useCategoryLists } from "../../../core/api/main";
-import { sliderIdxState } from "../../../core/atom/slider";
-import { gridValue } from "../../../core/category/categoryList";
-import { routePaths } from "../../../core/routes/path";
+import { LocationType } from "../../../types/cardCollection";
+import { gridValue } from "../../../util/category/categoryList";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
+import useNavigateCardCollection, {
+  NavigateCardCollectionCategoryType,
+} from "../../@common/hooks/useNavigateCardCollection";
 import Loading from "../../@common/Loading";
+import { useCategoryLists } from "../../MainPage/hooks/useCategoryLists";
 import { St } from "./style";
 
 export default function CategoryContents() {
-  const setSliderIdx = useSetRecoilState(sliderIdxState);
   const { categoryLists } = useCategoryLists();
-
-  const navigate = useNavigate();
-
-  const moveCategory = (id: string) => {
-    navigate(routePaths.CardCollection, { state: { type: "category", categoryId: id } });
-    setSliderIdx(0);
-  };
+  const navigateCardCollection = useNavigateCardCollection(LocationType.CATEGORY) as NavigateCardCollectionCategoryType;
 
   if (categoryLists?.data === undefined) return <Loading backgroundColor="transparent" />;
   return (
@@ -34,7 +26,7 @@ export default function CategoryContents() {
               rowStart={gridValue[index].rowStart}
               rowEnd={gridValue[index].rowEnd}
               gradation={item.gradation}
-              onClick={() => moveCategory(item._id)}>
+              onClick={() => navigateCardCollection(item._id)}>
               <St.CategoryImoji className={GTM_CLASS_NAME[`mood${item.title}`]}>
                 {String.fromCodePoint(parseInt(item.unicode, 16))}
               </St.CategoryImoji>

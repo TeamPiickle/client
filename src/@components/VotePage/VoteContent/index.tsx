@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import useBallotTopic from "../../../core/api/vote";
 import { routePaths } from "../../../core/routes/path";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import Loading from "../../@common/Loading";
+import useBallotTopic from "../hooks/useBallotTopic";
 import AfterVoteList from "./AfterVoteList";
 import BeforeVoteList from "./BeforeVoteList";
 import St from "./style";

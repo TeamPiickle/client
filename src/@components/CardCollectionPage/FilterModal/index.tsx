@@ -1,6 +1,6 @@
 import React from "react";
 
-import { filterTagsInfo, intimacyTags } from "../../../core/cardCollection/filter";
+import { filterTagsInfo, intimacyTags } from "../../../util/cardCollection/filter";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import Modal from "../../@common/Modal";
 import useFilterTags from "./@hooks/useFilterTags";

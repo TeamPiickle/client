@@ -11,7 +11,7 @@
 import { useLocation } from "react-router-dom";
 
 // import { joinApi } from "../../../core/api/join";
-import { subHeaderInfo } from "../../../core/join/subHeaderInfo";
+import { subHeaderInfo } from "../../../util/join/subHeaderInfo";
 import Footer from "../../@common/Footer";
 import SubHeader from "../../@common/SubHeader";
 import { St } from "./style";

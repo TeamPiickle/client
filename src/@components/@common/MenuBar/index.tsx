@@ -1,14 +1,13 @@
-import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
-
 import { IcCloseBtn } from "../../../asset/icon";
-import { useBallotLists } from "../../../core/api/main";
-import { sliderIdxState } from "../../../core/atom/slider";
 import { routePaths } from "../../../core/routes/path";
+import { LocationType } from "../../../types/cardCollection";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
+import useOutClickCloser from "../../@common/hooks/useOutClickCloser";
+import { useBallotLists } from "../../MainPage/hooks/useBallotLists";
+import useNavigateCardCollection, { NavigateCardCollectionAllType } from "../hooks/useNavigateCardCollection";
 import ProfileContainer from "./ProfileContainer";
 import DefaultProfileContainer from "./ProfileContainer/DefaultProfileContainer";
-import { St, StContentsContainer } from "./style";
+import St from "./style";
 
 interface MenuBarProps {
   closeMenuBar: () => void;
@@ -16,23 +15,20 @@ interface MenuBarProps {
 
 export default function MenuBar(props: MenuBarProps) {
   const { closeMenuBar } = props;
-
-  const setSliderIdx = useSetRecoilState(sliderIdxState);
-  const navigate = useNavigate();
+  const outClickCloserRef = useOutClickCloser(closeMenuBar);
 
   const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
 
   const { ballotLists } = useBallotLists();
+  const navigateCardCollection = useNavigateCardCollection(LocationType.ALL) as NavigateCardCollectionAllType;
 
   const moveCardCollection = () => {
-    navigate(routePaths.CardCollection, { state: { type: "all" } });
-    setSliderIdx(0);
+    navigateCardCollection();
     closeMenuBar();
   };
-
   return (
-    <St.Root>
-      <StContentsContainer>
+    <St.Root className={GTM_CLASS_NAME.menuOpacityClose}>
+      <St.ContentsContainer ref={outClickCloserRef}>
         <St.CloseBtnContainer onClick={closeMenuBar}>
           <IcCloseBtn />
         </St.CloseBtnContainer>
@@ -44,7 +40,8 @@ export default function MenuBar(props: MenuBarProps) {
           )}
           <St.RecomendContainer>
             <St.CardRecomendWrapper className={GTM_CLASS_NAME.menuRecommendCard} onClick={moveCardCollection}>
-              <St.Title className={GTM_CLASS_NAME.menuRecommendCard}>대화 주제 추천 카드</St.Title>
+              <St.Title className={GTM_CLASS_NAME.menuRecommendCard}>대화 카드</St.Title>
+              <St.SubTitle>다양한 대화주제 추천</St.SubTitle>
             </St.CardRecomendWrapper>
             <St.RecomendWrapper
               to={routePaths.Category}
@@ -60,9 +57,23 @@ export default function MenuBar(props: MenuBarProps) {
               <St.Title className={GTM_CLASS_NAME.menuPiickleMe}>Piickle Me</St.Title>
               <St.SubTitle className={GTM_CLASS_NAME.menuPiickleMeSub}>진행중인 투표</St.SubTitle>
             </St.RecomendWrapper>
+            {LOGIN_STATE ? (
+              <St.RecomendWrapper
+                to={routePaths.BookmarkPage}
+                className={GTM_CLASS_NAME.menuBookmark}
+                onClick={closeMenuBar}>
+                <St.Title className={GTM_CLASS_NAME.menuBookmark}>My Piickle</St.Title>
+                <St.SubTitle className={GTM_CLASS_NAME.menuBookmark}>북마크된 카드</St.SubTitle>
+              </St.RecomendWrapper>
+            ) : (
+              <St.RecomendWrapper to={routePaths.Login} onClick={closeMenuBar}>
+                <St.Title>My Piickle</St.Title>
+                <St.SubTitle>로그인 시 사용 가능합니다</St.SubTitle>
+              </St.RecomendWrapper>
+            )}
           </St.RecomendContainer>
         </St.Contents>
-      </StContentsContainer>
+      </St.ContentsContainer>
     </St.Root>
   );
 }

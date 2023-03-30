@@ -1,51 +1,68 @@
 import styled from "styled-components";
 
-import { ImgCategoryBanner } from "../../asset/image";
+const Root = styled.main`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4rem;
+  margin-top: -2.4rem;
+`;
 
-export const St = {
-  Root: styled.main`
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 4rem;
-    margin-top: -2.4rem;
-  `,
+const CategoryBanner = styled.section`
+  height: 17.9rem;
+  padding: 2rem 0 0 1.6rem;
 
-  CategoryBanner: styled.section`
-    height: 17.9rem;
-    padding: 2rem 0 0 1.6rem;
+  position: relative;
+`;
 
-    background: url(${ImgCategoryBanner});
-    background-size: cover;
+const BgImg = styled.img`
+  position: absolute;
+  left: 0;
+  top: 0;
 
-    position: relative;
-  `,
+  width: 100%;
+  height: 17.9rem;
 
-  BannerTitle: styled.h2`
-    ${({ theme }) => theme.newFonts.graphic1};
-    color: ${({ theme }) => theme.colors.darkblue};
-  `,
+  object-fit: cover;
 
-  BannerSubTitle: styled.p`
-    ${({ theme }) => theme.newFonts.h2};
-    color: ${({ theme }) => theme.colors.gray800};
-  `,
+  z-index: -10;
+`;
 
-  GoBestPiickleBtn: styled.button`
-    position: absolute;
+const BannerTitle = styled.h2`
+  ${({ theme }) => theme.newFonts.graphic1};
+  color: ${({ theme }) => theme.colors.darkblue};
+`;
 
-    height: 1.5rem;
-    right: 1.6rem;
-    bottom: 1.2rem;
+const BannerSubTitle = styled.p`
+  ${({ theme }) => theme.newFonts.h2};
+  color: ${({ theme }) => theme.colors.gray800};
+`;
 
-    color: ${({ theme }) => theme.colors.gray900};
-    ${({ theme }) => theme.newFonts.btn2};
+const GoBestPiickleBtn = styled.button`
+  position: absolute;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  `,
+  height: 1.5rem;
+  right: 1.6rem;
+  bottom: 1.2rem;
 
-  BtnTitle: styled.p`
-    margin-right: 0.8rem;
-  `,
+  color: ${({ theme }) => theme.colors.gray900};
+  ${({ theme }) => theme.newFonts.btn2};
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const BtnTitle = styled.p`
+  margin-right: 0.8rem;
+`;
+
+const St = {
+  Root,
+  CategoryBanner,
+  BgImg,
+  BannerTitle,
+  BannerSubTitle,
+  GoBestPiickleBtn,
+  BtnTitle,
 };
+export default St;

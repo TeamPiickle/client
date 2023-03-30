@@ -1,21 +1,21 @@
 import { St } from "./style";
 
 interface ProfileJenderProps {
-  isSelected: string;
-  setIsSelected: (jender: string) => void;
+  gender: string;
+  setGender: (jender: string) => void;
 }
 
 export default function ProfileJender(props: ProfileJenderProps) {
-  const { isSelected, setIsSelected } = props;
+  const { gender, setGender } = props;
 
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setIsSelected(e.target.value);
+    setGender(e.target.value);
   };
 
   return (
     <St.ProfileGender>
-      <St.GenderInputForm onChange={handleSelect} value={isSelected}>
-        <St.Option value="" disabled selected hidden>
+      <St.GenderInputForm onChange={handleSelect} value={gender}>
+        <St.Option value="" disabled hidden>
           성별을 선택해주세요
         </St.Option>
         <St.Option value="남">남자</St.Option>

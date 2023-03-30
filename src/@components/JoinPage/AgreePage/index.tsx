@@ -1,31 +1,33 @@
-import React, { useState } from "react";
+import axios from "axios";
+import { useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
 import { IcEmptyCheckBox, IcFullCheckBox, IcNextBtn } from "../../../asset/icon";
 import { joinApi } from "../../../core/api/join";
-import { agreeListsContents } from "../../../core/join/agreeListsContents";
-import { subHeaderInfo } from "../../../core/join/subHeaderInfo";
 import { routePaths } from "../../../core/routes/path";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
+import { agreeListsContents } from "../../../util/join/agreeListsContents";
+import { subHeaderInfo } from "../../../util/join/subHeaderInfo";
 import Footer from "../../@common/Footer";
+import useGTMPage from "../../@common/hooks/useGTMPage";
 import useOutClickCloser from "../../@common/hooks/useOutClickCloser";
 import SubHeader from "../../@common/SubHeader";
 import { UserInfoFormDataContext } from "..";
 import { ModalContainerWithAnimation, St } from "./style";
 
 export default function AgreePage() {
+  useGTMPage();
+
+  const { userInfoFormDataForPost } = useOutletContext<UserInfoFormDataContext>();
+
   const navigate = useNavigate();
 
-  const { userInfoFormData } = useOutletContext<UserInfoFormDataContext>();
-
-  const [isPickedItems, setIsPickedItems] = useState<boolean[]>([false, false, false, false, false]);
-  const [isOpenAlert, setIsOpenAlert] = useState(false);
-
-  const alertElement = useOutClickCloser({
-    handleOutClickCloser: () => {
-      setIsOpenAlert(false);
-    },
+  const outClickCloserRef = useOutClickCloser(() => {
+    setIsOpenAlert(false);
   });
+
+  const [isPickedItems, setIsPickedItems] = useState<boolean[]>([false, true, true, true, false]);
+  const [isOpenAlert, setIsOpenAlert] = useState(false);
 
   function handleChecking(index: number) {
     switch (index) {
@@ -59,12 +61,19 @@ export default function AgreePage() {
     return _items;
   };
 
-  const completeJoinBtn = () => {
-    if (checkIsOkayToPass()) {
-      joinApi.postJoin(userInfoFormData);
-      navigate(routePaths.Login);
-    } else {
-      setIsOpenAlert(true);
+  const completeJoinBtn = async () => {
+    try {
+      if (checkIsOkayToPass()) {
+        await joinApi.postJoin(userInfoFormDataForPost);
+        navigate(routePaths.Login);
+      } else {
+        setIsOpenAlert(true);
+      }
+    } catch (error) {
+      if (!axios.isAxiosError(error)) return;
+
+      alert("회원가입을 다시 시도해주세요.");
+      navigate(`${routePaths.Join_}${routePaths.Join_UserInfo}`);
     }
   };
 
@@ -111,7 +120,7 @@ export default function AgreePage() {
       <St.JoinAgree>
         <St.AgreeTitle>약관을 동의해주세요</St.AgreeTitle>
         <St.AgreeContent>{agreeLists}</St.AgreeContent>
-        <ModalContainerWithAnimation isopen={isOpenAlert} ref={alertElement}>
+        <ModalContainerWithAnimation isopen={isOpenAlert} ref={outClickCloserRef}>
           필수 항목에 동의해주세요
         </ModalContainerWithAnimation>
         <St.JoinButton className={GTM_CLASS_NAME.joinAgreeComplete} onClick={completeJoinBtn}>

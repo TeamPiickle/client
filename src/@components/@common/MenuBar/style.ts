@@ -1,53 +1,56 @@
 import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 
-export const St = {
-  Root: styled.main`
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    height: 100vh;
+const Root = styled.main`
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  min-height: -webkit-fill-available;
 
-    background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${({ theme }) => theme.newColors.black50};
 
-    z-index: 10;
-  `,
+  z-index: 10;
+`;
 
-  CloseBtnContainer: styled.div`
-    position: absolute;
-    top: 1.9rem;
-    right: 1.6rem;
-  `,
+const CloseBtnContainer = styled.div`
+  position: absolute;
+  top: 1.9rem;
+  right: 1.6rem;
+`;
 
-  Contents: styled.section`
-    position: absolute;
-    top: 10rem;
-  `,
+const Contents = styled.section`
+  position: absolute;
+  top: 13.3rem;
+`;
 
-  RecomendContainer: styled.article`
-    padding-top: 3.6rem;
-  `,
+const RecomendContainer = styled.article`
+  padding-top: 2.4rem;
+`;
 
-  Title: styled.h1`
-    ${({ theme }) => theme.fonts.body1};
-    color: ${({ theme }) => theme.colors.bg};
-    margin-right: 1.2rem;
-  `,
+const Title = styled.h1`
+  ${({ theme }) => theme.newFonts.body3}
+  color: ${({ theme }) => theme.newColors.gray900};
+  margin-right: 0.8rem;
+`;
 
-  CardRecomendWrapper: styled.div``,
+const CardRecomendWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
-  RecomendWrapper: styled(Link)`
-    display: flex;
-    align-items: center;
-    margin-top: 2.4rem;
-  `,
+const RecomendWrapper = styled(Link)`
+  display: flex;
+  align-items: center;
+  margin-top: 2.4rem;
+`;
 
-  SubTitle: styled.div`
-    ${({ theme }) => theme.fonts.body4};
-    color: ${({ theme }) => theme.colors.gray600};
-  `,
-};
+const SubTitle = styled.div`
+  ${({ theme }) => theme.newFonts.caption1}
+  color: ${({ theme }) => theme.newColors.gray700};
+`;
 
 const ani = keyframes`
   0% {
@@ -62,7 +65,7 @@ const ani = keyframes`
   }
   `;
 
-export const StContentsContainer = styled.section`
+const ContentsContainer = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -71,11 +74,26 @@ export const StContentsContainer = styled.section`
 
   width: 28.8rem;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  min-height: -webkit-fill-available;
   float: right;
 
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.newColors.white};
 
-  padding-left: 1.8rem;
+  padding-left: 1.6rem;
 
   animation: ${ani} 0.8s ease-in-out;
 `;
+
+const St = {
+  Root,
+  CloseBtnContainer,
+  Contents,
+  RecomendContainer,
+  Title,
+  CardRecomendWrapper,
+  RecomendWrapper,
+  SubTitle,
+  ContentsContainer,
+};
+export default St;

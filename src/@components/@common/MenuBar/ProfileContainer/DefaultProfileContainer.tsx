@@ -4,7 +4,7 @@ import { ImgDefaultProfile } from "../../../../asset/image";
 import { routePaths } from "../../../../core/routes/path";
 import { GTM_CLASS_NAME } from "../../../../util/const/gtm";
 import { ProfileContainerProps } from ".";
-import { St } from "./style";
+import St from "./style";
 
 export default function DefaultProfileContainer(props: ProfileContainerProps) {
   const { closeMenuBar } = props;
