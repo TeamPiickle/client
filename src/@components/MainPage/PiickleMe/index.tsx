@@ -14,13 +14,17 @@ export default function PiickleMe() {
       <St.VoteBanner
         to={`${routePaths.Vote}/${ballotLists && ballotLists.data[0]._id}`}
         className={GTM_CLASS_NAME.mainVote1}>
-        <St.BannerContainer>
-          <St.BannerContentWrapper>
-            <St.MainContentSubText>현재 가장 참여수가 많은 투표</St.MainContentSubText>
+        <St.BannerContainer className={GTM_CLASS_NAME.mainVote1}>
+          <St.BannerContentWrapper className={GTM_CLASS_NAME.mainVote1}>
+            <St.MainContentSubText className={GTM_CLASS_NAME.mainVote1}>
+              현재 가장 참여수가 많은 투표
+            </St.MainContentSubText>
           </St.BannerContentWrapper>
-          <St.MainContentText>{ballotLists && ballotLists.data[0].topic}</St.MainContentText>
+          <St.MainContentText className={GTM_CLASS_NAME.mainVote1}>
+            {ballotLists && ballotLists.data[0].topic}
+          </St.MainContentText>
         </St.BannerContainer>
-        <St.BannerVoteBtn>투표하기</St.BannerVoteBtn>
+        <St.BannerVoteBtn className={GTM_CLASS_NAME.mainVote1}>투표하기</St.BannerVoteBtn>
       </St.VoteBanner>
 
       {ballotLists &&
@@ -29,8 +33,8 @@ export default function PiickleMe() {
             key={`${ballot._id}-${idx}`}
             to={`${routePaths.Vote}/${ballot._id}`}
             className={GTM_CLASS_NAME[`mainVote${idx + 2}`]}>
-            <St.ContentText>{ballot && ballot.topic}</St.ContentText>
-            <St.VoteBtn>투표하기</St.VoteBtn>
+            <St.ContentText className={GTM_CLASS_NAME[`mainVote${idx + 2}`]}>{ballot && ballot.topic}</St.ContentText>
+            <St.VoteBtn className={GTM_CLASS_NAME[`mainVote${idx + 2}`]}>투표하기</St.VoteBtn>
           </St.ContentWrapper>
         ))}
     </St.Container>
