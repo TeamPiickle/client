@@ -10,21 +10,23 @@ import { agreeListsContents } from "../../../util/join/agreeListsContents";
 import { subHeaderInfo } from "../../../util/join/subHeaderInfo";
 import Footer from "../../@common/Footer";
 import useGTMPage from "../../@common/hooks/useGTMPage";
-import useOutClickCloser from "../../@common/hooks/useOutClickCloser";
+//import useOutClickCloser from "../../@common/hooks/useOutClickCloser";
+import useScroll from "../../@common/hooks/useScroll";
 import SubHeader from "../../@common/SubHeader";
 import { UserInfoFormDataContext } from "..";
 import { ModalContainerWithAnimation, St } from "./style";
 
 export default function AgreePage() {
   useGTMPage();
+  useScroll();
 
   const { userInfoFormDataForPost } = useOutletContext<UserInfoFormDataContext>();
 
   const navigate = useNavigate();
 
-  const outClickCloserRef = useOutClickCloser(() => {
-    setIsOpenAlert(false);
-  });
+  // const outClickCloserRef = useOutClickCloser(() => {
+  //   setIsOpenAlert(false);
+  // });
 
   const [isPickedItems, setIsPickedItems] = useState<boolean[]>([false, true, true, true, false]);
   const [isOpenAlert, setIsOpenAlert] = useState(false);
@@ -120,7 +122,7 @@ export default function AgreePage() {
       <St.JoinAgree>
         <St.AgreeTitle>약관을 동의해주세요</St.AgreeTitle>
         <St.AgreeContent>{agreeLists}</St.AgreeContent>
-        <ModalContainerWithAnimation isopen={isOpenAlert} ref={outClickCloserRef}>
+        <ModalContainerWithAnimation isopen={isOpenAlert} /*ref={outClickCloserRef}*/>
           필수 항목에 동의해주세요
         </ModalContainerWithAnimation>
         <St.JoinButton className={GTM_CLASS_NAME.joinAgreeComplete} onClick={completeJoinBtn}>
