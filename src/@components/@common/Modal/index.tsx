@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
 
+import IcModalCloseBtn from "../../../asset/icon/IcModalCloseBtn";
 import useOutClickCloser from "../hooks/useOutClickCloser";
-import ModalCloseBtn from "./ModalCloseBtn";
 import ModalPortal from "./Portal";
 import St from "./style";
 
@@ -24,7 +24,7 @@ export default function Modal(props: PropsWithChildren<ModalContents>) {
         <St.GrayRoot className={closeOpacityClassName}>
           <St.GrayModal ref={outClickCloserRef}>
             <St.CloseBtn type="button" className={closeBtnClassName} onClick={closeHandler}>
-              <ModalCloseBtn closeBtnClassName={closeBtnClassName} />
+              <IcModalCloseBtn closeBtnClassName={closeBtnClassName} />
             </St.CloseBtn>
             <St.ModalContents>{children}</St.ModalContents>
           </St.GrayModal>
@@ -38,7 +38,7 @@ export default function Modal(props: PropsWithChildren<ModalContents>) {
         <St.WhiteRoot>
           <St.WhiteModal ref={outClickCloserRef}>
             <St.CloseBtn type="button" className={closeBtnClassName} onClick={closeHandler}>
-              <ModalCloseBtn closeBtnClassName={closeBtnClassName} />
+              <IcModalCloseBtn closeBtnClassName={closeBtnClassName} />
             </St.CloseBtn>
             <St.ModalContents>{children}</St.ModalContents>
           </St.WhiteModal>
@@ -51,7 +51,7 @@ export default function Modal(props: PropsWithChildren<ModalContents>) {
       <St.DefaultRoot>
         <St.DefaultModal>
           <St.CloseBtn type="button" className={closeBtnClassName} onClick={closeHandler}>
-            <ModalCloseBtn closeBtnClassName={closeBtnClassName} />
+            <IcModalCloseBtn closeBtnClassName={closeBtnClassName} />
           </St.CloseBtn>
           <St.ModalContents>{children}</St.ModalContents>
         </St.DefaultModal>

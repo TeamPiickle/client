@@ -1,8 +1,8 @@
-interface ModalCloseBtnProps {
+interface IcModalCloseBtnProps {
   closeBtnClassName?: string;
 }
 
-export default function ModalCloseBtn(props: ModalCloseBtnProps) {
+export default function IcModalCloseBtn(props: IcModalCloseBtnProps) {
   const { closeBtnClassName } = props;
   return (
     <svg
