@@ -11,7 +11,6 @@ export { ReactComponent as IcFullCheckBox } from "./fullCheckBox.svg";
 export { ReactComponent as IcFullHeart } from "./fullHeart.svg";
 export { ReactComponent as IcGoBackBtn } from "./goBackBtn.svg";
 export { ReactComponent as IcGrayHeart } from "./grayHeart.svg";
-export { ReactComponent as IcGtmFilterModalCloseBtn } from "./gtmFilterModalCloseBtn.svg";
 export { ReactComponent as IcHamburger } from "./hamburger.svg";
 export { ReactComponent as IcLogo } from "./logo.svg";
 export { ReactComponent as IcMenuBarImg } from "./MenuBar Profile.svg";
