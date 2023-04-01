@@ -4,7 +4,7 @@ import { routePaths } from "../../../core/routes/path";
 import { St } from "./style";
 
 const mySetting = [
-  { text: "공지사항", link: "https://joyous-ghost-8c7.notion.site/6fff280c12ab4cc295cd94495be81099" },
+  { text: "공지사항", link: "https://joyous-ghost-8c7.notion.site/75f55feef4034c06975c2d2e2b54ebe2" },
   { text: "문의", link: "https://forms.gle/uJG7xNzuZvGcAU1w6" },
   { text: "팀 정보", link: "https://www.notion.so/5a82a03cd5214b12ac28a00d8fd5b66c" },
   { text: "로그아웃" },
