@@ -39,7 +39,7 @@ export default function CategoryPage() {
             className={GTM_CLASS_NAME.moodShowCard}
             onClick={() => navigateCardCollection()}>
             <St.BtnTitle className={GTM_CLASS_NAME.moodShowCard}>카드보기</St.BtnTitle>
-            <IcSmallRightArrow className={GTM_CLASS_NAME.moodShowCard} />
+            <IcSmallRightArrow />
           </St.GoBestPiickleBtn>
         </St.CategoryBanner>
         <HeadingTitleContainer headingTitles={categoryTitles} />
