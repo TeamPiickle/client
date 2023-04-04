@@ -30,6 +30,7 @@ type GtmClassName = {
   menuPiickleMeSub: string;
   menuBookmark: string;
   menuOpacityClose: string;
+  cardSwipe: string;
   cardLike: string;
   cardLogin: string;
   cardJoin: string;
@@ -117,6 +118,7 @@ export const GTM_CLASS_NAME: GtmClassName = {
   menuPiickleMeSub: "click_menu_vote_sub",
   menuBookmark: "click_menu_bookmark",
   menuOpacityClose: "click_menu_opacityclose",
+  cardSwipe: "swipe_card_card",
   cardLike: "click_card_like",
   cardLogin: "click_card_log",
   cardJoin: "click_card_joinmember",

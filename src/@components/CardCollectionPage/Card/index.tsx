@@ -33,11 +33,11 @@ const Card = (props: LoginCheckProps) => {
   };
 
   return (
-    <St.Card>
+    <St.Card className={GTM_CLASS_NAME.cardSwipe}>
       <St.TagsWrapper>
         <TagsSlider tags={tags} />
       </St.TagsWrapper>
-      <St.ContentWrapper>{content}</St.ContentWrapper>
+      <St.ContentWrapper className={GTM_CLASS_NAME.cardSwipe}>{content}</St.ContentWrapper>
       <St.HeartWrapper
         className={GTM_CLASS_NAME.cardLike}
         onClick={() => handleClickHeart(_id)}

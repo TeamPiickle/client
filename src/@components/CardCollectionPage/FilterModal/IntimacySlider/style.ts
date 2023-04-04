@@ -71,9 +71,33 @@ const RangeTrack = styled.div`
     })};
 `;
 
+const GTMOnRangeTrack = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+
+  width: 25%;
+`;
+const FirstGTMOnRangeTrack = styled(GTMOnRangeTrack)`
+  left: 0;
+`;
+const SecondGTMOnRangeTrack = styled(GTMOnRangeTrack)`
+  left: 25%;
+`;
+const ThirdGTMOnRangeTrack = styled(GTMOnRangeTrack)`
+  left: 50%;
+`;
+const ForthGTMOnRangeTrack = styled(GTMOnRangeTrack)`
+  left: 75%;
+`;
+
 const St = {
   IntimacySlider,
   RangeThumb,
   RangeTrack,
+  FirstGTMOnRangeTrack,
+  SecondGTMOnRangeTrack,
+  ThirdGTMOnRangeTrack,
+  ForthGTMOnRangeTrack,
 };
 export default St;
