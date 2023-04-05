@@ -15,7 +15,7 @@ interface MenuBarProps {
 
 export default function MenuBar(props: MenuBarProps) {
   const { closeMenuBar } = props;
-  const outClickCloserRef = useOutClickCloser(closeMenuBar);
+  const outClickCloserRef = useOutClickCloser(closeMenuBar, { preventEventPropagation: true });
 
   const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
 
