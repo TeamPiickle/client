@@ -24,12 +24,9 @@ export default function AgreePage() {
 
   const navigate = useNavigate();
 
-  const outClickCloserRef = useOutClickCloser(
-    () => {
-      setIsOpenAlert(false);
-    },
-    { preventEventPropagation: false },
-  );
+  const outClickCloserRef = useOutClickCloser(() => {
+    setIsOpenAlert(false);
+  }, false);
 
   const [isPickedItems, setIsPickedItems] = useState<boolean[]>([false, true, true, true, false]);
   const [isOpenAlert, setIsOpenAlert] = useState(false);

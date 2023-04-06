@@ -16,7 +16,7 @@ interface ModalContents {
 
 export default function Modal(props: PropsWithChildren<ModalContents>) {
   const { theme = "DEFAULT", closeHandler, closeOpacityClassName, closeBtnClassName, children } = props;
-  const outClickCloserRef = useOutClickCloser(closeHandler, { preventEventPropagation: true });
+  const outClickCloserRef = useOutClickCloser(closeHandler, true);
 
   if (theme === "GRAY")
     return (

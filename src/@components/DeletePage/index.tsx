@@ -16,12 +16,9 @@ export default function DeletePage() {
 
   const navigate = useNavigate();
 
-  const outClickCloserRef = useOutClickCloser(
-    () => {
-      setIsOpenAlert(false);
-    },
-    { preventEventPropagation: false },
-  );
+  const outClickCloserRef = useOutClickCloser(() => {
+    setIsOpenAlert(false);
+  }, false);
 
   const [ischecked, setIsChecked] = useState(false);
   const [isFeedBackItems, setIsFeedBackItems] = useState<boolean[]>([false, false, false, false, false]);
