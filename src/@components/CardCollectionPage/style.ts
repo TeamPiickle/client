@@ -6,8 +6,12 @@ export const St = {
     height: calc(var(--vh, 1vh) * 100);
     min-height: -webkit-fill-available;
 
-    padding: 8rem 0 5.1rem;
+    padding-top: 5.2rem;
 
     background: ${({ theme }) => theme.colors.card};
   `,
 };
+
+/*
+    padding: 8rem 0 5.1rem;
+*/
