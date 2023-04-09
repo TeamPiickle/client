@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 
 import { CardsTypeLocation } from "../../types/cardCollection";
-import Header from "../@common/Header";
+import HeaderMinVer from "../@common/Header/HeaderMinVer";
 import useGTMPage from "../@common/hooks/useGTMPage";
 import useModal from "../@common/hooks/useModal";
 import useScroll from "../@common/hooks/useScroll";
@@ -25,7 +25,7 @@ export default function CardCollectionPage() {
 
   return (
     <St.MainPage>
-      <Header />
+      <HeaderMinVer />
 
       {!isLoading ? (
         <CardSlider
