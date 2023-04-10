@@ -12,7 +12,7 @@ const Wrapper = styled.section`
   }
 
   & .swiper-slide {
-    height: 85%;
+    height: 75%;
   }
 `;
 
