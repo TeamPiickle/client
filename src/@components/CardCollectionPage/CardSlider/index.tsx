@@ -1,5 +1,4 @@
 import "swiper/swiper.css";
-import "./style.css";
 
 import { useRef } from "react";
 import { useRecoilState } from "recoil";
@@ -11,7 +10,7 @@ import { CardList } from "../../../types/cardCollection";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import Card from "../Card";
 import LastCard from "../Card/LastCard";
-import { St } from "./style";
+import St from "./style";
 
 const swiperSettings: SwiperOptions = {
   slidesPerView: "auto",
@@ -31,7 +30,7 @@ export default function CardSlider(props: CardSliderProps) {
   //const sliderRef = useRef<Slider | null>(null);
 
   return (
-    <>
+    <St.Wrapper>
       <Swiper {...swiperSettings} direction={"vertical"} modules={[Pagination]} className="swiper">
         {cardLists.map((cardList) => (
           <SwiperSlide key={cardList._id}>
@@ -42,13 +41,13 @@ export default function CardSlider(props: CardSliderProps) {
           <LastCard />
         </SwiperSlide>
       </Swiper>
-      <St.IcFilterBtn
+      <St.FilterBtn
         aria-label="카드 추천 필터"
         role="dialog"
         className={GTM_CLASS_NAME.cardRecommendFilter}
         onClick={openFilterModalHandler}
       />
-    </>
+    </St.Wrapper>
   );
 }
 /*
