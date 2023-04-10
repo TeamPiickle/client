@@ -11,7 +11,3 @@ export const St = {
     background: ${({ theme }) => theme.colors.card};
   `,
 };
-
-/*
-    padding: 8rem 0 5.1rem;
-*/

@@ -14,7 +14,7 @@ import St from "./style";
 
 const swiperSettings: SwiperOptions = {
   slidesPerView: "auto",
-  spaceBetween: 10, // 카드 사이 간격 (px)
+  spaceBetween: 10,
 };
 
 interface CardSliderProps {
@@ -31,7 +31,15 @@ export default function CardSlider(props: CardSliderProps) {
 
   return (
     <St.Wrapper>
-      <Swiper {...swiperSettings} direction={"vertical"} modules={[Pagination]} className="swiper">
+      <Swiper
+        {...swiperSettings}
+        direction={"vertical"}
+        modules={[Pagination]}
+        className="swiper"
+        /*initialSlide={sliderIdx}
+        afterChange={(idx: number) => setSliderIdx(idx)}
+        ref={sliderRef}*/
+      >
         {cardLists.map((cardList) => (
           <SwiperSlide key={cardList._id}>
             <Card openLoginModalHandler={openLoginModalHandler} {...cardList} />
@@ -50,25 +58,3 @@ export default function CardSlider(props: CardSliderProps) {
     </St.Wrapper>
   );
 }
-/*
-      <St.Wrapper>
-        <Slider
-        {...sliderSettings}
-        initialSlide={sliderIdx}
-        afterChange={(idx: number) => setSliderIdx(idx)}
-        ref={sliderRef}>
-
-        {cardLists.map((cardList) => (
-            <Card key={cardList._id} openLoginModalHandler={openLoginModalHandler} {...cardList} />
-        ))}
-        <LastCard />
-        </Slider>
-
-        <St.IcFilterBtn
-          aria-label="카드 추천 필터"
-          role="dialog"
-          className={GTM_CLASS_NAME.cardRecommendFilter}
-          onClick={openFilterModalHandler}
-        />
-      </St.Wrapper>
- */
