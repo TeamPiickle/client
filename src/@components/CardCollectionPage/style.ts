@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const MainPage = styled.main`
   height: 100vh;
@@ -7,6 +7,15 @@ const MainPage = styled.main`
 
   padding: 8rem 0 5.1rem;
 `;
+
+const fadeInAnimation = keyframes`{
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}`;
 
 const FilterBtn = styled.button`
   position: absolute;
@@ -19,6 +28,8 @@ const FilterBtn = styled.button`
   ${({ theme }) => theme.newFonts.btn1};
   color: ${({ theme }) => theme.newColors.gray100};
   background-color: ${({ theme }) => theme.newColors.gray900};
+
+  animation: ${fadeInAnimation} 1.2s ease-in-out;
 `;
 
 const St = {
