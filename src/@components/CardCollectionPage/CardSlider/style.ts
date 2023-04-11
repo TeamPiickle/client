@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-import { IcFilterBtn } from "../../../asset/icon";
-
 export const St = {
   Wrapper: styled.section`
     touch-action: pan-x;
@@ -39,16 +37,5 @@ export const St = {
 
       scroll-snap-type: x mandatory;
     }
-  `,
-
-  IcFilterBtn: styled(IcFilterBtn)`
-    position: fixed;
-    right: 2.3rem;
-    bottom: 3.4rem;
-
-    ${({ theme }) => theme.media.desktop`
-      right: 50%;
-      transform: translate(15.7rem, 0);
-    `};
   `,
 };

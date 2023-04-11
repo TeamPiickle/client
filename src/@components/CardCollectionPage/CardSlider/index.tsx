@@ -7,7 +7,6 @@ import { useRecoilState } from "recoil";
 
 import { sliderIdxState } from "../../../core/atom/slider";
 import { CardList } from "../../../types/cardCollection";
-import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import Card from "../Card";
 import LastCard from "../Card/LastCard";
 import { St } from "./style";
@@ -23,13 +22,12 @@ const sliderSettings = {
 };
 
 interface CardSliderProps {
-  openFilterModalHandler: () => void;
   openLoginModalHandler: () => void;
   cardLists: CardList[];
 }
 
 export default function CardSlider(props: CardSliderProps) {
-  const { openFilterModalHandler, openLoginModalHandler, cardLists } = props;
+  const { openLoginModalHandler, cardLists } = props;
 
   const [sliderIdx, setSliderIdx] = useRecoilState(sliderIdxState);
   const sliderRef = useRef<Slider | null>(null);
@@ -46,13 +44,6 @@ export default function CardSlider(props: CardSliderProps) {
         ))}
         <LastCard />
       </Slider>
-
-      <St.IcFilterBtn
-        aria-label="카드 추천 필터"
-        role="dialog"
-        className={GTM_CLASS_NAME.cardRecommendFilter}
-        onClick={openFilterModalHandler}
-      />
     </St.Wrapper>
   );
 }
