@@ -1,7 +1,7 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import { useRef } from "react";
+import { forwardRef, useRef } from "react";
 import Slider from "react-slick";
 import { useRecoilState } from "recoil";
 
@@ -26,7 +26,7 @@ interface CardSliderProps {
   cardLists: CardList[];
 }
 
-export default function CardSlider(props: CardSliderProps) {
+const CardSlider = forwardRef(function CardSlider(props: CardSliderProps, ref: React.ForwardedRef<HTMLDivElement>) {
   const { openLoginModalHandler, cardLists } = props;
 
   const [sliderIdx, setSliderIdx] = useRecoilState(sliderIdxState);
@@ -42,8 +42,10 @@ export default function CardSlider(props: CardSliderProps) {
         {cardLists.map((cardList) => (
           <Card key={cardList._id} openLoginModalHandler={openLoginModalHandler} {...cardList} />
         ))}
-        <LastCard />
+        <LastCard ref={ref} />
       </Slider>
     </St.Wrapper>
   );
-}
+});
+
+export default CardSlider;

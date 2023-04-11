@@ -8,10 +8,10 @@ export default function useCTAFilter() {
   const intersectionObserverRef = useIntersectionObserver(
     (entry) => {
       if (entry.isIntersecting) {
-        setIsVisibleCTAButton(true);
+        setIsVisibleCTAButton(false);
         return;
       }
-      setIsVisibleCTAButton(false);
+      setIsVisibleCTAButton(true);
     },
     { threshold: 0.3 },
   );

@@ -31,7 +31,7 @@ export default function CardCollectionPage() {
       <HeaderMinVer />
 
       {!isLoading ? (
-        <CardSlider openLoginModalHandler={toggleLoginModal} cardLists={cardLists} />
+        <CardSlider openLoginModalHandler={toggleLoginModal} cardLists={cardLists} ref={intersectionObserverRef} />
       ) : (
         <Loading backgroundColor="transparent" />
       )}
