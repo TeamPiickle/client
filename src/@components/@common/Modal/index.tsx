@@ -5,7 +5,7 @@ import useOutClickCloser from "../hooks/useOutClickCloser";
 import ModalPortal from "./Portal";
 import St from "./style";
 
-type ModalTheme = "DEFAULT" | "WHITE" | "GRAY";
+type ModalTheme = "DEFAULT" | "WHITE_BOTTOM" | "GRAY_BOTTOM";
 
 interface ModalContents {
   theme?: ModalTheme;
@@ -18,7 +18,7 @@ export default function Modal(props: PropsWithChildren<ModalContents>) {
   const { theme = "DEFAULT", closeHandler, closeOpacityClassName, closeBtnClassName, children } = props;
   const outClickCloserRef = useOutClickCloser(closeHandler, true);
 
-  if (theme === "GRAY")
+  if (theme === "GRAY_BOTTOM")
     return (
       <ModalPortal>
         <St.GrayRoot className={closeOpacityClassName}>
@@ -32,7 +32,7 @@ export default function Modal(props: PropsWithChildren<ModalContents>) {
       </ModalPortal>
     );
 
-  if (theme === "WHITE")
+  if (theme === "WHITE_BOTTOM")
     return (
       <ModalPortal>
         <St.WhiteRoot>

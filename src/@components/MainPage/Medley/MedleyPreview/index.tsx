@@ -19,7 +19,7 @@ export default function MedleyPreview(props: MedleyPreviewProps) {
 
   return (
     <Modal
-      theme="GRAY"
+      theme="GRAY_BOTTOM"
       closeOpacityClassName={GTM_CLASS_NAME[`medleyPreviewClose${GTM_MEDLERY_KEY}`]}
       closeBtnClassName={GTM_CLASS_NAME[`medleyPreviewClose${GTM_MEDLERY_KEY}`]}
       closeHandler={closeHandler}>
