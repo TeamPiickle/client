@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
+import IcBtnCheck from "../../../asset/icon/IcBtnCheck";
+import { LocationType } from "../../../types/cardCollection";
 import { filterTagsInfo, intimacyTags } from "../../../util/cardCollection/filter";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
+import useNavigateCardCollection, {
+  NavigateCardCollectionAllType,
+} from "../../@common/hooks/useNavigateCardCollection";
 import Modal from "../../@common/Modal";
 import useFilterTags from "./@hooks/useFilterTags";
 import IntimacySlider from "./IntimacySlider";
@@ -16,11 +21,12 @@ export default function FilterModal(props: FilterModalProps) {
   const { closeHandler, fetchCardListsWithFilter } = props;
 
   const { filterTags, toggleTag } = useFilterTags();
+  const [shouldRandom, setShouldRandom] = useState(false);
+  const navigateCardCollection = useNavigateCardCollection(LocationType.ALL) as NavigateCardCollectionAllType;
 
-  // 추천 시작하기를 눌렀을 때, 태그 정보들과 친밀도 정보를 담아주고 창닫기
   const submitFilter = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    fetchCardListsWithFilter();
+    shouldRandom ? navigateCardCollection() : fetchCardListsWithFilter();
     closeHandler();
   };
 
@@ -57,6 +63,11 @@ export default function FilterModal(props: FilterModalProps) {
           </St.FilterIntimacyTagsWrapper>
         </St.FilterIntimacyWrapper>
       </St.ModalContentsWrapper>
+
+      <St.CheckRandomWrapper onClick={() => setShouldRandom((prev) => !prev)}>
+        <p>랜덤으로 카드를 보여주세요</p>
+        <IcBtnCheck isChecked={shouldRandom} />
+      </St.CheckRandomWrapper>
 
       <St.SubmitBtnWrapper>
         <St.SubmitBtn type="submit" className={GTM_CLASS_NAME.filterStart} onClick={submitFilter}>

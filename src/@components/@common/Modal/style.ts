@@ -72,6 +72,11 @@ const GrayModal = styled.section`
 const WhiteModal = styled.section`
   position: relative;
 
+  width: 100%;
+  ${({ theme }) => theme.media.desktop`
+    width: 36rem;
+  `};
+
   background-color: ${({ theme }) => theme.newColors.white};
 
   padding: 2rem 0 0;
