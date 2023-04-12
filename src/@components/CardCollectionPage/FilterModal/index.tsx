@@ -65,7 +65,7 @@ export default function FilterModal(props: FilterModalProps) {
       </St.ModalContentsWrapper>
 
       <St.CheckRandomWrapper onClick={() => setShouldRandom((prev) => !prev)}>
-        <p>랜덤으로 카드를 보여주세요</p>
+        랜덤으로 카드를 보여주세요
         <IcBtnCheck isChecked={shouldRandom} />
       </St.CheckRandomWrapper>
 
