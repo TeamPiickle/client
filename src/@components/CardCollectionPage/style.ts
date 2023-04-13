@@ -1,11 +1,27 @@
 import styled from "styled-components";
 
-export const St = {
-  MainPage: styled.main`
-    height: 100vh;
-    height: calc(var(--vh, 1vh) * 100);
-    min-height: -webkit-fill-available;
+const MainPage = styled.main`
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  min-height: -webkit-fill-available;
 
-    background: ${({ theme }) => theme.colors.card};
-  `,
+  padding: 8rem 0 5.1rem;
+`;
+
+const FilterBtn = styled.button`
+  position: absolute;
+  bottom: 0;
+
+  width: 100%;
+  height: 5.8rem;
+
+  ${({ theme }) => theme.newFonts.btn1};
+  color: ${({ theme }) => theme.newColors.gray100};
+  background-color: ${({ theme }) => theme.newColors.gray900};
+`;
+
+const St = {
+  MainPage,
+  FilterBtn,
 };
+export default St;

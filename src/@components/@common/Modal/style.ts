@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const Root = styled.div`
   position: absolute;
@@ -12,22 +12,47 @@ const Root = styled.div`
   background-color: rgb(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
-  align-items: center;
 `;
 
-const GrayRoot = styled(Root)``;
+const fadeOut = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+const GrayRoot = styled(Root)`
+  animation: ${fadeOut} 0.8s ease-in-out;
+`;
 
 const WhiteRoot = styled(Root)`
+  align-items: flex-end;
+
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
   min-height: -webkit-fill-available;
+
+  animation: ${fadeOut} 0.8s ease-in-out;
 `;
 
 const DefaultRoot = styled(Root)`
+  align-items: center;
+
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
   min-height: -webkit-fill-available;
   padding: 1.6rem;
+`;
+
+const bottomUp = keyframes`
+  from {
+    transform: translateY(60rem);
+  }
+  to {
+    transform: translateY(0);
+  }
 `;
 
 const GrayModal = styled.section`
@@ -36,18 +61,27 @@ const GrayModal = styled.section`
 
   width: 100%;
   ${({ theme }) => theme.media.desktop`
-  width: 36rem;
+    width: 36rem;
   `};
 
   background-color: ${({ theme }) => theme.newColors.gray100};
+
+  animation: ${bottomUp} 0.6s ease-in-out;
 `;
 
 const WhiteModal = styled.section`
   position: relative;
 
+  width: 100%;
+  ${({ theme }) => theme.media.desktop`
+    width: 36rem;
+  `};
+
   background-color: ${({ theme }) => theme.newColors.white};
 
   padding: 2rem 0 0;
+
+  animation: ${bottomUp} 0.6s ease-in-out;
 `;
 
 const DefaultModal = styled.section`
