@@ -1,11 +1,13 @@
+import { forwardRef } from "react";
+
 import { IcNextCardBtn } from "../../../../asset/icon";
 import { routePaths } from "../../../../core/routes/path";
 import { GTM_CLASS_NAME } from "../../../../util/const/gtm";
 import { St } from "./style";
 
-export default function LastCard() {
+const LastCard = forwardRef(function LastCard(_, ref: React.ForwardedRef<HTMLDivElement>) {
   return (
-    <St.Card>
+    <St.Card ref={ref}>
       <St.ContentTitle>
         의미있는 대화를
         <br />
@@ -24,4 +26,6 @@ export default function LastCard() {
       <St.HomeLink to={routePaths.Main}>홈으로 돌아가기</St.HomeLink>
     </St.Card>
   );
-}
+});
+
+export default LastCard;
