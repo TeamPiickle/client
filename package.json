@@ -81,8 +81,7 @@
     "stylelint-config-standard": "^25.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.10.0",
-    "typescript": "^4.5.5",
-    "webpack": "^5.73.0"
+    "typescript": "^4.5.5"
   },
   "msw": {
     "workerDirectory": "public"
