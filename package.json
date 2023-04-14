@@ -3,12 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "vite:dev": "vite",
-    "vite:build": "tsc && vite build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start": "vite",
+    "build": "tsc && vite build",
     "lint": "yarn run lint-prettier && yarn run lint-eslint && yarn run lint-css",
     "lint-eslint": "eslint --ignore-path .gitignore src/**/*{ts,tsx} --fix",
     "lint-prettier": "prettier --write \"src/**/*.(ts|tsx)\"",
@@ -25,7 +21,6 @@
     "react-mobile-datepicker": "^4.0.2",
     "react-range": "^1.8.13",
     "react-router-dom": "^6.2.1",
-    "react-scripts": "5.0.1",
     "react-slick": "^0.29.0",
     "recoil": "^0.7.4",
     "slick-carousel": "^1.8.1",
@@ -34,8 +29,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "react-app"
     ]
   },
   "browserslist": {
@@ -55,7 +49,6 @@
     "vite": "^4.2.0",
     "vite-plugin-svgr": "^2.2.2",
     "@stylelint/postcss-css-in-js": "^0.38.0",
-    "@types/jest": "^27.0.1",
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
