@@ -6,25 +6,37 @@ export const St = {
   Card: styled.article`
     position: relative;
 
-    width: 100%;
+    margin: 0.8rem;
     height: 100%;
 
     border: 0.1rem solid ${({ theme }) => theme.colors.gray200};
-    backdrop-filter: blur(1.2rem);
-    border-radius: 1.5rem;
+    border-radius: 0.8rem;
+    background: linear-gradient(180deg, #ddfbf0 0%, rgba(232, 252, 244, 0.5) 100%);
   `,
 
-  TagsWrapper: styled.div`
-    margin: 1.6rem 2.4rem 0;
+  Container: styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 0 2.4rem;
+
+    position: absolute;
+    width: 100%;
+    top: 5.6rem;
   `,
 
   ContentWrapper: styled.p`
-    margin: 4.7rem 2.4rem 0;
+    text-align: center;
 
-    ${({ theme }) => theme.fonts.cardBody5};
-    color: ${({ theme }) => theme.colors.bg};
+    word-break: keep-all;
 
-    white-space: pre-wrap;
+    ${({ theme }) => theme.newFonts.body1};
+    color: ${({ theme }) => theme.newColors.gray900};
+  `,
+
+  TagsWrapper: styled.div`
+    margin-top: 1.6rem;
   `,
 
   HeartWrapper: styled.div`

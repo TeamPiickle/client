@@ -18,7 +18,7 @@ interface CardSliderProps {
 
 const swiperSettings: SwiperOptions = {
   slidesPerView: "auto",
-  spaceBetween: 10,
+  spaceBetween: 8,
 };
 
 const CardSlider = forwardRef(function CardSlider(props: CardSliderProps, ref: React.ForwardedRef<HTMLDivElement>) {
