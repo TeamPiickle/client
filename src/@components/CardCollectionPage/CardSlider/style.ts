@@ -11,7 +11,7 @@ const Wrapper = styled.section`
   }
 
   & .swiper-slide {
-    height: 75%;
+    height: calc((100% + 3.3rem) * 0.75);
   }
 
   & .swiper-slide:last-child {
