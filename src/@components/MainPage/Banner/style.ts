@@ -33,6 +33,8 @@ export const St = {
     height: 2.4rem;
 
     background: rgba(0, 0, 0, 0.5);
+
+    z-index: 10;
   `,
 
   CurrentPage: styled.span`
