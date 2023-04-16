@@ -12,6 +12,8 @@ const Header = styled.header`
   display: flex;
   justify-content: end;
   align-items: center;
+
+  z-index: 10;
 `;
 
 const Link = styled(LinkComponent)`
