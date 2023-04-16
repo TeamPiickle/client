@@ -1,49 +1,51 @@
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import "swiper/swiper.css";
 
 import { forwardRef, useRef } from "react";
-import Slider from "react-slick";
 import { useRecoilState } from "recoil";
+import { Pagination, SwiperOptions } from "swiper";
+import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 
 import { sliderIdxState } from "../../../core/atom/slider";
 import { CardList } from "../../../types/cardCollection";
 import Card from "../Card";
 import LastCard from "../Card/LastCard";
-import { St } from "./style";
-
-const sliderSettings = {
-  className: "center",
-  centerMode: true,
-  arrows: false,
-  dots: false,
-  infinite: false,
-  variableWidth: true,
-  slidesToScroll: 1,
-};
+import St from "./style";
 
 interface CardSliderProps {
   openLoginModalHandler: () => void;
   cardLists: CardList[];
 }
 
+const swiperSettings: SwiperOptions = {
+  slidesPerView: "auto",
+  spaceBetween: 8,
+};
+
 const CardSlider = forwardRef(function CardSlider(props: CardSliderProps, ref: React.ForwardedRef<HTMLDivElement>) {
   const { openLoginModalHandler, cardLists } = props;
 
   const [sliderIdx, setSliderIdx] = useRecoilState(sliderIdxState);
-  const sliderRef = useRef<Slider | null>(null);
+  const sliderRef = useRef<SwiperRef | null>(null);
 
   return (
     <St.Wrapper>
-      <Slider
-        {...sliderSettings}
+      <Swiper
+        {...swiperSettings}
+        direction={"vertical"}
+        modules={[Pagination]}
+        className="swiper"
         initialSlide={sliderIdx}
-        afterChange={(idx: number) => setSliderIdx(idx)}
+        onSlideChange={(swiper) => setSliderIdx(swiper.activeIndex)}
         ref={sliderRef}>
         {cardLists.map((cardList) => (
-          <Card key={cardList._id} openLoginModalHandler={openLoginModalHandler} {...cardList} />
+          <SwiperSlide key={cardList._id}>
+            <Card openLoginModalHandler={openLoginModalHandler} {...cardList} />
+          </SwiperSlide>
         ))}
-        <LastCard ref={ref} />
-      </Slider>
+        <SwiperSlide>
+          <LastCard ref={ref} />
+        </SwiperSlide>
+      </Swiper>
     </St.Wrapper>
   );
 });

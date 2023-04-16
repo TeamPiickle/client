@@ -1,41 +1,25 @@
 import styled from "styled-components";
 
-export const St = {
-  Wrapper: styled.section`
-    touch-action: pan-x;
+const Wrapper = styled.section`
+  position: relative;
+  height: 100%;
+  padding-top: 3.3rem;
 
-    position: relative;
+  & .swiper {
+    width: 100%;
+    height: 100%;
+  }
 
-    & .slick-slide {
-      height: calc(100vh - 14.8rem);
-      height: calc(calc(var(--vh, 1vh) * 100) - 14.8rem);
-      max-height: 49.5em;
-    }
+  & .swiper-slide {
+    height: calc((100% + 3.3rem) * 0.75);
+  }
 
-    & .slick-slide > div {
-      height: 100%;
-      margin: 0 1.2rem;
-    }
+  & .swiper-slide:last-child {
+    height: 100%;
+  }
+`;
 
-    & .slick-slide article {
-      height: 100%;
-    }
-
-    & .slick-slide.slick-active article {
-      background: rgba(255, 255, 255, 0.5);
-      backdrop-filter: blur(1.2rem);
-
-      transform: scale(1.05);
-      transition: scale 0.5s;
-    }
-
-    & .slick-track {
-      height: 52rem;
-
-      display: flex;
-      align-items: center;
-
-      scroll-snap-type: x mandatory;
-    }
-  `,
+const St = {
+  Wrapper,
 };
+export default St;

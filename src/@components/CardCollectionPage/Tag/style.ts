@@ -6,15 +6,14 @@ export const St = {
     justify-content: center;
     align-items: center;
 
-    margin-right: 0.9rem;
-    padding: 0.4rem 1rem;
-    height: 2.3rem;
+    margin: 0 0.4rem;
+    padding: 0.4rem 0.8rem;
+    height: 2.5rem;
 
-    background-color: ${({ theme }) => theme.colors.sub_green1};
-    backdrop-filter: blur(1.2rem);
-    border-radius: 1.5rem;
+    background-color: ${({ theme }) => theme.newColors.white};
+    border-radius: 2.5rem;
 
-    ${({ theme }) => theme.fonts.caption2};
-    color: ${({ theme }) => theme.colors.caption2_color};
+    ${({ theme }) => theme.newFonts.caption1};
+    color: ${({ theme }) => theme.newColors.gray900};
   `,
 };

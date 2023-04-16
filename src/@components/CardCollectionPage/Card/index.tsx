@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
+import { IcEmptyBookmark, IcFullBookmark } from "../../../asset/icon";
 import { cardCollectionApi } from "../../../core/api/cardCollection";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
-import CustomFullHeart from "../CustomFullHeart";
 import TagsSlider from "../TagsSlider";
 import { St } from "./style";
 
@@ -20,7 +20,7 @@ const Card = (props: LoginCheckProps) => {
 
   const [isBookmarked, setIsBookmarked] = useState(isBookmark);
 
-  const handleClickHeart = (_id: string) => {
+  const handleClickBookmark = (_id: string) => {
     switch (LOGIN_STATE) {
       case true:
         setIsBookmarked((prev) => !prev);
@@ -34,18 +34,19 @@ const Card = (props: LoginCheckProps) => {
 
   return (
     <St.Card className={GTM_CLASS_NAME.cardSwipe}>
-      <St.TagsWrapper>
-        <TagsSlider tags={tags} />
-      </St.TagsWrapper>
-      <St.ContentWrapper className={GTM_CLASS_NAME.cardSwipe}>{content}</St.ContentWrapper>
-      <St.HeartWrapper
+      <St.Container>
+        <St.ContentWrapper className={GTM_CLASS_NAME.cardSwipe}>{content}</St.ContentWrapper>
+        <St.TagsWrapper>
+          <TagsSlider tags={tags} />
+        </St.TagsWrapper>
+      </St.Container>
+      <St.BookmarkWrapper
         className={GTM_CLASS_NAME.cardLike}
-        onClick={() => handleClickHeart(_id)}
+        onClick={() => handleClickBookmark(_id)}
         aria-label="북마크"
         role="dialog">
-        <St.IcEmptyHeart className={GTM_CLASS_NAME.cardLike} />
-        {isBookmarked && <CustomFullHeart />}
-      </St.HeartWrapper>
+        {isBookmarked ? <IcFullBookmark /> : <IcEmptyBookmark className={GTM_CLASS_NAME.cardLike} />}
+      </St.BookmarkWrapper>
     </St.Card>
   );
 };

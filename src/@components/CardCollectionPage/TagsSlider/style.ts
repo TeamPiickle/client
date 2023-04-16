@@ -2,8 +2,6 @@ import styled from "styled-components";
 
 export const St = {
   SliderWrapper: styled.ul`
-    height: 2.3rem;
-
     overflow: scroll;
     white-space: nowrap;
 
