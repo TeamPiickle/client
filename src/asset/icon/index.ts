@@ -15,7 +15,6 @@ export { ReactComponent as IcHamburger } from "./hamburger.svg";
 export { ReactComponent as IcLogo } from "./logo.svg";
 export { ReactComponent as IcModalCloseBtn } from "./modalCloseBtn.svg";
 export { ReactComponent as IcNextBtn } from "./nextBtn.svg";
-export { ReactComponent as IcNextCardBtn } from "./nextCardBtn.svg";
 export { ReactComponent as IcRightArrow } from "./rightArrow.svg";
 export { ReactComponent as IcSmallEmptyCheckBox } from "./smallEmptyCheckBox.svg";
 export { ReactComponent as IcSmallEmptyHeart } from "./smallEmptyHeart.svg";
