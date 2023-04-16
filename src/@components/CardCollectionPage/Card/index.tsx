@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import { IcEmptyBookmark, IcFullBookmark } from "../../../asset/icon";
 import { cardCollectionApi } from "../../../core/api/cardCollection";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import CustomFullHeart from "../CustomFullHeart";
@@ -40,14 +41,13 @@ const Card = (props: LoginCheckProps) => {
           <TagsSlider tags={tags} />
         </St.TagsWrapper>
       </St.Container>
-      <St.HeartWrapper
+      <St.BookmarkWrapper
         className={GTM_CLASS_NAME.cardLike}
         onClick={() => handleClickHeart(_id)}
         aria-label="북마크"
         role="dialog">
-        <St.IcEmptyHeart className={GTM_CLASS_NAME.cardLike} />
-        {isBookmarked && <CustomFullHeart />}
-      </St.HeartWrapper>
+        {isBookmarked ? <IcFullBookmark /> : <IcEmptyBookmark className={GTM_CLASS_NAME.cardLike} />}
+      </St.BookmarkWrapper>
     </St.Card>
   );
 };

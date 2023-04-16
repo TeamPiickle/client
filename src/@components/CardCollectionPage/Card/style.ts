@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-import { IcEmptyHeart } from "../../../asset/icon";
-
 export const St = {
   Card: styled.article`
     position: relative;
@@ -39,16 +37,12 @@ export const St = {
     margin-top: 1.6rem;
   `,
 
-  HeartWrapper: styled.div`
+  BookmarkWrapper: styled.div`
     position: absolute;
-    bottom: 2.4rem;
-    left: 2.4rem;
+    bottom: 1.7rem;
+    right: 1.2rem;
 
-    width: 3.8rem;
-    height: 3.2rem;
-  `,
-
-  IcEmptyHeart: styled(IcEmptyHeart)`
-    position: absolute;
+    width: 5.6rem;
+    height: 5.6rem;
   `,
 };
