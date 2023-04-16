@@ -13,6 +13,10 @@ const Wrapper = styled.section`
   & .swiper-slide {
     height: 75%;
   }
+
+  & .swiper-slide:last-child {
+    height: 100%;
+  }
 `;
 
 const St = {
