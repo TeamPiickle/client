@@ -20,7 +20,7 @@ const CardSlider = forwardRef(function CardSlider(props: CardSliderProps, ref: R
   const { swiperSettings } = useCardSwiper();
 
   const [sliderIdx, setSliderIdx] = useRecoilState(sliderIdxState);
-  const sliderRef = useRef<SwiperRef | null>(null);
+  const swiperRef = useRef<SwiperRef | null>(null);
 
   return (
     <St.Wrapper>
@@ -29,7 +29,7 @@ const CardSlider = forwardRef(function CardSlider(props: CardSliderProps, ref: R
         className="swiper"
         initialSlide={sliderIdx}
         onSlideChange={(swiper) => setSliderIdx(swiper.activeIndex)}
-        ref={sliderRef}>
+        ref={swiperRef}>
         {cardLists.map((cardList) => (
           <SwiperSlide key={cardList._id}>
             <Card openLoginModalHandler={openLoginModalHandler} {...cardList} />
