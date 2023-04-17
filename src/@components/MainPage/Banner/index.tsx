@@ -2,19 +2,15 @@ import "swiper/swiper.css";
 
 import { useState } from "react";
 import { Helmet } from "react-helmet";
-import { SwiperOptions } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { bannerImage } from "../../../util/main/banner";
+import useBannerSwiper from "../hooks/useBannerSwiper";
 import { St } from "./style";
 
 export default function Banner() {
   const [currentSlide, setCurrentSlide] = useState(0);
-
-  const settings: SwiperOptions = {
-    slidesPerView: 1,
-    loop: true,
-  };
+  const { swiperSettings } = useBannerSwiper();
 
   return (
     <>
@@ -22,7 +18,7 @@ export default function Banner() {
         <link rel="preload" as="image" href={bannerImage[0].src} />
       </Helmet>
       <St.BannerSlider>
-        <Swiper {...settings} onSlideChange={(swiper) => setCurrentSlide(swiper.realIndex)}>
+        <Swiper {...swiperSettings} onSlideChange={(swiper) => setCurrentSlide(swiper.realIndex)}>
           {bannerImage.map((img, index) => (
             <SwiperSlide key={index}>
               <picture>
