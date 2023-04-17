@@ -2,27 +2,22 @@ import "swiper/swiper.css";
 
 import { forwardRef, useRef } from "react";
 import { useRecoilState } from "recoil";
-import { Pagination, SwiperOptions } from "swiper";
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 
 import { sliderIdxState } from "../../../core/atom/slider";
 import { CardList } from "../../../types/cardCollection";
 import Card from "../Card";
 import LastCard from "../Card/LastCard";
+import useCardSwiper from "../hooks/useCardSwiper";
 import St from "./style";
-
 interface CardSliderProps {
   openLoginModalHandler: () => void;
   cardLists: CardList[];
 }
 
-const swiperSettings: SwiperOptions = {
-  slidesPerView: "auto",
-  spaceBetween: 8,
-};
-
 const CardSlider = forwardRef(function CardSlider(props: CardSliderProps, ref: React.ForwardedRef<HTMLDivElement>) {
   const { openLoginModalHandler, cardLists } = props;
+  const { swiperSettings } = useCardSwiper();
 
   const [sliderIdx, setSliderIdx] = useRecoilState(sliderIdxState);
   const sliderRef = useRef<SwiperRef | null>(null);
@@ -31,8 +26,6 @@ const CardSlider = forwardRef(function CardSlider(props: CardSliderProps, ref: R
     <St.Wrapper>
       <Swiper
         {...swiperSettings}
-        direction={"vertical"}
-        modules={[Pagination]}
         className="swiper"
         initialSlide={sliderIdx}
         onSlideChange={(swiper) => setSliderIdx(swiper.activeIndex)}
