@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
 import IcBookmarkCheck from "../../../asset/icon/IcBookmarkCheck";
-import { cardCollectionApi } from "../../../core/api/cardCollection";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
+import useCardBookmark from "../hooks/useCardBookmark";
 import TagsSlider from "../TagsSlider";
 import { St } from "./style";
 
@@ -16,21 +16,8 @@ interface LoginCheckProps {
 
 const Card = (props: LoginCheckProps) => {
   const { _id, content, isBookmark, tags, openLoginModalHandler } = props;
-  const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
 
-  const [isBookmarked, setIsBookmarked] = useState(isBookmark);
-
-  const handleClickBookmark = (_id: string) => {
-    switch (LOGIN_STATE) {
-      case true:
-        setIsBookmarked((prev) => !prev);
-        cardCollectionApi.addNDeleteBookmark(_id);
-        break;
-      case false:
-        openLoginModalHandler();
-        break;
-    }
-  };
+  const { isBookmarked, handleClickBookmark } = useCardBookmark(isBookmark, openLoginModalHandler);
 
   return (
     <St.Card className={GTM_CLASS_NAME.cardSwipe}>
