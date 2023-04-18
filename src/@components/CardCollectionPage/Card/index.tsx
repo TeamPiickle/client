@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { IcEmptyBookmark, IcFullBookmark } from "../../../asset/icon";
+import IcBookmarkCheck from "../../../asset/icon/IcBookmarkCheck";
 import { cardCollectionApi } from "../../../core/api/cardCollection";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import TagsSlider from "../TagsSlider";
@@ -45,7 +45,7 @@ const Card = (props: LoginCheckProps) => {
         onClick={() => handleClickBookmark(_id)}
         aria-label="북마크"
         role="dialog">
-        {isBookmarked ? <IcFullBookmark /> : <IcEmptyBookmark className={GTM_CLASS_NAME.cardLike} />}
+        <IcBookmarkCheck isChecked={isBookmarked} />
       </St.BookmarkWrapper>
     </St.Card>
   );
