@@ -3,7 +3,7 @@ import { rest } from "msw";
 import { PATH } from "../../core/api/common/constants";
 
 export const usersHandler = [
-  rest.post(`${process.env.REACT_APP_BASE_URL}${PATH.USERS_}/login`, (req, res, ctx) => {
+  rest.post(`${import.meta.env.VITE_BASE_URL}${PATH.USERS_}/login`, (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
@@ -18,7 +18,7 @@ export const usersHandler = [
     );
   }),
 
-  rest.get(`${process.env.REACT_APP_BASE_URL}${PATH.USERS_}`, (req, res, ctx) => {
+  rest.get(`${import.meta.env.VITE_BASE_URL}${PATH.USERS_}`, (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
@@ -32,7 +32,7 @@ export const usersHandler = [
     );
   }),
 
-  rest.post(`${process.env.REACT_APP_BASE_URL}${PATH.USERS_}/bookmarks`, (req, res, ctx) => {
+  rest.post(`${import.meta.env.VITE_BASE_URL}${PATH.USERS_}/bookmarks`, (req, res, ctx) => {
     const requestBody = req.bodyUsed;
 
     return res(
@@ -46,7 +46,7 @@ export const usersHandler = [
     );
   }),
 
-  rest.get(`${process.env.REACT_APP_BASE_URL}${PATH.USERS_}/bookmarks`, (req, res, ctx) => {
+  rest.get(`${import.meta.env.VITE_BASE_URL}${PATH.USERS_}/bookmarks`, (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
