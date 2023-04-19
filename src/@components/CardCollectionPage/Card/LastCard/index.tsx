@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 
 import CategoryContents from "../../../CategoryPage/CategoryContents";
-import { St } from "./style";
+import St from "./style";
 
 const LastCard = forwardRef(function LastCard(_, ref: React.ForwardedRef<HTMLDivElement>) {
   return (

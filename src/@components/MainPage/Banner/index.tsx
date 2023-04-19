@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import { bannerImage } from "../../../util/main/banner";
 import useBannerSwiper from "../hooks/useBannerSwiper";
-import { St } from "./style";
+import St from "./style";
 
 export default function Banner() {
   const { swiperSettings, currentSlide } = useBannerSwiper();

@@ -4,7 +4,7 @@ import IcBookmarkCheck from "../../../asset/icon/IcBookmarkCheck";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import useCardBookmark from "../hooks/useCardBookmark";
 import TagsSlider from "../TagsSlider";
-import { St } from "./style";
+import St from "./style";
 
 interface LoginCheckProps {
   openLoginModalHandler: () => void;
