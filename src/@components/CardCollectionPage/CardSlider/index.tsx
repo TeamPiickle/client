@@ -1,10 +1,8 @@
 import "swiper/swiper.css";
 
-import { forwardRef, useRef } from "react";
-import { useRecoilState } from "recoil";
-import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
+import { forwardRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
 
-import { sliderIdxState } from "../../../core/atom/slider";
 import { CardList } from "../../../types/cardCollection";
 import Card from "../Card";
 import LastCard from "../Card/LastCard";
@@ -19,17 +17,9 @@ const CardSlider = forwardRef(function CardSlider(props: CardSliderProps, ref: R
   const { openLoginModalHandler, cardLists } = props;
   const { swiperSettings } = useCardSwiper();
 
-  const [sliderIdx, setSliderIdx] = useRecoilState(sliderIdxState);
-  const swiperRef = useRef<SwiperRef | null>(null);
-
   return (
     <St.Wrapper>
-      <Swiper
-        {...swiperSettings}
-        className="swiper"
-        initialSlide={sliderIdx}
-        onSlideChange={(swiper) => setSliderIdx(swiper.activeIndex)}
-        ref={swiperRef}>
+      <Swiper {...swiperSettings} className="swiper">
         {cardLists.map((cardList) => (
           <SwiperSlide key={cardList._id}>
             <Card openLoginModalHandler={openLoginModalHandler} {...cardList} />
