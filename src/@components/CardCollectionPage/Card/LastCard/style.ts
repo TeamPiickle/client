@@ -1,47 +1,26 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import { St as StCard } from "../style";
+const Card = styled.section`
+  margin-bottom: 1.6rem;
+`;
 
-export const St = {
-  Card: styled(StCard.Card)``,
+const ContentTitle = styled.h1`
+  padding: 2.4rem 1.6rem 0;
 
-  ContentTitle: styled(StCard.ContentWrapper)`
-    margin-top: 8.6rem;
+  ${({ theme }) => theme.newFonts.h1};
+  color: ${({ theme }) => theme.newColors.gray900};
+`;
 
-    ${({ theme }) => theme.fonts.body5};
-  `,
+const Content = styled.p`
+  padding: 0 1.6rem 2.4rem;
 
-  Content: styled.p`
-    margin: 1.2rem 0 0 2.4rem;
+  ${({ theme }) => theme.newFonts.h2};
+  color: ${({ theme }) => theme.newColors.gray900};
+`;
 
-    ${({ theme }) => theme.fonts.body6};
-    color: ${({ theme }) => theme.colors.bg};
-  `,
-
-  CategoryLink: styled(Link)`
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translate(50%, -50%);
-  `,
-
-  HomeLink: styled(Link)`
-    position: absolute;
-    bottom: 3.2rem;
-    left: 50%;
-    transform: translateX(-50%);
-
-    width: 8.3rem;
-    height: 1.9rem;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    ${({ theme }) => theme.fonts.btn1};
-    color: ${({ theme }) => theme.colors.gray600};
-
-    border-bottom: 0.08rem solid ${({ theme }) => theme.colors.gray600};
-  `,
+const St = {
+  Card,
+  ContentTitle,
+  Content,
 };
+export default St;
