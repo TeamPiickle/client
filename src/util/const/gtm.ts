@@ -31,11 +31,12 @@ type GtmClassName = {
   menuBookmark: string;
   menuOpacityClose: string;
   cardSwipe: string;
-  cardLike: string;
+  cardBookmark: string;
   cardLogin: string;
   cardJoin: string;
   cardRecommendFilter: string;
-  cardKeep: string;
+  cardMoveBookmark: string;
+  cardMoveHome: string;
   filterClose: string;
   filter남: string;
   filter여: string;
@@ -119,11 +120,12 @@ export const GTM_CLASS_NAME: GtmClassName = {
   menuBookmark: "click_menu_bookmark",
   menuOpacityClose: "click_menu_opacityclose",
   cardSwipe: "swipe_card_card",
-  cardLike: "click_card_like",
+  cardBookmark: "click_card_bookmark",
   cardLogin: "click_card_log",
   cardJoin: "click_card_joinmember",
   cardRecommendFilter: "click_card_filter",
-  cardKeep: "click_card_keep",
+  cardMoveBookmark: "click_card_movebookmark",
+  cardMoveHome: "click_card_movehome",
   filterClose: "click_filter_close",
   filter남: "click_filter_man",
   filter여: "click_filter_woman",
