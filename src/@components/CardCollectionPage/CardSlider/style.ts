@@ -15,7 +15,7 @@ const Wrapper = styled.section`
   }
 
   & .swiper-slide:last-child {
-    height: 100%;
+    height: calc(100vh - 3.3rem);
   }
 `;
 
