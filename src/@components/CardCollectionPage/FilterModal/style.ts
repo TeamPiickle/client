@@ -41,7 +41,7 @@ const FilterIntimacyWrapper = styled.div`
   display: flex;
   flex-direction: column;
 
-  margin-bottom: 2.7rem;
+  margin-bottom: 9.7rem;
 `;
 
 const FilterIntimacyRange = styled.input`
