@@ -28,7 +28,7 @@ const Card = (props: LoginCheckProps) => {
         </St.TagsWrapper>
       </St.Container>
       <St.BookmarkWrapper
-        className={GTM_CLASS_NAME.cardLike}
+        className={GTM_CLASS_NAME.cardBookmark}
         onClick={() => handleClickBookmark(_id)}
         aria-label="북마크"
         role="dialog">
