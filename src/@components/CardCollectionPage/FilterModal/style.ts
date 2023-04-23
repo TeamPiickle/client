@@ -58,20 +58,20 @@ const FilterIntimacyTag = styled.li<{ isactive: boolean }>`
   color: ${({ isactive, theme }) => (isactive ? theme.newColors.green : theme.newColors.gray700)};
 `;
 
-const CheckRandomWrapper = styled.div`
-  height: 6.6rem;
+// const CheckRandomWrapper = styled.div`
+//   height: 6.6rem;
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
 
-  ${({ theme }) => theme.newFonts.body4};
-  color: ${({ theme }) => theme.newColors.gray900};
-  background: ${({ theme }) => theme.newColors.gray100};
+//   ${({ theme }) => theme.newFonts.body4};
+//   color: ${({ theme }) => theme.newColors.gray900};
+//   background: ${({ theme }) => theme.newColors.gray100};
 
-  margin-bottom: 6rem;
-  padding: 0 1.6rem;
-`;
+//   margin-bottom: 6rem;
+//   padding: 0 1.6rem;
+// `;
 
 const SubmitBtnWrapper = styled.div`
   display: flex;
@@ -107,7 +107,7 @@ const St = {
   FilterIntimacyTagsWrapper,
   FilterIntimacyTag,
   SubmitBtnWrapper,
-  CheckRandomWrapper,
+  //CheckRandomWrapper,
   SubmitBtn,
 };
 export default St;
