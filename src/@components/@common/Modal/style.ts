@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 
-const Root = styled.div`
+export const Root = styled.div`
   position: absolute;
   top: 0;
   right: 0;
@@ -14,7 +14,7 @@ const Root = styled.div`
   justify-content: center;
 `;
 
-const fadeOut = keyframes`
+export const fadeOut = keyframes`
   from {
     opacity: 0;
   }
@@ -23,11 +23,11 @@ const fadeOut = keyframes`
   }
 `;
 
-const GrayRoot = styled(Root)`
+export const GrayRoot = styled(Root)`
   animation: ${fadeOut} 0.8s ease-in-out;
 `;
 
-const WhiteRoot = styled(Root)`
+export const WhiteRoot = styled(Root)`
   align-items: flex-end;
 
   height: 100vh;
@@ -37,7 +37,7 @@ const WhiteRoot = styled(Root)`
   animation: ${fadeOut} 0.8s ease-in-out;
 `;
 
-const DefaultRoot = styled(Root)`
+export const DefaultRoot = styled(Root)`
   align-items: center;
 
   height: 100vh;
@@ -46,7 +46,7 @@ const DefaultRoot = styled(Root)`
   padding: 1.6rem;
 `;
 
-const bottomUp = keyframes`
+export const bottomUp = keyframes`
   from {
     transform: translateY(60rem);
   }
@@ -55,7 +55,26 @@ const bottomUp = keyframes`
   }
 `;
 
-const GrayModal = styled.section`
+const CenterModal = styled.section`
+  position: fixed;
+  top: 50%;
+  bottom: 50%;
+
+  transform: translateX(-50%);
+  transform: translateY(-50%);
+`;
+
+export const GrayCenterModal = styled(CenterModal)`
+  width: 100%;
+  ${({ theme }) => theme.media.desktop`
+    width: 36rem;
+  `};
+  height: 20rem;
+
+  background-color: ${({ theme }) => theme.newColors.gray100};
+`;
+
+export const GrayModal = styled.section`
   position: fixed;
   bottom: 0;
 
@@ -69,7 +88,7 @@ const GrayModal = styled.section`
   animation: ${bottomUp} 0.6s ease-in-out;
 `;
 
-const WhiteModal = styled.section`
+export const WhiteModal = styled.section`
   position: relative;
 
   width: 100%;
@@ -84,7 +103,7 @@ const WhiteModal = styled.section`
   animation: ${bottomUp} 0.6s ease-in-out;
 `;
 
-const DefaultModal = styled.section`
+export const DefaultModal = styled.section`
   position: relative;
 
   background-color: ${({ theme }) => theme.colors.sub_green5};
@@ -93,7 +112,7 @@ const DefaultModal = styled.section`
   padding: 2rem 1.6rem;
 `;
 
-const CloseBtn = styled.button`
+export const CloseBtn = styled.button`
   position: absolute;
   right: 1.6rem;
   top: 2rem;
@@ -106,16 +125,4 @@ const CloseBtn = styled.button`
   z-index: 10;
 `;
 
-const ModalContents = styled.main``;
-
-const St = {
-  GrayRoot,
-  GrayModal,
-  WhiteRoot,
-  WhiteModal,
-  DefaultRoot,
-  DefaultModal,
-  CloseBtn,
-  ModalContents,
-};
-export default St;
+export const ModalContents = styled.main``;

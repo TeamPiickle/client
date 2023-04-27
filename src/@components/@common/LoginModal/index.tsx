@@ -17,7 +17,7 @@ export default function LoginModal(props: LoginCheckProps) {
   const navigate = useNavigate();
 
   return (
-    <Modal closeHandler={closeHandler}>
+    <Modal theme="GRAY_CENTER" closeHandler={closeHandler}>
       <St.Container role="dialog">
         <St.Wrapper>
           <St.HeartWrapper>
