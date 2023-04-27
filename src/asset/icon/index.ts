@@ -5,7 +5,6 @@ export { ReactComponent as IcCheckWithNoBg } from "./check2.svg";
 export { ReactComponent as IcCloseBtn } from "./closeBtn.svg";
 export { ReactComponent as IcDownArrow } from "./downArrow.svg";
 export { ReactComponent as IcEmptyCheckBox } from "./emptyCheckBox.svg";
-export { ReactComponent as IcEmptyHeart } from "./emptyHeart.svg";
 export { ReactComponent as IcFullCheckBox } from "./fullCheckBox.svg";
 export { ReactComponent as IcFullHeart } from "./fullHeart.svg";
 export { ReactComponent as IcGoBackBtn } from "./goBackBtn.svg";
