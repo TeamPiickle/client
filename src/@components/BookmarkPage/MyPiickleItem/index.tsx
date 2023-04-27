@@ -6,7 +6,7 @@ import { LocationType } from "../../../types/cardCollection";
 import useNavigateCardCollection, {
   NavigateCardCollectionBookMarkType,
 } from "../../@common/hooks/useNavigateCardCollection";
-import { St } from "./style";
+import * as St from "./style";
 
 interface MyPiickleItemProps {
   cardId: string;
