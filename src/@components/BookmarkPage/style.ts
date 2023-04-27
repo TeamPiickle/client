@@ -13,7 +13,9 @@ export const Root = styled.main`
 export const List = styled.section`
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.2rem;
 
-  padding: 0 1.6rem;
+  border-top: 0.2rem solid ${({ theme }) => theme.newColors.gray100};
+  border-bottom: 0.2rem solid ${({ theme }) => theme.newColors.gray100};
+  background-color: ${({ theme }) => theme.newColors.gray100};
 `;

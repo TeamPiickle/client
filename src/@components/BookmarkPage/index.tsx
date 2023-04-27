@@ -24,16 +24,16 @@ export default function BookmarkPage() {
       <div>
         <Header />
         <HeadingTitleContainer headingTitles={bookmarkHeadingTitles} />
-        <St.List>
-          {userBookmarks &&
-            (userBookmarks.data.length === 0 ? (
-              <EmptyItem />
-            ) : (
-              userBookmarks.data.map((myPiickle, idx: number) => (
+        {userBookmarks &&
+          (userBookmarks.data.length === 0 ? (
+            <EmptyItem />
+          ) : (
+            <St.List>
+              {userBookmarks.data.map((myPiickle, idx: number) => (
                 <MyPiickleItem key={myPiickle.cardId} cardId={myPiickle.cardId} content={myPiickle.content} idx={idx} />
-              ))
-            ))}
-        </St.List>
+              ))}
+            </St.List>
+          ))}
       </div>
       <Footer />
     </St.Root>

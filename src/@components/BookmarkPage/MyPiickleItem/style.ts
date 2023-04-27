@@ -9,8 +9,7 @@ export const MyPiickle = styled.article`
 
   padding: 1.75rem 1.6rem;
 
-  border: 0.1rem solid ${({ theme }) => theme.colors.gray300};
-  border-radius: 1rem;
+  background-color: ${({ theme }) => theme.newColors.white};
 `;
 
 export const MyPiickleLink = styled.button`
@@ -23,8 +22,8 @@ export const MyPiickleLink = styled.button`
 `;
 
 export const MyPiickleContent = styled.strong`
-  ${({ theme }) => theme.fonts.body4};
-  color: ${({ theme }) => theme.colors.bg};
+  ${({ theme }) => theme.newFonts.body4};
+  color: ${({ theme }) => theme.newColors.gray900};
 
   overflow: hidden;
   white-space: nowrap;
