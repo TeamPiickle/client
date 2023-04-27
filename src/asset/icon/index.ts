@@ -16,7 +16,5 @@ export { ReactComponent as IcModalCloseBtn } from "./modalCloseBtn.svg";
 export { ReactComponent as IcNextBtn } from "./nextBtn.svg";
 export { ReactComponent as IcRightArrow } from "./rightArrow.svg";
 export { ReactComponent as IcSmallEmptyCheckBox } from "./smallEmptyCheckBox.svg";
-export { ReactComponent as IcSmallEmptyHeart } from "./smallEmptyHeart.svg";
 export { ReactComponent as IcSmallFullCheckBox } from "./smallFullCheckBox.svg";
-export { ReactComponent as IcSmallFullHeart } from "./smallFullHeart.svg";
 export { ReactComponent as IcSmallRightArrow } from "./smallRightArrow.svg";
