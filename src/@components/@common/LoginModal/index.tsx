@@ -4,7 +4,7 @@ import { routePaths } from "../../../core/routes/path";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import CustomFullHeart from "../../CardCollectionPage/CustomFullHeart";
 import Modal from "../Modal";
-import { St } from "./style";
+import * as St from "./style";
 
 interface LoginCheckProps {
   closeHandler: () => void;
