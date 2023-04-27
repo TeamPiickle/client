@@ -11,8 +11,6 @@ export const St = {
 
     padding: 0 1.6rem;
 
-    margin-bottom: 2.4rem;
-
     width: 100%;
     height: 5.2rem;
 
