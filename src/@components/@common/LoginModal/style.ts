@@ -9,7 +9,6 @@ export const Container = styled.section`
 
   margin-top: 6.9rem;
   height: 13.6rem;
-  background: #eef5f3;
 `;
 
 export const Wrapper = styled.div`
