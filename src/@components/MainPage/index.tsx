@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 import Footer from "../@common/Footer";
 import Header from "../@common/Header";
 import useGTMPage from "../@common/hooks/useGTMPage";
@@ -9,10 +11,20 @@ import MoodPiickle from "./MoodPiickle";
 import PiickleMe from "./PiickleMe";
 import StripBanner from "./StripBanner";
 import { St } from "./style";
+import UpdateModal from "./UpdateModal";
 
 export default function MainPage() {
-  useGTMPage();
+  const [isOpened, setIsOpened] = useState(false);
 
+  useEffect(() => {
+    setIsOpened(true);
+  }, []);
+
+  const handleCloseModal = () => {
+    setIsOpened(false);
+  };
+
+  useGTMPage();
   return (
     <St.MainPage>
       <Header />
@@ -24,6 +36,7 @@ export default function MainPage() {
       <PiickleMe />
       <Footer />
       <CTABtn />
+      {isOpened && <UpdateModal closeHandler={handleCloseModal} />}
     </St.MainPage>
   );
 }
