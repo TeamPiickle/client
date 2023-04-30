@@ -17,7 +17,11 @@ export default function MainPage() {
   const [isOpened, setIsOpened] = useState(false);
 
   useEffect(() => {
-    setIsOpened(true);
+    const isPopupShown = sessionStorage.getItem("isPopupShown");
+    if (!isPopupShown) {
+      setIsOpened(true);
+      sessionStorage.setItem("isPopupShown", "true");
+    }
   }, []);
 
   const handleCloseModal = () => {
