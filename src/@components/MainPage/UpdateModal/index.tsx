@@ -1,4 +1,4 @@
-import { versionUpdateList } from "../../../util/main/updateListsContents";
+import { versionUpdateList } from "../../../util/main/versionUpdateList";
 import Modal from "../../@common/Modal";
 import * as St from "./style";
 
