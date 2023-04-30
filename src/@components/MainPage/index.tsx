@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
-
 import Footer from "../@common/Footer";
 import Header from "../@common/Header";
 import useGTMPage from "../@common/hooks/useGTMPage";
 import Banner from "./Banner";
 import BestPiickle from "./BestPiickle";
 import CTABtn from "./CTABtn";
+import useUpdateModal from "./hooks/useUpdateModal";
 import Medley from "./Medley";
 import MoodPiickle from "./MoodPiickle";
 import PiickleMe from "./PiickleMe";
@@ -14,21 +13,9 @@ import { St } from "./style";
 import UpdateModal from "./UpdateModal";
 
 export default function MainPage() {
-  const [isOpened, setIsOpened] = useState(false);
-
-  useEffect(() => {
-    const isPopupShown = sessionStorage.getItem("popup-shown");
-    if (!isPopupShown) {
-      setIsOpened(true);
-      sessionStorage.setItem("popup-shown", "true");
-    }
-  }, []);
-
-  const handleCloseModal = () => {
-    setIsOpened(false);
-  };
-
+  const { isOpened, handleCloseModal } = useUpdateModal();
   useGTMPage();
+
   return (
     <St.MainPage>
       <Header />
