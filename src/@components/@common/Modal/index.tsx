@@ -23,9 +23,11 @@ export default function Modal(props: PropsWithChildren<ModalContents>) {
       <ModalPortal>
         <St.GrayRoot className={closeOpacityClassName}>
           <St.GrayModal ref={outClickCloserRef}>
-            <St.CloseBtn type="button" className={closeBtnClassName} onClick={closeHandler}>
-              <IcModalCloseBtn closeBtnClassName={closeBtnClassName} />
-            </St.CloseBtn>
+            {closeBtnClassName && (
+              <St.CloseBtn type="button" className={closeBtnClassName} onClick={closeHandler}>
+                <IcModalCloseBtn closeBtnClassName={closeBtnClassName} />
+              </St.CloseBtn>
+            )}
             <St.ModalContents>{children}</St.ModalContents>
           </St.GrayModal>
         </St.GrayRoot>
