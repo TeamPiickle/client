@@ -17,10 +17,10 @@ export default function MainPage() {
   const [isOpened, setIsOpened] = useState(false);
 
   useEffect(() => {
-    const isPopupShown = sessionStorage.getItem("isPopupShown");
+    const isPopupShown = sessionStorage.getItem("popup-shown");
     if (!isPopupShown) {
       setIsOpened(true);
-      sessionStorage.setItem("isPopupShown", "true");
+      sessionStorage.setItem("popup-shown", "true");
     }
   }, []);
 
