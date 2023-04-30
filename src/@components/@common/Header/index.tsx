@@ -5,7 +5,7 @@ import { routePaths } from "../../../core/routes/path";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import useModal from "../hooks/useModal";
 import MenuBar from "../MenuBar";
-import { St } from "./style";
+import * as St from "./style";
 
 export default function Header() {
   const { pathname } = useLocation();

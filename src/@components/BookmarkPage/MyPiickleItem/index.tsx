@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-import { IcSmallEmptyHeart, IcSmallFullHeart } from "../../../asset/icon";
+import IcBookmarkCheck_16_20 from "../../../asset/icon/IcBookmarkCheck_16_20";
 import { cardCollectionApi } from "../../../core/api/cardCollection";
 import { LocationType } from "../../../types/cardCollection";
 import useNavigateCardCollection, {
   NavigateCardCollectionBookMarkType,
 } from "../../@common/hooks/useNavigateCardCollection";
-import { St } from "./style";
+import * as St from "./style";
 
 interface MyPiickleItemProps {
   cardId: string;
@@ -29,7 +29,7 @@ export default function MyPiickleItem(props: MyPiickleItemProps) {
     <St.MyPiickle>
       <St.MyPiickleContent>{content}</St.MyPiickleContent>
       <St.HeartWrapper onClick={toggleBookmark}>
-        {isBookmarked ? <IcSmallFullHeart /> : <IcSmallEmptyHeart />}
+        <IcBookmarkCheck_16_20 isChecked={isBookmarked} />
       </St.HeartWrapper>
       <St.MyPiickleLink type="button" onClick={() => navigateCardCollection(idx)} />
     </St.MyPiickle>
