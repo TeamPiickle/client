@@ -47,7 +47,7 @@ export const UpdateLists = styled.div`
   background-color: ${({ theme }) => theme.newColors.white};
 `;
 
-export const ContentsWrapper = styled.p`
+export const ContentsWrapper = styled.div`
   display: flex;
 
   ${({ theme }) => theme.newFonts.body4}
