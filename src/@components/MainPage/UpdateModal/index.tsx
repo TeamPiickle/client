@@ -1,4 +1,4 @@
-import { updateListsContents } from "../../../util/main/updateListsContents";
+import { versionUpdateList } from "../../../util/main/updateListsContents";
 import Modal from "../../@common/Modal";
 import * as St from "./style";
 
@@ -20,9 +20,9 @@ export default function UpdateModal(props: UpdateModalProps) {
           지금 하는 안내는 1주일 정도만 유지되니 이해 부탁드릴게요!
         </St.Description>
         <St.UpdateLists>
-          {updateListsContents.map((_, i: number) => (
-            <St.ContentsWrapper key={i}>
-              ✅<St.Content>{updateListsContents[i].content}</St.Content>
+          {versionUpdateList.map((versionUpdateList) => (
+            <St.ContentsWrapper key={versionUpdateList.id}>
+              ✅<St.Content>{versionUpdateList.content}</St.Content>
             </St.ContentsWrapper>
           ))}
         </St.UpdateLists>
