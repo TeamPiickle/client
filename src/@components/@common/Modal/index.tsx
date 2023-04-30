@@ -3,9 +3,9 @@ import { PropsWithChildren } from "react";
 import IcModalCloseBtn from "../../../asset/icon/IcModalCloseBtn";
 import useOutClickCloser from "../hooks/useOutClickCloser";
 import ModalPortal from "./Portal";
-import St from "./style";
+import * as St from "./style";
 
-type ModalTheme = "DEFAULT" | "WHITE_BOTTOM" | "GRAY_BOTTOM";
+type ModalTheme = "DEFAULT" | "WHITE_BOTTOM" | "GRAY_CENTER" | "GRAY_BOTTOM";
 
 interface ModalContents {
   theme?: ModalTheme;
@@ -17,6 +17,20 @@ interface ModalContents {
 export default function Modal(props: PropsWithChildren<ModalContents>) {
   const { theme = "DEFAULT", closeHandler, closeOpacityClassName, closeBtnClassName, children } = props;
   const outClickCloserRef = useOutClickCloser(closeHandler, true);
+
+  if (theme === "GRAY_CENTER")
+    return (
+      <ModalPortal>
+        <St.GrayRoot>
+          <St.GrayCenterModal ref={outClickCloserRef}>
+            <St.CloseBtn type="button" onClick={closeHandler}>
+              <IcModalCloseBtn />
+            </St.CloseBtn>
+            <St.ModalContents>{children}</St.ModalContents>
+          </St.GrayCenterModal>
+        </St.GrayRoot>
+      </ModalPortal>
+    );
 
   if (theme === "GRAY_BOTTOM")
     return (
