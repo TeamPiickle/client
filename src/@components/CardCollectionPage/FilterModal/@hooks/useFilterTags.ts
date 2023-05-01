@@ -13,8 +13,6 @@ export default function useFilterTags() {
 
   // 태그를 눌렀을 때 함수
   const toggleTag = (_tag: string) => {
-    if (_tag === "19금") return;
-
     setFilterTags((prevFilterTags) => {
       const tempCheckedTags = new Set(filterTags.tags);
       tempCheckedTags.has(_tag) ? tempCheckedTags.delete(_tag) : tempCheckedTags.add(_tag);
