@@ -1,3 +1,5 @@
+import { lazy } from "react";
+
 import Footer from "../@common/Footer";
 import Header from "../@common/Header";
 import useGTMPage from "../@common/hooks/useGTMPage";
@@ -10,7 +12,8 @@ import MoodPiickle from "./MoodPiickle";
 import PiickleMe from "./PiickleMe";
 import StripBanner from "./StripBanner";
 import { St } from "./style";
-import UpdateModal from "./UpdateModal";
+
+const UpdateModal = lazy(() => import("./UpdateModal"));
 
 export default function MainPage() {
   const { isOpened, handleCloseModal } = useUpdateModal();
