@@ -1,4 +1,4 @@
-import { versionUpdateList } from "../../../util/main/versionUpdateList";
+import { VERSION_UPDATES } from "../../../util/main/versionUpdateList";
 import Modal from "../../@common/Modal";
 import useUpdateModal from "../hooks/useUpdateModal";
 import * as St from "./style";
@@ -19,9 +19,9 @@ export default function UpdateModal() {
           지금 하는 안내는 1주일 정도만 유지되니 이해 부탁드릴게요!
         </St.Description>
         <St.UpdateLists>
-          {versionUpdateList.map((versionUpdateList) => (
-            <St.ContentsWrapper key={versionUpdateList.id}>
-              ✅<St.Content>{versionUpdateList.content}</St.Content>
+          {VERSION_UPDATES.map((versionUpdate) => (
+            <St.ContentsWrapper key={versionUpdate.id}>
+              ✅<St.Content>{versionUpdate.content}</St.Content>
             </St.ContentsWrapper>
           ))}
         </St.UpdateLists>
