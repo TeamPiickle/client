@@ -1,16 +1,15 @@
 import { versionUpdateList } from "../../../util/main/versionUpdateList";
 import Modal from "../../@common/Modal";
+import useUpdateModal from "../hooks/useUpdateModal";
 import * as St from "./style";
 
-interface UpdateModalProps {
-  closeHandler: () => void;
-}
+export default function UpdateModal() {
+  const { isOpened, handleCloseModal } = useUpdateModal();
 
-export default function UpdateModal(props: UpdateModalProps) {
-  const { closeHandler } = props;
+  if (!isOpened) return null;
 
   return (
-    <Modal theme="GRAY_BOTTOM" closeHandler={closeHandler} isNoCloseBtn={true}>
+    <Modal theme="GRAY_BOTTOM" closeHandler={handleCloseModal} isNoCloseBtn={true}>
       <St.Container>
         <St.Tag>23.04.20 업데이트</St.Tag>
         <St.Title>피클 업데이트 안내</St.Title>
@@ -26,7 +25,7 @@ export default function UpdateModal(props: UpdateModalProps) {
             </St.ContentsWrapper>
           ))}
         </St.UpdateLists>
-        <St.CheckBtn onClick={closeHandler}>확인했어요</St.CheckBtn>
+        <St.CheckBtn onClick={handleCloseModal}>확인했어요</St.CheckBtn>
       </St.Container>
     </Modal>
   );

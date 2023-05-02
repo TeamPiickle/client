@@ -6,7 +6,6 @@ import useGTMPage from "../@common/hooks/useGTMPage";
 import Banner from "./Banner";
 import BestPiickle from "./BestPiickle";
 import CTABtn from "./CTABtn";
-import useUpdateModal from "./hooks/useUpdateModal";
 import Medley from "./Medley";
 import MoodPiickle from "./MoodPiickle";
 import PiickleMe from "./PiickleMe";
@@ -16,7 +15,6 @@ import { St } from "./style";
 const UpdateModal = lazy(() => import("./UpdateModal"));
 
 export default function MainPage() {
-  const { isOpened, handleCloseModal } = useUpdateModal();
   useGTMPage();
 
   return (
@@ -30,7 +28,7 @@ export default function MainPage() {
       <PiickleMe />
       <Footer />
       <CTABtn />
-      {isOpened && <UpdateModal closeHandler={handleCloseModal} />}
+      <UpdateModal />
     </St.MainPage>
   );
 }
