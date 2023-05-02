@@ -10,7 +10,7 @@ export default function UpdateModal(props: UpdateModalProps) {
   const { closeHandler } = props;
 
   return (
-    <Modal theme="GRAY_BOTTOM" closeHandler={closeHandler}>
+    <Modal theme="GRAY_BOTTOM" closeHandler={closeHandler} isNoCloseBtn={true}>
       <St.Container>
         <St.Tag>23.04.20 업데이트</St.Tag>
         <St.Title>피클 업데이트 안내</St.Title>
