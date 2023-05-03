@@ -12,10 +12,11 @@ interface ModalContents {
   closeHandler: () => void;
   closeOpacityClassName?: string;
   closeBtnClassName?: string;
+  isNoCloseBtn?: boolean;
 }
 
 export default function Modal(props: PropsWithChildren<ModalContents>) {
-  const { theme = "DEFAULT", closeHandler, closeOpacityClassName, closeBtnClassName, children } = props;
+  const { theme = "DEFAULT", closeHandler, closeOpacityClassName, closeBtnClassName, isNoCloseBtn, children } = props;
   const outClickCloserRef = useOutClickCloser(closeHandler, true);
 
   if (theme === "GRAY_CENTER")
@@ -37,7 +38,7 @@ export default function Modal(props: PropsWithChildren<ModalContents>) {
       <ModalPortal>
         <St.GrayRoot className={closeOpacityClassName}>
           <St.GrayModal ref={outClickCloserRef}>
-            {closeBtnClassName && (
+            {isNoCloseBtn || (
               <St.CloseBtn type="button" className={closeBtnClassName} onClick={closeHandler}>
                 <IcModalCloseBtn closeBtnClassName={closeBtnClassName} />
               </St.CloseBtn>
