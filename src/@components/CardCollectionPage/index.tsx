@@ -13,6 +13,7 @@ import CardSlider from "./CardSlider";
 import FilterModal from "./FilterModal";
 import { useCardLists } from "./hooks/useCardLists";
 import useCTAFilter from "./hooks/useCTAFilter";
+import useHeaderChange from "./hooks/useHeaderChange";
 import St from "./style";
 
 export default function CardCollectionPage() {
@@ -23,17 +24,23 @@ export default function CardCollectionPage() {
   const cardsTypeLoaction = location.state as CardsTypeLocation;
   const { cardLists, isLoading, fetchCardListsWithFilter } = useCardLists(cardsTypeLoaction);
 
-  const { isVisibleCTAButton, intersectionObserverRef } = useCTAFilter();
+  const { isDefaultHeader, intersectionObserverRef: firstCardObsvRef } = useHeaderChange();
+  const { isVisibleCTAButton, intersectionObserverRef: lastCardObsvRef } = useCTAFilter();
+
   const { isModalOpen: isFilterModalOpen, toggleModal: toggleFilterModal } = useModal();
   const { isModalOpen: isLoginModalOpen, toggleModal: toggleLoginModal } = useModal();
 
   return (
     <St.MainPage>
-      {/* <Header /> */}
-      <HeaderMinVer />
+      {isDefaultHeader ? <Header /> : <HeaderMinVer />}
 
       {!isLoading ? (
-        <CardSlider openLoginModalHandler={toggleLoginModal} cardLists={cardLists} ref={intersectionObserverRef} />
+        <CardSlider
+          openLoginModalHandler={toggleLoginModal}
+          cardLists={cardLists}
+          firstCardObsvRef={firstCardObsvRef}
+          lastCardObsvRef={lastCardObsvRef}
+        />
       ) : (
         <Loading backgroundColor="transparent" />
       )}
