@@ -7,7 +7,7 @@ export const Container = styled.section`
   align-items: center;
   gap: 6rem;
 
-  margin-top: 6.9rem;
+  margin-top: 6.4rem;
   height: 13.6rem;
 `;
 

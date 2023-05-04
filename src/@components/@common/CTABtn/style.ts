@@ -18,7 +18,7 @@ export const CTAButtonWrapper = styled.div`
 
   padding: 0 0.8rem 0.8rem;
 
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 40.63%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, white 40.63%);
 
   z-index: 10;
 `;
@@ -31,10 +31,10 @@ export const CTAButton = styled.button`
   width: 100%;
   height: 5.6rem;
 
-  background-color: ${({ theme }) => theme.colors.gray900};
+  background-color: ${({ theme }) => theme.newColors.gray900};
   border-radius: 0.8rem;
 
   backdrop-filter: blur(0.6rem);
-  color: ${({ theme }) => theme.colors.white};
-  ${({ theme }) => theme.fonts.btn2};
+  color: ${({ theme }) => theme.newColors.white};
+  ${({ theme }) => theme.newFonts.btn1};
 `;
