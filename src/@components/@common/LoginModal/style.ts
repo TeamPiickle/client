@@ -25,13 +25,12 @@ export const Buttons = styled.div`
   width: 100%;
 
   display: flex;
-  gap: 0.1rem;
 
   height: 5.8em;
 `;
 
 export const Button = styled.button`
-  flex: 1;
+  width: 100%;
 
   display: flex;
   justify-content: center;
@@ -42,4 +41,8 @@ export const Button = styled.button`
   ${({ theme }) => theme.newFonts.btn1};
   color: ${({ theme }) => theme.newColors.gray100};
   background: ${({ theme }) => theme.newColors.gray900};
+
+  &:first-child {
+    margin-right: 0.1rem;
+  }
 `;
