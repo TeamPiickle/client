@@ -14,9 +14,10 @@ export default function UpdateModal() {
         <St.Tag>23.04.20 업데이트</St.Tag>
         <St.Title>피클 업데이트 안내</St.Title>
         <St.Description>
-          Piickle 유저분들의 피드백을 바탕으로 더 사용하기 좋게 만들었어요 <br />
-          앞으로도 많은 피드백 부탁 드립니다 <br />
-          지금 하는 안내는 1주일 정도만 유지되니 이해 부탁드릴게요!
+          Piickle 유저분들의 피드백을 바탕으로 더 사용하기 좋게 만들었어요😎
+          <br />
+          여러분이 더 편할 수 있도록 돕기 위한 알림이니 처음 보셨다면 꼭 읽어주세요! <br />
+          업데이트 안내는 약 1주일동안만 보일 예정으로 이해 부탁 드릴게요!
         </St.Description>
         <St.UpdateLists>
           {VERSION_UPDATES.map((versionUpdate) => (
