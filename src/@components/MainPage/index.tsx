@@ -1,4 +1,4 @@
-import { lazy } from "react";
+import { lazy, Suspense } from "react";
 
 import Footer from "../@common/Footer";
 import Header from "../@common/Header";
@@ -28,7 +28,9 @@ export default function MainPage() {
       <PiickleMe />
       <Footer />
       <CTABtn />
-      <UpdateModal />
+      <Suspense>
+        <UpdateModal />
+      </Suspense>
     </St.MainPage>
   );
 }
