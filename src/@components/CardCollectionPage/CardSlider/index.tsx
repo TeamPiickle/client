@@ -8,6 +8,7 @@ import Card from "../Card";
 import LastCard from "../Card/LastCard";
 import useCardSwiper from "../hooks/useCardSwiper";
 import St from "./style";
+
 interface CardSliderProps {
   openLoginModalHandler: () => void;
   cardLists: CardList[];

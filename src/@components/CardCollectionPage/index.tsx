@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 
 import { CardsTypeLocation } from "../../types/cardCollection";
 import { GTM_CLASS_NAME } from "../../util/const/gtm";
+import Header from "../@common/Header";
 import HeaderMinVer from "../@common/Header/HeaderMinVer";
 import useGTMPage from "../@common/hooks/useGTMPage";
 import useModal from "../@common/hooks/useModal";
@@ -28,6 +29,7 @@ export default function CardCollectionPage() {
 
   return (
     <St.MainPage>
+      {/* <Header /> */}
       <HeaderMinVer />
 
       {!isLoading ? (

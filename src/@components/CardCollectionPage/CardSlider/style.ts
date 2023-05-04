@@ -3,7 +3,6 @@ import styled from "styled-components";
 const Wrapper = styled.section`
   position: relative;
   height: 100%;
-  padding-top: 3.3rem;
 
   & .swiper {
     width: 100%;

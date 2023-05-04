@@ -1,9 +1,9 @@
 import { Link as LinkRouter } from "react-router-dom";
 import styled from "styled-components";
 
-export const HeaderWrapper = styled.header<{ iscardview: boolean }>`
+export const HeaderWrapper = styled.header`
   display: flex;
-  position: ${({ iscardview }) => (iscardview ? "absolute" : "sticky")};
+  position: sticky;
   top: 0;
   align-items: center;
   justify-content: space-between;
@@ -13,7 +13,7 @@ export const HeaderWrapper = styled.header<{ iscardview: boolean }>`
   width: 100%;
   height: 5.2rem;
 
-  background-color: ${({ theme, iscardview }) => (iscardview ? "transparent" : theme.colors.white)};
+  background-color: ${({ theme }) => theme.colors.white};
 
   z-index: 10;
 `;

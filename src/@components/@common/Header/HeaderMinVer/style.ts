@@ -2,7 +2,7 @@ import { Link as LinkComponent } from "react-router-dom";
 import styled from "styled-components";
 
 const Header = styled.header`
-  position: absolute;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
