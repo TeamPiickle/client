@@ -22,8 +22,8 @@ export default function MainPage() {
       <Header />
       <Banner />
       <BestPiickle />
-      <Medley />
       <MoodPiickle />
+      <Medley />
       <StripBanner />
       <PiickleMe />
       <Footer />
