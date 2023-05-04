@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 
 import { CardsTypeLocation } from "../../types/cardCollection";
 import { GTM_CLASS_NAME } from "../../util/const/gtm";
+import HeadlessCTAButton from "../@common/CTABtn/HeadlessCTAButton";
 import Header from "../@common/Header";
 import HeaderMinVer from "../@common/Header/HeaderMinVer";
 import useGTMPage from "../@common/hooks/useGTMPage";
@@ -14,7 +15,7 @@ import FilterModal from "./FilterModal";
 import { useCardLists } from "./hooks/useCardLists";
 import useCTAFilter from "./hooks/useCTAFilter";
 import useHeaderChange from "./hooks/useHeaderChange";
-import St from "./style";
+import * as St from "./style";
 
 export default function CardCollectionPage() {
   useGTMPage();
@@ -46,13 +47,13 @@ export default function CardCollectionPage() {
       )}
 
       {isVisibleCTAButton && (
-        <St.FilterBtn
+        <HeadlessCTAButton
           aria-label="카드 추천 필터"
           role="dialog"
           className={GTM_CLASS_NAME.cardRecommendFilter}
           onClick={toggleFilterModal}>
           카드 추천 받기
-        </St.FilterBtn>
+        </HeadlessCTAButton>
       )}
 
       {isLoginModalOpen && <LoginModal closeHandler={toggleLoginModal} contents={"북마크기능인 마이피클을"} />}

@@ -1,4 +1,5 @@
 import { VERSION_UPDATES } from "../../../util/main/versionUpdateList";
+import HeadlessCTAButton from "../../@common/CTABtn/HeadlessCTAButton";
 import Modal from "../../@common/Modal";
 import useUpdateModal from "../hooks/useUpdateModal";
 import * as St from "./style";
@@ -26,7 +27,7 @@ export default function UpdateModal() {
             </St.ContentsWrapper>
           ))}
         </St.UpdateLists>
-        <St.CheckBtn onClick={handleCloseModal}>확인했어요</St.CheckBtn>
+        <HeadlessCTAButton onClick={handleCloseModal}>확인했어요</HeadlessCTAButton>
       </St.Container>
     </Modal>
   );
