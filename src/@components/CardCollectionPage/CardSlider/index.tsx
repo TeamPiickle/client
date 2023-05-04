@@ -19,7 +19,7 @@ const CardSlider = forwardRef(function CardSlider(props: CardSliderProps, ref: R
 
   return (
     <St.Wrapper>
-      <Swiper {...swiperSettings} className="swiper">
+      <Swiper {...swiperSettings}>
         {cardLists.map((cardList) => (
           <SwiperSlide key={cardList._id}>
             <Card openLoginModalHandler={openLoginModalHandler} {...cardList} />
