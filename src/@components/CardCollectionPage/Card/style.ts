@@ -26,7 +26,7 @@ const Container = styled.div`
 const ContentWrapper = styled.p`
   text-align: center;
 
-  word-break: keep-all;
+  white-space: pre-wrap;
 
   ${({ theme }) => theme.newFonts.body1};
   color: ${({ theme }) => theme.newColors.gray900};
