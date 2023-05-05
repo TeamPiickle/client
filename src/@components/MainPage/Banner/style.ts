@@ -5,7 +5,6 @@ const BannerSlider = styled.section`
 
   position: relative;
   height: 21.6rem;
-  margin-top: -2.4rem;
 
   & .slick-track {
     scroll-snap-type: x mandatory;
