@@ -3,7 +3,6 @@ export { default as ImgBanner2 } from "./banner_2.webp";
 export { default as ImgCategoryBanner } from "./categoryBanner.webp";
 export { default as ImgDefaultBigProfile } from "./defaultBigProfile.webp";
 export { default as ImgDefaultProfile } from "./defaultProfile.webp";
-export { default as ImgMedleyBanner } from "./medleyBanner.webp";
 export { default as ImgPiickleLoading } from "./piickleLoading.webp";
 export { default as ImgStripBanner } from "./stripBanner.webp";
 export { default as ImgVoteBanner } from "./voteBanner.webp";

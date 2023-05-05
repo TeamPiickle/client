@@ -3,7 +3,6 @@ import styled from "styled-components";
 const Wrapper = styled.section`
   position: relative;
   height: 100%;
-  padding-top: 3.3rem;
 
   & .swiper {
     width: 100%;
@@ -11,7 +10,7 @@ const Wrapper = styled.section`
   }
 
   & .swiper-slide {
-    height: calc((100% + 3.3rem) * 0.75);
+    height: calc((100% + 3.3rem) * 0.77);
   }
 
   & .swiper-slide:last-child {

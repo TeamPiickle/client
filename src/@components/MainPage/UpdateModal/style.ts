@@ -57,28 +57,3 @@ export const ContentsWrapper = styled.div`
 export const Content = styled.p`
   margin-left: 0.8rem;
 `;
-
-export const CheckBtn = styled.button`
-  display: flex;
-
-  width: 100%;
-  height: 5.8rem;
-  margin-top: 2.6rem;
-
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
-
-  align-items: center;
-  justify-content: center;
-
-  backdrop-filter: blur(0.6rem);
-  ${({ theme }) => theme.newFonts.btn1}
-  color: ${({ theme }) => theme.newColors.white};
-  background-color: ${({ theme }) => theme.newColors.gray900};
-
-  ${({ theme }) => theme.media.desktop`
-  width: 36rem;
-  `};
-`;

@@ -1,6 +1,5 @@
 import "swiper/swiper.css";
 
-import { forwardRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { CardList } from "../../../types/cardCollection";
@@ -8,29 +7,36 @@ import Card from "../Card";
 import LastCard from "../Card/LastCard";
 import useCardSwiper from "../hooks/useCardSwiper";
 import St from "./style";
+
 interface CardSliderProps {
   openLoginModalHandler: () => void;
   cardLists: CardList[];
+  firstCardObsvRef: React.RefObject<HTMLDivElement>;
+  lastCardObsvRef: React.RefObject<HTMLDivElement>;
 }
 
-const CardSlider = forwardRef(function CardSlider(props: CardSliderProps, ref: React.ForwardedRef<HTMLDivElement>) {
-  const { openLoginModalHandler, cardLists } = props;
+const CardSlider = (props: CardSliderProps) => {
+  const { openLoginModalHandler, cardLists, firstCardObsvRef, lastCardObsvRef } = props;
   const { swiperSettings } = useCardSwiper();
 
   return (
     <St.Wrapper>
-      <Swiper {...swiperSettings} className="swiper">
-        {cardLists.map((cardList) => (
+      <Swiper {...swiperSettings}>
+        {cardLists.map((cardList, idx) => (
           <SwiperSlide key={cardList._id}>
-            <Card openLoginModalHandler={openLoginModalHandler} {...cardList} />
+            <Card
+              openLoginModalHandler={openLoginModalHandler}
+              {...cardList}
+              firstCardObsvRef={idx === 0 ? firstCardObsvRef : undefined}
+            />
           </SwiperSlide>
         ))}
         <SwiperSlide>
-          <LastCard ref={ref} />
+          <LastCard ref={lastCardObsvRef} />
         </SwiperSlide>
       </Swiper>
     </St.Wrapper>
   );
-});
+};
 
 export default CardSlider;

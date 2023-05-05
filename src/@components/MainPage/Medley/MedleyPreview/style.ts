@@ -56,31 +56,6 @@ const CardWrapper = styled.p`
   background-color: ${({ theme }) => theme.newColors.white};
 `;
 
-const MoveBtn = styled.button`
-  display: flex;
-
-  width: 100%;
-  height: 5.8rem;
-  margin-top: 1.6rem;
-
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
-
-  align-items: center;
-  justify-content: center;
-
-  backdrop-filter: blur(0.6rem);
-  ${({ theme }) => theme.newFonts.btn1}
-  color: ${({ theme }) => theme.newColors.white};
-  background-color: ${({ theme }) => theme.newColors.gray900};
-
-  ${({ theme }) => theme.media.desktop`
-  width: 36rem;
-  `};
-`;
-
 const St = {
   Container,
   MedleyPreview,
@@ -89,6 +64,5 @@ const St = {
   Description,
   PreviewCards,
   CardWrapper,
-  MoveBtn,
 };
 export default St;

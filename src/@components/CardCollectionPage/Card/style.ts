@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Card = styled.article`
   position: relative;
 
-  margin: 0.8rem;
+  margin: 0 0.8rem 0.8rem;
   height: 100%;
 
   border: 0.1rem solid ${({ theme }) => theme.colors.gray200};
@@ -26,7 +26,7 @@ const Container = styled.div`
 const ContentWrapper = styled.p`
   text-align: center;
 
-  word-break: keep-all;
+  white-space: pre-wrap;
 
   ${({ theme }) => theme.newFonts.body1};
   color: ${({ theme }) => theme.newColors.gray900};
