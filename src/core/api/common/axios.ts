@@ -5,7 +5,7 @@ const real = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
-  withCredentials: true,
+  //withCredentials: true,
 });
 
 real.interceptors.request.use((config) => {
