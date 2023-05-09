@@ -14,7 +14,8 @@ const Wrapper = styled.section`
   }
 
   & .swiper-slide:last-child {
-    height: calc(100vh - 3.3rem);
+    height: auto;
+    overflow: auto;
   }
 `;
 
