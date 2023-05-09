@@ -52,7 +52,7 @@ export default function CardCollectionPage() {
           role="dialog"
           className={GTM_CLASS_NAME.cardRecommendFilter}
           onClick={toggleFilterModal}>
-          카드 추천 받기
+          필터 설정하기
         </HeadlessCTAButton>
       )}
 
