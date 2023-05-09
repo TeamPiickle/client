@@ -67,7 +67,7 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
       {isLoginModalOpen && (
         <LoginModal
           closeHandler={toggleLoginModal}
-          contents={"투표기능인 피클미를"}
+          contents={"투표 기능인 피클미를"}
           voteLoginClassName={GTM_CLASS_NAME.piickleMeLogin}
           voteJoinClassName={GTM_CLASS_NAME.piickleMeJoin}
         />

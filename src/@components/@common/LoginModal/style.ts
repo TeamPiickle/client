@@ -5,15 +5,15 @@ export const Container = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 6rem;
+  gap: 5.5rem;
 
-  margin-top: 6.4rem;
+  margin-top: 6.9rem;
+
   height: 13.6rem;
 `;
 
 export const Wrapper = styled.div`
   display: flex;
-  gap: 2rem;
 `;
 
 export const ModalContents = styled.p`
@@ -26,7 +26,7 @@ export const Buttons = styled.div`
 
   display: flex;
 
-  height: 5.8em;
+  height: 5.8rem;
 `;
 
 export const Button = styled.button`
