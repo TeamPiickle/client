@@ -3,11 +3,10 @@ import styled from "styled-components";
 export const Container = styled.section`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 5.5rem;
 
-  margin-top: 6.9rem;
+  margin-top: 6.4rem;
 
   height: 13.6rem;
 `;
@@ -25,6 +24,7 @@ export const Buttons = styled.div`
   width: 100%;
 
   display: flex;
+  gap: 0.01rem;
 
   height: 5.8rem;
 `;
