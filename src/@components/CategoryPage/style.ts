@@ -3,7 +3,6 @@ import styled from "styled-components";
 const Root = styled.main`
   display: flex;
   flex-direction: column;
-  padding-bottom: 4rem;
 `;
 
 const CategoryBanner = styled.section`
