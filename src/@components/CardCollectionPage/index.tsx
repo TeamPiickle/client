@@ -7,7 +7,7 @@ import Header from "../@common/Header";
 import HeaderMinVer from "../@common/Header/HeaderMinVer";
 import useGTMPage from "../@common/hooks/useGTMPage";
 import useModal from "../@common/hooks/useModal";
-import useScroll from "../@common/hooks/useScroll";
+import useScroll from "../@common/hooks/useScrollToTop";
 import Loading from "../@common/Loading";
 import LoginModal from "../@common/LoginModal";
 import CardSlider from "./CardSlider";
