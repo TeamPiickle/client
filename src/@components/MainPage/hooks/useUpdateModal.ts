@@ -12,13 +12,13 @@ export default function useUpdateModal() {
       sessionStorage.setItem(POPUP_SESSION_KEY, "true");
     }
 
-    const handlePageHide = () => {
+    const handlePageHideForRefresh = () => {
       sessionStorage.removeItem(POPUP_SESSION_KEY);
     };
 
-    window.addEventListener("pagehide", handlePageHide);
+    window.addEventListener("pagehide", handlePageHideForRefresh);
     return () => {
-      window.removeEventListener("pagehide", handlePageHide);
+      window.removeEventListener("pagehide", handlePageHideForRefresh);
     };
   }, [isOpened]);
 
