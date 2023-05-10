@@ -1,5 +1,7 @@
 import { useLocation } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 
+import { isSliderDownState } from "../../core/atom/slider";
 import { CardsTypeLocation } from "../../types/cardCollection";
 import { GTM_CLASS_NAME } from "../../util/const/gtm";
 import HeadlessCTAButton from "../@common/CTABtn/HeadlessCTAButton";
@@ -7,14 +9,13 @@ import Header from "../@common/Header";
 import HeaderMinVer from "../@common/Header/HeaderMinVer";
 import useGTMPage from "../@common/hooks/useGTMPage";
 import useModal from "../@common/hooks/useModal";
-import useScroll from "../@common/hooks/useScroll";
+import useScroll from "../@common/hooks/useScrollToTop";
 import Loading from "../@common/Loading";
 import LoginModal from "../@common/LoginModal";
 import CardSlider from "./CardSlider";
 import FilterModal from "./FilterModal";
 import { useCardLists } from "./hooks/useCardLists";
 import useCTAFilter from "./hooks/useCTAFilter";
-import useHeaderChange from "./hooks/useHeaderChange";
 import * as St from "./style";
 
 export default function CardCollectionPage() {
@@ -25,23 +26,19 @@ export default function CardCollectionPage() {
   const cardsTypeLoaction = location.state as CardsTypeLocation;
   const { cardLists, isLoading, fetchCardListsWithFilter } = useCardLists(cardsTypeLoaction);
 
-  const { isDefaultHeader, intersectionObserverRef: firstCardObsvRef } = useHeaderChange();
   const { isVisibleCTAButton, intersectionObserverRef: lastCardObsvRef } = useCTAFilter();
 
   const { isModalOpen: isFilterModalOpen, toggleModal: toggleFilterModal } = useModal();
   const { isModalOpen: isLoginModalOpen, toggleModal: toggleLoginModal } = useModal();
 
+  const isSliderDown = useRecoilValue(isSliderDownState);
+
   return (
     <St.MainPage>
-      {isDefaultHeader ? <Header /> : <HeaderMinVer />}
+      {isSliderDown ? <HeaderMinVer /> : <Header />}
 
       {!isLoading ? (
-        <CardSlider
-          openLoginModalHandler={toggleLoginModal}
-          cardLists={cardLists}
-          firstCardObsvRef={firstCardObsvRef}
-          lastCardObsvRef={lastCardObsvRef}
-        />
+        <CardSlider openLoginModalHandler={toggleLoginModal} cardLists={cardLists} lastCardObsvRef={lastCardObsvRef} />
       ) : (
         <Loading backgroundColor="transparent" />
       )}
@@ -52,11 +49,11 @@ export default function CardCollectionPage() {
           role="dialog"
           className={GTM_CLASS_NAME.cardRecommendFilter}
           onClick={toggleFilterModal}>
-          카드 추천 받기
+          필터 설정하기
         </HeadlessCTAButton>
       )}
 
-      {isLoginModalOpen && <LoginModal closeHandler={toggleLoginModal} contents={"북마크기능인 마이피클을"} />}
+      {isLoginModalOpen && <LoginModal closeHandler={toggleLoginModal} contents={"북마크 기능인 마이피클을"} />}
       {isFilterModalOpen && (
         <FilterModal closeHandler={toggleFilterModal} fetchCardListsWithFilter={fetchCardListsWithFilter} />
       )}

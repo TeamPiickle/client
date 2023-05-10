@@ -11,7 +11,7 @@ import { subHeaderInfo } from "../../../util/join/subHeaderInfo";
 import Footer from "../../@common/Footer";
 import useGTMPage from "../../@common/hooks/useGTMPage";
 import useOutClickCloser from "../../@common/hooks/useOutClickCloser";
-import useScroll from "../../@common/hooks/useScroll";
+import useScroll from "../../@common/hooks/useScrollToTop";
 import SubHeader from "../../@common/SubHeader";
 import { UserInfoFormDataContext } from "..";
 import { ModalContainerWithAnimation, St } from "./style";
