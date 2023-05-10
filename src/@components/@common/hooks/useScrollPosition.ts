@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 const useScrollPosition = () => {
   const lastScrollPositionRef = useRef(0);
-  const [isScrollingDown, setIsScrollingDown] = useState(true);
+  const [isScrollingDown, setIsScrollingDown] = useState(false);
   const [isScrollTop, setIsScrollTop] = useState(true);
 
   useEffect(() => {

@@ -1,5 +1,7 @@
 import { useLocation } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 
+import { isSliderDownState } from "../../core/atom/slider";
 import { CardsTypeLocation } from "../../types/cardCollection";
 import { GTM_CLASS_NAME } from "../../util/const/gtm";
 import HeadlessCTAButton from "../@common/CTABtn/HeadlessCTAButton";
@@ -14,7 +16,6 @@ import CardSlider from "./CardSlider";
 import FilterModal from "./FilterModal";
 import { useCardLists } from "./hooks/useCardLists";
 import useCTAFilter from "./hooks/useCTAFilter";
-import useHeaderChange from "./hooks/useHeaderChange";
 import * as St from "./style";
 
 export default function CardCollectionPage() {
@@ -25,23 +26,19 @@ export default function CardCollectionPage() {
   const cardsTypeLoaction = location.state as CardsTypeLocation;
   const { cardLists, isLoading, fetchCardListsWithFilter } = useCardLists(cardsTypeLoaction);
 
-  const { isDefaultHeader, intersectionObserverRef: firstCardObsvRef } = useHeaderChange();
   const { isVisibleCTAButton, intersectionObserverRef: lastCardObsvRef } = useCTAFilter();
 
   const { isModalOpen: isFilterModalOpen, toggleModal: toggleFilterModal } = useModal();
   const { isModalOpen: isLoginModalOpen, toggleModal: toggleLoginModal } = useModal();
 
+  const isSliderDown = useRecoilValue(isSliderDownState);
+
   return (
     <St.MainPage>
-      {isDefaultHeader ? <Header /> : <HeaderMinVer />}
+      {isSliderDown ? <HeaderMinVer /> : <Header />}
 
       {!isLoading ? (
-        <CardSlider
-          openLoginModalHandler={toggleLoginModal}
-          cardLists={cardLists}
-          firstCardObsvRef={firstCardObsvRef}
-          lastCardObsvRef={lastCardObsvRef}
-        />
+        <CardSlider openLoginModalHandler={toggleLoginModal} cardLists={cardLists} lastCardObsvRef={lastCardObsvRef} />
       ) : (
         <Loading backgroundColor="transparent" />
       )}
