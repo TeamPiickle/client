@@ -17,7 +17,7 @@ export default function UpdateModal() {
         <St.Description>
           Piickle 유저분들의 피드백을 바탕으로 더 사용하기 좋게 만들었어요😎
           <br />
-          여러분이 더 편할 수 있도록 돕기 위한 알림이니 처음 보셨다면 꼭 읽어주세요! <br />
+          피클을 잘 사용할 수 있도록 돕는 내용이니 처음 보셨다면 꼭 읽어주세요! <br />
           업데이트 안내는 약 1주일동안만 보일 예정으로 이해 부탁 드릴게요!
         </St.Description>
         <St.UpdateLists>

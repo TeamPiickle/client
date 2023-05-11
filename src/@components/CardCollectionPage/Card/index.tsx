@@ -12,16 +12,15 @@ interface LoginCheckProps {
   content: string;
   isBookmark: boolean;
   tags: string[];
-  firstCardObsvRef?: React.RefObject<HTMLDivElement>;
 }
 
 const Card = (props: LoginCheckProps) => {
-  const { _id, content, isBookmark, tags, openLoginModalHandler, firstCardObsvRef } = props;
+  const { _id, content, isBookmark, tags, openLoginModalHandler } = props;
 
   const { isBookmarked, handleClickBookmark } = useCardBookmark(isBookmark, openLoginModalHandler);
 
   return (
-    <St.Card ref={firstCardObsvRef} className={GTM_CLASS_NAME.cardSwipe}>
+    <St.Card className={GTM_CLASS_NAME.cardSwipe}>
       <St.Container>
         <St.ContentWrapper className={GTM_CLASS_NAME.cardSwipe}>{content}</St.ContentWrapper>
         <St.TagsWrapper>

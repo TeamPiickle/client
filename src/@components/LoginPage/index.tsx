@@ -1,7 +1,7 @@
 import Footer from "../@common/Footer";
 import Header from "../@common/Header";
 import useGTMPage from "../@common/hooks/useGTMPage";
-import useScroll from "../@common/hooks/useScroll";
+import useScroll from "../@common/hooks/useScrollToTop";
 import LoginForm from "./LoginForm";
 
 export default function LoginPage() {

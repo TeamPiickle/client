@@ -1,11 +1,12 @@
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { Pagination } from "swiper";
 import { SwiperProps } from "swiper/react";
 
-import { sliderIdxState } from "../../../core/atom/slider";
+import { isSliderDownState, sliderIdxState } from "../../../core/atom/slider";
 
 export default function useCardSwiper() {
   const [sliderIdx, setSliderIdx] = useRecoilState(sliderIdxState);
+  const setIsSliderDown = useSetRecoilState(isSliderDownState);
 
   const swiperSettings: SwiperProps = {
     slidesPerView: "auto",
@@ -13,7 +14,10 @@ export default function useCardSwiper() {
     direction: "vertical",
     modules: [Pagination],
     initialSlide: sliderIdx,
-    onSlideChange: (swiper) => setSliderIdx(swiper.activeIndex),
+    onSlideChange: (swiper) => {
+      setIsSliderDown(swiper.activeIndex > sliderIdx);
+      setSliderIdx(swiper.activeIndex);
+    },
   };
 
   return { swiperSettings };

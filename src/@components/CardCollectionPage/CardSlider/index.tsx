@@ -11,24 +11,19 @@ import St from "./style";
 interface CardSliderProps {
   openLoginModalHandler: () => void;
   cardLists: CardList[];
-  firstCardObsvRef: React.RefObject<HTMLDivElement>;
   lastCardObsvRef: React.RefObject<HTMLDivElement>;
 }
 
 const CardSlider = (props: CardSliderProps) => {
-  const { openLoginModalHandler, cardLists, firstCardObsvRef, lastCardObsvRef } = props;
+  const { openLoginModalHandler, cardLists, lastCardObsvRef } = props;
   const { swiperSettings } = useCardSwiper();
 
   return (
     <St.Wrapper>
       <Swiper {...swiperSettings}>
-        {cardLists.map((cardList, idx) => (
+        {cardLists.map((cardList) => (
           <SwiperSlide key={cardList._id}>
-            <Card
-              openLoginModalHandler={openLoginModalHandler}
-              {...cardList}
-              firstCardObsvRef={idx === 0 ? firstCardObsvRef : undefined}
-            />
+            <Card openLoginModalHandler={openLoginModalHandler} {...cardList} />
           </SwiperSlide>
         ))}
         <SwiperSlide>

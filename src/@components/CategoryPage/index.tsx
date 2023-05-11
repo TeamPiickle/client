@@ -10,7 +10,7 @@ import Header from "../@common/Header";
 import HeadingTitleContainer from "../@common/HeadingTitleContainer";
 import useGTMPage from "../@common/hooks/useGTMPage";
 import useNavigateCardCollection, { NavigateCardCollectionBestType } from "../@common/hooks/useNavigateCardCollection";
-import useScroll from "../@common/hooks/useScroll";
+import useScroll from "../@common/hooks/useScrollToTop";
 import CategoryContents from "./CategoryContents";
 import St from "./style";
 
