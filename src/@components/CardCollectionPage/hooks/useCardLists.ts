@@ -102,16 +102,25 @@ function getSWRFetchingKeyByLocation(cardsTypeLocation: CardsTypeLocation) {
       );
       return `${PATH.CATEGORIES_}${PATH.CATEGORIES_CARDS}?${searchParams}`;
     }
+    default: {
+      const searchParams = qs.stringify(
+        {
+          search: ["태그"],
+        },
+        { arrayFormat: "repeat" },
+      );
+      return `${PATH.CATEGORIES_}${PATH.CATEGORIES_CARDS}?${searchParams}`;
+    }
   }
 }
 
 function getSWROptionsByLocation(cardsTypeLocation: CardsTypeLocation) {
   switch (cardsTypeLocation.type) {
-    case LocationType.CATEGORY:
-    case LocationType.ALL:
-    case LocationType.FILTER:
-      return { revalidateOnMount: true, dedupingInterval: 700 };
-    default:
+    case LocationType.BEST:
+    case LocationType.BOOKMARK:
+    case LocationType.MEDLEY:
       return {};
+    default:
+      return { revalidateOnMount: true, dedupingInterval: 700 };
   }
 }
