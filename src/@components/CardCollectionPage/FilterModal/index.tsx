@@ -72,7 +72,7 @@ export default function FilterModal(props: FilterModalProps) {
 
       <St.SubmitBtnWrapper>
         <St.SubmitBtn type="submit" className={GTM_CLASS_NAME.filterStart} onClick={submitFilter}>
-          카드 추천 받기
+          필터 적용하기
         </St.SubmitBtn>
       </St.SubmitBtnWrapper>
     </Modal>
