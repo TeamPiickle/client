@@ -18,7 +18,7 @@ export default function DeletePage() {
 
   const outClickCloserRef = useOutClickCloser(() => {
     setIsOpenAlert(false);
-  });
+  }, false);
 
   const [ischecked, setIsChecked] = useState(false);
   const [isFeedBackItems, setIsFeedBackItems] = useState<boolean[]>([false, false, false, false, false]);

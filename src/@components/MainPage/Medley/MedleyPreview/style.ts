@@ -1,23 +1,8 @@
-import styled, { keyframes } from "styled-components";
-
-const ani = keyframes`
-  0% {
-    height: 0;
-    opacity: 0;
-  }
-  50% {
-    height: 37.7rem;
-  }
-  100% {
-    opacity: 1;
-  }
-  `;
+import styled from "styled-components";
 
 const Container = styled.div`
   width: 100%;
   height: 37.7rem;
-
-  animation: ${ani} 0.8s ease-in-out;
 
   ${({ theme }) => theme.media.desktop`
   width: 36rem;
@@ -71,31 +56,6 @@ const CardWrapper = styled.p`
   background-color: ${({ theme }) => theme.newColors.white};
 `;
 
-const MoveBtn = styled.button`
-  display: flex;
-
-  width: 100%;
-  height: 5.8rem;
-  margin-top: 1.6rem;
-
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
-
-  align-items: center;
-  justify-content: center;
-
-  backdrop-filter: blur(0.6rem);
-  ${({ theme }) => theme.newFonts.btn1}
-  color: ${({ theme }) => theme.newColors.white};
-  background-color: ${({ theme }) => theme.newColors.gray900};
-
-  ${({ theme }) => theme.media.desktop`
-  width: 36rem;
-  `};
-`;
-
 const St = {
   Container,
   MedleyPreview,
@@ -104,6 +64,5 @@ const St = {
   Description,
   PreviewCards,
   CardWrapper,
-  MoveBtn,
 };
 export default St;

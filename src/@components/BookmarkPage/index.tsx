@@ -3,9 +3,10 @@ import Footer from "../@common/Footer";
 import Header from "../@common/Header";
 import HeadingTitleContainer from "../@common/HeadingTitleContainer";
 import useGTMPage from "../@common/hooks/useGTMPage";
+import EmptyItem from "./EmptyItem";
 import { useUserBookmarks } from "./hooks/useUserBookmarks";
 import MyPiickleItem from "./MyPiickleItem";
-import { St } from "./style";
+import * as St from "./style";
 
 const bookmarkHeadingTitles: HeadingTitle = {
   title: "MY Piickle",
@@ -19,16 +20,22 @@ export default function BookmarkPage() {
   const { userBookmarks } = useUserBookmarks();
 
   return (
-    <main>
-      <Header />
-      <HeadingTitleContainer headingTitles={bookmarkHeadingTitles} />
-      <St.List>
+    <St.Root>
+      <div>
+        <Header />
+        <HeadingTitleContainer headingTitles={bookmarkHeadingTitles} />
         {userBookmarks &&
-          userBookmarks.data.map((myPiickle, idx: number) => (
-            <MyPiickleItem key={myPiickle.cardId} cardId={myPiickle.cardId} content={myPiickle.content} idx={idx} />
+          (userBookmarks.data.length === 0 ? (
+            <EmptyItem />
+          ) : (
+            <St.List>
+              {userBookmarks.data.map((myPiickle, idx: number) => (
+                <MyPiickleItem key={myPiickle.cardId} cardId={myPiickle.cardId} content={myPiickle.content} idx={idx} />
+              ))}
+            </St.List>
           ))}
-      </St.List>
+      </div>
       <Footer />
-    </main>
+    </St.Root>
   );
 }

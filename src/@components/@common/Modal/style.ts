@@ -1,56 +1,115 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-const Root = styled.div`
+export const Root = styled.div`
   position: absolute;
   top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
+
+  width: 100vw;
+  ${({ theme }) => theme.media.desktop`
+    width: 36rem;
+  `};
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  min-height: -webkit-fill-available;
 
   z-index: 10;
 
   background-color: rgb(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
-  align-items: center;
 `;
 
-const GrayRoot = styled(Root)``;
+export const fadeOut = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 
-const WhiteRoot = styled(Root)`
+export const GrayRoot = styled(Root)`
+  animation: ${fadeOut} 0.8s ease-in-out;
+`;
+
+export const WhiteRoot = styled(Root)`
+  align-items: flex-end;
+
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
   min-height: -webkit-fill-available;
+
+  animation: ${fadeOut} 0.8s ease-in-out;
 `;
 
-const DefaultRoot = styled(Root)`
+export const DefaultRoot = styled(Root)`
+  align-items: center;
+
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
   min-height: -webkit-fill-available;
   padding: 1.6rem;
 `;
 
-const GrayModal = styled.section`
+export const bottomUp = keyframes`
+  from {
+    transform: translateY(60rem);
+  }
+  to {
+    transform: translateY(0);
+  }
+`;
+
+const CenterModal = styled.section`
+  position: fixed;
+  top: 50%;
+  bottom: 50%;
+
+  transform: translateX(-50%);
+  transform: translateY(-50%);
+`;
+
+export const GrayCenterModal = styled(CenterModal)`
+  width: 100%;
+  ${({ theme }) => theme.media.desktop`
+    width: 36rem;
+  `};
+  height: 20rem;
+
+  background-color: ${({ theme }) => theme.newColors.gray100};
+`;
+
+export const GrayModal = styled.section`
   position: fixed;
   bottom: 0;
 
   width: 100%;
   ${({ theme }) => theme.media.desktop`
-  width: 36rem;
+    width: 36rem;
   `};
 
   background-color: ${({ theme }) => theme.newColors.gray100};
+
+  animation: ${bottomUp} 0.6s ease-in-out;
 `;
 
-const WhiteModal = styled.section`
+export const WhiteModal = styled.section`
   position: relative;
+
+  width: 100%;
+  ${({ theme }) => theme.media.desktop`
+    width: 36rem;
+  `};
 
   background-color: ${({ theme }) => theme.newColors.white};
 
   padding: 2rem 0 0;
+
+  animation: ${bottomUp} 0.6s ease-in-out;
 `;
 
-const DefaultModal = styled.section`
+export const DefaultModal = styled.section`
   position: relative;
 
   background-color: ${({ theme }) => theme.colors.sub_green5};
@@ -59,7 +118,7 @@ const DefaultModal = styled.section`
   padding: 2rem 1.6rem;
 `;
 
-const CloseBtn = styled.button`
+export const CloseBtn = styled.button`
   position: absolute;
   right: 1.6rem;
   top: 2rem;
@@ -72,16 +131,4 @@ const CloseBtn = styled.button`
   z-index: 10;
 `;
 
-const ModalContents = styled.main``;
-
-const St = {
-  GrayRoot,
-  GrayModal,
-  WhiteRoot,
-  WhiteModal,
-  DefaultRoot,
-  DefaultModal,
-  CloseBtn,
-  ModalContents,
-};
-export default St;
+export const ModalContents = styled.main``;

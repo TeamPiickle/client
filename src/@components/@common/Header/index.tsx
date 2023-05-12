@@ -1,18 +1,15 @@
-import { useLocation } from "react-router-dom";
-
 import { IcHamburger, IcLogo } from "../../../asset/icon";
 import { routePaths } from "../../../core/routes/path";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import useModal from "../hooks/useModal";
 import MenuBar from "../MenuBar";
-import { St } from "./style";
+import * as St from "./style";
 
 export default function Header() {
-  const { pathname } = useLocation();
   const { isModalOpen, toggleModal } = useModal();
 
   return (
-    <St.HeaderWrapper iscardview={pathname === routePaths.CardCollection}>
+    <St.HeaderWrapper>
       <St.Link to={routePaths.Main} className={GTM_CLASS_NAME.mainPiickleLogo}>
         <IcLogo aria-label="피클" />
       </St.Link>

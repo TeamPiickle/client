@@ -1,58 +1,37 @@
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import "swiper/swiper.css";
 
-import { useRef } from "react";
-import Slider from "react-slick";
-import { useRecoilState } from "recoil";
+import { Swiper, SwiperSlide } from "swiper/react";
 
-import { sliderIdxState } from "../../../core/atom/slider";
 import { CardList } from "../../../types/cardCollection";
-import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import Card from "../Card";
 import LastCard from "../Card/LastCard";
-import { St } from "./style";
-
-const sliderSettings = {
-  className: "center",
-  centerMode: true,
-  arrows: false,
-  dots: false,
-  infinite: false,
-  variableWidth: true,
-  slidesToScroll: 1,
-};
+import useCardSwiper from "../hooks/useCardSwiper";
+import St from "./style";
 
 interface CardSliderProps {
-  openFilterModalHandler: () => void;
   openLoginModalHandler: () => void;
   cardLists: CardList[];
+  lastCardObsvRef: React.RefObject<HTMLDivElement>;
 }
 
-export default function CardSlider(props: CardSliderProps) {
-  const { openFilterModalHandler, openLoginModalHandler, cardLists } = props;
-
-  const [sliderIdx, setSliderIdx] = useRecoilState(sliderIdxState);
-  const sliderRef = useRef<Slider | null>(null);
+const CardSlider = (props: CardSliderProps) => {
+  const { openLoginModalHandler, cardLists, lastCardObsvRef } = props;
+  const { swiperSettings } = useCardSwiper();
 
   return (
     <St.Wrapper>
-      <Slider
-        {...sliderSettings}
-        initialSlide={sliderIdx}
-        afterChange={(idx: number) => setSliderIdx(idx)}
-        ref={sliderRef}>
+      <Swiper {...swiperSettings}>
         {cardLists.map((cardList) => (
-          <Card key={cardList._id} openLoginModalHandler={openLoginModalHandler} {...cardList} />
+          <SwiperSlide key={cardList._id}>
+            <Card openLoginModalHandler={openLoginModalHandler} {...cardList} />
+          </SwiperSlide>
         ))}
-        <LastCard />
-      </Slider>
-
-      <St.IcFilterBtn
-        aria-label="카드 추천 필터"
-        role="dialog"
-        className={GTM_CLASS_NAME.cardRecommendFilter}
-        onClick={openFilterModalHandler}
-      />
+        <SwiperSlide>
+          <LastCard ref={lastCardObsvRef} />
+        </SwiperSlide>
+      </Swiper>
     </St.Wrapper>
   );
-}
+};
+
+export default CardSlider;

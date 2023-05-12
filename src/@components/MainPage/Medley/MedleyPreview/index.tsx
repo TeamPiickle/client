@@ -1,6 +1,7 @@
 import { LocationType } from "../../../../types/cardCollection";
 import { MedleyCard } from "../../../../types/main";
 import { GTM_CLASS_NAME } from "../../../../util/const/gtm";
+import HeadlessCTAButton from "../../../@common/CTABtn/HeadlessCTAButton";
 import useNavigateCardCollection, {
   NavigateCardCollectionMedleyType,
 } from "../../../@common/hooks/useNavigateCardCollection";
@@ -19,7 +20,7 @@ export default function MedleyPreview(props: MedleyPreviewProps) {
 
   return (
     <Modal
-      theme="GRAY"
+      theme="GRAY_BOTTOM"
       closeOpacityClassName={GTM_CLASS_NAME[`medleyPreviewClose${GTM_MEDLERY_KEY}`]}
       closeBtnClassName={GTM_CLASS_NAME[`medleyPreviewClose${GTM_MEDLERY_KEY}`]}
       closeHandler={closeHandler}>
@@ -33,11 +34,11 @@ export default function MedleyPreview(props: MedleyPreviewProps) {
               <St.CardWrapper key={i}>{medleyCard.previewCards[i].content}</St.CardWrapper>
             ))}
           </St.PreviewCards>
-          <St.MoveBtn
+          <HeadlessCTAButton
             className={GTM_CLASS_NAME[`medleyPreview${GTM_MEDLERY_KEY}`]}
             onClick={() => navigateCardCollection(medleyCard._id)}>
             카드 보기
-          </St.MoveBtn>
+          </HeadlessCTAButton>
         </St.MedleyPreview>
       </St.Container>
     </Modal>

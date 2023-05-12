@@ -7,7 +7,7 @@ import { JOIN_FORM_DATA_KEY } from "../../../util/join/formData";
 import { subHeaderInfo } from "../../../util/join/subHeaderInfo";
 import { JOIN_PROFILE_ALERT_KEY, JOIN_PROFILE_ALERT_MESSAGE } from "../../../util/join/userProfileErrorMessage";
 import Footer from "../../@common/Footer";
-import useScroll from "../../@common/hooks/useScroll";
+import useScroll from "../../@common/hooks/useScrollToTop";
 import SubHeader from "../../@common/SubHeader";
 import { UserInfoFormDataContext } from "..";
 import ProfileBirth from "./ProfileBirth";

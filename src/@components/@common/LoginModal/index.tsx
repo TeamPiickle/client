@@ -2,9 +2,8 @@ import { useNavigate } from "react-router-dom";
 
 import { routePaths } from "../../../core/routes/path";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
-import CustomFullHeart from "../../CardCollectionPage/CustomFullHeart";
 import Modal from "../Modal";
-import { St } from "./style";
+import * as St from "./style";
 
 interface LoginCheckProps {
   closeHandler: () => void;
@@ -17,14 +16,10 @@ export default function LoginModal(props: LoginCheckProps) {
   const navigate = useNavigate();
 
   return (
-    <Modal closeHandler={closeHandler}>
+    <Modal theme="GRAY_CENTER" closeHandler={closeHandler}>
       <St.Container role="dialog">
         <St.Wrapper>
-          <St.HeartWrapper>
-            <St.IcEmptyHeart />
-            <CustomFullHeart />
-          </St.HeartWrapper>
-          <St.ModalContents>로그인을 하시면 {contents} 이용할 수 있어요!</St.ModalContents>
+          <St.ModalContents>로그인을 하시면 {contents} 이용할 수 있어요</St.ModalContents>
         </St.Wrapper>
         <St.Buttons>
           <St.Button
