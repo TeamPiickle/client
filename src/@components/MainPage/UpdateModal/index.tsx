@@ -12,7 +12,7 @@ export default function UpdateModal() {
   return (
     <Modal theme="GRAY_BOTTOM" closeHandler={handleCloseModal} isNoCloseBtn={true}>
       <St.Container>
-        <St.Tag>23.04.20 업데이트</St.Tag>
+        <St.Tag>23.05.12 업데이트</St.Tag>
         <St.Title>피클 업데이트 안내</St.Title>
         <St.Description>
           Piickle 유저분들의 피드백을 바탕으로 더 사용하기 좋게 만들었어요😎
