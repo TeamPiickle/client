@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+//import { lazy, Suspense } from "react";
 
 import CTABtn from "../@common/CTABtn";
 import Footer from "../@common/Footer";
@@ -12,7 +12,7 @@ import PiickleMe from "./PiickleMe";
 import StripBanner from "./StripBanner";
 import { St } from "./style";
 
-const UpdateModal = lazy(() => import("./UpdateModal"));
+//const UpdateModal = lazy(() => import("./UpdateModal"));
 
 export default function MainPage() {
   useGTMPage();
@@ -28,9 +28,9 @@ export default function MainPage() {
       <PiickleMe />
       <Footer />
       <CTABtn />
-      <Suspense>
+      {/* <Suspense>
         <UpdateModal />
-      </Suspense>
+      </Suspense> */}
     </St.MainPage>
   );
 }
