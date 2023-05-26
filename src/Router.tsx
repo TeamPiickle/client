@@ -1,23 +1,23 @@
+import { lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import {
-  AgreePage,
-  BookmarkPage,
-  CardCollectionPage,
-  CategoryPage,
-  DeletePage,
-  // EmailAuthenticationPage,
-  // EmailConfirmPage,
-  Error404Page,
-  LoginPage,
-  MainPage,
-  MyPage,
-  UserInfoPage,
-  UserProfilePage,
-  VotePage,
-} from "./@components";
 import JoinPage from "./@components/JoinPage";
 import { routePaths } from "./core/routes/path";
+
+const MainPage = lazy(() => import("../src/@components/MainPage/index"));
+const AgreePage = lazy(() => import("../src/@components/JoinPage/AgreePage/index"));
+const BookmarkPage = lazy(() => import("../src/@components/BookmarkPage/index"));
+const CardCollectionPage = lazy(() => import("../src/@components/CardCollectionPage/index"));
+const CategoryPage = lazy(() => import("../src/@components/CategoryPage/index"));
+const DeletePage = lazy(() => import("../src/@components/DeletePage/index"));
+// const EmailAuthenticationPage = lazy(() => import("../src/@components/EmailAuthenticationPage/index"));
+// const EmailConfirmPage = lazy(() => import("../src/@components/EmailConfirmPage/index"));
+const Error404Page = lazy(() => import("../src/@components/Error404Page/index"));
+const LoginPage = lazy(() => import("../src/@components/LoginPage/index"));
+const MyPage = lazy(() => import("../src/@components/MyPage/index"));
+const UserInfoPage = lazy(() => import("../src/@components/JoinPage/UserInfoPage/index"));
+const UserProfilePage = lazy(() => import("../src/@components/JoinPage/UserProfilePage/index"));
+const VotePage = lazy(() => import("../src/@components/VotePage/index"));
 
 export default function Router() {
   return (
