@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 
 import CategoryContents from "../../../CategoryPage/CategoryContents";
 import St from "./style";
@@ -13,4 +13,4 @@ const LastCard = forwardRef(function LastCard(_, ref: React.ForwardedRef<HTMLDiv
   );
 });
 
-export default LastCard;
+export default React.memo(LastCard);
