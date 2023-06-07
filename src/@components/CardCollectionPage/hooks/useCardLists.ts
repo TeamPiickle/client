@@ -15,7 +15,7 @@ interface ExtendedCardList extends Array<CardList> {
 export function useCardLists(cardsTypeLocation: CardsTypeLocation) {
   const fetchingKeyByLocation = getSWRFetchingKeyByLocation(cardsTypeLocation);
   const optionsByLocation = getSWROptionsByLocation(cardsTypeLocation);
-  const { data, error } = useSWR<PiickleSWRResponse<ExtendedCardList>>(
+  const { data } = useSWR<PiickleSWRResponse<ExtendedCardList>>(
     fetchingKeyByLocation,
     realReq.GET_SWR,
     optionsByLocation,
@@ -25,7 +25,6 @@ export function useCardLists(cardsTypeLocation: CardsTypeLocation) {
 
   return {
     cardLists: getReturnCardLists(data, cardsTypeLocation) ?? [],
-    isLoading: !error && !data,
     fetchCardListsWithFilter,
   };
 }
@@ -89,8 +88,8 @@ function getSWROptionsByLocation(cardsTypeLocation: CardsTypeLocation) {
     case LocationType.BEST:
     case LocationType.BOOKMARK:
     case LocationType.MEDLEY:
-      return {};
+      return { suspense: true };
     default:
-      return { revalidateOnMount: true, dedupingInterval: 700 };
+      return { suspense: true, revalidateOnMount: true, dedupingInterval: 700 };
   }
 }

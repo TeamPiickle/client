@@ -9,6 +9,7 @@ import {
   // EmailAuthenticationPage,
   // EmailConfirmPage,
   Error404Page,
+  JoinPage,
   LoginPage,
   MainPage,
   MyPage,
@@ -16,7 +17,7 @@ import {
   UserProfilePage,
   VotePage,
 } from "./@components";
-import JoinPage from "./@components/JoinPage";
+import SuspenseBoundary from "./@components/@common/SuspenseBoundary";
 import { routePaths } from "./core/routes/path";
 
 export default function Router() {
@@ -26,7 +27,16 @@ export default function Router() {
         <Route path={routePaths.Main} element={PublicRoute({ Component: <MainPage /> })} />
         <Route path={routePaths.Login} element={PublicRoute({ Component: <LoginPage />, restricted: true })} />
         <Route path={routePaths.Category} element={PublicRoute({ Component: <CategoryPage /> })} />
-        <Route path={routePaths.CardCollection} element={PublicRoute({ Component: <CardCollectionPage /> })} />
+        <Route
+          path={routePaths.CardCollection}
+          element={PublicRoute({
+            Component: (
+              <SuspenseBoundary>
+                <CardCollectionPage />
+              </SuspenseBoundary>
+            ),
+          })}
+        />
         <Route path={`${routePaths.Vote}${routePaths.VoteId}`} element={PublicRoute({ Component: <VotePage /> })} />
         <Route path={routePaths.MyPage} element={PrivateRoute({ Component: <MyPage /> })} />
         <Route path={routePaths.BookmarkPage} element={PublicRoute({ Component: <BookmarkPage /> })} />

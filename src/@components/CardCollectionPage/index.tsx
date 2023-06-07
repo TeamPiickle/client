@@ -10,7 +10,6 @@ import HeaderMinVer from "../@common/Header/HeaderMinVer";
 import useGTMPage from "../@common/hooks/useGTMPage";
 import useModal from "../@common/hooks/useModal";
 import useScroll from "../@common/hooks/useScrollToTop";
-import Loading from "../@common/Loading";
 import LoginModal from "../@common/LoginModal";
 import CardSlider from "./CardSlider";
 import FilterModal from "./FilterModal";
@@ -24,7 +23,7 @@ export default function CardCollectionPage() {
 
   const location = useLocation();
   const cardsTypeLoaction = location.state as CardsTypeLocation;
-  const { cardLists, isLoading, fetchCardListsWithFilter } = useCardLists(cardsTypeLoaction);
+  const { cardLists, fetchCardListsWithFilter } = useCardLists(cardsTypeLoaction);
 
   const { isVisibleCTAButton, intersectionObserverRef: lastCardObsvRef } = useCTAFilter();
 
@@ -37,11 +36,7 @@ export default function CardCollectionPage() {
     <St.MainPage>
       {isSliderDown ? <HeaderMinVer /> : <Header />}
 
-      {!isLoading ? (
-        <CardSlider openLoginModalHandler={toggleLoginModal} cardLists={cardLists} lastCardObsvRef={lastCardObsvRef} />
-      ) : (
-        <Loading backgroundColor="transparent" />
-      )}
+      <CardSlider openLoginModalHandler={toggleLoginModal} cardLists={cardLists} lastCardObsvRef={lastCardObsvRef} />
 
       {isVisibleCTAButton && (
         <HeadlessCTAButton

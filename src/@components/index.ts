@@ -3,6 +3,7 @@ export { default as CardCollectionPage } from "./CardCollectionPage";
 export { default as CategoryPage } from "./CategoryPage";
 export { default as DeletePage } from "./DeletePage";
 export { default as Error404Page } from "./Error404Page";
+export { default as JoinPage } from "./JoinPage";
 export { default as AgreePage } from "./JoinPage/AgreePage";
 export { default as EmailAuthenticationPage } from "./JoinPage/EmailAuthenticationPage";
 export { default as EmailConfirmPage } from "./JoinPage/EmailConfirmPage";
