@@ -1,17 +1,11 @@
 import qs from "qs";
-import { useEffect } from "react";
-import { useRecoilState } from "recoil";
 import useSWR from "swr";
 
 import { realReq } from "../../../core/api/common/axios";
 import { PATH } from "../../../core/api/common/constants";
-import { filterTagsState } from "../../../core/atom/slider";
 import { CardList, CardsTypeLocation, LocationType } from "../../../types/cardCollection";
 import { PiickleSWRResponse } from "../../../types/remote/swr";
-import { intimacyTags } from "../../../util/cardCollection/filter";
-import useNavigateCardCollection, {
-  NavigateCardCollectionFilterType,
-} from "../../@common/hooks/useNavigateCardCollection";
+import useCardListsFilter from "./useCardListsFilter";
 
 interface ExtendedCardList extends Array<CardList> {
   cardList?: CardList[]; // with category id
@@ -19,9 +13,6 @@ interface ExtendedCardList extends Array<CardList> {
 }
 
 export function useCardLists(cardsTypeLocation: CardsTypeLocation) {
-  const [filterTags, setFilterTags] = useRecoilState(filterTagsState);
-  const navigateCardCollection = useNavigateCardCollection(LocationType.FILTER) as NavigateCardCollectionFilterType;
-
   const fetchingKeyByLocation = getSWRFetchingKeyByLocation(cardsTypeLocation);
   const optionsByLocation = getSWROptionsByLocation(cardsTypeLocation);
   const { data, error } = useSWR<PiickleSWRResponse<ExtendedCardList>>(
@@ -30,28 +21,7 @@ export function useCardLists(cardsTypeLocation: CardsTypeLocation) {
     optionsByLocation,
   );
 
-  useEffect(() => {
-    if (cardsTypeLocation.type !== LocationType.FILTER) setFilterTags((prev) => ({ ...prev, isActive: false }));
-  }, [cardsTypeLocation, setFilterTags]);
-
-  const fetchCardListsWithFilter = () => {
-    // 남 -> 남자, 여 -> 여자
-    const _fetchingCheckedTags = new Set([...filterTags.tags, intimacyTags[filterTags.intimacy[0]]]);
-    if (_fetchingCheckedTags.has("남")) {
-      _fetchingCheckedTags.delete("남");
-      _fetchingCheckedTags.add("남자");
-    }
-    if (_fetchingCheckedTags.has("여")) {
-      _fetchingCheckedTags.delete("여");
-      _fetchingCheckedTags.add("여자");
-    }
-
-    setFilterTags((prevFilterTags) => {
-      return { ...prevFilterTags, isActive: true };
-    });
-
-    navigateCardCollection([..._fetchingCheckedTags]);
-  };
+  const { fetchCardListsWithFilter } = useCardListsFilter(cardsTypeLocation.type !== LocationType.FILTER);
 
   return {
     cardLists: getReturnCardLists(data, cardsTypeLocation) ?? [],
