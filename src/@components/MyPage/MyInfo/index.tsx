@@ -2,13 +2,12 @@ import { IcChangeProfileBtn } from "../../../asset/icon/index";
 import { ImgDefaultProfile } from "../../../asset/image";
 import { myPageApi } from "../../../core/api/myPage";
 import useModal from "../../@common/hooks/useModal";
-import Loading from "../../@common/Loading";
 import useUserProfile from "../hooks/useUserProfile";
 import NicknameModal from "../NicknameModal";
 import { St } from "./style";
 
 export default function MyInfo() {
-  const { userProfile, isLoading, handleNewProfile } = useUserProfile();
+  const { userProfile, handleNewProfile } = useUserProfile();
   const { isModalOpen: isNicknameModalOpen, toggleModal: toggleNicknameModal } = useModal();
 
   const openNicknameModal = () => {
@@ -37,7 +36,6 @@ export default function MyInfo() {
     handleNewProfile();
   };
 
-  if (isLoading) return <Loading backgroundColor="white" />;
   return (
     <St.MyInfoContainer>
       <St.Profile>

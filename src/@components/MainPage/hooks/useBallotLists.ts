@@ -6,10 +6,9 @@ import { BallotList } from "../../../types/main";
 import { PiickleSWRResponse } from "../../../types/remote/swr";
 
 export function useBallotLists() {
-  const { data, error } = useSWR<PiickleSWRResponse<BallotList[]>>(`${PATH.BALLOTS}`, realReq.GET_SWR);
+  const { data } = useSWR<PiickleSWRResponse<BallotList[]>>(`${PATH.BALLOTS}`, realReq.GET_SWR);
 
   return {
     ballotLists: data?.data,
-    isLoading: !error && !data,
   };
 }
