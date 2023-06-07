@@ -4,7 +4,6 @@ import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import useNavigateCardCollection, {
   NavigateCardCollectionCategoryType,
 } from "../../@common/hooks/useNavigateCardCollection";
-import Loading from "../../@common/Loading";
 import { useCategoryLists } from "../../MainPage/hooks/useCategoryLists";
 import { St } from "./style";
 
@@ -12,7 +11,6 @@ export default function CategoryContents() {
   const { categoryLists } = useCategoryLists();
   const navigateCardCollection = useNavigateCardCollection(LocationType.CATEGORY) as NavigateCardCollectionCategoryType;
 
-  if (categoryLists?.data === undefined) return <Loading backgroundColor="transparent" />;
   return (
     <St.FlexContainer>
       <St.CategoryItemContainer>
