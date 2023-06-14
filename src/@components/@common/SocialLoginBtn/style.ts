@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const LoginBtn = styled.div<{ bgColor: string }>`
+export const LoginBtn = styled.button<{ bgColor: string }>`
   width: 32.8rem;
   height: 5rem;
 
