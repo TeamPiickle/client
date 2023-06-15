@@ -47,7 +47,7 @@ export const St = {
 
   LoginBtn: styled.button`
     width: 100%;
-    height: 5rem;
+    height: 5.3rem;
 
     display: flex;
     justify-content: center;
@@ -56,7 +56,7 @@ export const St = {
     margin-top: 2.4rem;
 
     background-color: ${({ theme }) => theme.newColors.gray900};
-    border-radius: 5rem;
+    border-radius: 0.8rem;
 
     ${({ theme }) => theme.newFonts.btn1};
     color: ${({ theme }) => theme.newColors.white};
