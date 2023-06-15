@@ -1,9 +1,12 @@
+import { lazy } from "react";
+
 import { IcHamburger, IcLogo } from "../../../asset/icon";
 import { routePaths } from "../../../core/routes/path";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import useModal from "../hooks/useModal";
-import MenuBar from "../MenuBar";
 import * as St from "./style";
+
+const MenuBar = lazy(() => import("../MenuBar"));
 
 export default function Header() {
   const { isModalOpen, toggleModal } = useModal();
@@ -16,6 +19,7 @@ export default function Header() {
       <St.HamburgerContainer className={GTM_CLASS_NAME.mainMenuBtn} isClicked={isModalOpen}>
         <IcHamburger aria-label="메뉴" className={GTM_CLASS_NAME.mainMenuBtn} onClick={toggleModal} />
       </St.HamburgerContainer>
+
       {isModalOpen && <MenuBar closeMenuBar={toggleModal} />}
     </St.HeaderWrapper>
   );

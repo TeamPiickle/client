@@ -4,6 +4,7 @@ import CTABtn from "../@common/CTABtn";
 import Footer from "../@common/Footer";
 import Header from "../@common/Header";
 import useGTMPage from "../@common/hooks/useGTMPage";
+import SuspenseBoundary from "../@common/SuspenseBoundary";
 import Banner from "./Banner";
 import BestPiickle from "./BestPiickle";
 import Medley from "./Medley";
@@ -20,17 +21,29 @@ export default function MainPage() {
   return (
     <St.MainPage>
       <Header />
+
       <Banner />
-      <BestPiickle />
-      <MoodPiickle />
-      <Medley />
+
+      <SuspenseBoundary bgColor="white">
+        <BestPiickle />
+      </SuspenseBoundary>
+
+      <SuspenseBoundary bgColor="white">
+        <MoodPiickle />
+      </SuspenseBoundary>
+
+      <SuspenseBoundary bgColor="white">
+        <Medley />
+      </SuspenseBoundary>
+
       <StripBanner />
-      <PiickleMe />
+
+      <SuspenseBoundary bgColor="white">
+        <PiickleMe />
+      </SuspenseBoundary>
+
       <Footer />
       <CTABtn />
-      {/* <Suspense>
-        <UpdateModal />
-      </Suspense> */}
     </St.MainPage>
   );
 }

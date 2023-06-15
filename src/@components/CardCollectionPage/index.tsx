@@ -11,6 +11,7 @@ import useGTMPage from "../@common/hooks/useGTMPage";
 import useModal from "../@common/hooks/useModal";
 import useScroll from "../@common/hooks/useScrollToTop";
 import LoginModal from "../@common/LoginModal";
+import SuspenseBoundary from "../@common/SuspenseBoundary";
 import CardSlider from "./CardSlider";
 import FilterModal from "./FilterModal";
 import { useCardLists } from "./hooks/useCardLists";
@@ -18,6 +19,14 @@ import useCTAFilter from "./hooks/useCTAFilter";
 import * as St from "./style";
 
 export default function CardCollectionPage() {
+  return (
+    <SuspenseBoundary>
+      <CardCollectionContent />
+    </SuspenseBoundary>
+  );
+}
+
+function CardCollectionContent() {
   useGTMPage();
   useScroll();
 

@@ -17,7 +17,6 @@ import {
   UserProfilePage,
   VotePage,
 } from "./@components";
-import SuspenseBoundary from "./@components/@common/SuspenseBoundary";
 import { routePaths } from "./core/routes/path";
 
 export default function Router() {
@@ -30,11 +29,7 @@ export default function Router() {
         <Route
           path={routePaths.CardCollection}
           element={PublicRoute({
-            Component: (
-              <SuspenseBoundary>
-                <CardCollectionPage />
-              </SuspenseBoundary>
-            ),
+            Component: <CardCollectionPage />,
           })}
         />
         <Route path={`${routePaths.Vote}${routePaths.VoteId}`} element={PublicRoute({ Component: <VotePage /> })} />

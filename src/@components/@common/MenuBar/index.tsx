@@ -20,7 +20,7 @@ export default function MenuBar(props: MenuBarProps) {
 
   const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
 
-  const { ballotLists } = useBallotLists();
+  const { ballotLists } = useBallotLists(true);
   const navigateCardCollection = useNavigateCardCollection(LocationType.ALL) as NavigateCardCollectionAllType;
 
   const moveCardCollection = () => {
