@@ -19,6 +19,7 @@ import {
   VotePage,
 } from "./@components";
 import JoinPage from "./@components/JoinPage";
+import useAuth from "./core/hooks/useAuth";
 import { routePaths } from "./core/routes/path";
 
 export default function Router() {
@@ -56,10 +57,10 @@ interface PublicRouteProps {
 type PrivateRouteProps = Omit<PublicRouteProps, "restricted">;
 
 const PublicRoute = ({ Component, restricted = false }: PublicRouteProps) => {
-  const isLogined = localStorage.getItem("piickle-token");
-  return isLogined && restricted ? <MainPage /> : Component;
+  const { isLogin } = useAuth();
+  return isLogin && restricted ? <MainPage /> : Component;
 };
 const PrivateRoute = ({ Component }: PrivateRouteProps) => {
-  const isLogined = localStorage.getItem("piickle-token");
-  return isLogined ? Component : <LoginPage />;
+  const { isLogin } = useAuth();
+  return isLogin ? Component : <LoginPage />;
 };

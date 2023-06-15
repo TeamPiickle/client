@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 import { ImgDefaultProfile } from "../../../../asset/image";
+import useAuth from "../../../../core/hooks/useAuth";
 import { routePaths } from "../../../../core/routes/path";
 import useUserProfile from "../../../MyPage/hooks/useUserProfile";
 import DefaultProfileContainer from "./DefaultProfileContainer";
@@ -13,11 +14,12 @@ export interface ProfileContainerProps {
 export default function ProfileContainer(props: ProfileContainerProps) {
   const { closeMenuBar } = props;
 
-  const { userProfile } = useUserProfile();
+  const { logout } = useAuth();
   const navigate = useNavigate();
+  const { userProfile } = useUserProfile();
 
   const handleLogout = () => {
-    localStorage.removeItem("piickle-token");
+    logout();
     navigate(routePaths.Main);
     closeMenuBar();
   };
