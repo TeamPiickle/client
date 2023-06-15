@@ -46,6 +46,8 @@ const newColors = {
   lightgreen1: "#7DE0B9",
   white: "#FFFFFF",
   black50: "rgba(0, 0, 0, 0.5)",
+  kakaoyellow: "#FEE500",
+  navergreen: "#03C75A",
 } as const;
 
 interface Font {
@@ -110,6 +112,7 @@ const newFonts = {
   footer1: FONT({ weight: 600, size: 1.4, lineHeight: 140, letterSpacing: 4 }),
   footer2: FONT({ weight: 400, size: 1.4, lineHeight: 130, letterSpacing: 4 }),
   graphic1: FONT({ weight: 600, size: 2.6, lineHeight: 130, letterSpacing: 3 }),
+  temp: FONT({ weight: 400, size: 1.7, lineHeight: 130, letterSpacing: 3 }),
 } as const;
 
 type BackQuoteArgs = string[];
