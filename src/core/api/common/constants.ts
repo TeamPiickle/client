@@ -13,3 +13,5 @@ export const PATH = {
   NOTICES: "/notices",
   MEDLEY: "/medley",
 };
+
+export const USER_TOKEN = "piickle-token";

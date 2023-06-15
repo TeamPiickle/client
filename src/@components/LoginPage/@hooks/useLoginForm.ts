@@ -1,11 +1,14 @@
 import axios from "axios";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
 
 import { loginApi } from "../../../core/api/login";
+import { userTokenSelector } from "../../../core/atom/auth";
 import { routePaths } from "../../../core/routes/path";
 
 export default function useLoginForm() {
+  const setUserToken = useSetRecoilState(userTokenSelector);
   const navigate = useNavigate();
   const inputRefs = useRef<HTMLInputElement[]>([]);
   const [errorMessage, setErrorMessage] = useState({ emailError: "", passwordError: "" });
@@ -38,7 +41,6 @@ export default function useLoginForm() {
               setErrorMessage({ emailError: "", passwordError: "비밀번호가 일치하지 않습니다." });
             break;
           case 500:
-            // 서버 내부 오류
             navigate(routePaths.Login);
             break;
           default:
@@ -49,8 +51,7 @@ export default function useLoginForm() {
   };
 
   const LoginNGoMain = (accessToken: string) => {
-    localStorage.setItem("piickle-token", accessToken);
-    navigate(routePaths.Main);
+    setUserToken(accessToken);
   };
 
   return { inputRefs, errorMessage, submitLoginForm };

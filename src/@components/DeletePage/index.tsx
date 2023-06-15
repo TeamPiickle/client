@@ -1,8 +1,9 @@
 import { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
 
 import { IcEmptyCheckBox, IcFullCheckBox, IcSmallEmptyCheckBox, IcSmallFullCheckBox } from "../../asset/icon";
 import { deleteApi } from "../../core/api/delete";
+import { userTokenSelector } from "../../core/atom/auth";
 import { routePaths } from "../../core/routes/path";
 import { feedBackListsContents } from "../../util/delete/feedBackListsContents";
 import Footer from "../@common/Footer";
@@ -14,7 +15,7 @@ import { St } from "./style";
 export default function DeletePage() {
   useGTMPage();
 
-  const navigate = useNavigate();
+  const setUserToken = useSetRecoilState(userTokenSelector);
 
   const outClickCloserRef = useOutClickCloser(() => {
     setIsOpenAlert(false);
@@ -24,16 +25,6 @@ export default function DeletePage() {
   const [isFeedBackItems, setIsFeedBackItems] = useState<boolean[]>([false, false, false, false, false]);
   const [isOpenAlert, setIsOpenAlert] = useState(false);
   const sendFeedBack = useRef<string[]>([]);
-
-  const feedBackLists = feedBackListsContents.map((item, index) => (
-    <St.FeedBackListsContents key={index}>
-      <St.OptionalCheckBox type="button" onClick={() => handleChecking(index)}>
-        {isFeedBackItems[index] ? <IcFullCheckBox /> : <IcEmptyCheckBox />}
-      </St.OptionalCheckBox>
-      {item.text}
-    </St.FeedBackListsContents>
-  ));
-
   const handleChecking = (index: number) => {
     setIsFeedBackItems((prevItems) => {
       const currentItems = [...prevItems];
@@ -52,8 +43,7 @@ export default function DeletePage() {
         if (item) sendFeedBack.current.push(feedBackListsContents[index].text);
       });
       deleteAccount();
-      navigate(routePaths.Main);
-      localStorage.removeItem("piickle-token");
+      setUserToken("");
     } else {
       setIsOpenAlert(true);
     }
@@ -62,6 +52,16 @@ export default function DeletePage() {
   const deleteAccount = () => {
     deleteApi.putDelete(sendFeedBack.current);
   };
+
+  const feedBackLists = feedBackListsContents.map((item, index) => (
+    <St.FeedBackListsContents key={index}>
+      <St.OptionalCheckBox type="button" onClick={() => handleChecking(index)}>
+        {isFeedBackItems[index] ? <IcFullCheckBox /> : <IcEmptyCheckBox />}
+      </St.OptionalCheckBox>
+      {item.text}
+    </St.FeedBackListsContents>
+  ));
+
   return (
     <St.Root>
       <SubHeader prevPage={routePaths.MyPage} />

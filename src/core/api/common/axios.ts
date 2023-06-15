@@ -1,5 +1,7 @@
 import axios from "axios";
 
+import { USER_TOKEN } from "./constants";
+
 const real = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
   headers: {
@@ -9,11 +11,11 @@ const real = axios.create({
 });
 
 real.interceptors.request.use((config) => {
-  if (localStorage.getItem("piickle-token") === null) return { ...config };
+  if (localStorage.getItem(USER_TOKEN) === null) return { ...config };
 
   const headers = {
     ...config.headers,
-    "x-auth-token": `Bearer ${localStorage.getItem("piickle-token")}`,
+    "x-auth-token": `Bearer ${localStorage.getItem(USER_TOKEN)}`,
   };
   return { ...config, headers };
 });

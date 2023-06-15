@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
 
 import { ImgDefaultProfile } from "../../../../asset/image";
+import { userTokenSelector } from "../../../../core/atom/auth";
 import { routePaths } from "../../../../core/routes/path";
 import useUserProfile from "../../../MyPage/hooks/useUserProfile";
 import DefaultProfileContainer from "./DefaultProfileContainer";
@@ -13,11 +15,12 @@ export interface ProfileContainerProps {
 export default function ProfileContainer(props: ProfileContainerProps) {
   const { closeMenuBar } = props;
 
-  const { userProfile } = useUserProfile();
+  const setUserToken = useSetRecoilState(userTokenSelector);
   const navigate = useNavigate();
+  const { userProfile } = useUserProfile();
 
   const handleLogout = () => {
-    localStorage.removeItem("piickle-token");
+    setUserToken("");
     navigate(routePaths.Main);
     closeMenuBar();
   };

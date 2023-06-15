@@ -1,13 +1,16 @@
+import { useRecoilValue } from "recoil";
+
+import { userTokenSelector } from "../../../../core/atom/auth";
 import { routePaths } from "../../../../core/routes/path";
 import { GTM_CLASS_NAME } from "../../../../util/const/gtm";
 import St from "./style";
 
 export default function HeaderMinVer() {
-  const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
+  const userToken = useRecoilValue(userTokenSelector);
 
   return (
     <St.Header>
-      {LOGIN_STATE && (
+      {!!userToken && (
         <St.Link to={routePaths.BookmarkPage} className={GTM_CLASS_NAME.cardMoveBookmark}>
           MY 피클
         </St.Link>
