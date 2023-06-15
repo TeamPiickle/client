@@ -1,5 +1,6 @@
 import { atom, selector } from "recoil";
 
+import { axiosInstance } from "../api/common/axios";
 import { USER_TOKEN } from "../api/common/constants";
 
 enum StateType {
@@ -18,14 +19,13 @@ export const userTokenSelector = selector({
   set: ({ set }, newToken) => {
     if (!newToken) {
       localStorage.removeItem(USER_TOKEN);
-      console.log("no newToekn", newToken);
       set(isLoginAtom, newToken);
+      axiosInstance.defaults.headers.common["x-auth-token"] = false;
       return;
     }
 
-    console.log("hello");
     localStorage.setItem(USER_TOKEN, `${newToken}`);
-    console.log("set newToekn", newToken);
     set(isLoginAtom, newToken);
+    axiosInstance.defaults.headers.common["x-auth-token"] = `Bearer ${newToken}`;
   },
 });
