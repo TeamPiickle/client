@@ -8,6 +8,8 @@ export const routePaths = {
   MyPage: "/my-page",
   BookmarkPage: "/bookmark",
   Delete: "/delete",
+  OAuthNaver: "/oauth/naver",
+  OAuthKakao: "/oauth/kakao",
 
   Join_: "/join/",
   Join_Agree: "agree",
@@ -17,4 +19,4 @@ export const routePaths = {
   Join_UserInfo: "user-info",
 };
 
-export type RoutePaths = typeof routePaths[keyof typeof routePaths];
+export type RoutePaths = (typeof routePaths)[keyof typeof routePaths];

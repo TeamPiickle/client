@@ -12,6 +12,8 @@ import {
   LoginPage,
   MainPage,
   MyPage,
+  OAuthKakaoPage,
+  OAuthNaverPage,
   UserInfoPage,
   UserProfilePage,
   VotePage,
@@ -40,6 +42,8 @@ export default function Router() {
           <Route path="*" element={<Error404Page />} />
         </Route>
         <Route path="*" element={PublicRoute({ Component: <Error404Page /> })} />
+        <Route path={routePaths.OAuthKakao} element={PublicRoute({ Component: <OAuthKakaoPage /> })} />
+        <Route path={routePaths.OAuthNaver} element={PublicRoute({ Component: <OAuthNaverPage /> })} />
       </Routes>
     </BrowserRouter>
   );
