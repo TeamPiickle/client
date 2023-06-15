@@ -22,6 +22,6 @@ export const BtnLogo = styled.div`
 `;
 
 export const BtnText = styled.p<{ fontColor: string }>`
-  ${({ theme }) => theme.newFonts.temp};
+  ${({ theme }) => theme.newFonts.btnsocaillogin};
   color: ${({ theme, fontColor }) => (fontColor === "KAKAO" ? theme.newColors.black : theme.newColors.white)};
 `;
