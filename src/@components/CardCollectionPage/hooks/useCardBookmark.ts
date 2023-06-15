@@ -1,16 +1,15 @@
 import { useState } from "react";
-import { useRecoilValue } from "recoil";
 
 import { cardCollectionApi } from "../../../core/api/cardCollection";
-import { userTokenSelector } from "../../../core/atom/auth";
+import useAuth from "../../../core/hooks/useAuth";
 
 const useCardBookmark = (defaultIsBookmarked: boolean, onClickBookmarkBeforeLogin: () => void) => {
-  const userToken = useRecoilValue(userTokenSelector);
+  const { isLogin } = useAuth();
 
   const [isBookmarked, setIsBookmarked] = useState(defaultIsBookmarked);
 
   const handleClickBookmark = (_id: string) => {
-    switch (!!userToken) {
+    switch (isLogin) {
       case true:
         setIsBookmarked((prev) => !prev);
         cardCollectionApi.addNDeleteBookmark(_id);

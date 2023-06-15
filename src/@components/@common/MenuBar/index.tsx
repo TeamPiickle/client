@@ -1,7 +1,5 @@
-import { useRecoilValue } from "recoil";
-
 import { IcCloseBtn } from "../../../asset/icon";
-import { userTokenSelector } from "../../../core/atom/auth";
+import useAuth from "../../../core/hooks/useAuth";
 import { routePaths } from "../../../core/routes/path";
 import { LocationType } from "../../../types/cardCollection";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
@@ -21,7 +19,7 @@ export default function MenuBar(props: MenuBarProps) {
   const { closeMenuBar } = props;
   const outClickCloserRef = useOutClickCloser(closeMenuBar, true);
 
-  const userToken = useRecoilValue(userTokenSelector);
+  const { isLogin } = useAuth();
 
   const { ballotLists } = useBallotLists();
   const navigateCardCollection = useNavigateCardCollection(LocationType.ALL) as NavigateCardCollectionAllType;
@@ -39,7 +37,7 @@ export default function MenuBar(props: MenuBarProps) {
             <IcCloseBtn />
           </St.CloseBtnContainer>
           <St.Contents>
-            {userToken ? (
+            {isLogin ? (
               <ProfileContainer closeMenuBar={closeMenuBar} />
             ) : (
               <DefaultProfileContainer closeMenuBar={closeMenuBar} />
@@ -63,7 +61,7 @@ export default function MenuBar(props: MenuBarProps) {
                 <St.Title className={GTM_CLASS_NAME.menuPiickleMe}>Piickle Me</St.Title>
                 <St.SubTitle className={GTM_CLASS_NAME.menuPiickleMeSub}>진행중인 투표</St.SubTitle>
               </St.RecomendWrapper>
-              {userToken ? (
+              {isLogin ? (
                 <St.RecomendWrapper
                   to={routePaths.BookmarkPage}
                   className={GTM_CLASS_NAME.menuBookmark}

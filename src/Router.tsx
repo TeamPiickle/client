@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useRecoilValue } from "recoil";
 
 import {
   AgreePage,
@@ -18,7 +17,7 @@ import {
   VotePage,
 } from "./@components";
 import JoinPage from "./@components/JoinPage";
-import { userTokenSelector } from "./core/atom/auth";
+import useAuth from "./core/hooks/useAuth";
 import { routePaths } from "./core/routes/path";
 
 export default function Router() {
@@ -54,10 +53,10 @@ interface PublicRouteProps {
 type PrivateRouteProps = Omit<PublicRouteProps, "restricted">;
 
 const PublicRoute = ({ Component, restricted = false }: PublicRouteProps) => {
-  const isLogined = useRecoilValue(userTokenSelector);
-  return isLogined && restricted ? <MainPage /> : Component;
+  const { isLogin } = useAuth();
+  return isLogin && restricted ? <MainPage /> : Component;
 };
 const PrivateRoute = ({ Component }: PrivateRouteProps) => {
-  const isLogined = useRecoilValue(userTokenSelector);
-  return isLogined ? Component : <LoginPage />;
+  const { isLogin } = useAuth();
+  return isLogin ? Component : <LoginPage />;
 };

@@ -1,9 +1,8 @@
 import { useRef, useState } from "react";
-import { useSetRecoilState } from "recoil";
 
 import { IcEmptyCheckBox, IcFullCheckBox, IcSmallEmptyCheckBox, IcSmallFullCheckBox } from "../../asset/icon";
 import { deleteApi } from "../../core/api/delete";
-import { userTokenSelector } from "../../core/atom/auth";
+import useAuth from "../../core/hooks/useAuth";
 import { routePaths } from "../../core/routes/path";
 import { feedBackListsContents } from "../../util/delete/feedBackListsContents";
 import Footer from "../@common/Footer";
@@ -15,7 +14,7 @@ import { St } from "./style";
 export default function DeletePage() {
   useGTMPage();
 
-  const setUserToken = useSetRecoilState(userTokenSelector);
+  const { logout } = useAuth();
 
   const outClickCloserRef = useOutClickCloser(() => {
     setIsOpenAlert(false);
@@ -43,7 +42,7 @@ export default function DeletePage() {
         if (item) sendFeedBack.current.push(feedBackListsContents[index].text);
       });
       deleteAccount();
-      setUserToken("");
+      logout();
     } else {
       setIsOpenAlert(true);
     }

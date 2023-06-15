@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
 
-import { userTokenSelector } from "../../../core/atom/auth";
+import useAuth from "../../../core/hooks/useAuth";
 import { routePaths } from "../../../core/routes/path";
 import { St } from "./style";
 
@@ -14,13 +13,13 @@ const mySetting = [
 ];
 
 export default function MySetting() {
-  const setUserToken = useSetRecoilState(userTokenSelector);
+  const { logout } = useAuth();
   const navigate = useNavigate();
 
   const handleClickDetail = (key: string) => {
     switch (key) {
       case "로그아웃":
-        setUserToken("");
+        logout();
         break;
       case "회원 탈퇴":
         navigate(routePaths.Delete);

@@ -1,14 +1,13 @@
 import axios from "axios";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
 
 import { loginApi } from "../../../core/api/login";
-import { userTokenSelector } from "../../../core/atom/auth";
+import useAuth from "../../../core/hooks/useAuth";
 import { routePaths } from "../../../core/routes/path";
 
 export default function useLoginForm() {
-  const setUserToken = useSetRecoilState(userTokenSelector);
+  const { login } = useAuth();
   const navigate = useNavigate();
   const inputRefs = useRef<HTMLInputElement[]>([]);
   const [errorMessage, setErrorMessage] = useState({ emailError: "", passwordError: "" });
@@ -22,7 +21,7 @@ export default function useLoginForm() {
 
     try {
       const { data } = await loginApi.postLogin(inputRefs.current[0].value, inputRefs.current[1].value);
-      LoginNGoMain(data.accessToken);
+      loginWithUserToken(data.accessToken);
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const errorData = error.response?.data;
@@ -50,8 +49,8 @@ export default function useLoginForm() {
     }
   };
 
-  const LoginNGoMain = (accessToken: string) => {
-    setUserToken(accessToken);
+  const loginWithUserToken = (accessToken: string) => {
+    login(accessToken);
   };
 
   return { inputRefs, errorMessage, submitLoginForm };

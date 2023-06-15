@@ -1,8 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
 
 import { ImgDefaultProfile } from "../../../../asset/image";
-import { userTokenSelector } from "../../../../core/atom/auth";
+import useAuth from "../../../../core/hooks/useAuth";
 import { routePaths } from "../../../../core/routes/path";
 import useUserProfile from "../../../MyPage/hooks/useUserProfile";
 import DefaultProfileContainer from "./DefaultProfileContainer";
@@ -15,12 +14,12 @@ export interface ProfileContainerProps {
 export default function ProfileContainer(props: ProfileContainerProps) {
   const { closeMenuBar } = props;
 
-  const setUserToken = useSetRecoilState(userTokenSelector);
+  const { logout } = useAuth();
   const navigate = useNavigate();
   const { userProfile } = useUserProfile();
 
   const handleLogout = () => {
-    setUserToken("");
+    logout();
     navigate(routePaths.Main);
     closeMenuBar();
   };
