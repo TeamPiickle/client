@@ -1,4 +1,4 @@
-import { KAKAO_AUTH_URL, NAVER_AUTH_URL } from "../../../util/login/oauth";
+import { KAKAO_AUTH_URL, NAVER_AUTH_URL } from "../../../util/login/oAuth";
 import SocialLoginBtn from "../../@common/SocialLoginBtn";
 import * as St from "./style";
 
