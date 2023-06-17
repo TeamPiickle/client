@@ -37,7 +37,7 @@ export default function useNavigateCardCollection(locationType: LocationType) {
 
     case LocationType.CATEGORY:
       return (categoryId: string, sliderIdx = 0) => {
-        navigate(routePaths.CardCollection, { state: { type: LocationType.CATEGORY, categoryId } });
+        navigate(`${routePaths.CardCollection}?type=${LocationType.CATEGORY}?categoryId=${categoryId}`);
         setSliderIdx(sliderIdx);
       };
 
