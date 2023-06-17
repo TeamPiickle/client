@@ -1,8 +1,6 @@
-import { useLocation } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 
 import { isSliderDownState } from "../../core/atom/slider";
-import { CardsTypeLocation } from "../../types/cardCollection";
 import { GTM_CLASS_NAME } from "../../util/const/gtm";
 import HeadlessCTAButton from "../@common/CTABtn/HeadlessCTAButton";
 import Header from "../@common/Header";
@@ -30,9 +28,7 @@ function CardCollectionContent() {
   useGTMPage();
   useScroll();
 
-  const location = useLocation();
-  const cardsTypeLoaction = location.state as CardsTypeLocation;
-  const { cardLists, fetchCardListsWithFilter } = useCardLists(cardsTypeLoaction);
+  const { cardLists, fetchCardListsWithFilter } = useCardLists();
 
   const { isVisibleCTAButton, intersectionObserverRef: lastCardObsvRef } = useCTAFilter();
 

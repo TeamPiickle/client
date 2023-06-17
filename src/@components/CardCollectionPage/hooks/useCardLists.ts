@@ -1,4 +1,5 @@
 import qs from "qs";
+import { useLocation } from "react-router-dom";
 import useSWR from "swr";
 
 import { realReq } from "../../../core/api/common/axios";
@@ -12,9 +13,13 @@ interface ExtendedCardList extends Array<CardList> {
   cards?: CardList[]; // with medly id
 }
 
-export function useCardLists(cardsTypeLocation: CardsTypeLocation) {
+export function useCardLists() {
+  const location = useLocation();
+  const cardsTypeLocation = getLocationInfoByQueries(location.search);
+
   const fetchingKeyByLocation = getSWRFetchingKeyByLocation(cardsTypeLocation);
   const optionsByLocation = getSWROptionsByLocation(cardsTypeLocation);
+
   const { data } = useSWR<PiickleSWRResponse<ExtendedCardList>>(
     fetchingKeyByLocation,
     realReq.GET_SWR,
@@ -41,6 +46,18 @@ function getReturnCardLists(
     default:
       return data?.data.data;
   }
+}
+
+function getLocationInfoByQueries(queries: string): CardsTypeLocation {
+  return queries
+    .split("?")
+    .splice(1)
+    .reduce((acc: { [key: string]: string }, query) => {
+      const [key, value] = query.split("=");
+      acc[key] = value;
+
+      return acc;
+    }, {}) as unknown as CardsTypeLocation;
 }
 
 function getSWRFetchingKeyByLocation(cardsTypeLocation: CardsTypeLocation) {

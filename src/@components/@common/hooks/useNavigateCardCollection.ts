@@ -19,7 +19,7 @@ export default function useNavigateCardCollection(locationType: LocationType) {
   switch (locationType) {
     case LocationType.ALL:
       return (sliderIdx = 0) => {
-        navigate(routePaths.CardCollection, { state: { type: LocationType.ALL } });
+        navigate(`${routePaths.CardCollection}?type=${LocationType.ALL}`);
         setSliderIdx(sliderIdx);
       };
 
