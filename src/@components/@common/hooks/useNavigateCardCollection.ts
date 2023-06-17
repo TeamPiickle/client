@@ -25,13 +25,13 @@ export default function useNavigateCardCollection(locationType: LocationType) {
 
     case LocationType.BEST:
       return (sliderIdx = 0) => {
-        navigate(routePaths.CardCollection, { state: { type: LocationType.BEST } });
+        navigate(`${routePaths.CardCollection}?type=${LocationType.BEST}`);
         setSliderIdx(sliderIdx);
       };
 
     case LocationType.BOOKMARK:
       return (sliderIdx = 0) => {
-        navigate(routePaths.CardCollection, { state: { type: LocationType.BOOKMARK } });
+        navigate(`${routePaths.CardCollection}?type=${LocationType.BOOKMARK}`);
         setSliderIdx(sliderIdx);
       };
 
