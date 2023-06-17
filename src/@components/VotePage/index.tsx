@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import Header from "../@common/Header";
 import useGTMPage from "../@common/hooks/useGTMPage";
+import SuspenseBoundary from "../@common/SuspenseBoundary";
 import VoteContent from "./VoteContent";
 import VoteTitle from "./VoteTitle";
 
@@ -13,7 +14,9 @@ export default function VotePage() {
       <Header />
       <VoteTitle />
       <St.ContentWrapper>
-        <VoteContent />
+        <SuspenseBoundary>
+          <VoteContent />
+        </SuspenseBoundary>
       </St.ContentWrapper>
     </main>
   );

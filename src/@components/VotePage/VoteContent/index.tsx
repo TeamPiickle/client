@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import { routePaths } from "../../../core/routes/path";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
-import Loading from "../../@common/Loading";
 import useBallotTopic from "../hooks/useBallotTopic";
 import AfterVoteList from "./AfterVoteList";
 import BeforeVoteList from "./BeforeVoteList";
@@ -15,8 +14,7 @@ export default function VoteContent() {
   const { ballotTopic, isBeforeVotingState, mutateBallotState } = useBallotTopic(voteId);
   const navigate = useNavigate();
 
-  if (!ballotTopic) return <Loading backgroundColor="white" />;
-
+  if (!ballotTopic) return null;
   return (
     <>
       <St.VoteContentContainer>

@@ -6,10 +6,9 @@ import { PiickleSWRResponse } from "../../../types/remote/swr";
 import { MyPiickle } from "../../../types/users";
 
 export function useUserBookmarks() {
-  const { data, error } = useSWR<PiickleSWRResponse<MyPiickle[]>>(`${PATH.USERS_}/bookmarks`, realReq.GET_SWR);
+  const { data } = useSWR<PiickleSWRResponse<MyPiickle[]>>(`${PATH.USERS_}/bookmarks`, realReq.GET_SWR);
 
   return {
     userBookmarks: data?.data,
-    isLoading: !error && !data,
   };
 }
