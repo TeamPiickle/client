@@ -20,7 +20,6 @@ export function useCardLists() {
   const fetchingKeyByLocation = getSWRFetchingKeyByLocation(cardsTypeLocation);
   const optionsByLocation = getSWROptionsByLocation(cardsTypeLocation);
 
-  console.log("cardsTypeLocation", cardsTypeLocation);
   const { data } = useSWR<PiickleSWRResponse<ExtendedCardList>>(
     fetchingKeyByLocation,
     realReq.GET_SWR,
@@ -108,8 +107,6 @@ function getSWROptionsByLocation(cardsTypeLocation: CardsTypeLocation) {
     case LocationType.BOOKMARK:
     case LocationType.MEDLEY:
       return { suspense: true };
-    // case LocationType.FILTER:
-    //   return { suspense: true, revalidateOnMount: false };
     default:
       return { suspense: true, revalidateOnMount: true, dedupingInterval: 700 };
   }
