@@ -51,7 +51,7 @@ export default function useNavigateCardCollection(locationType: LocationType) {
 
     case LocationType.MEDLEY:
       return (medleyId: string, sliderIdx = 0) => {
-        navigate(routePaths.CardCollection, { state: { type: LocationType.MEDLEY, medleyId } });
+        navigate(`${routePaths.CardCollection}?type=${LocationType.MEDLEY}?medleyId=${medleyId}`);
         setSliderIdx(sliderIdx);
       };
   }
