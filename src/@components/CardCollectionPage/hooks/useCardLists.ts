@@ -15,11 +15,12 @@ interface ExtendedCardList extends Array<CardList> {
 
 export function useCardLists() {
   const location = useLocation();
-  const cardsTypeLocation = getLocationInfoByQueries(location.search);
+  const cardsTypeLocation = getLocationInfoByQueryString(location.search);
 
   const fetchingKeyByLocation = getSWRFetchingKeyByLocation(cardsTypeLocation);
   const optionsByLocation = getSWROptionsByLocation(cardsTypeLocation);
 
+  console.log("cardsTypeLocation", cardsTypeLocation);
   const { data } = useSWR<PiickleSWRResponse<ExtendedCardList>>(
     fetchingKeyByLocation,
     realReq.GET_SWR,
@@ -48,16 +49,31 @@ function getReturnCardLists(
   }
 }
 
-function getLocationInfoByQueries(queries: string): CardsTypeLocation {
-  return queries
-    .split("?")
-    .splice(1)
-    .reduce((acc: { [key: string]: string }, query) => {
-      const [key, value] = query.split("=");
-      acc[key] = value;
+type Obj = { [key: string]: string };
+function getLocationInfoByQueryString(queryString: string): CardsTypeLocation {
+  const exclusiveQuestionMarkQueryString = queryString.slice(1);
+  const firstAndMarkIdx = exclusiveQuestionMarkQueryString.indexOf("&");
 
-      return acc;
-    }, {}) as unknown as CardsTypeLocation;
+  if (firstAndMarkIdx === -1) {
+    const [key, value] = exclusiveQuestionMarkQueryString.split("=");
+
+    const locationInfo: Obj = {};
+    locationInfo[key] = value;
+
+    return locationInfo as unknown as CardsTypeLocation;
+  }
+
+  // ?A=B&C=DDD 2개까지
+  return [
+    exclusiveQuestionMarkQueryString.slice(0, firstAndMarkIdx),
+    exclusiveQuestionMarkQueryString.slice(firstAndMarkIdx + 1),
+  ].reduce((acc: Obj, query) => {
+    const firstEqualMarkIdx = query.indexOf("=");
+    const [key, value] = [query.slice(0, firstEqualMarkIdx), query.slice(firstEqualMarkIdx + 1)];
+    acc[key] = value;
+
+    return acc;
+  }, {}) as unknown as CardsTypeLocation;
 }
 
 function getSWRFetchingKeyByLocation(cardsTypeLocation: CardsTypeLocation) {
@@ -70,24 +86,10 @@ function getSWRFetchingKeyByLocation(cardsTypeLocation: CardsTypeLocation) {
       return `${PATH.USERS_}${PATH.USERS_BOOKMARK}`;
     case LocationType.MEDLEY:
       return `${PATH.MEDLEY}/${cardsTypeLocation.medleyId}`;
-    case LocationType.ALL: {
-      const searchParams = qs.stringify(
-        {
-          search: ["태그"],
-        },
-        { arrayFormat: "repeat" },
-      );
-      return `${PATH.CATEGORIES_}${PATH.CATEGORIES_CARDS}?${searchParams}`;
-    }
     case LocationType.FILTER: {
-      const searchParams = qs.stringify(
-        {
-          search: cardsTypeLocation.filterTypes,
-        },
-        { arrayFormat: "repeat" },
-      );
-      return `${PATH.CATEGORIES_}${PATH.CATEGORIES_CARDS}?${searchParams}`;
+      return `${PATH.CATEGORIES_}${PATH.CATEGORIES_CARDS}?${cardsTypeLocation.filterTypes}`;
     }
+    case LocationType.ALL:
     default: {
       const searchParams = qs.stringify(
         {
@@ -106,6 +108,8 @@ function getSWROptionsByLocation(cardsTypeLocation: CardsTypeLocation) {
     case LocationType.BOOKMARK:
     case LocationType.MEDLEY:
       return { suspense: true };
+    // case LocationType.FILTER:
+    //   return { suspense: true, revalidateOnMount: false };
     default:
       return { suspense: true, revalidateOnMount: true, dedupingInterval: 700 };
   }
