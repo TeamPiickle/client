@@ -11,6 +11,6 @@ export { default as UserProfilePage } from "./JoinPage/UserProfilePage";
 export { default as LoginPage } from "./LoginPage";
 export { default as MainPage } from "./MainPage";
 export { default as MyPage } from "./MyPage";
-export { default as OAuthKakaoPage } from "./OAuthKakaoPage";
-export { default as OAuthNaverPage } from "./OAuthNaverPage";
+export { default as OAuthKakaoPage } from "./OAuthPage/OAuthKakaoPage";
+export { default as OAuthNaverPage } from "./OAuthPage/OAuthNaverPage";
 export { default as VotePage } from "./VotePage";

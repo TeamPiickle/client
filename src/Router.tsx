@@ -42,9 +42,11 @@ export default function Router() {
           <Route path={routePaths.Join_UserInfo} element={<UserInfoPage />} />
           <Route path="*" element={<Error404Page />} />
         </Route>
+        <Route path={`${routePaths.OAuth_}*`}>
+          <Route path={routePaths.OAuth_Kakao} element={PublicRoute({ Component: <OAuthKakaoPage /> })} />
+          <Route path={routePaths.OAuth_Naver} element={PublicRoute({ Component: <OAuthNaverPage /> })} />
+        </Route>
         <Route path="*" element={PublicRoute({ Component: <Error404Page /> })} />
-        <Route path={routePaths.OAuthKakao} element={PublicRoute({ Component: <OAuthKakaoPage /> })} />
-        <Route path={routePaths.OAuthNaver} element={PublicRoute({ Component: <OAuthNaverPage /> })} />
       </Routes>
     </BrowserRouter>
   );
