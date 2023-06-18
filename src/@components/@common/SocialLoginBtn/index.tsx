@@ -6,19 +6,19 @@ import * as St from "./style";
 type BtnTheme = "KAKAO" | "NAVER";
 interface ButtonContents {
   theme: BtnTheme;
-  BtnText: string;
+  btnText: string;
   clickHandler: () => void;
 }
 
 export default function SocialLoginBtn(props: PropsWithChildren<ButtonContents>) {
-  const { theme, BtnText, clickHandler } = props;
+  const { theme, btnText, clickHandler } = props;
 
   const logoTheme = theme === "KAKAO" ? <IcKakaoLogo /> : <IcNaverLogo />;
 
   return (
-    <St.LoginBtn bgColor={theme} onClick={clickHandler}>
+    <St.LoginBtn btntype={theme} onClick={clickHandler}>
       <St.BtnLogo>{logoTheme}</St.BtnLogo>
-      <St.BtnText fontColor={theme}>{BtnText}</St.BtnText>
+      <St.BtnText texttype={theme}>{btnText}</St.BtnText>
     </St.LoginBtn>
   );
 }

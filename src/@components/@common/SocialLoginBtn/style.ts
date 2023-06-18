@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const LoginBtn = styled.button<{ bgColor: string }>`
+export const LoginBtn = styled.button<{ btntype: "KAKAO" | "NAVER" }>`
   width: 32.8rem;
   height: 5rem;
 
@@ -12,8 +12,8 @@ export const LoginBtn = styled.button<{ bgColor: string }>`
   align-items: center;
   justify-content: center;
 
-  background-color: ${({ theme, bgColor }) =>
-    bgColor === "KAKAO" ? theme.newColors.kakaoyellow : theme.newColors.navergreen};
+  background-color: ${({ theme, btntype }) =>
+    btntype === "KAKAO" ? theme.newColors.kakaoyellow : theme.newColors.navergreen};
 `;
 
 export const BtnLogo = styled.div`
@@ -21,7 +21,7 @@ export const BtnLogo = styled.div`
   left: 1.6rem;
 `;
 
-export const BtnText = styled.p<{ fontColor: string }>`
+export const BtnText = styled.p<{ texttype: "KAKAO" | "NAVER" }>`
   ${({ theme }) => theme.newFonts.btnsocaillogin};
-  color: ${({ theme, fontColor }) => (fontColor === "KAKAO" ? theme.newColors.black : theme.newColors.white)};
+  color: ${({ theme, texttype }) => (texttype === "KAKAO" ? theme.newColors.black : theme.newColors.white)};
 `;
