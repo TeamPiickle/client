@@ -16,11 +16,9 @@ export default function SocialLoginBtn(props: PropsWithChildren<ButtonContents>)
   const logoTheme = theme === "KAKAO" ? <IcKakaoLogo /> : <IcNaverLogo />;
 
   return (
-    <a href={authUrl}>
-      <St.LoginBtn btntype={theme}>
-        <St.BtnLogo>{logoTheme}</St.BtnLogo>
-        <St.BtnText texttype={theme}>{btnText}</St.BtnText>
-      </St.LoginBtn>
-    </a>
+    <St.Container linktype={theme} href={authUrl}>
+      <St.Logo>{logoTheme}</St.Logo>
+      <St.Text texttype={theme}>{btnText}</St.Text>
+    </St.Container>
   );
 }

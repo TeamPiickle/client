@@ -6,10 +6,11 @@ export const Container = styled.section`
   align-items: center;
 
   margin-bottom: 6.8rem;
+  padding: 0 1.6rem;
 `;
 
 export const ContentsWrapper = styled.div`
-  width: 32.9rem;
+  width: 100%;
   height: 1.7rem;
 
   position: relative;

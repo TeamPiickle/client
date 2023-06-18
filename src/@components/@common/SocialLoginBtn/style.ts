@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const LoginBtn = styled.div<{ btntype: "KAKAO" | "NAVER" }>`
-  width: 32.8rem;
+export const Container = styled.a<{ linktype: "KAKAO" | "NAVER" }>`
+  width: 100%;
   height: 5rem;
 
   margin-top: 0.8rem;
@@ -12,16 +12,16 @@ export const LoginBtn = styled.div<{ btntype: "KAKAO" | "NAVER" }>`
   align-items: center;
   justify-content: center;
 
-  background-color: ${({ theme, btntype }) =>
-    btntype === "KAKAO" ? theme.newColors.kakaoyellow : theme.newColors.navergreen};
+  background-color: ${({ theme, linktype }) =>
+    linktype === "KAKAO" ? theme.newColors.kakaoyellow : theme.newColors.navergreen};
 `;
 
-export const BtnLogo = styled.div`
+export const Logo = styled.div`
   position: absolute;
   left: 1.6rem;
 `;
 
-export const BtnText = styled.p<{ texttype: "KAKAO" | "NAVER" }>`
+export const Text = styled.p<{ texttype: "KAKAO" | "NAVER" }>`
   ${({ theme }) => theme.newFonts.btnsocaillogin};
   color: ${({ theme, texttype }) => (texttype === "KAKAO" ? theme.newColors.black : theme.newColors.white)};
 `;
