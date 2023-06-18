@@ -7,18 +7,20 @@ type BtnTheme = "KAKAO" | "NAVER";
 interface ButtonContents {
   theme: BtnTheme;
   btnText: string;
-  clickHandler: () => void;
+  authUrl: string;
 }
 
 export default function SocialLoginBtn(props: PropsWithChildren<ButtonContents>) {
-  const { theme, btnText, clickHandler } = props;
+  const { theme, btnText, authUrl } = props;
 
   const logoTheme = theme === "KAKAO" ? <IcKakaoLogo /> : <IcNaverLogo />;
 
   return (
-    <St.LoginBtn btntype={theme} onClick={clickHandler}>
-      <St.BtnLogo>{logoTheme}</St.BtnLogo>
-      <St.BtnText texttype={theme}>{btnText}</St.BtnText>
-    </St.LoginBtn>
+    <a href={authUrl}>
+      <St.LoginBtn btntype={theme}>
+        <St.BtnLogo>{logoTheme}</St.BtnLogo>
+        <St.BtnText texttype={theme}>{btnText}</St.BtnText>
+      </St.LoginBtn>
+    </a>
   );
 }

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const LoginBtn = styled.button<{ btntype: "KAKAO" | "NAVER" }>`
+export const LoginBtn = styled.div<{ btntype: "KAKAO" | "NAVER" }>`
   width: 32.8rem;
   height: 5rem;
 
