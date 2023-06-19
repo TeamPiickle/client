@@ -9,7 +9,7 @@ enum StateType {
 
 export const userTokenAtom = atom<string | null>({
   key: StateType.USER_TOKEN_ATOM,
-  default: null,
+  default: localStorage.getItem(USER_TOKEN) || null,
   effects: [
     ({ onSet }) => {
       onSet((newToken, _, isReset) => {
