@@ -1,4 +1,5 @@
 import qs from "qs";
+import { useLocation } from "react-router-dom";
 import useSWR from "swr";
 
 import { realReq } from "../../../core/api/common/axios";
@@ -12,9 +13,13 @@ interface ExtendedCardList extends Array<CardList> {
   cards?: CardList[]; // with medly id
 }
 
-export function useCardLists(cardsTypeLocation: CardsTypeLocation) {
+export function useCardLists() {
+  const location = useLocation();
+  const cardsTypeLocation = getLocationInfoByQueryString(location.search);
+
   const fetchingKeyByLocation = getSWRFetchingKeyByLocation(cardsTypeLocation);
   const optionsByLocation = getSWROptionsByLocation(cardsTypeLocation);
+
   const { data } = useSWR<PiickleSWRResponse<ExtendedCardList>>(
     fetchingKeyByLocation,
     realReq.GET_SWR,
@@ -43,6 +48,33 @@ function getReturnCardLists(
   }
 }
 
+type Obj = { [key: string]: string };
+function getLocationInfoByQueryString(queryString: string): CardsTypeLocation {
+  const exclusiveQuestionMarkQueryString = queryString.slice(1);
+  const firstAndMarkIdx = exclusiveQuestionMarkQueryString.indexOf("&");
+
+  if (firstAndMarkIdx === -1) {
+    const [key, value] = exclusiveQuestionMarkQueryString.split("=");
+
+    const locationInfo: Obj = {};
+    locationInfo[key] = value;
+
+    return locationInfo as unknown as CardsTypeLocation;
+  }
+
+  // ?A=B&C=DDD 2개까지
+  return [
+    exclusiveQuestionMarkQueryString.slice(0, firstAndMarkIdx),
+    exclusiveQuestionMarkQueryString.slice(firstAndMarkIdx + 1),
+  ].reduce((acc: Obj, query) => {
+    const firstEqualMarkIdx = query.indexOf("=");
+    const [key, value] = [query.slice(0, firstEqualMarkIdx), query.slice(firstEqualMarkIdx + 1)];
+    acc[key] = value;
+
+    return acc;
+  }, {}) as unknown as CardsTypeLocation;
+}
+
 function getSWRFetchingKeyByLocation(cardsTypeLocation: CardsTypeLocation) {
   switch (cardsTypeLocation.type) {
     case LocationType.CATEGORY:
@@ -53,24 +85,10 @@ function getSWRFetchingKeyByLocation(cardsTypeLocation: CardsTypeLocation) {
       return `${PATH.USERS_}${PATH.USERS_BOOKMARK}`;
     case LocationType.MEDLEY:
       return `${PATH.MEDLEY}/${cardsTypeLocation.medleyId}`;
-    case LocationType.ALL: {
-      const searchParams = qs.stringify(
-        {
-          search: ["태그"],
-        },
-        { arrayFormat: "repeat" },
-      );
-      return `${PATH.CATEGORIES_}${PATH.CATEGORIES_CARDS}?${searchParams}`;
-    }
     case LocationType.FILTER: {
-      const searchParams = qs.stringify(
-        {
-          search: cardsTypeLocation.filterTypes,
-        },
-        { arrayFormat: "repeat" },
-      );
-      return `${PATH.CATEGORIES_}${PATH.CATEGORIES_CARDS}?${searchParams}`;
+      return `${PATH.CATEGORIES_}${PATH.CATEGORIES_CARDS}?${cardsTypeLocation.filterTypes}`;
     }
+    case LocationType.ALL:
     default: {
       const searchParams = qs.stringify(
         {

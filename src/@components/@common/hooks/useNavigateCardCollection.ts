@@ -1,3 +1,4 @@
+import qs from "qs";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
@@ -19,40 +20,51 @@ export default function useNavigateCardCollection(locationType: LocationType) {
   switch (locationType) {
     case LocationType.ALL:
       return (sliderIdx = 0) => {
-        navigate(routePaths.CardCollection, { state: { type: LocationType.ALL } });
+        navigate(`${routePaths.CardCollection}?type=${LocationType.ALL}`);
         setSliderIdx(sliderIdx);
       };
 
     case LocationType.BEST:
       return (sliderIdx = 0) => {
-        navigate(routePaths.CardCollection, { state: { type: LocationType.BEST } });
+        navigate(`${routePaths.CardCollection}?type=${LocationType.BEST}`);
         setSliderIdx(sliderIdx);
       };
 
     case LocationType.BOOKMARK:
       return (sliderIdx = 0) => {
-        navigate(routePaths.CardCollection, { state: { type: LocationType.BOOKMARK } });
+        navigate(`${routePaths.CardCollection}?type=${LocationType.BOOKMARK}`);
         setSliderIdx(sliderIdx);
       };
 
     case LocationType.CATEGORY:
       return (categoryId: string, sliderIdx = 0) => {
-        navigate(routePaths.CardCollection, { state: { type: LocationType.CATEGORY, categoryId } });
+        navigate(`${routePaths.CardCollection}?type=${LocationType.CATEGORY}&categoryId=${categoryId}`);
         setSliderIdx(sliderIdx);
       };
 
     case LocationType.FILTER:
       return (filterTypes: string[], sliderIdx = 0) => {
-        navigate(routePaths.CardCollection, {
-          state: { type: LocationType.FILTER, filterTypes },
-        });
+        navigate(
+          `${routePaths.CardCollection}?type=${LocationType.FILTER}&filterTypes=${parseFilterTypesToString(
+            filterTypes,
+          )}`,
+        );
         setSliderIdx(sliderIdx);
       };
 
     case LocationType.MEDLEY:
       return (medleyId: string, sliderIdx = 0) => {
-        navigate(routePaths.CardCollection, { state: { type: LocationType.MEDLEY, medleyId } });
+        navigate(`${routePaths.CardCollection}?type=${LocationType.MEDLEY}&medleyId=${medleyId}`);
         setSliderIdx(sliderIdx);
       };
   }
+}
+
+function parseFilterTypesToString(filterTypes: string[]): string {
+  return qs.stringify(
+    {
+      search: filterTypes,
+    },
+    { arrayFormat: "repeat" },
+  );
 }
