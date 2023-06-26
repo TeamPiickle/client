@@ -13,4 +13,5 @@ export { default as MainPage } from "./MainPage";
 export { default as MyPage } from "./MyPage";
 export { default as OAuthKakaoPage } from "./OAuthPage/OAuthKakaoPage";
 export { default as OAuthNaverPage } from "./OAuthPage/OAuthNaverPage";
+export { default as SuccessPage } from "./OAuthPage/SuccessPage";
 export { default as VotePage } from "./VotePage";

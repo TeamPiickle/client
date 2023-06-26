@@ -12,6 +12,7 @@ export const routePaths = {
   OAuth_: "/oauth/",
   OAuth_Kakao: "kakao",
   OAuth_Naver: "naver",
+  OAuth_Success: "success",
 
   Join_: "/join/",
   Join_Agree: "agree",
