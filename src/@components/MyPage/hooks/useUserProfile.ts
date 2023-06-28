@@ -6,7 +6,7 @@ import { PiickleSWRResponse } from "../../../types/remote/swr";
 import { UserProfile } from "../../../types/users";
 
 export default function useUserProfile() {
-  const { data, error } = useSWR<PiickleSWRResponse<UserProfile>>(PATH.USERS_, realReq.GET_SWR);
+  const { data } = useSWR<PiickleSWRResponse<UserProfile>>(PATH.USERS_, realReq.GET_SWR);
   const { mutate } = useSWRConfig();
 
   const handleNewProfile = () => {
@@ -15,7 +15,6 @@ export default function useUserProfile() {
 
   return {
     userProfile: data?.data,
-    isLoading: !error && !data,
     handleNewProfile,
   };
 }

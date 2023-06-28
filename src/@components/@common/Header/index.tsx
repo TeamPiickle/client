@@ -16,6 +16,7 @@ export default function Header() {
       <St.HamburgerContainer className={GTM_CLASS_NAME.mainMenuBtn} isClicked={isModalOpen}>
         <IcHamburger aria-label="메뉴" className={GTM_CLASS_NAME.mainMenuBtn} onClick={toggleModal} />
       </St.HamburgerContainer>
+
       {isModalOpen && <MenuBar closeMenuBar={toggleModal} />}
     </St.HeaderWrapper>
   );

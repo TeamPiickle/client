@@ -17,7 +17,7 @@ export type moodPiickle = {
 };
 
 export default function MoodPiickle() {
-  const { randomCategoryLists } = useCategoryLists();
+  const { randomCategoryLists } = useCategoryLists(true);
   const navigateCardCollection = useNavigateCardCollection(LocationType.CATEGORY) as NavigateCardCollectionCategoryType;
 
   return (

@@ -7,7 +7,9 @@ import { BallotTopicData } from "../../../types/ballots";
 import { PiickleSWRResponse } from "../../../types/remote/swr";
 
 export default function useBallotTopic(ballotId: string) {
-  const { data, error } = useSWR<PiickleSWRResponse<BallotTopicData>>(`${PATH.BALLOTS}/${ballotId}`, realReq.GET_SWR);
+  const { data } = useSWR<PiickleSWRResponse<BallotTopicData>>(`${PATH.BALLOTS}/${ballotId}`, realReq.GET_SWR, {
+    suspense: true,
+  });
   const { mutate } = useSWRConfig();
 
   const [isBeforeVotingState, setIsBeforeVotingState] = useState(true);
@@ -23,7 +25,6 @@ export default function useBallotTopic(ballotId: string) {
 
   return {
     ballotTopic: data?.data,
-    isLoading: !error && !data,
     isBeforeVotingState,
     mutateBallotState: () => {
       setTimeout(() => mutate(`${PATH.BALLOTS}/${ballotId}`), 200);

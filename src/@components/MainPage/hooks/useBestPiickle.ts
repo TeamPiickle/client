@@ -6,10 +6,11 @@ import { CardList } from "../../../types/cardCollection";
 import { PiickleSWRResponse } from "../../../types/remote/swr";
 
 export function useBestPiickle() {
-  const { data, error } = useSWR<PiickleSWRResponse<CardList[]>>(`${PATH.CARDS_}${PATH.CARDS_BEST}`, realReq.GET_SWR);
+  const { data } = useSWR<PiickleSWRResponse<CardList[]>>(`${PATH.CARDS_}${PATH.CARDS_BEST}`, realReq.GET_SWR, {
+    suspense: true,
+  });
 
   return {
     bestPiickle: data?.data,
-    isLoading: !error && !data,
   };
 }

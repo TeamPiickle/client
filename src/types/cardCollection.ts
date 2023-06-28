@@ -25,7 +25,7 @@ interface CategoryTypeLocation {
 
 interface FilterTypeLocation {
   type: LocationType.FILTER;
-  filterTypes: string[];
+  filterTypes: string;
 }
 
 interface MedleyTypeLocation {
