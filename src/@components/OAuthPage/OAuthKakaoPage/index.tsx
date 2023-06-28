@@ -1,10 +1,13 @@
 import axios from "axios";
 import qs from "qs";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
+import { routePaths } from "../../../core/routes/path";
 import Loading from "../../@common/Loading";
 
 export default function OAuthKakaoPage() {
+  const navigate = useNavigate();
   const code = new URL(window.location.href).searchParams.get("code");
 
   const getKakaoToken = async () => {
@@ -24,6 +27,7 @@ export default function OAuthKakaoPage() {
 
       if (response.data.access_token) {
         console.log("access_token:", response.data.access_token);
+        navigate(`${routePaths.Join_}${routePaths.Join_Agree}`, { state: { isSocialLogin: true } });
       }
     } catch (error) {
       return error;
