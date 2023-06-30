@@ -10,7 +10,8 @@ export const SuceessPage = styled.main`
 export const ImgContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 15.6rem 4.1rem 0;
+
+  margin: 10.6rem 4.1rem 0;
   gap: 2.8rem;
 
   & > :last-child {
@@ -21,7 +22,7 @@ export const ImgContainer = styled.div`
 export const WelcomeText = styled.p`
   text-align: center;
 
-  margin: 13.3rem 0 9rem;
+  margin: 9.3rem 0 9rem;
 
   ${({ theme }) => theme.newFonts.h1};
 `;
@@ -45,6 +46,8 @@ export const GoHomeBtn = styled(Link)`
 export const GoMypageBtn = styled(Link)`
   display: flex;
   justify-content: center;
+
+  margin-bottom: 2.7rem;
 
   color: ${({ theme }) => theme.newColors.gray700};
   ${({ theme }) => theme.newFonts.caption1};
