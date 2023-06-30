@@ -51,7 +51,8 @@ export default function Router() {
         <Route path={`${routePaths.OAuth_}*`}>
           <Route path={routePaths.OAuth_Kakao} element={PublicRoute({ Component: <OAuthKakaoPage /> })} />
           <Route path={routePaths.OAuth_Naver} element={PublicRoute({ Component: <OAuthNaverPage /> })} />
-          <Route path={routePaths.OAuth_Success} element={PublicRoute({ Component: <SuccessPage /> })} />
+          <Route path={routePaths.OAuth_Success} element={PrivateRoute({ Component: <SuccessPage /> })} />
+          <Route path="*" element={<Error404Page />} />
         </Route>
         <Route path="*" element={PublicRoute({ Component: <Error404Page /> })} />
       </Routes>

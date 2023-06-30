@@ -1,9 +1,12 @@
 import { IcLeftSpeechBubble, IcRightSpeechBubble } from "../../../asset/icon";
 import { routePaths } from "../../../core/routes/path";
+import useUserProfile from "../../MyPage/hooks/useUserProfile";
 import Header from "./../../@common/Header";
 import * as St from "./style";
 
 export default function SuccessPage() {
+  const { userProfile } = useUserProfile();
+
   return (
     <St.SuceessPage>
       <Header />
@@ -12,7 +15,7 @@ export default function SuccessPage() {
         <IcRightSpeechBubble />
       </St.ImgContainer>
       <St.WelcomeText>
-        피클님 반가워요!
+        {userProfile ? userProfile.data.nickname : "피클"}님 반가워요!
         <br />
         즐거운 대화를 나누러 가볼까요?
       </St.WelcomeText>
