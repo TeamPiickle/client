@@ -7,8 +7,10 @@ export default function SuccessPage() {
   return (
     <St.SuceessPage>
       <Header />
-      <IcLeftSpeechBubble />
-      <IcRightSpeechBubble />
+      <St.ImgContainer>
+        <IcLeftSpeechBubble />
+        <IcRightSpeechBubble />
+      </St.ImgContainer>
       <St.WelcomeText>
         피클님 반가워요!
         <br />
