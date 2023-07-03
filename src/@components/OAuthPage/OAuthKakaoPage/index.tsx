@@ -8,7 +8,7 @@ import Loading from "../../@common/Loading";
 
 export default function OAuthKakaoPage() {
   const navigate = useNavigate();
-  const code = new URL(window.location.href).searchParams.get("code");
+  const authorizationCode = new URL(window.location.href).searchParams.get("code");
 
   const getKakaoToken = async () => {
     try {
@@ -18,7 +18,7 @@ export default function OAuthKakaoPage() {
           grant_type: "authorization_code",
           client_id: import.meta.env.VITE_KAKAO_CLIENT_ID,
           redirect_uri: import.meta.env.VITE_KAKAO_REDIRECT_URI,
-          code: code,
+          code: authorizationCode,
         }),
         {
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -35,7 +35,7 @@ export default function OAuthKakaoPage() {
   };
 
   useEffect(() => {
-    if (code) getKakaoToken();
+    if (authorizationCode) getKakaoToken();
   });
 
   return <Loading backgroundColor="white" />;
