@@ -11,32 +11,28 @@ export default function OAuthKakaoPage() {
   const authorizationCode = new URL(window.location.href).searchParams.get("code");
 
   const getKakaoToken = async () => {
-    try {
-      const response = await axios.post(
-        "https://kauth.kakao.com/oauth/token",
-        qs.stringify({
-          grant_type: "authorization_code",
-          client_id: import.meta.env.VITE_KAKAO_CLIENT_ID,
-          redirect_uri: import.meta.env.VITE_KAKAO_REDIRECT_URI,
-          code: authorizationCode,
-        }),
-        {
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        },
-      );
+    const response = await axios.post(
+      "https://kauth.kakao.com/oauth/token",
+      qs.stringify({
+        grant_type: "authorization_code",
+        client_id: import.meta.env.VITE_KAKAO_CLIENT_ID,
+        redirect_uri: import.meta.env.VITE_KAKAO_REDIRECT_URI,
+        code: authorizationCode,
+      }),
+      {
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      },
+    );
 
-      if (response.data.access_token) {
-        console.log("access_token:", response.data.access_token);
-        navigate(`${routePaths.Join_}${routePaths.Join_Agree}`, { state: { isSocialLogin: true } });
-      }
-    } catch (error) {
-      return error;
+    if (response.data.access_token) {
+      console.log("access_token:", response.data.access_token);
+      navigate(`${routePaths.Join_}${routePaths.Join_Agree}`, { state: { isSocialLogin: true } });
     }
   };
 
   useEffect(() => {
     if (authorizationCode) getKakaoToken();
-  });
+  }, [authorizationCode]);
 
   return <Loading backgroundColor="white" />;
 }

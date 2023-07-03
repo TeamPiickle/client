@@ -14,7 +14,7 @@ export default function OAuthNaverPage() {
       console.log("code:", authorizationCode);
       navigate(`${routePaths.Join_}${routePaths.Join_Agree}`, { state: { isSocialLogin: true } });
     }
-  });
+  }, [authorizationCode]);
 
   return <Loading backgroundColor="white" />;
 }
