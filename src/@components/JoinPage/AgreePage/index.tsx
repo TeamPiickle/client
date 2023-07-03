@@ -31,7 +31,7 @@ export default function AgreePage() {
 
   const [isPickedItems, setIsPickedItems] = useState<boolean[]>([false, true, true, true, false]);
   const [isOpenAlert, setIsOpenAlert] = useState(false);
-  const [isSocialLogin, setIsSocialLogin] = useState(location.state?.isSocialLogin);
+  const isSocialLogin = location.state?.isSocialLogin;
 
   function handleChecking(index: number) {
     switch (index) {
