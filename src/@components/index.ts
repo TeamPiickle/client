@@ -1,3 +1,4 @@
+export { default as BestPiicklePage } from "./BestPiicklePage";
 export { default as BookmarkPage } from "./BookmarkPage";
 export { default as CardCollectionPage } from "./CardCollectionPage";
 export { default as CategoryPage } from "./CategoryPage";
