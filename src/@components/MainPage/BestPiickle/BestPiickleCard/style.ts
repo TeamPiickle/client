@@ -5,12 +5,13 @@ const Container = styled.button``;
 const BestPiickleCard = styled.div`
   position: relative;
 
-  width: 20rem;
-  height: 13.6rem;
+  width: 18rem;
+  height: 10.6rem;
 
-  padding: 1.2rem;
+  padding: 0.8rem 1.2rem;
 
-  border: 0.1rem solid ${({ theme }) => theme.newColors.gray300};
+  border-radius: 0.4rem;
+  background: ${({ theme }) => theme.newColors.lightgreen2};
 `;
 
 const TagsWrapper = styled.ul`
@@ -20,13 +21,10 @@ const TagsWrapper = styled.ul`
 
 const Tag = styled.li`
   ${({ theme }) => theme.newFonts.caption1};
-  color: ${({ theme }) => theme.newColors.gray800};
+  color: ${({ theme }) => theme.newColors.green};
 `;
 
 const Content = styled.p`
-  width: 17rem;
-  height: 4.4rem;
-
   margin-top: 0.4rem;
 
   text-align: left;
@@ -38,26 +36,17 @@ const Content = styled.p`
   -webkit-box-orient: vertical;
   overflow: hidden;
 
-  ${({ theme }) => theme.newFonts.body3};
+  ${({ theme }) => theme.newFonts.btn1};
   color: ${({ theme }) => theme.newColors.gray900};
 `;
 
 const PickButtonWrapper = styled.div`
-  position: absolute;
-  left: -0.1rem;
-  bottom: -0.1rem;
-
-  width: 20rem;
-  height: 3.2rem;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-top: 1.2rem;
 
   ${({ theme }) => theme.newFonts.btn2};
-  color: ${({ theme }) => theme.colors.white};
-  background-color: ${({ theme }) => theme.newColors.gray900};
-  backdrop-filter: blur(0.6rem);
+  color: ${({ theme }) => theme.colors.gray700};
+
+  text-align: right;
 `;
 
 const St = {
