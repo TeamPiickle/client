@@ -3,6 +3,7 @@ import React from "react";
 import Header from "../@common/Header";
 import SuspenseBoundary from "../@common/SuspenseBoundary";
 import BestPiickleRank from "./BestPiickleRank";
+import BestPiickleRecommend from "./BestPiickleRecommend";
 import St from "./style";
 
 export default function BestPiicklePage() {
@@ -11,6 +12,7 @@ export default function BestPiicklePage() {
       <Header />
       <SuspenseBoundary>
         <BestPiickleRank />
+        <BestPiickleRecommend />
       </SuspenseBoundary>
     </St.Root>
   );

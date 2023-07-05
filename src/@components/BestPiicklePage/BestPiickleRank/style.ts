@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const RankContainer = styled.section`
   display: flex;
   flex-direction: column;
+
+  margin-bottom: 4.8rem;
 `;
 
 export const ButtonWrapper = styled.article`

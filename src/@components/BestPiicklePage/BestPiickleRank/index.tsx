@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { rankTitles } from "../../../util/best/rankTitles";
+import { rankTitles } from "../../../util/best/bestPiickleTitles";
 import HeadingTitleContainer from "../../@common/HeadingTitleContainer";
 import RankItem from "./RankItem";
 import * as St from "./style";
@@ -8,6 +8,7 @@ import * as St from "./style";
 export default function BestPiickleRank() {
   return (
     <St.RankContainer>
+      {/* todo : padding 조정 */}
       <HeadingTitleContainer headingTitles={rankTitles} />
       <RankItem cardId="1" content="상대방의첫인상을기억하나요저는몰라요그냥해..." idx={1} />
       <RankItem cardId="1" content="상대방의 첫인상을 기억하나요?" idx={2} />
