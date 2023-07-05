@@ -4,6 +4,7 @@ import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 
 import { IcEmptyCheckBox, IcFullCheckBox, IcNextBtn } from "../../../asset/icon";
 import { joinApi } from "../../../core/api/join";
+import useAuth from "../../../core/hooks/useAuth";
 import { routePaths } from "../../../core/routes/path";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import { agreeListsContents } from "../../../util/join/agreeListsContents";
@@ -24,6 +25,11 @@ export default function AgreePage() {
 
   const navigate = useNavigate();
   const location = useLocation();
+
+  const { login } = useAuth();
+  const loginWithUserToken = (accessToken: string) => {
+    login(accessToken);
+  };
 
   const outClickCloserRef = useOutClickCloser(() => {
     setIsOpenAlert(false);
@@ -71,6 +77,7 @@ export default function AgreePage() {
         await joinApi.postJoin(userInfoFormDataForPost);
         navigate(routePaths.Login);
       } else if (checkIsOkayToPass() && isSocialLogin) {
+        loginWithUserToken(isSocialLogin);
         navigate(`${routePaths.OAuth_}${routePaths.OAuth_Success}`);
       } else {
         setIsOpenAlert(true);

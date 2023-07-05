@@ -3,6 +3,7 @@ import qs from "qs";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { loginApi } from "../../../core/api/login";
 import { routePaths } from "../../../core/routes/path";
 import Loading from "../../@common/Loading";
 
@@ -23,15 +24,16 @@ export default function OAuthKakaoPage() {
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
       },
     );
+    return response.data.access_token;
+  };
 
-    if (response.data.access_token) {
-      console.log("access_token:", response.data.access_token);
-      navigate(`${routePaths.Join_}${routePaths.Join_Agree}`, { state: { isSocialLogin: true } });
-    }
+  const handlePostSocialLogin = async (accessToken: string) => {
+    const data = await loginApi.postSocialLogin("kakao", accessToken, "", "");
+    navigate(`${routePaths.Join_}${routePaths.Join_Agree}`, { state: { isSocialLogin: data.data.accessToken } });
   };
 
   useEffect(() => {
-    if (authorizationCode) getKakaoToken();
+    if (authorizationCode) getKakaoToken().then((token) => handlePostSocialLogin(token));
   }, [authorizationCode]);
 
   return <Loading backgroundColor="white" />;
