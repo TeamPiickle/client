@@ -50,5 +50,10 @@ export const RankItemText = styled.p`
 `;
 
 export const BookmarkWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.8rem;
+  height: 2.8rem;
   cursor: pointer;
 `;
