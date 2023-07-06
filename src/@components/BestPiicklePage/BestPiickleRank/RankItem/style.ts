@@ -14,7 +14,7 @@ export const RankItemContainer = styled.article`
   height: 4.8rem;
 `;
 
-/* todo: 이건 무엇?? */
+/* todo: 질문 */
 export const RankItemLink = styled.button`
   position: absolute;
   top: 0;
@@ -41,12 +41,13 @@ export const RankItemText = styled.p`
   ${({ theme }) => theme.newFonts.body4};
   color: ${({ theme }) => theme.newColors.gray900};
 
+  // 말줄임표설정
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 
   /* todo: 디자인 컨펌필요 */
-  min-width: 25.3rem;
+  width: 25.2rem;
 `;
 
 export const BookmarkWrapper = styled.div`

@@ -31,5 +31,3 @@ export const ContinueButton = styled.button`
 
   opacity: 0.8;
 `;
-
-/* todo: stylelint 적용하기 */
