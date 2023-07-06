@@ -12,8 +12,9 @@ export default function BestPiickleRecommend() {
   const { scrollableContainerProps, isDragging } = useScrollableContainer(); // 요거 먼가요??
   return (
     <St.RecommendContainer>
-      <HeadingTitleContainer headingTitles={recommendTitles} />
+      <HeadingTitleContainer headingTitles={recommendTitles} paddingVerticalValue={0} />
 
+      {/* todo: 코어로 빼기 */}
       {[
         "💖 유저들이 가장 최근에 북마크한 대화주제",
         "👩 여성이 북마크한 대화주제들",

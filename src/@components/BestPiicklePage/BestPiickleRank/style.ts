@@ -4,7 +4,7 @@ export const RankContainer = styled.section`
   display: flex;
   flex-direction: column;
 
-  margin-bottom: 4.8rem;
+  margin-bottom: 7.2rem;
 `;
 
 export const ButtonWrapper = styled.article`
@@ -15,7 +15,7 @@ export const ButtonWrapper = styled.article`
   width: 100%;
 
   margin-top: 1.2rem;
-  /* opacity: 소수점 수정 요구 */
+  /* todo: opacity 소수점 수정 요구 */
 `;
 
 export const ContinueButton = styled.button`
