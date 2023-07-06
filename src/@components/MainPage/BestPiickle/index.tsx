@@ -1,3 +1,4 @@
+import { routePaths } from "../../../core/routes/path";
 import { headingTitles } from "../../../util/main/headingTitles";
 import HeadingTitleContainer from "../../@common/HeadingTitleContainer";
 import useScrollableContainer from "../../@common/hooks/useScrollableContainer";
@@ -11,7 +12,11 @@ export default function BestPiickle() {
 
   return (
     <St.Root>
-      <HeadingTitleContainer headingTitles={headingTitles[0]} />
+      <HeadingTitleContainer
+        headingTitles={headingTitles[0]}
+        paddingVerticalValue={4}
+        routePath={routePaths.BestPiicklePage}
+      />
 
       {bestPiickle && (
         <St.SliderWrapper {...scrollableContainerProps}>
