@@ -18,7 +18,7 @@ export default function HeadingTitleContainer(props: HeadingTitleContainerProps)
         <St.Title>{headingTitles.title}</St.Title>
         <St.Content>{headingTitles.content}</St.Content>
       </St.Wrapper>
-      {headingTitles && headingTitles.isMoreBtn && (
+      {headingTitles && headingTitles.isMoreBtn && routePath && (
         <St.Link to={routePath} className={GTM_CLASS_NAME.mainMoodPiickleMore}>
           더보기
         </St.Link>
