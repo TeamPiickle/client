@@ -12,7 +12,7 @@ export const headingTitles: HeadingTitle[] = [
   },
   {
     title: "Mood Piickle",
-    content: "지금 나의 무드에 맞는 카테고리를 골라 대화해 보세요",
+    content: "나의 무드에 맞는 카테고리를 골라 대화해 보세요",
     isMoreBtn: true,
   },
   {
