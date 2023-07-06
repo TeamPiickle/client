@@ -21,3 +21,4 @@ export { ReactComponent as IcRightSpeechBubble } from "./rightSpeechBubble.svg";
 export { ReactComponent as IcSmallEmptyCheckBox } from "./smallEmptyCheckBox.svg";
 export { ReactComponent as IcSmallFullCheckBox } from "./smallFullCheckBox.svg";
 export { ReactComponent as IcSmallRightArrow } from "./smallRightArrow.svg";
+export { ReactComponent as IcSocialLoginLogos } from "./socialLoginLogos.svg";

@@ -28,6 +28,8 @@ export default function MainPage() {
         <BestPiickle />
       </SuspenseBoundary>
 
+      <StripBanner />
+
       <SuspenseBoundary bgColor="white">
         <MoodPiickle />
       </SuspenseBoundary>
@@ -35,8 +37,6 @@ export default function MainPage() {
       <SuspenseBoundary bgColor="white">
         <Medley />
       </SuspenseBoundary>
-
-      <StripBanner />
 
       <SuspenseBoundary bgColor="white">
         <PiickleMe />
