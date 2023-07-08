@@ -1,5 +1,5 @@
+import BestPiickleCard from "../../../@common/BestPiickleCard";
 import useDraggingContainer from "../../../@common/hooks/useDraggingContainer";
-import BestPiickleCard from "../../../MainPage/BestPiickle/BestPiickleCard";
 import { useBestPiickle } from "../../../MainPage/hooks/useBestPiickle";
 import * as St from "./style";
 
@@ -18,9 +18,15 @@ export default function RecommendItem(props: RecommendProps) {
       {bestPiickle && (
         <St.SliderWrapper {...scrollableContainerProps}>
           {bestPiickle &&
-            bestPiickle.data.slice(0, 5).map((bestPiickle, idx) => {
+            bestPiickle.data.slice(0, 4).map((bestPiickle, idx) => {
               return (
-                <BestPiickleCard key={bestPiickle._id} bestPiickle={bestPiickle} idx={idx} canNavigate={!isDragging} />
+                <BestPiickleCard
+                  key={bestPiickle._id}
+                  bestPiickle={bestPiickle}
+                  idx={idx}
+                  canNavigate={!isDragging}
+                  isLast={idx !== 3}
+                />
               );
             })}
         </St.SliderWrapper>
