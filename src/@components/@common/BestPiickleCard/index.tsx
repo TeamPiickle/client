@@ -45,7 +45,7 @@ export default function BestPiickleCard(props: BestPiickleCardProps) {
             <br />
             보고 싶다면?
           </St.Content>
-          <St.LastCardButton>나머지 보기</St.LastCardButton>
+          <St.LastCardWrapper>나머지 보기</St.LastCardWrapper>
         </St.LastCard>
       )}
     </St.Container>

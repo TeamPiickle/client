@@ -56,7 +56,11 @@ export const LastCard = styled(BestPiickleCard)`
   background: ${({ theme }) => theme.newColors.white};
 `;
 
-export const LastCardButton = styled.button`
+export const LastCardWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   margin-top: 1.2rem;
   align-self: flex-end;
 
