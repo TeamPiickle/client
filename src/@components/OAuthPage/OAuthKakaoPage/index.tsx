@@ -24,7 +24,9 @@ export default function OAuthKakaoPage() {
       qs.stringify({
         grant_type: "authorization_code",
         client_id: import.meta.env.VITE_KAKAO_CLIENT_ID,
-        redirect_uri: import.meta.env.VITE_KAKAO_REDIRECT_URI,
+        redirect_uri: import.meta.env.DEV
+          ? "http://127.0.0.1:5173/oauth/kakao"
+          : import.meta.env.VITE_KAKAO_REDIRECT_URI,
         code: authorizationCode,
       }),
       {
