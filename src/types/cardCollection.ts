@@ -48,3 +48,8 @@ export interface CardList {
   isBookmark: boolean;
   filter: string[];
 }
+
+export interface RecentCardList {
+  recentlyDate: string;
+  cardResponseDtos: CardList[];
+}

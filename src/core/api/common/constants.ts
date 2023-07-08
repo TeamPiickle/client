@@ -10,6 +10,7 @@ export const PATH = {
   BALLOTS: "/ballots",
   CARDS_: "/cards",
   CARDS_BEST: "/best",
+  CARDS_RECENT: "/recentlyBookmarkedCard",
   NOTICES: "/notices",
   MEDLEY: "/medley",
 };
