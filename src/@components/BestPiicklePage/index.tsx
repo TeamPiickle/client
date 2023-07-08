@@ -4,7 +4,7 @@ import Header from "../@common/Header";
 import SuspenseBoundary from "../@common/SuspenseBoundary";
 import BestPiickleRank from "./BestPiickleRank";
 import BestPiickleRecommend from "./BestPiickleRecommend";
-import St from "./style";
+import * as St from "./style";
 
 export default function BestPiicklePage() {
   return (
