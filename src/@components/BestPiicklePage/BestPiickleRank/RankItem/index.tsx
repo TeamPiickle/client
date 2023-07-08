@@ -12,23 +12,24 @@ interface RankItemProps {
   cardId: string;
   content: string;
   rank: number;
+  isBookmark: boolean;
 }
 
 export default function RankItem(props: RankItemProps) {
-  const { cardId, content, rank } = props;
+  const { cardId, content, rank, isBookmark } = props;
 
   const navigateRankCollection = useNavigateCardCollection(LocationType.BEST) as NavigateCardCollectionBookMarkType;
 
-  const [isBookmarked, setIsBookmarked] = useState<boolean>(true);
+  const [isBookmarked, setIsBookmarked] = useState<boolean>(isBookmark);
   const toggleBookmark = () => {
     setIsBookmarked((prev) => !prev);
-    //cardCollectionApi.addNDeleteBookmark(cardId);
+    cardCollectionApi.addNDeleteBookmark(cardId);
   };
 
   return (
     <St.RankItemContainer>
       <St.RankItemContent>
-        <St.RankItemNumber idx={rank}>{rank}</St.RankItemNumber>
+        <St.RankItemNumber idx={rank}>{rank + 1}</St.RankItemNumber>
         <St.RankItemText>{content}</St.RankItemText>
       </St.RankItemContent>
       <St.BookmarkWrapper onClick={toggleBookmark}>
