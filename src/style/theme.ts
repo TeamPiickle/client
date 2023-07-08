@@ -42,6 +42,7 @@ const newColors = {
   gray800: "#424242",
   gray900: "#0A0A0A",
   green: "#19BE7E",
+  purple: "#4F48EC",
   darkblue: "#100E34",
   lightgreen1: "#7DE0B9",
   white: "#FFFFFF",
@@ -49,6 +50,7 @@ const newColors = {
   black50: "rgba(0, 0, 0, 0.5)",
   kakaoyellow: "#FEE500",
   navergreen: "#03C75A",
+  gradation: "linear-gradient(180deg, #DBFFF1 0%, #FFFFEB 100%);",
 } as const;
 
 interface Font {
