@@ -1,20 +1,21 @@
-import React from "react";
-
-import { recommendTitles } from "../../../util/best/bestPiickleTitles";
+import { HeadingTitle } from "../../../util/main/headingTitles";
 import HeadingTitleContainer from "../../@common/HeadingTitleContainer";
-import useScrollableContainer from "../../@common/hooks/useScrollableContainer";
+import useDraggingContainer from "../../@common/hooks/useDraggingContainer";
 import BestPiickleCard from "../../MainPage/BestPiickle/BestPiickleCard";
 import { useBestPiickle } from "../../MainPage/hooks/useBestPiickle";
 import * as St from "./style";
 
+const recommendTitles: HeadingTitle = {
+  title: "이런 베스트 피클은 어때요?",
+  content: "",
+};
 export default function BestPiickleRecommend() {
   const { bestPiickle } = useBestPiickle();
-  const { scrollableContainerProps, isDragging } = useScrollableContainer(); // 요거 먼가요??
+  const { scrollableContainerProps, isDragging } = useDraggingContainer();
   return (
     <St.RecommendContainer>
       <HeadingTitleContainer headingTitles={recommendTitles} paddingVerticalValue={0} />
 
-      {/* todo: 코어로 빼기 */}
       {[
         "💖 유저들이 가장 최근에 북마크한 대화주제",
         "👩 여성이 북마크한 대화주제들",

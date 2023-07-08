@@ -44,7 +44,7 @@ const PickButtonWrapper = styled.div`
   margin-top: 1.2rem;
 
   ${({ theme }) => theme.newFonts.btn2};
-  color: ${({ theme }) => theme.colors.gray700};
+  color: ${({ theme }) => theme.newColors.gray700};
 
   text-align: right;
 `;

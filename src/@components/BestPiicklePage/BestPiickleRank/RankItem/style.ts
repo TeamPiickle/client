@@ -41,7 +41,6 @@ export const RankItemText = styled.p`
   ${({ theme }) => theme.newFonts.body4};
   color: ${({ theme }) => theme.newColors.gray900};
 
-  // 말줄임표설정
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -51,10 +50,12 @@ export const RankItemText = styled.p`
 `;
 
 export const BookmarkWrapper = styled.div`
+  width: 2.8rem;
+  height: 2.8rem;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 2.8rem;
-  height: 2.8rem;
+
   cursor: pointer;
 `;

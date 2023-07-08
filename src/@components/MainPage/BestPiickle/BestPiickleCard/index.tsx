@@ -21,7 +21,7 @@ export default function BestPiickleCard(props: BestPiickleCardProps) {
   const GTM_IDX_KEY = `mainBestPiickle${idx + 1}`;
 
   const navigateCardCollection = useNavigateCardCollection(LocationType.BEST) as NavigateCardCollectionBestType;
-
+  // todo: 마지막카드 UI
   return (
     <St.Container
       type="button"

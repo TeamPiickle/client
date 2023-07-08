@@ -14,11 +14,11 @@ export default function HeadingTitleContainer(props: HeadingTitleContainerProps)
 
   return (
     <St.Container paddingVerticalValue={paddingVerticalValue ?? 2.4}>
-      <St.Wrapper ismore={headingTitles.isMoreBtn}>
+      <St.Wrapper ismore={routePath !== undefined}>
         <St.Title>{headingTitles.title}</St.Title>
         <St.Content>{headingTitles.content}</St.Content>
       </St.Wrapper>
-      {headingTitles && headingTitles.isMoreBtn && routePath && (
+      {headingTitles && routePath && (
         <St.Link to={routePath} className={GTM_CLASS_NAME.mainMoodPiickleMore}>
           더보기
         </St.Link>

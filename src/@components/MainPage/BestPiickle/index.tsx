@@ -1,14 +1,14 @@
 import { routePaths } from "../../../core/routes/path";
 import { headingTitles } from "../../../util/main/headingTitles";
 import HeadingTitleContainer from "../../@common/HeadingTitleContainer";
-import useScrollableContainer from "../../@common/hooks/useScrollableContainer";
+import useDraggingContainer from "../../@common/hooks/useDraggingContainer";
 import { useBestPiickle } from "../hooks/useBestPiickle";
 import BestPiickleCard from "./BestPiickleCard";
 import St from "./style";
 
 export default function BestPiickle() {
   const { bestPiickle } = useBestPiickle();
-  const { scrollableContainerProps, isDragging } = useScrollableContainer();
+  const { scrollableContainerProps, isDragging } = useDraggingContainer();
 
   return (
     <St.Root>
