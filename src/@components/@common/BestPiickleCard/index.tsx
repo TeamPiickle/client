@@ -12,14 +12,15 @@ interface BestPiickleCardProps {
   idx: number;
   canNavigate: boolean;
   isLast?: boolean;
+  locationType: LocationType;
 }
 
 export default function BestPiickleCard(props: BestPiickleCardProps) {
-  const { bestPiickle, idx, canNavigate, isLast } = props;
+  const { bestPiickle, idx, canNavigate, isLast, locationType } = props;
   const { content, tags } = bestPiickle;
   const GTM_IDX_KEY = `mainBestPiickle${idx + 1}`;
 
-  const navigateCardCollection = useNavigateCardCollection(LocationType.BEST) as NavigateCardCollectionBestType;
+  const navigateCardCollection = useNavigateCardCollection(locationType) as NavigateCardCollectionBestType;
 
   const onClickCard = () => {
     if (!canNavigate) return;

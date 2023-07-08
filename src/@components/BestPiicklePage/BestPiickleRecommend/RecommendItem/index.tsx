@@ -1,5 +1,7 @@
+import { LocationType } from "../../../../types/cardCollection";
 import BestPiickleCard from "../../../@common/BestPiickleCard";
 import useDraggingContainer from "../../../@common/hooks/useDraggingContainer";
+import { useCardsByGender } from "../hooks/useCardsByGender";
 import { useRecentlyBookmarked } from "../hooks/useRecentlyBookmarked";
 import * as St from "./style";
 
@@ -10,6 +12,8 @@ interface RecommendProps {
 export default function RecommendItem(props: RecommendProps) {
   const { recommendType } = props;
   const { recentlyBookmarkedCards } = useRecentlyBookmarked();
+  const maleBookmarkedCards = useCardsByGender("남");
+  const femaleBookmarkedCards = useCardsByGender("여");
   const { scrollableContainerProps, isDragging } = useDraggingContainer();
 
   return (
@@ -18,14 +22,15 @@ export default function RecommendItem(props: RecommendProps) {
 
       {recentlyBookmarkedCards && (
         <St.SliderWrapper {...scrollableContainerProps}>
-          {recentlyBookmarkedCards.slice(0, 4).map((bestPiickle, idx) => {
+          {recentlyBookmarkedCards.slice(0, 4).map((recenltyBookmarked, idx) => {
             return (
               <BestPiickleCard
-                key={bestPiickle._id}
-                bestPiickle={bestPiickle}
+                key={recenltyBookmarked._id}
+                bestPiickle={recenltyBookmarked}
                 idx={idx}
                 canNavigate={!isDragging}
                 isLast={idx !== 3}
+                locationType={LocationType.RECENT}
               />
             );
           })}

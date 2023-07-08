@@ -11,6 +11,7 @@ export const PATH = {
   CARDS_: "/cards",
   CARDS_BEST: "/best",
   CARDS_RECENT: "/recentlyBookmarkedCard",
+  CARDS_GENDER: "/cardByBookmarkedGender",
   NOTICES: "/notices",
   MEDLEY: "/medley",
 };

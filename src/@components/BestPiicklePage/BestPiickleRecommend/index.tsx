@@ -1,6 +1,5 @@
 import { HeadingTitle } from "../../../util/main/headingTitles";
 import HeadingTitleContainer from "../../@common/HeadingTitleContainer";
-import { useRecentlyBookmarked } from "./hooks/useRecentlyBookmarked";
 import RecommendItem from "./RecommendItem";
 import * as St from "./style";
 

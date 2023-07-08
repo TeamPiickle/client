@@ -57,6 +57,11 @@ export default function useNavigateCardCollection(locationType: LocationType) {
         navigate(`${routePaths.CardCollection}?type=${LocationType.MEDLEY}&medleyId=${medleyId}`);
         setSliderIdx(sliderIdx);
       };
+    case LocationType.RECENT:
+      return (medleyId: string, sliderIdx = 0) => {
+        navigate(`${routePaths.CardCollection}?type=${LocationType.RECENT}`);
+        setSliderIdx(sliderIdx);
+      };
   }
 }
 

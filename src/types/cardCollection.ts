@@ -5,6 +5,7 @@ export const enum LocationType {
   CATEGORY = "category",
   FILTER = "filter",
   MEDLEY = "medley",
+  RECENT = "recent",
 }
 
 interface AllTypeLocation {
