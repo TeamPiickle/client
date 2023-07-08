@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const SuceessPage = styled.main`
   height: 100vh;
 
-  background: ${({ theme }) => theme.colors.card};
+  background: ${({ theme }) => theme.newColors.gradation};
 `;
 
 export const ImgContainer = styled.div`
@@ -28,14 +28,13 @@ export const WelcomeText = styled.p`
 `;
 
 export const GoHomeBtn = styled(Link)`
-  display: flex;
-
   height: 5.3rem;
 
-  margin: 0 1.6rem 0.8rem;
-
+  display: flex;
   justify-content: center;
   align-items: center;
+
+  margin: 1.6rem;
 
   background: ${({ theme }) => theme.newColors.gray900};
   border-radius: 0.8rem;
