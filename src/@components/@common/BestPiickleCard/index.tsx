@@ -1,6 +1,6 @@
 import { LocationType } from "../../../types/cardCollection";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
-import useNavigateCardCollection, { NavigateCardCollectionBestType } from "../hooks/useNavigateCardCollection";
+import useNavigateCardCollection, { NavigateRecentCollectionType } from "../hooks/useNavigateCardCollection";
 import * as St from "./style";
 
 interface BestPiickleCardProps {
@@ -20,7 +20,7 @@ export default function BestPiickleCard(props: BestPiickleCardProps) {
   const { content, tags } = bestPiickle;
   const GTM_IDX_KEY = `mainBestPiickle${idx + 1}`;
 
-  const navigateCardCollection = useNavigateCardCollection(locationType) as NavigateCardCollectionBestType;
+  const navigateCardCollection = useNavigateCardCollection(locationType) as NavigateRecentCollectionType;
 
   const onClickCard = () => {
     if (!canNavigate) return;

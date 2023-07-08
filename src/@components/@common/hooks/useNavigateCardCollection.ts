@@ -12,6 +12,7 @@ export type NavigateCardCollectionBookMarkType = (sliderIdx?: number) => void;
 export type NavigateCardCollectionCategoryType = (categoryId: string, sliderIdx?: number) => void;
 export type NavigateCardCollectionFilterType = (filterTypes: string[], sliderIdx?: number) => void;
 export type NavigateCardCollectionMedleyType = (medleyId: string, sliderIdx?: number) => void;
+export type NavigateRecentCollectionType = (sliderIdx?: number) => void;
 
 export default function useNavigateCardCollection(locationType: LocationType) {
   const navigate = useNavigate();
@@ -57,8 +58,9 @@ export default function useNavigateCardCollection(locationType: LocationType) {
         navigate(`${routePaths.CardCollection}?type=${LocationType.MEDLEY}&medleyId=${medleyId}`);
         setSliderIdx(sliderIdx);
       };
+
     case LocationType.RECENT:
-      return (medleyId: string, sliderIdx = 0) => {
+      return (sliderIdx = 0) => {
         navigate(`${routePaths.CardCollection}?type=${LocationType.RECENT}`);
         setSliderIdx(sliderIdx);
       };

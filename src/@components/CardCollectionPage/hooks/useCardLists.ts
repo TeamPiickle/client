@@ -11,6 +11,7 @@ import useCardListsFilter from "./useCardListsFilter";
 interface ExtendedCardList extends Array<CardList> {
   cardList?: CardList[]; // with category id
   cards?: CardList[]; // with medly id
+  cardResponseDtos?: CardList[];
 }
 
 export function useCardLists() {
@@ -43,6 +44,8 @@ function getReturnCardLists(
       return data?.data.data.cardList;
     case LocationType.MEDLEY:
       return data?.data.data.cards;
+    case LocationType.RECENT:
+      return data?.data.data.cardResponseDtos;
     default:
       return data?.data.data;
   }
@@ -88,6 +91,9 @@ function getSWRFetchingKeyByLocation(cardsTypeLocation: CardsTypeLocation) {
     case LocationType.FILTER: {
       return `${PATH.CATEGORIES_}${PATH.CATEGORIES_CARDS}?${cardsTypeLocation.filterTypes}`;
     }
+    case LocationType.RECENT:
+      return `${PATH.CARDS_}${PATH.CARDS_RECENT}`;
+
     case LocationType.ALL:
     default: {
       const searchParams = qs.stringify(

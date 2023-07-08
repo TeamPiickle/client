@@ -34,13 +34,18 @@ interface MedleyTypeLocation {
   medleyId: string;
 }
 
+interface RecentTypeLocation {
+  type: LocationType.RECENT;
+}
+
 export type CardsTypeLocation =
   | AllTypeLocation
   | BestTypeLocation
   | BookmarkTypeLocation
   | CategoryTypeLocation
   | FilterTypeLocation
-  | MedleyTypeLocation;
+  | MedleyTypeLocation
+  | RecentTypeLocation;
 
 export interface CardList {
   _id: string;
