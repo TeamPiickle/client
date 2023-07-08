@@ -4,12 +4,19 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { loginApi } from "../../../core/api/login";
+import useAuth from "../../../core/hooks/useAuth";
 import { routePaths } from "../../../core/routes/path";
 import Loading from "../../@common/Loading";
 
 export default function OAuthKakaoPage() {
   const navigate = useNavigate();
   const authorizationCode = new URL(window.location.href).searchParams.get("code");
+
+  const { login } = useAuth();
+  const loginWithUserToken = (accessToken: string) => {
+    login(accessToken);
+    navigate(routePaths.Main);
+  };
 
   const getKakaoToken = async () => {
     const response = await axios.post(
@@ -27,13 +34,16 @@ export default function OAuthKakaoPage() {
     return response.data.access_token;
   };
 
-  const handlePostSocialLogin = async (accessToken: string) => {
+  const handlePostKakaoLogin = async (accessToken: string) => {
     const data = await loginApi.postSocialLogin("kakao", accessToken, "", "");
-    navigate(`${routePaths.Join_}${routePaths.Join_Agree}`, { state: { isSocialLogin: data.data.accessToken } });
+
+    data.data.newMember
+      ? navigate(`${routePaths.Join_}${routePaths.Join_Agree}`, { state: { socialLoginToken: data.data.accessToken } })
+      : loginWithUserToken(data.data.accessToken);
   };
 
   useEffect(() => {
-    if (authorizationCode) getKakaoToken().then((token) => handlePostSocialLogin(token));
+    if (authorizationCode) getKakaoToken().then((token) => handlePostKakaoLogin(token));
   }, [authorizationCode]);
 
   return <Loading backgroundColor="white" />;
