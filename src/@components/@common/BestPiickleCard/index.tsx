@@ -30,7 +30,7 @@ export default function BestPiickleCard(props: BestPiickleCardProps) {
 
   return (
     <St.Container type="button" className={GTM_CLASS_NAME[GTM_IDX_KEY]} onClick={handleClickCard}>
-      {isLast ? (
+      {!isLast ? (
         <St.BestPiickleCard className={GTM_CLASS_NAME[GTM_IDX_KEY]}>
           <St.TagsWrapper className={GTM_CLASS_NAME[GTM_IDX_KEY]}>
             {tags.map((tag: string, i: number) => {

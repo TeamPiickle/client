@@ -25,7 +25,7 @@ export default function RecommendItem(props: RecommendProps) {
                 bestPiickle={cards}
                 idx={idx}
                 canNavigate={!isDragging}
-                isLast={idx !== 3}
+                isLast={idx === 3}
                 locationType={LocationType.RECENT}
               />
             );

@@ -29,7 +29,6 @@ export default function BestPiickle() {
                   bestPiickle={bestPiickle}
                   idx={idx}
                   canNavigate={!isDragging}
-                  isLast={idx !== 5}
                   locationType={LocationType.BEST}
                 />
               );
