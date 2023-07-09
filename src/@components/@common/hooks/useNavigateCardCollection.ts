@@ -13,6 +13,8 @@ export type NavigateCardCollectionCategoryType = (categoryId: string, sliderIdx?
 export type NavigateCardCollectionFilterType = (filterTypes: string[], sliderIdx?: number) => void;
 export type NavigateCardCollectionMedleyType = (medleyId: string, sliderIdx?: number) => void;
 export type NavigateRecentCollectionType = (sliderIdx?: number) => void;
+export type NavigateFemaleCollectionType = (sliderIdx?: number) => void;
+export type NavigateMaleCollectionType = (sliderIdx?: number) => void;
 
 export default function useNavigateCardCollection(locationType: LocationType) {
   const navigate = useNavigate();
@@ -62,6 +64,16 @@ export default function useNavigateCardCollection(locationType: LocationType) {
     case LocationType.RECENT:
       return (sliderIdx = 0) => {
         navigate(`${routePaths.CardCollection}?type=${LocationType.RECENT}`);
+        setSliderIdx(sliderIdx);
+      };
+    case LocationType.FEMALE:
+      return (sliderIdx = 0) => {
+        navigate(`${routePaths.CardCollection}?type=${LocationType.FEMALE}`);
+        setSliderIdx(sliderIdx);
+      };
+    case LocationType.MALE:
+      return (sliderIdx = 0) => {
+        navigate(`${routePaths.CardCollection}?type=${LocationType.MALE}`);
         setSliderIdx(sliderIdx);
       };
   }

@@ -6,6 +6,8 @@ export const enum LocationType {
   FILTER = "filter",
   MEDLEY = "medley",
   RECENT = "recent",
+  FEMALE = "female",
+  MALE = "male",
 }
 
 interface AllTypeLocation {
@@ -38,6 +40,14 @@ interface RecentTypeLocation {
   type: LocationType.RECENT;
 }
 
+interface FemaleTypeLocation {
+  type: LocationType.FEMALE;
+}
+
+interface MaleTypeLocation {
+  type: LocationType.MALE;
+}
+
 export type CardsTypeLocation =
   | AllTypeLocation
   | BestTypeLocation
@@ -45,7 +55,9 @@ export type CardsTypeLocation =
   | CategoryTypeLocation
   | FilterTypeLocation
   | MedleyTypeLocation
-  | RecentTypeLocation;
+  | RecentTypeLocation
+  | FemaleTypeLocation
+  | MaleTypeLocation;
 
 export interface CardList {
   _id: string;

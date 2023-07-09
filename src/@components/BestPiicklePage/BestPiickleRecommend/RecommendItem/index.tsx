@@ -1,4 +1,3 @@
-import { LocationType } from "../../../../types/cardCollection";
 import BestPiickleCard from "../../../@common/BestPiickleCard";
 import useDraggingContainer from "../../../@common/hooks/useDraggingContainer";
 import { recommendListType } from "..";
@@ -26,7 +25,7 @@ export default function RecommendItem(props: RecommendProps) {
                 idx={idx}
                 canNavigate={!isDragging}
                 isLast={idx === 3}
-                locationType={LocationType.RECENT}
+                locationType={recommendList.locationType}
               />
             );
           })}

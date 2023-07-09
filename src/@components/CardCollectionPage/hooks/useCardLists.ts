@@ -93,6 +93,10 @@ function getSWRFetchingKeyByLocation(cardsTypeLocation: CardsTypeLocation) {
     }
     case LocationType.RECENT:
       return `${PATH.CARDS_}${PATH.CARDS_RECENT}`;
+    case LocationType.FEMALE:
+      return `${PATH.CARDS_}${PATH.CARDS_GENDER}/여`;
+    case LocationType.MALE:
+      return `${PATH.CARDS_}${PATH.CARDS_GENDER}/남`;
 
     case LocationType.ALL:
     default: {

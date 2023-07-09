@@ -1,4 +1,4 @@
-import { CardList } from "../../../types/cardCollection";
+import { CardList, LocationType } from "../../../types/cardCollection";
 import { HeadingTitle } from "../../../util/main/headingTitles";
 import HeadingTitleContainer from "../../@common/HeadingTitleContainer";
 import { useCardsByGender } from "./hooks/useCardsByGender";
@@ -14,6 +14,7 @@ const recommendTitles: HeadingTitle = {
 export type recommendListType = {
   subtitle: string;
   cards?: CardList[];
+  locationType: LocationType;
 };
 
 export default function BestPiickleRecommend() {
@@ -25,14 +26,17 @@ export default function BestPiickleRecommend() {
     {
       subtitle: "💖 유저들이 가장 최근에 북마크한 대화주제",
       cards: recentlyBookmarkedCards,
+      locationType: LocationType.RECENT,
     },
     {
       subtitle: "👩 여성이 북마크한 대화주제들",
       cards: femaleBookmarkedCards,
+      locationType: LocationType.FEMALE,
     },
     {
       subtitle: "👱‍♂️ 남성이 북마크한 대화주제를 확인해보세요",
       cards: maleBookmarkedCards,
+      locationType: LocationType.MALE,
     },
   ];
 
