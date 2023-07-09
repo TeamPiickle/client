@@ -1,6 +1,7 @@
 import { LocationType } from "../../../types/cardCollection";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import useNavigateCardCollection, { NavigateRecentCollectionType } from "../hooks/useNavigateCardCollection";
+import LastBestPiickleCard from "./LastBestPiickleCard";
 import * as St from "./style";
 
 interface BestPiickleCardProps {
@@ -22,13 +23,13 @@ export default function BestPiickleCard(props: BestPiickleCardProps) {
 
   const navigateCardCollection = useNavigateCardCollection(locationType) as NavigateRecentCollectionType;
 
-  const onClickCard = () => {
+  const handleClickCard = () => {
     if (!canNavigate) return;
     navigateCardCollection(idx);
   };
 
   return (
-    <St.Container type="button" className={GTM_CLASS_NAME[GTM_IDX_KEY]} onClick={onClickCard}>
+    <St.Container type="button" className={GTM_CLASS_NAME[GTM_IDX_KEY]} onClick={handleClickCard}>
       {isLast ? (
         <St.BestPiickleCard className={GTM_CLASS_NAME[GTM_IDX_KEY]}>
           <St.TagsWrapper className={GTM_CLASS_NAME[GTM_IDX_KEY]}>
@@ -40,14 +41,7 @@ export default function BestPiickleCard(props: BestPiickleCardProps) {
           <St.PickButtonWrapper className={GTM_CLASS_NAME[GTM_IDX_KEY]}>카드 보기</St.PickButtonWrapper>
         </St.BestPiickleCard>
       ) : (
-        <St.LastCard>
-          <St.Content>
-            나머지 주제들도
-            <br />
-            보고 싶다면?
-          </St.Content>
-          <St.LastCardWrapper>나머지 보기</St.LastCardWrapper>
-        </St.LastCard>
+        <LastBestPiickleCard />
       )}
     </St.Container>
   );
