@@ -27,7 +27,7 @@ export default function OAuthNaverPage() {
 
   useEffect(() => {
     if (authorizationCode) handlePostNaverLogin();
-  }, [authorizationCode]);
+  }, []);
 
   return <Loading backgroundColor="white" />;
 }

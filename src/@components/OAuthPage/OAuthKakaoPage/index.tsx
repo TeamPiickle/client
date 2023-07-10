@@ -46,7 +46,7 @@ export default function OAuthKakaoPage() {
 
   useEffect(() => {
     if (authorizationCode) getKakaoToken().then((token) => handlePostKakaoLogin(token));
-  }, [authorizationCode]);
+  }, []);
 
   return <Loading backgroundColor="white" />;
 }
