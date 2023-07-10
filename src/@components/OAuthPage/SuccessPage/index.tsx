@@ -6,7 +6,7 @@ import * as St from "./style";
 export default function SuccessPage() {
   return (
     <St.SuceessPage>
-      <Header />
+      <Header bgColor="pastelgreen" />
       <St.ImgContainer>
         <IcLeftSpeechBubble />
         <IcRightSpeechBubble />
@@ -17,7 +17,7 @@ export default function SuccessPage() {
         즐거운 대화를 나누러 가볼까요?
       </St.WelcomeText>
       <St.GoHomeBtn to={routePaths.Main}>홈으로 가기</St.GoHomeBtn>
-      <St.GoMypageBtn to={routePaths.MyPage}>프로필 설정하기</St.GoMypageBtn>
+      <St.GoMypageBtn to={routePaths.MyPage}>나만의 닉네임 설정하러 가기</St.GoMypageBtn>
     </St.SuceessPage>
   );
 }
