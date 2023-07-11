@@ -1,7 +1,7 @@
 import { Link as LinkRouter } from "react-router-dom";
 import styled from "styled-components";
 
-export const HeaderWrapper = styled.header<{ bgColor: string | undefined }>`
+export const HeaderWrapper = styled.header<{ bgColor?: string }>`
   display: flex;
   position: sticky;
   top: 0;
