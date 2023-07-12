@@ -11,8 +11,7 @@ export const LastCard = styled.div`
 
   border-radius: 0.4rem;
 
-  padding: 0.8rem 1.2rem;
-  padding-top: 2.1rem;
+  padding: 2.1rem 1.2rem 0.8rem;
   background: ${({ theme }) => theme.newColors.white};
 `;
 
