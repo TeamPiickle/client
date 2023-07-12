@@ -1,6 +1,6 @@
 import React from "react";
 
-import * as St from "./styled";
+import * as St from "./style";
 
 export default function LastBestPiickleCard() {
   return (
