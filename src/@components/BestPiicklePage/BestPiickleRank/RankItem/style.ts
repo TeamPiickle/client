@@ -34,9 +34,8 @@ export const RankItemText = styled.p`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-
-  /* todo: 디자인 컨펌필요 */
-  width: 25.2rem;
+  
+  width: 26.4rem;
 
   cursor: pointer;
 `;
