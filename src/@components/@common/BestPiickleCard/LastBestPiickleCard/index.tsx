@@ -1,8 +1,12 @@
-import React from "react";
-
 import * as St from "./style";
 
-export default function LastBestPiickleCard() {
+interface LastCardProps {
+  handleClickCard: () => void;
+}
+
+export default function LastBestPiickleCard(props: LastCardProps) {
+  const { handleClickCard } = props;
+
   return (
     <St.LastCard>
       <St.LastCardContent>
@@ -10,7 +14,7 @@ export default function LastBestPiickleCard() {
         <br />
         보고 싶다면?
       </St.LastCardContent>
-      <St.LastCardWrapper>나머지 보기</St.LastCardWrapper>
+      <St.LastCardWButtonWrapper onClick={handleClickCard}>나머지 보기</St.LastCardWButtonWrapper>
     </St.LastCard>
   );
 }

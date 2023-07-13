@@ -25,12 +25,11 @@ export default function RankItem(props: RankItemProps) {
     <St.RankItemContainer>
       <St.RankItemContent>
         <St.RankItemNumber idx={rank}>{rank + 1}</St.RankItemNumber>
-        <St.RankItemText>{content}</St.RankItemText>
+        <St.RankItemText onClick={() => navigateRankCollection(rank)}>{content}</St.RankItemText>
       </St.RankItemContent>
       <St.BookmarkWrapper onClick={() => handleClickBookmark(cardId)}>
         <IcBookmarkCheck_16_20 isChecked={isBookmarked} />
       </St.BookmarkWrapper>
-      <St.RankItemLink type="button" onClick={() => navigateRankCollection(rank)} />
     </St.RankItemContainer>
   );
 }

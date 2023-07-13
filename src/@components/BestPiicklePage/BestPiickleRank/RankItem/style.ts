@@ -14,16 +14,6 @@ export const RankItemContainer = styled.article`
   height: 4.8rem;
 `;
 
-/* todo: 질문 */
-export const RankItemLink = styled.button`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-
-  width: 80%;
-`;
-
 export const RankItemContent = styled.span`
   display: flex;
   flex-direction: row;
@@ -47,6 +37,8 @@ export const RankItemText = styled.p`
 
   /* todo: 디자인 컨펌필요 */
   width: 25.2rem;
+
+  cursor: pointer;
 `;
 
 export const BookmarkWrapper = styled.div`

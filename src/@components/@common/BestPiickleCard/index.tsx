@@ -29,9 +29,9 @@ export default function BestPiickleCard(props: BestPiickleCardProps) {
   };
 
   return (
-    <St.Container type="button" className={GTM_CLASS_NAME[GTM_IDX_KEY]} onClick={handleClickCard}>
+    <St.Container type="button" className={GTM_CLASS_NAME[GTM_IDX_KEY]}>
       {!isLast ? (
-        <St.BestPiickleCard className={GTM_CLASS_NAME[GTM_IDX_KEY]}>
+        <St.BestPiickleCard className={GTM_CLASS_NAME[GTM_IDX_KEY]} onClick={handleClickCard}>
           <St.TagsWrapper className={GTM_CLASS_NAME[GTM_IDX_KEY]}>
             {tags.map((tag: string, i: number) => {
               return <St.Tag key={i}>{tag.slice(1)}</St.Tag>;
@@ -41,7 +41,7 @@ export default function BestPiickleCard(props: BestPiickleCardProps) {
           <St.PickButtonWrapper className={GTM_CLASS_NAME[GTM_IDX_KEY]}>카드 보기</St.PickButtonWrapper>
         </St.BestPiickleCard>
       ) : (
-        <LastBestPiickleCard />
+        <LastBestPiickleCard handleClickCard={handleClickCard} />
       )}
     </St.Container>
   );

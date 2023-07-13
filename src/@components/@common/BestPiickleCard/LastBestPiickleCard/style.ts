@@ -13,9 +13,11 @@ export const LastCard = styled.div`
 
   padding: 2.1rem 1.2rem 0.8rem;
   background: ${({ theme }) => theme.newColors.white};
+
+  cursor: default;
 `;
 
-export const LastCardWrapper = styled.div`
+export const LastCardWButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,6 +33,8 @@ export const LastCardWrapper = styled.div`
 
   color: ${({ theme }) => theme.newColors.white};
   ${({ theme }) => theme.newFonts.btn2}
+
+  cursor: pointer;
 `;
 
 export const LastCardContent = styled.p`
