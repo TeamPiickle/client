@@ -14,7 +14,6 @@ export const RankItemContainer = styled.article`
   height: 4.8rem;
 `;
 
-/* todo: 질문 */
 export const RankItemLink = styled.button`
   position: absolute;
   top: 0;
@@ -45,8 +44,7 @@ export const RankItemText = styled.p`
   white-space: nowrap;
   text-overflow: ellipsis;
 
-  /* todo: 디자인 컨펌필요 */
-  width: 25.2rem;
+  width: 26.4rem;
 `;
 
 export const BookmarkWrapper = styled.div`
