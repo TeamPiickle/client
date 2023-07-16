@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import {
   AgreePage,
+  BestPiicklePage,
   BookmarkPage,
   CardCollectionPage,
   CategoryPage,
@@ -29,6 +30,7 @@ export default function Router() {
       <Routes>
         <Route path={routePaths.Main} element={PublicRoute({ Component: <MainPage /> })} />
         <Route path={routePaths.Login} element={PublicRoute({ Component: <LoginPage />, restricted: true })} />
+        <Route path={routePaths.BestPiicklePage} element={PublicRoute({ Component: <BestPiicklePage /> })} />
         <Route path={routePaths.Category} element={PublicRoute({ Component: <CategoryPage /> })} />
         <Route
           path={routePaths.CardCollection}

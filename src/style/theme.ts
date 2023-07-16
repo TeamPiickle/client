@@ -45,6 +45,7 @@ const newColors = {
   purple: "#4F48EC",
   darkblue: "#100E34",
   lightgreen1: "#7DE0B9",
+  lightgreen2: "#F2FFF6",
   pastelgreen: "#DBFFF1",
   white: "#FFFFFF",
   black: "#000000",

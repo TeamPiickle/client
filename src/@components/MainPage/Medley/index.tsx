@@ -1,10 +1,10 @@
-import useScrollableContainer from "../../@common/hooks/useScrollableContainer";
+import useDraggingContainer from "../../@common/hooks/useDraggingContainer";
 import { useMedleyLists } from "../hooks/useMedleyLists";
 import MedleyCard from "./MedleyCard";
 import * as St from "./style";
 
 export default function Medley() {
-  const { scrollableContainerProps, isDragging } = useScrollableContainer();
+  const { scrollableContainerProps, isDragging } = useDraggingContainer();
   const { randomMedleyLists } = useMedleyLists();
 
   return (

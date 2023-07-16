@@ -1,6 +1,7 @@
 export const routePaths = {
   Main: "/",
   Login: "/login",
+  BestPiicklePage: "/best",
   Category: "/category",
   CardCollection: "/card-collection",
   Vote: "/vote",

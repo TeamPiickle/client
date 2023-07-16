@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 
-export default function useScrollableContainer() {
+export default function useDraggingContainer() {
   const containerRef = useRef<HTMLElement | null>(null);
 
   const [isStartDragging, setIsStartDragging] = useState(false);
