@@ -61,6 +61,15 @@ export default function UserProfilePage() {
   const errorHandler = (err: string) => {
     setErrorKey(err);
   };
+
+  const handleGenderSelect = (value: string) => {
+    setGender(value);
+  };
+
+  const handleAgeSelect = (value: string) => {
+    setAgeGroup(value);
+  };
+
   return (
     <St.Root>
       {/* <SubHeader prevPage={subHeaderInfo[3].prevPage} rate={subHeaderInfo[3].rate} /> */}
@@ -94,10 +103,10 @@ export default function UserProfilePage() {
 
         <St.SubTitle>연령대(선택)</St.SubTitle>
         <St.Requirement>※ 만 14세 이상만 가입가능합니다.</St.Requirement>
-        <ProfileAgeGroup ageGroup={ageGroup} setAgeGroup={setAgeGroup} />
+        <ProfileAgeGroup ageGroup={ageGroup} handleSelect={handleAgeSelect} />
 
         <St.SubTitle>성별(선택)</St.SubTitle>
-        <ProfileGender gender={gender} setGender={setGender} />
+        <ProfileGender gender={gender} handleSelect={handleGenderSelect} />
         <St.NextButton className={GTM_CLASS_NAME.joinProfileNext} onClick={completeBtn}>
           다음으로
         </St.NextButton>

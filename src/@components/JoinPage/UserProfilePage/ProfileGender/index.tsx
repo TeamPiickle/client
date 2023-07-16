@@ -3,19 +3,15 @@ import { St } from "./style";
 
 interface ProfileJenderProps {
   gender: string;
-  setGender: React.Dispatch<React.SetStateAction<string>>;
+  handleSelect: (value: string) => void;
 }
 
 export default function ProfileJender(props: ProfileJenderProps) {
-  const { gender, setGender } = props;
-
-  const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setGender(e.target.value);
-  };
+  const { gender, handleSelect } = props;
 
   return (
     <St.ProfileGender>
-      <St.GenderInputForm onChange={handleSelect} value={gender}>
+      <St.GenderInputForm onChange={(e) => handleSelect(e.target.value)} value={gender}>
         {genderOptions.map((option) => (
           <option key={option.value} value={option.value} disabled={option.disabled} hidden={option.hidden}>
             {option.label}
