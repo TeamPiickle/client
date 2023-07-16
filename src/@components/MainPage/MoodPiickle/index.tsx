@@ -1,3 +1,4 @@
+import { routePaths } from "../../../core/routes/path";
 import { LocationType } from "../../../types/cardCollection";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import { headingTitles } from "../../../util/main/headingTitles";
@@ -22,7 +23,11 @@ export default function MoodPiickle() {
 
   return (
     <St.Container>
-      <HeadingTitleContainer headingTitles={headingTitles[1]} />
+      <HeadingTitleContainer
+        headingTitles={headingTitles[1]}
+        paddingVerticalValue={4}
+        routePath={routePaths.Category}
+      />
       <St.CategoryWrapper>
         {randomCategoryLists &&
           randomCategoryLists.slice(0, 4).map((moodPiickle, index) => (

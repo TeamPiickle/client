@@ -10,7 +10,7 @@ export default function PiickleMe() {
 
   return (
     <St.Container>
-      <HeadingTitleContainer headingTitles={headingTitles[2]} />
+      <HeadingTitleContainer headingTitles={headingTitles[2]} paddingVerticalValue={4} />
       <St.VoteBanner
         to={`${routePaths.Vote}/${ballotLists && ballotLists.data[0]._id}`}
         className={GTM_CLASS_NAME.mainVote1}>
