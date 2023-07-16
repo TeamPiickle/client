@@ -1,8 +1,9 @@
+import { genderOptions } from "../../../../util/join/userProfileOption";
 import { St } from "./style";
 
 interface ProfileJenderProps {
   gender: string;
-  setGender: (jender: string) => void;
+  setGender: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export default function ProfileJender(props: ProfileJenderProps) {
@@ -15,12 +16,11 @@ export default function ProfileJender(props: ProfileJenderProps) {
   return (
     <St.ProfileGender>
       <St.GenderInputForm onChange={handleSelect} value={gender}>
-        <St.Option value="" disabled hidden>
-          성별을 선택해주세요
-        </St.Option>
-        <St.Option value="남">남자</St.Option>
-        <St.Option value="여">여자</St.Option>
-        <St.Option value="기타">기타</St.Option>
+        {genderOptions.map((option) => (
+          <option key={option.value} value={option.value} disabled={option.disabled} hidden={option.hidden}>
+            {option.label}
+          </option>
+        ))}
       </St.GenderInputForm>
     </St.ProfileGender>
   );

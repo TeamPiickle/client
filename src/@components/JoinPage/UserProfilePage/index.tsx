@@ -40,7 +40,7 @@ export default function UserProfilePage() {
       return;
     }
 
-    if (nickName && birthData && errorKey === "") {
+    if (nickName && errorKey === "") {
       setUserInfoFormData((prevFormData) => {
         const currentFormData = new FormData();
 
@@ -48,7 +48,7 @@ export default function UserProfilePage() {
         currentFormData.append(JOIN_FORM_DATA_KEY.Password, prevFormData.get(JOIN_FORM_DATA_KEY.Password) ?? "");
         currentFormData.append(JOIN_FORM_DATA_KEY.Nickname, nickName);
         currentFormData.append(JOIN_FORM_DATA_KEY.Birthday, birthData);
-        if (gender !== "") currentFormData.append(JOIN_FORM_DATA_KEY.Gender, gender);
+        currentFormData.append(JOIN_FORM_DATA_KEY.Gender, gender);
         if (profileImage) currentFormData.append(JOIN_FORM_DATA_KEY.ImgFile, profileImage);
 
         return currentFormData;
@@ -61,7 +61,6 @@ export default function UserProfilePage() {
   const errorHandler = (err: string) => {
     setErrorKey(err);
   };
-
   return (
     <St.Root>
       {/* <SubHeader prevPage={subHeaderInfo[3].prevPage} rate={subHeaderInfo[3].rate} /> */}
@@ -93,23 +92,9 @@ export default function UserProfilePage() {
           <St.SuccessMessage>{JOIN_PROFILE_ALERT_MESSAGE.nickName.success}</St.SuccessMessage>
         ) : null}
 
-        <St.SubTitle>생년월일(필수)</St.SubTitle>
+        <St.SubTitle>연령대(선택)</St.SubTitle>
         <St.Requirement>※ 만 14세 이상만 가입가능합니다.</St.Requirement>
-        <ProfileBirth
-          birthData={birthData}
-          setBirthData={setBirthData}
-          isInComplete={isInComplete}
-          handleErrorMsg={errorHandler}
-        />
-        {isInComplete && birthData === "" && (
-          <St.ErrorMessage>{JOIN_PROFILE_ALERT_MESSAGE.birth.input}</St.ErrorMessage>
-        )}
-        {errorKey === JOIN_PROFILE_ALERT_KEY.birth.valid && (
-          <St.ErrorMessage>{JOIN_PROFILE_ALERT_MESSAGE.birth.valid}</St.ErrorMessage>
-        )}
-        {errorKey === JOIN_PROFILE_ALERT_KEY.birth.check && (
-          <St.ErrorMessage>{JOIN_PROFILE_ALERT_MESSAGE.birth.check}</St.ErrorMessage>
-        )}
+        <ProfileBirth birthData={birthData} setBirthData={setBirthData} />
 
         <St.SubTitle>성별(선택)</St.SubTitle>
         <ProfileGender gender={gender} setGender={setGender} />
