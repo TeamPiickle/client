@@ -5,11 +5,16 @@ import useModal from "../hooks/useModal";
 import MenuBar from "../MenuBar";
 import * as St from "./style";
 
-export default function Header() {
+interface HeaderProps {
+  bgColor?: string;
+}
+
+export default function Header(props: HeaderProps) {
+  const { bgColor } = props;
   const { isModalOpen, toggleModal } = useModal();
 
   return (
-    <St.HeaderWrapper>
+    <St.HeaderWrapper bgColor={bgColor}>
       <St.Link to={routePaths.Main} className={GTM_CLASS_NAME.mainPiickleLogo}>
         <IcLogo aria-label="피클" />
       </St.Link>

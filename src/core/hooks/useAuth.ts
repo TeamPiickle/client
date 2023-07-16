@@ -1,9 +1,8 @@
-import { useRecoilState, useResetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 
 import { userTokenAtom } from "../atom/auth";
 
 export default function useAuth() {
-  const resetUserToken = useResetRecoilState(userTokenAtom);
   const [userToken, setUserToken] = useRecoilState(userTokenAtom);
 
   return {
@@ -12,7 +11,7 @@ export default function useAuth() {
       setUserToken(token);
     },
     logout: () => {
-      resetUserToken();
+      setUserToken(null);
     },
   };
 }

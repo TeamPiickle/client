@@ -3,6 +3,7 @@ import Header from "../@common/Header";
 import useGTMPage from "../@common/hooks/useGTMPage";
 import useScroll from "../@common/hooks/useScrollToTop";
 import LoginForm from "./LoginForm";
+import SocialLogin from "./SocialLogin";
 
 export default function LoginPage() {
   useGTMPage();
@@ -12,6 +13,7 @@ export default function LoginPage() {
     <main>
       <Header />
       <LoginForm />
+      <SocialLogin />
       <Footer />
     </main>
   );

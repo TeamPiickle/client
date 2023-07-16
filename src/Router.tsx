@@ -14,6 +14,9 @@ import {
   LoginPage,
   MainPage,
   MyPage,
+  OAuthKakaoPage,
+  OAuthNaverPage,
+  SuccessPage,
   UserInfoPage,
   UserProfilePage,
   VotePage,
@@ -45,6 +48,12 @@ export default function Router() {
           <Route path={routePaths.Join_EmailConfirm} element={<EmailConfirmPage />} /> */}
           <Route path={routePaths.Join_UserProfile} element={<UserProfilePage />} />
           <Route path={routePaths.Join_UserInfo} element={<UserInfoPage />} />
+          <Route path="*" element={<Error404Page />} />
+        </Route>
+        <Route path={`${routePaths.OAuth_}*`}>
+          <Route path={routePaths.OAuth_Kakao} element={PublicRoute({ Component: <OAuthKakaoPage /> })} />
+          <Route path={routePaths.OAuth_Naver} element={PublicRoute({ Component: <OAuthNaverPage /> })} />
+          <Route path={routePaths.OAuth_Success} element={PrivateRoute({ Component: <SuccessPage /> })} />
           <Route path="*" element={<Error404Page />} />
         </Route>
         <Route path="*" element={PublicRoute({ Component: <Error404Page /> })} />
