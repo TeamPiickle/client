@@ -1,6 +1,7 @@
 export const routePaths = {
   Main: "/",
   Login: "/login",
+  BestPiicklePage: "/best",
   Category: "/category",
   CardCollection: "/card-collection",
   Vote: "/vote",
@@ -17,4 +18,4 @@ export const routePaths = {
   Join_UserInfo: "user-info",
 };
 
-export type RoutePaths = typeof routePaths[keyof typeof routePaths];
+export type RoutePaths = (typeof routePaths)[keyof typeof routePaths];

@@ -2,12 +2,13 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const St = {
-  Container: styled.header`
+  Container: styled.header<{ paddingVerticalValue: number }>`
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     padding: 2.4rem 0;
+    padding: ${({ paddingVerticalValue }) => `${paddingVerticalValue}rem 0`};
   `,
 
   Wrapper: styled.div<{ ismore: boolean }>`

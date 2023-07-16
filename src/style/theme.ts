@@ -44,6 +44,7 @@ const newColors = {
   green: "#19BE7E",
   darkblue: "#100E34",
   lightgreen1: "#7DE0B9",
+  lightgreen2: "#F2FFF6",
   white: "#FFFFFF",
   black50: "rgba(0, 0, 0, 0.5)",
 } as const;
