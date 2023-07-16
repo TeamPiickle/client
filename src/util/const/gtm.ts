@@ -22,7 +22,6 @@ type GtmClassName = {
   mainCTABtn: string;
   mainMenuBtn: string;
   menuLogin: string;
-  menuJoin: string;
   menuRecommendCard: string;
   menuMoodPiickle: string;
   menuMoodPiickleSub: string;
@@ -111,7 +110,6 @@ export const GTM_CLASS_NAME: GtmClassName = {
   mainCTABtn: "click_main_cta",
   mainMenuBtn: "click_main_menu",
   menuLogin: "click_menu_log",
-  menuJoin: "click_menu_joinmember",
   menuRecommendCard: "click_menu_card",
   menuMoodPiickle: "click_menu_mood_main",
   menuMoodPiickleSub: "click_menu_mood_sub",
