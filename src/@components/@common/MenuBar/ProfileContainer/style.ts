@@ -38,14 +38,14 @@ const MyProfileBtn = styled(Link)`
   ${({ theme }) => theme.newFonts.btn2}
   color: ${({ theme }) => theme.newColors.gray700};
 
-  border-right: solid 0.15rem ${({ theme }) => theme.newColors.gray700};
-
   padding-right: 1rem;
 `;
 
 const LogoutBtn = styled.button`
   ${({ theme }) => theme.newFonts.btn2}
   color: ${({ theme }) => theme.newColors.gray700};
+
+  border-left: solid 0.15rem ${({ theme }) => theme.newColors.gray700};
 
   padding-left: 1rem;
 `;
