@@ -11,7 +11,6 @@ import * as St from "./style";
 const bookmarkHeadingTitles: HeadingTitle = {
   title: "MY Piickle",
   content: "내가 픽한 대화 주제들을 확인해보세요",
-  isMoreBtn: false,
 };
 
 export default function BookmarkPage() {
