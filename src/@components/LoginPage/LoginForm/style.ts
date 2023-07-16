@@ -8,10 +8,10 @@ export const St = {
   Form: styled.form``,
 
   Title: styled.h2`
-    padding: 2.4rem 0;
+    padding: 1.6rem 0;
 
-    ${({ theme }) => theme.fonts.h1};
-    color: ${({ theme }) => theme.colors.bg};
+    ${({ theme }) => theme.newFonts.h1};
+    color: ${({ theme }) => theme.newColors.bg};
   `,
 
   Label: styled.label`
@@ -19,8 +19,8 @@ export const St = {
 
     margin: 1.6rem 0 1.2rem;
 
-    ${({ theme }) => theme.fonts.body6};
-    color: ${({ theme }) => theme.colors.gray600};
+    ${({ theme }) => theme.newFonts.body4};
+    color: ${({ theme }) => theme.newColors.gray900};
   `,
 
   ErrorMessage: styled.strong`
@@ -28,26 +28,26 @@ export const St = {
 
     margin: 0.8rem 0 0 2rem;
 
-    ${({ theme }) => theme.fonts.caption5};
-    color: ${({ theme }) => theme.colors.red}; ;
+    ${({ theme }) => theme.newFonts.caption1};
+    color: ${({ theme }) => theme.newColors.red};
   `,
 
   Input: styled.input`
     width: 100%;
-    height: 4.4rem;
+    height: 4.2rem;
 
     padding: 1.2rem 0 1.2rem 2.4rem;
 
-    border: 0.1rem solid ${({ theme }) => theme.colors.gray300};
+    border: 0.1rem solid ${({ theme }) => theme.newColors.gray300};
     border-radius: 4.9rem;
 
-    ${({ theme }) => theme.fonts.body6};
-    color: ${({ theme }) => theme.colors.gray400};
+    ${({ theme }) => theme.newFonts.body4};
+    color: ${({ theme }) => theme.newColors.gray900};
   `,
 
   LoginBtn: styled.button`
     width: 100%;
-    height: 5rem;
+    height: 5.3rem;
 
     display: flex;
     justify-content: center;
@@ -55,26 +55,28 @@ export const St = {
 
     margin-top: 2.4rem;
 
-    background-color: ${({ theme }) => theme.colors.bg};
-    border-radius: 5rem;
+    background-color: ${({ theme }) => theme.newColors.gray900};
+    border-radius: 0.8rem;
 
-    ${({ theme }) => theme.fonts.btn2};
-    color: ${({ theme }) => theme.colors.white};
+    ${({ theme }) => theme.newFonts.btn1};
+    color: ${({ theme }) => theme.newColors.white};
   `,
 
   LinkWrapper: styled.ul`
-    margin: 3.9rem 0 19.3rem;
+    margin: 1.6rem 0 6.4rem;
 
     display: flex;
     justify-content: center;
 
-    ${({ theme }) => theme.fonts.body6};
-    color: ${({ theme }) => theme.colors.gray600};
+    ${({ theme }) => theme.newFonts.caption1};
+    color: ${({ theme }) => theme.newColors.gray600};
   `,
 
   Link: styled.li``,
 
   Delimeter: styled.span`
     margin: 0 1rem;
+
+    color: ${({ theme }) => theme.newColors.gray200};
   `,
 };

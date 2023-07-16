@@ -21,7 +21,7 @@ export default function MenuBar(props: MenuBarProps) {
 
   const { isLogin } = useAuth();
 
-  const { ballotLists } = useBallotLists(true);
+  const { ballotLists } = useBallotLists();
   const navigateCardCollection = useNavigateCardCollection(LocationType.ALL) as NavigateCardCollectionAllType;
 
   const moveCardCollection = () => {
