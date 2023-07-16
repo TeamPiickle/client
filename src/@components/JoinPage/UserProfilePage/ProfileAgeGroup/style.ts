@@ -4,7 +4,7 @@ import styled from "styled-components";
 import IcDownArrow from "../../../../asset/icon/downArrow.svg";
 
 export const St = {
-  ProfileBirth: styled.section`
+  ProfileAgeGroup: styled.section`
     height: 4.4rem;
 
     display: flex;
@@ -12,7 +12,7 @@ export const St = {
     margin: 1.2rem 0 2.4rem 0;
   `,
 
-  BirthInputForm: styled.select<{ value: string }>`
+  AgeGroupInputForm: styled.select<{ value: string }>`
     width: calc(100% - 3.2rem);
     height: 100%;
 

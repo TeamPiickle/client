@@ -10,7 +10,7 @@ import Footer from "../../@common/Footer";
 import useScroll from "../../@common/hooks/useScrollToTop";
 import SubHeader from "../../@common/SubHeader";
 import { UserInfoFormDataContext } from "..";
-import ProfileBirth from "./ProfileBirth";
+import ProfileAgeGroup from "./ProfileAgeGroup";
 import ProfileGender from "./ProfileGender";
 import ProfileImage from "./ProfileImage";
 import ProfileNickname from "./ProfileNickname";
@@ -20,12 +20,12 @@ export default function UserProfilePage() {
   useScroll();
   const navigate = useNavigate();
 
-  const { formDataNicknameValue, formDataBirthdayValue, formDataGenderValue, setUserInfoFormData } =
+  const { formDataNicknameValue, formDataAgeGroupValue, formDataGenderValue, setUserInfoFormData } =
     useOutletContext<UserInfoFormDataContext>();
 
   const [profileImage, setProfileImage] = useState<File>();
   const [nickName, setNickName] = useState(formDataNicknameValue);
-  const [birthData, setBirthData] = useState(formDataBirthdayValue);
+  const [ageGroup, setAgeGroup] = useState(formDataAgeGroupValue);
   const [gender, setGender] = useState(formDataGenderValue);
 
   const [isChecked, setIsChecked] = useState(false); //닉네임 중복 확인
@@ -47,7 +47,7 @@ export default function UserProfilePage() {
         currentFormData.append(JOIN_FORM_DATA_KEY.Email, prevFormData.get(JOIN_FORM_DATA_KEY.Email) ?? "");
         currentFormData.append(JOIN_FORM_DATA_KEY.Password, prevFormData.get(JOIN_FORM_DATA_KEY.Password) ?? "");
         currentFormData.append(JOIN_FORM_DATA_KEY.Nickname, nickName);
-        currentFormData.append(JOIN_FORM_DATA_KEY.Birthday, birthData);
+        currentFormData.append(JOIN_FORM_DATA_KEY.AgeGroup, ageGroup);
         currentFormData.append(JOIN_FORM_DATA_KEY.Gender, gender);
         if (profileImage) currentFormData.append(JOIN_FORM_DATA_KEY.ImgFile, profileImage);
 
@@ -94,7 +94,7 @@ export default function UserProfilePage() {
 
         <St.SubTitle>연령대(선택)</St.SubTitle>
         <St.Requirement>※ 만 14세 이상만 가입가능합니다.</St.Requirement>
-        <ProfileBirth birthData={birthData} setBirthData={setBirthData} />
+        <ProfileAgeGroup ageGroup={ageGroup} setAgeGroup={setAgeGroup} />
 
         <St.SubTitle>성별(선택)</St.SubTitle>
         <ProfileGender gender={gender} setGender={setGender} />

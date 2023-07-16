@@ -1,27 +1,27 @@
 import { ageOptions } from "../../../../util/join/userProfileOption";
 import { St } from "./style";
 
-interface ProfileBirthProps {
-  birthData: string;
-  setBirthData: React.Dispatch<React.SetStateAction<string>>;
+interface ProfileAgeGroupProps {
+  ageGroup: string;
+  setAgeGroup: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default function ProfileBirth(props: ProfileBirthProps) {
-  const { birthData, setBirthData } = props;
+export default function ProfileAgeGroup(props: ProfileAgeGroupProps) {
+  const { ageGroup, setAgeGroup } = props;
 
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setBirthData(e.target.value);
+    setAgeGroup(e.target.value);
   };
 
   return (
-    <St.ProfileBirth>
-      <St.BirthInputForm onChange={handleSelect} value={birthData}>
+    <St.ProfileAgeGroup>
+      <St.AgeGroupInputForm onChange={handleSelect} value={ageGroup}>
         {ageOptions.map((option) => (
           <option key={option.value} value={option.value} disabled={option.disabled} hidden={option.hidden}>
             {option.label}
           </option>
         ))}
-      </St.BirthInputForm>
-    </St.ProfileBirth>
+      </St.AgeGroupInputForm>
+    </St.ProfileAgeGroup>
   );
 }
