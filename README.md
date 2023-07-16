@@ -56,9 +56,9 @@
 ## 👥 Team Piickle 피클의 웹딱지들을 소개합니다 :)
 <div style="max-width: 50%">
 
-|[이주함](https://github.com/joohaem)|[고나연](https://github.com/NYeonK?tab=overview&from=2022-07-01&to=2022-07-10)|
-|------|------|
-|<img width="520" src="https://user-images.githubusercontent.com/87578512/178135117-a1c2c380-a63c-4435-990b-0fcb501820ba.png">|<img width="520" src="https://user-images.githubusercontent.com/87578512/178135232-7d1b4068-d94f-49e2-8ac0-4c8ea8f9d266.png">|
+|[이주함](https://github.com/joohaem)|[고나연](https://github.com/NYeonK)|[최은형](https://github.com/ilmerry)
+|------|------|------|
+|<img width="520" src="https://user-images.githubusercontent.com/87578512/178135117-a1c2c380-a63c-4435-990b-0fcb501820ba.png">|<img width="520" src="https://user-images.githubusercontent.com/87578512/178135232-7d1b4068-d94f-49e2-8ac0-4c8ea8f9d266.png">|<img width="520" src="https://github.com/TeamPiickle/client/assets/71490862/fa22577b-2a4b-4959-96c8-4cfbd0bf3b2a">|
 
 </div>
 
