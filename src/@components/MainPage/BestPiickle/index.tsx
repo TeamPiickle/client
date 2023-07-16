@@ -1,4 +1,5 @@
 import { routePaths } from "../../../core/routes/path";
+import { LocationType } from "../../../types/cardCollection";
 import { headingTitles } from "../../../util/main/headingTitles";
 import BestPiickleCard from "../../@common/BestPiickleCard";
 import HeadingTitleContainer from "../../@common/HeadingTitleContainer";
@@ -28,7 +29,7 @@ export default function BestPiickle() {
                   bestPiickle={bestPiickle}
                   idx={idx}
                   canNavigate={!isDragging}
-                  isLast={idx !== 5}
+                  locationType={LocationType.BEST}
                 />
               );
             })}

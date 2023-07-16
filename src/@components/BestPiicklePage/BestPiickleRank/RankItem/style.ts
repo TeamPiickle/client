@@ -14,15 +14,6 @@ export const RankItemContainer = styled.article`
   height: 4.8rem;
 `;
 
-export const RankItemLink = styled.button`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-
-  width: 80%;
-`;
-
 export const RankItemContent = styled.span`
   display: flex;
   flex-direction: row;
@@ -43,8 +34,10 @@ export const RankItemText = styled.p`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-
+  
   width: 26.4rem;
+
+  cursor: pointer;
 `;
 
 export const BookmarkWrapper = styled.div`

@@ -1,34 +1,34 @@
 import BestPiickleCard from "../../../@common/BestPiickleCard";
 import useDraggingContainer from "../../../@common/hooks/useDraggingContainer";
-import { useBestPiickle } from "../../../MainPage/hooks/useBestPiickle";
+import { recommendListType } from "..";
 import * as St from "./style";
 
 interface RecommendProps {
-  recommendType: string;
+  recommendList: recommendListType;
 }
 
 export default function RecommendItem(props: RecommendProps) {
-  const { recommendType } = props;
-  const { bestPiickle } = useBestPiickle();
+  const { recommendList } = props;
   const { scrollableContainerProps, isDragging } = useDraggingContainer();
+
   return (
     <St.RecommemdItemContainer>
-      <St.RecommendType>{recommendType}</St.RecommendType>
+      <St.RecommendType>{recommendList.subtitle}</St.RecommendType>
 
-      {bestPiickle && (
+      {recommendList.cards && (
         <St.SliderWrapper {...scrollableContainerProps}>
-          {bestPiickle &&
-            bestPiickle.data.slice(0, 4).map((bestPiickle, idx) => {
-              return (
-                <BestPiickleCard
-                  key={bestPiickle._id}
-                  bestPiickle={bestPiickle}
-                  idx={idx}
-                  canNavigate={!isDragging}
-                  isLast={idx !== 3}
-                />
-              );
-            })}
+          {recommendList.cards.slice(0, 4).map((cards, idx) => {
+            return (
+              <BestPiickleCard
+                key={cards._id}
+                bestPiickle={cards}
+                idx={idx}
+                canNavigate={!isDragging}
+                isLast={idx === 3}
+                locationType={recommendList.locationType}
+              />
+            );
+          })}
         </St.SliderWrapper>
       )}
     </St.RecommemdItemContainer>
