@@ -4,6 +4,7 @@ import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 
 import { IcEmptyCheckBox, IcFullCheckBox, IcNextBtn } from "../../../asset/icon";
 import { joinApi } from "../../../core/api/join";
+import useAuth from "../../../core/hooks/useAuth";
 import { routePaths } from "../../../core/routes/path";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import { agreeListsContents } from "../../../util/join/agreeListsContents";
@@ -25,13 +26,19 @@ export default function AgreePage() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const { login } = useAuth();
+  const loginWithUserToken = (accessToken: string) => {
+    login(accessToken);
+    navigate(`${routePaths.OAuth_}${routePaths.OAuth_Success}`);
+  };
+
   const outClickCloserRef = useOutClickCloser(() => {
     setIsOpenAlert(false);
   }, false);
 
   const [isPickedItems, setIsPickedItems] = useState<boolean[]>([false, true, true, true, false]);
   const [isOpenAlert, setIsOpenAlert] = useState(false);
-  const [isSocialLogin, setIsSocialLogin] = useState(location.state?.isSocialLogin);
+  const socialLoginToken = location.state?.socialLoginToken;
 
   function handleChecking(index: number) {
     switch (index) {
@@ -67,11 +74,11 @@ export default function AgreePage() {
 
   const completeJoinBtn = async () => {
     try {
-      if (checkIsOkayToPass() && !isSocialLogin) {
+      if (checkIsOkayToPass() && !socialLoginToken) {
         await joinApi.postJoin(userInfoFormDataForPost);
         navigate(routePaths.Login);
-      } else if (checkIsOkayToPass() && isSocialLogin) {
-        navigate(`${routePaths.OAuth_}${routePaths.OAuth_Success}`);
+      } else if (checkIsOkayToPass() && socialLoginToken) {
+        loginWithUserToken(socialLoginToken);
       } else {
         setIsOpenAlert(true);
       }
@@ -79,7 +86,7 @@ export default function AgreePage() {
       if (!axios.isAxiosError(error)) return;
 
       alert("회원가입을 다시 시도해주세요.");
-      navigate(`${routePaths.Join_}${routePaths.Join_UserInfo}`, { state: { isSocialLogin: false } });
+      navigate(`${routePaths.Join_}${routePaths.Join_UserInfo}`);
     }
   };
 
@@ -122,7 +129,7 @@ export default function AgreePage() {
   return (
     <St.Root>
       {/* <SubHeader prevPage={subHeaderInfo[4].prevPage} rate={subHeaderInfo[4].rate} /> */}
-      {!isSocialLogin && <SubHeader prevPage={subHeaderInfo[2].prevPage} rate={subHeaderInfo[2].rate} />}
+      {!socialLoginToken && <SubHeader prevPage={subHeaderInfo[2].prevPage} rate={subHeaderInfo[2].rate} />}
       <St.JoinAgree>
         <St.AgreeTitle>약관을 동의해주세요</St.AgreeTitle>
         <St.AgreeContent>{agreeLists}</St.AgreeContent>

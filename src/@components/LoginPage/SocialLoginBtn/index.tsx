@@ -1,5 +1,3 @@
-import { PropsWithChildren } from "react";
-
 import { IcKakaoLogo, IcNaverLogo } from "../../../asset/icon";
 import * as St from "./style";
 
@@ -10,7 +8,7 @@ interface ButtonContents {
   authUrl: string;
 }
 
-export default function SocialLoginBtn(props: PropsWithChildren<ButtonContents>) {
+export default function SocialLoginBtn(props: ButtonContents) {
   const { theme, btnText, authUrl } = props;
 
   const logoTheme = theme === "KAKAO" ? <IcKakaoLogo /> : <IcNaverLogo />;

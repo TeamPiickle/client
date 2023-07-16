@@ -3,14 +3,17 @@ import styled from "styled-components";
 
 export const SuceessPage = styled.main`
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  min-height: -webkit-fill-available;
 
-  background: ${({ theme }) => theme.colors.card};
+  background: ${({ theme }) => theme.newColors.gradation};
 `;
 
 export const ImgContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 15.6rem 4.1rem 0;
+
+  margin: 10.6rem 4.1rem 0;
   gap: 2.8rem;
 
   & > :last-child {
@@ -21,20 +24,19 @@ export const ImgContainer = styled.div`
 export const WelcomeText = styled.p`
   text-align: center;
 
-  margin: 13.3rem 0 9rem;
+  margin: 9.3rem 0 9rem;
 
   ${({ theme }) => theme.newFonts.h1};
 `;
 
 export const GoHomeBtn = styled(Link)`
-  display: flex;
-
   height: 5.3rem;
 
-  margin: 0 1.6rem 0.8rem;
-
+  display: flex;
   justify-content: center;
   align-items: center;
+
+  margin: 1.6rem;
 
   background: ${({ theme }) => theme.newColors.gray900};
   border-radius: 0.8rem;
@@ -45,6 +47,8 @@ export const GoHomeBtn = styled(Link)`
 export const GoMypageBtn = styled(Link)`
   display: flex;
   justify-content: center;
+
+  margin-bottom: 2.7rem;
 
   color: ${({ theme }) => theme.newColors.gray700};
   ${({ theme }) => theme.newFonts.caption1};

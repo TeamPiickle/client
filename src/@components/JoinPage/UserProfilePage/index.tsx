@@ -54,7 +54,7 @@ export default function UserProfilePage() {
         return currentFormData;
       });
 
-      navigate(`${routePaths.Join_}${routePaths.Join_Agree}`, { state: { isSocialLogin: false } });
+      navigate(`${routePaths.Join_}${routePaths.Join_Agree}`);
     }
   };
 
