@@ -3,8 +3,12 @@ import "swiper/swiper.css";
 import { Helmet } from "react-helmet";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { CardList } from "../../../types/cardCollection";
+import { CardList, LocationType } from "../../../types/cardCollection";
 import { BannerImage, newBannerImages } from "../../../util/main/banner";
+import useNavigateCardCollection, {
+  NavigateCardCollectionRecentType,
+  NavigateCardCollectionUpdateType,
+} from "../../@common/hooks/useNavigateCardCollection";
 import { useRecentlyBookmarked } from "../../@common/hooks/useRecentlyBookmarked";
 import { useRecentlyUpdated } from "../../@common/hooks/useRecentlyUpdated";
 import useBannerSwiper from "../hooks/useBannerSwiper";
@@ -14,9 +18,9 @@ interface newBannerType {
   bannerImage: BannerImage;
   phrase: string;
   topic: string;
-  date: string;
-  cards: CardList[];
-  linkTo: string;
+  date?: string;
+  cards?: CardList[];
+  linkTo: NavigateCardCollectionRecentType | NavigateCardCollectionUpdateType | string;
 }
 
 export default function Banner() {
@@ -24,14 +28,17 @@ export default function Banner() {
   const { recentlyBookmarkedDate, recentlyBookmarkedCards } = useRecentlyBookmarked();
   const { recentlyUpdatedDate, recentlyUpdatedCards } = useRecentlyUpdated();
 
-  const newBanners: Partial<newBannerType>[] = [
+  const navigateRecentCollection = useNavigateCardCollection(LocationType.RECENT) as NavigateCardCollectionRecentType;
+  const navigateUpdateCollection = useNavigateCardCollection(LocationType.UPDATE) as NavigateCardCollectionUpdateType;
+
+  const newBanners: newBannerType[] = [
     {
       bannerImage: newBannerImages[0],
       phrase: "가장 최근 북마크 된",
       topic: "핫한 대화주제",
       date: recentlyBookmarkedDate,
       cards: recentlyBookmarkedCards,
-      linkTo: "",
+      linkTo: navigateRecentCollection,
     },
     {
       bannerImage: newBannerImages[1],
@@ -39,13 +46,13 @@ export default function Banner() {
       topic: "새로운 대화주제",
       date: recentlyUpdatedDate,
       cards: recentlyUpdatedCards,
-      linkTo: "",
+      linkTo: navigateUpdateCollection,
     },
     {
       bannerImage: newBannerImages[2],
       phrase: "여러분만의 톡톡 튀는",
       topic: "대화주제를 얘기해주세요",
-      linkTo: "",
+      linkTo: "https://docs.google.com/forms/d/e/1FAIpQLSfSm7iKK5myGDeFOZyv0I3yrYzNja5wmLQ-yKHV90jTVc4zcg/viewform",
     },
   ];
 
@@ -56,11 +63,11 @@ export default function Banner() {
       </Helmet>
       <St.BannerSlider>
         <Swiper {...swiperSettings}>
-          {newBannerImages.map((img, index) => (
+          {newBanners.map(({ bannerImage }, index) => (
             <SwiperSlide key={index}>
               <picture>
-                <source srcSet={img.src} type="image/webp" />
-                <St.ImageWrapper src={img.subSrc} alt={img.alt} loading="lazy" />
+                <source srcSet={bannerImage.src} type="image/webp" />
+                <St.ImageWrapper src={bannerImage.subSrc} alt={bannerImage.alt} loading="lazy" />
               </picture>
             </SwiperSlide>
           ))}

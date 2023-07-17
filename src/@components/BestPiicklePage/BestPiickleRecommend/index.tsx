@@ -1,8 +1,8 @@
 import { CardList, LocationType } from "../../../types/cardCollection";
 import { HeadingTitle } from "../../../util/main/headingTitles";
 import HeadingTitleContainer from "../../@common/HeadingTitleContainer";
-import { useCardsByGender } from "./hooks/useCardsByGender";
 import { useRecentlyBookmarked } from "../../@common/hooks/useRecentlyBookmarked";
+import { useCardsByGender } from "./hooks/useCardsByGender";
 import RecommendItem from "./RecommendItem";
 import * as St from "./style";
 
