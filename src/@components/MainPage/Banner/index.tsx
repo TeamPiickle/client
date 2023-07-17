@@ -12,9 +12,10 @@ import useNavigateCardCollection, {
 import { useRecentlyBookmarked } from "../../@common/hooks/useRecentlyBookmarked";
 import { useRecentlyUpdated } from "../../@common/hooks/useRecentlyUpdated";
 import useBannerSwiper from "../hooks/useBannerSwiper";
+import Slide from "./Slide";
 import * as St from "./style";
 
-interface newBannerType {
+export interface newBannerType {
   bannerImage: BannerImage;
   phrase: string;
   topic: string;
@@ -70,31 +71,9 @@ export default function Banner() {
       </Helmet>
       <St.BannerSlider>
         <Swiper {...swiperSettings}>
-          {newBanners.map(({ bannerImage, phrase, topic, date, cards, linkTo, isLightMode }, index) => (
-            <SwiperSlide key={index} onClick={() => linkTo()}>
-              <St.SlideContentWrapper>
-                <St.SlideTitles isLightMode={isLightMode}>
-                  <h2>{phrase}</h2>
-                  <h1>{topic}</h1>
-                </St.SlideTitles>
-                <St.SlideContent>
-                  <St.SlideDate isLightMode={isLightMode}>
-                    <h2>{date?.replace(/-/g, ".").substring(2, 10)}</h2>
-                    <div>New</div>
-                  </St.SlideDate>
-                  {cards?.slice(0, 4).map((card) => (
-                    <St.SlideCard key={card._id} isLightMode={isLightMode}>
-                      {card.content}
-                    </St.SlideCard>
-                  ))}
-                </St.SlideContent>
-              </St.SlideContentWrapper>
-              <picture>
-                <source srcSet={bannerImage.src} type="image/webp" />
-                <St.ImageWrapper src={bannerImage.subSrc} alt={bannerImage.alt} loading="lazy" />
-              </picture>
-
-              <St.Gradient isLightMode={isLightMode} />
+          {newBanners.map((banner, index) => (
+            <SwiperSlide key={index}>
+              <Slide {...banner} />
             </SwiperSlide>
           ))}
         </Swiper>
