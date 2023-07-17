@@ -12,7 +12,7 @@ import useNavigateCardCollection, {
 import { useRecentlyBookmarked } from "../../@common/hooks/useRecentlyBookmarked";
 import { useRecentlyUpdated } from "../../@common/hooks/useRecentlyUpdated";
 import useBannerSwiper from "../hooks/useBannerSwiper";
-import St from "./style";
+import * as St from "./style";
 
 interface newBannerType {
   bannerImage: BannerImage;
@@ -63,8 +63,23 @@ export default function Banner() {
       </Helmet>
       <St.BannerSlider>
         <Swiper {...swiperSettings}>
-          {newBanners.map(({ bannerImage }, index) => (
+          {newBanners.map(({ bannerImage, phrase, topic, date, cards }, index) => (
             <SwiperSlide key={index}>
+              <St.SlideContentWrapper>
+                <St.SlideTitles>
+                  <h2>{phrase}</h2>
+                  <h1>{topic}</h1>
+                </St.SlideTitles>
+                <St.SlideContent>
+                  <St.SlideDate>
+                    <h2>{date?.replace(/-/g, ".").substring(2, 10)}</h2>
+                    <div>New</div>
+                  </St.SlideDate>
+                  {cards?.slice(0, 4).map((card) => (
+                    <St.SlideCard key={card._id}>{card.content}</St.SlideCard>
+                  ))}
+                </St.SlideContent>
+              </St.SlideContentWrapper>
               <picture>
                 <source srcSet={bannerImage.src} type="image/webp" />
                 <St.ImageWrapper src={bannerImage.subSrc} alt={bannerImage.alt} loading="lazy" />
@@ -78,6 +93,8 @@ export default function Banner() {
             {currentSlide + 1} / {newBannerImages.length}
           </St.CurrentPage>
         </St.ContentsPages>
+
+        <St.Gradient />
       </St.BannerSlider>
     </>
   );

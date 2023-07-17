@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const BannerSlider = styled.section`
+export const BannerSlider = styled.section`
   touch-action: pan-x;
 
   position: relative;
@@ -11,13 +11,84 @@ const BannerSlider = styled.section`
   }
 `;
 
-const ImageWrapper = styled.img`
+export const SlideContentWrapper = styled.div`
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+
+  padding: 3rem 0 3.2rem 2.5rem;
+`;
+
+export const SlideTitles = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  > h2 {
+    ${({ theme }) => theme.newFonts.h2};
+    color: ${({ theme }) => theme.newColors.gray400};
+  }
+
+  > h1 {
+    ${({ theme }) => theme.newFonts.h1};
+    color: ${({ theme }) => theme.newColors.green};
+  }
+`;
+
+export const SlideContent = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  gap: 1.2rem;
+
+  margin-top: 4.8rem;
+`;
+
+export const SlideDate = styled.span`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  gap: 0.4rem;
+
+  > h2 {
+    ${({ theme }) => theme.newFonts.h2};
+    color: ${({ theme }) => theme.newColors.gray400};
+  }
+  > div {
+    ${({ theme }) => theme.newFonts.caption1};
+    color: ${({ theme }) => theme.newColors.white};
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 4rem;
+    height: 2.1rem;
+    border-radius: 4.2rem;
+
+    background: ${({ theme }) => theme.newColors.green};
+  }
+`;
+
+export const SlideCard = styled.p`
+  ${({ theme }) => theme.newFonts.body4};
+  color: ${({ theme }) => theme.newColors.white};
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  width: 26.5rem;
+`;
+
+export const ImageWrapper = styled.img`
   width: 100%;
   height: 30.2rem;
   object-fit: cover;
 `;
 
-const ContentsPages = styled.div`
+export const ContentsPages = styled.div`
   position: absolute;
   right: 0;
   bottom: 0;
@@ -35,15 +106,19 @@ const ContentsPages = styled.div`
   z-index: 10;
 `;
 
-const CurrentPage = styled.span`
+export const CurrentPage = styled.span`
   ${({ theme }) => theme.newFonts.caption1};
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.newColors.white};
 `;
 
-const St = {
-  BannerSlider,
-  ImageWrapper,
-  ContentsPages,
-  CurrentPage,
-};
-export default St;
+export const Gradient = styled.div`
+  position: absolute;
+
+  width: 100%;
+  height: 10.2rem;
+
+  bottom: 0;
+  z-index: 1;
+
+  background: linear-gradient(0, #241e20 0%, rgba(36, 30, 32, 0) 100%);
+`;

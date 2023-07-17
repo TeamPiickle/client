@@ -34,7 +34,7 @@ export const RankItemText = styled.p`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  
+
   width: 26.4rem;
 
   cursor: pointer;
