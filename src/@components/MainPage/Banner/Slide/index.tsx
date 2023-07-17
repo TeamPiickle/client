@@ -1,12 +1,10 @@
 import "swiper/swiper.css";
 
-import { SwiperSlide } from "swiper/react";
-
 import { newBannerType } from "..";
 import * as St from "./style";
 
 export default function Slide(props: newBannerType) {
-  const { bannerImage, phrase, topic, date, cards, linkTo, isLightMode } = props;
+  const { bannerImage, phrase, topic, date, cards, isLightMode } = props;
   return (
     <St.SlideContainer>
       <St.SlideContentWrapper>

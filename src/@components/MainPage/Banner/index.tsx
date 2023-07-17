@@ -1,5 +1,6 @@
 import "swiper/swiper.css";
 
+import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -71,8 +72,8 @@ export default function Banner() {
       </Helmet>
       <St.BannerSlider>
         <Swiper {...swiperSettings}>
-          {newBanners.map((banner, index) => (
-            <SwiperSlide key={index}>
+          {newBanners.map((banner, idx) => (
+            <SwiperSlide key={idx} onClick={() => banner.linkTo()}>
               <Slide {...banner} />
             </SwiperSlide>
           ))}
@@ -84,6 +85,11 @@ export default function Banner() {
           </St.CurrentPage>
         </St.ContentsPages>
       </St.BannerSlider>
+      <St.PagingWrapper>
+        {newBanners.map((banner, idx) => (
+          <St.PagingButton key={idx} isSelected={currentSlide === idx} />
+        ))}
+      </St.PagingWrapper>
     </>
   );
 }

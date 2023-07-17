@@ -35,3 +35,25 @@ export const CurrentPage = styled.span`
   ${({ theme }) => theme.newFonts.caption1};
   color: ${({ theme }) => theme.newColors.white};
 `;
+
+export const PagingWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 3.2rem;
+
+  gap: 1.6rem;
+
+  cursor: default;
+`;
+
+export const PagingButton = styled.circle<{ isSelected: boolean }>`
+  width: 0.8rem;
+  height: 0.8rem;
+
+  border-radius: 50%;
+
+  background: ${({ theme, isSelected }) => (isSelected ? theme.newColors.green : theme.newColors.gray300)};
+`;
