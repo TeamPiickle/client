@@ -9,6 +9,8 @@ export const BannerSlider = styled.section`
   & .slick-track {
     scroll-snap-type: x mandatory;
   }
+
+  cursor: pointer;
 `;
 
 export const SlideContentWrapper = styled.div`
@@ -17,18 +19,16 @@ export const SlideContentWrapper = styled.div`
   flex-direction: column;
 
   padding: 3rem 0 3.2rem 2.5rem;
-
-  cursor: pointer;
 `;
 
-export const SlideTitles = styled.div`
+export const SlideTitles = styled.div<{ isLightMode: boolean }>`
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
 
   > h2 {
     ${({ theme }) => theme.newFonts.h2};
-    color: ${({ theme }) => theme.newColors.gray400};
+    color: ${({ theme, isLightMode }) => (isLightMode ? theme.newColors.gray600 : theme.newColors.gray400)};
   }
 
   > h1 {
@@ -46,7 +46,7 @@ export const SlideContent = styled.div`
   margin-top: 4.8rem;
 `;
 
-export const SlideDate = styled.span`
+export const SlideDate = styled.span<{ isLightMode: boolean }>`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -55,7 +55,7 @@ export const SlideDate = styled.span`
 
   > h2 {
     ${({ theme }) => theme.newFonts.h2};
-    color: ${({ theme }) => theme.newColors.gray400};
+    color: ${({ theme, isLightMode }) => (isLightMode ? theme.newColors.gray600 : theme.newColors.gray400)};
   }
   > div {
     ${({ theme }) => theme.newFonts.caption1};
@@ -73,9 +73,9 @@ export const SlideDate = styled.span`
   }
 `;
 
-export const SlideCard = styled.p`
+export const SlideCard = styled.p<{ isLightMode: boolean }>`
   ${({ theme }) => theme.newFonts.body4};
-  color: ${({ theme }) => theme.newColors.white};
+  color: ${({ theme, isLightMode }) => (isLightMode ? theme.newColors.gray900 : theme.newColors.white)};
 
   overflow: hidden;
   white-space: nowrap;
@@ -113,7 +113,7 @@ export const CurrentPage = styled.span`
   color: ${({ theme }) => theme.newColors.white};
 `;
 
-export const Gradient = styled.div`
+export const Gradient = styled.div<{ isLightMode: boolean }>`
   position: absolute;
 
   width: 100%;
@@ -122,5 +122,8 @@ export const Gradient = styled.div`
   bottom: 0;
   z-index: 1;
 
-  background: linear-gradient(0, #241e20 0%, rgba(36, 30, 32, 0) 100%);
+  background: ${({ isLightMode }) =>
+    isLightMode
+      ? "linear-gradient(0, #EDEDEF 0%, rgba(232, 232, 234, 0.00) 100%);"
+      : "linear-gradient(0, #241e20 0%, rgba(36, 30, 32, 0) 100%)"};
 `;

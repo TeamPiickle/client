@@ -21,6 +21,7 @@ interface newBannerType {
   date?: string;
   cards?: CardList[];
   linkTo: NavigateCardCollectionRecentType | NavigateCardCollectionUpdateType | (() => void);
+  isLightMode: boolean;
 }
 
 export default function Banner() {
@@ -39,6 +40,7 @@ export default function Banner() {
       date: recentlyBookmarkedDate,
       cards: recentlyBookmarkedCards,
       linkTo: navigateRecentCollection,
+      isLightMode: false,
     },
     {
       bannerImage: newBannerImages[1],
@@ -47,6 +49,7 @@ export default function Banner() {
       date: recentlyUpdatedDate,
       cards: recentlyUpdatedCards,
       linkTo: navigateUpdateCollection,
+      isLightMode: true,
     },
     {
       bannerImage: newBannerImages[2],
@@ -56,6 +59,7 @@ export default function Banner() {
         window.open(
           "https://docs.google.com/forms/d/e/1FAIpQLSfSm7iKK5myGDeFOZyv0I3yrYzNja5wmLQ-yKHV90jTVc4zcg/viewform",
         ),
+      isLightMode: true,
     },
   ];
 
@@ -66,20 +70,22 @@ export default function Banner() {
       </Helmet>
       <St.BannerSlider>
         <Swiper {...swiperSettings}>
-          {newBanners.map(({ bannerImage, phrase, topic, date, cards, linkTo }, index) => (
+          {newBanners.map(({ bannerImage, phrase, topic, date, cards, linkTo, isLightMode }, index) => (
             <SwiperSlide key={index}>
               <St.SlideContentWrapper onClick={() => linkTo()}>
-                <St.SlideTitles>
+                <St.SlideTitles isLightMode={isLightMode}>
                   <h2>{phrase}</h2>
                   <h1>{topic}</h1>
                 </St.SlideTitles>
                 <St.SlideContent>
-                  <St.SlideDate>
+                  <St.SlideDate isLightMode={isLightMode}>
                     <h2>{date?.replace(/-/g, ".").substring(2, 10)}</h2>
                     <div>New</div>
                   </St.SlideDate>
                   {cards?.slice(0, 4).map((card) => (
-                    <St.SlideCard key={card._id}>{card.content}</St.SlideCard>
+                    <St.SlideCard key={card._id} isLightMode={isLightMode}>
+                      {card.content}
+                    </St.SlideCard>
                   ))}
                 </St.SlideContent>
               </St.SlideContentWrapper>
@@ -87,6 +93,8 @@ export default function Banner() {
                 <source srcSet={bannerImage.src} type="image/webp" />
                 <St.ImageWrapper src={bannerImage.subSrc} alt={bannerImage.alt} loading="lazy" />
               </picture>
+
+              <St.Gradient isLightMode={isLightMode} />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -96,8 +104,6 @@ export default function Banner() {
             {currentSlide + 1} / {newBannerImages.length}
           </St.CurrentPage>
         </St.ContentsPages>
-
-        <St.Gradient />
       </St.BannerSlider>
     </>
   );
