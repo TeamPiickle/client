@@ -3,6 +3,16 @@ import "swiper/swiper.css";
 import { newBannerType } from "..";
 import * as St from "./style";
 
+const DATE_FORMAT = {
+  START: 2,
+  END: 10,
+};
+
+const CARDS_LIMIT = {
+  START: 0,
+  END: 4,
+};
+
 export default function Slide(props: newBannerType) {
   const { bannerImage, phrase, topic, date, cards, isLightMode } = props;
   return (
@@ -14,10 +24,10 @@ export default function Slide(props: newBannerType) {
         </St.SlideTitles>
         <St.SlideContent>
           <St.SlideDate isLightMode={isLightMode}>
-            <h2>{date?.replace(/-/g, ".").substring(2, 10)}</h2>
+            <h2>{date?.replace(/-/g, ".").substring(DATE_FORMAT.START, DATE_FORMAT.END)}</h2>
             <div>New</div>
           </St.SlideDate>
-          {cards?.slice(0, 4).map((card) => (
+          {cards?.slice(CARDS_LIMIT.START, CARDS_LIMIT.END).map((card) => (
             <St.SlideCard key={card._id} isLightMode={isLightMode}>
               {card.content}
             </St.SlideCard>
