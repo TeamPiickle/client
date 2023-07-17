@@ -7,7 +7,7 @@ import {
   OriginImgNewBanner3,
 } from "../../asset/image/origin";
 
-type BannerImage = {
+export type BannerImage = {
   src: string;
   alt: string;
   subSrc: string;
