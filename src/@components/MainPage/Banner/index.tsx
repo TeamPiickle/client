@@ -71,8 +71,8 @@ export default function Banner() {
       <St.BannerSlider>
         <Swiper {...swiperSettings}>
           {newBanners.map(({ bannerImage, phrase, topic, date, cards, linkTo, isLightMode }, index) => (
-            <SwiperSlide key={index}>
-              <St.SlideContentWrapper onClick={() => linkTo()}>
+            <SwiperSlide key={index} onClick={() => linkTo()}>
+              <St.SlideContentWrapper>
                 <St.SlideTitles isLightMode={isLightMode}>
                   <h2>{phrase}</h2>
                   <h1>{topic}</h1>

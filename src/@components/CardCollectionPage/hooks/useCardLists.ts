@@ -46,6 +46,8 @@ function getReturnCardLists(
       return data?.data.data.cards;
     case LocationType.RECENT:
       return data?.data.data.cardResponseDtos;
+    case LocationType.UPDATE:
+      return data?.data.data.cardResponseDtos;
     default:
       return data?.data.data;
   }
