@@ -8,4 +8,5 @@ export { default as NewImgBanner2 } from "./new_banner_2.webp";
 export { default as NewImgBanner3 } from "./new_banner_3.webp";
 export { default as ImgPiickleLoading } from "./piickleLoading.webp";
 export { default as ImgStripBanner } from "./stripBanner.webp";
+export { default as ImgTopicLinkBanner } from "./topic_link_banner.webp";
 export { default as ImgVoteBanner } from "./voteBanner.webp";

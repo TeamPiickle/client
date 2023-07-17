@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { CardList, LocationType } from "../../../types/cardCollection";
+import { GOOGLE_FORM_TOPIC } from "../../../util/const/form";
 import { BannerImage, newBannerImages } from "../../../util/main/banner";
 import useNavigateCardCollection, {
   NavigateCardCollectionRecentType,
@@ -57,10 +58,7 @@ export default function Banner() {
       bannerImage: newBannerImages[2],
       phrase: "여러분만의 톡톡 튀는",
       topic: "대화주제를 얘기해주세요",
-      linkTo: () =>
-        window.open(
-          "https://docs.google.com/forms/d/e/1FAIpQLSfSm7iKK5myGDeFOZyv0I3yrYzNja5wmLQ-yKHV90jTVc4zcg/viewform",
-        ),
+      linkTo: () => window.open(GOOGLE_FORM_TOPIC),
       isLightMode: true,
     },
   ];
