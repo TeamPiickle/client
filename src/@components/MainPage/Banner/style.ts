@@ -49,7 +49,7 @@ export const PagingWrapper = styled.div`
   cursor: default;
 `;
 
-export const PagingButton = styled.circle<{ isSelected: boolean }>`
+export const PagingButton = styled.div<{ isSelected: boolean }>`
   width: 0.8rem;
   height: 0.8rem;
 
