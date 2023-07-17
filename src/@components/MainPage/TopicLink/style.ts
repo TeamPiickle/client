@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { ImgTopicLinkBanner } from "../../../asset/image";
 import { OriginImgTopicLinkBanner } from "../../../asset/image/origin";
 
-export const TopicLinkContainer = styled.div`
+export const TopicLinkContainer = styled.section`
   position: relative;
   display: flex;
 
@@ -11,7 +11,7 @@ export const TopicLinkContainer = styled.div`
   margin: 0.8rem;
   margin-top: 0;
   border-radius: 0.8rem;
-  padding: 1rem 1.2rem;
+  //padding: 1rem 1.2rem;
 
   background-image: url(${ImgTopicLinkBanner});
   background-image: image-set(${ImgTopicLinkBanner} type("image/webp"), ${OriginImgTopicLinkBanner} type("image/png"));
@@ -24,7 +24,9 @@ export const TopicTitles = styled.span`
   align-items: center;
   justify-content: space-between;
   align-self: flex-end;
+
   width: 100%;
+  margin: 0 1.2rem 1rem;
 
   z-index: 2;
   > h1 {
