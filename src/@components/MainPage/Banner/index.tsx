@@ -20,7 +20,7 @@ interface newBannerType {
   topic: string;
   date?: string;
   cards?: CardList[];
-  linkTo: NavigateCardCollectionRecentType | NavigateCardCollectionUpdateType | string;
+  linkTo: NavigateCardCollectionRecentType | NavigateCardCollectionUpdateType | (() => void);
 }
 
 export default function Banner() {
@@ -52,7 +52,10 @@ export default function Banner() {
       bannerImage: newBannerImages[2],
       phrase: "여러분만의 톡톡 튀는",
       topic: "대화주제를 얘기해주세요",
-      linkTo: "https://docs.google.com/forms/d/e/1FAIpQLSfSm7iKK5myGDeFOZyv0I3yrYzNja5wmLQ-yKHV90jTVc4zcg/viewform",
+      linkTo: () =>
+        window.open(
+          "https://docs.google.com/forms/d/e/1FAIpQLSfSm7iKK5myGDeFOZyv0I3yrYzNja5wmLQ-yKHV90jTVc4zcg/viewform",
+        ),
     },
   ];
 
@@ -63,9 +66,9 @@ export default function Banner() {
       </Helmet>
       <St.BannerSlider>
         <Swiper {...swiperSettings}>
-          {newBanners.map(({ bannerImage, phrase, topic, date, cards }, index) => (
+          {newBanners.map(({ bannerImage, phrase, topic, date, cards, linkTo }, index) => (
             <SwiperSlide key={index}>
-              <St.SlideContentWrapper>
+              <St.SlideContentWrapper onClick={() => linkTo()}>
                 <St.SlideTitles>
                   <h2>{phrase}</h2>
                   <h1>{topic}</h1>

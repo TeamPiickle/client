@@ -17,6 +17,8 @@ export const SlideContentWrapper = styled.div`
   flex-direction: column;
 
   padding: 3rem 0 3.2rem 2.5rem;
+
+  cursor: pointer;
 `;
 
 export const SlideTitles = styled.div`
