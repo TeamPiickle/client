@@ -1,6 +1,5 @@
 import "swiper/swiper.css";
 
-import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { Swiper, SwiperSlide } from "swiper/react";
 

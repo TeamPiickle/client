@@ -11,7 +11,6 @@ export const TopicLinkContainer = styled.section`
   margin: 0.8rem;
   margin-top: 0;
   border-radius: 0.8rem;
-  //padding: 1rem 1.2rem;
 
   background-image: url(${ImgTopicLinkBanner});
   background-image: image-set(${ImgTopicLinkBanner} type("image/webp"), ${OriginImgTopicLinkBanner} type("image/png"));
