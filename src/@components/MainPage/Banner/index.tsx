@@ -29,7 +29,7 @@ export default function Banner() {
 
         <St.ContentsPages>
           <St.CurrentPage>
-            {currentSlide + 1} / {bannerImage.length}
+            {currentSlide + 1} / {newBannerImages.length}
           </St.CurrentPage>
         </St.ContentsPages>
       </St.BannerSlider>

@@ -4,7 +4,7 @@ const BannerSlider = styled.section`
   touch-action: pan-x;
 
   position: relative;
-  height: 21.6rem;
+  height: 30.2rem;
 
   & .slick-track {
     scroll-snap-type: x mandatory;
@@ -13,7 +13,7 @@ const BannerSlider = styled.section`
 
 const ImageWrapper = styled.img`
   width: 100%;
-  height: 21.6rem;
+  height: 30.2rem;
   object-fit: cover;
 `;
 
