@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import { CardList } from "../../../types/cardCollection";
 import { BannerImage, newBannerImages } from "../../../util/main/banner";
-import { useRecentlyBookmarked } from "../../BestPiicklePage/BestPiickleRecommend/hooks/useRecentlyBookmarked";
+import { useRecentlyBookmarked } from "../../@common/hooks/useRecentlyBookmarked";
 import useBannerSwiper from "../hooks/useBannerSwiper";
 import St from "./style";
 
