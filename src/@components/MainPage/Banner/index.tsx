@@ -3,7 +3,7 @@ import "swiper/swiper.css";
 import { Helmet } from "react-helmet";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { bannerImage } from "../../../util/main/banner";
+import { bannerImage, newBannerImages } from "../../../util/main/banner";
 import useBannerSwiper from "../hooks/useBannerSwiper";
 import St from "./style";
 
@@ -17,7 +17,7 @@ export default function Banner() {
       </Helmet>
       <St.BannerSlider>
         <Swiper {...swiperSettings}>
-          {bannerImage.map((img, index) => (
+          {newBannerImages.map((img, index) => (
             <SwiperSlide key={index}>
               <picture>
                 <source srcSet={img.src} type="image/webp" />
