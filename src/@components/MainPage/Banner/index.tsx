@@ -20,14 +20,14 @@ interface newBannerType {
 
 export default function Banner() {
   const { swiperSettings, currentSlide } = useBannerSwiper();
-  const { recentlyBookmarkedCards } = useRecentlyBookmarked();
+  const { recentlyDate, recentlyBookmarkedCards } = useRecentlyBookmarked();
 
   const newBanners: Partial<newBannerType>[] = [
     {
       bannerImage: newBannerImages[0],
       phrase: "가장 최근 북마크 된",
       topic: "핫한 대화주제",
-      date: "",
+      date: recentlyDate,
       cards: recentlyBookmarkedCards,
       linkTo: "",
     },

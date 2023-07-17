@@ -11,6 +11,7 @@ export function useRecentlyBookmarked() {
   });
 
   return {
+    recentlyDate: data?.data.data.recentlyDate,
     recentlyBookmarkedCards: data?.data.data.cardResponseDtos,
   };
 }

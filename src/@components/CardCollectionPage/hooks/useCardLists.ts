@@ -91,6 +91,9 @@ function getSWRFetchingKeyByLocation(cardsTypeLocation: CardsTypeLocation) {
     case LocationType.FILTER: {
       return `${PATH.CATEGORIES_}${PATH.CATEGORIES_CARDS}?${cardsTypeLocation.filterTypes}`;
     }
+
+    case LocationType.UPDATE:
+      return `${PATH.CARDS_}${PATH.CARDS_UPDATE}`;
     case LocationType.RECENT:
       return `${PATH.CARDS_}${PATH.CARDS_RECENT}`;
     case LocationType.FEMALE:
