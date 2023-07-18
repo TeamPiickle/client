@@ -6,7 +6,7 @@ import { CardList } from "../../../types/cardCollection";
 import Card from "../Card";
 import LastCard from "../Card/LastCard";
 import useCardSwiper from "../hooks/useCardSwiper";
-import St from "./style";
+import * as St from "./style";
 
 interface CardSliderProps {
   openLoginModalHandler: () => void;
@@ -28,6 +28,12 @@ const CardSlider = (props: CardSliderProps) => {
         ))}
         <SwiperSlide>
           <LastCard ref={lastCardObsvRef} />
+        </SwiperSlide>
+        <SwiperSlide>
+          <St.Footer>
+            <St.Text>피클에게 전할 말이 있다면 피드백을 남겨주세요</St.Text>
+            <St.feedBackLink to="https://forms.gle/JwuduzX4LduS7Kmr7">피드백 남기기</St.feedBackLink>
+          </St.Footer>
         </SwiperSlide>
       </Swiper>
     </St.Wrapper>
