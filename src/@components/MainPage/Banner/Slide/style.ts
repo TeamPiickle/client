@@ -8,23 +8,30 @@ export const SlideContentWrapper = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 
-  padding: 3rem 0 3.2rem 2.5rem;
+  width: 100%;
+  height: 100%;
+  padding: 3rem 0 0 2.5rem;
 `;
 
-export const SlideTitles = styled.div<{ isLightMode: boolean }>`
+export const SlideTitles = styled.div<{ isLightMode: boolean; isLast: boolean }>`
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
 
+  align-items: ${({ isLast }) => isLast && "center"};
+
   > h2 {
     ${({ theme }) => theme.newFonts.h2};
     color: ${({ theme, isLightMode }) => (isLightMode ? theme.newColors.gray600 : theme.newColors.gray400)};
+    font-size: ${({ isLast }) => isLast && "1.6rem"};
   }
 
   > h1 {
     ${({ theme }) => theme.newFonts.h1};
     color: ${({ theme }) => theme.newColors.green};
+    font-size: ${({ isLast }) => isLast && "2.3rem"};
   }
 `;
 
@@ -32,9 +39,9 @@ export const SlideContent = styled.div`
   display: flex;
   flex-direction: column;
 
-  gap: 1.2rem;
+  margin-bottom: 3.2rem;
 
-  margin-top: 4.8rem;
+  gap: 1.2rem;
 `;
 
 export const SlideDate = styled.span<{ isLightMode: boolean }>`
@@ -94,4 +101,14 @@ export const Gradient = styled.div<{ isLightMode: boolean }>`
     isLightMode
       ? "linear-gradient(0, #EDEDEF 0%, rgba(232, 232, 234, 0.00) 100%);"
       : "linear-gradient(0, #241e20 0%, rgba(36, 30, 32, 0) 100%)"};
+`;
+
+export const Button = styled.button`
+  ${({ theme }) => theme.newFonts.btn1};
+  color: ${({ theme }) => theme.newColors.gray900};
+  text-decoration: underline;
+
+  margin-bottom: 2.4rem;
+
+  z-index: 10;
 `;

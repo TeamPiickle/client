@@ -24,6 +24,7 @@ export interface newBannerType {
   cards?: CardList[];
   linkTo: NavigateCardCollectionRecentType | NavigateCardCollectionUpdateType | (() => void);
   isLightMode: boolean;
+  isLast?: boolean;
 }
 
 export default function Banner() {
@@ -59,6 +60,7 @@ export default function Banner() {
       topic: "대화주제를 얘기해주세요",
       linkTo: () => window.open(GOOGLE_FORM_TOPIC),
       isLightMode: true,
+      isLast: true,
     },
   ];
 
@@ -70,7 +72,11 @@ export default function Banner() {
       <St.BannerSlider>
         <Swiper {...swiperSettings}>
           {newBanners.map((banner, idx) => (
-            <SwiperSlide key={idx} onClick={() => banner.linkTo()}>
+            <SwiperSlide
+              key={idx}
+              onClick={() => {
+                if (!banner.isLast) banner.linkTo();
+              }}>
               <Slide {...banner} />
             </SwiperSlide>
           ))}
