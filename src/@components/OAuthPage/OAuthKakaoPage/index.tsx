@@ -45,13 +45,12 @@ export default function OAuthKakaoPage() {
 
   useEffect(() => {
     const authorizationCode = new URL(window.location.href).searchParams.get("code");
-    if (!authorizationCode) throw Error("non authorization code on url");
+    if (!authorizationCode) return alert("다시 시도해주세요");
 
-    const getTokenAndLogin = async () => {
+    (async () => {
       const token = await getKakaoToken(authorizationCode);
       handlePostKakaoLogin(token);
-    };
-    getTokenAndLogin();
+    })();
   }, []);
 
   return <Loading backgroundColor="white" />;
