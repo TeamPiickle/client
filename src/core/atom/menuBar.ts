@@ -10,7 +10,10 @@ export const activeStateModal = atom({
   default: false,
 });
 
-export const activeStateToast = atom({
+export const activeStateToast = atom<{
+  message: string;
+  duration: number;
+}>({
   key: StateType.ACTIVE_STATE_TOAST,
   default: {
     message: "",

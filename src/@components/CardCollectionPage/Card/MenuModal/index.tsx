@@ -1,18 +1,27 @@
-import useModal from "../../../@common/hooks/useModal";
+import { useRecoilState, useSetRecoilState } from "recoil";
+
+import { activeStateToast } from "../../../../core/atom/menuBar";
 import Modal from "../../../@common/Modal";
 import * as St from "./style";
 
 interface MenuModalProps {
   closeHandler: () => void;
+  fireToast: () => void;
 }
 
 export default function MenuModal(props: MenuModalProps) {
-  const { closeHandler } = props;
+  const { closeHandler, fireToast } = props;
+  const setActiveToast = useSetRecoilState(activeStateToast);
 
   return (
     <Modal theme="WHITE_BOTTOM" closeHandler={closeHandler} isNoCloseBtn>
       <St.ModalContainer>
-        <St.ModalItemWrapper>
+        <St.ModalItemWrapper
+          onClick={() => {
+            closeHandler();
+            setActiveToast({ message: "🥰 소중한 의견 주셔서 감사해요", duration: 2.5 });
+            fireToast();
+          }}>
           <St.EmojiWrapper>🥲</St.EmojiWrapper>이 주제 별로예요
         </St.ModalItemWrapper>
         <St.ModalItemWrapper>
