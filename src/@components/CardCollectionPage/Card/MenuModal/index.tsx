@@ -27,7 +27,6 @@ export default function MenuModal(props: MenuModalProps) {
       handleClickItem: () => {
         closeHandler();
         setActiveToast({ message: "🥰 소중한 의견 주셔서 감사해요", duration: 2.5 });
-        fireToast();
       },
     },
     {
@@ -44,7 +43,6 @@ export default function MenuModal(props: MenuModalProps) {
       handleClickItem: () => {
         closeHandler();
         setActiveToast({ message: "📢 다른 사람들의 의견을 모아서 들려드릴게요", duration: 2.5 });
-        fireToast();
       },
     },
   ];

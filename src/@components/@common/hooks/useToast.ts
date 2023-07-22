@@ -1,18 +1,23 @@
-import { useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useCallback, useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
 
 import { activeStateToast } from "../../../core/atom/menuBar";
 
 export default function useToast() {
-  const { duration } = useRecoilValue(activeStateToast);
+  const [activeToast, setActiveStateToast] = useRecoilState(activeStateToast);
   const [isToastOpen, setIsToastOpen] = useState(false);
 
-  const fireToast = () => {
+  const fireToast = useCallback(() => {
     setIsToastOpen(true);
     setTimeout(() => {
       setIsToastOpen(false);
-    }, duration * 1000);
-  };
+    }, activeToast.duration * 1000);
+  }, [activeToast]);
+
+  useEffect(() => {
+    setActiveStateToast(activeToast);
+    fireToast();
+  }, [activeToast, setActiveStateToast, fireToast]);
 
   return { isToastOpen, fireToast };
 }
