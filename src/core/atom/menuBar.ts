@@ -5,15 +5,17 @@ enum StateType {
   ACTIVE_STATE_TOAST = "activestatetoast",
 }
 
+type ToastType = {
+  message: string;
+  duration: number;
+};
+
 export const activeStateModal = atom({
   key: StateType.ACTIVE_STATE_MODAL,
   default: false,
 });
 
-export const activeStateToast = atom<{
-  message: string;
-  duration: number;
-}>({
+export const activeStateToast = atom<ToastType>({
   key: StateType.ACTIVE_STATE_TOAST,
   default: {
     message: "",
