@@ -8,8 +8,7 @@ export const TopicLinkContainer = styled.section`
   display: flex;
 
   height: 13.4rem;
-  margin: 0.8rem;
-  margin-top: 0;
+  margin: 0 0.8rem 0.8rem;
   border-radius: 0.8rem;
 
   background-image: url(${ImgTopicLinkBanner});
@@ -28,15 +27,17 @@ export const TopicTitles = styled.span`
   margin: 0 1.2rem 1rem;
 
   z-index: 2;
-  > h1 {
-    ${({ theme }) => theme.newFonts.body3}
-    color: ${({ theme }) => theme.newColors.darkblue}
-  }
-  > button {
-    ${({ theme }) => theme.newFonts.btn2}
-    color: ${({ theme }) => theme.newColors.gray900};
-    text-decoration-line: underline;
-  }
+`;
+
+export const Text = styled.h1`
+  ${({ theme }) => theme.newFonts.body3}
+  color: ${({ theme }) => theme.newColors.darkblue}
+`;
+
+export const Button = styled.button`
+  ${({ theme }) => theme.newFonts.btn2}
+  color: ${({ theme }) => theme.newColors.gray900};
+  text-decoration-line: underline;
 `;
 
 export const Gradient = styled.div`
