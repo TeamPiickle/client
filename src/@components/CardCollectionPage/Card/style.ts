@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const Card = styled.article`
   position: relative;
+  display: flex;
 
   margin: 0 0.8rem 0.8rem;
   height: 100%;
@@ -36,13 +37,30 @@ const TagsWrapper = styled.div`
   margin-top: 1.6rem;
 `;
 
-const BookmarkWrapper = styled.div`
+const MenuWrapper = styled.aside`
+  display: flex;
+  flex-direction: column;
+
   position: absolute;
   bottom: 1.7rem;
   right: 1.2rem;
 
-  width: 5.6rem;
-  height: 5.6rem;
+  gap: 2.4rem;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 4.1rem;
+`;
+
+const ButtonLabel = styled.p`
+  margin-top: 0.6rem;
+
+  ${({ theme }) => theme.newFonts.caption1};
+  color: ${({ theme }) => theme.newColors.gray600};
 `;
 
 const St = {
@@ -50,6 +68,8 @@ const St = {
   Container,
   ContentWrapper,
   TagsWrapper,
-  BookmarkWrapper,
+  MenuWrapper,
+  ButtonWrapper,
+  ButtonLabel,
 };
 export default St;
