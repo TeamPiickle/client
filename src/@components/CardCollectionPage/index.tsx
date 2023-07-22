@@ -10,6 +10,7 @@ import useModal from "../@common/hooks/useModal";
 import useScroll from "../@common/hooks/useScrollToTop";
 import LoginModal from "../@common/LoginModal";
 import SuspenseBoundary from "../@common/SuspenseBoundary";
+import MenuModal from "./Card/MenuModal";
 import CardSlider from "./CardSlider";
 import FilterModal from "./FilterModal";
 import { useCardLists } from "./hooks/useCardLists";

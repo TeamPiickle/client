@@ -1,12 +1,10 @@
 import React from "react";
 
-import IcBookmarkCheck_22_28 from "../../../asset/icon/IcBookmarkCheck_23_28";
-import IcMenuBtn from "../../../asset/icon/IcMenuBtn";
-import IcShareBtn from "../../../asset/icon/IcShareBtn";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
-import useCardBookmark from "../hooks/useCardBookmark";
+import useModal from "../../@common/hooks/useModal";
 import TagsSlider from "../TagsSlider";
 import CardMenu from "./CardMenu";
+import MenuModal from "./MenuModal";
 import St from "./style";
 
 export interface LoginCheckProps {
@@ -19,6 +17,7 @@ export interface LoginCheckProps {
 
 const Card = (props: LoginCheckProps) => {
   const { content, tags } = props;
+  const { isModalOpen: isMenuModalOpen, toggleModal: toggleMenuModal } = useModal();
 
   return (
     <St.Card className={GTM_CLASS_NAME.cardSwipe}>
@@ -28,7 +27,9 @@ const Card = (props: LoginCheckProps) => {
           <TagsSlider tags={tags} />
         </St.TagsWrapper>
       </St.Container>
-      <CardMenu {...props} />
+      <CardMenu loginProps={props} toggleMenuModal={toggleMenuModal} />
+
+      {isMenuModalOpen && <MenuModal closeHandler={toggleMenuModal} />}
     </St.Card>
   );
 };
