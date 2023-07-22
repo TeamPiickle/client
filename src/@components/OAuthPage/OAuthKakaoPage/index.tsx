@@ -10,7 +10,6 @@ import Loading from "../../@common/Loading";
 
 export default function OAuthKakaoPage() {
   const navigate = useNavigate();
-  const authorizationCode = new URL(window.location.href).searchParams.get("code");
 
   const { login } = useAuth();
   const loginWithUserToken = (accessToken: string) => {
@@ -18,7 +17,7 @@ export default function OAuthKakaoPage() {
     navigate(routePaths.Main);
   };
 
-  const getKakaoToken = async () => {
+  const getKakaoToken = async (authorizationCode: string) => {
     const response = await axios.post(
       "https://kauth.kakao.com/oauth/token",
       qs.stringify({
@@ -45,11 +44,12 @@ export default function OAuthKakaoPage() {
   };
 
   useEffect(() => {
+    const authorizationCode = new URL(window.location.href).searchParams.get("code");
+    if (!authorizationCode) throw Error("non authorization code on url");
+
     const getTokenAndLogin = async () => {
-      if (authorizationCode) {
-        const token = await getKakaoToken();
-        handlePostKakaoLogin(token);
-      }
+      const token = await getKakaoToken(authorizationCode);
+      handlePostKakaoLogin(token);
     };
     getTokenAndLogin();
   }, []);
