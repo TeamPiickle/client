@@ -56,6 +56,14 @@ const ButtonWrapper = styled.div`
   width: 4.1rem;
 `;
 
+const IconWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  height: 4rem;
+`;
+
 const ButtonLabel = styled.p`
   margin-top: 0.6rem;
 
@@ -70,6 +78,7 @@ const St = {
   TagsWrapper,
   MenuWrapper,
   ButtonWrapper,
+  IconWrapper,
   ButtonLabel,
 };
 export default St;

@@ -34,7 +34,9 @@ const Card = (props: LoginCheckProps) => {
           <IcMenuBtn isLighted={false} />
         </St.ButtonWrapper>
         <St.ButtonWrapper>
-          <IcShareBtn isLighted={false} />
+          <St.IconWrapper>
+            <IcShareBtn isLighted={false} />
+          </St.IconWrapper>
           <St.ButtonLabel>공유하기</St.ButtonLabel>
         </St.ButtonWrapper>
         <St.ButtonWrapper
@@ -42,7 +44,9 @@ const Card = (props: LoginCheckProps) => {
           onClick={() => handleClickBookmark(_id)}
           aria-label="북마크"
           role="dialog">
-          <IcBookmarkCheck_22_28 isChecked={isBookmarked} />
+          <St.IconWrapper>
+            <IcBookmarkCheck_22_28 isChecked={isBookmarked} />
+          </St.IconWrapper>
           <St.ButtonLabel>저장하기</St.ButtonLabel>
         </St.ButtonWrapper>
       </St.MenuWrapper>
