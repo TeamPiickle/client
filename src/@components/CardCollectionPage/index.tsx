@@ -8,6 +8,7 @@ import HeaderMinVer from "../@common/Header/HeaderMinVer";
 import useGTMPage from "../@common/hooks/useGTMPage";
 import useModal from "../@common/hooks/useModal";
 import useScroll from "../@common/hooks/useScrollToTop";
+import useToast from "../@common/hooks/useToast";
 import LoginModal from "../@common/LoginModal";
 import SuspenseBoundary from "../@common/SuspenseBoundary";
 import MenuModal from "./Card/MenuModal";
@@ -35,6 +36,8 @@ function CardCollectionContent() {
 
   const { isModalOpen: isFilterModalOpen, toggleModal: toggleFilterModal } = useModal();
   const { isModalOpen: isLoginModalOpen, toggleModal: toggleLoginModal } = useModal();
+  const { isModalOpen: isMenuModalOpen, toggleModal: toggleMenuModal } = useModal();
+  const { activeToast, isToastOpen, fireToast } = useToast();
 
   const isSliderDown = useRecoilValue(isSliderDownState);
 
@@ -42,8 +45,14 @@ function CardCollectionContent() {
     <St.MainPage>
       {isSliderDown ? <HeaderMinVer /> : <Header />}
 
-      <CardSlider openLoginModalHandler={toggleLoginModal} cardLists={cardLists} lastCardObsvRef={lastCardObsvRef} />
+      <CardSlider
+        toggleMenuModal={toggleMenuModal}
+        openLoginModalHandler={toggleLoginModal}
+        cardLists={cardLists}
+        lastCardObsvRef={lastCardObsvRef}
+      />
 
+      {isToastOpen && <div>{activeToast.message}</div>}
       {isVisibleCTAButton && (
         <HeadlessCTAButton
           aria-label="카드 추천 필터"
@@ -58,6 +67,8 @@ function CardCollectionContent() {
       {isFilterModalOpen && (
         <FilterModal closeHandler={toggleFilterModal} fetchCardListsWithFilter={fetchCardListsWithFilter} />
       )}
+
+      {isMenuModalOpen && <MenuModal closeHandler={toggleMenuModal} />}
     </St.MainPage>
   );
 }

@@ -1,3 +1,4 @@
+import useModal from "../../../@common/hooks/useModal";
 import Modal from "../../../@common/Modal";
 import * as St from "./style";
 
@@ -7,6 +8,7 @@ interface MenuModalProps {
 
 export default function MenuModal(props: MenuModalProps) {
   const { closeHandler } = props;
+
   return (
     <Modal theme="WHITE_BOTTOM" closeHandler={closeHandler} isNoCloseBtn>
       <St.ModalContainer>

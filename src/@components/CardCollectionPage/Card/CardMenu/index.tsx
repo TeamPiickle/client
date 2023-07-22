@@ -6,14 +6,8 @@ import useCardBookmark from "../../hooks/useCardBookmark";
 import { LoginCheckProps } from "..";
 import * as St from "./style";
 
-interface CardMenuProps {
-  loginProps: LoginCheckProps;
-  toggleMenuModal: () => void;
-}
-
-export default function CardMenu(props: CardMenuProps) {
-  const { loginProps, toggleMenuModal } = props;
-  const { _id, isBookmark, openLoginModalHandler } = loginProps;
+export default function CardMenu(props: LoginCheckProps) {
+  const { _id, isBookmark, openLoginModalHandler, toggleMenuModal } = props;
 
   const { isBookmarked, handleClickBookmark } = useCardBookmark(isBookmark, openLoginModalHandler);
   return (
