@@ -16,7 +16,7 @@ export const ToastContainer = styled.div`
   border: 0.1rem solid ${({ theme }) => theme.newColors.gray200};
   background: ${({ theme }) => theme.newColors.white};
 
-  z-index: 50;
+  z-index: 10;
 
   ${({ theme }) => theme.newFonts.caption1}
   color: ${({ theme }) => theme.newColors.gray900};
