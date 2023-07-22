@@ -6,9 +6,10 @@ import IcShareBtn from "../../../asset/icon/IcShareBtn";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import useCardBookmark from "../hooks/useCardBookmark";
 import TagsSlider from "../TagsSlider";
+import CardMenu from "./CardMenu";
 import St from "./style";
 
-interface LoginCheckProps {
+export interface LoginCheckProps {
   openLoginModalHandler: () => void;
   _id: string;
   content: string;
@@ -17,9 +18,7 @@ interface LoginCheckProps {
 }
 
 const Card = (props: LoginCheckProps) => {
-  const { _id, content, isBookmark, tags, openLoginModalHandler } = props;
-
-  const { isBookmarked, handleClickBookmark } = useCardBookmark(isBookmark, openLoginModalHandler);
+  const { content, tags } = props;
 
   return (
     <St.Card className={GTM_CLASS_NAME.cardSwipe}>
@@ -29,27 +28,7 @@ const Card = (props: LoginCheckProps) => {
           <TagsSlider tags={tags} />
         </St.TagsWrapper>
       </St.Container>
-      <St.MenuWrapper>
-        <St.ButtonWrapper>
-          <IcMenuBtn isLighted={false} />
-        </St.ButtonWrapper>
-        <St.ButtonWrapper>
-          <St.IconWrapper>
-            <IcShareBtn isLighted={false} />
-          </St.IconWrapper>
-          <St.ButtonLabel>공유하기</St.ButtonLabel>
-        </St.ButtonWrapper>
-        <St.ButtonWrapper
-          className={GTM_CLASS_NAME.cardBookmark}
-          onClick={() => handleClickBookmark(_id)}
-          aria-label="북마크"
-          role="dialog">
-          <St.IconWrapper>
-            <IcBookmarkCheck_22_28 isChecked={isBookmarked} />
-          </St.IconWrapper>
-          <St.ButtonLabel>저장하기</St.ButtonLabel>
-        </St.ButtonWrapper>
-      </St.MenuWrapper>
+      <CardMenu {...props} />
     </St.Card>
   );
 };
