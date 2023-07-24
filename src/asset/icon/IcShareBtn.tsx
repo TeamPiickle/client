@@ -1,4 +1,4 @@
-export default function IcShareBtn({ isLighted }: { isLighted: boolean }) {
+export default function IcShareBtn({ isLighted }: { isLighted?: boolean }) {
   return (
     <svg width="27" height="28" viewBox="0 0 27 28" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path

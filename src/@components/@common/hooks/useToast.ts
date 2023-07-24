@@ -19,5 +19,5 @@ export default function useToast() {
     fireToast();
   }, [activeToast, setActiveStateToast, fireToast]);
 
-  return { isToastOpen, fireToast };
+  return { isToastOpen };
 }

@@ -6,7 +6,6 @@ import * as St from "./style";
 
 interface MenuModalProps {
   closeHandler: () => void;
-  fireToast: () => void;
 }
 
 type ModalItem = {
@@ -17,7 +16,7 @@ type ModalItem = {
 };
 
 export default function MenuModal(props: MenuModalProps) {
-  const { closeHandler, fireToast } = props;
+  const { closeHandler } = props;
   const setActiveToast = useSetRecoilState(activeStateToast);
 
   const ModalItems: ModalItem[] = [

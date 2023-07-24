@@ -3,21 +3,27 @@ import IcMenuBtn from "../../../../asset/icon/IcMenuBtn";
 import IcShareBtn from "../../../../asset/icon/IcShareBtn";
 import { GTM_CLASS_NAME } from "../../../../util/const/gtm";
 import useCardBookmark from "../../hooks/useCardBookmark";
-import { LoginCheckProps } from "..";
 import * as St from "./style";
 
-export default function CardMenu(props: LoginCheckProps) {
+interface CardMenuProps {
+  _id: string;
+  isBookmark: boolean;
+  openLoginModalHandler: () => void;
+  toggleMenuModal: () => void;
+}
+
+export default function CardMenu(props: CardMenuProps) {
   const { _id, isBookmark, openLoginModalHandler, toggleMenuModal } = props;
 
   const { isBookmarked, handleClickBookmark } = useCardBookmark(isBookmark, openLoginModalHandler);
   return (
     <St.MenuContainer>
       <St.ButtonWrapper onClick={toggleMenuModal}>
-        <IcMenuBtn isLighted={false} />
+        <IcMenuBtn />
       </St.ButtonWrapper>
       <St.ButtonWrapper>
         <St.IconWrapper>
-          <IcShareBtn isLighted={false} />
+          <IcShareBtn />
         </St.IconWrapper>
         <St.ButtonLabel>공유하기</St.ButtonLabel>
       </St.ButtonWrapper>

@@ -5,7 +5,7 @@ import TagsSlider from "../TagsSlider";
 import CardMenu from "./CardMenu";
 import St from "./style";
 
-export interface LoginCheckProps {
+interface LoginCheckProps {
   openLoginModalHandler: () => void;
   _id: string;
   content: string;

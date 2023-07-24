@@ -38,7 +38,7 @@ function CardCollectionContent() {
   const { isModalOpen: isFilterModalOpen, toggleModal: toggleFilterModal } = useModal();
   const { isModalOpen: isLoginModalOpen, toggleModal: toggleLoginModal } = useModal();
   const { isModalOpen: isMenuModalOpen, toggleModal: toggleMenuModal } = useModal();
-  const { isToastOpen, fireToast } = useToast();
+  const { isToastOpen } = useToast();
 
   const isSliderDown = useRecoilValue(isSliderDownState);
 
@@ -69,7 +69,7 @@ function CardCollectionContent() {
         <FilterModal closeHandler={toggleFilterModal} fetchCardListsWithFilter={fetchCardListsWithFilter} />
       )}
 
-      {isMenuModalOpen && <MenuModal closeHandler={toggleMenuModal} fireToast={fireToast} />}
+      {isMenuModalOpen && <MenuModal closeHandler={toggleMenuModal} />}
     </St.MainPage>
   );
 }
