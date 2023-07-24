@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ToastContainer = styled.div`
-  position: fixed;
+  position: absolute;
   bottom: 7.2rem;
 
   width: 100%;
@@ -13,7 +13,6 @@ export const ToastContainer = styled.div`
 export const ToastMessage = styled.div`
   display: flex;
 
-  width: 100%;
   height: 4.8rem;
   padding: 0.8rem 1.6rem;
   align-items: center;
