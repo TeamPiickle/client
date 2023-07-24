@@ -33,7 +33,11 @@ export default function ToastProvider({ children }: PropsWithChildren) {
   return (
     <ToastContext.Provider value={{ showToast }}>
       {children}
-      {toast && <St.ToastContainer>{toast.message}</St.ToastContainer>}
+      {toast && (
+        <St.ToastContainer>
+          <St.ToastMessage>{toast.message}</St.ToastMessage>
+        </St.ToastContainer>
+      )}
     </ToastContext.Provider>
   );
 }

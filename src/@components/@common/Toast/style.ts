@@ -2,12 +2,18 @@ import styled from "styled-components";
 
 export const ToastContainer = styled.div`
   position: fixed;
-  left: 0.8rem;
   bottom: 7.2rem;
 
+  width: 100%;
+  padding: 0 0.8rem;
+
+  z-index: 10;
+`;
+
+export const ToastMessage = styled.div`
   display: flex;
 
-  width: 34.4rem;
+  width: 100%;
   height: 4.8rem;
   padding: 0.8rem 1.6rem;
   align-items: center;
@@ -15,8 +21,6 @@ export const ToastContainer = styled.div`
   border-radius: 0.6rem;
   border: 0.1rem solid ${({ theme }) => theme.newColors.gray200};
   background: ${({ theme }) => theme.newColors.white};
-
-  z-index: 10;
 
   ${({ theme }) => theme.newFonts.caption1}
   color: ${({ theme }) => theme.newColors.gray900};

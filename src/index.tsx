@@ -5,7 +5,6 @@ import { RecoilRoot } from "recoil";
 import { ThemeProvider } from "styled-components";
 import { SWRConfig } from "swr";
 
-import ToastProvider from "./@components/@common/Toast/ToastProvider";
 import App from "./App";
 import { GlobalStyle } from "./style/globalStyle";
 import theme from "./style/theme";
