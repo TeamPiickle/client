@@ -23,9 +23,14 @@ export default function ToastProvider({ children }: PropsWithChildren) {
   const showToast = useCallback(
     async ({ message, duration }: ToastType) => {
       setToast({ message, duration });
-      setTimeout(() => {
-        setToast(null);
-      }, duration * 1000);
+
+      const timer: ReturnType<typeof setTimeout> = await new Promise(() =>
+        setTimeout(() => {
+          setToast(null);
+        }, duration * 1000),
+      );
+
+      clearTimeout(timer);
     },
     [setToast],
   );
