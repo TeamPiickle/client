@@ -1,6 +1,4 @@
-import { useSetRecoilState } from "recoil";
-
-import { activeStateToast } from "../../../../core/atom/menuBar";
+import useToast from "../../../@common/hooks/useToast";
 import Modal from "../../../@common/Modal";
 import * as St from "./style";
 
@@ -17,7 +15,7 @@ type ModalItem = {
 
 export default function MenuModal(props: MenuModalProps) {
   const { closeHandler } = props;
-  const setActiveToast = useSetRecoilState(activeStateToast);
+  const showToast = useToast();
 
   const ModalItems: ModalItem[] = [
     {
@@ -25,7 +23,7 @@ export default function MenuModal(props: MenuModalProps) {
       title: "이 주제 별로예요",
       handleClickItem: () => {
         closeHandler();
-        setActiveToast({ message: "🥰 소중한 의견 주셔서 감사해요", duration: 2.5 });
+        showToast({ message: "🥰 소중한 의견 주셔서 감사해요", duration: 2.5 });
       },
     },
     {
@@ -41,7 +39,7 @@ export default function MenuModal(props: MenuModalProps) {
       title: "주제에 대한 다른 사람들의 의견이 궁금해요",
       handleClickItem: () => {
         closeHandler();
-        setActiveToast({ message: "📢 다른 사람들의 의견을 모아서 들려드릴게요", duration: 2.5 });
+        showToast({ message: "📢 다른 사람들의 의견을 모아서 들려드릴게요", duration: 2.5 });
       },
     },
   ];

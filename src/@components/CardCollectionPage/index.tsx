@@ -11,7 +11,7 @@ import useScroll from "../@common/hooks/useScrollToTop";
 import useToast from "../@common/hooks/useToast";
 import LoginModal from "../@common/LoginModal";
 import SuspenseBoundary from "../@common/SuspenseBoundary";
-import Toast from "../@common/Toast";
+import Toast from "../@common/Toast/ToastProvider";
 import MenuModal from "./Card/MenuModal";
 import CardSlider from "./CardSlider";
 import FilterModal from "./FilterModal";
@@ -38,7 +38,6 @@ function CardCollectionContent() {
   const { isModalOpen: isFilterModalOpen, toggleModal: toggleFilterModal } = useModal();
   const { isModalOpen: isLoginModalOpen, toggleModal: toggleLoginModal } = useModal();
   const { isModalOpen: isMenuModalOpen, toggleModal: toggleMenuModal } = useModal();
-  const { isToastOpen } = useToast();
 
   const isSliderDown = useRecoilValue(isSliderDownState);
 
@@ -53,7 +52,6 @@ function CardCollectionContent() {
         lastCardObsvRef={lastCardObsvRef}
       />
 
-      {isToastOpen && <Toast />}
       {isVisibleCTAButton && (
         <HeadlessCTAButton
           aria-label="카드 추천 필터"
