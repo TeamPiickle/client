@@ -1,5 +1,5 @@
-import useToast from "../../../@common/hooks/useToast";
 import Modal from "../../../@common/Modal";
+import useToast from "../../../@common/Toast/hooks/useToast";
 import * as St from "./style";
 
 interface MenuModalProps {
