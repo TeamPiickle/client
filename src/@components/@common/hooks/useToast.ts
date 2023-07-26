@@ -1,6 +1,7 @@
 import { useContext } from "react";
 
-import { ToastContext, ToastType } from "../Toast/ToastProvider";
+import { ToastContext } from "../Toast/context";
+import { ToastType } from "../Toast/ToastProvider";
 
 export default function useToast() {
   const { showToast } = useContext(ToastContext);

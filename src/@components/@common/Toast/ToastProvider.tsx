@@ -1,21 +1,12 @@
 import React, { PropsWithChildren, useCallback, useState } from "react";
 
+import { ToastContext } from "./context";
 import * as St from "./style";
-
-interface ToastController {
-  showToast: (toast: ToastType) => void;
-}
 
 export type ToastType = {
   message: string;
   duration: number;
 };
-
-export const ToastContext = React.createContext<ToastController>({
-  showToast: () => {
-    throw new Error("Function not implemented.");
-  },
-});
 
 export default function ToastProvider({ children }: PropsWithChildren) {
   const [toast, setToast] = useState<ToastType | null>(null);
