@@ -1,3 +1,7 @@
+import {
+  NavigateCardCollectionRecentType,
+  NavigateCardCollectionUpdateType,
+} from "../../@components/@common/hooks/useNavigateCardCollection";
 import { ImgBanner1, ImgBanner2, NewImgBanner1, NewImgBanner2, NewImgBanner3 } from "../../asset/image";
 import {
   OriginImgBanner1,
@@ -6,6 +10,7 @@ import {
   OriginImgNewBanner2,
   OriginImgNewBanner3,
 } from "../../asset/image/origin";
+import { CardList } from "../../types/cardCollection";
 
 export type BannerImage = {
   src: string;
@@ -43,3 +48,14 @@ export const newBannerImages: BannerImage[] = [
     subSrc: OriginImgNewBanner3,
   },
 ];
+
+export interface newBannerType {
+  bannerImage: BannerImage;
+  phrase: string;
+  topic: string;
+  date?: string;
+  cards?: CardList[];
+  linkTo: string;
+  isLightMode: boolean;
+  isLast?: boolean;
+}

@@ -23,7 +23,9 @@ export default function MainPage() {
     <St.MainPage>
       <Header />
 
-      <Banner />
+      <SuspenseBoundary bgColor="white">
+        <Banner />
+      </SuspenseBoundary>
 
       <SuspenseBoundary bgColor="white">
         <BestPiickle />
