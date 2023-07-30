@@ -27,7 +27,7 @@ export default function MedleyCard(props: MedleyCardProps) {
         <St.MedleyCard className={GTM_CLASS_NAME[`medley${GTM_MEDLERY_KEY}`]} bgcolorId={medleyCard._id}>
           <St.ContentTag
             className={GTM_CLASS_NAME[`medley${GTM_MEDLERY_KEY}`]}
-            isEditorPick={medleyCard.sticker === STICKER_EDITOR_PICK}>
+            iseditorpick={medleyCard.sticker === STICKER_EDITOR_PICK}>
             {medleyCard.sticker}
           </St.ContentTag>
           <St.ContentTitle className={GTM_CLASS_NAME[`medley${GTM_MEDLERY_KEY}`]}>

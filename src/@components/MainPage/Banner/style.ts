@@ -49,11 +49,11 @@ export const PagingWrapper = styled.div`
   cursor: default;
 `;
 
-export const PagingButton = styled.div<{ isSelected: boolean }>`
+export const PagingButton = styled.div<{ isselected: boolean }>`
   width: 0.8rem;
   height: 0.8rem;
 
   border-radius: 50%;
 
-  background: ${({ theme, isSelected }) => (isSelected ? theme.newColors.green : theme.newColors.gray300)};
+  background: ${({ theme, isselected }) => (isselected ? theme.newColors.green : theme.newColors.gray300)};
 `;
