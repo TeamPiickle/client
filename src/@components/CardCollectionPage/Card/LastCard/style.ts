@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Card = styled.section`
@@ -28,14 +27,15 @@ export const Content = styled.p`
 
 export const BtnContainer = styled.div`
   width: 100%;
+  padding: 0 1.6rem;
 
   position: absolute;
   bottom: 1.6rem;
 `;
 
-export const CategoryBtn = styled(Link)`
+export const CategoryBtn = styled.button`
+  width: 100%;
   height: 4.8rem;
-  margin: 0 1.6rem;
 
   display: flex;
   justify-content: center;
