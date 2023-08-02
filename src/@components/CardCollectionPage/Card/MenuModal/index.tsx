@@ -34,13 +34,16 @@ export default function MenuModal(props: MenuModalProps) {
       title: "주제 다시 안보기",
       isNeedLogin: true,
       handleClickItem: () => {
-        handleClickAddBlacklist(currentCardId, () => {
-          closeHandler();
-          showToast({
-            message: "🚫 해당 대화주제가 더 이상 추천되지 않아요",
-            duration: 3.5,
-            handleClickCancel: () => handleClickCancelBlacklist(currentCardId, blackoutToast),
-          });
+        handleClickAddBlacklist({
+          _id: currentCardId,
+          onSuccess: () => {
+            closeHandler();
+            showToast({
+              message: "🚫 해당 대화주제가 더 이상 추천되지 않아요",
+              duration: 3.5,
+              handleClickCancel: () => handleClickCancelBlacklist({ _id: currentCardId, onSuccess: blackoutToast }),
+            });
+          },
         });
       },
     },
