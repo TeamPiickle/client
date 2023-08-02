@@ -4,7 +4,7 @@ import { ToastContext } from "../context";
 import { ToastType } from "../ToastProvider";
 
 export default function useToast() {
-  const { showToast } = useContext(ToastContext);
+  const { showToast, blackoutToast } = useContext(ToastContext);
 
-  return (toast: ToastType) => showToast(toast);
+  return { showToast: (toast: ToastType) => showToast(toast), blackoutToast };
 }

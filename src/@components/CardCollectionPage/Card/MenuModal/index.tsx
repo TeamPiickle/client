@@ -17,7 +17,7 @@ type ModalItem = {
 
 export default function MenuModal(props: MenuModalProps) {
   const { currentCardId, closeHandler } = props;
-  const showToast = useToast();
+  const { showToast, blackoutToast } = useToast();
   const { handleClickAddBlacklist, handleClickCancelBlacklist } = useBlacklist(() => console.log("todo"));
 
   const ModalItems: ModalItem[] = [
@@ -39,7 +39,7 @@ export default function MenuModal(props: MenuModalProps) {
           showToast({
             message: "🚫 해당 대화주제가 더 이상 추천되지 않아요",
             duration: 3.5,
-            handleClickCancel: () => handleClickCancelBlacklist(currentCardId, () => console.log("블랙리스트 취소")),
+            handleClickCancel: () => handleClickCancelBlacklist(currentCardId, blackoutToast),
           });
         });
       },

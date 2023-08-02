@@ -25,8 +25,10 @@ export default function ToastProvider({ children }: PropsWithChildren) {
     [setToast, toastTimeout],
   );
 
+  const blackoutToast = useCallback(() => setToast(null), [setToast]);
+
   return (
-    <ToastContext.Provider value={{ showToast }}>
+    <ToastContext.Provider value={{ showToast, blackoutToast }}>
       {children}
       {toast && (
         <St.ToastContainer>
