@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const Card = styled.article`
   position: relative;
+  display: flex;
 
   margin: 0 0.8rem 0.8rem;
   height: 100%;
@@ -36,20 +37,10 @@ const TagsWrapper = styled.div`
   margin-top: 1.6rem;
 `;
 
-const BookmarkWrapper = styled.div`
-  position: absolute;
-  bottom: 1.7rem;
-  right: 1.2rem;
-
-  width: 5.6rem;
-  height: 5.6rem;
-`;
-
 const St = {
   Card,
   Container,
   ContentWrapper,
   TagsWrapper,
-  BookmarkWrapper,
 };
 export default St;
