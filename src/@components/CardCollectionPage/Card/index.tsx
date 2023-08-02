@@ -2,12 +2,14 @@ import React from "react";
 
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import useModal from "../../@common/hooks/useModal";
+import { autoSlideType } from "../hooks/useCardSwiper";
 import TagsSlider from "../TagsSlider";
 import CardMenu from "./CardMenu";
 import MenuModal from "./MenuModal";
 import St from "./style";
 
 interface LoginCheckProps {
+  autoSlide: autoSlideType;
   openLoginModalHandler: () => void;
   _id: string;
   content: string;
@@ -16,7 +18,7 @@ interface LoginCheckProps {
 }
 
 const Card = (props: LoginCheckProps) => {
-  const { _id, content, tags } = props;
+  const { _id, content, tags, autoSlide } = props;
   const { isModalOpen: isMenuModalOpen, toggleModal: toggleMenuModal } = useModal();
 
   return (
@@ -28,7 +30,7 @@ const Card = (props: LoginCheckProps) => {
         </St.TagsWrapper>
       </St.Container>
       <CardMenu {...props} toggleMenuModal={toggleMenuModal} />
-      {isMenuModalOpen && <MenuModal currentCardId={_id} closeHandler={toggleMenuModal} />}
+      {isMenuModalOpen && <MenuModal currentCardId={_id} closeHandler={toggleMenuModal} autoSlide={autoSlide} />}
     </St.Card>
   );
 };

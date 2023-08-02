@@ -16,14 +16,14 @@ interface CardSliderProps {
 
 const CardSlider = (props: CardSliderProps) => {
   const { openLoginModalHandler, cardLists, lastCardObsvRef } = props;
-  const { swiperSettings } = useCardSwiper();
+  const { swiperSettings, swiperRef, autoSlide } = useCardSwiper();
 
   return (
     <St.Wrapper>
-      <Swiper {...swiperSettings}>
+      <Swiper {...swiperSettings} ref={swiperRef}>
         {cardLists.map((cardList) => (
           <SwiperSlide key={cardList._id}>
-            <Card openLoginModalHandler={openLoginModalHandler} {...cardList} />
+            <Card autoSlide={autoSlide} openLoginModalHandler={openLoginModalHandler} {...cardList} />
           </SwiperSlide>
         ))}
         <SwiperSlide>

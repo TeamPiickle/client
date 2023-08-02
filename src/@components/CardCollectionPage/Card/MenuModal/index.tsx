@@ -1,11 +1,13 @@
 import Modal from "../../../@common/Modal";
 import useToast from "../../../@common/Toast/hooks/useToast";
 import useBlacklist from "../../hooks/useBlacklist";
+import { autoSlideType } from "../../hooks/useCardSwiper";
 import * as St from "./style";
 
 interface MenuModalProps {
   currentCardId: string;
   closeHandler: () => void;
+  autoSlide: autoSlideType;
 }
 
 type ModalItem = {
@@ -16,7 +18,7 @@ type ModalItem = {
 };
 
 export default function MenuModal(props: MenuModalProps) {
-  const { currentCardId, closeHandler } = props;
+  const { currentCardId, closeHandler, autoSlide } = props;
   const { showToast, blackoutToast } = useToast();
   const { handleClickAddBlacklist, handleClickCancelBlacklist } = useBlacklist(() => console.log("todo"));
 
@@ -41,8 +43,12 @@ export default function MenuModal(props: MenuModalProps) {
             showToast({
               message: "🚫 해당 대화주제가 더 이상 추천되지 않아요",
               duration: 3.5,
-              handleClickCancel: () => handleClickCancelBlacklist({ _id: currentCardId, onSuccess: blackoutToast }),
+              handleClickCancel: () => {
+                handleClickCancelBlacklist({ _id: currentCardId, onSuccess: blackoutToast });
+                autoSlide.slideUp();
+              },
             });
+            autoSlide.slideDown();
           },
         });
       },
