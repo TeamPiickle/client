@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import { routePaths } from "../../../core/routes/path";
 import { LocationType } from "../../../types/cardCollection";
-import { GOOGLE_FORM_TOPIC } from "../../../util/const/form";
+import { externalLinks } from "../../../util/const/externalLinks";
 import { newBannerImages, newBannerType } from "../../../util/main/banner";
 import { useRecentlyBookmarked } from "../../@common/hooks/useRecentlyBookmarked";
 import useBannerSwiper from "../hooks/useBannerSwiper";
@@ -41,7 +41,7 @@ export default function Banner() {
       bannerImage: newBannerImages[2],
       phrase: "여러분만의 톡톡 튀는",
       topic: "대화주제를 얘기해주세요",
-      linkTo: GOOGLE_FORM_TOPIC,
+      linkTo: externalLinks.TOPIC_FORM,
       isLightMode: true,
       isLast: true,
     },
