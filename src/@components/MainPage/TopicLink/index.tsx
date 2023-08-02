@@ -6,7 +6,7 @@ export default function TopicLink() {
     <St.TopicLinkContainer>
       <St.TopicTitles>
         <St.Text>대화주제를 주세요 제발요:0</St.Text>
-        <St.Button onClick={() => window.open(externalLinks.TOPIC_FORM)}>도움주러 가기</St.Button>
+        <St.Link href={externalLinks.TOPIC_FORM}>도움주러 가기</St.Link>
       </St.TopicTitles>
       <St.Gradient />
     </St.TopicLinkContainer>

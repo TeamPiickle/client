@@ -34,7 +34,7 @@ export const Text = styled.h1`
   color: ${({ theme }) => theme.newColors.darkblue}
 `;
 
-export const Button = styled.button`
+export const Link = styled.a`
   ${({ theme }) => theme.newFonts.btn2}
   color: ${({ theme }) => theme.newColors.gray900};
   text-decoration-line: underline;
