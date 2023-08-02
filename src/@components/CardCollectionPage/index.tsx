@@ -37,7 +37,6 @@ function CardCollectionContent() {
 
   const { isModalOpen: isFilterModalOpen, toggleModal: toggleFilterModal } = useModal();
   const { isModalOpen: isLoginModalOpen, toggleModal: toggleLoginModal } = useModal();
-  const { isModalOpen: isMenuModalOpen, toggleModal: toggleMenuModal } = useModal();
 
   const isSliderDown = useRecoilValue(isSliderDownState);
 
@@ -45,12 +44,7 @@ function CardCollectionContent() {
     <St.MainPage>
       {isSliderDown ? <HeaderMinVer /> : <Header />}
 
-      <CardSlider
-        toggleMenuModal={toggleMenuModal}
-        openLoginModalHandler={toggleLoginModal}
-        cardLists={cardLists}
-        lastCardObsvRef={lastCardObsvRef}
-      />
+      <CardSlider openLoginModalHandler={toggleLoginModal} cardLists={cardLists} lastCardObsvRef={lastCardObsvRef} />
 
       {isVisibleCTAButton && (
         <HeadlessCTAButton
@@ -66,8 +60,6 @@ function CardCollectionContent() {
       {isFilterModalOpen && (
         <FilterModal closeHandler={toggleFilterModal} fetchCardListsWithFilter={fetchCardListsWithFilter} />
       )}
-
-      {isMenuModalOpen && <MenuModal closeHandler={toggleMenuModal} />}
     </St.MainPage>
   );
 }

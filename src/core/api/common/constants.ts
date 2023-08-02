@@ -15,6 +15,7 @@ export const PATH = {
   CARDS_GENDER: "/cardByBookmarkedGender",
   NOTICES: "/notices",
   MEDLEY: "/medley",
+  BLACKLIST: "/blacklist",
 };
 
 export const USER_TOKEN = "piickle-token";

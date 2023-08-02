@@ -1,8 +1,10 @@
 import Modal from "../../../@common/Modal";
 import useToast from "../../../@common/Toast/hooks/useToast";
+import useBlacklist from "../../hooks/useBlacklist";
 import * as St from "./style";
 
 interface MenuModalProps {
+  currentCardId: string;
   closeHandler: () => void;
 }
 
@@ -14,8 +16,9 @@ type ModalItem = {
 };
 
 export default function MenuModal(props: MenuModalProps) {
-  const { closeHandler } = props;
+  const { currentCardId, closeHandler } = props;
   const showToast = useToast();
+  const { handleClickAddBlacklist, handleClickCancelBlacklist } = useBlacklist(() => console.log("todo"));
 
   const ModalItems: ModalItem[] = [
     {
@@ -31,7 +34,14 @@ export default function MenuModal(props: MenuModalProps) {
       title: "주제 다시 안보기",
       isNeedLogin: true,
       handleClickItem: () => {
-        /* todo */
+        handleClickAddBlacklist(currentCardId, () => {
+          closeHandler();
+          showToast({
+            message: "🚫 해당 대화주제가 더 이상 추천되지 않아요",
+            duration: 3.5,
+            handleClickCancel: () => handleClickCancelBlacklist(currentCardId, () => console.log("블랙리스트 취소")),
+          });
+        });
       },
     },
     {
