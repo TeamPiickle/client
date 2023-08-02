@@ -8,8 +8,8 @@ import { LocationType } from "../../../types/cardCollection";
 import { GOOGLE_FORM_TOPIC } from "../../../util/const/form";
 import { newBannerImages, newBannerType } from "../../../util/main/banner";
 import { useRecentlyBookmarked } from "../../@common/hooks/useRecentlyBookmarked";
-import { useRecentlyUpdated } from "../../@common/hooks/useRecentlyUpdated";
 import useBannerSwiper from "../hooks/useBannerSwiper";
+import { useRecentlyUpdated } from "../hooks/useRecentlyUpdated";
 import Slide from "./Slide";
 import * as St from "./style";
 
