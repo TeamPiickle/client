@@ -6,6 +6,8 @@ interface handleClickParams {
   onSuccess: () => void;
 }
 
+type handleClickBlacklistType = (params: handleClickParams) => void;
+
 const useBlacklist = (handleClickBeforeLogin: () => void) => {
   const { isLogin } = useAuth();
   // const [cardId, setCardId] = useState<string>();
@@ -15,7 +17,7 @@ const useBlacklist = (handleClickBeforeLogin: () => void) => {
   //   onSuccess: onSuccessAdd,
   // });
 
-  const handleClickAddBlacklist = ({ _id, onSuccess: onSuccessAdd }: handleClickParams) => {
+  const handleClickAddBlacklist: handleClickBlacklistType = ({ _id, onSuccess: onSuccessAdd }) => {
     switch (isLogin) {
       case true:
         cardCollectionApi.addBlacklist(_id);
@@ -27,7 +29,7 @@ const useBlacklist = (handleClickBeforeLogin: () => void) => {
     }
   };
 
-  const handleClickCancelBlacklist = ({ _id, onSuccess: onSuccessDelete }: handleClickParams) => {
+  const handleClickCancelBlacklist: handleClickBlacklistType = ({ _id, onSuccess: onSuccessDelete }) => {
     switch (isLogin) {
       case true:
         cardCollectionApi.deleteBlacklist(_id);

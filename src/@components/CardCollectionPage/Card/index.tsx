@@ -18,7 +18,7 @@ interface LoginCheckProps {
 }
 
 const Card = (props: LoginCheckProps) => {
-  const { _id, content, tags, autoSlide } = props;
+  const { _id, content, tags, autoSlide, openLoginModalHandler } = props;
   const { isModalOpen: isMenuModalOpen, toggleModal: toggleMenuModal } = useModal();
 
   return (
@@ -30,7 +30,14 @@ const Card = (props: LoginCheckProps) => {
         </St.TagsWrapper>
       </St.Container>
       <CardMenu {...props} toggleMenuModal={toggleMenuModal} />
-      {isMenuModalOpen && <MenuModal currentCardId={_id} closeHandler={toggleMenuModal} autoSlide={autoSlide} />}
+      {isMenuModalOpen && (
+        <MenuModal
+          currentCardId={_id}
+          closeHandler={toggleMenuModal}
+          autoSlide={autoSlide}
+          openLoginModalHandler={openLoginModalHandler}
+        />
+      )}
     </St.Card>
   );
 };
