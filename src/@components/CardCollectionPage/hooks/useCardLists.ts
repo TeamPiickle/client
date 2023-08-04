@@ -21,7 +21,7 @@ export function useCardLists() {
   const fetchingKeyByLocation = getSWRFetchingKeyByLocation(cardsTypeLocation);
   const optionsByLocation = getSWROptionsByLocation(cardsTypeLocation);
 
-  const { data } = useSWR<PiickleSWRResponse<ExtendedCardList>>(
+  const { data, mutate: mutateCardlists } = useSWR<PiickleSWRResponse<ExtendedCardList>>(
     fetchingKeyByLocation,
     realReq.GET_SWR,
     optionsByLocation,
@@ -32,6 +32,7 @@ export function useCardLists() {
   return {
     cardLists: getReturnCardLists(data, cardsTypeLocation) ?? [],
     fetchCardListsWithFilter,
+    mutateCardlists,
   };
 }
 

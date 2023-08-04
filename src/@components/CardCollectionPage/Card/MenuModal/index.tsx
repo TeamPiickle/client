@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+
+import { LocationType } from "../../../../types/cardCollection";
 import Modal from "../../../@common/Modal";
 import useToast from "../../../@common/Toast/hooks/useToast";
 import useBlacklist from "../../hooks/useBlacklist";
@@ -22,6 +25,8 @@ export default function MenuModal(props: MenuModalProps) {
   const { currentCardId, closeHandler, autoSlide, openLoginModalHandler } = props;
   const { showToast, blackoutToast } = useToast();
   const { handleClickAddBlacklist, handleClickCancelBlacklist } = useBlacklist(openLoginModalHandler);
+
+  const [isBlockShow, setIsBlockShow] = useState<boolean>(true);
 
   const onSuccessAddBlacklist = () => {
     closeHandler();
@@ -66,16 +71,28 @@ export default function MenuModal(props: MenuModalProps) {
     },
   ];
 
+  useEffect(() => {
+    if (location.search.includes(LocationType.BEST)) setIsBlockShow(false);
+    else if (location.search.includes(LocationType.MEDLEY)) setIsBlockShow(false);
+    else setIsBlockShow(true);
+  }, []);
+
   return (
     <Modal theme="WHITE_BOTTOM" closeHandler={closeHandler} isNoCloseBtn>
       <St.ModalContainer>
-        {ModalItems.map(({ emoji, title, isNeedLogin, handleClickItem }, idx) => (
-          <St.ModalItemWrapper key={idx} onClick={handleClickItem}>
-            <St.EmojiWrapper>{emoji}</St.EmojiWrapper>
-            {title}
-            {isNeedLogin && <St.MessageWrapper>로그인 시 사용가능 합니다</St.MessageWrapper>}
-          </St.ModalItemWrapper>
-        ))}
+        {ModalItems.map(({ emoji, title, isNeedLogin, handleClickItem }, idx) => {
+          if (idx === 1 && !isBlockShow) {
+            return null;
+          } else {
+            return (
+              <St.ModalItemWrapper key={idx} onClick={handleClickItem}>
+                <St.EmojiWrapper>{emoji}</St.EmojiWrapper>
+                {title}
+                {isNeedLogin && <St.MessageWrapper>로그인 시 사용가능 합니다</St.MessageWrapper>}
+              </St.ModalItemWrapper>
+            );
+          }
+        })}
       </St.ModalContainer>
     </Modal>
   );
