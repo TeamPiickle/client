@@ -12,10 +12,11 @@ interface CardSliderProps {
   openLoginModalHandler: () => void;
   cardLists: CardList[];
   lastCardObsvRef: React.RefObject<HTMLDivElement>;
+  toggleMenuModal: () => void;
 }
 
 const CardSlider = (props: CardSliderProps) => {
-  const { openLoginModalHandler, cardLists, lastCardObsvRef } = props;
+  const { openLoginModalHandler, cardLists, lastCardObsvRef, toggleMenuModal } = props;
   const { swiperSettings } = useCardSwiper();
 
   return (
@@ -23,7 +24,7 @@ const CardSlider = (props: CardSliderProps) => {
       <Swiper {...swiperSettings}>
         {cardLists.map((cardList) => (
           <SwiperSlide key={cardList._id}>
-            <Card openLoginModalHandler={openLoginModalHandler} {...cardList} />
+            <Card toggleMenuModal={toggleMenuModal} openLoginModalHandler={openLoginModalHandler} {...cardList} />
           </SwiperSlide>
         ))}
         <SwiperSlide>

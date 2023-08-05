@@ -1,9 +1,8 @@
 import React from "react";
 
-import IcBookmarkCheck from "../../../asset/icon/IcBookmarkCheck";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
-import useCardBookmark from "../hooks/useCardBookmark";
 import TagsSlider from "../TagsSlider";
+import CardMenu from "./CardMenu";
 import St from "./style";
 
 interface LoginCheckProps {
@@ -12,12 +11,11 @@ interface LoginCheckProps {
   content: string;
   isBookmark: boolean;
   tags: string[];
+  toggleMenuModal: () => void;
 }
 
 const Card = (props: LoginCheckProps) => {
-  const { _id, content, isBookmark, tags, openLoginModalHandler } = props;
-
-  const { isBookmarked, handleClickBookmark } = useCardBookmark(isBookmark, openLoginModalHandler);
+  const { content, tags } = props;
 
   return (
     <St.Card className={GTM_CLASS_NAME.cardSwipe}>
@@ -27,13 +25,7 @@ const Card = (props: LoginCheckProps) => {
           <TagsSlider tags={tags} />
         </St.TagsWrapper>
       </St.Container>
-      <St.BookmarkWrapper
-        className={GTM_CLASS_NAME.cardBookmark}
-        onClick={() => handleClickBookmark(_id)}
-        aria-label="북마크"
-        role="dialog">
-        <IcBookmarkCheck isChecked={isBookmarked} />
-      </St.BookmarkWrapper>
+      <CardMenu {...props} />
     </St.Card>
   );
 };
