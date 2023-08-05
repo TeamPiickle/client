@@ -1,26 +1,16 @@
-import React, { forwardRef, useEffect, useState } from "react";
+import React, { forwardRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { IcCongratPiickle } from "../../../../asset/icon";
 import { routePaths } from "../../../../core/routes/path";
+import useReplayButton from "../../hooks/useTopicReplay";
 import * as St from "./style";
 
 const LastCard = forwardRef(function LastCard(_, ref: React.ForwardedRef<HTMLDivElement>) {
-  const [isReplayBtn, setIsReplayBtn] = useState(false);
   const navigate = useNavigate();
+  const isReplayBtn = useReplayButton();
 
-  const cardType = new URLSearchParams(window.location.search.split("?")[1]).get("type");
-
-  useEffect(() => {
-    const noRepalyTypes = ["female", "male", "bookmark", "medley", "recent"];
-
-    setIsReplayBtn(!noRepalyTypes.includes(cardType || ""));
-  }, [cardType]);
-
-  const getSimilarTopic = () => {
-    /* */
-  };
-
+  const getSimilarTopic = () => window.location.reload();
   const goToCategory = () => navigate(routePaths.Category);
 
   return (
