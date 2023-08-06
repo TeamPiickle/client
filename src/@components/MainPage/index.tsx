@@ -12,6 +12,7 @@ import MoodPiickle from "./MoodPiickle";
 import PiickleMe from "./PiickleMe";
 import StripBanner from "./StripBanner";
 import { St } from "./style";
+import TopicLink from "./TopicLink";
 
 //const UpdateModal = lazy(() => import("./UpdateModal"));
 
@@ -22,7 +23,9 @@ export default function MainPage() {
     <St.MainPage>
       <Header />
 
-      <Banner />
+      <SuspenseBoundary bgColor="white">
+        <Banner />
+      </SuspenseBoundary>
 
       <SuspenseBoundary bgColor="white">
         <BestPiickle />
@@ -41,6 +44,8 @@ export default function MainPage() {
       <SuspenseBoundary bgColor="white">
         <PiickleMe />
       </SuspenseBoundary>
+
+      <TopicLink />
 
       <Footer />
       <CTABtn />

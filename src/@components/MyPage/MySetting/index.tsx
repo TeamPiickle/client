@@ -2,12 +2,13 @@ import { useNavigate } from "react-router-dom";
 
 import useAuth from "../../../core/hooks/useAuth";
 import { routePaths } from "../../../core/routes/path";
+import { externalLinks } from "../../../util/const/externalLinks";
 import { St } from "./style";
 
 const mySetting = [
-  { text: "공지사항", link: "https://joyous-ghost-8c7.notion.site/75f55feef4034c06975c2d2e2b54ebe2" },
-  { text: "문의", link: "https://forms.gle/uJG7xNzuZvGcAU1w6" },
-  { text: "팀 정보", link: "https://www.notion.so/5a82a03cd5214b12ac28a00d8fd5b66c" },
+  { text: "공지사항", link: externalLinks.NOTICE },
+  { text: "문의", link: externalLinks.QUESTION_FORM },
+  { text: "팀 정보", link: externalLinks.TEAM_INFO },
   { text: "로그아웃" },
   { text: "회원 탈퇴" },
 ];

@@ -9,6 +9,8 @@ import { LocationType } from "../../../types/cardCollection";
 export type NavigateCardCollectionAllType = (sliderIdx?: number) => void;
 export type NavigateCardCollectionBestType = (sliderIdx?: number) => void;
 export type NavigateCardCollectionBookMarkType = (sliderIdx?: number) => void;
+export type NavigateCardCollectionRecentType = (sliderIdx?: number) => void;
+export type NavigateCardCollectionUpdateType = (sliderIdx?: number) => void;
 export type NavigateCardCollectionCategoryType = (categoryId: string, sliderIdx?: number) => void;
 export type NavigateCardCollectionFilterType = (filterTypes: string[], sliderIdx?: number) => void;
 export type NavigateCardCollectionMedleyType = (medleyId: string, sliderIdx?: number) => void;
@@ -64,6 +66,11 @@ export default function useNavigateCardCollection(locationType: LocationType) {
     case LocationType.RECENT:
       return (sliderIdx = 0) => {
         navigate(`${routePaths.CardCollection}?type=${LocationType.RECENT}`);
+        setSliderIdx(sliderIdx);
+      };
+    case LocationType.UPDATE:
+      return (sliderIdx = 0) => {
+        navigate(`${routePaths.CardCollection}?type=${LocationType.UPDATE}`);
         setSliderIdx(sliderIdx);
       };
     case LocationType.FEMALE:
