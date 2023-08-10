@@ -16,7 +16,7 @@ export default function useCardShare() {
     return `${basePath}${shareNavigation.url}`;
   };
 
-  const handleCopyClipBoard = async (_id: string) => {
+  const handleCopyClipBoard = (_id: string) => {
     const shareUrl = getShareUrl(_id);
     const textToCopy = `이런 대화주제는 어때요?\n지금 한번 확인해보세요.\n${shareUrl}?utm_content=sharelink`;
 
