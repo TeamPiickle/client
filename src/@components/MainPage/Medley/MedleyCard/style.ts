@@ -18,13 +18,13 @@ const MedleyCard = styled.div<{ bgcolorId: string }>`
   background: ${({ bgcolorId }) => medleyGradation[bgcolorId]};
 `;
 
-const ContentTag = styled.p`
+const ContentTag = styled.p<{ iseditorpick: boolean }>`
   padding: 0rem 0.4rem;
   margin-top: 2.4rem;
 
   ${({ theme }) => theme.newFonts.caption1}
-  color: ${({ theme }) => theme.newColors.gray200};
-  background-color: ${({ theme }) => theme.newColors.darkblue};
+  color: ${({ theme, iseditorpick }) => (iseditorpick ? theme.newColors.gray900 : theme.newColors.gray200)};
+  background-color: ${({ theme, iseditorpick }) => (iseditorpick ? theme.newColors.green : theme.newColors.darkblue)};
 `;
 
 const ContentTitle = styled.strong`

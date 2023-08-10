@@ -75,7 +75,7 @@ const ContentWrapper = styled(Link)`
 const ContentText = styled.p`
   width: 28rem; // MEMO :: 말줄임표를 위한 값
 
-  ${({ theme }) => theme.newFonts.body4};
+  ${({ theme }) => theme.newFonts.body4}
   color: ${({ theme }) => theme.newColors.gray900};
 
   overflow: hidden;

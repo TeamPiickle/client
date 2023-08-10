@@ -15,6 +15,8 @@ const rankTitles: HeadingTitle = {
   content: "가장 많이 북마크한 대화주제를 확인해보세요",
 };
 
+const BEST_PIICKLE_TOTAL_COUNT = 8;
+
 export default function BestPiickleRank() {
   const { bestPiickle } = useBestPiickle();
   const { isModalOpen: isLoginModalOpen, toggleModal: toggleLoginModal } = useModal();
@@ -24,7 +26,7 @@ export default function BestPiickleRank() {
       <HeadingTitleContainer headingTitles={rankTitles} paddingVerticalValue={1.6} />
       {bestPiickle &&
         [...bestPiickle.data]
-          .slice(0, 8)
+          .slice(0, BEST_PIICKLE_TOTAL_COUNT)
           .map(({ _id, content, isBookmark }, idx) => (
             <RankItem
               key={_id}

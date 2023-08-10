@@ -1,8 +1,10 @@
-export { default as ImgBanner1 } from "./banner_1.webp";
-export { default as ImgBanner2 } from "./banner_2.webp";
 export { default as ImgCategoryBanner } from "./categoryBanner.webp";
 export { default as ImgDefaultBigProfile } from "./defaultBigProfile.webp";
 export { default as ImgDefaultProfile } from "./defaultProfile.webp";
+export { default as NewImgBanner1 } from "./new_banner_1.webp";
+export { default as NewImgBanner2 } from "./new_banner_2.webp";
+export { default as NewImgBanner3 } from "./new_banner_3.webp";
 export { default as ImgPiickleLoading } from "./piickleLoading.webp";
 export { default as ImgStripBanner } from "./stripBanner.webp";
+export { default as ImgTopicLinkBanner } from "./topic_link_banner.webp";
 export { default as ImgVoteBanner } from "./voteBanner.webp";

@@ -1,23 +1,19 @@
 import styled from "styled-components";
 
-const BannerSlider = styled.section`
+export const BannerSlider = styled.section`
   touch-action: pan-x;
 
   position: relative;
-  height: 21.6rem;
+  height: 30.2rem;
 
   & .slick-track {
     scroll-snap-type: x mandatory;
   }
+
+  cursor: pointer;
 `;
 
-const ImageWrapper = styled.img`
-  width: 100%;
-  height: 21.6rem;
-  object-fit: cover;
-`;
-
-const ContentsPages = styled.div`
+export const ContentsPages = styled.div`
   position: absolute;
   right: 0;
   bottom: 0;
@@ -35,15 +31,29 @@ const ContentsPages = styled.div`
   z-index: 10;
 `;
 
-const CurrentPage = styled.span`
+export const CurrentPage = styled.span`
   ${({ theme }) => theme.newFonts.caption1};
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.newColors.white};
 `;
 
-const St = {
-  BannerSlider,
-  ImageWrapper,
-  ContentsPages,
-  CurrentPage,
-};
-export default St;
+export const PagingWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 3.2rem;
+
+  gap: 1.6rem;
+
+  cursor: default;
+`;
+
+export const PagingButton = styled.div<{ isselected: boolean }>`
+  width: 0.8rem;
+  height: 0.8rem;
+
+  border-radius: 50%;
+
+  background: ${({ theme, isselected }) => (isselected ? theme.newColors.green : theme.newColors.gray300)};
+`;
