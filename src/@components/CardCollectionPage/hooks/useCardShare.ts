@@ -5,11 +5,13 @@ import { LocationType } from "../../../types/cardCollection";
 import useNavigateCardCollection, {
   NavigateCardCollectionShareType,
 } from "../../@common/hooks/useNavigateCardCollection";
+import useToast from "../../@common/Toast/hooks/useToast";
 
 export default function useCardShare() {
   const [updatedAddress, setUpdatedAddress] = useState("");
   const [isCopyProcessed, setIsCopyProcessed] = useState(false);
   const navigateCardCollection = useNavigateCardCollection(LocationType.SHARE) as NavigateCardCollectionShareType;
+  const showToast = useToast();
 
   useEffect(() => {
     if (isCopyProcessed) {
@@ -25,6 +27,7 @@ export default function useCardShare() {
     const shareUrl = `${basePath}${shareNavigation.url}`;
     setUpdatedAddress(shareUrl);
     setIsCopyProcessed(true);
+    showToast({ message: "📤 링크를 복사했어요", duration: 2.5 });
   };
 
   return { handleCopyClipBoard };
