@@ -72,15 +72,13 @@ export default function useNavigateCardCollection(locationType: LocationType) {
         navigate(`${routePaths.CardCollection}?type=${LocationType.RECENT}`);
         setSliderIdx(sliderIdx);
       };
-<<<<<<< HEAD
 
-=======
     case LocationType.UPDATE:
       return (sliderIdx = 0) => {
         navigate(`${routePaths.CardCollection}?type=${LocationType.UPDATE}`);
         setSliderIdx(sliderIdx);
       };
->>>>>>> release/2.1.0
+
     case LocationType.FEMALE:
       return (sliderIdx = 0) => {
         navigate(`${routePaths.CardCollection}?type=${LocationType.FEMALE}`);
