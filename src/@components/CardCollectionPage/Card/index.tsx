@@ -27,7 +27,7 @@ const Card = (props: LoginCheckProps) => {
   return (
     <St.Card className={GTM_CLASS_NAME.cardSwipe}>
       <St.Container>
-        <St.ContentWrapper className={GTM_CLASS_NAME.cardSwipe}>{content}</St.ContentWrapper>
+        <St.ContentWrapper className={GTM_CLASS_NAME.cardSwipe}>{content.replace(/\\n/g, "")}</St.ContentWrapper>
         <St.TagsWrapper>
           <TagsSlider tags={tags} />
         </St.TagsWrapper>
