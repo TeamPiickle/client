@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { LocationType } from "../../../../types/cardCollection";
 import Modal from "../../../@common/Modal";
 import useToast from "../../../@common/Toast/hooks/useToast";
-import useBlacklist from "../../hooks/useBlacklist";
+import { handleClickBlacklistType } from "../../hooks/useBlacklist";
 import { autoSlideType } from "../../hooks/useCardSwiper";
 import * as St from "./style";
 
@@ -11,7 +11,8 @@ interface MenuModalProps {
   currentCardId: string;
   closeHandler: () => void;
   autoSlide: autoSlideType;
-  openLoginModalHandler: () => void;
+  handleClickAddBlacklist: handleClickBlacklistType;
+  handleClickCancelBlacklist: handleClickBlacklistType;
 }
 
 type ModalItem = {
@@ -22,9 +23,8 @@ type ModalItem = {
 };
 
 export default function MenuModal(props: MenuModalProps) {
-  const { currentCardId, closeHandler, autoSlide, openLoginModalHandler } = props;
+  const { currentCardId, closeHandler, autoSlide, handleClickAddBlacklist, handleClickCancelBlacklist } = props;
   const { showToast, blackoutToast } = useToast();
-  const { handleClickAddBlacklist, handleClickCancelBlacklist } = useBlacklist(openLoginModalHandler);
 
   const [isBlockShow, setIsBlockShow] = useState<boolean>(true);
 

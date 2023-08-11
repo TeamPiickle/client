@@ -2,6 +2,7 @@ import React from "react";
 
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import useModal from "../../@common/hooks/useModal";
+import { handleClickBlacklistType } from "../hooks/useBlacklist";
 import { autoSlideType } from "../hooks/useCardSwiper";
 import TagsSlider from "../TagsSlider";
 import CardMenu from "./CardMenu";
@@ -10,15 +11,17 @@ import St from "./style";
 
 interface LoginCheckProps {
   autoSlide: autoSlideType;
-  openLoginModalHandler: () => void;
   _id: string;
   content: string;
   isBookmark: boolean;
   tags: string[];
+  openLoginModalHandler: () => void;
+  handleClickAddBlacklist: handleClickBlacklistType;
+  handleClickCancelBlacklist: handleClickBlacklistType;
 }
 
 const Card = (props: LoginCheckProps) => {
-  const { _id, content, tags, autoSlide, openLoginModalHandler } = props;
+  const { _id, content, tags, autoSlide, handleClickAddBlacklist, handleClickCancelBlacklist } = props;
   const { isModalOpen: isMenuModalOpen, toggleModal: toggleMenuModal } = useModal();
 
   return (
@@ -35,7 +38,8 @@ const Card = (props: LoginCheckProps) => {
           currentCardId={_id}
           closeHandler={toggleMenuModal}
           autoSlide={autoSlide}
-          openLoginModalHandler={openLoginModalHandler}
+          handleClickAddBlacklist={handleClickAddBlacklist}
+          handleClickCancelBlacklist={handleClickCancelBlacklist}
         />
       )}
     </St.Card>
