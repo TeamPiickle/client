@@ -17,6 +17,10 @@ export type NavigateCardCollectionMedleyType = (medleyId: string, sliderIdx?: nu
 export type NavigateRecentCollectionType = (sliderIdx?: number) => void;
 export type NavigateFemaleCollectionType = (sliderIdx?: number) => void;
 export type NavigateMaleCollectionType = (sliderIdx?: number) => void;
+export type NavigateCardCollectionShareType = (
+  cardId: string,
+  sliderIdx?: number,
+) => { navigate: () => void; url: string };
 
 export default function useNavigateCardCollection(locationType: LocationType) {
   const navigate = useNavigate();
@@ -68,20 +72,35 @@ export default function useNavigateCardCollection(locationType: LocationType) {
         navigate(`${routePaths.CardCollection}?type=${LocationType.RECENT}`);
         setSliderIdx(sliderIdx);
       };
+
     case LocationType.UPDATE:
       return (sliderIdx = 0) => {
         navigate(`${routePaths.CardCollection}?type=${LocationType.UPDATE}`);
         setSliderIdx(sliderIdx);
       };
+
     case LocationType.FEMALE:
       return (sliderIdx = 0) => {
         navigate(`${routePaths.CardCollection}?type=${LocationType.FEMALE}`);
         setSliderIdx(sliderIdx);
       };
+
     case LocationType.MALE:
       return (sliderIdx = 0) => {
         navigate(`${routePaths.CardCollection}?type=${LocationType.MALE}`);
         setSliderIdx(sliderIdx);
+      };
+
+    case LocationType.SHARE:
+      return (cardId: string, sliderIdx = 0) => {
+        const shareUrl = `${routePaths.CardCollection}?type=${LocationType.SHARE}&cardId=${cardId}`;
+        return {
+          navigate: () => {
+            navigate(shareUrl);
+            setSliderIdx(sliderIdx);
+          },
+          url: shareUrl,
+        };
       };
   }
 }
