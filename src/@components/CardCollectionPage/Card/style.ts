@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Card = styled.article<{ isblocked: boolean }>`
+const Card = styled.article`
   position: relative;
   display: flex;
 

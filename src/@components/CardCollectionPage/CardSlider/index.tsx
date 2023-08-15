@@ -18,21 +18,13 @@ interface CardSliderProps {
 const CardSlider = (props: CardSliderProps) => {
   const { openLoginModalHandler, cardLists, lastCardObsvRef } = props;
   const { swiperSettings, swiperRef, autoSlide } = useCardSwiper();
-  const { blacklist, handleClickAddBlacklist, handleClickCancelBlacklist } = useBlacklist(openLoginModalHandler);
 
   return (
     <St.Wrapper>
       <Swiper {...swiperSettings} ref={swiperRef}>
         {cardLists.map((cardList) => (
           <SwiperSlide key={cardList._id}>
-            <Card
-              isBlocked={blacklist.includes(cardList._id)}
-              handleClickAddBlacklist={handleClickAddBlacklist}
-              handleClickCancelBlacklist={handleClickCancelBlacklist}
-              autoSlide={autoSlide}
-              openLoginModalHandler={openLoginModalHandler}
-              {...cardList}
-            />
+            <Card autoSlide={autoSlide} openLoginModalHandler={openLoginModalHandler} {...cardList} />
           </SwiperSlide>
         ))}
         <SwiperSlide>

@@ -36,8 +36,10 @@ const useBlacklist = (handleClickBeforeLogin: () => void) => {
     onSuccessDelete && onSuccessDelete();
   }, []);
 
+  const getIsBlacklist = useCallback((_id: string) => blacklist.includes(_id), [blacklist]);
+
   return {
-    blacklist,
+    getIsBlacklist,
     handleClickAddBlacklist,
     handleClickCancelBlacklist,
   };
