@@ -5,7 +5,7 @@ import useAuth from "../../../core/hooks/useAuth";
 
 interface handleClickParams {
   _id: string;
-  onSuccess: () => void;
+  onSuccess?: () => void;
 }
 
 export type handleClickBlacklistType = (params: handleClickParams) => void;
@@ -19,7 +19,7 @@ const useBlacklist = (handleClickBeforeLogin: () => void) => {
       switch (isLogin) {
         case true:
           cardCollectionApi.addBlacklist(_id);
-          onSuccessAdd();
+          onSuccessAdd && onSuccessAdd();
           setBlacklist((prev) => [...prev, _id]);
           break;
         case false:
@@ -33,7 +33,7 @@ const useBlacklist = (handleClickBeforeLogin: () => void) => {
   const handleClickCancelBlacklist: handleClickBlacklistType = useCallback(({ _id, onSuccess: onSuccessDelete }) => {
     cardCollectionApi.deleteBlacklist(_id);
     setBlacklist((prev) => prev.filter((id) => id !== _id));
-    onSuccessDelete();
+    onSuccessDelete && onSuccessDelete();
   }, []);
 
   return {

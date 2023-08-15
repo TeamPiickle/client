@@ -23,23 +23,18 @@ const CardSlider = (props: CardSliderProps) => {
   return (
     <St.Wrapper>
       <Swiper {...swiperSettings} ref={swiperRef}>
-        {cardLists.map((cardList) =>
-          blacklist.includes(cardList._id) ? (
-            <SwiperSlide key={cardList._id}>
-              <div>블락된 카드</div>
-            </SwiperSlide>
-          ) : (
-            <SwiperSlide key={cardList._id}>
-              <Card
-                handleClickAddBlacklist={handleClickAddBlacklist}
-                handleClickCancelBlacklist={handleClickCancelBlacklist}
-                autoSlide={autoSlide}
-                openLoginModalHandler={openLoginModalHandler}
-                {...cardList}
-              />
-            </SwiperSlide>
-          ),
-        )}
+        {cardLists.map((cardList) => (
+          <SwiperSlide key={cardList._id}>
+            <Card
+              isBlocked={blacklist.includes(cardList._id)}
+              handleClickAddBlacklist={handleClickAddBlacklist}
+              handleClickCancelBlacklist={handleClickCancelBlacklist}
+              autoSlide={autoSlide}
+              openLoginModalHandler={openLoginModalHandler}
+              {...cardList}
+            />
+          </SwiperSlide>
+        ))}
         <SwiperSlide>
           <LastCard ref={lastCardObsvRef} />
         </SwiperSlide>
