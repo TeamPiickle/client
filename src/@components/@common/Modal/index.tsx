@@ -24,9 +24,6 @@ export default function Modal(props: PropsWithChildren<ModalContents>) {
       <ModalPortal>
         <St.CoachMarkRoot>
           <St.CoachMarkModal ref={outClickCloserRef}>
-            <St.CloseBtn type="button" onClick={closeHandler}>
-              <IcModalCloseBtn />
-            </St.CloseBtn>
             <St.ModalContents>{children}</St.ModalContents>
           </St.CoachMarkModal>
         </St.CoachMarkRoot>

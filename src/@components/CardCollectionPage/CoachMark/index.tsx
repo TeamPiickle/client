@@ -1,5 +1,6 @@
 import IcMenuBtn from "../../../asset/icon/IcMenuBtn";
 import IcShareBtn from "../../../asset/icon/IcShareBtn";
+import useOutClickCloser from "../../@common/hooks/useOutClickCloser";
 import Modal from "../../@common/Modal";
 import * as St from "./style";
 
@@ -9,10 +10,11 @@ interface CoachMarkProps {
 
 export default function CoachMark(props: CoachMarkProps) {
   const { closeHandler } = props;
+  const outClickCloserRef = useOutClickCloser(closeHandler, true);
 
   return (
     <Modal theme={"COACHMARK"} closeHandler={closeHandler}>
-      <St.Container>
+      <St.Container ref={outClickCloserRef}>
         <St.Contents>
           새로 생긴 기능들을
           <br />
