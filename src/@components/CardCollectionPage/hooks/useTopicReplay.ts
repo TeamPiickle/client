@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 export default function useTopicReplay() {
   const [isReplayBtn, setIsReplayBtn] = useState(false);
-
-  const cardType = new URLSearchParams(window.location.search.split("?")[1]).get("type");
+  const [searchParams] = useSearchParams();
+  const cardType = searchParams.get("type");
 
   useEffect(() => {
     const noRepalyTypes = ["female", "male", "bookmark", "medley", "recent", "best"];
