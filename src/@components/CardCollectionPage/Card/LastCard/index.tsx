@@ -1,16 +1,32 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { IcCongratPiickle } from "../../../../asset/icon";
 import { routePaths } from "../../../../core/routes/path";
+import useToast from "../../../@common/Toast/hooks/useToast";
 import useReplayButton from "../../hooks/useTopicReplay";
 import * as St from "./style";
 
+const TOAST_SESSON_KEY = "showToast";
+
 const LastCard = forwardRef(function LastCard(_, ref: React.ForwardedRef<HTMLDivElement>) {
   const navigate = useNavigate();
+  const showToast = useToast();
   const isReplayBtn = useReplayButton();
+  const showToastFlag = !!sessionStorage.getItem(TOAST_SESSON_KEY);
 
-  const getSimilarTopic = () => window.location.reload();
+  useEffect(() => {
+    if (showToastFlag) {
+      showToast({ message: "😢 일부 겹치는 주제가 있을 수 있어요", duration: 2.5 });
+      sessionStorage.removeItem(TOAST_SESSON_KEY);
+    }
+  }, [showToastFlag, showToast]);
+
+  const getSimilarTopic = () => {
+    sessionStorage.setItem(TOAST_SESSON_KEY, "true");
+    window.location.reload();
+  };
+
   const goToCategory = () => navigate(routePaths.Category);
 
   return (
