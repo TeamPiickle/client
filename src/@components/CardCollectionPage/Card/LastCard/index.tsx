@@ -1,8 +1,10 @@
-import React, { forwardRef, useEffect, useState } from "react";
+import React, { forwardRef, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 import { IcCongratPiickle } from "../../../../asset/icon";
 import { routePaths } from "../../../../core/routes/path";
+import { LocationType } from "../../../../types/cardCollection";
+import useShowByCardType from "../../../@common/hooks/useShowByQuery";
 import useToast from "../../../@common/Toast/hooks/useToast";
 import * as St from "./style";
 
@@ -10,17 +12,16 @@ const TOAST_SESSON_KEY = "showToast";
 
 const LastCard = forwardRef(function LastCard(_, ref: React.ForwardedRef<HTMLDivElement>) {
   const navigate = useNavigate();
-  const showToast = useToast();
+  const { showToast } = useToast();
   const showToastFlag = !!sessionStorage.getItem(TOAST_SESSON_KEY);
-  const [isReplayBtn, setIsReplayBtn] = useState(false);
-  const [searchParams] = useSearchParams();
-  const cardType = searchParams.get("type");
-
-  useEffect(() => {
-    const noRepalyTypes = ["female", "male", "bookmark", "medley", "recent", "best"];
-
-    setIsReplayBtn(!noRepalyTypes.includes(cardType || ""));
-  }, [cardType]);
+  const { isShow: isReplayBtnShow } = useShowByCardType([
+    LocationType.BEST,
+    LocationType.MEDLEY,
+    LocationType.RECENT,
+    LocationType.BOOKMARK,
+    LocationType.MALE,
+    LocationType.FEMALE,
+  ]);
 
   useEffect(() => {
     if (showToastFlag) {
@@ -42,7 +43,7 @@ const LastCard = forwardRef(function LastCard(_, ref: React.ForwardedRef<HTMLDiv
       <St.Content>끊임없는 대화를 위해 버튼을 선택해주세요</St.Content>
       <IcCongratPiickle />
       <St.BtnContainer>
-        {isReplayBtn && <St.ReplayBtn onClick={reloadForSimilarTopic}>비슷한 주제 계속 보기</St.ReplayBtn>}
+        {isReplayBtnShow && <St.ReplayBtn onClick={reloadForSimilarTopic}>비슷한 주제 계속 보기</St.ReplayBtn>}
         <St.CategoryBtn onClick={goToCategory}>카테고리 보러 가기</St.CategoryBtn>
       </St.BtnContainer>
     </St.Card>
