@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { LocationType } from "../../../../types/cardCollection";
+import useShowByCardType from "../../../@common/hooks/useShowByQuery";
 import Modal from "../../../@common/Modal";
 import useToast from "../../../@common/Toast/hooks/useToast";
 import { handleClickBlacklistType } from "../../hooks/useBlacklist";
@@ -26,7 +27,7 @@ export default function MenuModal(props: MenuModalProps) {
   const { currentCardId, closeHandler, autoSlide, handleClickAddBlacklist, handleClickCancelBlacklist } = props;
   const { showToast, blackoutToast } = useToast();
 
-  const [isBlockShow, setIsBlockShow] = useState<boolean>(true);
+  const { isShow: isBlockShow } = useShowByCardType([LocationType.BEST, LocationType.MEDLEY]);
 
   const onSuccessAddBlacklist = () => {
     closeHandler();
@@ -70,12 +71,6 @@ export default function MenuModal(props: MenuModalProps) {
       },
     },
   ];
-
-  useEffect(() => {
-    if (location.search.includes(LocationType.BEST)) setIsBlockShow(false);
-    else if (location.search.includes(LocationType.MEDLEY)) setIsBlockShow(false);
-    else setIsBlockShow(true);
-  }, []);
 
   return (
     <Modal theme="WHITE_BOTTOM" closeHandler={closeHandler} isNoCloseBtn>
