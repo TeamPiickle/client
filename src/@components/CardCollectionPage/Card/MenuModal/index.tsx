@@ -1,9 +1,19 @@
+import { useEffect, useState } from "react";
+
+import { LocationType } from "../../../../types/cardCollection";
+import useShowByCardType from "../../../@common/hooks/useShowByQuery";
 import Modal from "../../../@common/Modal";
 import useToast from "../../../@common/Toast/hooks/useToast";
+import { handleClickBlacklistType } from "../../hooks/useBlacklist";
+import { autoSlideType } from "../../hooks/useCardSwiper";
 import * as St from "./style";
 
 interface MenuModalProps {
+  currentCardId: string;
   closeHandler: () => void;
+  autoSlide: autoSlideType;
+  handleClickAddBlacklist: handleClickBlacklistType;
+  handleClickCancelBlacklist: handleClickBlacklistType;
 }
 
 type ModalItem = {
@@ -14,8 +24,23 @@ type ModalItem = {
 };
 
 export default function MenuModal(props: MenuModalProps) {
-  const { closeHandler } = props;
-  const showToast = useToast();
+  const { currentCardId, closeHandler, autoSlide, handleClickAddBlacklist, handleClickCancelBlacklist } = props;
+  const { showToast, blackoutToast } = useToast();
+
+  const { isShow: isBlockShow } = useShowByCardType([LocationType.BEST, LocationType.MEDLEY]);
+
+  const onSuccessAddBlacklist = () => {
+    closeHandler();
+    showToast({
+      message: "🚫 해당 대화주제가 더 이상 추천되지 않아요",
+      duration: 3.5,
+      handleClickCancel: () => {
+        handleClickCancelBlacklist({ _id: currentCardId, onSuccess: blackoutToast });
+        autoSlide.slideUp();
+      },
+    });
+    autoSlide.slideDown();
+  };
 
   const ModalItems: ModalItem[] = [
     {
@@ -31,7 +56,10 @@ export default function MenuModal(props: MenuModalProps) {
       title: "주제 다시 안보기",
       isNeedLogin: true,
       handleClickItem: () => {
-        /* todo */
+        handleClickAddBlacklist({
+          _id: currentCardId,
+          onSuccess: onSuccessAddBlacklist,
+        });
       },
     },
     {
@@ -47,13 +75,19 @@ export default function MenuModal(props: MenuModalProps) {
   return (
     <Modal theme="WHITE_BOTTOM" closeHandler={closeHandler} isNoCloseBtn>
       <St.ModalContainer>
-        {ModalItems.map(({ emoji, title, isNeedLogin, handleClickItem }, idx) => (
-          <St.ModalItemWrapper key={idx} onClick={handleClickItem}>
-            <St.EmojiWrapper>{emoji}</St.EmojiWrapper>
-            {title}
-            {isNeedLogin && <St.MessageWrapper>로그인 시 사용가능 합니다</St.MessageWrapper>}
-          </St.ModalItemWrapper>
-        ))}
+        {ModalItems.map(({ emoji, title, isNeedLogin, handleClickItem }, idx) => {
+          if (idx === 1 && !isBlockShow) {
+            return null;
+          } else {
+            return (
+              <St.ModalItemWrapper key={idx} onClick={handleClickItem}>
+                <St.EmojiWrapper>{emoji}</St.EmojiWrapper>
+                {title}
+                {isNeedLogin && <St.MessageWrapper>로그인 시 사용가능 합니다</St.MessageWrapper>}
+              </St.ModalItemWrapper>
+            );
+          }
+        })}
       </St.ModalContainer>
     </Modal>
   );

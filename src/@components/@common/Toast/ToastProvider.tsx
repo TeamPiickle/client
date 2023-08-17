@@ -7,6 +7,7 @@ import * as St from "./style";
 export type ToastType = {
   message: string;
   duration: number;
+  handleClickCancel?: () => void;
 };
 
 export default function ToastProvider({ children }: PropsWithChildren) {
@@ -14,8 +15,8 @@ export default function ToastProvider({ children }: PropsWithChildren) {
   const toastTimeout = useTimeout();
 
   const showToast = useCallback(
-    async ({ message, duration }: ToastType) => {
-      setToast({ message, duration });
+    async ({ message, duration, handleClickCancel }: ToastType) => {
+      setToast({ message, duration, handleClickCancel });
 
       toastTimeout.set(() => {
         setToast(null);
@@ -24,12 +25,17 @@ export default function ToastProvider({ children }: PropsWithChildren) {
     [setToast, toastTimeout],
   );
 
+  const blackoutToast = useCallback(() => setToast(null), [setToast]);
+
   return (
-    <ToastContext.Provider value={{ showToast }}>
+    <ToastContext.Provider value={{ showToast, blackoutToast }}>
       {children}
       {toast && (
         <St.ToastContainer>
-          <St.ToastMessage>{toast.message}</St.ToastMessage>
+          <St.ToastMessage>
+            {toast.message}
+            {toast.handleClickCancel && <St.CancelButton onClick={toast.handleClickCancel}>취소</St.CancelButton>}
+          </St.ToastMessage>
         </St.ToastContainer>
       )}
     </ToastContext.Provider>
