@@ -11,8 +11,10 @@ import useScroll from "../@common/hooks/useScrollToTop";
 import LoginModal from "../@common/LoginModal";
 import SuspenseBoundary from "../@common/SuspenseBoundary";
 import CardSlider from "./CardSlider";
+import CoachMark from "./CoachMark";
 import FilterModal from "./FilterModal";
 import { useCardLists } from "./hooks/useCardLists";
+import useCoachMark from "./hooks/useCoachMark";
 import useCTAFilter from "./hooks/useCTAFilter";
 import * as St from "./style";
 
@@ -35,6 +37,8 @@ function CardCollectionContent() {
   const { isModalOpen: isFilterModalOpen, toggleModal: toggleFilterModal } = useModal();
   const { isModalOpen: isLoginModalOpen, toggleModal: toggleLoginModal } = useModal();
 
+  const { isOpened: isCoachMarkOpen, handleCloseCoachMark: toggleCoachMark } = useCoachMark();
+
   const isSliderDown = useRecoilValue(isSliderDownState);
 
   return (
@@ -52,7 +56,7 @@ function CardCollectionContent() {
           필터 설정하기
         </HeadlessCTAButton>
       )}
-
+      {isCoachMarkOpen && <CoachMark closeHandler={toggleCoachMark} />}
       {isLoginModalOpen && <LoginModal closeHandler={toggleLoginModal} contents={"북마크 기능인 마이피클을"} />}
       {isFilterModalOpen && (
         <FilterModal closeHandler={toggleFilterModal} fetchCardListsWithFilter={fetchCardListsWithFilter} />

@@ -8,6 +8,8 @@ export const enum LocationType {
   RECENT = "recent",
   FEMALE = "female",
   MALE = "male",
+  SHARE = "share",
+  UPDATE = "update",
 }
 
 interface AllTypeLocation {
@@ -40,12 +42,21 @@ interface RecentTypeLocation {
   type: LocationType.RECENT;
 }
 
+interface UpdateTypeLocation {
+  type: LocationType.UPDATE;
+}
+
 interface FemaleTypeLocation {
   type: LocationType.FEMALE;
 }
 
 interface MaleTypeLocation {
   type: LocationType.MALE;
+}
+
+interface ShareTypeLocation {
+  type: LocationType.SHARE;
+  cardId: string;
 }
 
 export type CardsTypeLocation =
@@ -57,7 +68,9 @@ export type CardsTypeLocation =
   | MedleyTypeLocation
   | RecentTypeLocation
   | FemaleTypeLocation
-  | MaleTypeLocation;
+  | MaleTypeLocation
+  | ShareTypeLocation
+  | UpdateTypeLocation;
 
 export interface CardList {
   _id: string;
