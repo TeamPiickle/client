@@ -3,6 +3,7 @@ import IcMenuBtn from "../../../../asset/icon/IcMenuBtn";
 import IcShareBtn from "../../../../asset/icon/IcShareBtn";
 import { GTM_CLASS_NAME } from "../../../../util/const/gtm";
 import useCardBookmark from "../../hooks/useCardBookmark";
+import useCardShare from "../../hooks/useCardShare";
 import * as St from "./style";
 
 interface CardMenuProps {
@@ -15,13 +16,15 @@ interface CardMenuProps {
 export default function CardMenu(props: CardMenuProps) {
   const { _id, isBookmark, openLoginModalHandler, toggleMenuModal } = props;
 
+  const { handleCopyClipBoard } = useCardShare();
   const { isBookmarked, handleClickBookmark } = useCardBookmark(isBookmark, openLoginModalHandler);
+
   return (
     <St.MenuContainer>
       <St.ButtonWrapper onClick={toggleMenuModal}>
         <IcMenuBtn />
       </St.ButtonWrapper>
-      <St.ButtonWrapper>
+      <St.ButtonWrapper onClick={() => handleCopyClipBoard(_id)}>
         <St.IconWrapper>
           <IcShareBtn />
         </St.IconWrapper>

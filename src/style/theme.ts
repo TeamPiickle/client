@@ -50,6 +50,7 @@ const newColors = {
   white: "#FFFFFF",
   black: "#000000",
   black50: "rgba(0, 0, 0, 0.5)",
+  blackblur: "rgba(0, 0, 0, 0.60)",
   kakaoyellow: "#FEE500",
   navergreen: "#03C75A",
   gradation: "linear-gradient(180deg, #DBFFF1 0%, #FFFFEB 100%);",

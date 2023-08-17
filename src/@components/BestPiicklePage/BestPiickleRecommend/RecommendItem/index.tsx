@@ -7,6 +7,8 @@ interface RecommendProps {
   recommendList: recommendListType;
 }
 
+const BEST_PIICKLE_TOTAL_COUNT = 4;
+
 export default function RecommendItem(props: RecommendProps) {
   const { recommendList } = props;
   const { scrollableContainerProps, isDragging } = useDraggingContainer();
@@ -17,14 +19,17 @@ export default function RecommendItem(props: RecommendProps) {
 
       {recommendList.cards && (
         <St.SliderWrapper {...scrollableContainerProps}>
-          {recommendList.cards.slice(0, 4).map((cards, idx) => {
+          {recommendList.cards.slice(0, BEST_PIICKLE_TOTAL_COUNT).map((cards, idx) => {
             return (
               <BestPiickleCard
                 key={cards._id}
                 bestPiickle={cards}
                 idx={idx}
                 canNavigate={!isDragging}
-                isLast={idx === 3}
+                isLast={
+                  recommendList.cards &&
+                  idx === (recommendList.cards.length > BEST_PIICKLE_TOTAL_COUNT && BEST_PIICKLE_TOTAL_COUNT - 1)
+                }
                 locationType={recommendList.locationType}
               />
             );
