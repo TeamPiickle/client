@@ -8,7 +8,7 @@ import useToast from "../../@common/Toast/hooks/useToast";
 
 export default function useCardShare() {
   const navigateCardCollection = useNavigateCardCollection(LocationType.SHARE) as NavigateCardCollectionShareType;
-  const showToast = useToast();
+  const { showToast } = useToast();
 
   const getShareUrl = (_id: string) => {
     const basePath = `${import.meta.env.DEV ? "http://127.0.0.1:5173" : import.meta.env.VITE_SERVICE_URL}`;
