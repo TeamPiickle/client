@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 import { loginApi } from "../../../core/api/login";
 import useAuth from "../../../core/hooks/useAuth";
@@ -8,7 +8,8 @@ import Loading from "../../@common/Loading";
 
 export default function OAuthNaverPage() {
   const navigate = useNavigate();
-  const authorizationCode = new URL(window.location.href).searchParams.get("code");
+  const [searchParams] = useSearchParams();
+  const authorizationCode = searchParams.get("code");
 
   const { login } = useAuth();
   const loginWithUserToken = (accessToken: string) => {
@@ -17,7 +18,7 @@ export default function OAuthNaverPage() {
   };
 
   const handlePostNaverLogin = async () => {
-    if (authorizationCode === null) return;
+    if (!authorizationCode) return alert("다시 시도해주세요");
     const data = await loginApi.postSocialLogin("naver", "", authorizationCode, import.meta.env.VITE_NAVER_STATE);
 
     data.data.newMember

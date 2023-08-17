@@ -3,6 +3,7 @@ export { ReactComponent as IcChangeProfileBtn } from "./changeProfileBtn.svg";
 export { ReactComponent as IcCheckWithBg } from "./check1.svg";
 export { ReactComponent as IcCheckWithNoBg } from "./check2.svg";
 export { ReactComponent as IcCloseBtn } from "./closeBtn.svg";
+export { ReactComponent as IcCongratPiickle } from "./congratPiickle.svg";
 export { ReactComponent as IcDownArrow } from "./downArrow.svg";
 export { ReactComponent as IcEmptyCheckBox } from "./emptyCheckBox.svg";
 export { ReactComponent as IcFullCheckBox } from "./fullCheckBox.svg";

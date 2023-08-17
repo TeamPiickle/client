@@ -1,7 +1,7 @@
 import axios from "axios";
 import qs from "qs";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 import { loginApi } from "../../../core/api/login";
 import useAuth from "../../../core/hooks/useAuth";
@@ -10,6 +10,7 @@ import Loading from "../../@common/Loading";
 
 export default function OAuthKakaoPage() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   const { login } = useAuth();
   const loginWithUserToken = (accessToken: string) => {
@@ -45,7 +46,7 @@ export default function OAuthKakaoPage() {
   };
 
   useEffect(() => {
-    const authorizationCode = new URL(window.location.href).searchParams.get("code");
+    const authorizationCode = searchParams.get("code");
     if (!authorizationCode) return alert("다시 시도해주세요");
 
     (async () => {
