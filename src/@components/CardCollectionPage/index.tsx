@@ -10,7 +10,6 @@ import useModal from "../@common/hooks/useModal";
 import useScroll from "../@common/hooks/useScrollToTop";
 import LoginModal from "../@common/LoginModal";
 import SuspenseBoundary from "../@common/SuspenseBoundary";
-import MenuModal from "./Card/MenuModal";
 import CardSlider from "./CardSlider";
 import CoachMark from "./CoachMark";
 import FilterModal from "./FilterModal";
@@ -37,7 +36,6 @@ function CardCollectionContent() {
 
   const { isModalOpen: isFilterModalOpen, toggleModal: toggleFilterModal } = useModal();
   const { isModalOpen: isLoginModalOpen, toggleModal: toggleLoginModal } = useModal();
-  const { isModalOpen: isMenuModalOpen, toggleModal: toggleMenuModal } = useModal();
 
   const { isOpened: isCoachMarkOpen, handleCloseCoachMark: toggleCoachMark } = useCoachMark();
 
@@ -46,12 +44,8 @@ function CardCollectionContent() {
   return (
     <St.MainPage>
       {isSliderDown ? <HeaderMinVer /> : <Header />}
-      <CardSlider
-        toggleMenuModal={toggleMenuModal}
-        openLoginModalHandler={toggleLoginModal}
-        cardLists={cardLists}
-        lastCardObsvRef={lastCardObsvRef}
-      />
+
+      <CardSlider openLoginModalHandler={toggleLoginModal} cardLists={cardLists} lastCardObsvRef={lastCardObsvRef} />
 
       {isVisibleCTAButton && (
         <HeadlessCTAButton
@@ -67,8 +61,6 @@ function CardCollectionContent() {
       {isFilterModalOpen && (
         <FilterModal closeHandler={toggleFilterModal} fetchCardListsWithFilter={fetchCardListsWithFilter} />
       )}
-
-      {isMenuModalOpen && <MenuModal closeHandler={toggleMenuModal} />}
     </St.MainPage>
   );
 }

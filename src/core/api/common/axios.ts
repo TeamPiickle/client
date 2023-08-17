@@ -31,4 +31,8 @@ export const realReq = {
   async PATCH<T>(path: string, body: T) {
     await axiosInstance.patch(path, body);
   },
+
+  async DELETE<T>(path: string, option?: { params: string }) {
+    await axiosInstance.delete<T>(path, option);
+  },
 };

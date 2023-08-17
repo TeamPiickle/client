@@ -1,7 +1,5 @@
 import { useRef } from "react";
 
-import { ToastType } from "../ToastProvider";
-
 export default function useTimeout() {
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 

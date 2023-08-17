@@ -12,6 +12,7 @@ export const ToastContainer = styled.div`
 
 export const ToastMessage = styled.div`
   display: flex;
+  justify-content: space-between;
 
   height: 4.8rem;
   padding: 0.8rem 1.6rem;
@@ -23,4 +24,9 @@ export const ToastMessage = styled.div`
 
   ${({ theme }) => theme.newFonts.caption1}
   color: ${({ theme }) => theme.newColors.gray900};
+`;
+
+export const CancelButton = styled.button`
+  ${({ theme }) => theme.newFonts.caption1}
+  color: ${({ theme }) => theme.newColors.gray600};
 `;

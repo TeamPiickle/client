@@ -6,13 +6,12 @@ export const ModalContainer = styled.aside`
   display: flex;
   flex-direction: column;
 
-  width: 36rem;
+  width: 100%;
 `;
 
 export const ModalItemWrapper = styled.div`
   display: flex;
 
-  width: 36rem;
   padding: 1.6rem;
 
   ${({ theme }) => theme.newFonts.body4};
