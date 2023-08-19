@@ -60,12 +60,6 @@ export default function Banner() {
             </SwiperSlide>
           ))}
         </Swiper>
-
-        <St.ContentsPages>
-          <St.CurrentPage>
-            {currentSlide + 1} / {newBannerImages.length}
-          </St.CurrentPage>
-        </St.ContentsPages>
       </St.BannerSlider>
       <St.PagingWrapper>
         {newBanners.map((banner, idx) => (
