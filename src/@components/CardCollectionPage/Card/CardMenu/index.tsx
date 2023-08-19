@@ -5,6 +5,7 @@ import IcShareBtn from "../../../../asset/icon/IcShareBtn";
 import { LocationType } from "../../../../types/cardCollection";
 import { GTM_CLASS_NAME } from "../../../../util/const/gtm";
 import useCardType from "../../../@common/hooks/useCardType";
+import useToast from "../../../@common/Toast/hooks/useToast";
 import useCardBookmark from "../../hooks/useCardBookmark";
 import useCardShare from "../../hooks/useCardShare";
 import * as St from "./style";
@@ -23,14 +24,23 @@ export default function CardMenu(props: CardMenuProps) {
   const { isBookmarked, handleClickBookmark } = useCardBookmark(isBookmark, onClickLogoutBookmark);
 
   const { cardType } = useCardType();
+  const { showToast } = useToast();
+
+  const handleClickBlockedMenu = () =>
+    showToast({
+      message: "❌ 댓글달기 기능만 사용 가능합니다!",
+      duration: 2.5,
+      isDark: true,
+    });
 
   return (
     <St.MenuContainer ismenuadded={cardType === LocationType.EVENT}>
-      <St.ButtonWrapper onClick={toggleMenuModal}>
+      <St.ButtonWrapper onClick={cardType === LocationType.EVENT ? handleClickBlockedMenu : toggleMenuModal}>
         <IcMenuBtn />
       </St.ButtonWrapper>
 
-      <St.ButtonWrapper onClick={() => handleCopyClipBoard(_id)}>
+      <St.ButtonWrapper
+        onClick={cardType === LocationType.EVENT ? handleClickBlockedMenu : () => handleCopyClipBoard(_id)}>
         <St.IconWrapper>
           <IcShareBtn />
         </St.IconWrapper>
@@ -39,7 +49,7 @@ export default function CardMenu(props: CardMenuProps) {
 
       <St.ButtonWrapper
         className={GTM_CLASS_NAME.cardBookmark}
-        onClick={() => handleClickBookmark(_id)}
+        onClick={cardType === LocationType.EVENT ? handleClickBlockedMenu : () => handleClickBookmark(_id)}
         aria-label="북마크"
         role="dialog">
         <St.IconWrapper>
