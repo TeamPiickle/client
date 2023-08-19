@@ -2,6 +2,7 @@ import React from "react";
 
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import useModal from "../../@common/hooks/useModal";
+import LoginModal from "../../@common/LoginModal";
 import useBlacklist from "../hooks/useBlacklist";
 import { autoSlideType } from "../hooks/useCardSwiper";
 import TagsSlider from "../TagsSlider";
@@ -15,13 +16,15 @@ interface LoginCheckProps {
   content: string;
   isBookmark: boolean;
   tags: string[];
-  openLoginModalHandler: () => void;
 }
 
 const Card = (props: LoginCheckProps) => {
-  const { _id, content, tags, autoSlide, openLoginModalHandler } = props;
+  const { _id, content, tags, autoSlide } = props;
   const { isModalOpen: isMenuModalOpen, toggleModal: toggleMenuModal } = useModal();
-  const { getIsBlacklist, handleClickAddBlacklist, handleClickCancelBlacklist } = useBlacklist(openLoginModalHandler);
+  const { isModalOpen: isBookmarkModalOpen, toggleModal: toggleBookmarkModalOpen } = useModal();
+  const { isModalOpen: isBlacklistModalOpen, toggleModal: toggleBlacklistModalOpen } = useModal();
+  const { getIsBlacklist, handleClickAddBlacklist, handleClickCancelBlacklist } =
+    useBlacklist(toggleBlacklistModalOpen);
 
   return (
     <St.Card className={GTM_CLASS_NAME.cardSwipe}>
@@ -31,7 +34,7 @@ const Card = (props: LoginCheckProps) => {
           <TagsSlider tags={tags} />
         </St.TagsWrapper>
       </St.Container>
-      <CardMenu {...props} toggleMenuModal={toggleMenuModal} />
+      <CardMenu {...props} toggleMenuModal={toggleMenuModal} onClickLogoutBookmark={toggleBookmarkModalOpen} />
 
       {getIsBlacklist(_id) && (
         <St.BlockCardWrapper>
@@ -48,6 +51,11 @@ const Card = (props: LoginCheckProps) => {
           handleClickAddBlacklist={handleClickAddBlacklist}
           handleClickCancelBlacklist={handleClickCancelBlacklist}
         />
+      )}
+
+      {isBookmarkModalOpen && <LoginModal closeHandler={toggleBookmarkModalOpen} contents={"북마크 기능을"} />}
+      {isBlacklistModalOpen && (
+        <LoginModal closeHandler={toggleBlacklistModalOpen} contents={"주제 다시 안보기 기능을"} />
       )}
     </St.Card>
   );

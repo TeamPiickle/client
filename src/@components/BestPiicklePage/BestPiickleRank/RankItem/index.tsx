@@ -7,7 +7,7 @@ import useCardBookmark from "../../../CardCollectionPage/hooks/useCardBookmark";
 import * as St from "./style";
 
 interface RankItemProps {
-  openLoginModalHandler: () => void;
+  onClickLogoutBookmark: () => void;
   cardId: string;
   content: string;
   rank: number;
@@ -15,11 +15,11 @@ interface RankItemProps {
 }
 
 export default function RankItem(props: RankItemProps) {
-  const { cardId, content, rank, isBookmark, openLoginModalHandler } = props;
+  const { cardId, content, rank, isBookmark, onClickLogoutBookmark } = props;
 
   const navigateRankCollection = useNavigateCardCollection(LocationType.BEST) as NavigateCardCollectionBookMarkType;
 
-  const { isBookmarked, handleClickBookmark } = useCardBookmark(isBookmark, openLoginModalHandler);
+  const { isBookmarked, handleClickBookmark } = useCardBookmark(isBookmark, onClickLogoutBookmark);
 
   return (
     <St.RankItemContainer>
