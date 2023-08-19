@@ -9,15 +9,15 @@ import * as St from "./style";
 interface CardMenuProps {
   _id: string;
   isBookmark: boolean;
-  openLoginModalHandler: () => void;
+  onClickLogoutBookmark: () => void;
   toggleMenuModal: () => void;
 }
 
 export default function CardMenu(props: CardMenuProps) {
-  const { _id, isBookmark, openLoginModalHandler, toggleMenuModal } = props;
+  const { _id, isBookmark, onClickLogoutBookmark, toggleMenuModal } = props;
 
   const { handleCopyClipBoard } = useCardShare();
-  const { isBookmarked, handleClickBookmark } = useCardBookmark(isBookmark, openLoginModalHandler);
+  const { isBookmarked, handleClickBookmark } = useCardBookmark(isBookmark, onClickLogoutBookmark);
 
   return (
     <St.MenuContainer>

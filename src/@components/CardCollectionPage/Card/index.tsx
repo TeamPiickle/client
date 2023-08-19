@@ -34,7 +34,7 @@ const Card = (props: LoginCheckProps) => {
           <TagsSlider tags={tags} />
         </St.TagsWrapper>
       </St.Container>
-      <CardMenu {...props} toggleMenuModal={toggleMenuModal} openLoginModalHandler={toggleBookmarkModalOpen} />
+      <CardMenu {...props} toggleMenuModal={toggleMenuModal} onClickLogoutBookmark={toggleBookmarkModalOpen} />
 
       {getIsBlacklist(_id) && (
         <St.BlockCardWrapper>

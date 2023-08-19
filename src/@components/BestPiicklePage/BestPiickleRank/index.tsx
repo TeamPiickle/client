@@ -34,7 +34,7 @@ export default function BestPiickleRank() {
               content={content}
               rank={idx}
               isBookmark={isBookmark}
-              openLoginModalHandler={toggleLoginModal}
+              onClickLogoutBookmark={toggleLoginModal}
             />
           ))}
       <St.ButtonWrapper>
