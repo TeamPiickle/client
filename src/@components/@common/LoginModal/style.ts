@@ -6,9 +6,8 @@ export const Container = styled.section`
   justify-content: space-between;
   align-items: center;
 
-  margin-top: 6.4rem;
-
-  height: 13.6rem;
+  margin-top: 7.4rem;
+  padding: 0 0.8rem;
 `;
 
 export const Wrapper = styled.div`
@@ -20,17 +19,11 @@ export const ModalContents = styled.p`
   color: ${({ theme }) => theme.newColors.gray900};
 `;
 
-export const Buttons = styled.div`
-  width: 100%;
-
-  display: flex;
-  gap: 0.01rem;
-
-  height: 5.8rem;
-`;
-
 export const Button = styled.button`
   width: 100%;
+  height: 5.6rem;
+  border-radius: 0.8rem;
+  margin-top: 4.4rem;
 
   display: flex;
   justify-content: center;
@@ -41,8 +34,4 @@ export const Button = styled.button`
   ${({ theme }) => theme.newFonts.btn1};
   color: ${({ theme }) => theme.newColors.gray100};
   background: ${({ theme }) => theme.newColors.gray900};
-
-  &:first-child {
-    margin-right: 0.1rem;
-  }
 `;
