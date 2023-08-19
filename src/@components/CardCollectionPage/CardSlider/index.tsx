@@ -2,9 +2,11 @@ import "swiper/swiper.css";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { CardList } from "../../../types/cardCollection";
+import { CardList, LocationType } from "../../../types/cardCollection";
 import { externalLinks } from "../../../util/const/externalLinks";
+import useCardType from "../../@common/hooks/useCardType";
 import Card from "../Card";
+import EventCard from "../Card/EventCard";
 import LastCard from "../Card/LastCard";
 import useCardSwiper from "../hooks/useCardSwiper";
 import * as St from "./style";
@@ -18,9 +20,16 @@ const CardSlider = (props: CardSliderProps) => {
   const { cardLists, lastCardObsvRef } = props;
   const { swiperSettings, swiperRef, autoSlide } = useCardSwiper();
 
+  const { cardType } = useCardType();
+
   return (
     <St.Wrapper>
       <Swiper {...swiperSettings} ref={swiperRef}>
+        {cardType === LocationType.EVENT && (
+          <SwiperSlide>
+            <EventCard />
+          </SwiperSlide>
+        )}
         {cardLists.map((cardList) => (
           <SwiperSlide key={cardList._id}>
             <Card autoSlide={autoSlide} {...cardList} />
