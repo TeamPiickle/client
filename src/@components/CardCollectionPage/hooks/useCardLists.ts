@@ -106,6 +106,10 @@ function getSWRFetchingKeyByLocation(cardsTypeLocation: CardsTypeLocation) {
     case LocationType.SHARE:
       return `${PATH.CARDS_}/${cardsTypeLocation.cardId}`;
 
+    case LocationType.EVENT:
+      //return "/mind23/api/questions";
+      return `${PATH.CARDS_}${PATH.CARDS_BEST}`;
+
     case LocationType.ALL:
     default: {
       const searchParams = qs.stringify(
