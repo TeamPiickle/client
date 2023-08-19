@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const MenuContainer = styled.article`
+export const MenuContainer = styled.article<{ ismenuadded: boolean }>`
   display: flex;
   flex-direction: column;
 
@@ -8,7 +8,7 @@ export const MenuContainer = styled.article`
   bottom: 1.7rem;
   right: 1.2rem;
 
-  gap: 2.4rem;
+  gap: ${({ ismenuadded }) => (ismenuadded ? "1.6rem" : "2.4rem")};
 `;
 
 export const ButtonWrapper = styled.div`
@@ -27,9 +27,16 @@ export const IconWrapper = styled.div`
   height: 4rem;
 `;
 
-export const ButtonLabel = styled.p`
-  margin-top: 0.6rem;
+export const ButtonLabel = styled.p<{ ismenuadded?: boolean }>`
+  margin-top: ${({ ismenuadded }) => !ismenuadded && "0.6rem"};
 
   ${({ theme }) => theme.newFonts.caption1};
   color: ${({ theme }) => theme.newColors.gray600};
+  ${({ ismenuadded }) =>
+    ismenuadded &&
+    css`
+      &:last-child {
+        color: ${({ theme }) => theme.newColors.green};
+      }
+    `}
 `;
