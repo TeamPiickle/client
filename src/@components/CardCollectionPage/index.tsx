@@ -35,7 +35,6 @@ function CardCollectionContent() {
   const { isVisibleCTAButton, intersectionObserverRef: lastCardObsvRef } = useCTAFilter();
 
   const { isModalOpen: isFilterModalOpen, toggleModal: toggleFilterModal } = useModal();
-  const { isModalOpen: isLoginModalOpen, toggleModal: toggleLoginModal } = useModal();
 
   const { isOpened: isCoachMarkOpen, handleCloseCoachMark: toggleCoachMark } = useCoachMark();
 
@@ -45,7 +44,7 @@ function CardCollectionContent() {
     <St.MainPage>
       {isSliderDown ? <HeaderMinVer /> : <Header />}
 
-      <CardSlider openLoginModalHandler={toggleLoginModal} cardLists={cardLists} lastCardObsvRef={lastCardObsvRef} />
+      <CardSlider cardLists={cardLists} lastCardObsvRef={lastCardObsvRef} />
 
       {isVisibleCTAButton && (
         <HeadlessCTAButton
@@ -57,7 +56,6 @@ function CardCollectionContent() {
         </HeadlessCTAButton>
       )}
       {isCoachMarkOpen && <CoachMark closeHandler={toggleCoachMark} />}
-      {isLoginModalOpen && <LoginModal closeHandler={toggleLoginModal} contents={"북마크 기능인 마이피클을"} />}
       {isFilterModalOpen && (
         <FilterModal closeHandler={toggleFilterModal} fetchCardListsWithFilter={fetchCardListsWithFilter} />
       )}

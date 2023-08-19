@@ -6,18 +6,16 @@ import { CardList } from "../../../types/cardCollection";
 import { externalLinks } from "../../../util/const/externalLinks";
 import Card from "../Card";
 import LastCard from "../Card/LastCard";
-import useBlacklist from "../hooks/useBlacklist";
 import useCardSwiper from "../hooks/useCardSwiper";
 import * as St from "./style";
 
 interface CardSliderProps {
-  openLoginModalHandler: () => void;
   cardLists: CardList[];
   lastCardObsvRef: React.RefObject<HTMLDivElement>;
 }
 
 const CardSlider = (props: CardSliderProps) => {
-  const { openLoginModalHandler, cardLists, lastCardObsvRef } = props;
+  const { cardLists, lastCardObsvRef } = props;
   const { swiperSettings, swiperRef, autoSlide } = useCardSwiper();
 
   return (
@@ -25,7 +23,7 @@ const CardSlider = (props: CardSliderProps) => {
       <Swiper {...swiperSettings} ref={swiperRef}>
         {cardLists.map((cardList) => (
           <SwiperSlide key={cardList._id}>
-            <Card autoSlide={autoSlide} openLoginModalHandler={openLoginModalHandler} {...cardList} />
+            <Card autoSlide={autoSlide} {...cardList} />
           </SwiperSlide>
         ))}
         <SwiperSlide>
