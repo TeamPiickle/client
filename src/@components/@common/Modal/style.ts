@@ -28,6 +28,18 @@ export const fadeOut = keyframes`
   }
 `;
 
+export const CommentRoot = styled(Root)`
+  align-items: flex-end;
+
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  min-height: -webkit-fill-available;
+
+  animation: ${fadeOut} 0.8s ease-in-out;
+
+  background-color: ${({ theme }) => theme.newColors.black50};
+`;
+
 export const CoachMarkRoot = styled(Root)`
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
@@ -80,6 +92,17 @@ const CenterModal = styled.section`
 
   transform: translateX(-50%);
   transform: translateY(-50%);
+`;
+
+export const CommentModal = styled.section`
+  position: relative;
+
+  width: 100%;
+  ${({ theme }) => theme.media.desktop`
+    width: 36rem;
+  `};
+
+  animation: ${bottomUp} 0.6s ease-in-out;
 `;
 
 export const CoachMarkModal = styled(CenterModal)`

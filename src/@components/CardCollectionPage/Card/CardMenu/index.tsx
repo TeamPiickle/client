@@ -5,9 +5,11 @@ import IcShareBtn from "../../../../asset/icon/IcShareBtn";
 import { LocationType } from "../../../../types/cardCollection";
 import { GTM_CLASS_NAME } from "../../../../util/const/gtm";
 import useCardType from "../../../@common/hooks/useCardType";
+import useModal from "../../../@common/hooks/useModal";
 import useToast from "../../../@common/Toast/hooks/useToast";
 import useCardBookmark from "../../hooks/useCardBookmark";
 import useCardShare from "../../hooks/useCardShare";
+import CommentModal from "../CommentModal";
 import * as St from "./style";
 
 interface CardMenuProps {
@@ -22,6 +24,7 @@ export default function CardMenu(props: CardMenuProps) {
 
   const { handleCopyClipBoard } = useCardShare();
   const { isBookmarked, handleClickBookmark } = useCardBookmark(isBookmark, onClickLogoutBookmark);
+  const { isModalOpen: isCommentOpen, toggleModal: toggleComment } = useModal();
 
   const { cardType } = useCardType();
   const { showToast } = useToast();
@@ -59,13 +62,15 @@ export default function CardMenu(props: CardMenuProps) {
       </St.ButtonWrapper>
 
       {cardType === LocationType.EVENT && (
-        <St.ButtonWrapper onClick={() => handleCopyClipBoard(_id)}>
+        <St.ButtonWrapper onClick={toggleComment}>
           <St.IconWrapper>
             <IcCommentBtn />
           </St.IconWrapper>
           <St.ButtonLabel ismenuadded={cardType === LocationType.EVENT}>댓글달기</St.ButtonLabel>
         </St.ButtonWrapper>
       )}
+
+      {isCommentOpen && <CommentModal onClickBackground={toggleComment} />}
     </St.MenuContainer>
   );
 }
