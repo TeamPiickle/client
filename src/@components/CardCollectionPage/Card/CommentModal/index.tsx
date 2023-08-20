@@ -1,4 +1,5 @@
 import useDraggableYContainer from "../../../@common/hooks/useDraggableYContainer";
+import useDrawer from "../../../@common/hooks/useDrawer";
 import Modal from "../../../@common/Modal";
 import * as St from "./style";
 
@@ -9,6 +10,7 @@ interface CommentModalProps {
 export default function CommentModal(props: CommentModalProps) {
   const { onClickBackground } = props;
   const { scrollableContainerProps, isScrollEnd } = useDraggableYContainer();
+  const { drawerProps, knobRef } = useDrawer(onClickBackground);
 
   const comments = [
     {
@@ -93,8 +95,10 @@ export default function CommentModal(props: CommentModalProps) {
   ];
   return (
     <Modal theme="COMMENT" closeHandler={onClickBackground}>
-      <St.CommentWrapper>
-        <St.Knob onDrag={onClickBackground} />
+      <St.CommentWrapper {...drawerProps}>
+        <St.KnobWrapper ref={knobRef}>
+          <St.Knob />
+        </St.KnobWrapper>
         <St.Comments {...scrollableContainerProps}>
           {comments.map(({ _id, nickname, content, profileImageUrl }) => (
             <St.Comment key={_id}>

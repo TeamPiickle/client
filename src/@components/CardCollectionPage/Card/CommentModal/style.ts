@@ -14,14 +14,24 @@ export const CommentWrapper = styled.section`
   background: ${({ theme }) => theme.newColors.white};
 `;
 
+export const KnobWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  height: 2rem;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+`;
+
 export const Knob = styled.div`
   width: 4.2rem;
   height: 0.4rem;
   border-radius: 2.7rem;
   background: ${({ theme }) => theme.newColors.gray600};
-
-  margin-top: 0.8rem;
-  margin-bottom: 2.6rem;
 `;
 
 export const Comments = styled.article`
@@ -35,6 +45,7 @@ export const Comments = styled.article`
 
   gap: 2rem;
 
+  margin-top: 3.8rem;
   margin-bottom: 7.6rem;
 `;
 
