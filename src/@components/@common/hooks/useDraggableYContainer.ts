@@ -3,11 +3,12 @@ import { useRef, useState } from "react";
 export default function useDraggableYContainer() {
   const containerRef = useRef<HTMLElement | null>(null);
 
-  const [isStartDragging, setIsStartDragging] = useState(false);
+  const [isStartDragging, setIsStartDragging] = useState<boolean>(false);
+  const [isScrollEnd, setIsScrollEnd] = useState<boolean>(false);
   const [startY, setStartY] = useState(0);
   const [movedY, setMovedY] = useState(0);
 
-  const touchSensitivity = 5; // 이동 감도 조절 값 (조절할 수 있음)
+  const touchSensitivity = 0.8; // 이동 감도 조절 값 (조절할 수 있음)
 
   function handleTouchStart(event: React.TouchEvent<HTMLElement>) {
     setIsStartDragging(true);
@@ -32,6 +33,9 @@ export default function useDraggableYContainer() {
     if (!container) return;
 
     container.scrollTop -= deltaY;
+
+    // 컨테이너 끝에 도달했는지 여부 확인
+    setIsScrollEnd(container.scrollHeight - container.scrollTop === container.clientHeight);
   }
 
   function handleTouchEnd() {
@@ -46,5 +50,6 @@ export default function useDraggableYContainer() {
       onTouchEnd: handleTouchEnd,
     },
     isDragging: Math.abs(movedY) > 10, // 이동 거리에 따라 드래그 여부 결정
+    isScrollEnd,
   };
 }

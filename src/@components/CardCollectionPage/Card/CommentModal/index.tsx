@@ -8,7 +8,7 @@ interface CommentModalProps {
 
 export default function CommentModal(props: CommentModalProps) {
   const { onClickBackground } = props;
-  const { scrollableContainerProps } = useDraggableYContainer();
+  const { scrollableContainerProps, isScrollEnd } = useDraggableYContainer();
 
   const comments = [
     {
@@ -106,7 +106,7 @@ export default function CommentModal(props: CommentModalProps) {
             </St.Comment>
           ))}
         </St.Comments>
-        <St.Gradient />
+        {!isScrollEnd && <St.Gradient />}
         <St.Input placeholder="답변하기" />
       </St.CommentWrapper>
     </Modal>
