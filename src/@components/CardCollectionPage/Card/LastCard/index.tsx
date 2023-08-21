@@ -1,9 +1,10 @@
 import React, { forwardRef, useEffect } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { IcCongratPiickle } from "../../../../asset/icon";
 import { routePaths } from "../../../../core/routes/path";
 import { LocationType } from "../../../../types/cardCollection";
+import { GTM_CLASS_NAME } from "../../../../util/const/gtm";
 import useShowByCardType from "../../../@common/hooks/useShowByQuery";
 import useToast from "../../../@common/Toast/hooks/useToast";
 import * as St from "./style";
@@ -43,8 +44,14 @@ const LastCard = forwardRef(function LastCard(_, ref: React.ForwardedRef<HTMLDiv
       <St.Content>끊임없는 대화를 위해 버튼을 선택해주세요</St.Content>
       <IcCongratPiickle />
       <St.BtnContainer>
-        {isReplayBtnShow && <St.ReplayBtn onClick={reloadForSimilarTopic}>비슷한 주제 계속 보기</St.ReplayBtn>}
-        <St.CategoryBtn onClick={goToCategory}>카테고리 보러 가기</St.CategoryBtn>
+        {isReplayBtnShow && (
+          <St.ReplayBtn onClick={reloadForSimilarTopic} className={GTM_CLASS_NAME.cardMoveKeep}>
+            비슷한 주제 계속 보기
+          </St.ReplayBtn>
+        )}
+        <St.CategoryBtn onClick={goToCategory} className={GTM_CLASS_NAME.cardMoveCategory}>
+          카테고리 보러 가기
+        </St.CategoryBtn>
       </St.BtnContainer>
     </St.Card>
   );

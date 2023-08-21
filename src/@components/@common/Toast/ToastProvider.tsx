@@ -1,5 +1,6 @@
-import React, { PropsWithChildren, useCallback, useState } from "react";
+import { PropsWithChildren, useCallback, useState } from "react";
 
+import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import { ToastContext } from "./context";
 import useTimeout from "./hooks/useTimeout";
 import * as St from "./style";
@@ -34,7 +35,11 @@ export default function ToastProvider({ children }: PropsWithChildren) {
         <St.ToastContainer>
           <St.ToastMessage>
             {toast.message}
-            {toast.handleClickCancel && <St.CancelButton onClick={toast.handleClickCancel}>취소</St.CancelButton>}
+            {toast.handleClickCancel && (
+              <St.CancelButton onClick={toast.handleClickCancel} className={GTM_CLASS_NAME.handleClickCancelBlacklist}>
+                취소
+              </St.CancelButton>
+            )}
           </St.ToastMessage>
         </St.ToastContainer>
       )}

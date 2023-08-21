@@ -21,24 +21,24 @@ export default function CardMenu(props: CardMenuProps) {
 
   return (
     <St.MenuContainer>
-      <St.ButtonWrapper onClick={toggleMenuModal}>
+      <St.ButtonWrapper className={GTM_CLASS_NAME.cardEtc} onClick={toggleMenuModal}>
         <IcMenuBtn />
       </St.ButtonWrapper>
-      <St.ButtonWrapper onClick={() => handleCopyClipBoard(_id)}>
-        <St.IconWrapper>
+      <St.ButtonWrapper className={GTM_CLASS_NAME.cardShare} onClick={() => handleCopyClipBoard(_id)}>
+        <St.IconWrapper className={GTM_CLASS_NAME.cardShare}>
           <IcShareBtn />
         </St.IconWrapper>
-        <St.ButtonLabel>공유하기</St.ButtonLabel>
+        <St.ButtonLabel className={GTM_CLASS_NAME.cardShare}>공유하기</St.ButtonLabel>
       </St.ButtonWrapper>
       <St.ButtonWrapper
         className={GTM_CLASS_NAME.cardBookmark}
         onClick={() => handleClickBookmark(_id)}
         aria-label="북마크"
         role="dialog">
-        <St.IconWrapper>
+        <St.IconWrapper className={GTM_CLASS_NAME.cardBookmark}>
           <IcBookmarkCheck_23_28 isChecked={isBookmarked} />
         </St.IconWrapper>
-        <St.ButtonLabel>저장하기</St.ButtonLabel>
+        <St.ButtonLabel className={GTM_CLASS_NAME.cardBookmark}>저장하기</St.ButtonLabel>
       </St.ButtonWrapper>
     </St.MenuContainer>
   );

@@ -39,7 +39,11 @@ const Card = (props: LoginCheckProps) => {
       {getIsBlacklist(_id) && (
         <St.BlockCardWrapper>
           <St.BlockCardText>다시 안보기를 설정한 주제입니다</St.BlockCardText>
-          <St.BlockCardButton onClick={() => handleClickCancelBlacklist({ _id })}>취소하기</St.BlockCardButton>
+          <St.BlockCardButton
+            onClick={() => handleClickCancelBlacklist({ _id })}
+            className={GTM_CLASS_NAME.cardEtcCancelBlock}>
+            취소하기
+          </St.BlockCardButton>
         </St.BlockCardWrapper>
       )}
 
