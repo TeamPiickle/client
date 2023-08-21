@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { routePaths } from "../../../core/routes/path";
 import { LocationType } from "../../../types/cardCollection";
 import { externalLinks } from "../../../util/const/externalLinks";
+import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import { newBannerImages, newBannerType } from "../../../util/main/banner";
 import { useRecentlyBookmarked } from "../../@common/hooks/useRecentlyBookmarked";
 import useBannerSwiper from "../hooks/useBannerSwiper";
@@ -27,6 +28,7 @@ export default function Banner() {
       cards: recentlyBookmarkedCards,
       linkTo: `${routePaths.CardCollection}?type=${LocationType.RECENT}`,
       isLightMode: false,
+      className: GTM_CLASS_NAME.mainBannerHot,
     },
     {
       bannerImage: newBannerImages[1],
@@ -36,6 +38,7 @@ export default function Banner() {
       cards: recentlyUpdatedCards,
       linkTo: `${routePaths.CardCollection}?type=${LocationType.UPDATE}`,
       isLightMode: true,
+      className: GTM_CLASS_NAME.mainBannerNew,
     },
     {
       bannerImage: newBannerImages[2],

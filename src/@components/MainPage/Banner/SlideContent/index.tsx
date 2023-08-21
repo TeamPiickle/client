@@ -1,5 +1,7 @@
+import { GTM_CLASS_NAME } from "../../../../util/const/gtm";
 import { newBannerType } from "../../../../util/main/banner";
 import * as St from "./style";
+
 const DATE_FORMAT = {
   START: 2,
   END: 10,
@@ -14,7 +16,11 @@ export default function SlideContent(props: newBannerType) {
   const { isLast, date, isLightMode, cards, linkTo } = props;
 
   if (isLast) {
-    return <St.LinkTo href={linkTo}>추가하러가기</St.LinkTo>;
+    return (
+      <St.LinkTo className={GTM_CLASS_NAME.mainBannerAddBtn} href={linkTo}>
+        추가하러가기
+      </St.LinkTo>
+    );
   }
 
   return (
