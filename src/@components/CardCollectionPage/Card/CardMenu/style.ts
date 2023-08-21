@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const MenuContainer = styled.article<{ ismenuadded: boolean }>`
+export const MenuContainer = styled.article<{ ismenuadded?: boolean }>`
   display: flex;
   flex-direction: column;
 

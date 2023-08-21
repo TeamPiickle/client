@@ -36,14 +36,50 @@ export default function CardMenu(props: CardMenuProps) {
       isDark: true,
     });
 
+  if (cardType === LocationType.EVENT) {
+    return (
+      <St.MenuContainer ismenuadded>
+        <St.ButtonWrapper onClick={handleClickBlockedMenu}>
+          <IcMenuBtn />
+        </St.ButtonWrapper>
+
+        <St.ButtonWrapper onClick={handleClickBlockedMenu}>
+          <St.IconWrapper>
+            <IcShareBtn />
+          </St.IconWrapper>
+          <St.ButtonLabel>공유하기</St.ButtonLabel>
+        </St.ButtonWrapper>
+
+        <St.ButtonWrapper
+          className={GTM_CLASS_NAME.cardBookmark}
+          onClick={handleClickBlockedMenu}
+          aria-label="북마크"
+          role="dialog">
+          <St.IconWrapper>
+            <IcBookmarkCheck_23_28 isChecked={isBookmarked} />
+          </St.IconWrapper>
+          <St.ButtonLabel>저장하기</St.ButtonLabel>
+        </St.ButtonWrapper>
+
+        <St.ButtonWrapper onClick={toggleComment}>
+          <St.IconWrapper>
+            <IcCommentBtn />
+          </St.IconWrapper>
+          <St.ButtonLabel ismenuadded>댓글달기</St.ButtonLabel>
+        </St.ButtonWrapper>
+
+        {isCommentOpen && <CommentModal onClickBackground={toggleComment} />}
+      </St.MenuContainer>
+    );
+  }
+
   return (
-    <St.MenuContainer ismenuadded={cardType === LocationType.EVENT}>
-      <St.ButtonWrapper onClick={cardType === LocationType.EVENT ? handleClickBlockedMenu : toggleMenuModal}>
+    <St.MenuContainer>
+      <St.ButtonWrapper onClick={toggleMenuModal}>
         <IcMenuBtn />
       </St.ButtonWrapper>
 
-      <St.ButtonWrapper
-        onClick={cardType === LocationType.EVENT ? handleClickBlockedMenu : () => handleCopyClipBoard(_id)}>
+      <St.ButtonWrapper onClick={() => handleCopyClipBoard(_id)}>
         <St.IconWrapper>
           <IcShareBtn />
         </St.IconWrapper>
@@ -52,7 +88,7 @@ export default function CardMenu(props: CardMenuProps) {
 
       <St.ButtonWrapper
         className={GTM_CLASS_NAME.cardBookmark}
-        onClick={cardType === LocationType.EVENT ? handleClickBlockedMenu : () => handleClickBookmark(_id)}
+        onClick={() => handleClickBookmark(_id)}
         aria-label="북마크"
         role="dialog">
         <St.IconWrapper>
@@ -60,15 +96,6 @@ export default function CardMenu(props: CardMenuProps) {
         </St.IconWrapper>
         <St.ButtonLabel>저장하기</St.ButtonLabel>
       </St.ButtonWrapper>
-
-      {cardType === LocationType.EVENT && (
-        <St.ButtonWrapper onClick={toggleComment}>
-          <St.IconWrapper>
-            <IcCommentBtn />
-          </St.IconWrapper>
-          <St.ButtonLabel ismenuadded={cardType === LocationType.EVENT}>댓글달기</St.ButtonLabel>
-        </St.ButtonWrapper>
-      )}
 
       {isCommentOpen && <CommentModal onClickBackground={toggleComment} />}
     </St.MenuContainer>
