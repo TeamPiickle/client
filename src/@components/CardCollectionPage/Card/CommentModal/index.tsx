@@ -1,3 +1,6 @@
+import { useState } from "react";
+
+import IcSubmitBtn from "../../../../asset/icon/IcSubmitBtn";
 import useDraggableYContainer from "../../../@common/hooks/useDraggableYContainer";
 import useDrawer from "../../../@common/hooks/useDrawer";
 import Modal from "../../../@common/Modal";
@@ -11,6 +14,8 @@ export default function CommentModal(props: CommentModalProps) {
   const { onClickBackground } = props;
   const { scrollableContainerProps, isScrollEnd } = useDraggableYContainer();
   const { drawerProps, knobRef } = useDrawer(onClickBackground);
+
+  const [answer, setAnswer] = useState<string>();
 
   const comments = [
     {
@@ -111,7 +116,19 @@ export default function CommentModal(props: CommentModalProps) {
           ))}
         </St.Comments>
         {!isScrollEnd && <St.Gradient />}
-        <St.Input placeholder="답변하기" />
+        <St.InputWrapper>
+          <St.Input
+            placeholder="답변하기"
+            onChange={(e) => setAnswer(e.target.value)}
+            maxLength={150}
+            rows={answer ? answer?.split("\n").length : 1}
+          />
+          {answer && (
+            <St.SubmitBtn>
+              <IcSubmitBtn />
+            </St.SubmitBtn>
+          )}
+        </St.InputWrapper>
       </St.CommentWrapper>
     </Modal>
   );

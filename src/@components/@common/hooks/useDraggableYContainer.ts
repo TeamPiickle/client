@@ -8,7 +8,7 @@ export default function useDraggableYContainer() {
   const [startY, setStartY] = useState(0);
   const [movedY, setMovedY] = useState(0);
 
-  const touchSensitivity = 2; // 이동 감도 조절 값 (조절할 수 있음)
+  const touchSensitivity = 0.7; // 이동 감도 조절 값 (조절할 수 있음)
 
   function handleTouchStart(event: React.TouchEvent<HTMLElement>) {
     setIsStartDragging(true);

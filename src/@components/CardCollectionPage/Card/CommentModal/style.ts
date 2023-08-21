@@ -46,7 +46,6 @@ export const Comments = styled.article`
   gap: 2rem;
 
   margin-top: 3.8rem;
-  margin-bottom: 7.6rem;
 `;
 
 export const Comment = styled.div`
@@ -88,13 +87,37 @@ export const Gradient = styled.div`
   background: linear-gradient(0deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
 `;
 
-export const Input = styled.input`
+export const InputWrapper = styled.div`
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 5.6rem;
+  margin: 0 auto;
 
-  padding: 1.2rem 2rem;
+  display: flex;
+  align-items: flex-end;
+`;
 
+export const Input = styled.textarea`
+  width: 100%;
+  min-height: 5.6rem;
+
+  padding: 1.75rem 2rem;
+
+  overflow-y: hidden;
+
+  border: none;
+  overflow: auto;
+  outline: none;
+
+  resize: none;
   background: ${({ theme }) => theme.newColors.gray100};
+`;
+
+export const SubmitBtn = styled.button`
+  position: absolute;
+  bottom: 1.2rem;
+  right: 2rem;
+
+  width: 3.2rem;
+  height: 3.2rem;
 `;
