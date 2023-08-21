@@ -94,14 +94,15 @@ export const InputWrapper = styled.div`
   margin: 0 auto;
 
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+
+  padding: 1.2rem 2rem;
+  min-height: 5.6rem;
+  background: ${({ theme }) => theme.newColors.gray100};
 `;
 
 export const Input = styled.textarea`
   width: 100%;
-  min-height: 5.6rem;
-
-  padding: 1.75rem 2rem;
 
   overflow-y: hidden;
 
@@ -111,13 +112,11 @@ export const Input = styled.textarea`
 
   resize: none;
   background: ${({ theme }) => theme.newColors.gray100};
+
+  ${({ theme }) => theme.newFonts.h2};
 `;
 
 export const SubmitBtn = styled.button`
-  position: absolute;
-  bottom: 1.2rem;
-  right: 2rem;
-
   width: 3.2rem;
   height: 3.2rem;
 `;
