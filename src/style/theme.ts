@@ -41,6 +41,7 @@ const newColors = {
   gray700: "#616161",
   gray800: "#424242",
   gray900: "#0A0A0A",
+  red: "#FF0000",
   green: "#19BE7E",
   purple: "#4F48EC",
   darkblue: "#100E34",
