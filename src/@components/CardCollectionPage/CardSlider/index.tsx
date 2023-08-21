@@ -14,11 +14,10 @@ import * as St from "./style";
 interface CardSliderProps {
   cardLists: CardList[];
   lastCardObsvRef: React.RefObject<HTMLDivElement>;
-  onSubmitComment?: (_id: string) => void;
 }
 
 const CardSlider = (props: CardSliderProps) => {
-  const { cardLists, lastCardObsvRef, onSubmitComment } = props;
+  const { cardLists, lastCardObsvRef } = props;
   const { swiperSettings, swiperRef, autoSlide } = useCardSwiper();
 
   const { cardType } = useCardType();
@@ -32,7 +31,7 @@ const CardSlider = (props: CardSliderProps) => {
           </SwiperSlide>
           {cardLists.map((cardList) => (
             <SwiperSlide key={cardList._id}>
-              <Card onSubmitComment={onSubmitComment} autoSlide={autoSlide} {...cardList} />
+              <Card autoSlide={autoSlide} {...cardList} />
             </SwiperSlide>
           ))}
           <SwiperSlide></SwiperSlide>

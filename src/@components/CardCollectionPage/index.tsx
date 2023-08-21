@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useRecoilValue } from "recoil";
 
 import { IcEventArrow } from "../../asset/icon";
+import { respondedCardsState } from "../../core/atom/event";
 import { isSliderDownState } from "../../core/atom/slider";
 import { LocationType } from "../../types/cardCollection";
 import { GTM_CLASS_NAME } from "../../util/const/gtm";
@@ -46,18 +47,15 @@ function CardCollectionContent() {
 
   const isSliderDown = useRecoilValue(isSliderDownState);
 
-  const [respondedCards, setRespondedCards] = useState<string[]>([]);
-
-  const addRespondedCard = (_id: string) => {
-    setRespondedCards((prev) => (prev.includes(_id) ? prev : [...prev, _id]));
-  };
+  //const [respondedCards, setRespondedCards] = useState<string[]>([]);
+  const respondedCards = useRecoilValue(respondedCardsState);
 
   if (cardType === LocationType.EVENT) {
     return (
       <St.MainPage>
         <EventHeader participants={count} questions={cardLists.length - respondedCards.length} />
 
-        <CardSlider cardLists={cardLists} lastCardObsvRef={lastCardObsvRef} onSubmitComment={addRespondedCard} />
+        <CardSlider cardLists={cardLists} lastCardObsvRef={lastCardObsvRef} />
 
         {isVisibleCTAButton ? (
           <HeadlessCTAButton onClick={() => console.log("경품 응모하러가기")}>경품 응모하러 가기</HeadlessCTAButton>

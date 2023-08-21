@@ -4,24 +4,24 @@ import IcSubmitBtn from "../../../../asset/icon/IcSubmitBtn";
 import useDraggableYContainer from "../../../@common/hooks/useDraggableYContainer";
 import useDrawer from "../../../@common/hooks/useDrawer";
 import Modal from "../../../@common/Modal";
-import { CommentList } from "../../hooks/useComments";
+import { CommentList, handleCommentController } from "../../hooks/useComments";
 import * as St from "./style";
 
 interface CommentModalProps {
   cardId: string;
   comments: CommentList[];
   onClickBackground: () => void;
-  onSubmitComment?: (_id: string) => void;
+  handleSubmitComment: handleCommentController;
 }
 
 export default function CommentModal(props: CommentModalProps) {
-  const { cardId, comments, onClickBackground, onSubmitComment } = props;
+  const { cardId, comments, onClickBackground, handleSubmitComment } = props;
   const { scrollableContainerProps, isScrollEnd } = useDraggableYContainer();
   const { drawerProps, knobRef } = useDrawer(onClickBackground);
 
-  const [answer, setAnswer] = useState<string>();
+  const [answer, setAnswer] = useState<string>("");
   const handleClickSubmit = () => {
-    onSubmitComment && onSubmitComment(cardId);
+    handleSubmitComment({ _id: cardId, content: answer });
   };
 
   return (

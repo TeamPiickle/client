@@ -19,11 +19,10 @@ interface LoginCheckProps {
   isBookmark: boolean;
   tags: string[];
   essential?: boolean;
-  onSubmitComment?: (_id: string) => void;
 }
 
 const Card = (props: LoginCheckProps) => {
-  const { _id, content, tags, autoSlide, essential, onSubmitComment } = props;
+  const { _id, content, tags, autoSlide, essential } = props;
 
   const { isModalOpen: isMenuModalOpen, toggleModal: toggleMenuModal } = useModal();
   const { isModalOpen: isCommentModalOpen, toggleModal: toggleCommentModal } = useModal();
@@ -34,7 +33,7 @@ const Card = (props: LoginCheckProps) => {
   const { getIsBlacklist, handleClickAddBlacklist, handleClickCancelBlacklist } =
     useBlacklist(toggleBlacklistModalOpen);
 
-  const { comments } = useComments(_id);
+  const { comments, handleSubmitComment } = useComments(_id);
 
   return (
     <St.Card className={GTM_CLASS_NAME.cardSwipe}>
@@ -74,7 +73,7 @@ const Card = (props: LoginCheckProps) => {
         <CommentModal
           cardId={_id}
           comments={comments}
-          onSubmitComment={onSubmitComment}
+          handleSubmitComment={handleSubmitComment}
           onClickBackground={toggleCommentModal}
         />
       )}
