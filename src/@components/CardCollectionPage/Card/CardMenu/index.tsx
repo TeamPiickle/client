@@ -47,7 +47,7 @@ export default function CardMenu(props: CardMenuProps) {
           <St.IconWrapper>
             <IcShareBtn />
           </St.IconWrapper>
-          <St.ButtonLabel>공유하기</St.ButtonLabel>
+          <St.ButtonLabel ismenuadded>공유하기</St.ButtonLabel>
         </St.ButtonWrapper>
 
         <St.ButtonWrapper
@@ -58,14 +58,16 @@ export default function CardMenu(props: CardMenuProps) {
           <St.IconWrapper>
             <IcBookmarkCheck_23_28 isChecked={isBookmarked} />
           </St.IconWrapper>
-          <St.ButtonLabel>저장하기</St.ButtonLabel>
+          <St.ButtonLabel ismenuadded>저장하기</St.ButtonLabel>
         </St.ButtonWrapper>
 
         <St.ButtonWrapper onClick={toggleComment}>
           <St.IconWrapper>
             <IcCommentBtn />
           </St.IconWrapper>
-          <St.ButtonLabel ismenuadded>댓글달기</St.ButtonLabel>
+          <St.ButtonLabel ismenuadded islighted>
+            댓글달기
+          </St.ButtonLabel>
         </St.ButtonWrapper>
 
         {isCommentOpen && <CommentModal onClickBackground={toggleComment} />}
@@ -96,8 +98,6 @@ export default function CardMenu(props: CardMenuProps) {
         </St.IconWrapper>
         <St.ButtonLabel>저장하기</St.ButtonLabel>
       </St.ButtonWrapper>
-
-      {isCommentOpen && <CommentModal onClickBackground={toggleComment} />}
     </St.MenuContainer>
   );
 }

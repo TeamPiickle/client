@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const MenuContainer = styled.article<{ ismenuadded?: boolean }>`
   display: flex;
@@ -27,16 +27,9 @@ export const IconWrapper = styled.div`
   height: 4rem;
 `;
 
-export const ButtonLabel = styled.p<{ ismenuadded?: boolean }>`
+export const ButtonLabel = styled.p<{ ismenuadded?: boolean; islighted?: boolean }>`
   margin-top: ${({ ismenuadded }) => !ismenuadded && "0.6rem"};
 
   ${({ theme }) => theme.newFonts.caption1};
-  color: ${({ theme }) => theme.newColors.gray600};
-  ${({ ismenuadded }) =>
-    ismenuadded &&
-    css`
-      &:last-child {
-        color: ${({ theme }) => theme.newColors.green};
-      }
-    `}
+  color: ${({ theme, islighted }) => (islighted ? theme.newColors.green : theme.newColors.gray600)};
 `;
