@@ -1,11 +1,16 @@
 import * as St from "./style";
 
-export default function EventHeader() {
+interface HeaderProps {
+  participants: number;
+}
+
+export default function EventHeader(props: HeaderProps) {
+  const { participants } = props;
   return (
     <St.EventHeaderContainer>
       <St.StatusWrapper>
         <St.Circle />
-        NN명 참여 중
+        {participants}명 참여 중
       </St.StatusWrapper>
       <St.StatusWrapper>
         <p>현재 대답할 수 있는 질문</p>

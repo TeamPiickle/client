@@ -91,3 +91,8 @@ export interface RecentCardList {
   recentlyDate: string;
   cardResponseDtos: CardList[];
 }
+
+export interface EventCardList {
+  totalCount: number;
+  cards: CardList[];
+}

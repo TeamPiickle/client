@@ -19,6 +19,7 @@ import FilterModal from "./FilterModal";
 import { useCardLists } from "./hooks/useCardLists";
 import useCoachMark from "./hooks/useCoachMark";
 import useCTAFilter from "./hooks/useCTAFilter";
+import { useParticipantCount } from "./hooks/useParticipantCount";
 import * as St from "./style";
 
 export default function CardCollectionPage() {
@@ -43,12 +44,14 @@ function CardCollectionContent() {
 
   const { cardType } = useCardType();
 
+  const { count } = useParticipantCount();
+
   const isSliderDown = useRecoilValue(isSliderDownState);
 
   if (cardType === LocationType.EVENT) {
     return (
       <St.MainPage>
-        <EventHeader />
+        <EventHeader participants={count} />
         <CardSlider cardLists={cardLists} lastCardObsvRef={lastCardObsvRef} />
 
         {isVisibleCTAButton ? (
