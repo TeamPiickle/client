@@ -1,5 +1,10 @@
 import { useCallback, useRef, useState } from "react";
 
+const thresholds = {
+  offset: 150, // 이 이상 내려야 drawer 닫힘
+  transitionTime: 0.2, // 애니메이션 지속 시간
+};
+
 export default function useDrawer(closeModal: () => void) {
   const knobRef = useRef<HTMLDivElement | null>(null);
   const containerRef = useRef<HTMLElement | null>(null);
@@ -37,12 +42,13 @@ export default function useDrawer(closeModal: () => void) {
     if (!container) return;
 
     if (yOffset > 150) {
-      container.style.transition = "transform 0.2s ease-in-out";
+      container.style.transition = `transform ${thresholds.transitionTime}s ease-in-out`;
       container.style.transform = "translateY(100%)";
       setTimeout(() => {
         closeModal();
-      }, 250);
+      }, thresholds.transitionTime * 1000 + 50);
     } else {
+      container.style.transition = `transform ${thresholds.transitionTime / 2}s ease-out`;
       container.style.transform = "translateY(0)";
     }
     setIsDragging(false);
