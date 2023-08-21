@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useRecoilValue } from "recoil";
 
 import { IcEventArrow } from "../../asset/icon";
@@ -35,24 +36,28 @@ function CardCollectionContent() {
   useScroll();
 
   const { cardLists, fetchCardListsWithFilter } = useCardLists();
-
   const { isVisibleCTAButton, intersectionObserverRef: lastCardObsvRef } = useCTAFilter();
 
   const { isModalOpen: isFilterModalOpen, toggleModal: toggleFilterModal } = useModal();
-
   const { isOpened: isCoachMarkOpen, handleCloseCoachMark: toggleCoachMark } = useCoachMark();
 
   const { cardType } = useCardType();
-
   const { count } = useParticipantCount();
 
   const isSliderDown = useRecoilValue(isSliderDownState);
 
+  const [respondedCards, setRespondedCards] = useState<string[]>([]);
+
+  const addRespondedCard = (_id: string) => {
+    setRespondedCards((prev) => (prev.includes(_id) ? prev : [...prev, _id]));
+  };
+
   if (cardType === LocationType.EVENT) {
     return (
       <St.MainPage>
-        <EventHeader participants={count} />
-        <CardSlider cardLists={cardLists} lastCardObsvRef={lastCardObsvRef} />
+        <EventHeader participants={count} questions={cardLists.length - respondedCards.length} />
+
+        <CardSlider cardLists={cardLists} lastCardObsvRef={lastCardObsvRef} onSubmitComment={addRespondedCard} />
 
         {isVisibleCTAButton ? (
           <HeadlessCTAButton onClick={() => console.log("경품 응모하러가기")}>경품 응모하러 가기</HeadlessCTAButton>

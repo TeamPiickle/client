@@ -5,11 +5,9 @@ import IcShareBtn from "../../../../asset/icon/IcShareBtn";
 import { LocationType } from "../../../../types/cardCollection";
 import { GTM_CLASS_NAME } from "../../../../util/const/gtm";
 import useCardType from "../../../@common/hooks/useCardType";
-import useModal from "../../../@common/hooks/useModal";
 import useToast from "../../../@common/Toast/hooks/useToast";
 import useCardBookmark from "../../hooks/useCardBookmark";
 import useCardShare from "../../hooks/useCardShare";
-import CommentModal from "../CommentModal";
 import * as St from "./style";
 
 interface CardMenuProps {
@@ -17,14 +15,14 @@ interface CardMenuProps {
   isBookmark: boolean;
   onClickLogoutBookmark: () => void;
   toggleMenuModal: () => void;
+  toggleCommentModal: () => void;
 }
 
 export default function CardMenu(props: CardMenuProps) {
-  const { _id, isBookmark, onClickLogoutBookmark, toggleMenuModal } = props;
+  const { _id, isBookmark, onClickLogoutBookmark, toggleMenuModal, toggleCommentModal } = props;
 
   const { handleCopyClipBoard } = useCardShare();
   const { isBookmarked, handleClickBookmark } = useCardBookmark(isBookmark, onClickLogoutBookmark);
-  const { isModalOpen: isCommentOpen, toggleModal: toggleComment } = useModal();
 
   const { cardType } = useCardType();
   const { showToast } = useToast();
@@ -61,7 +59,7 @@ export default function CardMenu(props: CardMenuProps) {
           <St.ButtonLabel ismenuadded>저장하기</St.ButtonLabel>
         </St.ButtonWrapper>
 
-        <St.ButtonWrapper onClick={toggleComment}>
+        <St.ButtonWrapper onClick={toggleCommentModal}>
           <St.IconWrapper>
             <IcCommentBtn />
           </St.IconWrapper>
@@ -69,8 +67,6 @@ export default function CardMenu(props: CardMenuProps) {
             댓글달기
           </St.ButtonLabel>
         </St.ButtonWrapper>
-
-        {isCommentOpen && <CommentModal onClickBackground={toggleComment} />}
       </St.MenuContainer>
     );
   }

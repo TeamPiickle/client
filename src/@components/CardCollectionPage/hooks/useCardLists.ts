@@ -4,7 +4,7 @@ import useSWR from "swr";
 
 import { realReq } from "../../../core/api/common/axios";
 import { PATH } from "../../../core/api/common/constants";
-import { CardList, CardsTypeLocation, EventCardList, LocationType } from "../../../types/cardCollection";
+import { CardList, CardsTypeLocation, LocationType } from "../../../types/cardCollection";
 import { PiickleSWRResponse } from "../../../types/remote/swr";
 import useCardListsFilter from "./useCardListsFilter";
 

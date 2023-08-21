@@ -7,11 +7,13 @@ import Modal from "../../../@common/Modal";
 import * as St from "./style";
 
 interface CommentModalProps {
+  cardId: string;
   onClickBackground: () => void;
+  onSubmitComment?: (_id: string) => void;
 }
 
 export default function CommentModal(props: CommentModalProps) {
-  const { onClickBackground } = props;
+  const { cardId, onClickBackground, onSubmitComment } = props;
   const { scrollableContainerProps, isScrollEnd } = useDraggableYContainer();
   const { drawerProps, knobRef } = useDrawer(onClickBackground);
 
@@ -98,6 +100,11 @@ export default function CommentModal(props: CommentModalProps) {
         "https://piiklebucket11.s3.ap-northeast-2.amazonaws.com/%E1%84%91%E1%85%B5%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%80%E1%85%B5%E1%84%87%E1%85%A9%E1%86%AB%E1%84%8B%E1%85%B5%E1%84%86%E1%85%B5%E1%84%8C%E1%85%B5.png",
     },
   ];
+
+  const handleClickSubmit = () => {
+    onSubmitComment && onSubmitComment(cardId);
+  };
+
   return (
     <Modal theme="COMMENT" closeHandler={onClickBackground}>
       <St.CommentWrapper {...drawerProps}>
@@ -124,7 +131,7 @@ export default function CommentModal(props: CommentModalProps) {
             rows={answer ? answer?.split("\n").length : 1}
           />
           {answer && (
-            <St.SubmitBtn>
+            <St.SubmitBtn onClick={handleClickSubmit}>
               <IcSubmitBtn />
             </St.SubmitBtn>
           )}

@@ -7,6 +7,7 @@ import useBlacklist from "../hooks/useBlacklist";
 import { autoSlideType } from "../hooks/useCardSwiper";
 import TagsSlider from "../TagsSlider";
 import CardMenu from "./CardMenu";
+import CommentModal from "./CommentModal";
 import MenuModal from "./MenuModal";
 import St from "./style";
 
@@ -17,13 +18,18 @@ interface LoginCheckProps {
   isBookmark: boolean;
   tags: string[];
   essential?: boolean;
+  onSubmitComment?: (_id: string) => void;
 }
 
 const Card = (props: LoginCheckProps) => {
-  const { _id, content, tags, autoSlide, essential } = props;
+  const { _id, content, tags, autoSlide, essential, onSubmitComment } = props;
+
   const { isModalOpen: isMenuModalOpen, toggleModal: toggleMenuModal } = useModal();
+  const { isModalOpen: isCommentModalOpen, toggleModal: toggleCommentModal } = useModal();
+
   const { isModalOpen: isBookmarkModalOpen, toggleModal: toggleBookmarkModalOpen } = useModal();
   const { isModalOpen: isBlacklistModalOpen, toggleModal: toggleBlacklistModalOpen } = useModal();
+
   const { getIsBlacklist, handleClickAddBlacklist, handleClickCancelBlacklist } =
     useBlacklist(toggleBlacklistModalOpen);
 
@@ -38,7 +44,12 @@ const Card = (props: LoginCheckProps) => {
           <TagsSlider tags={tags} />
         </St.TagsWrapper>
       </St.Container>
-      <CardMenu {...props} toggleMenuModal={toggleMenuModal} onClickLogoutBookmark={toggleBookmarkModalOpen} />
+      <CardMenu
+        {...props}
+        toggleCommentModal={toggleCommentModal}
+        toggleMenuModal={toggleMenuModal}
+        onClickLogoutBookmark={toggleBookmarkModalOpen}
+      />
 
       {getIsBlacklist(_id) && (
         <St.BlockCardWrapper>
@@ -55,6 +66,9 @@ const Card = (props: LoginCheckProps) => {
           handleClickAddBlacklist={handleClickAddBlacklist}
           handleClickCancelBlacklist={handleClickCancelBlacklist}
         />
+      )}
+      {isCommentModalOpen && (
+        <CommentModal cardId={_id} onSubmitComment={onSubmitComment} onClickBackground={toggleCommentModal} />
       )}
 
       {isBookmarkModalOpen && <LoginModal closeHandler={toggleBookmarkModalOpen} contents={"북마크 기능을"} />}
