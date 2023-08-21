@@ -5,6 +5,7 @@ import useModal from "../../@common/hooks/useModal";
 import LoginModal from "../../@common/LoginModal";
 import useBlacklist from "../hooks/useBlacklist";
 import { autoSlideType } from "../hooks/useCardSwiper";
+import { useComments } from "../hooks/useComments";
 import TagsSlider from "../TagsSlider";
 import CardMenu from "./CardMenu";
 import CommentModal from "./CommentModal";
@@ -32,6 +33,8 @@ const Card = (props: LoginCheckProps) => {
 
   const { getIsBlacklist, handleClickAddBlacklist, handleClickCancelBlacklist } =
     useBlacklist(toggleBlacklistModalOpen);
+
+  const { comments } = useComments(_id);
 
   return (
     <St.Card className={GTM_CLASS_NAME.cardSwipe}>
@@ -67,8 +70,13 @@ const Card = (props: LoginCheckProps) => {
           handleClickCancelBlacklist={handleClickCancelBlacklist}
         />
       )}
-      {isCommentModalOpen && (
-        <CommentModal cardId={_id} onSubmitComment={onSubmitComment} onClickBackground={toggleCommentModal} />
+      {isCommentModalOpen && comments && (
+        <CommentModal
+          cardId={_id}
+          comments={comments}
+          onSubmitComment={onSubmitComment}
+          onClickBackground={toggleCommentModal}
+        />
       )}
 
       {isBookmarkModalOpen && <LoginModal closeHandler={toggleBookmarkModalOpen} contents={"북마크 기능을"} />}

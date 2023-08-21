@@ -3,7 +3,7 @@ import useSWR from "swr";
 import { realReq } from "../../../core/api/common/axios";
 import { PiickleSWRResponse } from "../../../types/remote/swr";
 
-interface Comment {
+export interface CommentList {
   _id: string;
   content: string;
   profileImageUrl: string;
@@ -11,7 +11,7 @@ interface Comment {
 }
 
 export function useComments(questionId: string) {
-  const { data } = useSWR<PiickleSWRResponse<Comment[]>>(`/mind23/api/comments/${questionId}`, realReq.GET_SWR, {
+  const { data } = useSWR<PiickleSWRResponse<CommentList[]>>(`/mind23/api/comments/${questionId}`, realReq.GET_SWR, {
     suspense: true,
   });
 
