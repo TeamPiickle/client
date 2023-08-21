@@ -64,10 +64,16 @@ export const Comment = styled.div`
   }
 `;
 
+export const ProfileImgWrapper = styled.div`
+  width: 4.2rem;
+  height: 4.2rem;
+`;
+
 export const ProfileImg = styled.img`
   width: 4.2rem;
   height: 4.2rem;
   border-radius: 50%;
+  object-fit: cover;
 `;
 
 export const CommentContent = styled.span`
