@@ -77,13 +77,14 @@ export const CommentContent = styled.span`
 
   gap: 0.6rem;
 
-  font-size: 1.2rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 150%; /* 18px */
-  letter-spacing: -0.36px;
-
   white-space: pre-wrap;
+`;
+
+export const Nickname = styled.p`
+  ${({ theme }) => theme.newFonts.body5}
+`;
+export const Text = styled.p`
+  ${({ theme }) => theme.newFonts.body6}
 `;
 
 export const Gradient = styled.div`

@@ -107,10 +107,13 @@ const fonts = {
 const newFonts = {
   h1: FONT({ weight: 600, size: 2.0, lineHeight: 140, letterSpacing: 3 }),
   h2: FONT({ weight: 400, size: 1.4, lineHeight: 140, letterSpacing: 3 }),
+  h3: FONT({ weight: 600, size: 1.4, lineHeight: 150, letterSpacing: 42 }),
   body1: FONT({ weight: 600, size: 2.4, lineHeight: 130, letterSpacing: 3 }),
   body2: FONT({ weight: 600, size: 2.0, lineHeight: 130, letterSpacing: 2 }),
   body3: FONT({ weight: 500, size: 1.8, lineHeight: 120, letterSpacing: 35 }),
   body4: FONT({ weight: 400, size: 1.4, lineHeight: 130, letterSpacing: 4 }),
+  body5: FONT({ weight: 500, size: 1.2, lineHeight: 150, letterSpacing: 3 }),
+  body6: FONT({ weight: 400, size: 1.2, lineHeight: 150, letterSpacing: 3 }),
   btn1: FONT({ weight: 500, size: 1.4, lineHeight: 140, letterSpacing: 4 }),
   btn2: FONT({ weight: 400, size: 1.2, lineHeight: 140, letterSpacing: 4 }),
   caption1: FONT({ weight: 300, size: 1.2, lineHeight: 140, letterSpacing: 3 }),

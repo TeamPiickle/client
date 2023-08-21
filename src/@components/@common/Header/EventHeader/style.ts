@@ -21,11 +21,13 @@ export const StatusWrapper = styled.div`
   width: 100%;
   height: 3.7rem;
 
-  ${({ theme }) => theme.newFonts.caption1}
+  ${({ theme }) => theme.newFonts.h3}
 
   :last-child {
     padding: 0 1.6rem;
     justify-content: space-between;
+
+    ${({ theme }) => theme.newFonts.body4}
   }
 `;
 

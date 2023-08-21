@@ -109,8 +109,8 @@ export default function CommentModal(props: CommentModalProps) {
             <St.Comment key={_id}>
               <St.ProfileImg alt="사용자 프로필 이미지" src={profileImageUrl} />
               <St.CommentContent>
-                <p>{nickname}</p>
-                <p>{content}</p>
+                <St.Nickname>{nickname}</St.Nickname>
+                <St.Text>{content}</St.Text>
               </St.CommentContent>
             </St.Comment>
           ))}
