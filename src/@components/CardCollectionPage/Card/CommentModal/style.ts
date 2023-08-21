@@ -37,7 +37,7 @@ export const Knob = styled.div`
 export const Comments = styled.article`
   position: relative;
   width: 100%;
-  height: 53.8rem;
+  height: 100%;
   overflow-y: scroll;
 
   display: flex;
@@ -46,6 +46,7 @@ export const Comments = styled.article`
   gap: 2rem;
 
   margin-top: 3.8rem;
+  margin-bottom: 5.6rem;
 `;
 
 export const Comment = styled.div`
@@ -54,6 +55,13 @@ export const Comment = styled.div`
   width: 100%;
 
   gap: 1.2rem;
+
+  :first-child {
+    color: ${({ theme }) => theme.newColors.green};
+    > img {
+      border: ${({ theme }) => theme.newColors.green} 0.2rem solid;
+    }
+  }
 `;
 
 export const ProfileImg = styled.img`
@@ -80,7 +88,7 @@ export const CommentContent = styled.span`
 
 export const Gradient = styled.div`
   position: absolute;
-  bottom: 5.6rem;
+  bottom: 5rem;
   width: 100%;
   height: 8rem;
 

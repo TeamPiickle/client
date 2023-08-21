@@ -1,10 +1,12 @@
 import { useRecoilValue } from "recoil";
 
 import { isSliderDownState } from "../../core/atom/slider";
+import { LocationType } from "../../types/cardCollection";
 import { GTM_CLASS_NAME } from "../../util/const/gtm";
 import HeadlessCTAButton from "../@common/CTABtn/HeadlessCTAButton";
 import Header from "../@common/Header";
 import HeaderMinVer from "../@common/Header/HeaderMinVer";
+import useCardType from "../@common/hooks/useCardType";
 import useGTMPage from "../@common/hooks/useGTMPage";
 import useModal from "../@common/hooks/useModal";
 import useScroll from "../@common/hooks/useScrollToTop";
@@ -38,6 +40,8 @@ function CardCollectionContent() {
 
   const { isOpened: isCoachMarkOpen, handleCloseCoachMark: toggleCoachMark } = useCoachMark();
 
+  const { cardType } = useCardType();
+
   const isSliderDown = useRecoilValue(isSliderDownState);
 
   return (
@@ -46,7 +50,7 @@ function CardCollectionContent() {
 
       <CardSlider cardLists={cardLists} lastCardObsvRef={lastCardObsvRef} />
 
-      {isVisibleCTAButton && (
+      {isVisibleCTAButton && cardType !== LocationType.EVENT && (
         <HeadlessCTAButton
           aria-label="카드 추천 필터"
           role="dialog"
@@ -55,6 +59,17 @@ function CardCollectionContent() {
           필터 설정하기
         </HeadlessCTAButton>
       )}
+
+      {isVisibleCTAButton && cardType === LocationType.EVENT && (
+        <HeadlessCTAButton
+          aria-label="카드 추천 필터"
+          role="dialog"
+          className={GTM_CLASS_NAME.cardRecommendFilter}
+          onClick={() => console.log("경품 응모하러가기")}>
+          경품 응모하러 가기
+        </HeadlessCTAButton>
+      )}
+
       {isCoachMarkOpen && <CoachMark closeHandler={toggleCoachMark} />}
       {isFilterModalOpen && (
         <FilterModal closeHandler={toggleFilterModal} fetchCardListsWithFilter={fetchCardListsWithFilter} />

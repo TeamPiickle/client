@@ -27,7 +27,7 @@ const CardSlider = (props: CardSliderProps) => {
       <Swiper {...swiperSettings} ref={swiperRef}>
         {cardType === LocationType.EVENT && (
           <SwiperSlide>
-            <EventCard />
+            <EventCard ref={lastCardObsvRef} />
           </SwiperSlide>
         )}
         {cardLists.map((cardList) => (
