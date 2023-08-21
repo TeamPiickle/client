@@ -22,14 +22,27 @@ const CardSlider = (props: CardSliderProps) => {
 
   const { cardType } = useCardType();
 
-  return (
-    <St.Wrapper>
-      <Swiper {...swiperSettings} ref={swiperRef}>
-        {cardType === LocationType.EVENT && (
+  if (cardType === LocationType.EVENT) {
+    return (
+      <St.Wrapper>
+        <Swiper {...swiperSettings} ref={swiperRef}>
           <SwiperSlide>
             <EventCard ref={lastCardObsvRef} />
           </SwiperSlide>
-        )}
+          {cardLists.map((cardList) => (
+            <SwiperSlide key={cardList._id}>
+              <Card autoSlide={autoSlide} {...cardList} />
+            </SwiperSlide>
+          ))}
+          <SwiperSlide></SwiperSlide>
+        </Swiper>
+      </St.Wrapper>
+    );
+  }
+
+  return (
+    <St.Wrapper>
+      <Swiper {...swiperSettings} ref={swiperRef}>
         {cardLists.map((cardList) => (
           <SwiperSlide key={cardList._id}>
             <Card autoSlide={autoSlide} {...cardList} />

@@ -1,5 +1,4 @@
 import { useRecoilValue } from "recoil";
-import { SwiperSlide } from "swiper/react";
 
 import { IcEventArrow } from "../../asset/icon";
 import { isSliderDownState } from "../../core/atom/slider";
