@@ -1,5 +1,6 @@
 import { useRecoilValue } from "recoil";
 
+import { IcEventArrow } from "../../asset/icon";
 import { isSliderDownState } from "../../core/atom/slider";
 import { LocationType } from "../../types/cardCollection";
 import { GTM_CLASS_NAME } from "../../util/const/gtm";
@@ -60,7 +61,7 @@ function CardCollectionContent() {
         </HeadlessCTAButton>
       )}
 
-      {isVisibleCTAButton && cardType === LocationType.EVENT && (
+      {isVisibleCTAButton && cardType === LocationType.EVENT ? (
         <HeadlessCTAButton
           aria-label="카드 추천 필터"
           role="dialog"
@@ -68,9 +69,18 @@ function CardCollectionContent() {
           onClick={() => console.log("경품 응모하러가기")}>
           경품 응모하러 가기
         </HeadlessCTAButton>
+      ) : (
+        <St.EventCoach>
+          <St.EventCoachMessage>
+            자 이제 시작해볼까요?
+            <br />
+            다음 카드로 넘겨주세요!
+          </St.EventCoachMessage>
+          <IcEventArrow />
+        </St.EventCoach>
       )}
 
-      {isCoachMarkOpen && <CoachMark closeHandler={toggleCoachMark} />}
+      {isCoachMarkOpen && cardType !== LocationType.EVENT && <CoachMark closeHandler={toggleCoachMark} />}
       {isFilterModalOpen && (
         <FilterModal closeHandler={toggleFilterModal} fetchCardListsWithFilter={fetchCardListsWithFilter} />
       )}
