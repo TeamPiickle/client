@@ -7,8 +7,14 @@ export default function useCardType() {
   const [searchParams] = useSearchParams();
   const [cardType, setCardType] = useState<LocationType>();
 
+  const isLocationType = (searchParams: string): searchParams is LocationType => {
+    return (searchParams as LocationType) !== undefined;
+  };
+
   useEffect(() => {
-    setCardType(searchParams.get("type") as LocationType);
+    const typeParams = searchParams.get("type");
+    if (!typeParams || !isLocationType(typeParams)) return;
+    setCardType(typeParams);
   }, [searchParams]);
 
   return { cardType };

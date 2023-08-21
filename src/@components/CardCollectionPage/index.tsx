@@ -11,7 +11,6 @@ import useCardType from "../@common/hooks/useCardType";
 import useGTMPage from "../@common/hooks/useGTMPage";
 import useModal from "../@common/hooks/useModal";
 import useScroll from "../@common/hooks/useScrollToTop";
-import LoginModal from "../@common/LoginModal";
 import SuspenseBoundary from "../@common/SuspenseBoundary";
 import CardSlider from "./CardSlider";
 import CoachMark from "./CoachMark";
@@ -61,14 +60,9 @@ function CardCollectionContent() {
         </HeadlessCTAButton>
       )}
 
+      {/* 이벤트 카드용 CTAButton */}
       {isVisibleCTAButton && cardType === LocationType.EVENT ? (
-        <HeadlessCTAButton
-          aria-label="카드 추천 필터"
-          role="dialog"
-          className={GTM_CLASS_NAME.cardRecommendFilter}
-          onClick={() => console.log("경품 응모하러가기")}>
-          경품 응모하러 가기
-        </HeadlessCTAButton>
+        <HeadlessCTAButton onClick={() => console.log("경품 응모하러가기")}>경품 응모하러 가기</HeadlessCTAButton>
       ) : (
         <St.EventCoach>
           <St.EventCoachMessage>
