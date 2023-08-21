@@ -6,6 +6,7 @@ import { LocationType } from "../../types/cardCollection";
 import { GTM_CLASS_NAME } from "../../util/const/gtm";
 import HeadlessCTAButton from "../@common/CTABtn/HeadlessCTAButton";
 import Header from "../@common/Header";
+import EventHeader from "../@common/Header/EventHeader";
 import HeaderMinVer from "../@common/Header/HeaderMinVer";
 import useCardType from "../@common/hooks/useCardType";
 import useGTMPage from "../@common/hooks/useGTMPage";
@@ -47,18 +48,7 @@ function CardCollectionContent() {
   if (cardType === LocationType.EVENT) {
     return (
       <St.MainPage>
-        <St.EventHeaderContainer>
-          <St.StatusWrapper>
-            <St.Circle />
-            NN명 참여 중
-          </St.StatusWrapper>
-          <St.StatusWrapper>
-            <p>현재 대답할 수 있는 질문</p>
-            <St.CountString>
-              <St.CountNumber>{4}</St.CountNumber>개
-            </St.CountString>
-          </St.StatusWrapper>
-        </St.EventHeaderContainer>
+        <EventHeader />
         <CardSlider cardLists={cardLists} lastCardObsvRef={lastCardObsvRef} />
 
         {isVisibleCTAButton ? (
