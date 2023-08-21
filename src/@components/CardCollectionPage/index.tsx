@@ -44,13 +44,46 @@ function CardCollectionContent() {
 
   const isSliderDown = useRecoilValue(isSliderDownState);
 
+  if (cardType === LocationType.EVENT) {
+    return (
+      <St.MainPage>
+        <St.EventHeaderContainer>
+          <St.StatusWrapper>
+            <St.Circle />
+            NN명 참여 중
+          </St.StatusWrapper>
+          <St.StatusWrapper>
+            <p>현재 대답할 수 있는 질문</p>
+            <St.CountString>
+              <St.CountNumber>{4}</St.CountNumber>개
+            </St.CountString>
+          </St.StatusWrapper>
+        </St.EventHeaderContainer>
+        <CardSlider cardLists={cardLists} lastCardObsvRef={lastCardObsvRef} />
+
+        {isVisibleCTAButton ? (
+          <HeadlessCTAButton onClick={() => console.log("경품 응모하러가기")}>경품 응모하러 가기</HeadlessCTAButton>
+        ) : (
+          <St.EventCoach>
+            <St.EventCoachMessage>
+              자 이제 시작해볼까요?
+              <br />
+              다음 카드로 넘겨주세요!
+            </St.EventCoachMessage>
+            <IcEventArrow />
+          </St.EventCoach>
+        )}
+      </St.MainPage>
+    );
+  }
+
   return (
     <St.MainPage>
       {isSliderDown ? <HeaderMinVer /> : <Header />}
 
       <CardSlider cardLists={cardLists} lastCardObsvRef={lastCardObsvRef} />
 
-      {isVisibleCTAButton && cardType !== LocationType.EVENT && (
+      {isVisibleCTAButton && (
         <HeadlessCTAButton
           aria-label="카드 추천 필터"
           role="dialog"
@@ -60,21 +93,7 @@ function CardCollectionContent() {
         </HeadlessCTAButton>
       )}
 
-      {/* 이벤트 카드용 CTAButton */}
-      {isVisibleCTAButton && cardType === LocationType.EVENT ? (
-        <HeadlessCTAButton onClick={() => console.log("경품 응모하러가기")}>경품 응모하러 가기</HeadlessCTAButton>
-      ) : (
-        <St.EventCoach>
-          <St.EventCoachMessage>
-            자 이제 시작해볼까요?
-            <br />
-            다음 카드로 넘겨주세요!
-          </St.EventCoachMessage>
-          <IcEventArrow />
-        </St.EventCoach>
-      )}
-
-      {isCoachMarkOpen && cardType !== LocationType.EVENT && <CoachMark closeHandler={toggleCoachMark} />}
+      {isCoachMarkOpen && <CoachMark closeHandler={toggleCoachMark} />}
       {isFilterModalOpen && (
         <FilterModal closeHandler={toggleFilterModal} fetchCardListsWithFilter={fetchCardListsWithFilter} />
       )}
