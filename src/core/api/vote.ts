@@ -3,7 +3,7 @@ import { realReq } from "./common/axios";
 import { PATH } from "./common/constants";
 
 function postVote(postingVote: PostingVote) {
-  return realReq.POST(PATH.BALLOTS, postingVote);
+  return realReq.POST(PATH.BALLOTS, postingVote, { withCredentials: true });
 }
 
 export const voteApi = {
