@@ -21,7 +21,6 @@ const CardSlider = (props: CardSliderProps) => {
   const { swiperSettings, swiperRef, autoSlide } = useCardSwiper();
 
   const { cardType } = useCardType();
-
   if (cardType === LocationType.EVENT) {
     return (
       <St.Wrapper>

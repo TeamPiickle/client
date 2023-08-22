@@ -22,6 +22,7 @@ export default function CommentModal(props: CommentModalProps) {
   const [answer, setAnswer] = useState<string>("");
   const handleClickSubmit = () => {
     handleSubmitComment({ _id: cardId, content: answer });
+    setAnswer("");
   };
 
   return (
@@ -49,6 +50,7 @@ export default function CommentModal(props: CommentModalProps) {
         <St.InputWrapper>
           <St.Input
             placeholder="답변하기"
+            value={answer}
             onChange={(e) => setAnswer(e.target.value)}
             maxLength={150}
             rows={answer ? answer?.split("\n").length : 1}

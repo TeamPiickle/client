@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useRecoilValue } from "recoil";
 
 import { IcEventArrow } from "../../asset/icon";
@@ -15,6 +14,7 @@ import useGTMPage from "../@common/hooks/useGTMPage";
 import useModal from "../@common/hooks/useModal";
 import useScroll from "../@common/hooks/useScrollToTop";
 import SuspenseBoundary from "../@common/SuspenseBoundary";
+import useToast from "../@common/Toast/hooks/useToast";
 import CardSlider from "./CardSlider";
 import CoachMark from "./CoachMark";
 import FilterModal from "./FilterModal";
@@ -44,11 +44,16 @@ function CardCollectionContent() {
 
   const { cardType } = useCardType();
   const { count } = useParticipantCount();
+  const { showToast } = useToast();
 
   const isSliderDown = useRecoilValue(isSliderDownState);
-
-  //const [respondedCards, setRespondedCards] = useState<string[]>([]);
   const respondedCards = useRecoilValue(respondedCardsState);
+
+  const getIsLotActive = () => {
+    const esstentialCards = cardLists.filter(({ essential }) => essential).map(({ _id }) => _id);
+
+    return esstentialCards.every((card) => respondedCards.includes(card));
+  };
 
   if (cardType === LocationType.EVENT) {
     return (
@@ -58,7 +63,14 @@ function CardCollectionContent() {
         <CardSlider cardLists={cardLists} lastCardObsvRef={lastCardObsvRef} />
 
         {isVisibleCTAButton ? (
-          <HeadlessCTAButton onClick={() => console.log("경품 응모하러가기")}>경품 응모하러 가기</HeadlessCTAButton>
+          <HeadlessCTAButton
+            onClick={() =>
+              getIsLotActive()
+                ? console.log("경품 응모하러가기")
+                : showToast({ message: "🥲 필수질문에 답변을 남겨주세요!", duration: 2.5, isDark: true })
+            }>
+            경품 응모하러 가기
+          </HeadlessCTAButton>
         ) : (
           <St.EventCoach>
             <St.EventCoachMessage>
