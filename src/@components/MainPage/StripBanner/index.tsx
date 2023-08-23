@@ -12,7 +12,7 @@ export default function StripBanner() {
           소셜로그인과 북마크 기능인 ‘마이피클’을 이용해 편하게 피클해요!
         </St.SubContent>
       </St.ContentWrapper>
-      <IcSocialLoginLogos className={GTM_CLASS_NAME.mainBannerNotice} />
+      <IcSocialLoginLogos />
     </St.Container>
   );
 }
