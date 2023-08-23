@@ -13,7 +13,7 @@ const CARDS_LIMIT = {
 };
 
 export default function SlideContent(props: newBannerType) {
-  const { isLast, date, isLightMode, cards, linkTo } = props;
+  const { isLast, date, isLightMode, cards, linkTo, className } = props;
 
   if (isLast) {
     return (
@@ -24,20 +24,20 @@ export default function SlideContent(props: newBannerType) {
   }
 
   return (
-    <St.SlideContent>
-      <St.SlideDate>
-        <St.DateString islightmode={isLightMode}>
+    <St.SlideContent className={className}>
+      <St.SlideDate className={className}>
+        <St.DateString islightmode={isLightMode} className={className}>
           {date?.replace(/-/g, ".").substring(DATE_FORMAT.START, DATE_FORMAT.END)}
         </St.DateString>
-        <St.NewBadge>New</St.NewBadge>
+        <St.NewBadge className={className}>New</St.NewBadge>
       </St.SlideDate>
 
       {cards?.slice(CARDS_LIMIT.START, CARDS_LIMIT.END).map((card) => (
-        <St.SlideCard key={card._id} islightmode={isLightMode}>
+        <St.SlideCard key={card._id} islightmode={isLightMode} className={className}>
           {card.content}
         </St.SlideCard>
       ))}
-      <St.LinkScope href={linkTo} />
+      <St.LinkScope href={linkTo} className={className} />
     </St.SlideContent>
   );
 }

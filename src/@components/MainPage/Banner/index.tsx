@@ -58,7 +58,7 @@ export default function Banner() {
       <St.BannerSlider>
         <Swiper {...swiperSettings}>
           {newBanners.map((banner, idx) => (
-            <SwiperSlide key={idx}>
+            <SwiperSlide key={idx} className={banner.className}>
               <Slide {...banner} />
             </SwiperSlide>
           ))}
