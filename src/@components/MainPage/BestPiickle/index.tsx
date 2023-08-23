@@ -25,6 +25,7 @@ export default function BestPiickle() {
         <St.SliderWrapper {...scrollableContainerProps}>
           {bestPiickle &&
             bestPiickle.data.slice(0, 5).map((bestPiickle, idx) => {
+              const GTM_IDX_KEY = `mainBestPiickle${idx + 1}`;
               return (
                 <BestPiickleCard
                   key={bestPiickle._id}
@@ -32,6 +33,7 @@ export default function BestPiickle() {
                   idx={idx}
                   canNavigate={!isDragging}
                   locationType={LocationType.BEST}
+                  className={GTM_CLASS_NAME[GTM_IDX_KEY]}
                 />
               );
             })}

@@ -1,4 +1,5 @@
 import { LocationType } from "../../../types/cardCollection";
+import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import { HeadingTitle } from "../../../util/main/headingTitles";
 import HeadingTitleContainer from "../../@common/HeadingTitleContainer";
 import useModal from "../../@common/hooks/useModal";
@@ -38,7 +39,9 @@ export default function BestPiickleRank() {
             />
           ))}
       <St.ButtonWrapper>
-        <St.ContinueButton onClick={() => navigateRankCollection(8)}>이어서 베스트 피클 카드 보기</St.ContinueButton>
+        <St.ContinueButton className={GTM_CLASS_NAME.bestBookmarkMore} onClick={() => navigateRankCollection(8)}>
+          이어서 베스트 피클 카드 보기
+        </St.ContinueButton>
       </St.ButtonWrapper>
 
       {isLoginModalOpen && <LoginModal closeHandler={toggleLoginModal} contents={"북마크 기능인 마이피클을"} />}
