@@ -1,4 +1,4 @@
-export default function IcBookmarkCheck_16_20({ isChecked, className }: { isChecked: boolean; className: string }) {
+export default function IcBookmarkCheck_16_20({ isChecked, className }: { isChecked: boolean; className?: string }) {
   return (
     <svg
       className={className}
