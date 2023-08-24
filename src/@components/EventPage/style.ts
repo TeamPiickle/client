@@ -1,10 +1,6 @@
 import styled from "styled-components";
 
 export const Root = styled.main`
-  position: absolute;
-  top: 0;
-  left: 0;
-
   width: 100vw;
   ${({ theme }) => theme.media.desktop`
   width: 36rem;

@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import IcBtnCheck from "../../asset/icon/IcBtnCheck";
+import useToast from "../@common/Toast/hooks/useToast";
 import * as St from "./style";
 
 export default function EventPage() {
@@ -8,6 +9,18 @@ export default function EventPage() {
   const [isComplete, setIsCompleted] = useState<boolean>(false);
 
   const LotInput = () => {
+    const [email, setEmail] = useState<string>("");
+    const { showToast } = useToast();
+
+    const handleSubmitEmail = () => {
+      if (email.length) {
+        // todo : API
+        setIsCompleted(true);
+      } else {
+        showToast({ message: "❗️ 이메일을 입력해주세요!", duration: 2.5 });
+      }
+    };
+
     return (
       <St.Box>
         <St.Title>이메일을 남겨주세요!</St.Title>
@@ -28,8 +41,13 @@ export default function EventPage() {
           <St.AgreeText>피클 소식 받아보기</St.AgreeText>
         </St.AgreeWrapper>
         <St.InputWrapper>
-          <St.Input placeholder="teampiickle@piickle.com" />
-          <St.Button onClick={() => setIsCompleted(true)}>완료</St.Button>
+          <St.Input
+            placeholder="teampiickle@piickle.com"
+            value={email}
+            type="email"
+            onChange={(e) => setEmail(e.currentTarget.value)}
+          />
+          <St.Button onClick={handleSubmitEmail}>완료</St.Button>
         </St.InputWrapper>
       </St.Box>
     );
