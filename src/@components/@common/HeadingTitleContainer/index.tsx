@@ -1,5 +1,4 @@
 import { RoutePaths } from "../../../core/routes/path";
-import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import { HeadingTitle } from "../../../util/main/headingTitles";
 import { St } from "./style";
 
@@ -7,10 +6,11 @@ export interface HeadingTitleContainerProps {
   headingTitles: HeadingTitle;
   paddingVerticalValue?: number;
   routePath?: RoutePaths;
+  gtmClassName?: string;
 }
 
 export default function HeadingTitleContainer(props: HeadingTitleContainerProps) {
-  const { headingTitles, paddingVerticalValue, routePath } = props;
+  const { headingTitles, paddingVerticalValue, routePath, gtmClassName } = props;
 
   return (
     <St.Container paddingVerticalValue={paddingVerticalValue ?? 2.4}>
@@ -19,7 +19,7 @@ export default function HeadingTitleContainer(props: HeadingTitleContainerProps)
         <St.Content>{headingTitles.content}</St.Content>
       </St.Wrapper>
       {headingTitles && routePath && (
-        <St.Link to={routePath} className={GTM_CLASS_NAME.mainMoodPiickleMore}>
+        <St.Link to={routePath} className={gtmClassName}>
           더보기
         </St.Link>
       )}

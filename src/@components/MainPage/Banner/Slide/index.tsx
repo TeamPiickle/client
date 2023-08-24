@@ -5,13 +5,13 @@ import SlideContent from "../SlideContent";
 import * as St from "./style";
 
 export default function Slide(props: newBannerType) {
-  const { bannerImage, phrase, topic, isLightMode, isLast } = props;
+  const { bannerImage, phrase, topic, isLightMode, isLast, gtmClassName } = props;
   return (
-    <St.SlideContainer>
-      <St.SlideContentWrapper>
-        <St.SlideTitles islightmode={isLightMode} isLast={isLast ?? false}>
-          <St.SlideSubtitle>{phrase}</St.SlideSubtitle>
-          <St.SlideTitle>{topic}</St.SlideTitle>
+    <St.SlideContainer className={gtmClassName}>
+      <St.SlideContentWrapper className={gtmClassName}>
+        <St.SlideTitles islightmode={isLightMode} isLast={isLast ?? false} className={gtmClassName}>
+          <St.SlideSubtitle className={gtmClassName}>{phrase}</St.SlideSubtitle>
+          <St.SlideTitle className={gtmClassName}>{topic}</St.SlideTitle>
         </St.SlideTitles>
         <SlideContent {...props} />
       </St.SlideContentWrapper>

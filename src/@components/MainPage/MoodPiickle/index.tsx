@@ -27,6 +27,7 @@ export default function MoodPiickle() {
         headingTitles={headingTitles[1]}
         paddingVerticalValue={4}
         routePath={routePaths.Category}
+        gtmClassName={GTM_CLASS_NAME.mainMoodPiickleMore}
       />
       <St.CategoryWrapper>
         {randomCategoryLists &&
