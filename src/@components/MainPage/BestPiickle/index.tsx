@@ -18,7 +18,7 @@ export default function BestPiickle() {
         headingTitles={headingTitles[0]}
         paddingVerticalValue={4}
         routePath={routePaths.BestPiicklePage}
-        className={GTM_CLASS_NAME.mainBestPiickleMore}
+        gtmClassName={GTM_CLASS_NAME.mainBestPiickleMore}
       />
 
       {bestPiickle && (
@@ -33,7 +33,7 @@ export default function BestPiickle() {
                   idx={idx}
                   canNavigate={!isDragging}
                   locationType={LocationType.BEST}
-                  className={GTM_CLASS_NAME[GTM_IDX_KEY]}
+                  gtmClassName={GTM_CLASS_NAME[GTM_IDX_KEY]}
                 />
               );
             })}

@@ -20,7 +20,7 @@ type ModalItem = {
   title: string;
   isNeedLogin?: boolean;
   handleClickItem: () => void;
-  className: string;
+  gtmClassName: string;
 };
 
 export default function MenuModal(props: MenuModalProps) {
@@ -50,7 +50,7 @@ export default function MenuModal(props: MenuModalProps) {
         closeHandler();
         showToast({ message: "🥰 소중한 의견 주셔서 감사해요", duration: 2.5 });
       },
-      className: GTM_CLASS_NAME.cardEtcBad,
+      gtmClassName: GTM_CLASS_NAME.cardEtcBad,
     },
     {
       emoji: "👀",
@@ -62,7 +62,7 @@ export default function MenuModal(props: MenuModalProps) {
           onSuccess: onSuccessAddBlacklist,
         });
       },
-      className: GTM_CLASS_NAME.cardEtcBlock,
+      gtmClassName: GTM_CLASS_NAME.cardEtcBlock,
     },
     {
       emoji: "❓",
@@ -71,23 +71,23 @@ export default function MenuModal(props: MenuModalProps) {
         closeHandler();
         showToast({ message: "📢 다른 사람들의 의견을 모아서 들려드릴게요", duration: 2.5 });
       },
-      className: GTM_CLASS_NAME.cardEtcWonder,
+      gtmClassName: GTM_CLASS_NAME.cardEtcWonder,
     },
   ];
 
   return (
     <Modal theme="WHITE_BOTTOM" closeHandler={closeHandler} isNoCloseBtn>
       <St.ModalContainer>
-        {ModalItems.map(({ emoji, title, isNeedLogin, handleClickItem }, idx) => {
+        {ModalItems.map(({ emoji, title, isNeedLogin, handleClickItem, gtmClassName }, idx) => {
           if (idx === 1 && !isBlockShow) {
             return null;
           } else {
             return (
-              <St.ModalItemWrapper key={idx} onClick={handleClickItem} className={ModalItems[idx].className}>
-                <St.EmojiWrapper className={ModalItems[idx].className}>{emoji}</St.EmojiWrapper>
+              <St.ModalItemWrapper key={idx} onClick={handleClickItem} className={gtmClassName}>
+                <St.EmojiWrapper className={gtmClassName}>{emoji}</St.EmojiWrapper>
                 {title}
                 {isNeedLogin && (
-                  <St.MessageWrapper className={ModalItems[idx].className}>로그인 시 사용가능 합니다</St.MessageWrapper>
+                  <St.MessageWrapper className={gtmClassName}>로그인 시 사용가능 합니다</St.MessageWrapper>
                 )}
               </St.ModalItemWrapper>
             );

@@ -16,7 +16,7 @@ export type recommendListType = {
   subtitle: string;
   cards?: CardList[];
   locationType: LocationType;
-  classname: string;
+  gtmClassName: string;
 };
 
 export default function BestPiickleRecommend() {
@@ -29,19 +29,19 @@ export default function BestPiickleRecommend() {
       subtitle: "💖 유저들이 가장 최근에 북마크한 대화주제",
       cards: recentlyBookmarkedCards,
       locationType: LocationType.RECENT,
-      classname: GTM_CLASS_NAME.bestRecentBookmark,
+      gtmClassName: GTM_CLASS_NAME.bestRecentBookmark,
     },
     {
       subtitle: "👩 여성이 북마크한 대화주제들",
       cards: femaleBookmarkedCards,
       locationType: LocationType.FEMALE,
-      classname: GTM_CLASS_NAME.bestFemaleBookmark,
+      gtmClassName: GTM_CLASS_NAME.bestFemaleBookmark,
     },
     {
       subtitle: "👱‍♂️ 남성이 북마크한 대화주제를 확인해보세요",
       cards: maleBookmarkedCards,
       locationType: LocationType.MALE,
-      classname: GTM_CLASS_NAME.bestMaleBookmark,
+      gtmClassName: GTM_CLASS_NAME.bestMaleBookmark,
     },
   ];
 

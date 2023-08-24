@@ -1,5 +1,4 @@
 import { LocationType } from "../../../types/cardCollection";
-import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import useNavigateCardCollection, { NavigateRecentCollectionType } from "../hooks/useNavigateCardCollection";
 import LastBestPiickleCard from "./LastBestPiickleCard";
 import * as St from "./style";
@@ -14,11 +13,11 @@ interface BestPiickleCardProps {
   canNavigate: boolean;
   isLast?: boolean;
   locationType: LocationType;
-  className?: string;
+  gtmClassName?: string;
 }
 
 export default function BestPiickleCard(props: BestPiickleCardProps) {
-  const { bestPiickle, idx, canNavigate, isLast, locationType, className } = props;
+  const { bestPiickle, idx, canNavigate, isLast, locationType, gtmClassName } = props;
   const { content, tags } = bestPiickle;
 
   const navigateCardCollection = useNavigateCardCollection(locationType) as NavigateRecentCollectionType;
@@ -29,19 +28,19 @@ export default function BestPiickleCard(props: BestPiickleCardProps) {
   };
 
   return (
-    <St.Container type="button" className={className}>
+    <St.Container type="button" className={gtmClassName}>
       {!isLast ? (
-        <St.BestPiickleCard className={className} onClick={handleClickCard}>
-          <St.TagsWrapper className={className}>
+        <St.BestPiickleCard className={gtmClassName} onClick={handleClickCard}>
+          <St.TagsWrapper className={gtmClassName}>
             {tags.map((tag: string, i: number) => {
               return <St.Tag key={i}>{tag.slice(1)}</St.Tag>;
             })}
           </St.TagsWrapper>
-          <St.Content className={className}>{content}</St.Content>
-          <St.PickButtonWrapper className={className}>카드 보기</St.PickButtonWrapper>
+          <St.Content className={gtmClassName}>{content}</St.Content>
+          <St.PickButtonWrapper className={gtmClassName}>카드 보기</St.PickButtonWrapper>
         </St.BestPiickleCard>
       ) : (
-        <LastBestPiickleCard handleClickCard={handleClickCard} className={className} />
+        <LastBestPiickleCard handleClickCard={handleClickCard} gtmClassName={gtmClassName} />
       )}
     </St.Container>
   );

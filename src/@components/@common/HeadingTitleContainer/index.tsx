@@ -6,11 +6,11 @@ export interface HeadingTitleContainerProps {
   headingTitles: HeadingTitle;
   paddingVerticalValue?: number;
   routePath?: RoutePaths;
-  className?: string;
+  gtmClassName?: string;
 }
 
 export default function HeadingTitleContainer(props: HeadingTitleContainerProps) {
-  const { headingTitles, paddingVerticalValue, routePath, className } = props;
+  const { headingTitles, paddingVerticalValue, routePath, gtmClassName } = props;
 
   return (
     <St.Container paddingVerticalValue={paddingVerticalValue ?? 2.4}>
@@ -19,7 +19,7 @@ export default function HeadingTitleContainer(props: HeadingTitleContainerProps)
         <St.Content>{headingTitles.content}</St.Content>
       </St.Wrapper>
       {headingTitles && routePath && (
-        <St.Link to={routePath} className={className}>
+        <St.Link to={routePath} className={gtmClassName}>
           더보기
         </St.Link>
       )}

@@ -28,7 +28,7 @@ export default function Banner() {
       cards: recentlyBookmarkedCards,
       linkTo: `${routePaths.CardCollection}?type=${LocationType.RECENT}`,
       isLightMode: false,
-      className: GTM_CLASS_NAME.mainBannerHot,
+      gtmClassName: GTM_CLASS_NAME.mainBannerHot,
     },
     {
       bannerImage: newBannerImages[1],
@@ -38,7 +38,7 @@ export default function Banner() {
       cards: recentlyUpdatedCards,
       linkTo: `${routePaths.CardCollection}?type=${LocationType.UPDATE}`,
       isLightMode: true,
-      className: GTM_CLASS_NAME.mainBannerNew,
+      gtmClassName: GTM_CLASS_NAME.mainBannerNew,
     },
     {
       bannerImage: newBannerImages[2],
@@ -58,7 +58,7 @@ export default function Banner() {
       <St.BannerSlider>
         <Swiper {...swiperSettings}>
           {newBanners.map((banner, idx) => (
-            <SwiperSlide key={idx} className={banner.className}>
+            <SwiperSlide key={idx} className={banner.gtmClassName}>
               <Slide {...banner} />
             </SwiperSlide>
           ))}
