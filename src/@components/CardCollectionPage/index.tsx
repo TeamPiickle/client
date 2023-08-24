@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 
 import { IcEventArrow } from "../../asset/icon";
 import { respondedCardsState } from "../../core/atom/event";
 import { isSliderDownState } from "../../core/atom/slider";
+import { routePaths } from "../../core/routes/path";
 import { LocationType } from "../../types/cardCollection";
 import { GTM_CLASS_NAME } from "../../util/const/gtm";
 import HeadlessCTAButton from "../@common/CTABtn/HeadlessCTAButton";
@@ -36,6 +38,8 @@ function CardCollectionContent() {
   useGTMPage();
   useScroll();
 
+  const navigate = useNavigate();
+
   const { cardLists, fetchCardListsWithFilter } = useCardLists();
   const { isVisibleCTAButton, intersectionObserverRef: lastCardObsvRef } = useCTAFilter();
 
@@ -66,7 +70,7 @@ function CardCollectionContent() {
           <HeadlessCTAButton
             onClick={() =>
               getIsLotActive()
-                ? console.log("경품 응모하러가기")
+                ? navigate(routePaths.Event)
                 : showToast({ message: "🥲 필수질문에 답변을 남겨주세요!", duration: 2.5, isDark: true })
             }>
             경품 응모하러 가기
