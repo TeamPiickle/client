@@ -25,15 +25,14 @@ const Card = (props: LoginCheckProps) => {
   const { _id, content, tags, autoSlide, essential } = props;
 
   const { isModalOpen: isMenuModalOpen, toggleModal: toggleMenuModal } = useModal();
-  const { isModalOpen: isCommentModalOpen, toggleModal: toggleCommentModal } = useModal();
-
   const { isModalOpen: isBookmarkModalOpen, toggleModal: toggleBookmarkModalOpen } = useModal();
   const { isModalOpen: isBlacklistModalOpen, toggleModal: toggleBlacklistModalOpen } = useModal();
+  const { isModalOpen: isCommentModalOpen, toggleModal: toggleCommenttModalOpen } = useModal();
 
   const { getIsBlacklist, handleClickAddBlacklist, handleClickCancelBlacklist } =
     useBlacklist(toggleBlacklistModalOpen);
 
-  const { comments, handleSubmitComment } = useComments(_id);
+  const { comments, handleSubmitComment, handleClickComment, isComment } = useComments(_id, toggleCommenttModalOpen);
 
   return (
     <St.Card className={GTM_CLASS_NAME.cardSwipe}>
@@ -48,7 +47,7 @@ const Card = (props: LoginCheckProps) => {
       </St.Container>
       <CardMenu
         {...props}
-        toggleCommentModal={toggleCommentModal}
+        toggleCommentModal={handleClickComment}
         toggleMenuModal={toggleMenuModal}
         onClickLogoutBookmark={toggleBookmarkModalOpen}
       />
@@ -69,12 +68,12 @@ const Card = (props: LoginCheckProps) => {
           handleClickCancelBlacklist={handleClickCancelBlacklist}
         />
       )}
-      {isCommentModalOpen && comments && (
+      {isComment && comments && (
         <CommentModal
           cardId={_id}
           comments={comments}
           handleSubmitComment={handleSubmitComment}
-          onClickBackground={toggleCommentModal}
+          onClickBackground={handleClickComment}
         />
       )}
 
@@ -82,6 +81,7 @@ const Card = (props: LoginCheckProps) => {
       {isBlacklistModalOpen && (
         <LoginModal closeHandler={toggleBlacklistModalOpen} contents={"주제 다시 안보기 기능을"} />
       )}
+      {isCommentModalOpen && <LoginModal closeHandler={toggleBlacklistModalOpen} contents={"댓글 기능을"} />}
     </St.Card>
   );
 };
