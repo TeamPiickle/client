@@ -21,6 +21,8 @@ export const routePaths = {
   // Join_EmailConfirm: "email-confirm",
   Join_UserProfile: "user-profile",
   Join_UserInfo: "user-info",
+
+  Event: "/event",
 };
 
 export type RoutePaths = (typeof routePaths)[keyof typeof routePaths];

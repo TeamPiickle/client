@@ -21,6 +21,7 @@ import {
   UserProfilePage,
   VotePage,
 } from "./@components";
+import EventPage from "./@components/EventPage";
 import useAuth from "./core/hooks/useAuth";
 import { routePaths } from "./core/routes/path";
 
@@ -42,6 +43,7 @@ export default function Router() {
         <Route path={routePaths.MyPage} element={PrivateRoute({ Component: <MyPage /> })} />
         <Route path={routePaths.BookmarkPage} element={PublicRoute({ Component: <BookmarkPage /> })} />
         <Route path={routePaths.Delete} element={PrivateRoute({ Component: <DeletePage /> })} />
+        <Route path={routePaths.Event} element={PrivateRoute({ Component: <EventPage /> })} />
         <Route path={`${routePaths.Join_}*`} element={PublicRoute({ Component: <JoinPage />, restricted: true })}>
           <Route path={routePaths.Join_Agree} element={<AgreePage />} />
           {/* <Route path={routePaths.Join_EmailAuthentication} element={<EmailAuthenticationPage />} />
