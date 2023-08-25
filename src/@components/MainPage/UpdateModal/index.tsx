@@ -1,14 +1,14 @@
 import { VERSION_UPDATES } from "../../../util/main/versionUpdateList";
 import HeadlessCTAButton from "../../@common/CTABtn/HeadlessCTAButton";
+import useModalPopup from "../../@common/hooks/useModalPopup";
 import Modal from "../../@common/Modal";
-import useUpdateModal from "../hooks/useUpdateModal";
 import * as St from "./style";
+const POPUP_SESSION_KEY = "update-popup-shown";
 
 export default function UpdateModal() {
-  const { isOpened, handleCloseModal } = useUpdateModal();
+  const { isOpened, handleCloseModal } = useModalPopup(sessionStorage, POPUP_SESSION_KEY);
 
   if (!isOpened) return null;
-
   return (
     <Modal theme="GRAY_BOTTOM" closeHandler={handleCloseModal} isNoCloseBtn={true}>
       <St.Container>
