@@ -6,6 +6,7 @@ type GtmClassName = {
   mainBannerAddBtn: string;
   mainBannerNotice: string;
   mainTopicRequestBtn: string;
+  mainBannerEvent: string;
   mainBestPiickle1: string;
   mainBestPiickle2: string;
   mainBestPiickle3: string;
@@ -117,6 +118,7 @@ export const GTM_CLASS_NAME: GtmClassName = {
   mainBannerAddBtn: "click_main_addB1",
   mainBannerNotice: "click_main_notiB",
   mainTopicRequestBtn: "click_main_addB2",
+  mainBannerEvent: "click_main_eventnotiB",
   mainBestPiickle1: "click_main_best_1",
   mainBestPiickle2: "click_main_best_2",
   mainBestPiickle3: "click_main_best_3",
