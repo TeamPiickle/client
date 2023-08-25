@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import IcBtnCheck from "../../asset/icon/IcBtnCheck";
+import { cardCollectionApi } from "../../core/api/cardCollection";
 import useToast from "../@common/Toast/hooks/useToast";
 import * as St from "./style";
 
@@ -14,7 +15,7 @@ export default function EventPage() {
 
     const handleSubmitEmail = () => {
       if (email.length) {
-        // todo : API
+        cardCollectionApi.addPrizeEntry(isCheck);
         setIsCompleted(true);
       } else {
         showToast({ message: "❗️ 이메일을 입력해주세요!", duration: 2.5 });

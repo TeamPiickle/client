@@ -18,9 +18,14 @@ function addComment(cardId: string, content: string) {
   return realReq.POST(`/mind23/api/comments/${cardId}`, { content });
 }
 
+function addPrizeEntry(prizeEntryStatus: boolean) {
+  return realReq.POST("/mind23/api/prize-entry", { prizeEntryStatus });
+}
+
 export const cardCollectionApi = {
   addNDeleteBookmark,
   addBlacklist,
   deleteBlacklist,
   addComment,
+  addPrizeEntry,
 };
