@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.section`
   width: 100%;
-  height: 35rem;
+  height: 37rem;
 
   ${({ theme }) => theme.media.desktop`
   width: 36rem;
