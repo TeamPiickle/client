@@ -115,6 +115,7 @@ const newFonts = {
   body4: FONT({ weight: 400, size: 1.4, lineHeight: 130, letterSpacing: 4 }),
   body5: FONT({ weight: 500, size: 1.2, lineHeight: 150, letterSpacing: 3 }),
   body6: FONT({ weight: 400, size: 1.2, lineHeight: 150, letterSpacing: 3 }),
+  body7: FONT({ weight: 400, size: 1.4, lineHeight: 150, letterSpacing: 56 }),
   btn1: FONT({ weight: 500, size: 1.4, lineHeight: 140, letterSpacing: 4 }),
   btn2: FONT({ weight: 400, size: 1.2, lineHeight: 140, letterSpacing: 4 }),
   caption1: FONT({ weight: 300, size: 1.2, lineHeight: 140, letterSpacing: 3 }),

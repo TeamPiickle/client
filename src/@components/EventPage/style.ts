@@ -42,7 +42,7 @@ export const Title = styled.h1`
 export const SubTitle = styled.h2`
   margin-top: 1.6rem;
 
-  ${({ theme }) => theme.newFonts.h2};
+  ${({ theme }) => theme.newFonts.body7};
   color: ${({ theme }) => theme.newColors.black};
 `;
 
