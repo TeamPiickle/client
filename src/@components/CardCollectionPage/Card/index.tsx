@@ -22,7 +22,7 @@ interface LoginCheckProps {
 }
 
 const Card = (props: LoginCheckProps) => {
-  const { _id, content, tags, autoSlide, essential } = props;
+  const { _id, content, tags, autoSlide } = props;
 
   const { isModalOpen: isMenuModalOpen, toggleModal: toggleMenuModal } = useModal();
   const { isModalOpen: isBookmarkModalOpen, toggleModal: toggleBookmarkModalOpen } = useModal();
@@ -37,10 +37,7 @@ const Card = (props: LoginCheckProps) => {
   return (
     <St.Card className={GTM_CLASS_NAME.cardSwipe}>
       <St.Container>
-        <St.ContentWrapper className={GTM_CLASS_NAME.cardSwipe}>
-          {content}
-          {essential && <St.EssentialMark>*</St.EssentialMark>}
-        </St.ContentWrapper>
+        <St.ContentWrapper className={GTM_CLASS_NAME.cardSwipe}>{content}</St.ContentWrapper>
         <St.TagsWrapper>
           <TagsSlider tags={tags} />
         </St.TagsWrapper>

@@ -84,7 +84,6 @@ export interface CardList {
   tags: string[];
   isBookmark: boolean;
   filter: string[];
-  essential?: boolean;
 }
 
 export interface RecentCardList {

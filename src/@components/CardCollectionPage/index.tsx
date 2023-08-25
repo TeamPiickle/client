@@ -53,12 +53,6 @@ function CardCollectionContent() {
   const isSliderDown = useRecoilValue(isSliderDownState);
   const respondedCards = useRecoilValue(respondedCardsState);
 
-  const getIsLotActive = () => {
-    const esstentialCards = cardLists.filter(({ essential }) => essential).map(({ _id }) => _id);
-
-    return esstentialCards.every((card) => respondedCards.includes(card));
-  };
-
   if (cardType === LocationType.EVENT) {
     return (
       <St.MainPage>
@@ -69,9 +63,9 @@ function CardCollectionContent() {
         {isVisibleCTAButton ? (
           <HeadlessCTAButton
             onClick={() =>
-              getIsLotActive()
+              respondedCards.length > 0
                 ? navigate(routePaths.Event)
-                : showToast({ message: "🥲 필수질문에 답변을 남겨주세요!", duration: 2.5, isDark: true })
+                : showToast({ message: "🥲 1개 이상의 질문에 댓글을 달아주세요!", duration: 2.5, isDark: true })
             }>
             경품 응모하러 가기
           </HeadlessCTAButton>

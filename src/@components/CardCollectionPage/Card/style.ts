@@ -33,11 +33,6 @@ const ContentWrapper = styled.p`
   color: ${({ theme }) => theme.newColors.gray900};
 `;
 
-const EssentialMark = styled.span`
-  ${({ theme }) => theme.newFonts.body1};
-  color: ${({ theme }) => theme.newColors.red};
-`;
-
 const TagsWrapper = styled.div`
   margin-top: 1.6rem;
 `;
@@ -78,7 +73,6 @@ const St = {
   BlockCardWrapper,
   BlockCardText,
   BlockCardButton,
-  EssentialMark,
 };
 
 export default St;
