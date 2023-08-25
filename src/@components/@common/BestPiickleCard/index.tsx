@@ -1,4 +1,5 @@
 import { LocationType } from "../../../types/cardCollection";
+import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import useNavigateCardCollection, { NavigateRecentCollectionType } from "../hooks/useNavigateCardCollection";
 import LastBestPiickleCard from "./LastBestPiickleCard";
 import * as St from "./style";
@@ -13,7 +14,7 @@ interface BestPiickleCardProps {
   canNavigate: boolean;
   isLast?: boolean;
   locationType: LocationType;
-  gtmClassName?: string;
+  gtmClassName: string;
 }
 
 export default function BestPiickleCard(props: BestPiickleCardProps) {
@@ -28,16 +29,16 @@ export default function BestPiickleCard(props: BestPiickleCardProps) {
   };
 
   return (
-    <St.Container type="button" className={gtmClassName}>
+    <St.Container type="button" className={GTM_CLASS_NAME[gtmClassName]}>
       {!isLast ? (
-        <St.BestPiickleCard className={gtmClassName} onClick={handleClickCard}>
-          <St.TagsWrapper className={gtmClassName}>
+        <St.BestPiickleCard className={GTM_CLASS_NAME[gtmClassName]} onClick={handleClickCard}>
+          <St.TagsWrapper className={GTM_CLASS_NAME[gtmClassName]}>
             {tags.map((tag: string, i: number) => {
               return <St.Tag key={i}>{tag.slice(1)}</St.Tag>;
             })}
           </St.TagsWrapper>
-          <St.Content className={gtmClassName}>{content}</St.Content>
-          <St.PickButtonWrapper className={gtmClassName}>카드 보기</St.PickButtonWrapper>
+          <St.Content className={GTM_CLASS_NAME[gtmClassName]}>{content}</St.Content>
+          <St.PickButtonWrapper className={GTM_CLASS_NAME[gtmClassName]}>카드 보기</St.PickButtonWrapper>
         </St.BestPiickleCard>
       ) : (
         <LastBestPiickleCard handleClickCard={handleClickCard} gtmClassName={gtmClassName} />

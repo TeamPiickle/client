@@ -33,7 +33,7 @@ export default function BestPiickle() {
                   idx={idx}
                   canNavigate={!isDragging}
                   locationType={LocationType.BEST}
-                  gtmClassName={GTM_CLASS_NAME[GTM_IDX_KEY]}
+                  gtmClassName={GTM_IDX_KEY}
                 />
               );
             })}

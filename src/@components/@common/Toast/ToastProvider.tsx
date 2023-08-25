@@ -36,7 +36,7 @@ export default function ToastProvider({ children }: PropsWithChildren) {
           <St.ToastMessage>
             {toast.message}
             {toast.handleClickCancel && (
-              <St.CancelButton onClick={toast.handleClickCancel} className={GTM_CLASS_NAME.handleClickCancelBlacklist}>
+              <St.CancelButton onClick={toast.handleClickCancel} className={GTM_CLASS_NAME.cardEtcCancelBlock}>
                 취소
               </St.CancelButton>
             )}
