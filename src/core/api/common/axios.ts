@@ -1,16 +1,15 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 
 export const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
   headers: {
     "Content-Type": "application/json",
   },
-  // withCredentials: true,
 });
 
 export const realReq = {
-  GET_SWR(path: string) {
-    return axiosInstance.get(path);
+  GET_SWR(path: string, option?: AxiosRequestConfig) {
+    return axiosInstance.get(path, option);
   },
 
   async GET<T>(path: string, option?: { params: string }) {
@@ -18,8 +17,8 @@ export const realReq = {
     return data.data;
   },
 
-  async POST<T>(path: string, body: T) {
-    const data = await axiosInstance.post(path, body);
+  async POST<T>(path: string, body: T, option?: AxiosRequestConfig) {
+    const data = await axiosInstance.post(path, body, option);
     return data.data;
   },
 

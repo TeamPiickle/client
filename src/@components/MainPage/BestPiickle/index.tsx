@@ -1,5 +1,6 @@
 import { routePaths } from "../../../core/routes/path";
 import { LocationType } from "../../../types/cardCollection";
+import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import { headingTitles } from "../../../util/main/headingTitles";
 import BestPiickleCard from "../../@common/BestPiickleCard";
 import HeadingTitleContainer from "../../@common/HeadingTitleContainer";
@@ -17,12 +18,14 @@ export default function BestPiickle() {
         headingTitles={headingTitles[0]}
         paddingVerticalValue={4}
         routePath={routePaths.BestPiicklePage}
+        gtmClassName={GTM_CLASS_NAME.mainBestPiickleMore}
       />
 
       {bestPiickle && (
         <St.SliderWrapper {...scrollableContainerProps}>
           {bestPiickle &&
             bestPiickle.data.slice(0, 5).map((bestPiickle, idx) => {
+              const GTM_IDX_KEY = `mainBestPiickle${idx + 1}`;
               return (
                 <BestPiickleCard
                   key={bestPiickle._id}
@@ -30,6 +33,7 @@ export default function BestPiickle() {
                   idx={idx}
                   canNavigate={!isDragging}
                   locationType={LocationType.BEST}
+                  gtmClassName={GTM_CLASS_NAME[GTM_IDX_KEY]}
                 />
               );
             })}

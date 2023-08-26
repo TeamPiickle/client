@@ -31,6 +31,7 @@ export default function RecommendItem(props: RecommendProps) {
                   idx === (recommendList.cards.length > BEST_PIICKLE_TOTAL_COUNT && BEST_PIICKLE_TOTAL_COUNT - 1)
                 }
                 locationType={recommendList.locationType}
+                gtmClassName={recommendList.gtmClassName}
               />
             );
           })}

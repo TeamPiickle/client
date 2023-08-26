@@ -1,7 +1,14 @@
-export default function IcBookmarkCheck_16_20({ isChecked }: { isChecked: boolean }) {
+export default function IcBookmarkCheck_16_20({ isChecked, className }: { isChecked: boolean; className?: string }) {
   return (
-    <svg width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      className={className}
+      width="16"
+      height="20"
+      viewBox="0 0 16 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg">
       <path
+        className={className}
         id="Vector"
         d="M16 1.7917C16 1.16455 16 0.850971 15.8779 0.61143C15.7706 0.400723 15.5993 0.229413 15.3886 0.122053C15.149 0 14.8355 0 14.2083 0H1.7917C1.16455 0 0.850971 0 0.61143 0.122053C0.400723 0.229413 0.229413 0.400723 0.122053 0.61143C0 0.850971 0 1.16455 0 1.7917V17.3124C0 18.2111 0 18.6604 0.189114 18.943C0.35445 19.1901 0.611269 19.3613 0.902959 19.4189C1.2366 19.4848 1.65134 19.3119 2.48082 18.9663L7.31088 16.9538C7.56516 16.8478 7.6923 16.7949 7.8239 16.7739C7.94056 16.7553 8.05944 16.7553 8.1761 16.7739C8.3077 16.7949 8.43484 16.8478 8.68912 16.9538L13.5192 18.9663C14.3487 19.3119 14.7634 19.4848 15.097 19.4189C15.3887 19.3613 15.6456 19.1901 15.8109 18.943C16 18.6604 16 18.2111 16 17.3124V1.7917Z"
         fill={isChecked ? "#19BE7E" : "#E0E0E0"}

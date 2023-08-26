@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { CardList, LocationType } from "../../../types/cardCollection";
 import { externalLinks } from "../../../util/const/externalLinks";
 import useCardType from "../../@common/hooks/useCardType";
+import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import Card from "../Card";
 import EventCard from "../Card/EventCard";
 import LastCard from "../Card/LastCard";
@@ -53,7 +54,9 @@ const CardSlider = (props: CardSliderProps) => {
         <SwiperSlide>
           <St.Footer>
             <St.Text>피클에게 전할 말이 있다면 피드백을 남겨주세요</St.Text>
-            <St.feedBackLink to={externalLinks.SERVICE_FEEDBACK}>피드백 남기기</St.feedBackLink>
+            <St.feedBackLink to={externalLinks.SERVICE_FEEDBACK} className={GTM_CLASS_NAME.cardMoveFeedback}>
+              피드백 남기기
+            </St.feedBackLink>
           </St.Footer>
         </SwiperSlide>
       </Swiper>

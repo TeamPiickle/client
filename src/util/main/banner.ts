@@ -35,4 +35,5 @@ export interface newBannerType {
   linkTo: string;
   isLightMode: boolean;
   isLast?: boolean;
+  gtmClassName?: string;
 }
