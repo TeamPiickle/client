@@ -15,6 +15,7 @@ export interface CommentList {
   content: string;
   profileImageUrl: string;
   nickname: string;
+  commentStatus: boolean;
 }
 
 interface AddCommentParams {

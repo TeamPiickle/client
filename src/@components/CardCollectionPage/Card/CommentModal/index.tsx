@@ -33,8 +33,8 @@ export default function CommentModal(props: CommentModalProps) {
         </St.KnobWrapper>
         <St.Comments {...scrollableContainerProps}>
           {comments &&
-            comments.map(({ _id, nickname, content, profileImageUrl }) => (
-              <St.Comment key={_id}>
+            comments.map(({ _id, nickname, content, profileImageUrl, commentStatus }) => (
+              <St.Comment key={_id} ismycomment={commentStatus}>
                 <St.ProfileImgWrapper>
                   <St.ProfileImg alt="사용자 프로필 이미지" src={profileImageUrl} />
                 </St.ProfileImgWrapper>

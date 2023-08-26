@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 import { LocationType } from "../../../../types/cardCollection";
 import useShowByCardType from "../../../@common/hooks/useShowByQuery";
 import Modal from "../../../@common/Modal";

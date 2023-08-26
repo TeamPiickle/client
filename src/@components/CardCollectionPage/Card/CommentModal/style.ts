@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const CommentWrapper = styled.section`
   position: relative;
@@ -49,19 +49,21 @@ export const Comments = styled.article`
   margin-bottom: 5.6rem;
 `;
 
-export const Comment = styled.div`
+export const Comment = styled.div<{ ismycomment: boolean }>`
   display: flex;
   flex-direction: row;
   width: 100%;
 
   gap: 1.2rem;
 
-  :first-child {
-    color: ${({ theme }) => theme.newColors.green};
-    > img {
-      border: ${({ theme }) => theme.newColors.green} 0.2rem solid;
-    }
-  }
+  ${({ ismycomment }) =>
+    ismycomment &&
+    css`
+      color: ${({ theme }) => theme.newColors.green};
+      img {
+        border: ${({ theme }) => theme.newColors.green} 0.2rem solid;
+      }
+    `}
 `;
 
 export const ProfileImgWrapper = styled.div`
