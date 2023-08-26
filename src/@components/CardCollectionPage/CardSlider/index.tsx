@@ -4,8 +4,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import { CardList, LocationType } from "../../../types/cardCollection";
 import { externalLinks } from "../../../util/const/externalLinks";
-import useCardType from "../../@common/hooks/useCardType";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
+import useCardType from "../../@common/hooks/useCardType";
 import Card from "../Card";
 import EventCard from "../Card/EventCard";
 import LastCard from "../Card/LastCard";
