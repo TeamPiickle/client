@@ -35,6 +35,4 @@ export const St = {
       width: 32.8rem;
     `};
   `,
-
-  Option: styled.option``,
 };

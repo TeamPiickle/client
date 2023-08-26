@@ -10,7 +10,7 @@ import Footer from "../../@common/Footer";
 import useScroll from "../../@common/hooks/useScrollToTop";
 import SubHeader from "../../@common/SubHeader";
 import { UserInfoFormDataContext } from "..";
-import ProfileBirth from "./ProfileBirth";
+import ProfileAgeGroup from "./ProfileAgeGroup";
 import ProfileGender from "./ProfileGender";
 import ProfileImage from "./ProfileImage";
 import ProfileNickname from "./ProfileNickname";
@@ -20,12 +20,12 @@ export default function UserProfilePage() {
   useScroll();
   const navigate = useNavigate();
 
-  const { formDataNicknameValue, formDataBirthdayValue, formDataGenderValue, setUserInfoFormData } =
+  const { formDataNicknameValue, formDataAgeGroupValue, formDataGenderValue, setUserInfoFormData } =
     useOutletContext<UserInfoFormDataContext>();
 
   const [profileImage, setProfileImage] = useState<File>();
   const [nickName, setNickName] = useState(formDataNicknameValue);
-  const [birthData, setBirthData] = useState(formDataBirthdayValue);
+  const [ageGroup, setAgeGroup] = useState(formDataAgeGroupValue);
   const [gender, setGender] = useState(formDataGenderValue);
 
   const [isChecked, setIsChecked] = useState(false); //닉네임 중복 확인
@@ -40,15 +40,15 @@ export default function UserProfilePage() {
       return;
     }
 
-    if (nickName && birthData && errorKey === "") {
+    if (nickName && errorKey === "") {
       setUserInfoFormData((prevFormData) => {
         const currentFormData = new FormData();
 
         currentFormData.append(JOIN_FORM_DATA_KEY.Email, prevFormData.get(JOIN_FORM_DATA_KEY.Email) ?? "");
         currentFormData.append(JOIN_FORM_DATA_KEY.Password, prevFormData.get(JOIN_FORM_DATA_KEY.Password) ?? "");
         currentFormData.append(JOIN_FORM_DATA_KEY.Nickname, nickName);
-        currentFormData.append(JOIN_FORM_DATA_KEY.Birthday, birthData);
-        if (gender !== "") currentFormData.append(JOIN_FORM_DATA_KEY.Gender, gender);
+        currentFormData.append(JOIN_FORM_DATA_KEY.AgeGroup, ageGroup);
+        currentFormData.append(JOIN_FORM_DATA_KEY.Gender, gender);
         if (profileImage) currentFormData.append(JOIN_FORM_DATA_KEY.ImgFile, profileImage);
 
         return currentFormData;
@@ -60,6 +60,14 @@ export default function UserProfilePage() {
 
   const errorHandler = (err: string) => {
     setErrorKey(err);
+  };
+
+  const handleGenderSelect = (value: string) => {
+    setGender(value);
+  };
+
+  const handleAgeSelect = (value: string) => {
+    setAgeGroup(value);
   };
 
   return (
@@ -93,26 +101,12 @@ export default function UserProfilePage() {
           <St.SuccessMessage>{JOIN_PROFILE_ALERT_MESSAGE.nickName.success}</St.SuccessMessage>
         ) : null}
 
-        <St.SubTitle>생년월일(필수)</St.SubTitle>
+        <St.SubTitle>연령대(선택)</St.SubTitle>
         <St.Requirement>※ 만 14세 이상만 가입가능합니다.</St.Requirement>
-        <ProfileBirth
-          birthData={birthData}
-          setBirthData={setBirthData}
-          isInComplete={isInComplete}
-          handleErrorMsg={errorHandler}
-        />
-        {isInComplete && birthData === "" && (
-          <St.ErrorMessage>{JOIN_PROFILE_ALERT_MESSAGE.birth.input}</St.ErrorMessage>
-        )}
-        {errorKey === JOIN_PROFILE_ALERT_KEY.birth.valid && (
-          <St.ErrorMessage>{JOIN_PROFILE_ALERT_MESSAGE.birth.valid}</St.ErrorMessage>
-        )}
-        {errorKey === JOIN_PROFILE_ALERT_KEY.birth.check && (
-          <St.ErrorMessage>{JOIN_PROFILE_ALERT_MESSAGE.birth.check}</St.ErrorMessage>
-        )}
+        <ProfileAgeGroup ageGroup={ageGroup} handleSelect={handleAgeSelect} />
 
         <St.SubTitle>성별(선택)</St.SubTitle>
-        <ProfileGender gender={gender} setGender={setGender} />
+        <ProfileGender gender={gender} handleSelect={handleGenderSelect} />
         <St.NextButton className={GTM_CLASS_NAME.joinProfileNext} onClick={completeBtn}>
           다음으로
         </St.NextButton>

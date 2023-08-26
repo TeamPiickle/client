@@ -1,5 +1,3 @@
-import { useNavigate } from "react-router-dom";
-
 import { ImgDefaultProfile } from "../../../../asset/image";
 import { routePaths } from "../../../../core/routes/path";
 import { GTM_CLASS_NAME } from "../../../../util/const/gtm";
@@ -8,13 +6,6 @@ import St from "./style";
 
 export default function DefaultProfileContainer(props: ProfileContainerProps) {
   const { closeMenuBar } = props;
-
-  const navigate = useNavigate();
-
-  const handleJoin = () => {
-    // navigate(`${routePaths.Join_}${routePaths.Join_EmailAuthentication}`);
-    navigate(`${routePaths.Join_}${routePaths.Join_UserInfo}`);
-  };
 
   return (
     <St.ProfileContainer>
@@ -25,9 +16,6 @@ export default function DefaultProfileContainer(props: ProfileContainerProps) {
         <St.MyProfileBtn to={routePaths.Login} className={GTM_CLASS_NAME.menuLogin} onClick={closeMenuBar}>
           로그인
         </St.MyProfileBtn>
-        <St.LogoutBtn className={GTM_CLASS_NAME.menuJoin} onClick={handleJoin}>
-          회원가입
-        </St.LogoutBtn>
       </St.BtnContainer>
     </St.ProfileContainer>
   );

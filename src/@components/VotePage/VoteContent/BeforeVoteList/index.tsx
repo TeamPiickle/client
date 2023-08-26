@@ -4,8 +4,6 @@ import { IcCheckWithNoBg } from "../../../../asset/icon";
 import { voteApi } from "../../../../core/api/vote";
 import { BallotTopicData } from "../../../../types/ballots";
 import { GTM_CLASS_NAME } from "../../../../util/const/gtm";
-import useModal from "../../../@common/hooks/useModal";
-import LoginModal from "../../../@common/LoginModal";
 import St from "./style";
 
 interface BeforeVoteListProps {
@@ -14,12 +12,9 @@ interface BeforeVoteListProps {
 }
 
 export default function BeforeVoteList(props: BeforeVoteListProps) {
-  const LOGIN_STATE = localStorage.getItem("piickle-token") ? true : false;
   const { ballotTopic, mutateBallotState } = props;
 
-  const { isModalOpen: isLoginModalOpen, toggleModal: toggleLoginModal } = useModal();
-
-  const [currentIdx, setCurrentIdx] = useState<string>("");
+  const [currentIdx, setCurrentIdx] = useState("");
 
   const handleClickItem = (key: string) => {
     setCurrentIdx((prevIdx) => {
@@ -28,22 +23,10 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
     });
   };
 
-  const handleClickVote = () => {
-    switch (LOGIN_STATE) {
-      case true:
-        if (currentIdx !== "") {
-          handlePost();
-          mutateBallotState();
-        }
-        break;
-      case false:
-        toggleLoginModal();
-        break;
-    }
-  };
-
-  const handlePost = () => {
+  const handlePostVote = () => {
+    if (currentIdx === "") return;
     voteApi.postVote({ ballotTopicId: ballotTopic.ballotTopic._id, ballotItemId: currentIdx });
+    mutateBallotState();
   };
 
   return (
@@ -60,18 +43,9 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
         ))}
       </St.VoteOptionContainer>
 
-      <St.VoteBtn role="dialog" className={GTM_CLASS_NAME.piickleMeVote} onClick={handleClickVote}>
+      <St.VoteBtn role="dialog" className={GTM_CLASS_NAME.piickleMeVote} onClick={handlePostVote}>
         투표하기
       </St.VoteBtn>
-
-      {isLoginModalOpen && (
-        <LoginModal
-          closeHandler={toggleLoginModal}
-          contents={"투표 기능인 피클미를"}
-          voteLoginClassName={GTM_CLASS_NAME.piickleMeLogin}
-          voteJoinClassName={GTM_CLASS_NAME.piickleMeJoin}
-        />
-      )}
     </>
   );
 }

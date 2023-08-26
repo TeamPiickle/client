@@ -1,3 +1,4 @@
+import { routePaths } from "../../../core/routes/path";
 import { LocationType } from "../../../types/cardCollection";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import { headingTitles } from "../../../util/main/headingTitles";
@@ -17,12 +18,17 @@ export type moodPiickle = {
 };
 
 export default function MoodPiickle() {
-  const { randomCategoryLists } = useCategoryLists();
+  const { randomCategoryLists } = useCategoryLists(true);
   const navigateCardCollection = useNavigateCardCollection(LocationType.CATEGORY) as NavigateCardCollectionCategoryType;
 
   return (
     <St.Container>
-      <HeadingTitleContainer headingTitles={headingTitles[1]} />
+      <HeadingTitleContainer
+        headingTitles={headingTitles[1]}
+        paddingVerticalValue={4}
+        routePath={routePaths.Category}
+        gtmClassName={GTM_CLASS_NAME.mainMoodPiickleMore}
+      />
       <St.CategoryWrapper>
         {randomCategoryLists &&
           randomCategoryLists.slice(0, 4).map((moodPiickle, index) => (

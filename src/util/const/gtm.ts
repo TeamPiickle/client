@@ -1,11 +1,18 @@
 type GtmClassName = {
   [key: string]: string;
   mainPiickleLogo: string;
+  mainBannerHot: string;
+  mainBannerNew: string;
+  mainBannerAddBtn: string;
+  mainBannerNotice: string;
+  mainTopicRequestBtn: string;
+  mainBannerEvent: string;
   mainBestPiickle1: string;
   mainBestPiickle2: string;
   mainBestPiickle3: string;
   mainBestPiickle4: string;
   mainBestPiickle5: string;
+  mainBestPiickleMore: string;
   mainMoodPiickleMore: string;
   main아이스브레이킹: string;
   main커플: string;
@@ -22,7 +29,6 @@ type GtmClassName = {
   mainCTABtn: string;
   mainMenuBtn: string;
   menuLogin: string;
-  menuJoin: string;
   menuRecommendCard: string;
   menuMoodPiickle: string;
   menuMoodPiickleSub: string;
@@ -37,6 +43,15 @@ type GtmClassName = {
   cardRecommendFilter: string;
   cardMoveBookmark: string;
   cardMoveHome: string;
+  cardMoveKeep: string;
+  cardMoveCategory: string;
+  cardMoveFeedback: string;
+  cardShare: string;
+  cardEtc: string;
+  cardEtcBad: string;
+  cardEtcBlock: string;
+  cardEtcCancelBlock: string;
+  cardEtcWonder: string;
   filterClose: string;
   filter남: string;
   filter여: string;
@@ -86,15 +101,30 @@ type GtmClassName = {
   medleyPreviewClose여럿: string;
   medleyPreviewClose피클: string;
   medleyPreviewClose송강: string;
+  bestBookmark: string;
+  bestBookmarkMore: string;
+  bestRecentBookmark: string;
+  bestRecentBookmarkMore: string;
+  bestFemaleBookmark: string;
+  bestFemaleBookmarkMore: string;
+  bestMaleBookmark: string;
+  bestMaleBookmarkMore: string;
 };
 
 export const GTM_CLASS_NAME: GtmClassName = {
   mainPiickleLogo: "click_main_logo",
+  mainBannerHot: "click_main_hotB",
+  mainBannerNew: "click_main_newB",
+  mainBannerAddBtn: "click_main_addB1",
+  mainBannerNotice: "click_main_notiB",
+  mainTopicRequestBtn: "click_main_addB2",
+  mainBannerEvent: "click_main_eventnotiB",
   mainBestPiickle1: "click_main_best_1",
   mainBestPiickle2: "click_main_best_2",
   mainBestPiickle3: "click_main_best_3",
   mainBestPiickle4: "click_main_best_4",
   mainBestPiickle5: "click_main_best_5",
+  mainBestPiickleMore: "click_main_best_plus",
   mainMoodPiickleMore: "click_main_mood_plus",
   main아이스브레이킹: "click_main_mood_ice",
   main커플: "click_main_mood_couple",
@@ -111,7 +141,6 @@ export const GTM_CLASS_NAME: GtmClassName = {
   mainCTABtn: "click_main_cta",
   mainMenuBtn: "click_main_menu",
   menuLogin: "click_menu_log",
-  menuJoin: "click_menu_joinmember",
   menuRecommendCard: "click_menu_card",
   menuMoodPiickle: "click_menu_mood_main",
   menuMoodPiickleSub: "click_menu_mood_sub",
@@ -126,6 +155,15 @@ export const GTM_CLASS_NAME: GtmClassName = {
   cardRecommendFilter: "click_card_filter",
   cardMoveBookmark: "click_card_movebookmark",
   cardMoveHome: "click_card_movehome",
+  cardMoveKeep: "click_card_keep",
+  cardMoveCategory: "click_card_gocategory",
+  cardMoveFeedback: "click_card_feedback",
+  cardShare: "click_card_share",
+  cardEtc: "click_card_etc",
+  cardEtcBad: "click_cardetc_bad",
+  cardEtcBlock: "click_cardetc_block",
+  cardEtcCancelBlock: "click_cardetc_cancelblock",
+  cardEtcWonder: "click_cardetc_wonder",
   filterClose: "click_filter_close",
   filter남: "click_filter_man",
   filter여: "click_filter_woman",
@@ -175,4 +213,12 @@ export const GTM_CLASS_NAME: GtmClassName = {
   medleyPreviewClose여럿: "click_ice_preview_close",
   medleyPreviewClose피클: "click_self_preview_close",
   medleyPreviewClose송강: "click_vs_preview_close",
+  bestBookmark: "click_bestcard_bookmark",
+  bestBookmarkMore: "click_bestcard_more",
+  bestRecentBookmark: "click_recentcard_placed",
+  bestRecentBookmarkMore: "click_recentcard_more",
+  bestFemaleBookmark: "click_femalecard_placed",
+  bestFemaleBookmarkMore: "click_femalecard_more",
+  bestMaleBookmark: "click_malecard_placed",
+  bestMaleBookmarkMore: "click_malecard_more",
 };

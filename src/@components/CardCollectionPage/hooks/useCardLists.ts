@@ -1,62 +1,38 @@
 import qs from "qs";
-import { useEffect } from "react";
-import { useRecoilState } from "recoil";
+import { useLocation } from "react-router-dom";
 import useSWR from "swr";
 
 import { realReq } from "../../../core/api/common/axios";
 import { PATH } from "../../../core/api/common/constants";
-import { filterTagsState } from "../../../core/atom/slider";
 import { CardList, CardsTypeLocation, LocationType } from "../../../types/cardCollection";
 import { PiickleSWRResponse } from "../../../types/remote/swr";
-import { intimacyTags } from "../../../util/cardCollection/filter";
-import useNavigateCardCollection, {
-  NavigateCardCollectionFilterType,
-} from "../../@common/hooks/useNavigateCardCollection";
+import useCardListsFilter from "./useCardListsFilter";
 
 interface ExtendedCardList extends Array<CardList> {
   cardList?: CardList[]; // with category id
   cards?: CardList[]; // with medly id
+  cardResponseDtos?: CardList[];
 }
 
-export function useCardLists(cardsTypeLocation: CardsTypeLocation) {
-  const [filterTags, setFilterTags] = useRecoilState(filterTagsState);
-  const navigateCardCollection = useNavigateCardCollection(LocationType.FILTER) as NavigateCardCollectionFilterType;
+export function useCardLists() {
+  const location = useLocation();
+  const cardsTypeLocation = getLocationInfoByQueryString(location.search);
 
   const fetchingKeyByLocation = getSWRFetchingKeyByLocation(cardsTypeLocation);
   const optionsByLocation = getSWROptionsByLocation(cardsTypeLocation);
-  const { data, error } = useSWR<PiickleSWRResponse<ExtendedCardList>>(
+
+  const { data, mutate: mutateCardlists } = useSWR<PiickleSWRResponse<ExtendedCardList>>(
     fetchingKeyByLocation,
     realReq.GET_SWR,
     optionsByLocation,
   );
 
-  useEffect(() => {
-    if (cardsTypeLocation.type !== LocationType.FILTER) setFilterTags((prev) => ({ ...prev, isActive: false }));
-  }, [cardsTypeLocation, setFilterTags]);
-
-  const fetchCardListsWithFilter = () => {
-    // 남 -> 남자, 여 -> 여자
-    const _fetchingCheckedTags = new Set([...filterTags.tags, intimacyTags[filterTags.intimacy[0]]]);
-    if (_fetchingCheckedTags.has("남")) {
-      _fetchingCheckedTags.delete("남");
-      _fetchingCheckedTags.add("남자");
-    }
-    if (_fetchingCheckedTags.has("여")) {
-      _fetchingCheckedTags.delete("여");
-      _fetchingCheckedTags.add("여자");
-    }
-
-    setFilterTags((prevFilterTags) => {
-      return { ...prevFilterTags, isActive: true };
-    });
-
-    navigateCardCollection([..._fetchingCheckedTags]);
-  };
+  const { fetchCardListsWithFilter } = useCardListsFilter(cardsTypeLocation.type !== LocationType.FILTER);
 
   return {
     cardLists: getReturnCardLists(data, cardsTypeLocation) ?? [],
-    isLoading: !error && !data,
     fetchCardListsWithFilter,
+    mutateCardlists,
   };
 }
 
@@ -68,10 +44,41 @@ function getReturnCardLists(
     case LocationType.CATEGORY:
       return data?.data.data.cardList;
     case LocationType.MEDLEY:
+    case LocationType.EVENT:
       return data?.data.data.cards;
+    case LocationType.RECENT:
+    case LocationType.UPDATE:
+      return data?.data.data.cardResponseDtos;
     default:
       return data?.data.data;
   }
+}
+
+type Obj = { [key: string]: string };
+function getLocationInfoByQueryString(queryString: string): CardsTypeLocation {
+  const exclusiveQuestionMarkQueryString = queryString.slice(1);
+  const firstAndMarkIdx = exclusiveQuestionMarkQueryString.indexOf("&");
+
+  if (firstAndMarkIdx === -1) {
+    const [key, value] = exclusiveQuestionMarkQueryString.split("=");
+
+    const locationInfo: Obj = {};
+    locationInfo[key] = value;
+
+    return locationInfo as unknown as CardsTypeLocation;
+  }
+
+  // ?A=B&C=DDD 2개까지
+  return [
+    exclusiveQuestionMarkQueryString.slice(0, firstAndMarkIdx),
+    exclusiveQuestionMarkQueryString.slice(firstAndMarkIdx + 1),
+  ].reduce((acc: Obj, query) => {
+    const firstEqualMarkIdx = query.indexOf("=");
+    const [key, value] = [query.slice(0, firstEqualMarkIdx), query.slice(firstEqualMarkIdx + 1)];
+    acc[key] = value;
+
+    return acc;
+  }, {}) as unknown as CardsTypeLocation;
 }
 
 function getSWRFetchingKeyByLocation(cardsTypeLocation: CardsTypeLocation) {
@@ -84,24 +91,25 @@ function getSWRFetchingKeyByLocation(cardsTypeLocation: CardsTypeLocation) {
       return `${PATH.USERS_}${PATH.USERS_BOOKMARK}`;
     case LocationType.MEDLEY:
       return `${PATH.MEDLEY}/${cardsTypeLocation.medleyId}`;
-    case LocationType.ALL: {
-      const searchParams = qs.stringify(
-        {
-          search: ["태그"],
-        },
-        { arrayFormat: "repeat" },
-      );
-      return `${PATH.CATEGORIES_}${PATH.CATEGORIES_CARDS}?${searchParams}`;
-    }
     case LocationType.FILTER: {
-      const searchParams = qs.stringify(
-        {
-          search: cardsTypeLocation.filterTypes,
-        },
-        { arrayFormat: "repeat" },
-      );
-      return `${PATH.CATEGORIES_}${PATH.CATEGORIES_CARDS}?${searchParams}`;
+      return `${PATH.CATEGORIES_}${PATH.CATEGORIES_CARDS}?${cardsTypeLocation.filterTypes}`;
     }
+
+    case LocationType.UPDATE:
+      return `${PATH.CARDS_}${PATH.CARDS_UPDATE}`;
+    case LocationType.RECENT:
+      return `${PATH.CARDS_}${PATH.CARDS_RECENT}`;
+    case LocationType.FEMALE:
+      return `${PATH.CARDS_}${PATH.CARDS_GENDER}/여`;
+    case LocationType.MALE:
+      return `${PATH.CARDS_}${PATH.CARDS_GENDER}/남`;
+    case LocationType.SHARE:
+      return `${PATH.CARDS_}/${cardsTypeLocation.cardId}`;
+
+    case LocationType.EVENT:
+      return "/mind23/api/questions";
+
+    case LocationType.ALL:
     default: {
       const searchParams = qs.stringify(
         {
@@ -119,8 +127,9 @@ function getSWROptionsByLocation(cardsTypeLocation: CardsTypeLocation) {
     case LocationType.BEST:
     case LocationType.BOOKMARK:
     case LocationType.MEDLEY:
-      return {};
+    case LocationType.EVENT:
+      return { suspense: true };
     default:
-      return { revalidateOnMount: true, dedupingInterval: 700 };
+      return { suspense: true, revalidateOnMount: true, dedupingInterval: 700 };
   }
 }

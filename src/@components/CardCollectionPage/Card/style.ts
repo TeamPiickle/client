@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const Card = styled.article`
   position: relative;
+  display: flex;
 
   margin: 0 0.8rem 0.8rem;
   height: 100%;
@@ -36,13 +37,32 @@ const TagsWrapper = styled.div`
   margin-top: 1.6rem;
 `;
 
-const BookmarkWrapper = styled.div`
+const BlockCardWrapper = styled.div`
   position: absolute;
-  bottom: 1.7rem;
-  right: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-  width: 5.6rem;
-  height: 5.6rem;
+  width: 100%;
+  height: 100%;
+
+  gap: 0.8rem;
+
+  border-radius: 0.8rem;
+  background: var(--blackblur, rgba(0, 0, 0, 0.6));
+  backdrop-filter: blur(1.2rem);
+`;
+
+const BlockCardText = styled.p`
+  color: ${({ theme }) => theme.newColors.white};
+  ${({ theme }) => theme.newFonts.body4};
+`;
+
+const BlockCardButton = styled.button`
+  color: ${({ theme }) => theme.newColors.white};
+  ${({ theme }) => theme.newFonts.caption1};
+  text-decoration: underline;
 `;
 
 const St = {
@@ -50,6 +70,9 @@ const St = {
   Container,
   ContentWrapper,
   TagsWrapper,
-  BookmarkWrapper,
+  BlockCardWrapper,
+  BlockCardText,
+  BlockCardButton,
 };
+
 export default St;

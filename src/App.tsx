@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 
+import ToastProvider from "./@components/@common/Toast/ToastProvider";
 import { activeStateModal } from "./core/atom/menuBar";
 import Router from "./Router";
 import { ModalStyle } from "./style/modalStyle";
@@ -16,8 +17,10 @@ export default function App() {
 
   return (
     <St.MobileContainer>
-      <Router />
-      {isActiveModal && <ModalStyle />}
+      <ToastProvider>
+        <Router />
+        {isActiveModal && <ModalStyle />}
+      </ToastProvider>
       <div id="modal"></div>
     </St.MobileContainer>
   );

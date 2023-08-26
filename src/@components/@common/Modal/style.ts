@@ -15,7 +15,6 @@ export const Root = styled.div`
 
   z-index: 10;
 
-  background-color: rgb(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
 `;
@@ -29,8 +28,29 @@ export const fadeOut = keyframes`
   }
 `;
 
+export const CommentRoot = styled(Root)`
+  align-items: flex-end;
+
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  min-height: -webkit-fill-available;
+
+  animation: ${fadeOut} 0.8s ease-in-out;
+
+  background-color: ${({ theme }) => theme.newColors.black50};
+`;
+
+export const CoachMarkRoot = styled(Root)`
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  min-height: -webkit-fill;
+
+  background-color: ${({ theme }) => theme.newColors.blackblur};
+`;
+
 export const GrayRoot = styled(Root)`
   animation: ${fadeOut} 0.8s ease-in-out;
+  background-color: ${({ theme }) => theme.newColors.black50};
 `;
 
 export const WhiteRoot = styled(Root)`
@@ -41,6 +61,8 @@ export const WhiteRoot = styled(Root)`
   min-height: -webkit-fill-available;
 
   animation: ${fadeOut} 0.8s ease-in-out;
+
+  background-color: ${({ theme }) => theme.newColors.black50};
 `;
 
 export const DefaultRoot = styled(Root)`
@@ -50,6 +72,8 @@ export const DefaultRoot = styled(Root)`
   height: calc(var(--vh, 1vh) * 100);
   min-height: -webkit-fill-available;
   padding: 1.6rem;
+
+  background-color: ${({ theme }) => theme.newColors.black50};
 `;
 
 export const bottomUp = keyframes`
@@ -68,6 +92,25 @@ const CenterModal = styled.section`
 
   transform: translateX(-50%);
   transform: translateY(-50%);
+`;
+
+export const CommentModal = styled.section`
+  position: relative;
+
+  width: 100%;
+  ${({ theme }) => theme.media.desktop`
+    width: 36rem;
+  `};
+
+  animation: ${bottomUp} 0.6s ease-in-out;
+`;
+
+export const CoachMarkModal = styled(CenterModal)`
+  width: 100%;
+  ${({ theme }) => theme.media.desktop`
+    width: 36rem;
+  `};
+  height: 100%;
 `;
 
 export const GrayCenterModal = styled(CenterModal)`

@@ -1,23 +1,25 @@
-import { routePaths } from "../../../core/routes/path";
-import { GTM_CLASS_NAME } from "../../../util/const/gtm";
+import { RoutePaths } from "../../../core/routes/path";
 import { HeadingTitle } from "../../../util/main/headingTitles";
 import { St } from "./style";
 
 export interface HeadingTitleContainerProps {
   headingTitles: HeadingTitle;
+  paddingVerticalValue?: number;
+  routePath?: RoutePaths;
+  gtmClassName?: string;
 }
 
 export default function HeadingTitleContainer(props: HeadingTitleContainerProps) {
-  const { headingTitles } = props;
+  const { headingTitles, paddingVerticalValue, routePath, gtmClassName } = props;
 
   return (
-    <St.Container>
-      <St.Wrapper ismore={headingTitles.isMoreBtn}>
+    <St.Container paddingVerticalValue={paddingVerticalValue ?? 2.4}>
+      <St.Wrapper ismore={routePath !== undefined}>
         <St.Title>{headingTitles.title}</St.Title>
         <St.Content>{headingTitles.content}</St.Content>
       </St.Wrapper>
-      {headingTitles && headingTitles.isMoreBtn && (
-        <St.Link to={routePaths.Category} className={GTM_CLASS_NAME.mainMoodPiickleMore}>
+      {headingTitles && routePath && (
+        <St.Link to={routePath} className={gtmClassName}>
           더보기
         </St.Link>
       )}
