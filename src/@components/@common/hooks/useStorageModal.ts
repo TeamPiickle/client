@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function useModalPopup(storage: Storage, key: string) {
+export default function useStorageModal(storage: Storage, key: string) {
   const [isOpened, setIsOpened] = useState(false);
 
   useEffect(() => {

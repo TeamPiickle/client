@@ -14,8 +14,8 @@ import HeaderMinVer from "../@common/Header/HeaderMinVer";
 import useCardType from "../@common/hooks/useCardType";
 import useGTMPage from "../@common/hooks/useGTMPage";
 import useModal from "../@common/hooks/useModal";
-import useModalPopup from "../@common/hooks/useModalPopup";
 import useScroll from "../@common/hooks/useScrollToTop";
+import useStorageModal from "../@common/hooks/useStorageModal";
 import SuspenseBoundary from "../@common/SuspenseBoundary";
 import useToast from "../@common/Toast/hooks/useToast";
 import CardSlider from "./CardSlider";
@@ -46,7 +46,7 @@ function CardCollectionContent() {
 
   const { isModalOpen: isFilterModalOpen, toggleModal: toggleFilterModal } = useModal();
 
-  const { isOpened: isCoachMarkOpen, handleCloseModal: toggleCoachMark } = useModalPopup(
+  const { isOpened: isCoachMarkOpen, handleCloseModal: toggleCoachMark } = useStorageModal(
     localStorage,
     COACH_MARK_LOCAL_KEY,
   );
