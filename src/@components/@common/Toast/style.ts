@@ -20,7 +20,7 @@ export const ToastMessage = styled.div<{ isdark?: boolean }>`
 
   border-radius: 0.6rem;
   border: 0.1rem solid ${({ theme }) => theme.newColors.gray200};
-  background: ${({ theme, isdark }) => (isdark ? "rgba(0, 0, 0, 0.6)" : theme.newColors.white)};
+  background: ${({ theme, isdark }) => (isdark ? theme.newColors.blackblur : theme.newColors.white)};
 
   ${({ theme }) => theme.newFonts.caption1}
   color: ${({ theme, isdark }) => (isdark ? theme.newColors.white : theme.newColors.gray900)};

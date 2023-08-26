@@ -45,8 +45,8 @@ export const Comments = styled.article`
 
   gap: 2rem;
 
-  margin-top: 3.8rem;
-  margin-bottom: 5.6rem;
+  margin: 3.8rem 0 5.6rem 0;
+  padding-bottom: 2rem;
 `;
 
 export const Comment = styled.div<{ ismycomment: boolean }>`

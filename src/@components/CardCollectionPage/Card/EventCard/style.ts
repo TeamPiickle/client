@@ -9,7 +9,7 @@ export const Card = styled.article`
   margin: 0 0.8rem 0.8rem;
   height: 100%;
 
-  border: 0.1rem solid ${({ theme }) => theme.colors.gray200};
+  border: 0.1rem solid ${({ theme }) => theme.newColors.gray200};
   border-radius: 0.8rem;
   background: linear-gradient(180deg, #ddfbf0 0%, rgba(232, 252, 244, 0.5) 100%);
 
