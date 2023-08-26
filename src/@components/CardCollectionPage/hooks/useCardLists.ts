@@ -44,9 +44,9 @@ function getReturnCardLists(
     case LocationType.CATEGORY:
       return data?.data.data.cardList;
     case LocationType.MEDLEY:
+    case LocationType.EVENT:
       return data?.data.data.cards;
     case LocationType.RECENT:
-      return data?.data.data.cardResponseDtos;
     case LocationType.UPDATE:
       return data?.data.data.cardResponseDtos;
     default:
@@ -106,6 +106,9 @@ function getSWRFetchingKeyByLocation(cardsTypeLocation: CardsTypeLocation) {
     case LocationType.SHARE:
       return `${PATH.CARDS_}/${cardsTypeLocation.cardId}`;
 
+    case LocationType.EVENT:
+      return "/mind23/api/questions";
+
     case LocationType.ALL:
     default: {
       const searchParams = qs.stringify(
@@ -124,6 +127,7 @@ function getSWROptionsByLocation(cardsTypeLocation: CardsTypeLocation) {
     case LocationType.BEST:
     case LocationType.BOOKMARK:
     case LocationType.MEDLEY:
+    case LocationType.EVENT:
       return { suspense: true };
     default:
       return { suspense: true, revalidateOnMount: true, dedupingInterval: 700 };

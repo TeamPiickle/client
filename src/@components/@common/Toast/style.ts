@@ -10,7 +10,7 @@ export const ToastContainer = styled.div`
   z-index: 10;
 `;
 
-export const ToastMessage = styled.div`
+export const ToastMessage = styled.div<{ isdark?: boolean }>`
   display: flex;
   justify-content: space-between;
 
@@ -20,10 +20,10 @@ export const ToastMessage = styled.div`
 
   border-radius: 0.6rem;
   border: 0.1rem solid ${({ theme }) => theme.newColors.gray200};
-  background: ${({ theme }) => theme.newColors.white};
+  background: ${({ theme, isdark }) => (isdark ? theme.newColors.blackblur : theme.newColors.white)};
 
   ${({ theme }) => theme.newFonts.caption1}
-  color: ${({ theme }) => theme.newColors.gray900};
+  color: ${({ theme, isdark }) => (isdark ? theme.newColors.white : theme.newColors.gray900)};
 `;
 
 export const CancelButton = styled.button`

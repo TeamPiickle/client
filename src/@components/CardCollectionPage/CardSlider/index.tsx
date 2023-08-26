@@ -2,10 +2,12 @@ import "swiper/swiper.css";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { CardList } from "../../../types/cardCollection";
+import { CardList, LocationType } from "../../../types/cardCollection";
 import { externalLinks } from "../../../util/const/externalLinks";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
+import useCardType from "../../@common/hooks/useCardType";
 import Card from "../Card";
+import EventCard from "../Card/EventCard";
 import LastCard from "../Card/LastCard";
 import useCardSwiper from "../hooks/useCardSwiper";
 import * as St from "./style";
@@ -18,6 +20,25 @@ interface CardSliderProps {
 const CardSlider = (props: CardSliderProps) => {
   const { cardLists, lastCardObsvRef } = props;
   const { swiperSettings, swiperRef, autoSlide } = useCardSwiper();
+
+  const { cardType } = useCardType();
+  if (cardType === LocationType.EVENT) {
+    return (
+      <St.Wrapper>
+        <Swiper {...swiperSettings} ref={swiperRef}>
+          <SwiperSlide>
+            <EventCard ref={lastCardObsvRef} />
+          </SwiperSlide>
+          {cardLists.map((cardList) => (
+            <SwiperSlide key={cardList._id}>
+              <Card autoSlide={autoSlide} {...cardList} />
+            </SwiperSlide>
+          ))}
+          <SwiperSlide></SwiperSlide>
+        </Swiper>
+      </St.Wrapper>
+    );
+  }
 
   return (
     <St.Wrapper>
