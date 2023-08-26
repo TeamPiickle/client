@@ -15,16 +15,17 @@ import useCardType from "../@common/hooks/useCardType";
 import useGTMPage from "../@common/hooks/useGTMPage";
 import useModal from "../@common/hooks/useModal";
 import useScroll from "../@common/hooks/useScrollToTop";
+import useStorageModal from "../@common/hooks/useStorageModal";
 import SuspenseBoundary from "../@common/SuspenseBoundary";
 import useToast from "../@common/Toast/hooks/useToast";
 import CardSlider from "./CardSlider";
 import CoachMark from "./CoachMark";
 import FilterModal from "./FilterModal";
 import { useCardLists } from "./hooks/useCardLists";
-import useCoachMark from "./hooks/useCoachMark";
 import useCTAFilter from "./hooks/useCTAFilter";
 import { useParticipantCount } from "./hooks/useParticipantCount";
 import * as St from "./style";
+const COACH_MARK_LOCAL_KEY = "coach-mark-shown";
 
 export default function CardCollectionPage() {
   return (
@@ -44,7 +45,11 @@ function CardCollectionContent() {
   const { isVisibleCTAButton, intersectionObserverRef: lastCardObsvRef } = useCTAFilter();
 
   const { isModalOpen: isFilterModalOpen, toggleModal: toggleFilterModal } = useModal();
-  const { isOpened: isCoachMarkOpen, handleCloseCoachMark: toggleCoachMark } = useCoachMark();
+
+  const { isOpened: isCoachMarkOpen, handleCloseModal: toggleCoachMark } = useStorageModal(
+    localStorage,
+    COACH_MARK_LOCAL_KEY,
+  );
 
   const { cardType } = useCardType();
   const { count } = useParticipantCount();

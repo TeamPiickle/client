@@ -1,25 +1,26 @@
 import { VERSION_UPDATES } from "../../../util/main/versionUpdateList";
 import HeadlessCTAButton from "../../@common/CTABtn/HeadlessCTAButton";
+import useStorageModal from "../../@common/hooks/useStorageModal";
 import Modal from "../../@common/Modal";
-import useUpdateModal from "../hooks/useUpdateModal";
 import * as St from "./style";
+const POPUP_SESSION_KEY = "update-popup-shown";
 
 export default function UpdateModal() {
-  const { isOpened, handleCloseModal } = useUpdateModal();
+  const { isOpened, handleCloseModal } = useStorageModal(sessionStorage, POPUP_SESSION_KEY);
 
   if (!isOpened) return null;
-
   return (
     <Modal theme="GRAY_BOTTOM" closeHandler={handleCloseModal} isNoCloseBtn={true}>
       <St.Container>
-        <St.Tag>23.05.12 업데이트</St.Tag>
-        <St.Title>피클 업데이트 안내</St.Title>
+        <St.Tag>23.08.26 업데이트</St.Tag>
+        <St.Title>피클 4차 업데이트 안내</St.Title>
         <St.Description>
-          Piickle 유저분들의 피드백을 바탕으로 더 사용하기 좋게 만들었어요😎
+          Piickle 유저분들의 피드백을 바탕으로 더 사용하기 좋게 만들었어요.
           <br />
-          피클을 잘 사용할 수 있도록 돕는 내용이니 처음 보셨다면 꼭 읽어주세요! <br />
-          업데이트 안내는 약 1주일동안만 보일 예정으로 이해 부탁 드릴게요!
+          앞으로도 많은 피드백 부탁 드려요🥰
+          <br />약 1주일동안만 업데이트 알림이 안내될 예정입니다.
         </St.Description>
+
         <St.UpdateLists>
           {VERSION_UPDATES.map((versionUpdate) => (
             <St.ContentsWrapper key={versionUpdate.id}>
