@@ -14,8 +14,18 @@ function deleteBlacklist(cardId: string) {
   return realReq.DELETE(`${PATH.USERS_}${PATH.CARDS_}${PATH.BLACKLIST}/${cardId}`);
 }
 
+function addComment(cardId: string, content: string) {
+  return realReq.POST(`/mind23/api/comments/${cardId}`, { content });
+}
+
+function addPrizeEntry(prizeEntryStatus: boolean) {
+  return realReq.POST("/mind23/api/prize-entry", { prizeEntryStatus });
+}
+
 export const cardCollectionApi = {
   addNDeleteBookmark,
   addBlacklist,
   deleteBlacklist,
+  addComment,
+  addPrizeEntry,
 };

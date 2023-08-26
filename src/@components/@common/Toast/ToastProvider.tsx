@@ -9,6 +9,7 @@ export type ToastType = {
   message: string;
   duration: number;
   handleClickCancel?: () => void;
+  isDark?: boolean;
 };
 
 export default function ToastProvider({ children }: PropsWithChildren) {
@@ -16,8 +17,8 @@ export default function ToastProvider({ children }: PropsWithChildren) {
   const toastTimeout = useTimeout();
 
   const showToast = useCallback(
-    async ({ message, duration, handleClickCancel }: ToastType) => {
-      setToast({ message, duration, handleClickCancel });
+    async ({ message, duration, handleClickCancel, isDark }: ToastType) => {
+      setToast({ message, duration, handleClickCancel, isDark });
 
       toastTimeout.set(() => {
         setToast(null);
@@ -33,7 +34,7 @@ export default function ToastProvider({ children }: PropsWithChildren) {
       {children}
       {toast && (
         <St.ToastContainer>
-          <St.ToastMessage>
+          <St.ToastMessage isdark={toast.isDark}>
             {toast.message}
             {toast.handleClickCancel && (
               <St.CancelButton onClick={toast.handleClickCancel} className={GTM_CLASS_NAME.cardEtcCancelBlock}>

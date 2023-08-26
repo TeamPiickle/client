@@ -5,8 +5,10 @@ import useModal from "../../@common/hooks/useModal";
 import LoginModal from "../../@common/LoginModal";
 import useBlacklist from "../hooks/useBlacklist";
 import { autoSlideType } from "../hooks/useCardSwiper";
+import { useComments } from "../hooks/useComments";
 import TagsSlider from "../TagsSlider";
 import CardMenu from "./CardMenu";
+import CommentModal from "./CommentModal";
 import MenuModal from "./MenuModal";
 import St from "./style";
 
@@ -16,15 +18,21 @@ interface LoginCheckProps {
   content: string;
   isBookmark: boolean;
   tags: string[];
+  essential?: boolean;
 }
 
 const Card = (props: LoginCheckProps) => {
   const { _id, content, tags, autoSlide } = props;
+
   const { isModalOpen: isMenuModalOpen, toggleModal: toggleMenuModal } = useModal();
   const { isModalOpen: isBookmarkModalOpen, toggleModal: toggleBookmarkModalOpen } = useModal();
   const { isModalOpen: isBlacklistModalOpen, toggleModal: toggleBlacklistModalOpen } = useModal();
+  const { isModalOpen: isCommentModalOpen, toggleModal: toggleCommenttModalOpen } = useModal();
+
   const { getIsBlacklist, handleClickAddBlacklist, handleClickCancelBlacklist } =
     useBlacklist(toggleBlacklistModalOpen);
+
+  const { comments, handleSubmitComment, handleClickComment, isComment } = useComments(_id, toggleCommenttModalOpen);
 
   return (
     <St.Card className={GTM_CLASS_NAME.cardSwipe}>
@@ -34,7 +42,12 @@ const Card = (props: LoginCheckProps) => {
           <TagsSlider tags={tags} />
         </St.TagsWrapper>
       </St.Container>
-      <CardMenu {...props} toggleMenuModal={toggleMenuModal} onClickLogoutBookmark={toggleBookmarkModalOpen} />
+      <CardMenu
+        {...props}
+        toggleCommentModal={handleClickComment}
+        toggleMenuModal={toggleMenuModal}
+        onClickLogoutBookmark={toggleBookmarkModalOpen}
+      />
 
       {getIsBlacklist(_id) && (
         <St.BlockCardWrapper>
@@ -56,11 +69,20 @@ const Card = (props: LoginCheckProps) => {
           handleClickCancelBlacklist={handleClickCancelBlacklist}
         />
       )}
+      {isComment && comments && (
+        <CommentModal
+          cardId={_id}
+          comments={comments}
+          handleSubmitComment={handleSubmitComment}
+          onClickBackground={handleClickComment}
+        />
+      )}
 
       {isBookmarkModalOpen && <LoginModal closeHandler={toggleBookmarkModalOpen} contents={"북마크 기능을"} />}
       {isBlacklistModalOpen && (
         <LoginModal closeHandler={toggleBlacklistModalOpen} contents={"주제 다시 안보기 기능을"} />
       )}
+      {isCommentModalOpen && <LoginModal closeHandler={toggleBlacklistModalOpen} contents={"댓글 기능을"} />}
     </St.Card>
   );
 };

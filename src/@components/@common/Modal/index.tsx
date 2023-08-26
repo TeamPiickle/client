@@ -5,7 +5,7 @@ import useOutClickCloser from "../hooks/useOutClickCloser";
 import ModalPortal from "./Portal";
 import * as St from "./style";
 
-type ModalTheme = "DEFAULT" | "WHITE_BOTTOM" | "GRAY_CENTER" | "GRAY_BOTTOM" | "COACHMARK";
+type ModalTheme = "DEFAULT" | "WHITE_BOTTOM" | "GRAY_CENTER" | "GRAY_BOTTOM" | "COACHMARK" | "COMMENT";
 
 interface ModalContents {
   theme?: ModalTheme;
@@ -18,6 +18,17 @@ interface ModalContents {
 export default function Modal(props: PropsWithChildren<ModalContents>) {
   const { theme = "DEFAULT", closeHandler, closeOpacityClassName, closeBtnClassName, isNoCloseBtn, children } = props;
   const outClickCloserRef = useOutClickCloser(closeHandler, true);
+
+  if (theme === "COMMENT")
+    return (
+      <ModalPortal>
+        <St.CommentRoot>
+          <St.CommentModal ref={outClickCloserRef}>
+            <St.ModalContents>{children}</St.ModalContents>
+          </St.CommentModal>
+        </St.CommentRoot>
+      </ModalPortal>
+    );
 
   if (theme === "COACHMARK")
     return (
