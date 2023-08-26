@@ -1,6 +1,7 @@
 import { IcSocialLoginLogos } from "../../../asset/icon";
 import useAuth from "../../../core/hooks/useAuth";
 import { routePaths } from "../../../core/routes/path";
+import { LocationType } from "../../../types/cardCollection";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import * as St from "./style";
 
@@ -9,7 +10,9 @@ export default function StripBanner() {
 
   if (isLogin) {
     return (
-      <St.EventContainer to="" className={GTM_CLASS_NAME.mainBannerEvent}>
+      <St.EventContainer
+        to={`${routePaths.CardCollection}?type=${LocationType.EVENT}`}
+        className={GTM_CLASS_NAME.mainBannerEvent}>
         <St.EventContentWrapper className={GTM_CLASS_NAME.mainBannerEvent}>
           <St.Content className={GTM_CLASS_NAME.mainBannerEvent} islogin={isLogin}>
             이벤트 참여하고 치킨 받아가세요!
