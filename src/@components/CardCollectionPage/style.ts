@@ -16,15 +16,15 @@ export const EventCoach = styled.div`
   align-items: center;
 
   width: 100%;
-  height: 37rem;
+  height: calc(var(--vh, 1vh) * 30);
+
   background: linear-gradient(0deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
 
   z-index: 10;
 `;
 
 export const EventCoachMessage = styled.p`
-  margin-bottom: 1.2rem;
-  margin-top: 18.2rem;
+  margin: 2rem 0 1.2rem 0;
 
   text-align: center;
   ${({ theme }) => theme.newFonts.body4}
