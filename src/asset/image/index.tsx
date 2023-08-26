@@ -1,6 +1,7 @@
 export { default as ImgCategoryBanner } from "./categoryBanner.webp";
 export { default as ImgDefaultBigProfile } from "./defaultBigProfile.webp";
 export { default as ImgDefaultProfile } from "./defaultProfile.webp";
+export { default as ImgEventStripBanner } from "./eventStripBanner.webp";
 export { default as NewImgBanner1 } from "./new_banner_1.webp";
 export { default as NewImgBanner2 } from "./new_banner_2.webp";
 export { default as NewImgBanner3 } from "./new_banner_3.webp";
