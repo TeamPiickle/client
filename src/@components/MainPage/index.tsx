@@ -1,4 +1,4 @@
-import { lazy } from "react";
+//import { lazy } from "react";
 
 import CTABtn from "../@common/CTABtn";
 import Footer from "../@common/Footer";
@@ -14,7 +14,7 @@ import StripBanner from "./StripBanner";
 import { St } from "./style";
 import TopicLink from "./TopicLink";
 
-const UpdateModal = lazy(() => import("./UpdateModal"));
+//const UpdateModal = lazy(() => import("./UpdateModal"));
 
 export default function MainPage() {
   useGTMPage();
@@ -50,9 +50,9 @@ export default function MainPage() {
       <Footer />
       <CTABtn />
 
-      <SuspenseBoundary bgColor="white">
+      {/* <SuspenseBoundary bgColor="white">
         <UpdateModal />
-      </SuspenseBoundary>
+      </SuspenseBoundary> */}
     </St.MainPage>
   );
 }
