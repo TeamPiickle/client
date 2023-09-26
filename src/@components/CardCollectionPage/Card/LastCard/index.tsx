@@ -1,28 +1,30 @@
-import React, { forwardRef, useEffect } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { IcCongratPiickle } from "../../../../asset/icon";
 import { routePaths } from "../../../../core/routes/path";
 import { LocationType } from "../../../../types/cardCollection";
 import { GTM_CLASS_NAME } from "../../../../util/const/gtm";
-import useShowByCardType from "../../../@common/hooks/useShowByQuery";
+import useCardType from "../../../@common/hooks/useCardType";
 import useToast from "../../../@common/Toast/hooks/useToast";
 import * as St from "./style";
 
 const TOAST_SESSON_KEY = "showToast";
+const locationTypesNoReplay = [
+  LocationType.BEST,
+  LocationType.MEDLEY,
+  LocationType.RECENT,
+  LocationType.BOOKMARK,
+  LocationType.MALE,
+  LocationType.FEMALE,
+];
 
 const LastCard = forwardRef(function LastCard(_, ref: React.ForwardedRef<HTMLDivElement>) {
   const navigate = useNavigate();
   const { showToast } = useToast();
+  const { cardType } = useCardType();
+  const [isReplayBtnShow, setIsReplayBtnShow] = useState<boolean>(false);
   const showToastFlag = !!sessionStorage.getItem(TOAST_SESSON_KEY);
-  const { isShow: isReplayBtnShow } = useShowByCardType([
-    LocationType.BEST,
-    LocationType.MEDLEY,
-    LocationType.RECENT,
-    LocationType.BOOKMARK,
-    LocationType.MALE,
-    LocationType.FEMALE,
-  ]);
 
   useEffect(() => {
     if (showToastFlag) {
@@ -30,6 +32,10 @@ const LastCard = forwardRef(function LastCard(_, ref: React.ForwardedRef<HTMLDiv
       sessionStorage.removeItem(TOAST_SESSON_KEY);
     }
   }, [showToastFlag, showToast]);
+
+  useEffect(() => {
+    cardType && setIsReplayBtnShow(!locationTypesNoReplay.includes(cardType));
+  }, [cardType]);
 
   const reloadForSimilarTopic = () => {
     sessionStorage.setItem(TOAST_SESSON_KEY, "true");
