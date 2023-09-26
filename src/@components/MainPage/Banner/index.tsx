@@ -8,7 +8,7 @@ import { LocationType } from "../../../types/cardCollection";
 import { externalLinks } from "../../../util/const/externalLinks";
 import { GTM_CLASS_NAME } from "../../../util/const/gtm";
 import { newBannerImages, newBannerType } from "../../../util/main/banner";
-import { useRecentlyBookmarked } from "../../@common/hooks/useRecentlyBookmarked";
+import { useRecentlyBookmarked } from "../../BestPiicklePage/hooks/useRecentlyBookmarked";
 import useBannerSwiper from "../hooks/useBannerSwiper";
 import { useRecentlyUpdated } from "../hooks/useRecentlyUpdated";
 import Slide from "./Slide";
