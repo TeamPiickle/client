@@ -10,7 +10,7 @@ import St from "./style";
 
 export default function BestPiickle() {
   const { bestPiickle } = useBestPiickle();
-  const { scrollableContainerProps, isDragging } = useDraggingContainer();
+  const { scrollableContainerProps, isDragging } = useDraggingContainer("X");
 
   return (
     <St.Root>

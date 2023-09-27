@@ -1,25 +1,28 @@
 import { useRef, useState } from "react";
 
-export default function useDraggingContainer() {
+type DragDirectionType = "X" | "Y";
+
+export default function useDraggingContainer(dragDirection: DragDirectionType) {
   const containerRef = useRef<HTMLElement | null>(null);
 
   const [isStartDragging, setIsStartDragging] = useState(false);
-  const currentX = useRef(0);
+  const currentRef = useRef(0);
 
-  const standardX = useRef(0);
-  const [draggedX, setDraggedX] = useState(0);
+  const standardRef = useRef(0);
+  const [dragged, setDragged] = useState(0);
 
   function handleMouseDown(event: React.MouseEvent<HTMLElement, MouseEvent>) {
     setIsStartDragging(true);
 
-    currentX.current = event.pageX;
+    const page = dragDirection === "X" ? event.pageX : event.pageY;
+    currentRef.current = page;
 
-    initializeForDraggedX(event.pageX);
+    initializeForDragged(page);
   }
 
-  function initializeForDraggedX(standartX: number) {
-    setDraggedX(0);
-    standardX.current = standartX;
+  function initializeForDragged(standard: number) {
+    setDragged(0);
+    standardRef.current = standard;
   }
 
   function handleMouseMove(event: React.MouseEvent<HTMLElement, MouseEvent>) {
@@ -27,14 +30,18 @@ export default function useDraggingContainer() {
     if (!container) return;
     if (!isStartDragging) return;
 
-    moveContainerByCurrentX(container, event.pageX);
+    const page = dragDirection === "X" ? event.pageX : event.pageY;
 
-    setDraggedX(Math.abs(event.pageX - standardX.current));
+    moveContainerByCurrent(container, page);
+
+    setDragged(Math.abs(page - standardRef.current));
   }
 
-  function moveContainerByCurrentX(container: HTMLElement, movedMouseX: number) {
-    container.scrollLeft += currentX.current - movedMouseX;
-    currentX.current = movedMouseX;
+  function moveContainerByCurrent(container: HTMLElement, movedMouseX: number) {
+    dragDirection === "X"
+      ? (container.scrollLeft += currentRef.current - movedMouseX)
+      : (container.scrollTop += currentRef.current - movedMouseX);
+    currentRef.current = movedMouseX;
   }
 
   function handleMouseUpOrLeave() {
@@ -43,8 +50,8 @@ export default function useDraggingContainer() {
 
   function reset() {
     setIsStartDragging(false);
-    currentX.current = 0;
-    standardX.current = 0;
+    currentRef.current = 0;
+    standardRef.current = 0;
   }
 
   return {
@@ -55,6 +62,6 @@ export default function useDraggingContainer() {
       onMouseUp: handleMouseUpOrLeave,
       onMouseLeave: handleMouseUpOrLeave,
     },
-    isDragging: draggedX > 10,
+    isDragging: dragged > 10,
   };
 }

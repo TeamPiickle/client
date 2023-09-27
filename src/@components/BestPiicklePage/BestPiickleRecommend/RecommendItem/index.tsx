@@ -11,7 +11,7 @@ const BEST_PIICKLE_TOTAL_COUNT = 4;
 
 export default function RecommendItem(props: RecommendProps) {
   const { recommendList } = props;
-  const { scrollableContainerProps, isDragging } = useDraggingContainer();
+  const { scrollableContainerProps, isDragging } = useDraggingContainer("X");
 
   return (
     <St.RecommemdItemContainer>

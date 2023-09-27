@@ -4,7 +4,7 @@ import MedleyCard from "./MedleyCard";
 import * as St from "./style";
 
 export default function Medley() {
-  const { scrollableContainerProps, isDragging } = useDraggingContainer();
+  const { scrollableContainerProps, isDragging } = useDraggingContainer("X");
   const { randomMedleyLists } = useMedleyLists();
 
   return (
