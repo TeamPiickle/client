@@ -11,7 +11,7 @@ export default function useDraggingContainer(dragDirection: DragDirectionType) {
   const [isStartDragging, setIsStartDragging] = useState(false);
   const [dragged, setDragged] = useState(0);
 
-  function handleMouseDown(event: React.SyntheticEvent) {
+  function handleTriggerDown(event: React.SyntheticEvent) {
     setIsStartDragging(true);
 
     if (event.nativeEvent instanceof TouchEvent) {
@@ -33,7 +33,7 @@ export default function useDraggingContainer(dragDirection: DragDirectionType) {
     standardRef.current = standard;
   }
 
-  function handleMouseMove(event: React.SyntheticEvent) {
+  function handleTriggerMove(event: React.SyntheticEvent) {
     const container = containerRef.current;
 
     if (!container) return;
@@ -61,7 +61,7 @@ export default function useDraggingContainer(dragDirection: DragDirectionType) {
     currentRef.current = movedMouse;
   }
 
-  function handleMouseUpOrLeave() {
+  function handleTriggerEnd() {
     reset();
   }
 
@@ -74,14 +74,15 @@ export default function useDraggingContainer(dragDirection: DragDirectionType) {
   return {
     scrollableContainerProps: {
       ref: containerRef,
-      onMouseDown: handleMouseDown,
-      onMouseMove: handleMouseMove,
-      onMouseUp: handleMouseUpOrLeave,
-      onMouseLeave: handleMouseUpOrLeave,
-      onTouchStart: handleMouseDown,
-      onTouchMove: handleMouseMove,
-      onTouchEnd: handleMouseUpOrLeave,
-      onTouchCancel: handleMouseUpOrLeave,
+      onMouseDown: handleTriggerDown,
+      onMouseMove: handleTriggerMove,
+      onMouseUp: handleTriggerEnd,
+      onMouseLeave: handleTriggerEnd,
+
+      onTouchStart: handleTriggerDown,
+      onTouchMove: handleTriggerMove,
+      onTouchEnd: handleTriggerEnd,
+      onTouchCancel: handleTriggerEnd,
     },
     isDragging: dragged > 10,
   };
