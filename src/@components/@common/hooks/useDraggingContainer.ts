@@ -31,23 +31,24 @@ export default function useDraggingContainer(dragDirection: DragDirectionType) {
   const [isStartDragging, setIsStartDragging] = useState(false);
   const [dragged, setDragged] = useState(0);
 
-  function handleTriggerDown(event: React.SyntheticEvent) {
+  function handleTriggerDown(event: React.SyntheticEvent<HTMLElement>) {
     setIsStartDragging(true);
 
-    if (event.nativeEvent instanceof TouchEvent) {
-      const mapper = eventMapper[dragDirection].touch;
-      const page = event.nativeEvent.touches[FIRST_TOUCH][mapper];
-      currentRef.current = page;
+    const page = getPageByEventType(event);
+    currentRef.current = page;
+    initializeForDragged(page);
+  }
 
-      initializeForDragged(page);
+  function getPageByEventType(event: React.SyntheticEvent<HTMLElement>): number {
+    if (event.nativeEvent instanceof TouchEvent) {
+      const eventType = eventMapper[dragDirection].touch;
+      return event.nativeEvent.touches[FIRST_TOUCH][eventType];
     }
     if (event.nativeEvent instanceof MouseEvent) {
-      const mapper = eventMapper[dragDirection].mouse;
-      const page = event.nativeEvent[mapper];
-      currentRef.current = page;
-
-      initializeForDragged(page);
+      const eventType = eventMapper[dragDirection].mouse;
+      return event.nativeEvent[eventType];
     }
+    return 0;
   }
 
   function initializeForDragged(standard: number) {
@@ -55,27 +56,16 @@ export default function useDraggingContainer(dragDirection: DragDirectionType) {
     standardRef.current = standard;
   }
 
-  function handleTriggerMove(event: React.SyntheticEvent) {
+  function handleTriggerMove(event: React.SyntheticEvent<HTMLElement>) {
     const container = containerRef.current;
 
     if (!container) return;
     if (!isStartDragging) return;
 
-    if (event.nativeEvent instanceof TouchEvent) {
-      const mapper = eventMapper[dragDirection].touch;
-      const page = event.nativeEvent.touches[FIRST_TOUCH][mapper];
-      moveContainerByCurrent(container, page);
+    const page = getPageByEventType(event);
+    moveContainerByCurrent(container, page);
 
-      setDragged(Math.abs(page - standardRef.current));
-    }
-
-    if (event.nativeEvent instanceof MouseEvent) {
-      const mapper = eventMapper[dragDirection].mouse;
-      const page = event.nativeEvent[mapper];
-      moveContainerByCurrent(container, page);
-
-      setDragged(Math.abs(page - standardRef.current));
-    }
+    setDragged(Math.abs(page - standardRef.current));
   }
 
   function moveContainerByCurrent(container: HTMLElement, movedMouse: number) {
