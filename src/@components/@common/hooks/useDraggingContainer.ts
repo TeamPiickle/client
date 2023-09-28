@@ -20,6 +20,15 @@ export default function useDraggingContainer(dragDirection: DragDirectionType) {
     initializeForDragged(page);
   }
 
+  function handleTouchStart(event: React.TouchEvent<HTMLElement>) {
+    setIsStartDragging(true);
+
+    const page = dragDirection === "X" ? event.touches[0].clientX : event.touches[0].clientY;
+    currentRef.current = page;
+
+    initializeForDragged(page);
+  }
+
   function initializeForDragged(standard: number) {
     setDragged(0);
     standardRef.current = standard;
@@ -27,24 +36,40 @@ export default function useDraggingContainer(dragDirection: DragDirectionType) {
 
   function handleMouseMove(event: React.MouseEvent<HTMLElement, MouseEvent>) {
     const container = containerRef.current;
+
     if (!container) return;
     if (!isStartDragging) return;
 
     const page = dragDirection === "X" ? event.pageX : event.pageY;
-
     moveContainerByCurrent(container, page);
 
     setDragged(Math.abs(page - standardRef.current));
   }
 
-  function moveContainerByCurrent(container: HTMLElement, movedMouseX: number) {
+  function handleTouchMove(event: React.TouchEvent<HTMLElement>) {
+    const container = containerRef.current;
+
+    if (!container) return;
+    if (!isStartDragging) return;
+
+    const page = dragDirection === "X" ? event.touches[0].clientX : event.touches[0].clientY;
+    moveContainerByCurrent(container, page);
+
+    setDragged(Math.abs(page - standardRef.current));
+  }
+
+  function moveContainerByCurrent(container: HTMLElement, movedMouse: number) {
     dragDirection === "X"
-      ? (container.scrollLeft += currentRef.current - movedMouseX)
-      : (container.scrollTop += currentRef.current - movedMouseX);
-    currentRef.current = movedMouseX;
+      ? (container.scrollLeft += currentRef.current - movedMouse)
+      : (container.scrollTop += currentRef.current - movedMouse);
+    currentRef.current = movedMouse;
   }
 
   function handleMouseUpOrLeave() {
+    reset();
+  }
+
+  function handleTouchEndOrCancel() {
     reset();
   }
 
@@ -61,6 +86,10 @@ export default function useDraggingContainer(dragDirection: DragDirectionType) {
       onMouseMove: handleMouseMove,
       onMouseUp: handleMouseUpOrLeave,
       onMouseLeave: handleMouseUpOrLeave,
+      onTouchStart: handleTouchStart,
+      onTouchMove: handleTouchMove,
+      onTouchEnd: handleMouseUpOrLeave,
+      onTouchCancel: handleTouchEndOrCancel,
     },
     isDragging: dragged > 10,
   };
