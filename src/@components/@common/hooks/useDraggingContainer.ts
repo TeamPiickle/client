@@ -28,8 +28,9 @@ export default function useDraggingContainer(dragDirection: DragDirectionType) {
   const currentRef = useRef(0);
   const standardRef = useRef(0);
 
-  const [isStartDragging, setIsStartDragging] = useState(false);
-  const [dragged, setDragged] = useState(0);
+  const [isStartDragging, setIsStartDragging] = useState<boolean>(false);
+  const [isArrivedEnd, setIsArrivedEnd] = useState<boolean>(false);
+  const [dragged, setDragged] = useState<number>(0);
 
   function handleTriggerDown(event: React.SyntheticEvent<HTMLElement>) {
     setIsStartDragging(true);
@@ -64,15 +65,29 @@ export default function useDraggingContainer(dragDirection: DragDirectionType) {
 
     const page = getPageByEventType(event);
     moveContainerByCurrent(container, page);
+    handleArrivedEnd(container);
 
     setDragged(Math.abs(page - standardRef.current));
   }
 
-  function moveContainerByCurrent(container: HTMLElement, movedMouse: number) {
-    dragDirection === "X"
-      ? (container.scrollLeft += currentRef.current - movedMouse)
-      : (container.scrollTop += currentRef.current - movedMouse);
-    currentRef.current = movedMouse;
+  function moveContainerByCurrent(container: HTMLElement, movedTrigger: number) {
+    const delta = currentRef.current - movedTrigger;
+    if (dragDirection === "X") {
+      container.scrollLeft += delta;
+    }
+    if (dragDirection === "Y") {
+      container.scrollTop += delta;
+    }
+    currentRef.current = movedTrigger;
+  }
+
+  function handleArrivedEnd(container: HTMLElement) {
+    if (dragDirection === "X") {
+      setIsArrivedEnd(container.scrollWidth - container.scrollLeft === container.clientWidth);
+    }
+    if (dragDirection === "Y") {
+      setIsArrivedEnd(container.scrollHeight - container.scrollTop === container.clientHeight);
+    }
   }
 
   function handleTriggerEnd() {
@@ -99,5 +114,6 @@ export default function useDraggingContainer(dragDirection: DragDirectionType) {
       onTouchCancel: handleTriggerEnd,
     },
     isDragging: dragged > 10,
+    isArrivedEnd,
   };
 }
