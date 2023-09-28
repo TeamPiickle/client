@@ -2,6 +2,26 @@ import { useRef, useState } from "react";
 
 type DragDirectionType = "X" | "Y";
 
+type EventMapperType = {
+  [key in DragDirectionType]: {
+    touch: "clientX" | "clientY";
+    mouse: "pageX" | "pageY";
+  };
+};
+
+const eventMapper: EventMapperType = {
+  X: {
+    touch: "clientX",
+    mouse: "pageX",
+  },
+  Y: {
+    touch: "clientY",
+    mouse: "pageY",
+  },
+};
+
+const FIRST_TOUCH = 0;
+
 export default function useDraggingContainer(dragDirection: DragDirectionType) {
   const containerRef = useRef<HTMLElement | null>(null);
 
@@ -15,13 +35,15 @@ export default function useDraggingContainer(dragDirection: DragDirectionType) {
     setIsStartDragging(true);
 
     if (event.nativeEvent instanceof TouchEvent) {
-      const page = dragDirection === "X" ? event.nativeEvent.touches[0].clientX : event.nativeEvent.touches[0].clientY;
+      const mapper = eventMapper[dragDirection].touch;
+      const page = event.nativeEvent.touches[FIRST_TOUCH][mapper];
       currentRef.current = page;
 
       initializeForDragged(page);
     }
     if (event.nativeEvent instanceof MouseEvent) {
-      const page = dragDirection === "X" ? event.nativeEvent.pageX : event.nativeEvent.pageY;
+      const mapper = eventMapper[dragDirection].mouse;
+      const page = event.nativeEvent[mapper];
       currentRef.current = page;
 
       initializeForDragged(page);
@@ -40,14 +62,16 @@ export default function useDraggingContainer(dragDirection: DragDirectionType) {
     if (!isStartDragging) return;
 
     if (event.nativeEvent instanceof TouchEvent) {
-      const page = dragDirection === "X" ? event.nativeEvent.touches[0].clientX : event.nativeEvent.touches[0].clientY;
+      const mapper = eventMapper[dragDirection].touch;
+      const page = event.nativeEvent.touches[FIRST_TOUCH][mapper];
       moveContainerByCurrent(container, page);
 
       setDragged(Math.abs(page - standardRef.current));
     }
 
     if (event.nativeEvent instanceof MouseEvent) {
-      const page = dragDirection === "X" ? event.nativeEvent.pageX : event.nativeEvent.pageY;
+      const mapper = eventMapper[dragDirection].mouse;
+      const page = event.nativeEvent[mapper];
       moveContainerByCurrent(container, page);
 
       setDragged(Math.abs(page - standardRef.current));
