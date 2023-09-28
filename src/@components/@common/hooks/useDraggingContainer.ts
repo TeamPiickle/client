@@ -5,28 +5,27 @@ type DragDirectionType = "X" | "Y";
 export default function useDraggingContainer(dragDirection: DragDirectionType) {
   const containerRef = useRef<HTMLElement | null>(null);
 
-  const [isStartDragging, setIsStartDragging] = useState(false);
   const currentRef = useRef(0);
-
   const standardRef = useRef(0);
+
+  const [isStartDragging, setIsStartDragging] = useState(false);
   const [dragged, setDragged] = useState(0);
 
-  function handleMouseDown(event: React.MouseEvent<HTMLElement, MouseEvent>) {
+  function handleMouseDown(event: React.SyntheticEvent) {
     setIsStartDragging(true);
 
-    const page = dragDirection === "X" ? event.pageX : event.pageY;
-    currentRef.current = page;
+    if (event.nativeEvent instanceof TouchEvent) {
+      const page = dragDirection === "X" ? event.nativeEvent.touches[0].clientX : event.nativeEvent.touches[0].clientY;
+      currentRef.current = page;
 
-    initializeForDragged(page);
-  }
+      initializeForDragged(page);
+    }
+    if (event.nativeEvent instanceof MouseEvent) {
+      const page = dragDirection === "X" ? event.nativeEvent.pageX : event.nativeEvent.pageY;
+      currentRef.current = page;
 
-  function handleTouchStart(event: React.TouchEvent<HTMLElement>) {
-    setIsStartDragging(true);
-
-    const page = dragDirection === "X" ? event.touches[0].clientX : event.touches[0].clientY;
-    currentRef.current = page;
-
-    initializeForDragged(page);
+      initializeForDragged(page);
+    }
   }
 
   function initializeForDragged(standard: number) {
@@ -34,28 +33,25 @@ export default function useDraggingContainer(dragDirection: DragDirectionType) {
     standardRef.current = standard;
   }
 
-  function handleMouseMove(event: React.MouseEvent<HTMLElement, MouseEvent>) {
+  function handleMouseMove(event: React.SyntheticEvent) {
     const container = containerRef.current;
 
     if (!container) return;
     if (!isStartDragging) return;
 
-    const page = dragDirection === "X" ? event.pageX : event.pageY;
-    moveContainerByCurrent(container, page);
+    if (event.nativeEvent instanceof TouchEvent) {
+      const page = dragDirection === "X" ? event.nativeEvent.touches[0].clientX : event.nativeEvent.touches[0].clientY;
+      moveContainerByCurrent(container, page);
 
-    setDragged(Math.abs(page - standardRef.current));
-  }
+      setDragged(Math.abs(page - standardRef.current));
+    }
 
-  function handleTouchMove(event: React.TouchEvent<HTMLElement>) {
-    const container = containerRef.current;
+    if (event.nativeEvent instanceof MouseEvent) {
+      const page = dragDirection === "X" ? event.nativeEvent.pageX : event.nativeEvent.pageY;
+      moveContainerByCurrent(container, page);
 
-    if (!container) return;
-    if (!isStartDragging) return;
-
-    const page = dragDirection === "X" ? event.touches[0].clientX : event.touches[0].clientY;
-    moveContainerByCurrent(container, page);
-
-    setDragged(Math.abs(page - standardRef.current));
+      setDragged(Math.abs(page - standardRef.current));
+    }
   }
 
   function moveContainerByCurrent(container: HTMLElement, movedMouse: number) {
@@ -66,10 +62,6 @@ export default function useDraggingContainer(dragDirection: DragDirectionType) {
   }
 
   function handleMouseUpOrLeave() {
-    reset();
-  }
-
-  function handleTouchEndOrCancel() {
     reset();
   }
 
@@ -86,10 +78,10 @@ export default function useDraggingContainer(dragDirection: DragDirectionType) {
       onMouseMove: handleMouseMove,
       onMouseUp: handleMouseUpOrLeave,
       onMouseLeave: handleMouseUpOrLeave,
-      onTouchStart: handleTouchStart,
-      onTouchMove: handleTouchMove,
+      onTouchStart: handleMouseDown,
+      onTouchMove: handleMouseMove,
       onTouchEnd: handleMouseUpOrLeave,
-      onTouchCancel: handleTouchEndOrCancel,
+      onTouchCancel: handleMouseUpOrLeave,
     },
     isDragging: dragged > 10,
   };
