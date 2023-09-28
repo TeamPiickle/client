@@ -20,6 +20,7 @@ export const EventCoach = styled.div`
 
   background: linear-gradient(0deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
 
+  pointer-events: none;
   z-index: 10;
 `;
 
