@@ -3,21 +3,12 @@ import { useRef, useState } from "react";
 type DragDirectionType = "X" | "Y";
 
 type EventMapperType = {
-  [key in DragDirectionType]: {
-    touch: "clientX" | "clientY";
-    mouse: "pageX" | "pageY";
-  };
+  [key in DragDirectionType]: "pageX" | "pageY";
 };
 
 const eventMapper: EventMapperType = {
-  X: {
-    touch: "clientX",
-    mouse: "pageX",
-  },
-  Y: {
-    touch: "clientY",
-    mouse: "pageY",
-  },
+  X: "pageX",
+  Y: "pageY",
 };
 
 const FIRST_TOUCH = 0;
@@ -41,12 +32,11 @@ export default function useDraggingContainer(dragDirection: DragDirectionType) {
   }
 
   function getPageByEventType(event: React.SyntheticEvent<HTMLElement>): number {
+    const eventType = eventMapper[dragDirection];
     if (event.nativeEvent instanceof TouchEvent) {
-      const eventType = eventMapper[dragDirection].touch;
       return event.nativeEvent.touches[FIRST_TOUCH][eventType];
     }
     if (event.nativeEvent instanceof MouseEvent) {
-      const eventType = eventMapper[dragDirection].mouse;
       return event.nativeEvent[eventType];
     }
     return 0;
