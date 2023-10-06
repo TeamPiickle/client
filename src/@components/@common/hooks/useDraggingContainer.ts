@@ -23,7 +23,15 @@ export default function useDraggingContainer(dragDirection: DragDirectionType) {
   const [isArrivedEnd, setIsArrivedEnd] = useState(false);
   const [draggedDistance, setDraggedDistance] = useState(0);
 
-  function handleTriggerDown(event: React.SyntheticEvent<HTMLElement>) {
+  function handleMouseDown(event: React.MouseEvent<HTMLElement, MouseEvent>) {
+    setIsStartDragging(true);
+
+    const page = getPageByEventType(event);
+    currentRef.current = page;
+    initializeForDraggedDistance(page);
+  }
+
+  function handleTouchDown(event: React.TouchEvent<HTMLElement>) {
     setIsStartDragging(true);
 
     const page = getPageByEventType(event);
@@ -47,7 +55,20 @@ export default function useDraggingContainer(dragDirection: DragDirectionType) {
     standardRef.current = standard;
   }
 
-  function handleTriggerMove(event: React.SyntheticEvent<HTMLElement>) {
+  function handleMouseMove(event: React.MouseEvent<HTMLElement, MouseEvent>) {
+    const container = containerRef.current;
+
+    if (!container) return;
+    if (!isStartDragging) return;
+
+    const page = getPageByEventType(event);
+    moveContainerByCurrent(container, page);
+    handleArrivedEnd(container);
+
+    setDraggedDistance(Math.abs(page - standardRef.current));
+  }
+
+  function handleTouchMove(event: React.TouchEvent<HTMLElement>) {
     const container = containerRef.current;
 
     if (!container) return;
@@ -80,7 +101,11 @@ export default function useDraggingContainer(dragDirection: DragDirectionType) {
     }
   }
 
-  function handleTriggerEnd() {
+  function handleMouseEnd() {
+    reset();
+  }
+
+  function handleTouchEnd() {
     reset();
   }
 
@@ -93,15 +118,15 @@ export default function useDraggingContainer(dragDirection: DragDirectionType) {
   return {
     scrollableContainerProps: {
       ref: containerRef,
-      onMouseDown: handleTriggerDown,
-      onMouseMove: handleTriggerMove,
-      onMouseUp: handleTriggerEnd,
-      onMouseLeave: handleTriggerEnd,
+      onMouseDown: handleMouseDown,
+      onMouseMove: handleMouseMove,
+      onMouseUp: handleMouseEnd,
+      onMouseLeave: handleMouseEnd,
 
-      onTouchStart: handleTriggerDown,
-      onTouchMove: handleTriggerMove,
-      onTouchEnd: handleTriggerEnd,
-      onTouchCancel: handleTriggerEnd,
+      onTouchStart: handleTouchDown,
+      onTouchMove: handleTouchMove,
+      onTouchEnd: handleTouchEnd,
+      onTouchCancel: handleTouchEnd,
     },
     isDragging: draggedDistance > 10,
     isArrivedEnd,

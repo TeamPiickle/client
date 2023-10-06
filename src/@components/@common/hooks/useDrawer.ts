@@ -1,4 +1,4 @@
-import { SyntheticEvent, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 const thresholds = {
   OFFSET: 150,
@@ -17,7 +17,18 @@ export default function useDrawer(closeModal: () => void) {
   const [isStartDragging, setIsStartDragging] = useState(false);
   const [draggedDistance, setDraggedDistance] = useState(0);
 
-  function handleMouseDown(event: React.SyntheticEvent<HTMLElement>) {
+  function handleMouseDown(event: React.MouseEvent<HTMLElement, MouseEvent>) {
+    const knob = knobRef.current;
+    if (!knob) return;
+    if (isNode(event.target) && !knob.contains(event.target)) return;
+    setIsStartDragging(true);
+
+    const page = getPageByEventType(event);
+    currentRef.current = page;
+    initializeForDraggedDistance(page);
+  }
+
+  function handleTouchDown(event: React.TouchEvent<HTMLElement>) {
     const knob = knobRef.current;
     if (!knob) return;
     if (isNode(event.target) && !knob.contains(event.target)) return;
@@ -47,7 +58,20 @@ export default function useDrawer(closeModal: () => void) {
     standardRef.current = standard;
   }
 
-  function handleMouseMove(event: SyntheticEvent<HTMLElement>) {
+  function handleMouseMove(event: React.MouseEvent<HTMLElement, MouseEvent>) {
+    const container = containerRef.current;
+
+    if (!container) return;
+    if (!isStartDragging) return;
+
+    const page = getPageByEventType(event);
+    currentRef.current = page;
+    moveDrawerByCurrent(container, page);
+
+    setDraggedDistance(Math.abs(page - standardRef.current));
+  }
+
+  function handleTouchMove(event: React.TouchEvent<HTMLElement>) {
     const container = containerRef.current;
 
     if (!container) return;
@@ -66,7 +90,25 @@ export default function useDrawer(closeModal: () => void) {
     currentRef.current = movedTrigger;
   }
 
-  function handleMouseUp() {
+  function handleMouseEnd() {
+    const container = containerRef.current;
+    if (!container) return;
+
+    if (draggedDistance > thresholds.OFFSET) {
+      container.style.transition = `transform ${thresholds.ANIMATION_TRANSITION_TIME}s ease-in-out`;
+      container.style.transform = "translateY(100%)";
+      setTimeout(() => {
+        closeModal();
+      }, thresholds.ANIMATION_TRANSITION_TIME * 1000 + 50);
+    } else {
+      container.style.transition = `transform ${thresholds.ANIMATION_TRANSITION_TIME / 2}s ease-out`;
+      container.style.transform = "translateY(0)";
+    }
+
+    reset();
+  }
+
+  function handleTouchEnd() {
     const container = containerRef.current;
     if (!container) return;
 
@@ -95,13 +137,13 @@ export default function useDrawer(closeModal: () => void) {
       ref: containerRef,
       onMouseDown: handleMouseDown,
       onMouseMove: handleMouseMove,
-      onMouseUp: handleMouseUp,
-      onMouseLeave: handleMouseUp,
+      onMouseUp: handleMouseEnd,
+      onMouseLeave: handleMouseEnd,
 
-      onTouchStart: handleMouseDown,
-      onTouchMove: handleMouseMove,
-      onTouchEnd: handleMouseUp,
-      onTouchCancel: handleMouseUp,
+      onTouchStart: handleTouchDown,
+      onTouchMove: handleTouchMove,
+      onTouchEnd: handleTouchEnd,
+      onTouchCancel: handleTouchEnd,
     },
     knobRef,
   };
