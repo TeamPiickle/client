@@ -25,17 +25,17 @@ type ModalItem = {
   gtmClassName: string;
 };
 
-const locationTypesNoBlock = [LocationType.BEST, LocationType.MEDLEY];
+const noBlockLocationTypes = [LocationType.BEST, LocationType.MEDLEY];
 
 export default function MenuModal(props: MenuModalProps) {
   const { currentCardId, closeHandler, autoSlide, handleClickAddBlacklist, handleClickCancelBlacklist } = props;
   const { showToast, blackoutToast } = useToast();
 
   const { cardType } = useCardType();
-  const [isBlockShow, setIsBlockShow] = useState<boolean>(false);
+  const [isBlockVisible, setIsBlockVisible] = useState<boolean>(false);
 
   useEffect(() => {
-    cardType && setIsBlockShow(!locationTypesNoBlock.includes(cardType));
+    cardType && setIsBlockVisible(!noBlockLocationTypes.includes(cardType));
   }, [cardType]);
 
   const onSuccessAddBlacklist = () => {
@@ -88,7 +88,7 @@ export default function MenuModal(props: MenuModalProps) {
     <Modal theme="WHITE_BOTTOM" closeHandler={closeHandler} isNoCloseBtn>
       <St.ModalContainer>
         {ModalItems.map(({ emoji, title, isNeedLogin, handleClickItem, gtmClassName }, idx) => {
-          if (idx === 1 && !isBlockShow) {
+          if (idx === 1 && !isBlockVisible) {
             return null;
           } else {
             return (

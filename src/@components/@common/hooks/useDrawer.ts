@@ -5,7 +5,7 @@ const thresholds = {
   ANIMATION_TRANSITION_TIME: 0.2,
 };
 
-const FIRST_TOUCH = 0;
+const FIRST_TOUCH_EVENT_IDX = 0;
 
 export default function useDrawer(closeModal: () => void) {
   const knobRef = useRef<HTMLDivElement | null>(null);
@@ -14,8 +14,8 @@ export default function useDrawer(closeModal: () => void) {
   const currentRef = useRef(0);
   const standardRef = useRef(0);
 
-  const [isStartDragging, setIsStartDragging] = useState<boolean>(false);
-  const [dragged, setDragged] = useState<number>(0);
+  const [isStartDragging, setIsStartDragging] = useState(false);
+  const [draggedDistance, setDraggedDistance] = useState(0);
 
   function handleMouseDown(event: React.SyntheticEvent<HTMLElement>) {
     const knob = knobRef.current;
@@ -25,7 +25,7 @@ export default function useDrawer(closeModal: () => void) {
 
     const page = getPageByEventType(event);
     currentRef.current = page;
-    initializeForDragged(page);
+    initializeForDraggedDistance(page);
   }
 
   function isNode(target: EventTarget): target is Node {
@@ -34,7 +34,7 @@ export default function useDrawer(closeModal: () => void) {
 
   function getPageByEventType(event: React.SyntheticEvent<HTMLElement>): number {
     if (event.nativeEvent instanceof TouchEvent) {
-      return event.nativeEvent.touches[FIRST_TOUCH].pageY;
+      return event.nativeEvent.touches[FIRST_TOUCH_EVENT_IDX].pageY;
     }
     if (event.nativeEvent instanceof MouseEvent) {
       return event.nativeEvent.pageY;
@@ -42,8 +42,8 @@ export default function useDrawer(closeModal: () => void) {
     return 0;
   }
 
-  function initializeForDragged(standard: number) {
-    setDragged(0);
+  function initializeForDraggedDistance(standard: number) {
+    setDraggedDistance(0);
     standardRef.current = standard;
   }
 
@@ -57,7 +57,7 @@ export default function useDrawer(closeModal: () => void) {
     currentRef.current = page;
     moveDrawerByCurrent(container, page);
 
-    setDragged(Math.abs(page - standardRef.current));
+    setDraggedDistance(Math.abs(page - standardRef.current));
   }
 
   function moveDrawerByCurrent(container: HTMLElement, movedTrigger: number) {
@@ -70,7 +70,7 @@ export default function useDrawer(closeModal: () => void) {
     const container = containerRef.current;
     if (!container) return;
 
-    if (dragged > thresholds.OFFSET) {
+    if (draggedDistance > thresholds.OFFSET) {
       container.style.transition = `transform ${thresholds.ANIMATION_TRANSITION_TIME}s ease-in-out`;
       container.style.transform = "translateY(100%)";
       setTimeout(() => {

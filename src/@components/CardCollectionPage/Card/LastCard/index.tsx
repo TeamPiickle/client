@@ -10,7 +10,7 @@ import useToast from "../../../@common/Toast/hooks/useToast";
 import * as St from "./style";
 
 const TOAST_SESSON_KEY = "showToast";
-const locationTypesNoReplay = [
+const noReplayLocationTypes = [
   LocationType.BEST,
   LocationType.MEDLEY,
   LocationType.RECENT,
@@ -23,7 +23,7 @@ const LastCard = forwardRef(function LastCard(_, ref: React.ForwardedRef<HTMLDiv
   const navigate = useNavigate();
   const { showToast } = useToast();
   const { cardType } = useCardType();
-  const [isReplayBtnShow, setIsReplayBtnShow] = useState<boolean>(false);
+  const [isReplayBtnVisible, setIsReplayBtnVisible] = useState<boolean>(false);
   const showToastFlag = !!sessionStorage.getItem(TOAST_SESSON_KEY);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const LastCard = forwardRef(function LastCard(_, ref: React.ForwardedRef<HTMLDiv
   }, [showToastFlag, showToast]);
 
   useEffect(() => {
-    cardType && setIsReplayBtnShow(!locationTypesNoReplay.includes(cardType));
+    cardType && setIsReplayBtnVisible(!noReplayLocationTypes.includes(cardType));
   }, [cardType]);
 
   const reloadForSimilarTopic = () => {
@@ -50,7 +50,7 @@ const LastCard = forwardRef(function LastCard(_, ref: React.ForwardedRef<HTMLDiv
       <St.Content>끊임없는 대화를 위해 버튼을 선택해주세요</St.Content>
       <IcCongratPiickle />
       <St.BtnContainer>
-        {isReplayBtnShow && (
+        {isReplayBtnVisible && (
           <St.ReplayBtn onClick={reloadForSimilarTopic} className={GTM_CLASS_NAME.cardMoveKeep}>
             비슷한 주제 계속 보기
           </St.ReplayBtn>

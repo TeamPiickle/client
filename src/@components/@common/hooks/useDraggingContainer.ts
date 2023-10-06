@@ -11,7 +11,7 @@ const eventMapper: EventMapperType = {
   Y: "pageY",
 };
 
-const FIRST_TOUCH = 0;
+const FIRST_TOUCH_EVENT_IDX = 0;
 
 export default function useDraggingContainer(dragDirection: DragDirectionType) {
   const containerRef = useRef<HTMLElement | null>(null);
@@ -19,22 +19,22 @@ export default function useDraggingContainer(dragDirection: DragDirectionType) {
   const currentRef = useRef(0);
   const standardRef = useRef(0);
 
-  const [isStartDragging, setIsStartDragging] = useState<boolean>(false);
-  const [isArrivedEnd, setIsArrivedEnd] = useState<boolean>(false);
-  const [dragged, setDragged] = useState<number>(0);
+  const [isStartDragging, setIsStartDragging] = useState(false);
+  const [isArrivedEnd, setIsArrivedEnd] = useState(false);
+  const [draggedDistance, setDraggedDistance] = useState(0);
 
   function handleTriggerDown(event: React.SyntheticEvent<HTMLElement>) {
     setIsStartDragging(true);
 
     const page = getPageByEventType(event);
     currentRef.current = page;
-    initializeForDragged(page);
+    initializeForDraggedDistance(page);
   }
 
   function getPageByEventType(event: React.SyntheticEvent<HTMLElement>): number {
     const eventType = eventMapper[dragDirection];
     if (event.nativeEvent instanceof TouchEvent) {
-      return event.nativeEvent.touches[FIRST_TOUCH][eventType];
+      return event.nativeEvent.touches[FIRST_TOUCH_EVENT_IDX][eventType];
     }
     if (event.nativeEvent instanceof MouseEvent) {
       return event.nativeEvent[eventType];
@@ -42,8 +42,8 @@ export default function useDraggingContainer(dragDirection: DragDirectionType) {
     return 0;
   }
 
-  function initializeForDragged(standard: number) {
-    setDragged(0);
+  function initializeForDraggedDistance(standard: number) {
+    setDraggedDistance(0);
     standardRef.current = standard;
   }
 
@@ -57,7 +57,7 @@ export default function useDraggingContainer(dragDirection: DragDirectionType) {
     moveContainerByCurrent(container, page);
     handleArrivedEnd(container);
 
-    setDragged(Math.abs(page - standardRef.current));
+    setDraggedDistance(Math.abs(page - standardRef.current));
   }
 
   function moveContainerByCurrent(container: HTMLElement, movedTrigger: number) {
@@ -103,7 +103,7 @@ export default function useDraggingContainer(dragDirection: DragDirectionType) {
       onTouchEnd: handleTriggerEnd,
       onTouchCancel: handleTriggerEnd,
     },
-    isDragging: dragged > 10,
+    isDragging: draggedDistance > 10,
     isArrivedEnd,
   };
 }
