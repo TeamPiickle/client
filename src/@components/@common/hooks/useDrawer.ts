@@ -28,7 +28,7 @@ export default function useDrawer(closeModal: () => void) {
     initializeForDraggedDistance(page);
   }
 
-  function handleTouchDown(event: React.TouchEvent<HTMLElement>) {
+  function handleTouchStart(event: React.TouchEvent<HTMLElement>) {
     const knob = knobRef.current;
     if (!knob) return;
     if (isNode(event.target) && !knob.contains(event.target)) return;
@@ -90,7 +90,7 @@ export default function useDrawer(closeModal: () => void) {
     currentRef.current = movedTrigger;
   }
 
-  function handleMouseEnd() {
+  function handleMouseUpOrLeave() {
     const container = containerRef.current;
     if (!container) return;
 
@@ -108,7 +108,7 @@ export default function useDrawer(closeModal: () => void) {
     reset();
   }
 
-  function handleTouchEnd() {
+  function handleTouchEndOrCancel() {
     const container = containerRef.current;
     if (!container) return;
 
@@ -137,13 +137,13 @@ export default function useDrawer(closeModal: () => void) {
       ref: containerRef,
       onMouseDown: handleMouseDown,
       onMouseMove: handleMouseMove,
-      onMouseUp: handleMouseEnd,
-      onMouseLeave: handleMouseEnd,
+      onMouseUp: handleMouseUpOrLeave,
+      onMouseLeave: handleMouseUpOrLeave,
 
-      onTouchStart: handleTouchDown,
+      onTouchStart: handleTouchStart,
       onTouchMove: handleTouchMove,
-      onTouchEnd: handleTouchEnd,
-      onTouchCancel: handleTouchEnd,
+      onTouchEnd: handleTouchEndOrCancel,
+      onTouchCancel: handleTouchEndOrCancel,
     },
     knobRef,
   };

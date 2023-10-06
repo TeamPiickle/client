@@ -31,7 +31,7 @@ export default function useDraggingContainer(dragDirection: DragDirectionType) {
     initializeForDraggedDistance(page);
   }
 
-  function handleTouchDown(event: React.TouchEvent<HTMLElement>) {
+  function handleTouchStart(event: React.TouchEvent<HTMLElement>) {
     setIsStartDragging(true);
 
     const page = getPageByEventType(event);
@@ -101,11 +101,11 @@ export default function useDraggingContainer(dragDirection: DragDirectionType) {
     }
   }
 
-  function handleMouseEnd() {
+  function handleMouseUpOrLeave() {
     reset();
   }
 
-  function handleTouchEnd() {
+  function handleTouchEndOrCancel() {
     reset();
   }
 
@@ -120,13 +120,13 @@ export default function useDraggingContainer(dragDirection: DragDirectionType) {
       ref: containerRef,
       onMouseDown: handleMouseDown,
       onMouseMove: handleMouseMove,
-      onMouseUp: handleMouseEnd,
-      onMouseLeave: handleMouseEnd,
+      onMouseUp: handleMouseUpOrLeave,
+      onMouseLeave: handleMouseUpOrLeave,
 
-      onTouchStart: handleTouchDown,
+      onTouchStart: handleTouchStart,
       onTouchMove: handleTouchMove,
-      onTouchEnd: handleTouchEnd,
-      onTouchCancel: handleTouchEnd,
+      onTouchEnd: handleTouchEndOrCancel,
+      onTouchCancel: handleTouchEndOrCancel,
     },
     isDragging: draggedDistance > 10,
     isArrivedEnd,
