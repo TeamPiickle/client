@@ -1,95 +1,149 @@
-import { useCallback, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 const thresholds = {
-  offset: 150, // 이 이상 내려야 drawer 닫힘
-  transitionTime: 0.2, // 애니메이션 지속 시간
+  OFFSET: 150,
+  ANIMATION_TRANSITION_TIME: 0.2,
 };
+
+const FIRST_TOUCH_EVENT_IDX = 0;
 
 export default function useDrawer(closeModal: () => void) {
   const knobRef = useRef<HTMLDivElement | null>(null);
   const containerRef = useRef<HTMLElement | null>(null);
 
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragStart, setDragStart] = useState({ y: 0 });
-  const [yOffset, setYOffset] = useState(0);
+  const currentRef = useRef(0);
+  const standardRef = useRef(0);
 
-  const handleMouseDown = useCallback((e: React.MouseEvent<HTMLElement>) => {
-    if (knobRef.current && knobRef.current.contains(e.target as Node)) {
-      setIsDragging(true);
-      setDragStart({
-        y: e.clientY,
-      });
+  const [isStartDragging, setIsStartDragging] = useState(false);
+  const [draggedDistance, setDraggedDistance] = useState(0);
+
+  function handleMouseDown(event: React.MouseEvent<HTMLElement, MouseEvent>) {
+    const knob = knobRef.current;
+    if (!knob) return;
+    if (isNode(event.target) && !knob.contains(event.target)) return;
+    setIsStartDragging(true);
+
+    const page = getPageByEventType(event);
+    currentRef.current = page;
+    initializeForDraggedDistance(page);
+  }
+
+  function handleTouchStart(event: React.TouchEvent<HTMLElement>) {
+    const knob = knobRef.current;
+    if (!knob) return;
+    if (isNode(event.target) && !knob.contains(event.target)) return;
+    setIsStartDragging(true);
+
+    const page = getPageByEventType(event);
+    currentRef.current = page;
+    initializeForDraggedDistance(page);
+  }
+
+  function isNode(target: EventTarget): target is Node {
+    return (target as Node) !== undefined;
+  }
+
+  function getPageByEventType(event: React.SyntheticEvent<HTMLElement>): number {
+    if (event.nativeEvent instanceof TouchEvent) {
+      return event.nativeEvent.touches[FIRST_TOUCH_EVENT_IDX].pageY;
     }
-  }, []);
+    if (event.nativeEvent instanceof MouseEvent) {
+      return event.nativeEvent.pageY;
+    }
+    return 0;
+  }
 
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent<HTMLElement>) => {
-      if (!isDragging) return;
+  function initializeForDraggedDistance(standard: number) {
+    setDraggedDistance(0);
+    standardRef.current = standard;
+  }
 
-      const offset = Math.max(0, e.clientY - dragStart.y);
+  function handleMouseMove(event: React.MouseEvent<HTMLElement, MouseEvent>) {
+    const container = containerRef.current;
 
-      // 모달을 드래그한 만큼 이동
-      const container = containerRef.current;
-      if (!container) return;
-      container.style.transform = `translateY(${offset}px)`;
-      setYOffset(offset);
-    },
-    [dragStart.y, isDragging],
-  );
+    if (!container) return;
+    if (!isStartDragging) return;
 
-  const handleMouseUp = useCallback(() => {
+    const page = getPageByEventType(event);
+    currentRef.current = page;
+    moveDrawerByCurrent(container, page);
+
+    setDraggedDistance(Math.abs(page - standardRef.current));
+  }
+
+  function handleTouchMove(event: React.TouchEvent<HTMLElement>) {
+    const container = containerRef.current;
+
+    if (!container) return;
+    if (!isStartDragging) return;
+
+    const page = getPageByEventType(event);
+    currentRef.current = page;
+    moveDrawerByCurrent(container, page);
+
+    setDraggedDistance(Math.abs(page - standardRef.current));
+  }
+
+  function moveDrawerByCurrent(container: HTMLElement, movedTrigger: number) {
+    const offset = Math.max(0, movedTrigger - standardRef.current);
+    container.style.transform = `translateY(${offset}px)`;
+    currentRef.current = movedTrigger;
+  }
+
+  function handleMouseUpOrLeave() {
     const container = containerRef.current;
     if (!container) return;
 
-    if (yOffset > 150) {
-      container.style.transition = `transform ${thresholds.transitionTime}s ease-in-out`;
+    if (draggedDistance > thresholds.OFFSET) {
+      container.style.transition = `transform ${thresholds.ANIMATION_TRANSITION_TIME}s ease-in-out`;
       container.style.transform = "translateY(100%)";
       setTimeout(() => {
         closeModal();
-      }, thresholds.transitionTime * 1000 + 50);
+      }, thresholds.ANIMATION_TRANSITION_TIME * 1000 + 50);
     } else {
-      container.style.transition = `transform ${thresholds.transitionTime / 2}s ease-out`;
+      container.style.transition = `transform ${thresholds.ANIMATION_TRANSITION_TIME / 2}s ease-out`;
       container.style.transform = "translateY(0)";
     }
-    setIsDragging(false);
-  }, [yOffset, closeModal]);
 
-  /**
-   * For Mobile
-   * */
+    reset();
+  }
 
-  const handleTouchStart = useCallback((e: React.TouchEvent<HTMLElement>) => {
-    if (knobRef.current && knobRef.current.contains(e.target as Node)) {
-      setIsDragging(true);
-      setDragStart({
-        y: e.touches[0].clientY,
-      });
+  function handleTouchEndOrCancel() {
+    const container = containerRef.current;
+    if (!container) return;
+
+    if (draggedDistance > thresholds.OFFSET) {
+      container.style.transition = `transform ${thresholds.ANIMATION_TRANSITION_TIME}s ease-in-out`;
+      container.style.transform = "translateY(100%)";
+      setTimeout(() => {
+        closeModal();
+      }, thresholds.ANIMATION_TRANSITION_TIME * 1000 + 50);
+    } else {
+      container.style.transition = `transform ${thresholds.ANIMATION_TRANSITION_TIME / 2}s ease-out`;
+      container.style.transform = "translateY(0)";
     }
-  }, []);
 
-  const handleTouchMove = useCallback(
-    (e: React.TouchEvent<HTMLElement>) => {
-      if (!isDragging) return;
+    reset();
+  }
 
-      const offset = Math.max(0, e.touches[0].clientY - dragStart.y);
-
-      const container = containerRef.current;
-      if (!container) return;
-      container.style.transform = `translateY(${offset}px)`;
-      setYOffset(offset);
-    },
-    [dragStart.y, isDragging],
-  );
+  function reset() {
+    setIsStartDragging(false);
+    currentRef.current = 0;
+    standardRef.current = 0;
+  }
 
   return {
     drawerProps: {
       ref: containerRef,
       onMouseDown: handleMouseDown,
       onMouseMove: handleMouseMove,
-      onMouseUp: handleMouseUp,
+      onMouseUp: handleMouseUpOrLeave,
+      onMouseLeave: handleMouseUpOrLeave,
+
       onTouchStart: handleTouchStart,
       onTouchMove: handleTouchMove,
-      onTouchEnd: handleMouseUp,
+      onTouchEnd: handleTouchEndOrCancel,
+      onTouchCancel: handleTouchEndOrCancel,
     },
     knobRef,
   };

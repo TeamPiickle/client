@@ -102,6 +102,8 @@ export const Gradient = styled.div`
   height: 8rem;
 
   background: linear-gradient(0deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
+
+  pointer-events: none;
 `;
 
 export const InputWrapper = styled.div`

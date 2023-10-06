@@ -1,6 +1,8 @@
+import { useEffect, useState } from "react";
+
 import { LocationType } from "../../../../types/cardCollection";
 import { GTM_CLASS_NAME } from "../../../../util/const/gtm";
-import useShowByCardType from "../../../@common/hooks/useShowByQuery";
+import useCardType from "../../../@common/hooks/useCardType";
 import Modal from "../../../@common/Modal";
 import useToast from "../../../@common/Toast/hooks/useToast";
 import { handleClickBlacklistType } from "../../hooks/useBlacklist";
@@ -23,11 +25,18 @@ type ModalItem = {
   gtmClassName: string;
 };
 
+const noBlockLocationTypes = [LocationType.BEST, LocationType.MEDLEY];
+
 export default function MenuModal(props: MenuModalProps) {
   const { currentCardId, closeHandler, autoSlide, handleClickAddBlacklist, handleClickCancelBlacklist } = props;
   const { showToast, blackoutToast } = useToast();
 
-  const { isShow: isBlockShow } = useShowByCardType([LocationType.BEST, LocationType.MEDLEY]);
+  const { cardType } = useCardType();
+  const [isBlockVisible, setIsBlockVisible] = useState<boolean>(false);
+
+  useEffect(() => {
+    cardType && setIsBlockVisible(!noBlockLocationTypes.includes(cardType));
+  }, [cardType]);
 
   const onSuccessAddBlacklist = () => {
     closeHandler();
@@ -79,7 +88,7 @@ export default function MenuModal(props: MenuModalProps) {
     <Modal theme="WHITE_BOTTOM" closeHandler={closeHandler} isNoCloseBtn>
       <St.ModalContainer>
         {ModalItems.map(({ emoji, title, isNeedLogin, handleClickItem, gtmClassName }, idx) => {
-          if (idx === 1 && !isBlockShow) {
+          if (idx === 1 && !isBlockVisible) {
             return null;
           } else {
             return (

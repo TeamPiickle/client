@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import IcSubmitBtn from "../../../../asset/icon/IcSubmitBtn";
-import useDraggableYContainer from "../../../@common/hooks/useDraggableYContainer";
+import useDraggingContainer from "../../../@common/hooks/useDraggingContainer";
 import useDrawer from "../../../@common/hooks/useDrawer";
 import Modal from "../../../@common/Modal";
 import { CommentList, handleCommentController } from "../../hooks/useComments";
@@ -16,7 +16,7 @@ interface CommentModalProps {
 
 export default function CommentModal(props: CommentModalProps) {
   const { cardId, comments, onClickBackground, handleSubmitComment } = props;
-  const { scrollableContainerProps, isScrollEnd } = useDraggableYContainer();
+  const { scrollableContainerProps, isArrivedEnd } = useDraggingContainer("Y");
   const { drawerProps, knobRef } = useDrawer(onClickBackground);
 
   const [answer, setAnswer] = useState<string>("");
@@ -46,7 +46,7 @@ export default function CommentModal(props: CommentModalProps) {
               </St.Comment>
             ))}
         </St.Comments>
-        {!isScrollEnd && <St.Gradient />}
+        {!isArrivedEnd && <St.Gradient />}
         <St.InputWrapper>
           <St.Input
             placeholder="답변하기"
