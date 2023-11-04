@@ -4,8 +4,10 @@ import { newBannerType } from "../../../../util/main/banner";
 import SlideContent from "../SlideContent";
 import * as St from "./style";
 
+const FIRST_BANNER_ID = 0;
+
 export default function Slide(props: newBannerType) {
-  const { bannerImage, phrase, topic, isLightMode, isLast, gtmClassName } = props;
+  const { bannerId, bannerImage, phrase, topic, isLightMode, isLast, gtmClassName } = props;
   return (
     <St.SlideContainer className={gtmClassName}>
       <St.SlideContentWrapper className={gtmClassName}>
@@ -16,8 +18,14 @@ export default function Slide(props: newBannerType) {
         <SlideContent {...props} />
       </St.SlideContentWrapper>
       <picture>
-        <source srcSet={bannerImage.src} type="image/webp" />
-        <St.ImageWrapper src={bannerImage.subSrc} alt={bannerImage.alt} loading="lazy" />
+        <source width={360} height={302} srcSet={bannerImage.src} type="image/webp" />
+        <St.ImageWrapper
+          width={360}
+          height={302}
+          src={bannerImage.subSrc}
+          alt={bannerImage.alt}
+          loading={bannerId === FIRST_BANNER_ID ? "eager" : "lazy"}
+        />
       </picture>
 
       <St.Gradient islightmode={isLightMode} />

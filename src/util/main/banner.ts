@@ -27,6 +27,7 @@ export const newBannerImages: BannerImage[] = [
 ];
 
 export interface newBannerType {
+  bannerId: number;
   bannerImage: BannerImage;
   phrase: string;
   topic: string;

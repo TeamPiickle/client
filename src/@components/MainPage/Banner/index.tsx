@@ -21,6 +21,7 @@ export default function Banner() {
 
   const newBanners: newBannerType[] = [
     {
+      bannerId: 0,
       bannerImage: newBannerImages[0],
       phrase: "가장 최근 북마크 된",
       topic: "핫한 대화주제",
@@ -31,6 +32,7 @@ export default function Banner() {
       gtmClassName: GTM_CLASS_NAME.mainBannerHot,
     },
     {
+      bannerId: 1,
       bannerImage: newBannerImages[1],
       phrase: "가장 최근 업데이트 된",
       topic: "새로운 대화주제",
@@ -41,6 +43,7 @@ export default function Banner() {
       gtmClassName: GTM_CLASS_NAME.mainBannerNew,
     },
     {
+      bannerId: 2,
       bannerImage: newBannerImages[2],
       phrase: "여러분만의 톡톡 튀는",
       topic: "대화주제를 얘기해주세요",
@@ -57,8 +60,8 @@ export default function Banner() {
       </Helmet>
       <St.BannerSlider>
         <Swiper {...swiperSettings}>
-          {newBanners.map((banner, idx) => (
-            <SwiperSlide key={idx} className={banner.gtmClassName}>
+          {newBanners.map((banner) => (
+            <SwiperSlide key={banner.bannerId} className={banner.gtmClassName}>
               <Slide {...banner} />
             </SwiperSlide>
           ))}
