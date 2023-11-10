@@ -13,16 +13,13 @@ export default function useObserverSection() {
   const intersectCount = useRef<number>(0);
   const [isVisibleSection, setIsVisibleSection] = useState(false);
 
-  const intersectionObserverRef = useIntersectionObserver(
-    (entry, observer) => {
-      if (entry.isIntersecting) {
-        handleIntersecting({ entry, observer });
-        return;
-      }
-      setIsVisibleSection(false);
-    },
-    { threshold: 0.3 },
-  );
+  const intersectionObserverRef = useIntersectionObserver((entry, observer) => {
+    if (entry.isIntersecting) {
+      handleIntersecting({ entry, observer });
+      return;
+    }
+    setIsVisibleSection(false);
+  });
 
   const handleIntersecting = (params: IntersectionParamsType) => {
     if (intersectCount.current < INTERSECTED_BEFORE_LOAD) {
