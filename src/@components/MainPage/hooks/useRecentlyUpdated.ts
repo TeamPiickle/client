@@ -5,10 +5,14 @@ import { PATH } from "../../../core/api/common/constants";
 import { RecentCardList } from "../../../types/cardCollection";
 import { PiickleSWRResponse } from "../../../types/remote/swr";
 
-export function useRecentlyUpdated() {
-  const { data } = useSWR<PiickleSWRResponse<RecentCardList>>(`${PATH.CARDS_}${PATH.CARDS_UPDATE}`, realReq.GET_SWR, {
-    suspense: true,
-  });
+export function useRecentlyUpdated(shouldWait?: boolean) {
+  const { data } = useSWR<PiickleSWRResponse<RecentCardList>>(
+    shouldWait ? null : `${PATH.CARDS_}${PATH.CARDS_UPDATE}`,
+    realReq.GET_SWR,
+    {
+      suspense: true,
+    },
+  );
 
   return {
     recentlyUpdatedDate: data?.data.data.recentlyDate,

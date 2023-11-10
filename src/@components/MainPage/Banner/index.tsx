@@ -1,5 +1,6 @@
 import "swiper/swiper.css";
 
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -15,9 +16,10 @@ import Slide from "./Slide";
 import * as St from "./style";
 
 export default function Banner() {
+  const [isSecondBanner, setIsSecondBanner] = useState(false);
   const { swiperSettings, currentSlide } = useBannerSwiper();
   const { recentlyBookmarkedDate, recentlyBookmarkedCards } = useRecentlyBookmarked();
-  const { recentlyUpdatedDate, recentlyUpdatedCards } = useRecentlyUpdated();
+  const { recentlyUpdatedDate, recentlyUpdatedCards } = useRecentlyUpdated(!isSecondBanner);
 
   const newBanners: newBannerType[] = [
     {
@@ -52,6 +54,10 @@ export default function Banner() {
       isLast: true,
     },
   ];
+
+  useEffect(() => {
+    if (currentSlide === 1) setIsSecondBanner(true);
+  }, [currentSlide]);
 
   return (
     <>
