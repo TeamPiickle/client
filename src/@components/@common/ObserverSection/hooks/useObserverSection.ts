@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 
-import useIntersectionObserver from "../../@common/hooks/useIntersectionObserver";
+import useIntersectionObserver from "../../hooks/useIntersectionObserver";
 
 interface IntersectionParamsType {
   entry: IntersectionObserverEntry;

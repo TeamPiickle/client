@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
 
-import useObserverSection from "../../MainPage/hooks/useObserverSection";
+import useObserverSection from "./hooks/useObserverSection";
 
 export default function ObserverSection({ children }: PropsWithChildren) {
   const { isVisibleSection, intersectionObserverRef } = useObserverSection();
